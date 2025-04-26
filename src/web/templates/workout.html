@@ -1,0 +1,394 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>Workout Tracking</h2>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Workout Status</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="workout-status-card">
+                            <p>Status: <span id="status-text" class="badge bg-secondary">Disconnected</span></p>
+                            <p>Device: <span id="device-name">None</span></p>
+                            <p>Workout: <span id="workout-status" class="badge bg-secondary">Inactive</span></p>
+                            <p>Duration: <span id="workout-duration">00:00:00</span></p>
+                        </div>
+                        <div class="mt-3">
+                            <button id="start-workout-btn" class="btn btn-success" disabled>Start Workout</button>
+                            <button id="end-workout-btn" class="btn btn-danger" disabled>End Workout</button>
+                            <a href="/devices" class="btn btn-primary">Manage Devices</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Current Metrics</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="current-metrics">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="metric-card">
+                                        <h6>Power</h6>
+                                        <p id="power-value" class="metric-value">0</p>
+                                        <p class="metric-unit">watts</p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="metric-card">
+                                        <h6>Heart Rate</h6>
+                                        <p id="heart-rate-value" class="metric-value">0</p>
+                                        <p class="metric-unit">bpm</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-6">
+                                    <div class="metric-card">
+                                        <h6 id="cadence-label">Cadence</h6>
+                                        <p id="cadence-value" class="metric-value">0</p>
+                                        <p id="cadence-unit" class="metric-unit">rpm</p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="metric-card">
+                                        <h6>Speed</h6>
+                                        <p id="speed-value" class="metric-value">0</p>
+                                        <p class="metric-unit">km/h</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-6">
+                                    <div class="metric-card">
+                                        <h6>Distance</h6>
+                                        <p id="distance-value" class="metric-value">0</p>
+                                        <p class="metric-unit">m</p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="metric-card">
+                                        <h6>Calories</h6>
+                                        <p id="calories-value" class="metric-value">0</p>
+                                        <p class="metric-unit">kcal</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Workout Charts</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="nav nav-tabs" id="chartTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="power-tab" data-bs-toggle="tab" data-bs-target="#power-chart-tab" type="button" role="tab" aria-controls="power-chart-tab" aria-selected="true">Power</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="heart-rate-tab" data-bs-toggle="tab" data-bs-target="#heart-rate-chart-tab" type="button" role="tab" aria-controls="heart-rate-chart-tab" aria-selected="false">Heart Rate</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="cadence-tab" data-bs-toggle="tab" data-bs-target="#cadence-chart-tab" type="button" role="tab" aria-controls="cadence-chart-tab" aria-selected="false">Cadence</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="chartTabsContent">
+                            <div class="tab-pane fade show active" id="power-chart-tab" role="tabpanel" aria-labelledby="power-tab">
+                                <div class="chart-container" style="position: relative; height:300px;">
+                                    <canvas id="power-chart"></canvas>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="heart-rate-chart-tab" role="tabpanel" aria-labelledby="heart-rate-tab">
+                                <div class="chart-container" style="position: relative; height:300px;">
+                                    <canvas id="heart-rate-chart"></canvas>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="cadence-chart-tab" role="tabpanel" aria-labelledby="cadence-tab">
+                                <div class="chart-container" style="position: relative; height:300px;">
+                                    <canvas id="cadence-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h5>Workout Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="workout-summary">
+                            <p>Start a workout to see summary metrics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // DOM elements
+    const statusText = document.getElementById('status-text');
+    const deviceName = document.getElementById('device-name');
+    const workoutStatus = document.getElementById('workout-status');
+    const workoutDuration = document.getElementById('workout-duration');
+    const startWorkoutBtn = document.getElementById('start-workout-btn');
+    const endWorkoutBtn = document.getElementById('end-workout-btn');
+    
+    // Metric elements
+    const powerValue = document.getElementById('power-value');
+    const heartRateValue = document.getElementById('heart-rate-value');
+    const cadenceLabel = document.getElementById('cadence-label');
+    const cadenceValue = document.getElementById('cadence-value');
+    const cadenceUnit = document.getElementById('cadence-unit');
+    const speedValue = document.getElementById('speed-value');
+    const distanceValue = document.getElementById('distance-value');
+    const caloriesValue = document.getElementById('calories-value');
+    
+    // Charts
+    let powerChart, heartRateChart, cadenceChart;
+    const maxDataPoints = 60; // 1 minute of data at 1 second intervals
+    
+    // Chart data
+    const powerData = {
+        labels: Array(maxDataPoints).fill(''),
+        datasets: [{
+            label: 'Power (watts)',
+            data: Array(maxDataPoints).fill(null),
+            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            fill: true,
+            tension: 0.4
+        }]
+    };
+    
+    const heartRateData = {
+        labels: Array(maxDataPoints).fill(''),
+        datasets: [{
+            label: 'Heart Rate (bpm)',
+            data: Array(maxDataPoints).fill(null),
+            borderColor: 'rgba(54, 162, 235, 1)',
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            fill: true,
+            tension: 0.4
+        }]
+    };
+    
+    const cadenceData = {
+        labels: Array(maxDataPoints).fill(''),
+        datasets: [{
+            label: 'Cadence (rpm)',
+            data: Array(maxDataPoints).fill(null),
+            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            fill: true,
+            tension: 0.4
+        }]
+    };
+    
+    // Chart options
+    const chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            x: {
+                display: false
+            },
+            y: {
+                beginAtZero: true
+            }
+        },
+        animation: {
+            duration: 0
+        }
+    };
+    
+    // Initialize charts
+    function initCharts() {
+        const powerCtx = document.getElementById('power-chart').getContext('2d');
+        powerChart = new Chart(powerCtx, {
+            type: 'line',
+            data: powerData,
+            options: chartOptions
+        });
+        
+        const heartRateCtx = document.getElementById('heart-rate-chart').getContext('2d');
+        heartRateChart = new Chart(heartRateCtx, {
+            type: 'line',
+            data: heartRateData,
+            options: chartOptions
+        });
+        
+        const cadenceCtx = document.getElementById('cadence-chart').getContext('2d');
+        cadenceChart = new Chart(cadenceCtx, {
+            type: 'line',
+            data: cadenceData,
+            options: chartOptions
+        });
+    }
+    
+    // Update charts with new data
+    function updateCharts(data) {
+        // Update power chart
+        if (data.instantaneous_power || data.power) {
+            const power = data.instantaneous_power || data.power || 0;
+            powerData.datasets[0].data.push(power);
+            powerData.datasets[0].data.shift();
+            powerChart.update();
+        }
+        
+        // Update heart rate chart
+        if (data.heart_rate) {
+            heartRateData.datasets[0].data.push(data.heart_rate);
+            heartRateData.datasets[0].data.shift();
+            heartRateChart.update();
+        }
+        
+        // Update cadence chart
+        if (data.instantaneous_cadence || data.cadence || data.stroke_rate) {
+            const cadence = data.instantaneous_cadence || data.cadence || data.stroke_rate || 0;
+            cadenceData.datasets[0].data.push(cadence);
+            cadenceData.datasets[0].data.shift();
+            cadenceChart.update();
+        }
+    }
+    
+    // Format duration
+    function formatDuration(seconds) {
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const secs = seconds % 60;
+        
+        return [
+            hours.toString().padStart(2, '0'),
+            minutes.toString().padStart(2, '0'),
+            secs.toString().padStart(2, '0')
+        ].join(':');
+    }
+    
+    // Update workout summary
+    function updateWorkoutSummary(data) {
+        const summaryElement = document.getElementById('workout-summary');
+        
+        if (!data || Object.keys(data).length === 0) {
+            summaryElement.innerHTML = '<p>Start a workout to see summary metrics.</p>';
+            return;
+        }
+        
+        // Get workout type
+        const workoutType = data.type || 'unknown';
+        
+        // Create summary HTML
+        let html = '<div class="row">';
+        
+        // Average power
+        if (data.instantaneous_power || data.power) {
+            const power = data.instantaneous_power || data.power || 0;
+            html += `
+                <div class="col-6">
+                    <p><strong>Avg Power:</strong> <span id="avg-power">-</span> W</p>
+                </div>
+            `;
+        }
+        
+        // Average heart rate
+        if (data.heart_rate) {
+            html += `
+                <div class="col-6">
+                    <p><strong>Avg Heart Rate:</strong> <span id="avg-heart-rate">-</span> bpm</p>
+                </div>
+            `;
+        }
+        
+        // Average cadence or stroke rate
+        if (workoutType === 'bike') {
+            html += `
+                <div class="col-6">
+                    <p><strong>Avg Cadence:</strong> <span id="avg-cadence">-</span> rpm</p>
+                </div>
+            `;
+        } else if (workoutType === 'rower') {
+            html += `
+                <div class="col-6">
+                    <p><strong>Avg Stroke Rate:</strong> <span id="avg-stroke-rate">-</span> spm</p>
+                </div>
+            `;
+        }
+        
+        // Total distance
+        html += `
+            <div class="col-6">
+                <p><strong>Total Distance:</strong> <span id="total-distance">-</span> m</p>
+            </div>
+        `;
+        
+        // Total calories
+        html += `
+            <div class="col-6">
+                <p><strong>Total Calories:</strong> <span id="total-calories">-</span> kcal</p>
+            </div>
+        `;
+        
+        // Estimated VO2 Max
+        html += `
+            <div class="col-6">
+                <p><strong>Est. VO2 Max:</strong> <span id="est-vo2max">-</span></p>
+            </div>
+        `;
+        
+        html += '</div>';
+        
+        summaryElement.innerHTML = html;
+    }
+    
+    // Start workout
+    startWorkoutBtn.addEventListener('click', function() {
+        fetch('/api/start_workout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({})
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log('Workout started:', data);
+                updateStatus();
+            } else {
+                console.error('Error starting workout:', data.error);
+                alert('Error starting workout: ' + (data.error || 'Unknown error'));
+            }
+        })
+        .catch(error => {
+            console.error('Error starting workout:', error);
+            alert('Error starting workout: ' + error.message);
+        });
+    });
+    
+    // End workout
+    endWorkoutBtn.addEventListener('click', function() {
+        fetch('/api/end_workout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({})
+        })
+        .then(response => response.json())
+        .then(data =
+(Content truncated due to size limit. Use line ranges to read in chunks)

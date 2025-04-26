@@ -1,0 +1,158 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to Rogue to Garmin Bridge</h1>
+    <p class="lead">Connect your Rogue Echo Bike and Rower to Garmin Connect for comprehensive workout tracking and analysis.</p>
+    <hr class="my-4">
+    <p>This application allows you to collect workout data from your Rogue Echo equipment, convert it to Garmin FIT format, and upload it to Garmin Connect.</p>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Connect Devices</h5>
+                    <p class="card-text">Discover and connect to your Rogue Echo Bike and Rower via Bluetooth.</p>
+                    <a href="/devices" class="btn btn-primary">Go to Devices</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Track Workouts</h5>
+                    <p class="card-text">Monitor your workout metrics in real-time and save your sessions.</p>
+                    <a href="/workout" class="btn btn-primary">Go to Workout</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">View History</h5>
+                    <p class="card-text">Review past workouts, convert to FIT format, and upload to Garmin Connect.</p>
+                    <a href="/history" class="btn btn-primary">Go to History</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Device Status</h5>
+            </div>
+            <div class="card-body">
+                <div id="device-status">
+                    <p>Status: <span id="status-text" class="badge bg-secondary">Disconnected</span></p>
+                    <p>Device: <span id="device-name">None</span></p>
+                    <p>Workout: <span id="workout-status" class="badge bg-secondary">Inactive</span></p>
+                </div>
+                <div class="mt-3">
+                    <a href="/devices" class="btn btn-primary">Manage Devices</a>
+                    <a href="/workout" class="btn btn-success">Start Workout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Quick Stats</h5>
+            </div>
+            <div class="card-body">
+                <div id="quick-stats">
+                    <p>Total Workouts: <span id="total-workouts">-</span></p>
+                    <p>Last Workout: <span id="last-workout">-</span></p>
+                    <p>Total Distance: <span id="total-distance">-</span></p>
+                </div>
+                <div class="mt-3">
+                    <a href="/history" class="btn btn-primary">View All Stats</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Update status every 2 seconds
+    function updateStatus() {
+        fetch('/api/status')
+            .then(response => response.json())
+            .then(data => {
+                // Update device status
+                const statusText = document.getElementById('status-text');
+                const deviceName = document.getElementById('device-name');
+                const workoutStatus = document.getElementById('workout-status');
+                
+                if (data.device_status === 'connected') {
+                    statusText.textContent = 'Connected';
+                    statusText.className = 'badge bg-success';
+                } else {
+                    statusText.textContent = 'Disconnected';
+                    statusText.className = 'badge bg-secondary';
+                }
+                
+                // Update device name
+                if (data.latest_data && data.latest_data.device_name) {
+                    deviceName.textContent = data.latest_data.device_name;
+                } else {
+                    deviceName.textContent = 'None';
+                }
+                
+                // Update workout status
+                if (data.workout_active) {
+                    workoutStatus.textContent = 'Active';
+                    workoutStatus.className = 'badge bg-success';
+                } else {
+                    workoutStatus.textContent = 'Inactive';
+                    workoutStatus.className = 'badge bg-secondary';
+                }
+            })
+            .catch(error => console.error('Error fetching status:', error));
+    }
+    
+    // Update quick stats
+    function updateQuickStats() {
+        fetch('/api/workouts?limit=10')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.workouts) {
+                    const totalWorkouts = document.getElementById('total-workouts');
+                    const lastWorkout = document.getElementById('last-workout');
+                    const totalDistance = document.getElementById('total-distance');
+                    
+                    totalWorkouts.textContent = data.workouts.length;
+                    
+                    if (data.workouts.length > 0) {
+                        const workout = data.workouts[0];
+                        lastWorkout.textContent = new Date(workout.start_time).toLocaleString();
+                        
+                        // Calculate total distance
+                        let distance = 0;
+                        data.workouts.forEach(w => {
+                            if (w.summary && w.summary.total_distance) {
+                                distance += w.summary.total_distance;
+                            }
+                        });
+                        
+                        totalDistance.textContent = (distance / 1000).toFixed(2) + ' km';
+                    }
+                }
+            })
+            .catch(error => console.error('Error fetching workouts:', error));
+    }
+    
+    // Update on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        updateStatus();
+        updateQuickStats();
+        
+        // Update status every 2 seconds
+        setInterval(updateStatus, 2000);
+    });
+</script>
+{% endblock %}
