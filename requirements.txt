@@ -3,3 +3,4 @@ bleak==0.21.1
 fit-tool==0.9.13
 requests==2.31.0
 gunicorn==21.2.0
+pycycling==0.4.1

@@ -390,5 +390,141 @@
             body: JSON.stringify({})
         })
         .then(response => response.json())
-        .then(data =
-(Content truncated due to size limit. Use line ranges to read in chunks)
+        .then(data => {
+            if (data.success) {
+                console.log('Workout ended successfully');
+                alert('Workout ended successfully');
+                
+                // Update UI
+                workoutStatus.textContent = 'Inactive';
+                workoutStatus.className = 'badge bg-secondary';
+                startWorkoutBtn.disabled = false;
+                endWorkoutBtn.disabled = true;
+                
+                // Redirect to history page to see the workout
+                if (data.workout_id) {
+                    window.location.href = `/history?workout_id=${data.workout_id}`;
+                }
+            } else {
+                console.error('Error ending workout:', data.error);
+                alert('Error ending workout: ' + (data.error || 'Unknown error'));
+            }
+        })
+        .catch(error => {
+            console.error('Error ending workout:', error);
+            alert('Error ending workout: ' + error.message);
+        });
+    });
+    
+    // Update status
+    function updateStatus() {
+        fetch('/api/status')
+            .then(response => response.json())
+            .then(data => {
+                // Update device status
+                if (data.device_status === 'connected') {
+                    statusText.textContent = 'Connected';
+                    statusText.className = 'badge bg-success';
+                    startWorkoutBtn.disabled = !data.workout_active;
+                } else {
+                    statusText.textContent = 'Disconnected';
+                    statusText.className = 'badge bg-secondary';
+                    startWorkoutBtn.disabled = true;
+                }
+                
+                // Update device name
+                if (data.latest_data && data.latest_data.device_name) {
+                    deviceName.textContent = data.latest_data.device_name;
+                } else {
+                    deviceName.textContent = 'None';
+                }
+                
+                // Update workout status
+                if (data.workout_active) {
+                    workoutStatus.textContent = 'Active';
+                    workoutStatus.className = 'badge bg-success';
+                    startWorkoutBtn.disabled = true;
+                    endWorkoutBtn.disabled = false;
+                } else {
+                    workoutStatus.textContent = 'Inactive';
+                    workoutStatus.className = 'badge bg-secondary';
+                    startWorkoutBtn.disabled = data.device_status !== 'connected';
+                    endWorkoutBtn.disabled = true;
+                }
+                
+                // Update metrics if we have data
+                if (data.latest_data) {
+                    updateMetrics(data.latest_data);
+                    updateCharts(data.latest_data);
+                    updateWorkoutSummary(data.latest_data);
+                }
+            })
+            .catch(error => console.error('Error fetching status:', error));
+    }
+    
+    // Update metrics
+    function updateMetrics(data) {
+        // Update power
+        if (data.instantaneous_power !== undefined) {
+            powerValue.textContent = Math.round(data.instantaneous_power);
+        } else if (data.power !== undefined) {
+            powerValue.textContent = Math.round(data.power);
+        }
+        
+        // Update heart rate
+        if (data.heart_rate !== undefined) {
+            heartRateValue.textContent = Math.round(data.heart_rate);
+        }
+        
+        // Update cadence or stroke rate based on workout type
+        if (data.workout_type === 'bike') {
+            cadenceLabel.textContent = 'Cadence';
+            cadenceUnit.textContent = 'rpm';
+            
+            if (data.instantaneous_cadence !== undefined) {
+                cadenceValue.textContent = Math.round(data.instantaneous_cadence);
+            } else if (data.cadence !== undefined) {
+                cadenceValue.textContent = Math.round(data.cadence);
+            }
+        } else if (data.workout_type === 'rower') {
+            cadenceLabel.textContent = 'Stroke Rate';
+            cadenceUnit.textContent = 'spm';
+            
+            if (data.stroke_rate !== undefined) {
+                cadenceValue.textContent = Math.round(data.stroke_rate);
+            }
+        }
+        
+        // Update speed
+        if (data.instantaneous_speed !== undefined) {
+            speedValue.textContent = (data.instantaneous_speed * 3.6).toFixed(1); // Convert m/s to km/h
+        } else if (data.speed !== undefined) {
+            speedValue.textContent = (data.speed * 3.6).toFixed(1); // Convert m/s to km/h
+        }
+        
+        // Update distance
+        if (data.total_distance !== undefined) {
+            distanceValue.textContent = Math.round(data.total_distance);
+        }
+        
+        // Update calories
+        if (data.total_calories !== undefined) {
+            caloriesValue.textContent = Math.round(data.total_calories);
+        }
+        
+        // Update workout duration
+        if (data.elapsed_time !== undefined) {
+            workoutDuration.textContent = formatDuration(Math.round(data.elapsed_time));
+        }
+    }
+    
+    // Initialize charts on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        initCharts();
+        updateStatus();
+        
+        // Update status every 1 second
+        setInterval(updateStatus, 1000);
+    });
+</script>
+{% endblock %}

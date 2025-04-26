@@ -373,5 +373,110 @@
                 label: 'Heart Rate (bpm)',
                 data: heartRates,
                 borderColor: 'rgba(54, 162, 235, 1)',
-                backgroun
-(Content truncated due to size limit. Use line ranges to read in chunks)
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                yAxisID: 'y1',
+                fill: true
+            });
+        }
+        
+        // Create the chart
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: timestamps,
+                datasets: datasets
+            },
+            options: {
+                responsive: true,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                stacked: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Workout Data'
+                    }
+                },
+                scales: {
+                    x: {
+                        display: true,
+                        title: {
+                            display: true,
+                            text: 'Time'
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: 'Power (watts)'
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Heart Rate (bpm)'
+                        },
+                        grid: {
+                            drawOnChartArea: false
+                        }
+                    }
+                }
+            }
+        });
+    }
+    
+    // Convert workout to FIT
+    function convertToFIT(workoutId) {
+        fetch(`/api/convert_fit/${workoutId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(`FIT file created successfully: ${data.fit_file_name}`);
+                loadWorkoutDetails(workoutId);
+               } else {
+                alert(`Error creating FIT file: ${data.error || 'Unknown error'}`);
+            }
+        })
+        .catch(error => {
+            alert(`Error creating FIT file: ${error.message}`);
+            console.error('Error creating FIT file:', error);
+        });
+    }
+    
+    // Upload workout to Garmin Connect
+    function uploadToGarmin(workoutId) {
+        fetch(`/api/upload_garmin/${workoutId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(`Workout uploaded successfully to Garmin Connect. Activity ID: ${data.activity_id}`);
+                loadWorkoutDetails(workoutId);
+            } else {
+                alert(`Error uploading to Garmin Connect: ${data.error || 'Unknown error'}`);
+            }
+        })
+        .catch(error => {
+            alert(`Error uploading to Garmin Connect: ${error.message}`);
+            console.error('Error uploading to Garmin Connect:', error);
+        });
+    }
+</script>
+{% endblock %}

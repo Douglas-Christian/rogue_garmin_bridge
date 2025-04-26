@@ -445,5 +445,78 @@ class DataProcessor:
         resting_hr = self.user_profile.get('resting_heart_rate', 60)
         
         # Get workout data
-        avg_hr = work
-(Content truncated due to size limit. Use line ranges to read in chunks)
+        avg_hr = workout_data.get('avg_heart_rate', 0)
+        max_hr = workout_data.get('max_heart_rate', 0)
+        
+        # Calculate max heart rate if not available
+        if max_hr <= 0:
+            max_hr = 220 - age
+        
+        # Check if heart rate was elevated enough for VO2 max calculation
+        # (70% of max heart rate for at least 10 minutes)
+        hr_threshold = 0.7 * max_hr
+        
+        if avg_hr < hr_threshold:
+            logger.warning(f"Average heart rate ({avg_hr}) below threshold ({hr_threshold}) for VO2 max estimation")
+            return None
+        
+        # Calculate VO2 max using heart rate reserve method
+        hr_reserve = max_hr - resting_hr
+        vo2max = 15.3 * (max_hr / resting_hr)
+        
+        # Adjust for gender
+        if gender.lower() == 'female':
+            vo2max *= 0.9
+        
+        # Adjust for power if available (bike only)
+        if workout_data.get('workout_type') == 'bike' and workout_data.get('avg_power'):
+            avg_power = workout_data.get('avg_power', 0)
+            power_to_weight = avg_power / weight
+            
+            # Simple adjustment based on power-to-weight ratio
+            vo2max_from_power = power_to_weight * 10.8 + 7
+            
+            # Blend the two estimates
+            vo2max = (vo2max + vo2max_from_power) / 2
+        
+        return round(vo2max, 1)
+
+
+# Example usage
+if __name__ == "__main__":
+    # Create sample workout data
+    bike_data = [
+        {'timestamp': 0, 'instantaneous_power': 150, 'instantaneous_cadence': 80, 'heart_rate': 120, 'instantaneous_speed': 25, 'total_distance': 0},
+        {'timestamp': 10, 'instantaneous_power': 160, 'instantaneous_cadence': 85, 'heart_rate': 125, 'instantaneous_speed': 26, 'total_distance': 72},
+        {'timestamp': 20, 'instantaneous_power': 170, 'instantaneous_cadence': 90, 'heart_rate': 130, 'instantaneous_speed': 27, 'total_distance': 147},
+        {'timestamp': 30, 'instantaneous_power': 180, 'instantaneous_cadence': 95, 'heart_rate': 135, 'instantaneous_speed': 28, 'total_distance': 225},
+        {'timestamp': 40, 'instantaneous_power': 190, 'instantaneous_cadence': 100, 'heart_rate': 140, 'instantaneous_speed': 29, 'total_distance': 306},
+        {'timestamp': 50, 'instantaneous_power': 200, 'instantaneous_cadence': 105, 'heart_rate': 145, 'instantaneous_speed': 30, 'total_distance': 390},
+        {'timestamp': 60, 'instantaneous_power': 210, 'instantaneous_cadence': 110, 'heart_rate': 150, 'instantaneous_speed': 31, 'total_distance': 477},
+    ]
+    
+    # Create user profile
+    user_profile = {
+        'name': 'John Doe',
+        'age': 35,
+        'weight': 75.0,
+        'height': 180.0,
+        'gender': 'male',
+        'max_heart_rate': 185,
+        'resting_heart_rate': 60,
+        'ftp': 250
+    }
+    
+    # Create data processor
+    processor = DataProcessor(user_profile)
+    
+    # Process bike data
+    processed_bike_data = processor.process_workout_data(
+        bike_data, 'bike', datetime.now()
+    )
+    
+    # Estimate VO2 max
+    vo2max = processor.estimate_vo2max(processed_bike_data)
+    
+    print(f"Processed bike data: {processed_bike_data}")
+    print(f"Estimated VO2 max: {vo2max}")

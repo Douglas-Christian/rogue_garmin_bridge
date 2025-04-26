@@ -11,7 +11,12 @@ import time
 from typing import Dict, List, Any, Optional, Callable
 from datetime import datetime
 
-from ..ftms.ftms_manager import FTMSDeviceManager
+# Fix the import to be relative to the project structure
+import sys
+import os
+# Add the project root to the path so we can use absolute imports
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+from src.ftms.ftms_manager import FTMSDeviceManager
 from .database import Database
 
 # Configure logging
@@ -464,5 +469,86 @@ class WorkoutManager:
     
     def _calculate_summary_metrics(self) -> None:
         """Calculate final summary metrics for the workout."""
-        # Most metrics ar
-(Content truncated due to size limit. Use line ranges to read in chunks)
+        # Most metrics are already calculated incrementally
+        # This method can be used for any final calculations
+        
+        # Round average values
+        for key in self.summary_metrics:
+            if key.startswith('avg_'):
+                self.summary_metrics[key] = round(self.summary_metrics[key], 2)
+    
+    def _notify_data(self, data: Dict[str, Any]) -> None:
+        """
+        Notify all registered data callbacks with new data.
+        
+        Args:
+            data: Dictionary of workout data
+        """
+        for callback in self.data_callbacks:
+            try:
+                callback(data)
+            except Exception as e:
+                logger.error(f"Error in data callback: {str(e)}")
+    
+    def _notify_status(self, status: str, data: Any) -> None:
+        """
+        Notify all registered status callbacks with new status.
+        
+        Args:
+            status: Status type
+            data: Status data
+        """
+        for callback in self.status_callbacks:
+            try:
+                callback(status, data)
+            except Exception as e:
+                logger.error(f"Error in status callback: {str(e)}")
+
+
+# Example usage
+if __name__ == "__main__":
+    import asyncio
+    from src.ftms.ftms_manager import FTMSDeviceManager
+    
+    async def main():
+        # Create FTMS manager with simulator
+        ftms_manager = FTMSDeviceManager(use_simulator=True)
+        
+        # Create workout manager
+        workout_manager = WorkoutManager("test.db", ftms_manager)
+        
+        # Define callbacks
+        def data_callback(data):
+            print(f"Processed data: {data}")
+        
+        def status_callback(status, data):
+            print(f"Workout status: {status} - {data}")
+        
+        # Register callbacks
+        workout_manager.register_data_callback(data_callback)
+        workout_manager.register_status_callback(status_callback)
+        
+        # Discover devices
+        devices = await ftms_manager.discover_devices()
+        
+        if devices:
+            # Connect to the first device found
+            device_address = list(devices.keys())[0]
+            await ftms_manager.connect(device_address)
+            
+            # Workout will be started automatically by the workout manager
+            # when the device connects
+            
+            # Keep the connection open for 30 seconds
+            await asyncio.sleep(30)
+            
+            # Disconnect (will end the workout)
+            await ftms_manager.disconnect()
+            
+            # Get workout history
+            workouts = workout_manager.get_workouts()
+            print(f"Workout history: {workouts}")
+        else:
+            print("No FTMS devices found")
+    
+    asyncio.run(main())
