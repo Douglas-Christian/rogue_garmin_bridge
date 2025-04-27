@@ -17,7 +17,7 @@
                             <p>Status: <span id="status-text" class="badge bg-secondary">Disconnected</span></p>
                             <p>Device: <span id="device-name">None</span></p>
                             <p>Workout: <span id="workout-status" class="badge bg-secondary">Inactive</span></p>
-                            <p>Duration: <span id="workout-duration">00:00:00</span></p>
+                            <p>Duration: <span id="workout-duration">00:00:00</span></p> 
                         </div>
                         <div class="mt-3">
                             <button id="start-workout-btn" class="btn btn-success" disabled>Start Workout</button>
@@ -419,64 +419,91 @@
         summaryElement.innerHTML = html;
     }
     
-    // Start workout
+    // Start workout button listener
     startWorkoutBtn.addEventListener('click', function() {
-        fetch('/api/start_workout', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({})
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                console.log('Workout started:', data);
-                updateStatus();
-            } else {
-                console.error('Error starting workout:', data.error);
-                alert('Error starting workout: ' + (data.error || 'Unknown error'));
-            }
-        })
-        .catch(error => {
-            console.error('Error starting workout:', error);
-            alert('Error starting workout: ' + error.message);
-        });
+        // First fetch the current status to get the connected device address
+        fetch('/api/status')
+            .then(response => response.json())
+            .then(data => {
+                if (data.device_status === 'connected') {
+                    const deviceAddress = data.connected_device_address;
+                    
+                    if (!deviceAddress) {
+                        console.error('Cannot start workout: Connected device address not found in status response.');
+                        alert('Error: Could not determine the connected device address.');
+                        return;
+                    }
+                    
+                    console.log('Starting workout with device ID:', deviceAddress);
+                    
+                    // Now call the start_workout endpoint with the device ID
+                    fetch('/api/start_workout', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            device_id: deviceAddress
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log('Workout logging started:', data);
+                            updateStatus(); // Update UI to reflect active workout
+                        } else {
+                            console.error('Error starting workout logging:', data.error);
+                            alert('Error starting workout logging: ' + (data.error || 'Unknown error'));
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error starting workout logging:', error);
+                        alert('Error starting workout logging: ' + error.message);
+                    });
+                } else {
+                    alert('Cannot start workout: No device connected.');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching device status:', error);
+                alert('Error: Could not fetch device status. ' + error.message);
+            });
     });
-    
-    // End workout
+
+    // Re-add End workout button listener
     endWorkoutBtn.addEventListener('click', function() {
         fetch('/api/end_workout', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({})
+            body: JSON.stringify({}) // No body needed for end
         })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                console.log('Workout ended successfully');
-                alert('Workout ended successfully');
+                console.log('Workout logging ended successfully');
+                alert('Workout logging ended successfully');
                 
-                // Update UI
+                // Update UI immediately
                 workoutStatus.textContent = 'Inactive';
                 workoutStatus.className = 'badge bg-secondary';
-                startWorkoutBtn.disabled = false;
+                startWorkoutBtn.disabled = (statusText.textContent !== 'Connected'); // Re-enable start if connected
                 endWorkoutBtn.disabled = true;
                 
-                // Redirect to history page to see the workout
-                if (data.workout_id) {
-                    window.location.href = `/history?workout_id=${data.workout_id}`;
-                }
+                // Optionally redirect to history page
+                // if (data.workout_id) {
+                //     window.location.href = `/history?workout_id=${data.workout_id}`;
+                // }
+                updateStatus(); // Refresh full status
             } else {
-                console.error('Error ending workout:', data.error);
-                alert('Error ending workout: ' + (data.error || 'Unknown error'));
+                console.error('Error ending workout logging:', data.error);
+                alert('Error ending workout logging: ' + (data.error || 'Unknown error'));
             }
         })
         .catch(error => {
-            console.error('Error ending workout:', error);
-            alert('Error ending workout: ' + error.message);
+            console.error('Error ending workout logging:', error);
+            alert('Error ending workout logging: ' + error.message);
         });
     });
     
@@ -487,52 +514,50 @@
             .then(data => {
                 console.log("Workout status data:", data); // Debug output
                 
-                // Simple connection status update - same approach as home page
+                // Connection status
                 if (data.device_status === 'connected') {
                     statusText.textContent = 'Connected';
                     statusText.className = 'badge bg-success';
-                    
-                    // Update device name if available
-                    if (data.device_name) {
-                        deviceName.textContent = data.device_name;
-                    }
-                    
-                    // When connected, enable start workout button if no active workout
-                    if (!data.workout_active) {
-                        startWorkoutBtn.disabled = false;
+                    // Use the nested connected_device object for name
+                    if (data.connected_device && data.connected_device.name) {
+                        deviceName.textContent = data.connected_device.name;
                     } else {
-                        startWorkoutBtn.disabled = true;
+                        deviceName.textContent = data.connected_device_address || 'Unknown'; // Fallback
                     }
                 } else {
                     statusText.textContent = 'Disconnected';
                     statusText.className = 'badge bg-secondary';
                     deviceName.textContent = 'None';
-                    startWorkoutBtn.disabled = true;
                 }
                 
-                // Update workout status
+                // Update workout status and button states
                 if (data.workout_active) {
                     workoutStatus.textContent = 'Active';
                     workoutStatus.className = 'badge bg-success';
-                    startWorkoutBtn.disabled = true;
-                    endWorkoutBtn.disabled = false;
+                    startWorkoutBtn.disabled = true; // Disable start if active
+                    endWorkoutBtn.disabled = false; // Enable end if active
                 } else {
                     workoutStatus.textContent = 'Inactive';
                     workoutStatus.className = 'badge bg-secondary';
-                    endWorkoutBtn.disabled = true;
+                    // Enable start only if connected and workout inactive
+                    startWorkoutBtn.disabled = (data.device_status !== 'connected'); 
+                    endWorkoutBtn.disabled = true; // Disable end if inactive
                 }
                 
-                // Update metrics if we have data
+                // Update metrics
                 if (data.latest_data) {
                     updateMetrics(data.latest_data);
                     updateCharts(data.latest_data);
-                    updateWorkoutSummary(data.latest_data);
+                    // updateWorkoutSummary(data.latest_data); // Keep summary commented for now
+                } else {
+                    updateMetrics({}); 
                 }
             })
             .catch(error => {
                 console.error('Error fetching status:', error);
                 statusText.textContent = 'Error';
                 statusText.className = 'badge bg-danger';
+                // Disable buttons on error
                 startWorkoutBtn.disabled = true;
                 endWorkoutBtn.disabled = true;
             });
@@ -571,89 +596,57 @@
     document.addEventListener('DOMContentLoaded', function() {
         initCharts();
         
-        // Check if we should auto-start a workout (if coming from home page)
-        const urlParams = new URLSearchParams(window.location.search);
-        const autoStart = urlParams.get('auto_start');
-        let autoStartChecked = false;
-        
-        // CRITICAL: On page load, immediately check for an active connection
-        // and directly update the UI status elements before the first API call
+        // Initial status check
         fetch('/api/status')
             .then(response => response.json())
             .then(data => {
                 console.log("Initial status check on workout page:", data);
                 
-                // If device is connected, immediately update UI (don't wait for updateStatus interval)
                 if (data.device_status === 'connected') {
                     console.log("Device is connected - immediately updating UI");
-                    
-                    // Set connection status immediately
                     statusText.textContent = 'Connected';
                     statusText.className = 'badge bg-success';
-                    
-                    // Update device name
-                    if (data.device_name) {
-                        deviceName.textContent = data.device_name;
-                    } else if (data.latest_data && data.latest_data.device_name) {
-                        deviceName.textContent = data.latest_data.device_name;
-                    }
-                    
-                    // Handle auto-start parameter
-                    if (!data.workout_active && autoStart === 'true' && !autoStartChecked) {
-                        console.log("Auto-starting workout from URL parameter");
-                        autoStartChecked = true; // Prevent multiple auto-starts
-                        
-                        // Use a slight delay to ensure the UI is updated first
-                        setTimeout(() => {
-                            fetch('/api/start_workout', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify({})
-                            })
-                            .then(response => response.json())
-                            .then(startData => {
-                                if (startData.success) {
-                                    console.log('Workout auto-started:', startData);
-                                    // Force an immediate status update
-                                    updateStatus();
-                                } else {
-                                    console.error('Error auto-starting workout:', startData.error);
-                                }
-                            })
-                            .catch(error => {
-                                console.error('Error auto-starting workout:', error);
-                            });
-                        }, 500);
+                    // Use the nested connected_device object for name
+                    if (data.connected_device && data.connected_device.name) {
+                        deviceName.textContent = data.connected_device.name;
                     } else {
-                        // Enable start workout button if no workout is active
-                        if (!data.workout_active) {
-                            console.log("No active workout - enabling Start Workout button");
-                            startWorkoutBtn.disabled = false;
-                        } else {
-                            // Workout is active, enable end button
-                            endWorkoutBtn.disabled = false;
-                            workoutStatus.textContent = 'Active';
-                            workoutStatus.className = 'badge bg-success';
-                        }
+                        deviceName.textContent = data.connected_device_address || 'Unknown'; // Fallback
+                    }
+
+                    // Set initial button states based on workout status
+                    if (!data.workout_active) {
+                        console.log("No active workout - enabling Start Workout button");
+                        startWorkoutBtn.disabled = false;
+                        endWorkoutBtn.disabled = true;
+                        workoutStatus.textContent = 'Inactive';
+                        workoutStatus.className = 'badge bg-secondary';
+                    } else {
+                        startWorkoutBtn.disabled = true;
+                        endWorkoutBtn.disabled = false;
+                        workoutStatus.textContent = 'Active';
+                        workoutStatus.className = 'badge bg-success';
                     }
                     
-                    // Update all metrics
                     if (data.latest_data) {
                         updateMetrics(data.latest_data);
                         updateCharts(data.latest_data);
-                        updateWorkoutSummary(data.latest_data);
+                        // updateWorkoutSummary(data.latest_data);
                     }
+                } else {
+                     // Ensure buttons are disabled if not connected initially
+                     startWorkoutBtn.disabled = true;
+                     endWorkoutBtn.disabled = true;
                 }
             })
             .catch(error => {
                 console.error("Error in initial status check:", error);
+                 startWorkoutBtn.disabled = true; // Disable buttons on error
+                 endWorkoutBtn.disabled = true;
             });
         
         // Start regular status updates
         updateStatus();
-        setInterval(updateStatus, 1000);
+        setInterval(updateStatus, 1000); 
     });
 </script>
 {% endblock %}

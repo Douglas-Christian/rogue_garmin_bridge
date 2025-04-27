@@ -12,6 +12,7 @@ from bleak.exc import BleakError
 import threading
 import os
 import sys
+from typing import Dict, Any
 
 # Add the project root to the path so we can use absolute imports
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
@@ -51,12 +52,12 @@ class FTMSDeviceManager:
         self.status_callbacks = []
         
         # Initialize the connector or simulator
-        if self.use_simulator:
-            logger.info(f"Using FTMS device simulator for {device_type}")
+        if use_simulator:
             self.connector = FTMSDeviceSimulator(device_type=device_type)
+            logger.info("Using FTMSDeviceSimulator for testing.")
         else:
-            logger.info("Using real FTMS devices")
             self.connector = FTMSConnector()
+            logger.info("Using FTMSConnector for real device.")
             
         # Register callbacks
         self.connector.register_data_callback(self._handle_data)
@@ -72,6 +73,13 @@ class FTMSDeviceManager:
     
     def _handle_data(self, data):
         """Handle data from the device and forward to callbacks."""
+        # Store the latest data for status queries
+        self.latest_data = data.copy() if data else None
+        
+        # Log the received data for debugging
+        logger.debug(f"Received data from device: {data}")
+        
+        # Forward data to all registered callbacks
         for callback in self.data_callbacks:
             try:
                 callback(data)
@@ -91,6 +99,8 @@ class FTMSDeviceManager:
                 # Check if it's a SimulatedBLEDevice (which has a to_dict method)
                 if hasattr(device, 'to_dict') and callable(getattr(device, 'to_dict')):
                     self.connected_device = device.to_dict()
+                    # Store the address separately for easier access
+                    self.connected_device_address = self.connected_device.get("address")
                 else:
                     # For a standard BLEDevice, create a dictionary with the required fields
                     self.connected_device = {
@@ -99,6 +109,11 @@ class FTMSDeviceManager:
                         "rssi": getattr(device, 'rssi', None),
                         "metadata": getattr(device, 'metadata', {})
                     }
+                    # Store the address separately for easier access
+                    self.connected_device_address = device.address
+                
+                # Store the latest received data for use in status API
+                self.latest_data = None
                 
                 self.device_status = "connected"
                 logger.info(f"Connected to device: {self.connected_device.get('name', 'Unknown')}")
@@ -106,6 +121,9 @@ class FTMSDeviceManager:
             # For 'disconnected' status
             elif status == "disconnected":
                 self.device_status = "disconnected"
+                self.connected_device = None
+                self.connected_device_address = None
+                self.latest_data = None
                 logger.info("Disconnected from device")
             
             # For workout-related status updates
@@ -122,83 +140,24 @@ class FTMSDeviceManager:
         except Exception as e:
             logger.error(f"Error handling status update: {str(e)}", exc_info=True)
     
-    def start_scanning(self):
-        """Start scanning for devices in a loop."""
-        while True:
-            try:
-                # Use asyncio.run to handle the async discover_devices method
-                self.discover_devices()
-                time.sleep(5)  # Wait 5 seconds between scans
-            except Exception as e:
-                logger.error(f"Error in scanning loop: {str(e)}")
-                time.sleep(10)  # Wait a bit longer after an error
-    
-    def discover_devices(self):
-        """Discover FTMS devices."""
+    async def discover_devices(self):
+        """Discover FTMS devices (asynchronous)."""
         try:
-            logger.debug(f"Attempting to discover devices, connector type: {type(self.connector).__name__}")
-            
-            # Safely check if connector exists
-            if not hasattr(self, 'connector') or self.connector is None:
-                logger.error("No connector available for device discovery")
+            logger.debug(f"Attempting to discover devices using connector: {type(self.connector).__name__}")
+            if not hasattr(self.connector, 'discover_devices') or not asyncio.iscoroutinefunction(self.connector.discover_devices):
+                logger.error(f"Connector {type(self.connector).__name__} does not have an async discover_devices method.")
                 return {}
-                
-            # Check explicitly for FTMSDeviceSimulator and handle differently
-            if isinstance(self.connector, FTMSDeviceSimulator):
-                try:
-                    logger.debug("Using simulator's discover_devices method")
-                    devices = self.connector.discover_devices()
-                    return devices
-                except Exception as e:
-                    logger.error(f"Error calling simulator's discover_devices: {str(e)}", exc_info=True)
-                    return {}
-            # Standard approach for other connectors
-            elif hasattr(self.connector, 'discover_devices_sync'):
-                logger.debug("Using synchronous discover_devices_sync method")
-                try:
-                    devices = self.connector.discover_devices_sync()
-                except AttributeError as e:
-                    logger.error(f"AttributeError calling discover_devices_sync: {str(e)}")
-                    return {}
-                except Exception as e:
-                    logger.error(f"Error in discover_devices_sync: {str(e)}", exc_info=True)
-                    return {}
-            elif hasattr(self.connector, 'discover_devices'):
-                logger.debug("Using discover_devices method")
-                try:
-                    # Check if it's already a synchronous method
-                    import inspect
-                    if not inspect.iscoroutinefunction(self.connector.discover_devices):
-                        logger.debug("discover_devices is synchronous, calling directly")
-                        devices = self.connector.discover_devices()
-                    else:
-                        logger.debug("discover_devices is asynchronous, using event loop")
-                        # Use asyncio.run for the async method
-                        loop = asyncio.new_event_loop()
-                        asyncio.set_event_loop(loop)
-                        devices = loop.run_until_complete(self.connector.discover_devices())
-                        loop.close()
-                except AttributeError as e:
-                    logger.error(f"AttributeError calling discover_devices: {str(e)}")
-                    return {}
-                except Exception as e:
-                    logger.error(f"Error in discover_devices: {str(e)}", exc_info=True)
-                    return {}
-            else:
-                available_methods = [method for method in dir(self.connector) if not method.startswith('_')]
-                logger.error(f"No discover_devices method found on connector of type {type(self.connector).__name__}. Available methods: {available_methods}")
-                return {}
-                
+
+            # Directly await the connector's async method
+            devices = await self.connector.discover_devices()
             return devices
         except Exception as e:
-            logger.error(f"Critical error discovering devices: {str(e)}", exc_info=True)
-            import traceback
-            traceback.print_exc()
+            logger.error(f"Error discovering devices: {str(e)}", exc_info=True)
             return {}
     
-    async def connect_to_device(self, device_address: str) -> bool:
+    async def connect(self, device_address: str) -> bool:
         """
-        Connect to a specific FTMS device.
+        Connect to a specific FTMS device (asynchronous).
         
         Args:
             device_address: BLE address of the device to connect to
@@ -207,79 +166,44 @@ class FTMSDeviceManager:
             True if connection successful, False otherwise
         """
         try:
-            if self._workout_in_progress:
-                logger.warning("Cannot connect to a device while a workout is in progress")
-                return False
-                
+            logger.debug(f"Attempting to connect to {device_address} using connector: {type(self.connector).__name__}")
+            if not hasattr(self.connector, 'connect') or not asyncio.iscoroutinefunction(self.connector.connect):
+                 logger.error(f"Connector {type(self.connector).__name__} does not have an async connect method.")
+                 return False
+
             # Attempt connection with timeout
-            connect_timeout = 15  # seconds
+            connect_timeout = 30  # seconds
             try:
-                connection_task = self.connector.connect(device_address)
-                result = await asyncio.wait_for(connection_task, timeout=connect_timeout)
+                # Directly await the connector's async method
+                result = await asyncio.wait_for(self.connector.connect(device_address), timeout=connect_timeout)
                 if not result:
-                    logger.error(f"Failed to connect to device {device_address}")
+                    logger.error(f"Connector failed to connect to device {device_address}")
                     return False
+                return True # Connection successful
             except asyncio.TimeoutError:
-                logger.error(f"Connection attempt timed out after {connect_timeout} seconds")
+                logger.error(f"Connection attempt to {device_address} timed out after {connect_timeout} seconds")
                 return False
-                
-            return True
+            except Exception as connect_exc:
+                 logger.error(f"Error during connector.connect: {connect_exc}", exc_info=True)
+                 return False
             
         except Exception as e:
-            logger.error(f"Error connecting to device: {str(e)}")
+            logger.error(f"Error in FTMSDeviceManager.connect: {str(e)}", exc_info=True)
             return False
     
-    def disconnect(self):
-        """Disconnect from the current device."""
+    async def disconnect(self):
+        """Disconnect from the current device (asynchronous)."""
         try:
-            logger.debug("Attempting to disconnect from device")
-            
-            # Safely check if connector exists
-            if not hasattr(self, 'connector') or self.connector is None:
-                logger.error("No connector available for device disconnection")
-                return False
-                
-            # Explicitly check if the sync or async version exists
-            if hasattr(self.connector, 'disconnect_sync'):
-                logger.debug("Using synchronous disconnect_sync method")
-                try:
-                    return self.connector.disconnect_sync()
-                except AttributeError as e:
-                    logger.error(f"AttributeError calling disconnect_sync: {str(e)}")
-                    return False
-                except Exception as e:
-                    logger.error(f"Error in disconnect_sync: {str(e)}", exc_info=True)
-                    return False
-            elif hasattr(self.connector, 'disconnect'):
-                logger.debug("Using disconnect method")
-                try:
-                    # Check if it's already a synchronous method
-                    import inspect
-                    if not inspect.iscoroutinefunction(self.connector.disconnect):
-                        logger.debug("disconnect is synchronous, calling directly")
-                        return self.connector.disconnect()
-                    else:
-                        logger.debug("disconnect is asynchronous, using event loop")
-                        # Use asyncio.run for the async method
-                        loop = asyncio.new_event_loop()
-                        asyncio.set_event_loop(loop)
-                        result = loop.run_until_complete(self.connector.disconnect())
-                        loop.close()
-                        return result
-                except AttributeError as e:
-                    logger.error(f"AttributeError calling disconnect: {str(e)}")
-                    return False
-                except Exception as e:
-                    logger.error(f"Error in disconnect: {str(e)}", exc_info=True)
-                    return False
-            else:
-                available_methods = [method for method in dir(self.connector) if not method.startswith('_')]
-                logger.error(f"No disconnect method found on connector of type {type(self.connector).__name__}. Available methods: {available_methods}")
-                return False
+            logger.debug(f"Attempting to disconnect using connector: {type(self.connector).__name__}")
+            if not hasattr(self.connector, 'disconnect') or not asyncio.iscoroutinefunction(self.connector.disconnect):
+                 logger.error(f"Connector {type(self.connector).__name__} does not have an async disconnect method.")
+                 return False
+
+            # Directly await the connector's async method
+            result = await self.connector.disconnect()
+            return result
         except Exception as e:
-            logger.error(f"Critical error disconnecting from device: {str(e)}", exc_info=True)
-            import traceback
-            traceback.print_exc()
+            logger.error(f"Error disconnecting from device: {str(e)}", exc_info=True)
             return False
     
     def notify_workout_start(self, workout_id, workout_type):
@@ -339,3 +263,31 @@ class FTMSDeviceManager:
         except Exception as e:
             logger.error(f"Critical error notifying workout end: {str(e)}", exc_info=True)
             return False
+    
+    def _handle_ftms_data(self, data: Dict[str, Any]) -> None:
+        """
+        Handle data received from the FTMS connector.
+        Passes data to the workout manager if a workout is active.
+        Also updates latest_data for status endpoint.
+        
+        Args:
+            data: Dictionary of FTMS data
+        """
+        # --- Added Logging ---
+        logger.info(f"[FTMSManager] Received data from connector: {data}")
+        # --- End Added Logging ---
+        
+        # Update latest data regardless of workout state
+        self.latest_data = data
+        
+        # Pass data to workout manager if a workout is active
+        if self.workout_manager and self.workout_manager.active_workout_id:
+            # --- Added Logging ---
+            logger.info(f"[FTMSManager] Passing data to WorkoutManager (Active Workout ID: {self.workout_manager.active_workout_id})")
+            # --- End Added Logging ---
+            self.workout_manager.add_data_point(data)
+        else:
+            # --- Added Logging ---
+            logger.info("[FTMSManager] No active workout, not passing data to WorkoutManager.")
+            # --- End Added Logging ---
+            pass # No active workout, just update latest_data

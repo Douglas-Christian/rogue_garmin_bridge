@@ -11,6 +11,7 @@ import sys
 import os
 from typing import Dict, List, Optional, Callable, Any
 import datetime
+import time
 
 import bleak
 from bleak import BleakScanner, BleakClient
@@ -26,6 +27,7 @@ logger = get_component_logger('ftms_connector')
 
 # FTMS UUIDs
 FTMS_SERVICE_UUID = "00001826-0000-1000-8000-00805f9b34fb"
+FTMS_INDOOR_BIKE_DATA_UUID = "00002ad2-0000-1000-8000-00805f9b34fb" # Added Indoor Bike Data UUID
 ROGUE_MANUFACTURER_NAME = "Rogue"  # Adjust if needed based on actual device advertising
 
 class FTMSConnector:
@@ -148,8 +150,8 @@ class FTMSConnector:
                 if self.client and self.client.is_connected:
                     await self.disconnect()
                 
-                # Connect to the device
-                self.client = BleakClient(device)
+                # Connect to the device using its address string
+                self.client = BleakClient(device.address)
                 
                 # Set a connection timeout
                 connect_timeout = 10  # seconds
@@ -186,18 +188,44 @@ class FTMSConnector:
                 # Initialize FTMS service
                 try:
                     self.ftms = FitnessMachineService(self.client)
-                    await self.ftms.enable_notifications()
                     
-                    # Set up callbacks for FTMS data
+                    # --- Add Logging ---
+                    logger.info("Setting FTMS data handlers...")
+                    # --- End Add Logging ---
+
+                    # --- Add Notification Enabling for Bike and Status ---
+                    try:
+                        logger.info("Attempting to enable FTMS notifications...")
+                        # Enable notifications for indoor bike data
+                        await self.ftms.enable_indoor_bike_data_notify()
+                        # Enable fitness machine status notifications
+                        await self.ftms.enable_fitness_machine_status_notify()
+                        logger.info("FTMS notifications enabled successfully.")
+                    except AttributeError as ae:
+                        logger.warning(f"AttributeError enabling notifications: {ae}. Trying generic approach (might fail).")
+                        try:
+                            # Fallback specifically for indoor bike data
+                            await self.client.start_notify(FTMS_INDOOR_BIKE_DATA_UUID, self._handle_raw_notification)
+                            logger.info("Fallback notification attempt initiated for Indoor Bike Data.")
+                        except Exception as fallback_exc:
+                            logger.error(f"Fallback notification attempt failed: {fallback_exc}")
+                    except Exception as notify_exc:
+                        logger.warning(f"Could not explicitly enable FTMS notifications: {notify_exc}. Data might still be received.")
+                    # --- End Notification Enabling ---
+
+                    # Set up data handlers for bike and status
                     self.ftms.set_indoor_bike_data_handler(self._handle_indoor_bike_data)
-                    self.ftms.set_rower_data_handler(self._handle_rower_data)
                     self.ftms.set_fitness_machine_status_handler(self._handle_fitness_machine_status)
                     
+                    # --- Add Logging ---
+                    logger.info("FTMS data handlers set.")
+                    # --- End Add Logging ---
+
                     # Add disconnect handler to detect unexpected disconnections
                     self.client.set_disconnected_callback(self._handle_disconnection)
                 except Exception as e:
-                    logger.error(f"Error initializing FTMS service: {str(e)}")
-                    self._notify_status("connection_error", f"FTMS service initialization failed: {str(e)}")
+                    logger.error(f"Error initializing FTMS service or enabling notifications: {str(e)}")
+                    self._notify_status("connection_error", f"FTMS service initialization/notification failed: {str(e)}")
                     await self.client.disconnect()
                     self.client = None
                     return False
@@ -354,80 +382,50 @@ class FTMSConnector:
         """
         self.status_callbacks.append(callback)
     
-    def _handle_indoor_bike_data(self, data: Dict[str, Any]) -> None:
-        """
-        Handle indoor bike data from FTMS.
-        
-        Args:
-            data: Dictionary of bike data
-        """
+    def _handle_indoor_bike_data(self, data):
+        """Handle indoor bike data notifications."""
         try:
-            if not data:
-                logger.warning("Received empty indoor bike data")
+            # Log the raw data object for inspection
+            logger.info(f"[FTMSConnector] Received raw indoor bike data: {data}")
+
+            # Check if data is None or not the expected type (optional but good practice)
+            if data is None:
+                logger.warning("Received None for indoor bike data.")
                 return
-                
-            logger.debug(f"Received indoor bike data: {data}")
-            
-            # Create a standardized data structure with default values for missing fields
-            formatted_data = {
+
+            # Access data using attributes, provide defaults for optional fields
+            processed_data = {
                 'type': 'bike',
-                'timestamp': data.get('elapsed_time', 0),
-                'speed': data.get('instantaneous_speed', 0),
-                'cadence': data.get('instantaneous_cadence', 0),
-                'power': data.get('instantaneous_power', 0),
-                'heart_rate': data.get('heart_rate', 0),
-                'elapsed_time': data.get('elapsed_time', 0),
-                'distance': data.get('total_distance', 0),
-                'resistance_level': data.get('resistance_level', 0),
-                'calories': data.get('total_energy', 0),
+                'instant_speed': getattr(data, 'instant_speed', None),
+                'average_speed': getattr(data, 'average_speed', None),
+                'instant_cadence': getattr(data, 'instant_cadence', None),
+                'average_cadence': getattr(data, 'average_cadence', None),
+                'total_distance': getattr(data, 'total_distance', None),
+                'resistance_level': getattr(data, 'resistance_level', None),
+                'instant_power': getattr(data, 'instant_power', None),
+                'average_power': getattr(data, 'average_power', None),
+                'total_energy': getattr(data, 'total_energy', None),
+                'energy_per_hour': getattr(data, 'energy_per_hour', None),
+                'energy_per_minute': getattr(data, 'energy_per_minute', None),
+                'heart_rate': getattr(data, 'heart_rate', None),
+                'metabolic_equivalent': getattr(data, 'metabolic_equivalent', None),
+                'elapsed_time': getattr(data, 'elapsed_time', None),
+                'remaining_time': getattr(data, 'remaining_time', None),
+                # Add a timestamp using the current time
+                'timestamp': time.time() # Use current time as fallback/primary timestamp
             }
-            
-            # Add all original data
-            for key, value in data.items():
-                if key not in formatted_data:
-                    formatted_data[key] = value
-                    
-            self._notify_data(formatted_data)
-            
+
+            # Log the processed data
+            logger.debug(f"Processed indoor bike data: {processed_data}")
+
+            # Pass data to registered callbacks
+            for callback in self.data_callbacks:
+                callback(processed_data)
+
+        except AttributeError as ae:
+            logger.error(f"AttributeError processing indoor bike data: {ae}. Data object: {data}", exc_info=True)
         except Exception as e:
-            logger.error(f"Error processing indoor bike data: {str(e)}")
-    
-    def _handle_rower_data(self, data: Dict[str, Any]) -> None:
-        """
-        Handle rower data from FTMS.
-        
-        Args:
-            data: Dictionary of rower data
-        """
-        try:
-            if not data:
-                logger.warning("Received empty rower data")
-                return
-                
-            logger.debug(f"Received rower data: {data}")
-            
-            # Create a standardized data structure with default values for missing fields
-            formatted_data = {
-                'type': 'rower',
-                'timestamp': data.get('elapsed_time', 0),
-                'stroke_rate': data.get('stroke_rate', 0),
-                'stroke_count': data.get('stroke_count', 0),
-                'power': data.get('instantaneous_power', 0),
-                'heart_rate': data.get('heart_rate', 0),
-                'elapsed_time': data.get('elapsed_time', 0),
-                'distance': data.get('total_distance', 0),
-                'calories': data.get('total_energy', 0),
-            }
-            
-            # Add all original data
-            for key, value in data.items():
-                if key not in formatted_data:
-                    formatted_data[key] = value
-                    
-            self._notify_data(formatted_data)
-            
-        except Exception as e:
-            logger.error(f"Error processing rower data: {str(e)}")
+            logger.error(f"Error processing indoor bike data: {e}. Data object: {data}", exc_info=True)
     
     def _handle_fitness_machine_status(self, data: Dict[str, Any]) -> None:
         """
@@ -664,7 +662,12 @@ class FTMSConnector:
             health_info['error'] = str(e)
             return health_info
 
-
+    def _handle_raw_notification(self, sender, data):
+        """Placeholder handler for raw notifications (used in fallback)."""
+        logger.warning(f"Received raw notification from {sender}: {data.hex()}")
+        # Basic parsing attempt or logging needed here if fallback is used
+        pass
+        
 async def main():
     """Example usage of the FTMSConnector class."""
     connector = FTMSConnector()

@@ -108,3 +108,126 @@
 2025-04-27 16:17:20,147 - ftms - INFO - Discovering simulated FTMS devices
 2025-04-27 16:17:24,783 - ftms - INFO - Discovering simulated FTMS devices
 2025-04-27 16:17:24,988 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:48:57,078 - ftms - INFO - Using real FTMS devices
+2025-04-27 16:48:57,915 - ftms - INFO - Using real FTMS devices
+2025-04-27 16:55:47,581 - ftms - INFO - Using real FTMS devices
+2025-04-27 16:55:48,488 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:00:38,124 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:00:38,865 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:05:25,809 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:05:26,693 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:08:41,537 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:08:42,357 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:09:31,945 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:09:38,966 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:09:45,969 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:10:15,562 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 17:10:30,162 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 17:10:33,725 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 17:12:33,755 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:12:34,526 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:13:01,636 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 17:15:15,694 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:15:16,604 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:15:30,768 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 17:16:36,361 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:16:37,298 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:16:58,842 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 17:17:01,784 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 17:18:02,711 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:18:03,729 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:18:23,426 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 17:19:49,245 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:19:50,141 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:20:07,107 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-27 17:33:15,622 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:33:16,498 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:34:16,924 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-27 17:37:39,531 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:37:40,355 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:38:19,219 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-27 17:38:22,316 - ftms - INFO - Disconnected from device
+2025-04-27 17:38:22,317 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 17:38:51,727 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-27 17:38:51,942 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-27 17:41:17,530 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:41:18,334 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:41:44,555 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-27 17:46:49,666 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:46:50,383 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:47:45,052 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-27 17:51:50,191 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:51:51,153 - ftms - INFO - Using real FTMS devices
+2025-04-27 17:52:26,227 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-27 18:01:11,430 - ftms - INFO - Using real FTMS devices
+2025-04-27 18:01:12,343 - ftms - INFO - Using real FTMS devices
+2025-04-27 18:02:00,782 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-27 18:06:08,342 - ftms - INFO - Using real FTMS devices
+2025-04-27 18:06:32,602 - ftms - INFO - Using real FTMS devices
+2025-04-27 18:07:04,667 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-27 18:07:05,618 - ftms - INFO - Disconnected from device
+2025-04-27 18:07:08,262 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 18:07:08,372 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 18:07:08,409 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 18:07:08,411 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 18:07:08,684 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 18:07:41,652 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-27 18:15:36,329 - ftms - INFO - Using real FTMS devices
+2025-04-27 18:16:15,516 - ftms - INFO - Using real FTMS devices
+2025-04-27 18:16:39,487 - ftms - INFO - Using real FTMS devices
+2025-04-27 18:17:24,025 - ftms - INFO - Using real FTMS devices
+2025-04-27 18:17:24,767 - ftms - INFO - Using real FTMS devices
+2025-04-27 18:17:49,592 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:18:07,210 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:18:19,308 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:18:45,795 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:18:58,710 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:19:23,505 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:22:26,159 - ftms - INFO - Using real FTMS devices
+2025-04-27 18:22:26,913 - ftms - INFO - Using real FTMS devices
+2025-04-27 18:22:44,900 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-27 18:26:26,629 - ftms - INFO - Using real FTMS devices
+2025-04-27 18:27:28,123 - ftms - INFO - Using real FTMS devices
+2025-04-27 18:27:51,760 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-27 18:31:50,086 - ftms - INFO - Using real FTMS devices
+2025-04-27 18:31:50,636 - ftms - INFO - Using real FTMS devices
+2025-04-27 18:32:18,180 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-27 18:35:10,320 - ftms - INFO - Using real FTMS devices
+2025-04-27 18:35:11,287 - ftms - INFO - Using real FTMS devices
+2025-04-27 18:35:29,250 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-27 18:50:26,407 - ftms - INFO - Using real FTMS devices
+2025-04-27 18:50:27,318 - ftms - INFO - Using real FTMS devices
+2025-04-27 18:51:06,807 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:51:25,055 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:53:33,322 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 18:53:34,165 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 18:53:57,692 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:54:09,034 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:54:24,546 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:56:01,335 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 18:56:02,327 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 18:56:19,612 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 19:16:24,430 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 19:16:25,143 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 19:17:31,884 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 19:19:51,613 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 19:19:52,297 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 19:20:09,173 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 19:21:38,448 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 19:21:39,142 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 19:21:55,007 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-27 19:26:35,074 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 19:26:35,780 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 19:27:49,105 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 19:27:49,947 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 19:28:53,172 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 19:28:53,962 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 19:30:37,933 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 19:30:38,838 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 19:31:03,199 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-27 19:31:04,191 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-27 19:31:04,689 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-27 19:31:05,638 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-27 19:33:03,023 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 19:33:03,725 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 19:33:24,756 - ftms - INFO - Connected to device: ECHO_BIKE_077937
