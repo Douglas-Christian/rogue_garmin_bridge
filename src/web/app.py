@@ -12,10 +12,12 @@ import json
 import asyncio
 import threading
 import logging
+import secrets
+import argparse
 from datetime import datetime
 from typing import Dict, List, Any, Optional
 
-from flask import Flask, render_template, request, jsonify, send_file, redirect, url_for
+from flask import Flask, render_template, request, jsonify, send_file, redirect, url_for, session
 
 # Import project modules
 import sys
@@ -33,8 +35,16 @@ logging.basicConfig(
 )
 logger = logging.getLogger('web_app')
 
+# Parse command line arguments
+parser = argparse.ArgumentParser(description='Start the Rogue Garmin Bridge web application')
+parser.add_argument('--use-simulator', action='store_true', help='Use simulated devices instead of real ones')
+args = parser.parse_args()
+
 # Create Flask app
 app = Flask(__name__)
+app.secret_key = secrets.token_hex(16)  # Generate a secure secret key for sessions
+app.config['SESSION_TYPE'] = 'filesystem'  # Use filesystem session storage for persistence
+app.config['SESSION_PERMANENT'] = True     # Make sessions persistent
 
 # Configuration
 DB_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'rogue_garmin.db')
@@ -56,11 +66,14 @@ current_workout_id = None
 current_device_id = None
 latest_data = {}
 device_status = "disconnected"
-use_simulator = False
+use_simulator = args.use_simulator  # Use the command line argument value
+is_simulation_running = False  # Track if a simulation is running
+connected_device_address = None  # Track the connected device address
+connected_device_name = None  # Track the connected device name
 
 # Initialize components
 def init_components():
-    global ftms_manager, workout_manager, data_processor, fit_converter, garmin_uploader
+    global ftms_manager, workout_manager, data_processor, fit_converter, garmin_uploader, device_status
     
     # Create FTMS manager
     ftms_manager = FTMSDeviceManager(use_simulator=use_simulator)
@@ -87,12 +100,54 @@ def init_components():
     user_profile = workout_manager.get_user_profile()
     if user_profile:
         data_processor.set_user_profile(user_profile)
+    
+    # Reset connection status
+    device_status = "disconnected"
+    
+    logger.info(f"Components initialized. Simulator mode: {use_simulator}")
 
 # Handle FTMS status updates
 def handle_ftms_status(status: str, data: Any):
-    global device_status
+    global device_status, connected_device_address, connected_device_name, is_simulation_running
     logger.info(f"FTMS status: {status}")
-    device_status = status
+    
+    if status == "connected" and hasattr(data, "address"):
+        # Update global state
+        device_status = "connected"
+        connected_device_address = data.address
+        connected_device_name = data.name if hasattr(data, "name") else "Unknown Device"
+        is_simulation_running = use_simulator
+        
+        # Store in session with explicit commit
+        session['device_status'] = device_status
+        session['connected_device_address'] = connected_device_address
+        session['connected_device_name'] = connected_device_name
+        session['is_simulation_running'] = is_simulation_running
+        session.modified = True
+        
+        logger.info(f"Device connected and stored in session: {connected_device_name} ({connected_device_address})")
+    elif status == "disconnected":
+        # Update global state
+        device_status = "disconnected"
+        connected_device_address = None
+        connected_device_name = None
+        is_simulation_running = False
+        
+        # Clear from session with explicit commit
+        session['device_status'] = "disconnected"
+        session.pop('connected_device_address', None)
+        session.pop('connected_device_name', None)
+        session.pop('is_simulation_running', None)
+        session.modified = True
+        
+        logger.info("Device disconnected, session updated")
+    elif status == "machine_status":
+        # This is an important status to log but doesn't change our connection state
+        logger.info(f"Machine status update received: {data}")
+        # Re-trigger the connected status to ensure UI consistency
+        if connected_device_address:
+            session['device_status'] = "connected"
+            session.modified = True
 
 # Handle FTMS data
 def handle_ftms_data(data: Dict[str, Any]):
@@ -106,8 +161,12 @@ def handle_workout_status(status: str, data: Any):
     
     if status == 'workout_started':
         current_workout_id = data.get('workout_id')
+        session['current_workout_id'] = current_workout_id
+        session.modified = True
     elif status == 'workout_ended':
         current_workout_id = None
+        session.pop('current_workout_id', None)
+        session.modified = True
 
 # Handle workout data
 def handle_workout_data(data: Dict[str, Any]):
@@ -123,6 +182,32 @@ def run_async_task(coro):
 
 # Initialize components on startup
 init_components()
+
+# Basic session management to maintain device connections 
+@app.before_request
+def check_device_connection():
+    global connected_device_address, connected_device_name, device_status
+    
+    # Skip for static file requests
+    if request.path.startswith('/static/'):
+        return
+    
+    # Log request path for debugging
+    logger.info(f"Request for {request.path}")
+    
+    # Get device connection info from session
+    stored_device_address = session.get('connected_device_address')
+    stored_device_name = session.get('connected_device_name')
+    stored_device_status = session.get('device_status')
+    
+    # Simple connection state update from session
+    if stored_device_status == "connected" and stored_device_address:
+        # Keep global state in sync with session
+        if connected_device_address != stored_device_address or device_status != "connected":
+            logger.info(f"Updating connection state from session for {stored_device_name} ({stored_device_address})")
+            connected_device_address = stored_device_address
+            connected_device_name = stored_device_name
+            device_status = "connected"
 
 # Routes
 @app.route('/')
@@ -195,6 +280,13 @@ def disconnect_device():
         # Disconnect from device in a separate thread
         success = run_async_task(ftms_manager.disconnect())
         
+        # Clear session data
+        session.pop('connected_device_address', None)
+        session.pop('connected_device_name', None)
+        session.pop('is_simulation_running', None)
+        session['device_status'] = "disconnected"
+        session.modified = True
+        
         return jsonify({'success': success})
     except Exception as e:
         logger.error(f"Error disconnecting from device: {str(e)}")
@@ -203,14 +295,47 @@ def disconnect_device():
 @app.route('/api/status')
 def get_status():
     """Get current status."""
-    global device_status, latest_data, current_workout_id
+    global device_status, latest_data, current_workout_id, connected_device_address, connected_device_name
     
-    return jsonify({
+    # Log current values for debugging
+    logger.info(f"Status request - Current state: status={device_status}, device={connected_device_name}")
+    
+    # Check session values for consistency
+    stored_status = session.get('device_status', 'disconnected')
+    stored_address = session.get('connected_device_address')
+    stored_name = session.get('connected_device_name')
+    
+    # If session shows connected but our globals don't, update globals from session
+    if stored_status == 'connected' and stored_address and (device_status != 'connected' or not connected_device_address):
+        logger.info(f"Updating connection state from session: {stored_name} ({stored_address})")
+        device_status = 'connected'
+        connected_device_address = stored_address
+        connected_device_name = stored_name
+    
+    # Build status response
+    status = {
         'device_status': device_status,
+        'device_name': connected_device_name,
         'workout_active': current_workout_id is not None,
         'workout_id': current_workout_id,
-        'latest_data': latest_data
-    })
+        'connected_device_address': connected_device_address,
+        'is_simulated': use_simulator and connected_device_address is not None
+    }
+    
+    # Include latest data if available
+    if latest_data and isinstance(latest_data, dict):
+        # Make a copy to avoid modifying the original
+        status['latest_data'] = latest_data.copy()
+        
+        # If device info not in latest_data but we have it globally, add it
+        if 'device_name' not in status['latest_data'] and connected_device_name:
+            status['latest_data']['device_name'] = connected_device_name
+        if 'device_address' not in status['latest_data'] and connected_device_address:
+            status['latest_data']['device_address'] = connected_device_address
+    else:
+        status['latest_data'] = {}
+    
+    return jsonify(status)
 
 @app.route('/api/start_workout', methods=['POST'])
 def start_workout():
@@ -497,6 +622,26 @@ def app_settings():
         except Exception as e:
             logger.error(f"Error updating settings: {str(e)}")
             return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/data/<int:workout_id>', methods=['GET'])
+def get_workout_data(workout_id):
+    """Get workout data points for a specific workout."""
+    try:
+        # Get workout data
+        data = workout_manager.get_workout_data(workout_id)
+        
+        if not data:
+            return jsonify({'success': False, 'error': 'No workout data found'})
+        
+        # Return raw data points
+        return jsonify({
+            'success': True,
+            'workout_id': workout_id,
+            'data_points': data
+        })
+    except Exception as e:
+        logger.error(f"Error getting workout data: {str(e)}")
+        return jsonify({'success': False, 'error': str(e)})
 
 # Run the app
 if __name__ == '__main__':

@@ -131,6 +131,8 @@ For development without physical hardware, the application includes an FTMS devi
 
 2. The simulator will appear as a device that can be connected to from the web interface
 
+3. For detailed instructions on using the simulator to test workouts, please see the [Testing with the FTMS Simulator](docs/testing_with_simulator.md) documentation.
+
 ### Running Tests
 
 ```

@@ -377,15 +377,27 @@ class Database:
         """
         try:
             self._connect()
+            
+            # Get workout data points ordered by timestamp
             self.cursor.execute(
-                "SELECT * FROM workout_data WHERE workout_id = ? ORDER BY timestamp",
+                """
+                SELECT * FROM workout_data
+                WHERE workout_id = ?
+                ORDER BY timestamp ASC
+                """,
                 (workout_id,)
             )
-            data_points = []
             
+            data_points = []
             for row in self.cursor.fetchall():
                 data_point = dict(row)
-                data_point['data'] = json.loads(data_point['data'])
+                
+                # Parse JSON data
+                if data_point['data']:
+                    data_point['data'] = json.loads(data_point['data'])
+                else:
+                    data_point['data'] = {}
+                
                 data_points.append(data_point)
             
             return data_points
@@ -397,7 +409,7 @@ class Database:
     
     def get_workouts(self, limit: int = 10, offset: int = 0) -> List[Dict[str, Any]]:
         """
-        Get recent workouts.
+        Get recent workouts from the database.
         
         Args:
             limit: Maximum number of workouts to return
@@ -408,6 +420,8 @@ class Database:
         """
         try:
             self._connect()
+            
+            # Get workouts ordered by start time (most recent first)
             self.cursor.execute(
                 """
                 SELECT w.*, d.name as device_name, d.device_type 
@@ -418,11 +432,17 @@ class Database:
                 """,
                 (limit, offset)
             )
-            workouts = []
             
+            workouts = []
             for row in self.cursor.fetchall():
                 workout = dict(row)
-                workout['summary'] = json.loads(workout['summary'])
+                
+                # Parse JSON summary
+                if workout['summary']:
+                    workout['summary'] = json.loads(workout['summary'])
+                else:
+                    workout['summary'] = {}
+                
                 workouts.append(workout)
             
             return workouts

@@ -117,6 +117,10 @@ class WorkoutManager:
             'max_stroke_rate': 0,  # For rower
         }
         
+        # Notify FTMS manager to start workout data generation if using simulator
+        if self.ftms_manager:
+            self.ftms_manager.notify_workout_start(workout_id, workout_type)
+        
         # Notify status
         self._notify_status('workout_started', {
             'workout_id': workout_id,
@@ -128,13 +132,22 @@ class WorkoutManager:
         logger.info(f"Started workout {workout_id} with device {device_id}")
         return workout_id
     
-    def end_workout(self) -> bool:
+    def end_workout(self, workout_id=None) -> bool:
         """
         End the current workout session.
+        
+        Args:
+            workout_id: Optional specific workout ID to end.
+                        If not provided, ends the currently active workout.
         
         Returns:
             True if successful, False otherwise
         """
+        # If workout_id is provided but doesn't match active workout, log warning
+        if workout_id is not None and self.active_workout_id != workout_id:
+            logger.warning(f"Requested to end workout {workout_id} but active workout is {self.active_workout_id}")
+            # Continue anyway with the active workout
+        
         if not self.active_workout_id:
             logger.warning("No active workout to end")
             return False
@@ -149,7 +162,11 @@ class WorkoutManager:
         )
         
         if success:
-            # Notify status
+            # Notify FTMS manager to stop workout data generation
+            if self.ftms_manager:
+                self.ftms_manager.notify_workout_end(self.active_workout_id)
+                
+            # Notify status callbacks
             self._notify_status('workout_ended', {
                 'workout_id': self.active_workout_id,
                 'device_id': self.active_device_id,
@@ -160,8 +177,10 @@ class WorkoutManager:
             
             logger.info(f"Ended workout {self.active_workout_id}")
             
-            # Clear current workout state
+            # Store the workout ID before clearing state
             workout_id = self.active_workout_id
+            
+            # Clear current workout state
             self.active_workout_id = None
             self.active_device_id = None
             self.workout_start_time = None
@@ -208,6 +227,10 @@ class WorkoutManager:
         )
         
         if success:
+            logger.info(f"Added data point to workout {self.active_workout_id}: time={timestamp}s, " + 
+                       f"power={data.get('instantaneous_power', 'N/A')}, " +
+                       f"distance={data.get('total_distance', 'N/A'):.2f}m, " +
+                       f"calories={data.get('total_calories', 'N/A')}")
             # Notify data callbacks
             self._notify_data(data)
             return True
@@ -289,8 +312,16 @@ class WorkoutManager:
         Args:
             data: Dictionary of FTMS data
         """
+        logger.info(f"Received FTMS data: {data.get('type', 'unknown')} data point")
+        
         if self.active_workout_id:
+            # Log that we're adding data to the workout
+            logger.info(f"Adding data point to workout {self.active_workout_id}")
             self.add_data_point(data)
+        else:
+            logger.debug("Received FTMS data but no active workout")
+            # Still update latest data even if no workout is active
+            self._notify_data(data)
     
     def _handle_ftms_status(self, status: str, data: Any) -> None:
         """
@@ -321,9 +352,17 @@ class WorkoutManager:
                 metadata={'rssi': getattr(device, 'rssi', 0)}
             )
             
-            # Start workout if not already started
-            if not self.active_workout_id:
-                self.start_workout(device_id, device_type)
+            # Don't automatically start a workout when device connects
+            # Let the user manually start workouts from the UI
+            logger.info(f"Device connected: {device.name} ({device.address}). Workout can be started manually.")
+            
+            # Notify status for connected device
+            self._notify_status('device_connected', {
+                'device_id': device_id,
+                'device_address': device.address,
+                'device_name': device.name,
+                'device_type': device_type
+            })
         
         elif status == 'disconnected':
             # End workout if in progress
@@ -470,12 +509,47 @@ class WorkoutManager:
     def _calculate_summary_metrics(self) -> None:
         """Calculate final summary metrics for the workout."""
         # Most metrics are already calculated incrementally
-        # This method can be used for any final calculations
         
         # Round average values
         for key in self.summary_metrics:
             if key.startswith('avg_'):
                 self.summary_metrics[key] = round(self.summary_metrics[key], 2)
+        
+        # Calculate estimated VO2max (if applicable)
+        # Only do this for workouts with heart rate data and power data
+        if (self.summary_metrics.get('avg_heart_rate', 0) > 0 and 
+            self.summary_metrics.get('avg_power', 0) > 0):
+            
+            # Get user profile for weight and other parameters
+            user_profile = self.get_user_profile()
+            
+            if user_profile and 'weight_kg' in user_profile:
+                weight_kg = user_profile.get('weight_kg', 70)  # Default to 70kg if not available
+                max_hr = self.summary_metrics.get('max_heart_rate', 0)
+                avg_hr = self.summary_metrics.get('avg_heart_rate', 0)
+                avg_power = self.summary_metrics.get('avg_power', 0)
+                
+                # Only estimate if we have a significant heart rate
+                if avg_hr > 120 and max_hr > 130:
+                    # Simplified VO2max estimation based on power output and heart rate
+                    # This is a basic formula and could be improved with more advanced models
+                    power_per_kg = avg_power / weight_kg
+                    hr_ratio = avg_hr / max_hr
+                    
+                    # Basic VO2max estimation formula
+                    # Adapted from standard exercise physiology formulas
+                    estimated_vo2max = power_per_kg * 10.8 * (1 + (1 - hr_ratio))
+                    
+                    # Ensure reasonable bounds
+                    estimated_vo2max = max(min(estimated_vo2max, 90), 20)
+                    
+                    # Add to summary metrics
+                    self.summary_metrics['estimated_vo2max'] = round(estimated_vo2max, 1)
+                    logger.info(f"Estimated VO2max: {estimated_vo2max:.1f} ml/kg/min")
+                else:
+                    logger.info("Heart rate too low for reliable VO2max estimation")
+            else:
+                logger.info("User weight not available for VO2max calculation")
     
     def _notify_data(self, data: Dict[str, Any]) -> None:
         """

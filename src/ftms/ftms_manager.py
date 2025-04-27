@@ -93,6 +93,9 @@ class FTMSDeviceManager:
         Returns:
             True if connection successful, False otherwise
         """
+        logger.info(f"Connecting to device: {device_address}")
+        
+        # Simple connection logic that works the same for both simulators and real devices
         if self.use_simulator:
             if device_address not in self.simulators:
                 logger.error(f"Simulated device {device_address} not found")
@@ -101,11 +104,15 @@ class FTMSDeviceManager:
             simulator = self.simulators[device_address]
             simulator.start_simulation()
             self.active_device = simulator
+            logger.info(f"Connected to simulator: {device_address}")
             return True
         else:
             success = await self.connector.connect(device_address)
             if success:
                 self.active_device = self.connector.connected_device
+                logger.info(f"Connected to device: {device_address}")
+            else:
+                logger.error(f"Failed to connect to device: {device_address}")
             return success
     
     async def disconnect(self) -> bool:
@@ -120,11 +127,14 @@ class FTMSDeviceManager:
             return False
         
         if self.use_simulator:
+            # Simple simulator disconnection
             for simulator in self.simulators.values():
-                if simulator.device.address == self.active_device.address:
-                    simulator.stop_simulation()
-                    self.active_device = None
-                    return True
+                if hasattr(self.active_device, 'device') and hasattr(simulator.device, 'address'):
+                    if simulator.device.address == self.active_device.device.address:
+                        simulator.stop_simulation()
+                        self.active_device = None
+                        return True
+            logger.error("Could not find matching simulator to disconnect")
             return False
         else:
             success = await self.connector.disconnect()
@@ -176,6 +186,93 @@ class FTMSDeviceManager:
                 callback(status, data)
             except Exception as e:
                 logger.error(f"Error in status callback: {str(e)}")
+    
+    def notify_workout_start(self, workout_id: int, device_id: Optional[int] = None) -> None:
+        """
+        Notify the FTMS Manager that a workout has started.
+        This will begin workout data generation in simulators.
+        
+        Args:
+            workout_id: ID of the new workout
+            device_id: Optional ID of the device (not used for simulation)
+        """
+        if not self.active_device:
+            logger.warning("Cannot start workout data - no device connected")
+            return
+            
+        if self.use_simulator:
+            logger.info(f"Starting workout {workout_id} on simulator")
+            
+            # Find the active simulator
+            active_simulator = None
+            
+            # First check if active_device is directly a simulator
+            if isinstance(self.active_device, FTMSDeviceSimulator):
+                active_simulator = self.active_device
+            else:
+                # Look for a matching simulator by address
+                for addr, simulator in self.simulators.items():
+                    # Check different ways the address might be accessible
+                    if hasattr(self.active_device, 'address') and simulator.device.address == self.active_device.address:
+                        active_simulator = simulator
+                        break
+                    elif hasattr(self.active_device, 'device') and simulator.device.address == self.active_device.device.address:
+                        active_simulator = simulator
+                        break
+            
+            if active_simulator:
+                # Set the active device to be the simulator directly for better reference
+                self.active_device = active_simulator
+                active_simulator.start_workout()
+                logger.info(f"Started workout data generation for simulator: {active_simulator.device.name}")
+            else:
+                # If we get here, no matching simulator was found
+                logger.error(f"Could not find matching simulator to start workout data generation")
+        else:
+            # For real devices, we'd send any necessary commands here
+            logger.info(f"Workout {workout_id} started - continuing real device data stream")
+    
+    def notify_workout_end(self, workout_id: int) -> None:
+        """
+        Notify the FTMS Manager that a workout has ended.
+        This will stop workout data generation in simulators.
+        
+        Args:
+            workout_id: ID of the ended workout
+        """
+        if not self.active_device:
+            logger.warning("Cannot end workout data - no device connected")
+            return
+            
+        if self.use_simulator:
+            logger.info(f"Ending workout {workout_id} on simulator")
+            
+            # Find the active simulator
+            active_simulator = None
+            
+            # Check if active_device is directly a simulator
+            if isinstance(self.active_device, FTMSDeviceSimulator):
+                active_simulator = self.active_device
+            else:
+                # Look for a matching simulator by address
+                for addr, simulator in self.simulators.items():
+                    # Check different ways the address might be accessible
+                    if hasattr(self.active_device, 'address') and simulator.device.address == self.active_device.address:
+                        active_simulator = simulator
+                        break
+                    elif hasattr(self.active_device, 'device') and simulator.device.address == self.active_device.device.address:
+                        active_simulator = simulator
+                        break
+            
+            if active_simulator:
+                active_simulator.end_workout()
+                logger.info(f"Ended workout data generation for simulator: {active_simulator.device.name}")
+            else:
+                # If we get here, no matching simulator was found
+                logger.error(f"Could not find matching simulator to end workout data generation")
+        else:
+            # For real devices, we'd send any necessary commands here
+            logger.info(f"Workout {workout_id} ended - continuing real device data stream")
 
 
 async def main():

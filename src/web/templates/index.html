@@ -51,7 +51,7 @@
                 </div>
                 <div class="mt-3">
                     <a href="/devices" class="btn btn-primary">Manage Devices</a>
-                    <a href="/workout" class="btn btn-success">Start Workout</a>
+                    <button id="start-workout-btn" class="btn btn-success" disabled>Start Workout</button>
                 </div>
             </div>
         </div>
@@ -87,17 +87,22 @@
                 const statusText = document.getElementById('status-text');
                 const deviceName = document.getElementById('device-name');
                 const workoutStatus = document.getElementById('workout-status');
+                const startWorkoutBtn = document.getElementById('start-workout-btn');
                 
                 if (data.device_status === 'connected') {
                     statusText.textContent = 'Connected';
                     statusText.className = 'badge bg-success';
+                    startWorkoutBtn.disabled = false; // Enable the button when connected
                 } else {
                     statusText.textContent = 'Disconnected';
                     statusText.className = 'badge bg-secondary';
+                    startWorkoutBtn.disabled = true; // Disable the button when disconnected
                 }
                 
                 // Update device name
-                if (data.latest_data && data.latest_data.device_name) {
+                if (data.device_name) {
+                    deviceName.textContent = data.device_name;
+                } else if (data.latest_data && data.latest_data.device_name) {
                     deviceName.textContent = data.latest_data.device_name;
                 } else {
                     deviceName.textContent = 'None';
@@ -107,6 +112,7 @@
                 if (data.workout_active) {
                     workoutStatus.textContent = 'Active';
                     workoutStatus.className = 'badge bg-success';
+                    startWorkoutBtn.disabled = true; // Disable when workout is already active
                 } else {
                     workoutStatus.textContent = 'Inactive';
                     workoutStatus.className = 'badge bg-secondary';
@@ -153,6 +159,13 @@
         
         // Update status every 2 seconds
         setInterval(updateStatus, 2000);
+        
+        // Add event listener to start workout button
+        const startWorkoutBtn = document.getElementById('start-workout-btn');
+        startWorkoutBtn.addEventListener('click', function() {
+            // Redirect to workout page with auto_start parameter
+            window.location.href = '/workout?auto_start=true';
+        });
     });
 </script>
 {% endblock %}
