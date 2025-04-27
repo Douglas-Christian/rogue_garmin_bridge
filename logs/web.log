@@ -1,0 +1,37 @@
+2025-04-27 13:04:01,738 - web - INFO - Initializing FTMSDeviceManager with use_simulator=True
+2025-04-27 13:04:01,738 - web - INFO - Using FTMS device simulator
+2025-04-27 13:04:01,739 - web - INFO - Flask application initialized. FTMS scanning thread started.
+2025-04-27 13:04:01,948 - web - INFO - Initializing FTMSDeviceManager with use_simulator=True
+2025-04-27 13:04:01,950 - web - INFO - Using FTMS device simulator
+2025-04-27 13:04:01,950 - web - INFO - Flask application initialized. FTMS scanning thread started.
+2025-04-27 13:06:34,624 - web - INFO - Initializing FTMSDeviceManager with use_simulator=True
+2025-04-27 13:06:34,625 - web - INFO - Using FTMS device simulator
+2025-04-27 13:06:34,625 - web - INFO - Flask application initialized. FTMS scanning thread started.
+2025-04-27 13:06:34,832 - web - INFO - Initializing FTMSDeviceManager with use_simulator=True
+2025-04-27 13:06:34,833 - web - INFO - Using FTMS device simulator
+2025-04-27 13:06:34,833 - web - INFO - Flask application initialized. FTMS scanning thread started.
+2025-04-27 13:11:39,613 - web - INFO - Initializing FTMSDeviceManager with use_simulator=True, device_type=bike
+2025-04-27 13:11:39,614 - web - INFO - Using FTMS device simulator for bike
+2025-04-27 13:11:39,614 - web - INFO - Flask application initialized. FTMS scanning thread started.
+2025-04-27 13:11:39,838 - web - INFO - Initializing FTMSDeviceManager with use_simulator=True, device_type=bike
+2025-04-27 13:11:39,839 - web - INFO - Using FTMS device simulator for bike
+2025-04-27 13:11:39,839 - web - INFO - Flask application initialized. FTMS scanning thread started.
+2025-04-27 13:11:51,028 - web - ERROR - Error discovering devices: Object of type SimulatedBLEDevice is not JSON serializable
+2025-04-27 13:13:02,326 - web - INFO - Initializing FTMSDeviceManager with use_simulator=True, device_type=bike
+2025-04-27 13:13:02,327 - web - INFO - Using FTMS device simulator for bike
+2025-04-27 13:13:02,327 - web - INFO - Flask application initialized. FTMS scanning thread started.
+2025-04-27 13:13:02,531 - web - INFO - Initializing FTMSDeviceManager with use_simulator=True, device_type=bike
+2025-04-27 13:13:02,533 - web - INFO - Using FTMS device simulator for bike
+2025-04-27 13:13:02,533 - web - INFO - Flask application initialized. FTMS scanning thread started.
+2025-04-27 16:09:52,549 - web - INFO - Initializing FTMSDeviceManager with use_simulator=True, device_type=bike
+2025-04-27 16:09:52,550 - web - INFO - Using FTMS device simulator for bike
+2025-04-27 16:09:52,551 - web - INFO - Flask application initialized. FTMS scanning thread started.
+2025-04-27 16:09:52,764 - web - INFO - Initializing FTMSDeviceManager with use_simulator=True, device_type=bike
+2025-04-27 16:09:52,765 - web - INFO - Using FTMS device simulator for bike
+2025-04-27 16:09:52,766 - web - INFO - Flask application initialized. FTMS scanning thread started.
+2025-04-27 16:10:14,520 - web - INFO - Initializing FTMSDeviceManager with use_simulator=True, device_type=bike
+2025-04-27 16:10:14,521 - web - INFO - Using FTMS device simulator for bike
+2025-04-27 16:10:14,521 - web - INFO - Flask application initialized. FTMS scanning thread started.
+2025-04-27 16:10:14,729 - web - INFO - Initializing FTMSDeviceManager with use_simulator=True, device_type=bike
+2025-04-27 16:10:14,730 - web - INFO - Using FTMS device simulator for bike
+2025-04-27 16:10:14,730 - web - INFO - Flask application initialized. FTMS scanning thread started.

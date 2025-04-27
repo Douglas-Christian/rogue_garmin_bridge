@@ -2,44 +2,47 @@
 """
 Workout Manager Module for Rogue to Garmin Bridge
 
-This module handles workout data collection, processing, and management.
-It serves as an intermediary between the FTMS module and the database.
+This module handles workout data management, storage, and retrieval.
 """
 
-import logging
+import os
+import sys
+import json
 import time
 from typing import Dict, List, Any, Optional, Callable
 from datetime import datetime
 
-# Fix the import to be relative to the project structure
-import sys
-import os
 # Add the project root to the path so we can use absolute imports
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+from src.data.database import Database
+from src.data.data_processor import DataProcessor
+from src.utils.logging_config import get_component_logger
 from src.ftms.ftms_manager import FTMSDeviceManager
-from .database import Database
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger('workout_manager')
+# Get component logger
+logger = get_component_logger('workout_manager')
 
 class WorkoutManager:
     """
-    Class for managing workout sessions, collecting and processing data.
+    Manages workout data, including data collection, processing, storage, and retrieval.
+    Interfaces between FTMS devices, the database, and FIT file generation.
     """
     
-    def __init__(self, db_path: str, ftms_manager: FTMSDeviceManager = None):
+    def __init__(self, db_path_or_instance, ftms_manager: FTMSDeviceManager = None):
         """
         Initialize the workout manager.
         
         Args:
-            db_path: Path to the SQLite database file
+            db_path_or_instance: Path to the SQLite database file or a Database instance
             ftms_manager: FTMS device manager instance (optional)
         """
-        self.database = Database(db_path)
+        # Check if db_path_or_instance is already a Database instance
+        if isinstance(db_path_or_instance, Database):
+            self.database = db_path_or_instance
+        else:
+            # Otherwise assume it's a path string
+            self.database = Database(db_path_or_instance)
+            
         self.ftms_manager = ftms_manager
         
         # Current workout state
@@ -77,115 +80,136 @@ class WorkoutManager:
         """
         self.status_callbacks.append(callback)
     
-    def start_workout(self, device_id: int, workout_type: str) -> int:
+    def start_workout(self, device_id: str, workout_type: str) -> int:
         """
         Start a new workout session.
         
         Args:
-            device_id: Device ID
-            workout_type: Type of workout (bike, rower, etc.)
+            device_id: ID of the connected device
+            workout_type: Type of workout (e.g., 'bike', 'rower')
             
         Returns:
-            Workout ID
+            Workout ID if successful, -1 if failed
         """
-        if self.active_workout_id:
-            logger.warning("Workout already in progress, ending current workout")
-            self.end_workout()
+        try:
+            # Validate parameters
+            if not device_id:
+                logger.error("Cannot start workout: No device ID provided")
+                return -1
+                
+            if not workout_type:
+                logger.error("Cannot start workout: No workout type provided")
+                return -1
+                
+            # Check if already in a workout
+            if self.active_workout_id is not None:
+                logger.warning(f"Workout already in progress (ID: {self.active_workout_id}). Ending previous workout.")
+                self.end_workout()
+            
+            logger.info(f"Starting new {workout_type} workout on device {device_id}")
+            
+            # Create a new workout record
+            workout_id = self.database.start_workout(
+                device_id=device_id,
+                workout_type=workout_type,
+                start_time=datetime.now()
+            )
+            
+            if workout_id == -1:
+                logger.error("Failed to create workout in database")
+                return -1
+                
+            self.active_workout_id = workout_id
+            self.active_device_id = device_id
+            self.workout_start_time = datetime.now()
+            self.workout_type = workout_type
+            self.data_points = []
+            self.summary_metrics = {
+                'total_distance': 0,
+                'total_calories': 0,
+                'avg_power': 0,
+                'max_power': 0,
+                'avg_heart_rate': 0,
+                'max_heart_rate': 0,
+                'avg_cadence': 0,
+                'max_cadence': 0,
+                'avg_speed': 0,
+                'max_speed': 0,
+                'total_strokes': 0,  # For rower
+                'avg_stroke_rate': 0,  # For rower
+                'max_stroke_rate': 0,  # For rower
+            }
+            
+            # Notify FTMS manager to start workout data generation if using simulator
+            if self.ftms_manager:
+                self.ftms_manager.notify_workout_start(workout_id, workout_type)
+            
+            # Notify status
+            self._notify_status('workout_started', {
+                'workout_id': workout_id,
+                'device_id': device_id,
+                'workout_type': workout_type,
+                'start_time': datetime.now().isoformat()
+            })
+            
+            logger.info(f"Started workout {workout_id} with device {device_id}")
+            return workout_id
         
-        # Start new workout in database
-        workout_id = self.database.start_workout(device_id, workout_type)
-        
-        # Set current workout state
-        self.active_workout_id = workout_id
-        self.active_device_id = device_id
-        self.workout_start_time = time.time()
-        self.workout_type = workout_type
-        self.data_points = []
-        self.summary_metrics = {
-            'total_distance': 0,
-            'total_calories': 0,
-            'avg_power': 0,
-            'max_power': 0,
-            'avg_heart_rate': 0,
-            'max_heart_rate': 0,
-            'avg_cadence': 0,
-            'max_cadence': 0,
-            'avg_speed': 0,
-            'max_speed': 0,
-            'total_strokes': 0,  # For rower
-            'avg_stroke_rate': 0,  # For rower
-            'max_stroke_rate': 0,  # For rower
-        }
-        
-        # Notify FTMS manager to start workout data generation if using simulator
-        if self.ftms_manager:
-            self.ftms_manager.notify_workout_start(workout_id, workout_type)
-        
-        # Notify status
-        self._notify_status('workout_started', {
-            'workout_id': workout_id,
-            'device_id': device_id,
-            'workout_type': workout_type,
-            'start_time': datetime.now().isoformat()
-        })
-        
-        logger.info(f"Started workout {workout_id} with device {device_id}")
-        return workout_id
+        except Exception as e:
+            logger.error(f"Error starting workout: {str(e)}")
+            return -1
     
-    def end_workout(self, workout_id=None) -> bool:
+    def end_workout(self) -> bool:
         """
         End the current workout session.
         
-        Args:
-            workout_id: Optional specific workout ID to end.
-                        If not provided, ends the currently active workout.
-        
         Returns:
-            True if successful, False otherwise
+            True if successful, False if failed
         """
-        # If workout_id is provided but doesn't match active workout, log warning
-        if workout_id is not None and self.active_workout_id != workout_id:
-            logger.warning(f"Requested to end workout {workout_id} but active workout is {self.active_workout_id}")
-            # Continue anyway with the active workout
-        
-        if not self.active_workout_id:
-            logger.warning("No active workout to end")
-            return False
-        
-        # For debugging - log the call to end_workout
-        logger.info(f"[DATA_FLOW] Ending workout {self.active_workout_id}")
-        
-        # Store the workout ID before clearing state for later use
-        workout_id = self.active_workout_id
-        
-        # Notify FTMS manager to stop workout data generation BEFORE ending the workout in the database
-        # This ensures the simulator stops generating data before we complete the workout
-        if self.ftms_manager:
-            logger.info(f"[DATA_FLOW] Notifying FTMS manager to end workout {workout_id}")
-            self.ftms_manager.notify_workout_end(workout_id)
-        
-        # Calculate final summary metrics
-        self._calculate_summary_metrics()
-        
-        # End workout in database
-        logger.info(f"[DATA_FLOW] Ending workout {workout_id} in database with {len(self.data_points)} data points")
-        success = self.database.end_workout(
-            workout_id,
-            summary=self.summary_metrics
-        )
-        
-        if success:
-            # Notify status callbacks
-            self._notify_status('workout_ended', {
-                'workout_id': workout_id,
-                'device_id': self.active_device_id,
-                'workout_type': self.workout_type,
-                'duration': int(time.time() - self.workout_start_time),
-                'summary': self.summary_metrics,
-                'total_data_points': len(self.data_points)
-            })
+        try:
+            if self.active_workout_id is None:
+                logger.warning("No workout in progress to end")
+                return False
+                
+            logger.info(f"Ending workout (ID: {self.active_workout_id})")
             
-            logger.info(f"Ended workout {workout_id}")
+            # Calculate workout duration
+            end_time = datetime.now()
+            duration = (end_time - self.workout_start_time).total_seconds()
+            
+            # Process workout data for summary metrics
+            summary = self._calculate_summary_metrics()
+            
+            # Update the workout record
+            success = self.database.end_workout(
+                workout_id=self.active_workout_id,
+                end_time=end_time,
+                duration=duration,
+                **summary
+            )
+            
+            if not success:
+                logger.error(f"Failed to update workout {self.active_workout_id} in database")
+                
+            # Notify any connected device managers
+            if self.ftms_manager:
+                self.ftms_manager.notify_workout_end(self.active_workout_id)
+                
+            # Generate FIT file
+            if self.fit_converter and len(self.data_points) > 0:
+                try:
+                    fit_file = self.fit_converter.convert_workout_to_fit(
+                        workout_id=self.active_workout_id,
+                        workout_type=self.workout_type,
+                        data=self.data_points,
+                        summary=summary
+                    )
+                    
+                    # If Garmin uploader is available, upload the file
+                    if self.garmin_uploader and fit_file:
+                        self.garmin_uploader.upload_workout(fit_file)
+                except Exception as e:
+                    logger.error(f"Error generating or uploading FIT file: {str(e)}")
             
             # Clear current workout state
             self.active_workout_id = None
@@ -195,9 +219,10 @@ class WorkoutManager:
             self.data_points = []
             self.summary_metrics = {}
             
-            return True
-        else:
-            logger.error(f"Failed to end workout {workout_id}")
+            return success
+            
+        except Exception as e:
+            logger.error(f"Error ending workout: {str(e)}")
             return False
     
     def add_data_point(self, data: Dict[str, Any]) -> bool:
@@ -664,7 +689,6 @@ class WorkoutManager:
 # Example usage
 if __name__ == "__main__":
     import asyncio
-    from src.ftms.ftms_manager import FTMSDeviceManager
     
     async def main():
         # Create FTMS manager with simulator

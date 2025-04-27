@@ -6,7 +6,7 @@ This module handles conversion of workout data to Garmin FIT format.
 """
 
 import os
-import logging
+import sys
 from typing import Dict, List, Any, Optional, Tuple
 from datetime import datetime, timedelta
 
@@ -20,12 +20,12 @@ from fit_tool.profile.messages.session_message import SessionMessage
 from fit_tool.profile.messages.activity_message import ActivityMessage
 from fit_tool.profile.profile_type import Sport, SubSport, LapTrigger, SessionTrigger, Event, EventType, Manufacturer, FileType
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger('fit_converter')
+# Add the project root to the path so we can use absolute imports
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+from src.utils.logging_config import get_component_logger
+
+# Get component logger
+logger = get_component_logger('fit_converter')
 
 class FITConverter:
     """

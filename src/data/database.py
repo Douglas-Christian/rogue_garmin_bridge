@@ -2,29 +2,27 @@
 """
 Database Module for Rogue to Garmin Bridge
 
-This module handles database operations for storing workout data,
-device information, and application configuration.
+This module handles the SQLite database operations for storing workout data.
 """
 
-import os
 import sqlite3
+import os
 import json
-import logging
 from datetime import datetime
-from typing import Dict, List, Any, Optional, Tuple, Union
+import sys
+from typing import Dict, List, Optional, Any
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger('database')
-# Set database logger to DEBUG level temporarily to diagnose data flow issues
-logger.setLevel(logging.DEBUG)
+# Add the project root to the path so we can use absolute imports
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+from src.utils.logging_config import get_component_logger
+
+# Get component logger
+logger = get_component_logger('database')
 
 class Database:
     """
-    Database class for managing SQLite database operations.
+    SQLite database handler for the Rogue Garmin Bridge.
+    Manages workout data storage and retrieval.
     """
     
     def __init__(self, db_path: str):

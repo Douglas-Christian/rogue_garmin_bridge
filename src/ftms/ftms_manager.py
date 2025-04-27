@@ -1,91 +1,163 @@
 #!/usr/bin/env python3
 """
-FTMS Device Manager for Rogue to Garmin Bridge
+FTMS Manager Module for Rogue to Garmin Bridge
 
-This module provides a high-level interface for managing FTMS devices,
-handling both real devices and simulated devices with a consistent API.
+This module handles the connection and data flow with FTMS-capable fitness equipment.
 """
 
-import asyncio
-import logging
 import time
-import random
-from typing import Dict, List, Optional, Callable, Any, Union
+import asyncio
+from bleak import BleakScanner, BleakClient
+from bleak.exc import BleakError
+import threading
+import os
+import sys
 
-from bleak.backends.device import BLEDevice
+# Add the project root to the path so we can use absolute imports
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+from src.utils.logging_config import get_component_logger
+from src.ftms.ftms_connector import FTMSConnector
+from src.ftms.ftms_simulator import FTMSDeviceSimulator
 
-from .ftms_connector import FTMSConnector
-from .ftms_simulator import FTMSDeviceSimulator
+# Get component logger
+logger = get_component_logger('ftms')
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger('ftms_manager')
+# FTMS Service UUID
+FTMS_SERVICE_UUID = "00001826-0000-1000-8000-00805f9b34fb"
 
 class FTMSDeviceManager:
     """
-    Manager class for FTMS devices, providing a unified interface for
-    both real and simulated devices.
+    Manager for FTMS devices (Fitness Machine Service) that handles:
+    - Discovering FTMS-capable devices
+    - Connecting to devices
+    - Reading and writing characteristics
+    - Processing incoming data
     """
     
-    def __init__(self, use_simulator: bool = False):
+    def __init__(self, workout_manager=None, use_simulator=False, device_type="bike"):
         """
         Initialize the FTMS device manager.
         
         Args:
-            use_simulator: Whether to use simulated devices instead of real ones
+            workout_manager: The workout manager instance
+            use_simulator: Whether to use the simulator instead of real devices
+            device_type: Type of device to simulate ("bike" or "rower"), only used with simulator
         """
+        self.workout_manager = workout_manager
         self.use_simulator = use_simulator
-        self.connector = FTMSConnector() if not use_simulator else None
-        self.simulators: Dict[str, FTMSDeviceSimulator] = {}
-        self.active_device: Optional[Union[BLEDevice, FTMSDeviceSimulator]] = None
-        self.data_callbacks: List[Callable[[Dict[str, Any]], None]] = []
-        self.status_callbacks: List[Callable[[str, Any], None]] = []
+        self.device_status = "disconnected"
+        self.connected_device = None
+        self.data_callbacks = []
+        self.status_callbacks = []
         
-        # Register callbacks if using real connector
-        if self.connector:
-            self.connector.register_data_callback(self._handle_data)
-            self.connector.register_status_callback(self._handle_status)
-    
-    async def discover_devices(self, timeout: int = 5) -> Dict[str, Any]:
-        """
-        Discover FTMS devices.
-        
-        Args:
-            timeout: Scan timeout in seconds (only used for real devices)
-            
-        Returns:
-            Dictionary of discovered devices
-        """
+        # Initialize the connector or simulator
         if self.use_simulator:
-            # Create simulated devices
-            bike_simulator = FTMSDeviceSimulator(device_type="bike")
-            rower_simulator = FTMSDeviceSimulator(device_type="rower")
-            
-            # Register callbacks
-            bike_simulator.register_data_callback(self._handle_data)
-            bike_simulator.register_status_callback(self._handle_status)
-            rower_simulator.register_data_callback(self._handle_data)
-            rower_simulator.register_status_callback(self._handle_status)
-            
-            # Store simulators
-            self.simulators = {
-                bike_simulator.device.address: bike_simulator,
-                rower_simulator.device.address: rower_simulator
-            }
-            
-            # Return simulated devices
-            return {
-                bike_simulator.device.address: bike_simulator.device,
-                rower_simulator.device.address: rower_simulator.device
-            }
+            logger.info(f"Using FTMS device simulator for {device_type}")
+            self.connector = FTMSDeviceSimulator(device_type=device_type)
         else:
-            # Discover real devices
-            return await self.connector.discover_devices(timeout)
+            logger.info("Using real FTMS devices")
+            self.connector = FTMSConnector()
+            
+        # Register callbacks
+        self.connector.register_data_callback(self._handle_data)
+        self.connector.register_status_callback(self._handle_status)
     
-    async def connect(self, device_address: str) -> bool:
+    def register_data_callback(self, callback):
+        """Register a callback for data events."""
+        self.data_callbacks.append(callback)
+        
+    def register_status_callback(self, callback):
+        """Register a callback for status events."""
+        self.status_callbacks.append(callback)
+    
+    def _handle_data(self, data):
+        """Handle data from the device and forward to callbacks."""
+        for callback in self.data_callbacks:
+            try:
+                callback(data)
+            except Exception as e:
+                logger.error(f"Error in data callback: {str(e)}")
+    
+    def _handle_status(self, status, data):
+        """Handle status events from the device and forward to callbacks."""
+        self.device_status = status
+        if status == "connected":
+            self.connected_device = data
+        elif status == "disconnected":
+            self.connected_device = None
+            
+        for callback in self.status_callbacks:
+            try:
+                callback(status, data)
+            except Exception as e:
+                logger.error(f"Error in status callback: {str(e)}")
+    
+    def start_scanning(self):
+        """Start scanning for devices in a loop."""
+        while True:
+            try:
+                # Use asyncio.run to handle the async discover_devices method
+                self.discover_devices()
+                time.sleep(5)  # Wait 5 seconds between scans
+            except Exception as e:
+                logger.error(f"Error in scanning loop: {str(e)}")
+                time.sleep(10)  # Wait a bit longer after an error
+    
+    def discover_devices(self):
+        """Discover FTMS devices."""
+        try:
+            logger.debug(f"Attempting to discover devices, connector type: {type(self.connector).__name__}")
+            
+            # Safely check if connector exists
+            if not hasattr(self, 'connector') or self.connector is None:
+                logger.error("No connector available for device discovery")
+                return {}
+                
+            # Explicitly check if the sync or async version exists
+            if hasattr(self.connector, 'discover_devices_sync'):
+                logger.debug("Using synchronous discover_devices_sync method")
+                try:
+                    devices = self.connector.discover_devices_sync()
+                except AttributeError as e:
+                    logger.error(f"AttributeError calling discover_devices_sync: {str(e)}")
+                    return {}
+                except Exception as e:
+                    logger.error(f"Error in discover_devices_sync: {str(e)}", exc_info=True)
+                    return {}
+            elif hasattr(self.connector, 'discover_devices'):
+                logger.debug("Using discover_devices method")
+                try:
+                    # Check if it's already a synchronous method
+                    import inspect
+                    if not inspect.iscoroutinefunction(self.connector.discover_devices):
+                        logger.debug("discover_devices is synchronous, calling directly")
+                        devices = self.connector.discover_devices()
+                    else:
+                        logger.debug("discover_devices is asynchronous, using event loop")
+                        # Use asyncio.run for the async method
+                        loop = asyncio.new_event_loop()
+                        asyncio.set_event_loop(loop)
+                        devices = loop.run_until_complete(self.connector.discover_devices())
+                        loop.close()
+                except AttributeError as e:
+                    logger.error(f"AttributeError calling discover_devices: {str(e)}")
+                    return {}
+                except Exception as e:
+                    logger.error(f"Error in discover_devices: {str(e)}", exc_info=True)
+                    return {}
+            else:
+                available_methods = [method for method in dir(self.connector) if not method.startswith('_')]
+                logger.error(f"No discover_devices method found on connector of type {type(self.connector).__name__}. Available methods: {available_methods}")
+                return {}
+                
+            return devices
+        except Exception as e:
+            logger.error(f"Critical error discovering devices: {str(e)}", exc_info=True)
+            import traceback
+            traceback.print_exc()
+            return {}
+    
+    async def connect_to_device(self, device_address: str) -> bool:
         """
         Connect to a specific FTMS device.
         
@@ -95,275 +167,136 @@ class FTMSDeviceManager:
         Returns:
             True if connection successful, False otherwise
         """
-        logger.info(f"Connecting to device: {device_address}")
-        
-        # Simple connection logic that works the same for both simulators and real devices
-        if self.use_simulator:
-            if device_address not in self.simulators:
-                logger.error(f"Simulated device {device_address} not found")
-                return False
-            
-            simulator = self.simulators[device_address]
-            simulator.start_simulation()
-            self.active_device = simulator
-            logger.info(f"Connected to simulator: {device_address}")
-            return True
-        else:
-            success = await self.connector.connect(device_address)
-            if success:
-                self.active_device = self.connector.connected_device
-                logger.info(f"Connected to device: {device_address}")
-            else:
-                logger.error(f"Failed to connect to device: {device_address}")
-            return success
-    
-    async def disconnect(self) -> bool:
-        """
-        Disconnect from the current FTMS device.
-        
-        Returns:
-            True if disconnection successful, False otherwise
-        """
-        if not self.active_device:
-            logger.warning("No device connected")
-            return False
-        
-        if self.use_simulator:
-            # Simple simulator disconnection
-            for simulator in self.simulators.values():
-                if hasattr(self.active_device, 'device') and hasattr(simulator.device, 'address'):
-                    if simulator.device.address == self.active_device.device.address:
-                        simulator.stop_simulation()
-                        self.active_device = None
-                        return True
-            logger.error("Could not find matching simulator to disconnect")
-            return False
-        else:
-            success = await self.connector.disconnect()
-            if success:
-                self.active_device = None
-            return success
-    
-    def register_data_callback(self, callback: Callable[[Dict[str, Any]], None]) -> None:
-        """
-        Register a callback function to receive FTMS data.
-        
-        Args:
-            callback: Function that will be called with FTMS data
-        """
-        self.data_callbacks.append(callback)
-    
-    def register_status_callback(self, callback: Callable[[str, Any], None]) -> None:
-        """
-        Register a callback function to receive status updates.
-        
-        Args:
-            callback: Function that will be called with status updates
-        """
-        self.status_callbacks.append(callback)
-    
-    def _handle_data(self, data: Dict[str, Any]) -> None:
-        """
-        Handle data from FTMS devices and forward to registered callbacks.
-        
-        Args:
-            data: Dictionary of FTMS data
-        """
         try:
-            # Add a unique identifier for this data point if one doesn't exist
-            if 'data_id' not in data:
-                data['data_id'] = f"data_{time.time()}_{random.randint(1000, 9999)}"
+            if self._workout_in_progress:
+                logger.warning("Cannot connect to a device while a workout is in progress")
+                return False
                 
-            # Debug logging for data flow tracking
-            logger.info(f"FTMS Manager received data: type={data.get('type', 'unknown')}, " +
-                       f"timestamp={data.get('timestamp', 'N/A')}, " +
-                       f"data_id={data.get('data_id', 'N/A')}")
-                   
-            # Ensure we have callbacks to forward to
-            if not self.data_callbacks:
-                logger.warning("No data callbacks registered with FTMS Manager!")
-                return
+            # Attempt connection with timeout
+            connect_timeout = 15  # seconds
+            try:
+                connection_task = self.connector.connect(device_address)
+                result = await asyncio.wait_for(connection_task, timeout=connect_timeout)
+                if not result:
+                    logger.error(f"Failed to connect to device {device_address}")
+                    return False
+            except asyncio.TimeoutError:
+                logger.error(f"Connection attempt timed out after {connect_timeout} seconds")
+                return False
+                
+            return True
             
-            # Forward data to all registered callbacks
-            success_count = 0
-            for callback in self.data_callbacks:
-                try:
-                    callback_name = callback.__name__ if hasattr(callback, '__name__') else 'anonymous'
-                    logger.debug(f"Forwarding data to callback: {callback_name}")
-                    
-                    # Create a copy of the data to avoid modifications affecting other callbacks
-                    callback_data = data.copy()
-                    callback(callback_data)
-                    success_count += 1
-                except Exception as e:
-                    logger.error(f"Error in FTMS Manager data callback: {str(e)}", exc_info=True)
-                    # Log full traceback for better debugging
-                    import traceback
-                    traceback.print_exc()
-                    
-            if success_count == 0:
-                logger.error("No callbacks successfully processed the data!")
-                
         except Exception as e:
-            logger.error(f"Error in FTMS Manager _handle_data: {str(e)}", exc_info=True)
+            logger.error(f"Error connecting to device: {str(e)}")
+            return False
+    
+    def disconnect(self):
+        """Disconnect from the current device."""
+        try:
+            logger.debug("Attempting to disconnect from device")
+            
+            # Safely check if connector exists
+            if not hasattr(self, 'connector') or self.connector is None:
+                logger.error("No connector available for device disconnection")
+                return False
+                
+            # Explicitly check if the sync or async version exists
+            if hasattr(self.connector, 'disconnect_sync'):
+                logger.debug("Using synchronous disconnect_sync method")
+                try:
+                    return self.connector.disconnect_sync()
+                except AttributeError as e:
+                    logger.error(f"AttributeError calling disconnect_sync: {str(e)}")
+                    return False
+                except Exception as e:
+                    logger.error(f"Error in disconnect_sync: {str(e)}", exc_info=True)
+                    return False
+            elif hasattr(self.connector, 'disconnect'):
+                logger.debug("Using disconnect method")
+                try:
+                    # Check if it's already a synchronous method
+                    import inspect
+                    if not inspect.iscoroutinefunction(self.connector.disconnect):
+                        logger.debug("disconnect is synchronous, calling directly")
+                        return self.connector.disconnect()
+                    else:
+                        logger.debug("disconnect is asynchronous, using event loop")
+                        # Use asyncio.run for the async method
+                        loop = asyncio.new_event_loop()
+                        asyncio.set_event_loop(loop)
+                        result = loop.run_until_complete(self.connector.disconnect())
+                        loop.close()
+                        return result
+                except AttributeError as e:
+                    logger.error(f"AttributeError calling disconnect: {str(e)}")
+                    return False
+                except Exception as e:
+                    logger.error(f"Error in disconnect: {str(e)}", exc_info=True)
+                    return False
+            else:
+                available_methods = [method for method in dir(self.connector) if not method.startswith('_')]
+                logger.error(f"No disconnect method found on connector of type {type(self.connector).__name__}. Available methods: {available_methods}")
+                return False
+        except Exception as e:
+            logger.error(f"Critical error disconnecting from device: {str(e)}", exc_info=True)
             import traceback
             traceback.print_exc()
+            return False
     
-    def _handle_status(self, status: str, data: Any) -> None:
-        """
-        Handle status updates from FTMS devices and forward to registered callbacks.
-        
-        Args:
-            status: Status type
-            data: Status data
-        """
-        for callback in self.status_callbacks:
-            try:
-                callback(status, data)
-            except Exception as e:
-                logger.error(f"Error in status callback: {str(e)}")
-    
-    def notify_workout_start(self, workout_id: int, device_id: Optional[int] = None) -> None:
-        """
-        Notify the FTMS Manager that a workout has started.
-        This will begin workout data generation in simulators or trigger appropriate commands on real devices.
-        
-        The workout_id is used to associate generated data with a specific workout in the database.
-        For simulators, this activates the data generation loop. For real devices, this may involve
-        sending commands to prepare the device for workout data collection.
-        
-        Args:
-            workout_id: ID of the new workout to associate with generated data
-            device_id: Optional ID of the device in the database (not used for simulation)
-        
-        Returns:
-            None
-        
-        Raises:
-            No exceptions are raised, but warnings are logged if no device is connected
-        """
-        if not self.active_device:
-            logger.warning("Cannot start workout data - no device connected")
-            return
+    def notify_workout_start(self, workout_id, workout_type):
+        """Notify the device that a workout has started."""
+        try:
+            logger.debug(f"Notifying workout start: id={workout_id}, type={workout_type}")
             
-        if self.use_simulator:
-            logger.info(f"Starting workout {workout_id} on simulator")
-            
-            # Find the active simulator
-            active_simulator = None
-            
-            # First check if active_device is directly a simulator
-            if isinstance(self.active_device, FTMSDeviceSimulator):
-                active_simulator = self.active_device
+            # Safely check if connector exists
+            if not hasattr(self, 'connector') or self.connector is None:
+                logger.error("No connector available for workout start notification")
+                return False
+                
+            if hasattr(self.connector, 'start_workout'):
+                try:
+                    self.connector.start_workout()
+                    logger.info(f"Workout started: id={workout_id}, type={workout_type}")
+                    return True
+                except AttributeError as e:
+                    logger.error(f"AttributeError calling start_workout: {str(e)}")
+                    return False
+                except Exception as e:
+                    logger.error(f"Error in start_workout: {str(e)}", exc_info=True)
+                    return False
             else:
-                # Look for a matching simulator by address
-                for addr, simulator in self.simulators.items():
-                    # Check different ways the address might be accessible
-                    if hasattr(self.active_device, 'address') and simulator.device.address == self.active_device.address:
-                        active_simulator = simulator
-                        break
-                    elif hasattr(self.active_device, 'device') and simulator.device.address == self.active_device.device.address:
-                        active_simulator = simulator
-                        break
+                available_methods = [method for method in dir(self.connector) if not method.startswith('_')]
+                logger.warning(f"No start_workout method found on connector of type {type(self.connector).__name__}. Available methods: {available_methods}")
+                return False
+        except Exception as e:
+            logger.error(f"Critical error notifying workout start: {str(e)}", exc_info=True)
+            return False
+    
+    def notify_workout_end(self, workout_id):
+        """Notify the device that a workout has ended."""
+        try:
+            logger.debug(f"Notifying workout end: id={workout_id}")
             
-            if active_simulator:
-                # Set the active device to be the simulator directly for better reference
-                self.active_device = active_simulator
-                active_simulator.start_workout()
-                logger.info(f"Started workout data generation for simulator: {active_simulator.device.name}")
+            # Safely check if connector exists
+            if not hasattr(self, 'connector') or self.connector is None:
+                logger.error("No connector available for workout end notification")
+                return False
+                
+            if hasattr(self.connector, 'end_workout'):
+                try:
+                    self.connector.end_workout()
+                    logger.info(f"Workout ended: id={workout_id}")
+                    return True
+                except AttributeError as e:
+                    logger.error(f"AttributeError calling end_workout: {str(e)}")
+                    return False
+                except Exception as e:
+                    logger.error(f"Error in end_workout: {str(e)}", exc_info=True)
+                    return False
             else:
-                # If we get here, no matching simulator was found
-                logger.error(f"Could not find matching simulator to start workout data generation")
-        else:
-            # For real devices, we'd send any necessary commands here
-            logger.info(f"Workout {workout_id} started - continuing real device data stream")
-    
-    def notify_workout_end(self, workout_id: int) -> None:
-        """
-        Notify the FTMS Manager that a workout has ended.
-        This will stop workout data generation in simulators or trigger appropriate commands on real devices.
-        
-        For simulators, this stops the data generation for the current workout by setting the workout_active
-        flag to False. For real devices, this would send commands to stop data collection if necessary.
-        
-        This method is critical for proper cleanup and state management when workouts end.
-        
-        Args:
-            workout_id: ID of the ended workout
-        
-        Returns:
-            None
-        
-        Raises:
-            No exceptions are raised, but warnings are logged if no device is connected
-        """
-        if not self.active_device:
-            logger.warning("Cannot end workout data - no device connected")
-            return
-            
-        if self.use_simulator:
-            logger.info(f"Ending workout {workout_id} on simulator")
-            
-            # Find the active simulator
-            active_simulator = None
-            
-            # Check if active_device is directly a simulator
-            if isinstance(self.active_device, FTMSDeviceSimulator):
-                active_simulator = self.active_device
-            else:
-                # Look for a matching simulator by address
-                for addr, simulator in self.simulators.items():
-                    # Check different ways the address might be accessible
-                    if hasattr(self.active_device, 'address') and simulator.device.address == self.active_device.address:
-                        active_simulator = simulator
-                        break
-                    elif hasattr(self.active_device, 'device') and simulator.device.address == self.active_device.device.address:
-                        active_simulator = simulator
-                        break
-            
-            if active_simulator:
-                active_simulator.end_workout()
-                logger.info(f"Ended workout data generation for simulator: {active_simulator.device.name}")
-            else:
-                # If we get here, no matching simulator was found
-                logger.error(f"Could not find matching simulator to end workout data generation")
-        else:
-            # For real devices, we'd send any necessary commands here
-            logger.info(f"Workout {workout_id} ended - continuing real device data stream")
-
-
-async def main():
-    """Example usage of the FTMSDeviceManager class."""
-    # Create a device manager with simulator
-    manager = FTMSDeviceManager(use_simulator=True)
-    
-    # Define callbacks
-    def data_callback(data):
-        print(f"Received data: {data}")
-    
-    def status_callback(status, data):
-        print(f"Status update: {status} - {data}")
-    
-    # Register callbacks
-    manager.register_data_callback(data_callback)
-    manager.register_status_callback(status_callback)
-    
-    # Discover devices
-    devices = await manager.discover_devices()
-    
-    if devices:
-        # Connect to the first device found
-        device_address = list(devices.keys())[0]
-        await manager.connect(device_address)
-        
-        # Keep the connection open for 30 seconds
-        await asyncio.sleep(30)
-        
-        # Disconnect
-        await manager.disconnect()
-    else:
-        print("No FTMS devices found")
-
-
-if __name__ == "__main__":
-    asyncio.run(main())
+                available_methods = [method for method in dir(self.connector) if not method.startswith('_')]
+                logger.warning(f"No end_workout method found on connector of type {type(self.connector).__name__}. Available methods: {available_methods}")
+                return False
+        except Exception as e:
+            logger.error(f"Critical error notifying workout end: {str(e)}", exc_info=True)
+            return False

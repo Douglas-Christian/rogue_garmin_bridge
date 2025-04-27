@@ -6,17 +6,17 @@ This module handles uploading FIT files to Garmin Connect.
 """
 
 import os
-import logging
+import sys
 import requests
 import json
 from typing import Dict, Any, Optional, Tuple
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger('garmin_uploader')
+# Add the project root to the path so we can use absolute imports
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+from src.utils.logging_config import get_component_logger
+
+# Get component logger
+logger = get_component_logger('garmin_uploader')
 
 class GarminUploader:
     """

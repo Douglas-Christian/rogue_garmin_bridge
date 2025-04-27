@@ -6,18 +6,14 @@ without requiring physical Rogue Echo Bike and Rower equipment.
 """
 
 import asyncio
-import logging
 import random
 import time
 from typing import Dict, List, Any, Optional, Callable
 from bleak.backends.device import BLEDevice
+from src.utils.logging_config import get_component_logger
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger('ftms_simulator')
+# Get logger from centralized logging system
+logger = get_component_logger('ftms')
 
 class FTMSDeviceSimulator:
     """
@@ -38,9 +34,8 @@ class FTMSDeviceSimulator:
         if device_type not in ["bike", "rower"]:
             raise ValueError("Device type must be 'bike' or 'rower'")
         
-        # Set up logging - force DEBUG level for simulator
-        global logger
-        logger.setLevel(logging.DEBUG)
+        # Force DEBUG level for simulator
+        logger.setLevel("DEBUG")
         
         self.device_type = device_type
         self.running = False
@@ -57,6 +52,36 @@ class FTMSDeviceSimulator:
         # Create a simulated BLE device
         self.device = self._create_simulated_device()
     
+    def discover_devices(self):
+        """
+        Discover simulated FTMS devices.
+        
+        Returns:
+            Dictionary with the simulated device(s)
+        """
+        logger.info("Discovering simulated FTMS devices")
+        
+        # Return a JSON-serializable dictionary representation of the device
+        devices = {
+            self.device.address: {
+                "address": self.device.address,
+                "name": self.device.name,
+                "rssi": self.device.rssi,
+                "metadata": self.device.metadata
+            }
+        }
+        
+        return devices
+    
+    def discover_devices_sync(self):
+        """
+        Synchronous version of discover_devices for better compatibility.
+        
+        Returns:
+            Dictionary with the simulated device(s)
+        """
+        return self.discover_devices()
+        
     def _create_simulated_device(self) -> BLEDevice:
         """
         Create a simulated BLE device object.

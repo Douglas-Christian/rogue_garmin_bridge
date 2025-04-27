@@ -1,26 +1,26 @@
 #!/usr/bin/env python3
 """
-Data Processing Module for Rogue to Garmin Bridge
+Data Processor Module for Rogue to Garmin Bridge
 
-This module handles data processing and analysis for workout data,
-including calculating metrics and preparing data for FIT file conversion.
+This module processes raw data from FTMS devices into a format suitable for storage and export.
 """
 
-import logging
-import math
-from typing import Dict, List, Any, Optional, Tuple
-from datetime import datetime, timedelta
+import os
+import sys
+import json
+from typing import Dict, List, Any, Optional
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger('data_processor')
+# Add the project root to the path so we can use absolute imports
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+from src.utils.logging_config import get_component_logger
+
+# Get component logger
+logger = get_component_logger('data_flow')
 
 class DataProcessor:
     """
-    Class for processing and analyzing workout data.
+    Processes raw FTMS data into a structured format for storage and analysis.
+    Handles data normalization, unit conversion, and validation.
     """
     
     def __init__(self, user_profile: Optional[Dict[str, Any]] = None):
@@ -42,15 +42,13 @@ class DataProcessor:
         self.user_profile = user_profile
     
     def process_workout_data(self, workout_data: List[Dict[str, Any]], 
-                            workout_type: str, 
-                            start_time: datetime) -> Dict[str, Any]:
+                            workout_type: str) -> Dict[str, Any]:
         """
         Process raw workout data to prepare for FIT file conversion.
         
         Args:
             workout_data: List of workout data points
             workout_type: Type of workout (bike, rower, etc.)
-            start_time: Start time of the workout
             
         Returns:
             Dictionary of processed workout data
@@ -64,21 +62,19 @@ class DataProcessor:
         
         # Process based on workout type
         if workout_type == 'bike':
-            return self._process_bike_data(workout_data, start_time)
+            return self._process_bike_data(workout_data)
         elif workout_type == 'rower':
-            return self._process_rower_data(workout_data, start_time)
+            return self._process_rower_data(workout_data)
         else:
             logger.warning(f"Unknown workout type: {workout_type}")
             return {}
     
-    def _process_bike_data(self, workout_data: List[Dict[str, Any]], 
-                          start_time: datetime) -> Dict[str, Any]:
+    def _process_bike_data(self, workout_data: List[Dict[str, Any]]) -> Dict[str, Any]:
         """
         Process bike workout data.
         
         Args:
             workout_data: List of bike workout data points
-            start_time: Start time of the workout
             
         Returns:
             Dictionary of processed bike workout data
@@ -137,13 +133,9 @@ class DataProcessor:
         intensity_factor = self._calculate_intensity_factor(avg_power)
         normalized_power = self._calculate_normalized_power(powers)
         
-        # Generate absolute timestamps for each data point
-        absolute_timestamps = [start_time + timedelta(seconds=ts) for ts in timestamps]
-        
         # Prepare processed data
         processed_data = {
             'workout_type': 'bike',
-            'start_time': start_time,
             'total_duration': total_duration,
             'total_distance': total_distance,
             'total_calories': total_calories,
@@ -160,7 +152,6 @@ class DataProcessor:
             'intensity_factor': intensity_factor,
             'data_series': {
                 'timestamps': timestamps,
-                'absolute_timestamps': absolute_timestamps,
                 'powers': powers,
                 'cadences': cadences,
                 'heart_rates': heart_rates,
@@ -171,14 +162,12 @@ class DataProcessor:
         
         return processed_data
     
-    def _process_rower_data(self, workout_data: List[Dict[str, Any]], 
-                           start_time: datetime) -> Dict[str, Any]:
+    def _process_rower_data(self, workout_data: List[Dict[str, Any]]) -> Dict[str, Any]:
         """
         Process rower workout data.
         
         Args:
             workout_data: List of rower workout data points
-            start_time: Start time of the workout
             
         Returns:
             Dictionary of processed rower workout data
@@ -239,13 +228,9 @@ class DataProcessor:
         intensity_factor = self._calculate_intensity_factor(avg_power)
         normalized_power = self._calculate_normalized_power(powers)
         
-        # Generate absolute timestamps for each data point
-        absolute_timestamps = [start_time + timedelta(seconds=ts) for ts in timestamps]
-        
         # Prepare processed data
         processed_data = {
             'workout_type': 'rower',
-            'start_time': start_time,
             'total_duration': total_duration,
             'total_distance': total_distance,
             'total_calories': total_calories,
@@ -262,7 +247,6 @@ class DataProcessor:
             'intensity_factor': intensity_factor,
             'data_series': {
                 'timestamps': timestamps,
-                'absolute_timestamps': absolute_timestamps,
                 'powers': powers,
                 'stroke_rates': stroke_rates,
                 'heart_rates': heart_rates,
@@ -512,7 +496,7 @@ if __name__ == "__main__":
     
     # Process bike data
     processed_bike_data = processor.process_workout_data(
-        bike_data, 'bike', datetime.now()
+        bike_data, 'bike'
     )
     
     # Estimate VO2 max

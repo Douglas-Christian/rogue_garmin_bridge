@@ -6,3 +6,4 @@ gunicorn==21.2.0
 pycycling==0.4.1
 # pandas optional for jupyter notebook database testing       
 # matplotlib optional for jupyter notebook database testing
+# seaborn optional for jupyter notebook database testing

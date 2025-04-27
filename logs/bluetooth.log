@@ -1,0 +1,92 @@
+2025-04-27 13:04:01,738 - ftms - INFO - Using FTMS device simulator
+2025-04-27 13:04:01,739 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:04:01,949 - ftms - INFO - Using FTMS device simulator
+2025-04-27 13:04:01,950 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:04:06,742 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:04:06,953 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:04:11,743 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:04:11,954 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:04:13,181 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:04:16,748 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:04:16,959 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:04:21,749 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:04:21,959 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:04:26,750 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:04:26,962 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:04:31,751 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:04:31,963 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:04:36,752 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:04:36,964 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:04:41,753 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:04:41,965 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:04:43,857 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:04:46,754 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:06:34,625 - ftms - INFO - Using FTMS device simulator
+2025-04-27 13:06:34,626 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:06:34,832 - ftms - INFO - Using FTMS device simulator
+2025-04-27 13:06:34,833 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:06:39,627 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:06:39,836 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:06:43,780 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:06:44,628 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:06:44,838 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:06:48,072 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:06:49,629 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:06:49,839 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:06:50,390 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:06:54,630 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:06:54,840 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
+2025-04-27 13:11:39,613 - ftms - INFO - Using FTMS device simulator for bike
+2025-04-27 13:11:39,614 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 13:11:39,838 - ftms - INFO - Using FTMS device simulator for bike
+2025-04-27 13:11:39,839 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 13:11:44,615 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 13:11:44,840 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 13:11:49,615 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 13:11:49,841 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 13:11:51,028 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 13:11:54,616 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 13:11:54,841 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 13:13:02,326 - ftms - INFO - Using FTMS device simulator for bike
+2025-04-27 13:13:02,327 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 13:13:02,532 - ftms - INFO - Using FTMS device simulator for bike
+2025-04-27 13:13:02,533 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 13:13:05,303 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 13:13:07,327 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 13:13:07,533 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 13:13:08,967 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 13:13:12,328 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 13:13:12,534 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 13:13:17,329 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 13:13:17,535 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 13:13:18,974 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 13:13:22,329 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 13:13:22,536 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:09:52,549 - ftms - INFO - Using FTMS device simulator for bike
+2025-04-27 16:09:52,550 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:09:52,765 - ftms - INFO - Using FTMS device simulator for bike
+2025-04-27 16:09:52,765 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:09:55,297 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:09:57,550 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:09:57,766 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:10:02,082 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:10:02,551 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:10:02,767 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:10:03,583 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:10:14,520 - ftms - INFO - Using FTMS device simulator for bike
+2025-04-27 16:10:14,521 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:10:14,729 - ftms - INFO - Using FTMS device simulator for bike
+2025-04-27 16:10:14,730 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:10:16,818 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:10:19,521 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:10:19,731 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:10:24,522 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:10:24,732 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:10:25,935 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:10:29,523 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:10:29,732 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:10:29,788 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:10:34,524 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:10:34,733 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:10:39,524 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:10:39,734 - ftms - INFO - Discovering simulated FTMS devices

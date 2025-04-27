@@ -12,6 +12,10 @@ import os
 import sys
 from datetime import datetime
 import argparse
+from src.utils.logging_config import get_component_logger
+
+# Get logger from centralized logging system
+logger = get_component_logger('database_query')
 
 # Determine the database path
 DB_PATH = os.path.join(os.path.dirname(__file__), 'rogue_garmin.db')
@@ -23,7 +27,7 @@ def connect_to_db():
         conn.row_factory = sqlite3.Row  # This enables column access by name
         return conn
     except sqlite3.Error as e:
-        print(f"Database connection error: {e}")
+        logger.error(f"Database connection error: {e}")
         sys.exit(1)
 
 def format_duration(seconds):
@@ -43,6 +47,7 @@ def format_duration(seconds):
 
 def list_tables():
     """List all tables in the database."""
+    logger.info("Listing database tables")
     conn = connect_to_db()
     cursor = conn.cursor()
     
@@ -57,6 +62,7 @@ def list_tables():
 
 def show_workouts(limit=10, include_data=False):
     """Show recent workouts in the database."""
+    logger.info(f"Retrieving {limit} recent workouts")
     conn = connect_to_db()
     cursor = conn.cursor()
     
@@ -73,6 +79,7 @@ def show_workouts(limit=10, include_data=False):
     workouts = cursor.fetchall()
     
     if not workouts:
+        logger.info("No workouts found in the database")
         print("No workouts found in the database.")
         conn.close()
         return
@@ -172,6 +179,7 @@ def show_workouts(limit=10, include_data=False):
 
 def show_devices():
     """Show devices in the database."""
+    logger.info("Retrieving devices from database")
     conn = connect_to_db()
     cursor = conn.cursor()
     
@@ -185,6 +193,7 @@ def show_devices():
     devices = cursor.fetchall()
     
     if not devices:
+        logger.info("No devices found in database")
         print("No devices found in the database.")
         conn.close()
         return
@@ -214,6 +223,7 @@ def show_devices():
 
 def show_user_profile():
     """Show user profile from the database."""
+    logger.info("Retrieving user profile from database")
     conn = connect_to_db()
     cursor = conn.cursor()
     
@@ -228,6 +238,7 @@ def show_user_profile():
     profile = cursor.fetchone()
     
     if not profile:
+        logger.info("No user profile found in database")
         print("No user profile found in the database.")
         conn.close()
         return
@@ -254,6 +265,7 @@ def show_user_profile():
 
 def count_data_points():
     """Count data points for each workout."""
+    logger.info("Counting data points for workouts")
     conn = connect_to_db()
     cursor = conn.cursor()
     
@@ -270,6 +282,7 @@ def count_data_points():
     results = cursor.fetchall()
     
     if not results:
+        logger.info("No workouts found in the database")
         print("No workouts found in the database.")
         conn.close()
         return
@@ -284,6 +297,7 @@ def count_data_points():
 
 def analyze_workout(workout_id):
     """Analyze a specific workout in detail."""
+    logger.info(f"Analyzing workout with ID {workout_id}")
     conn = connect_to_db()
     cursor = conn.cursor()
     
@@ -301,6 +315,7 @@ def analyze_workout(workout_id):
     workout = cursor.fetchone()
     
     if not workout:
+        logger.warning(f"Workout ID {workout_id} not found in database")
         print(f"Workout ID {workout_id} not found.")
         conn.close()
         return
@@ -309,6 +324,7 @@ def analyze_workout(workout_id):
     try:
         summary = json.loads(workout['summary']) if workout['summary'] else {}
     except json.JSONDecodeError:
+        logger.error(f"Failed to parse workout summary JSON for workout ID {workout_id}")
         summary = {}
     
     # Format the output
