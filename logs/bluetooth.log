@@ -234,3 +234,6 @@
 2025-04-27 19:39:39,832 - ftms - INFO - Using FTMSConnector for real device.
 2025-04-27 19:39:40,737 - ftms - INFO - Using FTMSConnector for real device.
 2025-04-27 19:40:25,019 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-27 19:43:29,013 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 19:43:29,907 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-27 19:43:49,688 - ftms - INFO - Connected to device: ECHO_BIKE_077937

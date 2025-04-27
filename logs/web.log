@@ -355,3 +355,19 @@ TypeError: A coroutine object is required
 2025-04-27 19:39:40,756 - web - INFO - Starting background asyncio event loop run_forever.
 2025-04-27 19:40:16,286 - web - INFO - Scheduling connect task for C9:02:CB:68:17:C1 on background loop.
 2025-04-27 19:40:25,020 - web - INFO - Connect task for C9:02:CB:68:17:C1 completed with result: True
+2025-04-27 19:43:29,011 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-27 19:43:29,013 - web - INFO - Using real FTMS devices
+2025-04-27 19:43:29,014 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-27 19:43:29,016 - web - INFO - Starting background asyncio loop thread...
+2025-04-27 19:43:29,018 - web - INFO - Background thread started. Creating new event loop.
+2025-04-27 19:43:29,018 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-27 19:43:29,029 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-27 19:43:29,905 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-27 19:43:29,908 - web - INFO - Using real FTMS devices
+2025-04-27 19:43:29,909 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-27 19:43:29,910 - web - INFO - Starting background asyncio loop thread...
+2025-04-27 19:43:29,913 - web - INFO - Background thread started. Creating new event loop.
+2025-04-27 19:43:29,913 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-27 19:43:29,931 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-27 19:43:44,279 - web - INFO - Scheduling connect task for C9:02:CB:68:17:C1 on background loop.
+2025-04-27 19:43:49,690 - web - INFO - Connect task for C9:02:CB:68:17:C1 completed with result: True

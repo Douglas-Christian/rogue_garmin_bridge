@@ -244,23 +244,23 @@
     // Update charts with new data
     function updateCharts(data) {
         // Update power chart
-        if (data.instantaneous_power || data.power) {
-            const power = data.instantaneous_power || data.power || 0;
+        if (data.instant_power !== undefined || data.power !== undefined) { // Corrected key: instant_power
+            const power = data.instant_power || data.power || 0;
             powerData.datasets[0].data.push(power);
             powerData.datasets[0].data.shift();
             powerChart.update();
         }
         
         // Update heart rate chart
-        if (data.heart_rate) {
+        if (data.heart_rate !== undefined) {
             heartRateData.datasets[0].data.push(data.heart_rate);
             heartRateData.datasets[0].data.shift();
             heartRateChart.update();
         }
         
         // Update cadence chart
-        if (data.instantaneous_cadence || data.cadence || data.stroke_rate) {
-            const cadence = data.instantaneous_cadence || data.cadence || data.stroke_rate || 0;
+        if (data.instant_cadence !== undefined || data.cadence !== undefined || data.stroke_rate !== undefined) { // Corrected key: instant_cadence
+            const cadence = data.instant_cadence || data.cadence || data.stroke_rate || 0;
             cadenceData.datasets[0].data.push(cadence);
             cadenceData.datasets[0].data.shift();
             cadenceChart.update();
@@ -277,8 +277,8 @@
         const workoutType = data.type || 'unknown';
         
         // Update power
-        if (data.instantaneous_power !== undefined || data.power !== undefined) {
-            const power = data.instantaneous_power || data.power || 0;
+        if (data.instant_power !== undefined || data.power !== undefined) { // Corrected key: instant_power
+            const power = data.instant_power || data.power || 0;
             powerValue.textContent = Math.round(power);
         }
         
@@ -292,8 +292,8 @@
             cadenceLabel.textContent = 'Cadence';
             cadenceUnit.textContent = 'rpm';
             
-            if (data.instantaneous_cadence !== undefined || data.cadence !== undefined) {
-                const cadence = data.instantaneous_cadence || data.cadence || 0;
+            if (data.instant_cadence !== undefined || data.cadence !== undefined) { // Corrected key: instant_cadence
+                const cadence = data.instant_cadence || data.cadence || 0;
                 cadenceValue.textContent = Math.round(cadence);
             }
         } else if (workoutType === 'rower') {
@@ -306,8 +306,8 @@
         }
         
         // Update speed
-        if (data.instantaneous_speed !== undefined || data.speed !== undefined) {
-            const speed = data.instantaneous_speed || data.speed || 0;
+        if (data.instant_speed !== undefined || data.speed !== undefined) { // Corrected key: instant_speed
+            const speed = data.instant_speed || data.speed || 0;
             // Convert m/s to km/h
             const speedKmh = speed * 3.6;
             speedValue.textContent = speedKmh.toFixed(1);
@@ -360,8 +360,8 @@
         let html = '<div class="row">';
         
         // Average power
-        if (data.instantaneous_power || data.power) {
-            const power = data.instantaneous_power || data.power || 0;
+        if (data.instant_power || data.power) {
+            const power = data.instant_power || data.power || 0;
             html += `
                 <div class="col-6">
                     <p><strong>Avg Power:</strong> <span id="avg-power">-</span> W</p>
