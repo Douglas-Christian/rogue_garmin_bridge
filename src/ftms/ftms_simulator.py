@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 FTMS Device Simulator for Rogue to Garmin Bridge
 
@@ -10,8 +9,7 @@ import asyncio
 import logging
 import random
 import time
-from typing import Dict, Any, Optional, List, Callable
-
+from typing import Dict, List, Any, Optional, Callable
 from bleak.backends.device import BLEDevice
 
 # Configure logging
@@ -48,6 +46,10 @@ class FTMSDeviceSimulator:
         self.start_time = 0
         self.workout_active = False  # Track if a workout is active
         
+        # Accumulated metrics
+        self.total_distance = 0.0
+        self.total_calories = 0
+        
         # Create a simulated BLE device
         self.device = self._create_simulated_device()
     
@@ -78,7 +80,7 @@ class FTMSDeviceSimulator:
                 self.name = data["name"]
                 self.rssi = data["rssi"]
                 self.metadata = data["metadata"]
-                
+            
             def __str__(self):
                 return f"{self.name} ({self.address})"
         
@@ -114,11 +116,16 @@ class FTMSDeviceSimulator:
         self.start_time = time.time()
         self.workout_duration = 0
         
+        # Reset accumulated metrics
+        self.total_distance = 0.0
+        self.total_calories = 0
+        
         # Notify status
         self._notify_status("connected", self.device)
         
         # Start the simulation task within a running event loop
         self._start_simulation_task()
+        
         logger.info(f"Started {self.device_type} simulation")
     
     def _start_simulation_task(self) -> None:
@@ -151,6 +158,16 @@ class FTMSDeviceSimulator:
         # Add a callback to handle task completion
         self._simulation_task.add_done_callback(self._on_simulation_task_done)
     
+    def _on_simulation_task_done(self, task):
+        """Handle simulation task completion."""
+        try:
+            # Get the result to propagate any exceptions
+            task.result()
+        except asyncio.CancelledError:
+            logger.info("Simulation task was cancelled")
+        except Exception as e:
+            logger.error(f"Simulation task failed with error: {str(e)}")
+    
     def stop_simulation(self) -> None:
         """Stop the simulation."""
         if not self.running:
@@ -158,10 +175,43 @@ class FTMSDeviceSimulator:
             return
         
         self.running = False
+        self.workout_active = False  # Ensure workout is marked as inactive
         
         # Notify status
         self._notify_status("disconnected", self.device)
+        
         logger.info("Stopped simulation")
+    
+    # Add this method to handle workout start
+    def start_workout(self) -> None:
+        """Start a workout session in the simulator."""
+        logger.info(f"Starting workout in {self.device_type} simulator")
+        self.workout_active = True
+        self.start_time = time.time()
+        self.workout_duration = 0
+        
+        # Reset accumulated metrics
+        self.total_distance = 0.0
+        self.total_calories = 0
+        
+        # Notify status
+        self._notify_status("workout_started", {
+            "device": self.device,
+            "workout_active": True
+        })
+    
+    # Add this method to handle workout end
+    def end_workout(self) -> None:
+        """End a workout session in the simulator."""
+        logger.info(f"Ending workout in {self.device_type} simulator")
+        self.workout_active = False
+        
+        # Notify status
+        self._notify_status("workout_ended", {
+            "device": self.device,
+            "workout_active": False,
+            "duration": int(time.time() - self.start_time)
+        })
     
     async def _simulation_loop(self) -> None:
         """Main simulation loop that generates data."""
@@ -178,11 +228,17 @@ class FTMSDeviceSimulator:
                         # Generate and send data
                         if self.device_type == "bike":
                             data = self._generate_bike_data()
-                            logger.info(f"Generated bike data: power={data.get('instantaneous_power')}, cadence={data.get('instantaneous_cadence')}, distance={data.get('total_distance'):.2f}m, calories={data.get('total_calories')}")
+                            logger.info(f"Generated bike data: power={data.get('instantaneous_power')}, "
+                                       f"cadence={data.get('instantaneous_cadence')}, "
+                                       f"distance={data.get('total_distance'):.2f}m, "
+                                       f"calories={data.get('total_calories')}")
                             self._notify_data(data)
                         else:  # rower
                             data = self._generate_rower_data()
-                            logger.info(f"Generated rower data: power={data.get('instantaneous_power')}, stroke_rate={data.get('stroke_rate')}, distance={data.get('total_distance'):.2f}m, calories={data.get('total_calories')}")
+                            logger.info(f"Generated rower data: power={data.get('instantaneous_power')}, "
+                                       f"stroke_rate={data.get('stroke_rate')}, "
+                                       f"distance={data.get('total_distance'):.2f}m, "
+                                       f"calories={data.get('total_calories')}")
                             self._notify_data(data)
                     else:
                         logger.debug(f"Workout not active, not generating data (running={self.running})")
@@ -224,77 +280,76 @@ class FTMSDeviceSimulator:
         # Base values by phase
         if current_phase == 0:  # Warmup
             cadence_base = 60 + int(20 * phase_progress)  # 60-80 rpm
-            power_base = 80 + int(70 * phase_progress)    # 80-150 watts
-            speed_base = 15 + int(10 * phase_progress)    # 15-25 km/h
+            power_base = 80 + int(70 * phase_progress)  # 80-150 watts
+            speed_base = 15 + int(10 * phase_progress)  # 15-25 km/h
         elif current_phase == 1:  # Increasing intensity
             cadence_base = 80 + int(10 * phase_progress)  # 80-90 rpm
-            power_base = 150 + int(50 * phase_progress)   # 150-200 watts
-            speed_base = 25 + int(5 * phase_progress)     # 25-30 km/h
+            power_base = 150 + int(50 * phase_progress)  # 150-200 watts
+            speed_base = 25 + int(5 * phase_progress)  # 25-30 km/h
         elif current_phase == 2:  # Steady state
-            cadence_base = 90                            # 90 rpm
-            power_base = 200                             # 200 watts
-            speed_base = 30                              # 30 km/h
+            cadence_base = 90  # 90 rpm
+            power_base = 200  # 200 watts
+            speed_base = 30  # 30 km/h
         elif current_phase == 3:  # Intervals
             # Create interval pattern (high intensity/recovery)
             interval_period = 10  # seconds
             is_high_intensity = (phase_time % (interval_period * 2)) < interval_period
             
             if is_high_intensity:
-                cadence_base = 100                       # 100 rpm
-                power_base = 250                         # 250 watts
-                speed_base = 35                          # 35 km/h
+                cadence_base = 100  # 100 rpm
+                power_base = 250  # 250 watts
+                speed_base = 35  # 35 km/h
             else:
-                cadence_base = 70                        # 70 rpm
-                power_base = 120                         # 120 watts
-                speed_base = 20                          # 20 km/h
+                cadence_base = 70  # 70 rpm
+                power_base = 120  # 120 watts
+                speed_base = 20  # 20 km/h
         else:  # Cooldown
-            cadence_base = 80 - int(30 * phase_progress)  # 80-50 rpm
-            power_base = 150 - int(70 * phase_progress)   # 150-80 watts
-            speed_base = 25 - int(10 * phase_progress)    # 25-15 km/h
-            
-        # Add random variations to make it feel natural
+            cadence_base = 80 - int(20 * phase_progress)  # 80-60 rpm
+            power_base = 150 - int(70 * phase_progress)  # 150-80 watts
+            speed_base = 25 - int(10 * phase_progress)  # 25-15 km/h
+        
+        # Add some random variation
         cadence = max(0, cadence_base + random.randint(-5, 5))
-        power = max(0, power_base + random.randint(-20, 20))
-        speed = max(0, speed_base + random.randint(-3, 3))
+        power = max(0, power_base + random.randint(-10, 10))
+        speed = max(0, speed_base + random.uniform(-1.0, 1.0))
         
-        # Calculate cumulative distance (speed in km/h converted to m/s)
-        speed_ms = speed / 3.6
+        # Calculate distance increment (speed in km/h → m/s → m)
+        # 1 km/h = 0.277778 m/s
+        speed_ms = speed * 0.277778
+        distance_increment = speed_ms * 1.0  # 1 second since last update
         
-        # We need to calculate just the distance for this second, not the cumulative distance
-        # This is important for accurate accumulation over time
-        distance_this_second = speed_ms  # meters covered in this second
+        # Update total distance
+        self.total_distance += distance_increment
         
-        # Calculate calories (simplified)
-        calories_this_second = power / 60  # rough estimate for 1 second
+        # Calculate calories increment (very simplified)
+        # Assuming ~4 calories per minute per 100 watts
+        calories_per_hour = power * 0.04 * 60
+        calories_per_second = calories_per_hour / 3600  # per second
         
-        # Heart rate simulation (with some lag behind power changes)
-        target_hr = 60 + int(power * 0.6)  # Base HR calculation
+        # Accumulate calories (non-decreasing)
+        # Store as a running total and ensure it only increases
+        calories_accumulated = self.workout_duration * calories_per_second
+        self.total_calories = max(self.total_calories, int(calories_accumulated))
         
-        # Gradually approach target heart rate (simulating cardiovascular lag)
-        prev_hr = getattr(self, '_prev_heart_rate', 100)  # Default to 100 if not set
-        heart_rate = prev_hr + int((target_hr - prev_hr) * 0.1)  # 10% adjustment toward target
-        heart_rate = min(max(heart_rate, 60), 200)  # Keep within reasonable bounds
-        self._prev_heart_rate = heart_rate  # Store for next time
+        # Calculate heart rate (simplified model)
+        # Assume heart rate correlates with power
+        heart_rate_base = 60 + (power / 3)
+        heart_rate = min(220, int(heart_rate_base + random.randint(-5, 5)))
         
-        # Store the incremental values for this second to report back
-        self._last_distance = getattr(self, '_last_distance', 0) + distance_this_second
-        self._last_calories = getattr(self, '_last_calories', 0) + calories_this_second
-        
-        return {
-            'type': 'bike',
-            'device_name': self.device.name,
-            'device_address': self.device.address,
-            'timestamp': self.workout_duration,
-            'instantaneous_speed': speed_ms,  # in m/s
-            'instantaneous_cadence': cadence,
-            'instantaneous_power': power,
-            'heart_rate': heart_rate,
-            'elapsed_time': self.workout_duration,
-            'total_distance': self._last_distance,
-            'resistance_level': 8,
-            'total_calories': int(self._last_calories),
-            'workout_type': 'bike'
+        # Create data packet
+        data = {
+            "type": "bike",  # Add workout type to the data
+            "instantaneous_power": power,
+            "instantaneous_cadence": cadence,
+            "instantaneous_speed": speed,
+            "heart_rate": heart_rate,
+            "total_distance": self.total_distance,  # Use accumulated value
+            "total_calories": self.total_calories,  # Use accumulated value
+            "timestamp": self.workout_duration,
+            "elapsed_time": self.workout_duration  # Add elapsed time for UI
         }
+        
+        return data
     
     def _generate_rower_data(self) -> Dict[str, Any]:
         """
@@ -303,8 +358,7 @@ class FTMSDeviceSimulator:
         Returns:
             Dictionary of simulated rower data
         """
-        # Define workout phases to create a more interesting pattern
-        # Warmup → steady state → intervals → steady state → cooldown
+        # Define workout phases similar to bike
         workout_phase_duration = 60  # seconds per phase
         total_phases = 5
         
@@ -315,84 +369,93 @@ class FTMSDeviceSimulator:
         
         # Base values by phase
         if current_phase == 0:  # Warmup
-            stroke_rate_base = 18 + int(7 * phase_progress)  # 18-25 spm
-            power_base = 100 + int(80 * phase_progress)      # 100-180 watts
-        elif current_phase == 1:  # Steady state
-            stroke_rate_base = 25                            # 25 spm
-            power_base = 180                                 # 180 watts
-        elif current_phase == 2:  # Intervals
+            stroke_rate_base = 18 + int(6 * phase_progress)  # 18-24 spm
+            power_base = 100 + int(50 * phase_progress)  # 100-150 watts
+            speed_base = 2.0 + 0.5 * phase_progress  # 2.0-2.5 m/s
+        elif current_phase == 1:  # Increasing intensity
+            stroke_rate_base = 24 + int(4 * phase_progress)  # 24-28 spm
+            power_base = 150 + int(50 * phase_progress)  # 150-200 watts
+            speed_base = 2.5 + 0.3 * phase_progress  # 2.5-2.8 m/s
+        elif current_phase == 2:  # Steady state
+            stroke_rate_base = 28  # 28 spm
+            power_base = 200  # 200 watts
+            speed_base = 2.8  # 2.8 m/s
+        elif current_phase == 3:  # Intervals
             # Create interval pattern (high intensity/recovery)
             interval_period = 10  # seconds
             is_high_intensity = (phase_time % (interval_period * 2)) < interval_period
             
             if is_high_intensity:
-                stroke_rate_base = 30                        # 30 spm
-                power_base = 250                             # 250 watts
+                stroke_rate_base = 32  # 32 spm
+                power_base = 250  # 250 watts
+                speed_base = 3.2  # 3.2 m/s
             else:
-                stroke_rate_base = 20                        # 20 spm
-                power_base = 120                             # 120 watts
-        elif current_phase == 3:  # Second steady state
-            stroke_rate_base = 26                            # 26 spm
-            power_base = 190                                 # 190 watts
+                stroke_rate_base = 20  # 20 spm
+                power_base = 120  # 120 watts
+                speed_base = 2.2  # 2.2 m/s
         else:  # Cooldown
-            stroke_rate_base = 25 - int(10 * phase_progress)  # 25-15 spm
-            power_base = 180 - int(100 * phase_progress)      # 180-80 watts
-            
-        # Add random variations to make it feel natural
+            stroke_rate_base = 24 - int(6 * phase_progress)  # 24-18 spm
+            power_base = 150 - int(50 * phase_progress)  # 150-100 watts
+            speed_base = 2.5 - 0.5 * phase_progress  # 2.5-2.0 m/s
+        
+        # Add some random variation
         stroke_rate = max(0, stroke_rate_base + random.randint(-2, 2))
-        power = max(0, power_base + random.randint(-15, 15))
+        power = max(0, power_base + random.randint(-10, 10))
+        speed = max(0, speed_base + random.uniform(-0.1, 0.1))
         
-        # Calculate stroke count based on stroke rate and time
-        stroke_count = int((stroke_rate / 60) * self.workout_duration)
+        # Calculate distance increment (m/s → m)
+        distance_increment = speed * 1.0  # 1 second since last update
         
-        # Calculate speed (simplified)
-        speed = 2.5 + (power / 200)  # rough estimate in m/s
+        # Update total distance
+        self.total_distance += distance_increment
         
-        # We need to calculate just the distance for this second, not the cumulative distance
-        # This is important for accurate accumulation over time
-        distance_this_second = speed  # meters covered in this second
+        # Calculate calories increment (very simplified)
+        # Assuming ~5 calories per minute per 100 watts for rowing
+        calories_per_hour = power * 0.05 * 60
+        calories_per_second = calories_per_hour / 3600  # per second
         
-        # Calculate calories (simplified)
-        calories_this_second = power / 60  # rough estimate for 1 second
+        # Accumulate calories (non-decreasing)
+        # Store as a running total and ensure it only increases
+        calories_accumulated = self.workout_duration * calories_per_second
+        self.total_calories = max(self.total_calories, int(calories_accumulated))
         
-        # Heart rate simulation (with some lag behind power changes)
-        target_hr = 60 + int(power * 0.65)  # Base HR calculation (rowers tend to have higher HR than cycling)
+        # Calculate heart rate (simplified model)
+        # Assume heart rate correlates with power
+        heart_rate_base = 60 + (power / 2.5)
+        heart_rate = min(220, int(heart_rate_base + random.randint(-5, 5)))
         
-        # Gradually approach target heart rate (simulating cardiovascular lag)
-        prev_hr = getattr(self, '_prev_heart_rate_rower', 110)  # Default to 110 if not set
-        heart_rate = prev_hr + int((target_hr - prev_hr) * 0.1)  # 10% adjustment toward target
-        heart_rate = min(max(heart_rate, 60), 200)  # Keep within reasonable bounds
-        self._prev_heart_rate_rower = heart_rate  # Store for next time
+        # Calculate total strokes
+        strokes = int(self.workout_duration * stroke_rate / 60)
         
-        # Store the incremental values for this second to report back
-        self._last_distance_rower = getattr(self, '_last_distance_rower', 0) + distance_this_second
-        self._last_calories_rower = getattr(self, '_last_calories_rower', 0) + calories_this_second
-        
-        return {
-            'type': 'rower',
-            'device_name': self.device.name,
-            'device_address': self.device.address,
-            'timestamp': self.workout_duration,
-            'stroke_rate': stroke_rate,
-            'stroke_count': stroke_count,
-            'instantaneous_power': power,
-            'instantaneous_speed': speed,
-            'heart_rate': heart_rate,
-            'elapsed_time': self.workout_duration,
-            'total_distance': self._last_distance_rower,
-            'total_calories': int(self._last_calories_rower),
-            'workout_type': 'rower'
+        # Create data packet
+        data = {
+            "type": "rower",  # Add workout type to the data
+            "instantaneous_power": power,
+            "stroke_rate": stroke_rate,
+            "heart_rate": heart_rate,
+            "total_distance": self.total_distance,  # Use accumulated value
+            "total_calories": self.total_calories,  # Use accumulated value
+            "total_strokes": strokes,
+            "timestamp": self.workout_duration,
+            "elapsed_time": self.workout_duration  # Add elapsed time for UI
         }
+        
+        return data
     
     def _notify_data(self, data: Dict[str, Any]) -> None:
         """
         Notify all registered data callbacks with new data.
         
         Args:
-            data: Dictionary of simulated FTMS data
+            data: Dictionary of FTMS data
         """
+        logger.debug(f"Simulator generating data: {data}")
+        if len(self.data_callbacks) == 0:
+            logger.warning("No data callbacks registered with simulator!")
+            
         for callback in self.data_callbacks:
             try:
+                logger.debug(f"Calling data callback: {callback.__name__ if hasattr(callback, '__name__') else 'anonymous'}")
                 callback(data)
             except Exception as e:
                 logger.error(f"Error in data callback: {str(e)}")
@@ -405,114 +468,46 @@ class FTMSDeviceSimulator:
             status: Status type
             data: Status data
         """
+        if len(self.status_callbacks) == 0:
+            logger.warning("No status callbacks registered with simulator!")
+            
         for callback in self.status_callbacks:
             try:
+                logger.debug(f"Calling status callback: {callback.__name__ if hasattr(callback, '__name__') else 'anonymous'}")
                 callback(status, data)
             except Exception as e:
                 logger.error(f"Error in status callback: {str(e)}")
-    
-    def start_workout(self) -> None:
-        """Start a workout on the simulated device."""
-        if not self.running:
-            logger.warning("Cannot start workout - simulator is not running")
-            return
-            
-        logger.info(f"Starting workout on simulated {self.device_type}")
-        self.workout_active = True
-        self.start_time = time.time()  # Reset start time when workout begins
-        self.workout_duration = 0
-        
-        # Reset accumulated metrics
-        self._last_distance = 0
-        self._last_calories = 0
-        self._last_distance_rower = 0
-        self._last_calories_rower = 0
-        self._prev_heart_rate = 100
-        self._prev_heart_rate_rower = 110
-        
-        # Generate initial data point immediately without waiting for loop
-        if self.device_type == "bike":
-            initial_data = self._generate_bike_data()
-        else:
-            initial_data = self._generate_rower_data()
-            
-        logger.info(f"Generated initial workout data point: {initial_data.get('type')}")
-        self._notify_data(initial_data)
-        
-        # Notify that workout has started
-        self._notify_status("workout_started", {
-            "device": self.device,
-            "workout_type": self.device_type
-        })
-    
-    def end_workout(self) -> None:
-        """End the current workout on the simulated device."""
-        if not self.workout_active:
-            logger.warning("No active workout to end")
-            return
-            
-        logger.info(f"Ending workout on simulated {self.device_type}")
-        self.workout_active = False
-        
-        # Notify that workout has ended
-        self._notify_status("workout_ended", {
-            "device": self.device,
-            "workout_type": self.device_type,
-            "duration": self.workout_duration
-        })
-    
-    def _on_simulation_task_done(self, task: asyncio.Task) -> None:
-        """
-        Handle the completion of the simulation task.
-        
-        Args:
-            task: The completed asyncio task
-        """
-        try:
-            # Check if there's an exception
-            if not task.cancelled() and task.exception():
-                logger.error(f"Simulation task failed with exception: {task.exception()}")
-                
-                # Restart the simulation if it failed but should be running
-                if self.running:
-                    logger.info("Restarting simulation after error...")
-                    self._start_simulation_task()
-        except asyncio.CancelledError:
-            logger.info("Simulation task was cancelled")
-        except Exception as e:
-            logger.error(f"Error handling simulation task completion: {str(e)}")
-            
-        # Ensure running flag is properly set if the task ended unexpectedly
-        if self.running and not hasattr(self, '_simulation_task'):
-            logger.warning("Simulation task ended unexpectedly, stopping simulation")
-            self.running = False
 
 
-async def main():
-    """Example usage of the FTMSDeviceSimulator class."""
+# Example usage
+if __name__ == "__main__":
     # Create a bike simulator
     bike_simulator = FTMSDeviceSimulator(device_type="bike")
     
-    # Define callbacks
+    # Define a callback function
     def data_callback(data):
         print(f"Received data: {data}")
     
     def status_callback(status, data):
-        print(f"Status update: {status} - {data}")
+        print(f"Status update: {status}")
     
     # Register callbacks
     bike_simulator.register_data_callback(data_callback)
     bike_simulator.register_status_callback(status_callback)
     
-    # Start simulation
+    # Start the simulation
     bike_simulator.start_simulation()
     
-    # Run for 30 seconds
-    await asyncio.sleep(30)
+    # Start a workout
+    bike_simulator.start_workout()
     
-    # Stop simulation
-    bike_simulator.stop_simulation()
-
-
-if __name__ == "__main__":
-    asyncio.run(main())
+    # Run for a while
+    try:
+        import time
+        time.sleep(10)
+    finally:
+        # End the workout
+        bike_simulator.end_workout()
+        
+        # Stop the simulation
+        bike_simulator.stop_simulation()

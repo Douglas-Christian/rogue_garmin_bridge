@@ -30,7 +30,7 @@ from fit.garmin_uploader import GarminUploader
 
 # Configure logging
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.DEBUG,  # Change from INFO to DEBUG
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger('web_app')
@@ -151,8 +151,11 @@ def handle_ftms_status(status: str, data: Any):
 
 # Handle FTMS data
 def handle_ftms_data(data: Dict[str, Any]):
-    logger.debug(f"FTMS data: {data}")
-    # Data will be handled by workout manager
+    global latest_data
+    logger.debug(f"FTMS data received: {data}")
+    # Store the data directly in latest_data so it's available for status API calls
+    latest_data = data
+    # The rest of the data handling is done by workout_manager via its own callback
 
 # Handle workout status updates
 def handle_workout_status(status: str, data: Any):
@@ -342,7 +345,20 @@ def start_workout():
     """Start a new workout."""
     try:
         device_id = request.json.get('device_id')
-        workout_type = request.json.get('workout_type', 'unknown')
+        
+        # Determine workout type based on connected device if not provided
+        workout_type = request.json.get('workout_type')
+        if not workout_type and connected_device_name:
+            # Determine workout type from device name
+            if 'bike' in connected_device_name.lower():
+                workout_type = 'bike'
+            elif 'rower' in connected_device_name.lower():
+                workout_type = 'rower'
+            else:
+                workout_type = 'bike'  # Default to bike if we can't determine
+            logger.info(f"Determined workout type from device name: {workout_type}")
+        elif not workout_type:
+            workout_type = 'bike'  # Default to bike if we can't determine
         
         if not device_id:
             # Get the first device from the database

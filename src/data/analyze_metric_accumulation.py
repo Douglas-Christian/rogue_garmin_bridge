@@ -133,18 +133,24 @@ def analyze_metric_accumulation():
             avg_gap = 0
             max_gap = 0
             for i in range(1, len(data_timestamps)):
-                gap = data_timestamps[i] - data_timestamps[i-1]
-                avg_gap += gap
-                max_gap = max(max_gap, gap)
-                if gap > 10:  # More than 10 seconds between data points
-                    gaps.append((i, gap))
+                try:
+                    ts1 = datetime.fromisoformat(data_timestamps[i-1].replace('Z', '+00:00'))
+                    ts2 = datetime.fromisoformat(data_timestamps[i].replace('Z', '+00:00'))
+                    gap = (ts2 - ts1).total_seconds()
+                    avg_gap += gap
+                    max_gap = max(max_gap, gap)
+                    if gap > 10:  # More than 10 seconds between data points
+                        gaps.append((i, gap))
+                except Exception as e:
+                    print(f"  Error calculating time gap: {e}")
             
-            avg_gap /= len(data_timestamps) - 1
-            print(f"  Data collection frequency: avg {avg_gap:.1f}s, max gap {max_gap}s")
-            if gaps:
-                print(f"  Found {len(gaps)} significant gaps (>10s) in data collection")
-                for idx, gap_size in gaps[:3]:  # Show first 3 gaps
-                    print(f"    Gap at point {idx}: {gap_size}s")
+            if len(data_timestamps) > 1:
+                avg_gap /= len(data_timestamps) - 1
+                print(f"  Data collection frequency: avg {avg_gap:.1f}s, max gap {max_gap}s")
+                if gaps:
+                    print(f"  Found {len(gaps)} significant gaps (>10s) in data collection")
+                    for idx, gap_size in gaps[:3]:  # Show first 3 gaps
+                        print(f"    Gap at point {idx}: {gap_size}s")
         
         # Check accumulation for distances
         has_distance_issues = False
