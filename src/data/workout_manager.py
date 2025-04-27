@@ -152,33 +152,40 @@ class WorkoutManager:
             logger.warning("No active workout to end")
             return False
         
+        # For debugging - log the call to end_workout
+        logger.info(f"[DATA_FLOW] Ending workout {self.active_workout_id}")
+        
+        # Store the workout ID before clearing state for later use
+        workout_id = self.active_workout_id
+        
+        # Notify FTMS manager to stop workout data generation BEFORE ending the workout in the database
+        # This ensures the simulator stops generating data before we complete the workout
+        if self.ftms_manager:
+            logger.info(f"[DATA_FLOW] Notifying FTMS manager to end workout {workout_id}")
+            self.ftms_manager.notify_workout_end(workout_id)
+        
         # Calculate final summary metrics
         self._calculate_summary_metrics()
         
         # End workout in database
+        logger.info(f"[DATA_FLOW] Ending workout {workout_id} in database with {len(self.data_points)} data points")
         success = self.database.end_workout(
-            self.active_workout_id,
+            workout_id,
             summary=self.summary_metrics
         )
         
         if success:
-            # Notify FTMS manager to stop workout data generation
-            if self.ftms_manager:
-                self.ftms_manager.notify_workout_end(self.active_workout_id)
-                
             # Notify status callbacks
             self._notify_status('workout_ended', {
-                'workout_id': self.active_workout_id,
+                'workout_id': workout_id,
                 'device_id': self.active_device_id,
                 'workout_type': self.workout_type,
                 'duration': int(time.time() - self.workout_start_time),
-                'summary': self.summary_metrics
+                'summary': self.summary_metrics,
+                'total_data_points': len(self.data_points)
             })
             
-            logger.info(f"Ended workout {self.active_workout_id}")
-            
-            # Store the workout ID before clearing state
-            workout_id = self.active_workout_id
+            logger.info(f"Ended workout {workout_id}")
             
             # Clear current workout state
             self.active_workout_id = None
@@ -190,7 +197,7 @@ class WorkoutManager:
             
             return True
         else:
-            logger.error(f"Failed to end workout {self.active_workout_id}")
+            logger.error(f"Failed to end workout {workout_id}")
             return False
     
     def add_data_point(self, data: Dict[str, Any]) -> bool:
@@ -305,23 +312,98 @@ class WorkoutManager:
         """
         return self.database.set_user_profile(profile)
     
-    def _handle_ftms_data(self, data: Dict[str, Any]) -> None:
+    def _handle_ftms_data(self, data: Dict[str, Any]) -> bool:
         """
-        Handle data from FTMS devices.
+        Handle data received from FTMS devices and integrate it into the active workout.
+        
+        This method serves as the critical bridge between raw data from devices (real or simulated)
+        and the workout database. It performs the following key operations:
+        
+        1. Receives raw FTMS data points from connected devices/simulators 
+        2. Validates, enriches, and normalizes the data (adding timestamps, IDs, etc.)
+        3. Stores the data in the database under the active workout
+        4. Updates local metrics tracking (including summary statistics)
+        5. Notifies registered callbacks of new data for UI updates
+        
+        The method incorporates timestamp collision prevention by adding microsecond precision
+        to timestamps, ensuring each data point has a unique identifier in the database.
         
         Args:
-            data: Dictionary of FTMS data
-        """
-        logger.info(f"Received FTMS data: {data.get('type', 'unknown')} data point")
+            data: Dictionary containing raw FTMS data from a device or simulator
+                  Expected keys vary by device type but typically include:
+                  - power measurements
+                  - cadence/stroke rate
+                  - distance
+                  - calories
+                  - heart rate (if available)
+                  - timestamp or elapsed_time
         
-        if self.active_workout_id:
-            # Log that we're adding data to the workout
-            logger.info(f"Adding data point to workout {self.active_workout_id}")
-            self.add_data_point(data)
-        else:
-            logger.debug("Received FTMS data but no active workout")
-            # Still update latest data even if no workout is active
-            self._notify_data(data)
+        Returns:
+            bool: True if data was successfully processed and stored, False otherwise
+        
+        Raises:
+            No exceptions are raised directly. Exceptions are caught, logged, and False is returned.
+        """
+        try:
+            # Log more information about the incoming data point to track data flow
+            data_id = data.get('data_id', 'unknown')
+            timestamp = data.get('timestamp', 'unknown')
+            
+            logger.info(f"[DATA_FLOW] Workout manager received FTMS data point ID={data_id}, timestamp={timestamp}, " +
+                      f"type={data.get('type', 'unknown')}, power={data.get('instantaneous_power', 'N/A')}")
+            
+            if self.active_workout_id:
+                # Make sure total_calories is present since some metrics depend on it
+                if 'total_calories' not in data and 'calories' in data:
+                    data['total_calories'] = data['calories']
+                    
+                # Make sure there's a timestamp
+                if 'timestamp' not in data:
+                    if 'elapsed_time' in data:
+                        data['timestamp'] = data['elapsed_time']
+                    else:
+                        data['timestamp'] = int(time.time() - self.workout_start_time)
+                
+                # CRITICAL FIX: Ensure every timestamp is unique by adding a fractional part
+                # This is the most reliable way to ensure unique timestamps
+                if isinstance(data['timestamp'], int):
+                    # Convert integer timestamp to float with microsecond precision
+                    microsecond_part = datetime.now().microsecond / 1000000
+                    data['timestamp'] = float(data['timestamp']) + microsecond_part
+                
+                # Debug the exact data being saved
+                logger.info(f"[DATA_FLOW] Adding data point to workout {self.active_workout_id}: " +
+                           f"time={data['timestamp']:.6f}s, data_id={data_id}")
+                
+                # Store in database - CRITICAL: Use a copy of the data to avoid modification issues
+                data_copy = data.copy()
+                success = self.database.add_workout_data(self.active_workout_id, data_copy['timestamp'], data_copy)
+                
+                if success:
+                    # Store data point locally
+                    self.data_points.append(data_copy)
+                    
+                    # Update summary metrics
+                    self._update_summary_metrics(data_copy)
+                    
+                    # Notify data callbacks
+                    self._notify_data(data_copy)
+                    
+                    logger.info(f"[DATA_FLOW] Successfully stored data point ID={data_id}")
+                    return True
+                else:
+                    logger.error(f"[DATA_FLOW] Failed to add data point ID={data_id} to workout {self.active_workout_id}")
+                    return False
+            else:
+                logger.info(f"[DATA_FLOW] Received FTMS data but no active workout - ID={data_id}")
+                # Still update latest data even if no workout is active
+                self._notify_data(data)
+                return False
+        except Exception as e:
+            logger.error(f"Error handling FTMS data: {str(e)}", exc_info=True)
+            import traceback
+            traceback.print_exc()
+            return False
     
     def _handle_ftms_status(self, status: str, data: Any) -> None:
         """

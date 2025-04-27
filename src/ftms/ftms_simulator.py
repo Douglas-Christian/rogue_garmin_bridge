@@ -38,6 +38,10 @@ class FTMSDeviceSimulator:
         if device_type not in ["bike", "rower"]:
             raise ValueError("Device type must be 'bike' or 'rower'")
         
+        # Set up logging - force DEBUG level for simulator
+        global logger
+        logger.setLevel(logging.DEBUG)
+        
         self.device_type = device_type
         self.running = False
         self.data_callbacks: List[Callable[[Dict[str, Any]], None]] = []
@@ -133,30 +137,55 @@ class FTMSDeviceSimulator:
         Start the simulation task in a proper asyncio context.
         This handles task creation in a more robust way.
         """
+        logger.info("Starting simulation task for generating workout data")
         try:
             # Try to get the current event loop
-            loop = asyncio.get_event_loop()
-            
-            # If the loop is closed or we're not in an event loop context,
-            # create a new loop
-            if loop.is_closed():
-                asyncio.set_event_loop(asyncio.new_event_loop())
+            try:
                 loop = asyncio.get_event_loop()
-        except RuntimeError:
-            # Not in an event loop context, create a new one
-            asyncio.set_event_loop(asyncio.new_event_loop())
-            loop = asyncio.get_event_loop()
-        
-        # Clear any existing task to prevent resource leaks
-        if hasattr(self, '_simulation_task') and self._simulation_task is not None:
-            if not self._simulation_task.done() and not self._simulation_task.cancelled():
-                self._simulation_task.cancel()
-        
-        # Create and store a reference to the task
-        self._simulation_task = loop.create_task(self._simulation_loop())
-        
-        # Add a callback to handle task completion
-        self._simulation_task.add_done_callback(self._on_simulation_task_done)
+            except RuntimeError:
+                # No event loop found in this thread, create a new one
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+                logger.info("Created new event loop for simulation")
+            
+            # If the loop is closed, create a new one
+            if loop.is_closed():
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+                logger.info("Created new event loop (previous was closed)")
+            
+            # Clear any existing task to prevent resource leaks
+            if hasattr(self, '_simulation_task') and self._simulation_task is not None:
+                if not self._simulation_task.done() and not self._simulation_task.cancelled():
+                    self._simulation_task.cancel()
+                    logger.info("Cancelled existing simulation task")
+            
+            # Create a dedicated thread for the simulation if we're not in an event loop
+            # This is a more robust approach for non-async environments
+            def run_event_loop():
+                logger.info("Starting dedicated simulation thread")
+                # Set the event loop for this thread
+                asyncio.set_event_loop(loop)
+                # Run the loop
+                loop.run_forever()
+                
+            # Create and start the thread
+            import threading
+            self._loop_thread = threading.Thread(target=run_event_loop, daemon=True)
+            self._loop_thread.start()
+            logger.info("Started simulation thread")
+            
+            # Create and store a reference to the task
+            self._simulation_task = asyncio.run_coroutine_threadsafe(self._simulation_loop(), loop)
+            logger.info("Created simulation task in separate thread")
+            
+            # Add a callback to handle task completion
+            self._simulation_task.add_done_callback(self._on_simulation_task_done)
+            
+        except Exception as e:
+            logger.error(f"Error starting simulation task: {str(e)}", exc_info=True)
+            import traceback
+            traceback.print_exc()
     
     def _on_simulation_task_done(self, task):
         """Handle simulation task completion."""
@@ -182,10 +211,27 @@ class FTMSDeviceSimulator:
         
         logger.info("Stopped simulation")
     
-    # Add this method to handle workout start
     def start_workout(self) -> None:
-        """Start a workout session in the simulator."""
+        """
+        Start a workout session in the simulator.
+        
+        This method activates the workout data generation in the simulator by:
+        1. Setting the workout_active flag to True
+        2. Resetting the workout start time and duration
+        3. Resetting all accumulated metrics (distance, calories, etc.)
+        4. Generating and sending an initial data point immediately
+        5. Notifying status callbacks of workout start
+        
+        After this method is called, the simulator will begin generating workout
+        data points at regular intervals (typically every second) until end_workout()
+        is called or the simulation is stopped.
+        
+        Returns:
+            None
+        """
         logger.info(f"Starting workout in {self.device_type} simulator")
+        
+        # Reset workout state
         self.workout_active = True
         self.start_time = time.time()
         self.workout_duration = 0
@@ -194,17 +240,48 @@ class FTMSDeviceSimulator:
         self.total_distance = 0.0
         self.total_calories = 0
         
+        # Generate and send an initial data point immediately
+        # This ensures data flow starts right away without waiting for the simulation loop
+        if self.device_type == "bike":
+            initial_data = self._generate_bike_data()
+        else:  # rower
+            initial_data = self._generate_rower_data()
+        
+        # Log and send the initial data point
+        logger.info(f"Sending initial {self.device_type} data: power={initial_data.get('instantaneous_power')}, " +
+                   f"distance={initial_data.get('total_distance'):.2f}m")
+        self._notify_data(initial_data)
+        
         # Notify status
         self._notify_status("workout_started", {
             "device": self.device,
             "workout_active": True
         })
     
-    # Add this method to handle workout end
     def end_workout(self) -> None:
-        """End a workout session in the simulator."""
+        """
+        End a workout session in the simulator.
+        
+        This method stops the workout data generation in the simulator by:
+        1. Setting the workout_active flag to False to stop the generation loop
+        2. Logging the current state for debugging purposes
+        3. Notifying status callbacks of workout end
+        4. Generating and sending a final data point to ensure the workout data is complete
+        
+        After this method is called, the simulator will stop generating workout data
+        until start_workout() is called again. The simulation loop continues running,
+        but checks the workout_active flag to determine whether to generate data.
+        
+        Returns:
+            None
+        """
         logger.info(f"Ending workout in {self.device_type} simulator")
+        
+        # Set flag to stop data generation
         self.workout_active = False
+        
+        # Log the current state to help debug
+        logger.info(f"[STATE] Simulator workout ended: running={self.running}, workout_active={self.workout_active}")
         
         # Notify status
         self._notify_status("workout_ended", {
@@ -212,53 +289,102 @@ class FTMSDeviceSimulator:
             "workout_active": False,
             "duration": int(time.time() - self.start_time)
         })
+        
+        # Send a final data point to ensure we have a complete workout
+        try:
+            if self.device_type == "bike":
+                final_data = self._generate_bike_data()
+            else:  # rower
+                final_data = self._generate_rower_data()
+                
+            # Mark this as the final data point
+            final_data['is_final_point'] = True
+            
+            # Add a distinct data_id for the final point
+            final_data['data_id'] = f"final_{int(time.time())}"
+            
+            logger.info(f"Sending final data point for {self.device_type} workout")
+            self._notify_data(final_data)
+        except Exception as e:
+            logger.error(f"Error sending final data point: {str(e)}")
+            import traceback
+            traceback.print_exc()
     
     async def _simulation_loop(self) -> None:
         """Main simulation loop that generates data."""
         try:
+            # Set a flag to track successful data sending
+            data_generation_count = 0
+            last_successful_send_time = time.time()
+            
+            logger.info("Simulation loop STARTED - will generate data when workout is active")
+            
             while self.running:
                 try:
                     # Update workout duration
                     current_time = time.time()
+                    
                     if self.workout_active:
                         self.workout_duration = int(current_time - self.start_time)
-                    
-                    # Only generate and send data if a workout is active
-                    if self.workout_active:
-                        # Generate and send data
+                        
+                        # Only generate and send data if a workout is active
                         if self.device_type == "bike":
                             data = self._generate_bike_data()
-                            logger.info(f"Generated bike data: power={data.get('instantaneous_power')}, "
+                            data_generation_count += 1
+                            logger.info(f"[{data_generation_count}] Generated bike data: power={data.get('instantaneous_power')}, "
                                        f"cadence={data.get('instantaneous_cadence')}, "
                                        f"distance={data.get('total_distance'):.2f}m, "
                                        f"calories={data.get('total_calories')}")
-                            self._notify_data(data)
+                            
+                            # Try to send the data, and track success/failure
+                            sent_successfully = self._notify_data(data)
+                            if sent_successfully:
+                                last_successful_send_time = current_time
+                                logger.info(f"Successfully sent data point #{data_generation_count}")
+                            else:
+                                time_since_last_success = current_time - last_successful_send_time
+                                logger.error(f"Failed to send data point #{data_generation_count} - {time_since_last_success:.1f}s since last success")
                         else:  # rower
                             data = self._generate_rower_data()
-                            logger.info(f"Generated rower data: power={data.get('instantaneous_power')}, "
+                            data_generation_count += 1
+                            logger.info(f"[{data_generation_count}] Generated rower data: power={data.get('instantaneous_power')}, "
                                        f"stroke_rate={data.get('stroke_rate')}, "
                                        f"distance={data.get('total_distance'):.2f}m, "
                                        f"calories={data.get('total_calories')}")
-                            self._notify_data(data)
+                            
+                            # Try to send the data, and track success/failure
+                            sent_successfully = self._notify_data(data)
+                            if sent_successfully:
+                                last_successful_send_time = current_time
+                                logger.info(f"Successfully sent data point #{data_generation_count}")
+                            else:
+                                time_since_last_success = current_time - last_successful_send_time
+                                logger.error(f"Failed to send data point #{data_generation_count} - {time_since_last_success:.1f}s since last success")
                     else:
-                        logger.debug(f"Workout not active, not generating data (running={self.running})")
+                        logger.debug(f"Workout not active, not generating data (running={self.running}, workout_active={self.workout_active})")
                     
-                    # Wait before next iteration
-                    await asyncio.sleep(1)
+                    # Wait before next iteration - use a very short interval to ensure we're generating data
+                    await asyncio.sleep(1.0)  # Generate data every 1.0 second
                 except asyncio.CancelledError:
                     logger.info("Simulation loop cancelled")
                     break
                 except Exception as e:
-                    logger.error(f"Error in simulation iteration: {str(e)}")
+                    logger.error(f"Error in simulation iteration: {str(e)}", exc_info=True)
+                    # Print full traceback
+                    import traceback
+                    traceback.print_exc()
                     # Continue the loop if there's an error in a single iteration
                     await asyncio.sleep(1)
         except asyncio.CancelledError:
             logger.info("Simulation loop cancelled")
         except Exception as e:
-            logger.error(f"Fatal error in simulation loop: {str(e)}")
+            logger.error(f"Fatal error in simulation loop: {str(e)}", exc_info=True)
+            import traceback
+            traceback.print_exc()
         finally:
             # Ensure we mark as not running if we exit for any reason
             self.running = False
+            logger.info(f"Simulation loop ended after generating {data_generation_count} data points")
     
     def _generate_bike_data(self) -> Dict[str, Any]:
         """
@@ -442,23 +568,55 @@ class FTMSDeviceSimulator:
         
         return data
     
-    def _notify_data(self, data: Dict[str, Any]) -> None:
+    def _notify_data(self, data: Dict[str, Any]) -> bool:
         """
         Notify all registered data callbacks with new data.
         
         Args:
             data: Dictionary of FTMS data
-        """
-        logger.debug(f"Simulator generating data: {data}")
-        if len(self.data_callbacks) == 0:
-            logger.warning("No data callbacks registered with simulator!")
             
-        for callback in self.data_callbacks:
-            try:
-                logger.debug(f"Calling data callback: {callback.__name__ if hasattr(callback, '__name__') else 'anonymous'}")
-                callback(data)
-            except Exception as e:
-                logger.error(f"Error in data callback: {str(e)}")
+        Returns:
+            True if data was successfully sent to at least one callback, False otherwise
+        """
+        try:
+            # Force dump the first few and last few data items to debug data flow
+            data_keys = list(data.keys())
+            first_few = {k: data[k] for k in data_keys[:3] if k in data}
+            last_few = {k: data[k] for k in data_keys[-3:] if k in data}
+            logger.debug(f"Simulator generating data - first few keys: {first_few}, last few keys: {last_few}")
+            
+            if len(self.data_callbacks) == 0:
+                logger.warning("No data callbacks registered with simulator!")
+                return False
+                
+            success_count = 0
+            error_count = 0
+            
+            for callback in self.data_callbacks:
+                try:
+                    callback_name = callback.__name__ if hasattr(callback, '__name__') else 'anonymous'
+                    logger.debug(f"Calling data callback: {callback_name}")
+                    
+                    # Include a unique ID for each data point to make sure it's different
+                    data = data.copy()  # Make a copy to avoid modifying the original
+                    data['data_id'] = f"{self.workout_duration}_{int(time.time() * 1000) % 1000}"
+                    
+                    callback(data)
+                    success_count += 1
+                except Exception as e:
+                    error_count += 1
+                    logger.error(f"Error in data callback: {str(e)}", exc_info=True)
+                    # Print the traceback for better debugging
+                    import traceback
+                    traceback.print_exc()
+            
+            # Return True if at least one callback succeeded
+            return success_count > 0
+        except Exception as e:
+            logger.error(f"Error in _notify_data: {str(e)}", exc_info=True)
+            import traceback
+            traceback.print_exc()
+            return False
     
     def _notify_status(self, status: str, data: Any) -> None:
         """

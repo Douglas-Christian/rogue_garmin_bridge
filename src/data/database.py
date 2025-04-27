@@ -19,6 +19,8 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger('database')
+# Set database logger to DEBUG level temporarily to diagnose data flow issues
+logger.setLevel(logging.DEBUG)
 
 class Database:
     """
@@ -94,12 +96,12 @@ class Database:
                 )
             ''')
             
-            # Workout data table
+            # Workout data table - CRITICAL: Changed timestamp to REAL to handle fractional seconds
             self.cursor.execute('''
                 CREATE TABLE IF NOT EXISTS workout_data (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     workout_id INTEGER,
-                    timestamp INTEGER,
+                    timestamp REAL,  /* Changed from INTEGER to REAL to support fractional seconds */
                     data TEXT,
                     FOREIGN KEY (workout_id) REFERENCES workouts (id)
                 )
@@ -323,15 +325,28 @@ class Database:
         try:
             self._connect()
             
+            # Verify workout exists
+            self.cursor.execute("SELECT id FROM workouts WHERE id = ?", (workout_id,))
+            workout = self.cursor.fetchone()
+            if not workout:
+                logger.error(f"Cannot add data point: Workout {workout_id} does not exist")
+                return False
+            
             # Convert data to JSON string
             data_json = json.dumps(data)
             
+            # Use REPLACE to ensure we don't get duplicate timestamps
+            # This will overwrite any existing record with the same workout_id and timestamp
             self.cursor.execute(
-                "INSERT INTO workout_data (workout_id, timestamp, data) VALUES (?, ?, ?)",
+                """
+                INSERT OR REPLACE INTO workout_data (workout_id, timestamp, data) 
+                VALUES (?, ?, ?)
+                """,
                 (workout_id, timestamp, data_json)
             )
             
             self.conn.commit()
+            logger.debug(f"Added data point to workout {workout_id} at timestamp {timestamp}")
             return True
         except sqlite3.Error as e:
             logger.error(f"Error adding workout data: {str(e)}")

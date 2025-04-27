@@ -8,6 +8,8 @@ handling both real devices and simulated devices with a consistent API.
 
 import asyncio
 import logging
+import time
+import random
 from typing import Dict, List, Optional, Callable, Any, Union
 
 from bleak.backends.device import BLEDevice
@@ -167,11 +169,45 @@ class FTMSDeviceManager:
         Args:
             data: Dictionary of FTMS data
         """
-        for callback in self.data_callbacks:
-            try:
-                callback(data)
-            except Exception as e:
-                logger.error(f"Error in data callback: {str(e)}")
+        try:
+            # Add a unique identifier for this data point if one doesn't exist
+            if 'data_id' not in data:
+                data['data_id'] = f"data_{time.time()}_{random.randint(1000, 9999)}"
+                
+            # Debug logging for data flow tracking
+            logger.info(f"FTMS Manager received data: type={data.get('type', 'unknown')}, " +
+                       f"timestamp={data.get('timestamp', 'N/A')}, " +
+                       f"data_id={data.get('data_id', 'N/A')}")
+                   
+            # Ensure we have callbacks to forward to
+            if not self.data_callbacks:
+                logger.warning("No data callbacks registered with FTMS Manager!")
+                return
+            
+            # Forward data to all registered callbacks
+            success_count = 0
+            for callback in self.data_callbacks:
+                try:
+                    callback_name = callback.__name__ if hasattr(callback, '__name__') else 'anonymous'
+                    logger.debug(f"Forwarding data to callback: {callback_name}")
+                    
+                    # Create a copy of the data to avoid modifications affecting other callbacks
+                    callback_data = data.copy()
+                    callback(callback_data)
+                    success_count += 1
+                except Exception as e:
+                    logger.error(f"Error in FTMS Manager data callback: {str(e)}", exc_info=True)
+                    # Log full traceback for better debugging
+                    import traceback
+                    traceback.print_exc()
+                    
+            if success_count == 0:
+                logger.error("No callbacks successfully processed the data!")
+                
+        except Exception as e:
+            logger.error(f"Error in FTMS Manager _handle_data: {str(e)}", exc_info=True)
+            import traceback
+            traceback.print_exc()
     
     def _handle_status(self, status: str, data: Any) -> None:
         """
@@ -190,11 +226,21 @@ class FTMSDeviceManager:
     def notify_workout_start(self, workout_id: int, device_id: Optional[int] = None) -> None:
         """
         Notify the FTMS Manager that a workout has started.
-        This will begin workout data generation in simulators.
+        This will begin workout data generation in simulators or trigger appropriate commands on real devices.
+        
+        The workout_id is used to associate generated data with a specific workout in the database.
+        For simulators, this activates the data generation loop. For real devices, this may involve
+        sending commands to prepare the device for workout data collection.
         
         Args:
-            workout_id: ID of the new workout
-            device_id: Optional ID of the device (not used for simulation)
+            workout_id: ID of the new workout to associate with generated data
+            device_id: Optional ID of the device in the database (not used for simulation)
+        
+        Returns:
+            None
+        
+        Raises:
+            No exceptions are raised, but warnings are logged if no device is connected
         """
         if not self.active_device:
             logger.warning("Cannot start workout data - no device connected")
@@ -235,10 +281,21 @@ class FTMSDeviceManager:
     def notify_workout_end(self, workout_id: int) -> None:
         """
         Notify the FTMS Manager that a workout has ended.
-        This will stop workout data generation in simulators.
+        This will stop workout data generation in simulators or trigger appropriate commands on real devices.
+        
+        For simulators, this stops the data generation for the current workout by setting the workout_active
+        flag to False. For real devices, this would send commands to stop data collection if necessary.
+        
+        This method is critical for proper cleanup and state management when workouts end.
         
         Args:
             workout_id: ID of the ended workout
+        
+        Returns:
+            None
+        
+        Raises:
+            No exceptions are raised, but warnings are logged if no device is connected
         """
         if not self.active_device:
             logger.warning("Cannot end workout data - no device connected")
