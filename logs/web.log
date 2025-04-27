@@ -35,3 +35,9 @@
 2025-04-27 16:10:14,729 - web - INFO - Initializing FTMSDeviceManager with use_simulator=True, device_type=bike
 2025-04-27 16:10:14,730 - web - INFO - Using FTMS device simulator for bike
 2025-04-27 16:10:14,730 - web - INFO - Flask application initialized. FTMS scanning thread started.
+2025-04-27 16:16:59,779 - web - INFO - Initializing FTMSDeviceManager with use_simulator=True, device_type=bike
+2025-04-27 16:16:59,780 - web - INFO - Using FTMS device simulator for bike
+2025-04-27 16:16:59,780 - web - INFO - Flask application initialized. FTMS scanning thread started.
+2025-04-27 16:16:59,982 - web - INFO - Initializing FTMSDeviceManager with use_simulator=True, device_type=bike
+2025-04-27 16:16:59,983 - web - INFO - Using FTMS device simulator for bike
+2025-04-27 16:16:59,984 - web - INFO - Flask application initialized. FTMS scanning thread started.

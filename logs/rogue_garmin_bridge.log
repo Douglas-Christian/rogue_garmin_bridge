@@ -372,3 +372,66 @@
 2025-04-27 16:10:39,734 - ftms - INFO - Discovering simulated FTMS devices
 2025-04-27 16:10:40,742 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:10:40] "GET /api/status HTTP/1.1" 200 -
 2025-04-27 16:10:42,435 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:10:42] "GET /api/status HTTP/1.1" 200 -
+2025-04-27 16:16:59,750 - root - INFO - Logging initialized at 2025-04-27T16:16:59.750260
+2025-04-27 16:16:59,750 - root - INFO - Log files located at: e:\rogue_garmin_bridge\logs
+2025-04-27 16:16:59,778 - database - INFO - Database tables created
+2025-04-27 16:16:59,779 - web - INFO - Initializing FTMSDeviceManager with use_simulator=True, device_type=bike
+2025-04-27 16:16:59,779 - ftms - INFO - Using FTMS device simulator for bike
+2025-04-27 16:16:59,780 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:16:59,780 - web - INFO - Using FTMS device simulator for bike
+2025-04-27 16:16:59,780 - web - INFO - Flask application initialized. FTMS scanning thread started.
+2025-04-27 16:16:59,799 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.26:5000
+2025-04-27 16:16:59,799 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-27 16:16:59,800 - werkzeug - INFO -  * Restarting with stat
+2025-04-27 16:16:59,975 - root - INFO - Logging initialized at 2025-04-27T16:16:59.975414
+2025-04-27 16:16:59,975 - root - INFO - Log files located at: e:\rogue_garmin_bridge\logs
+2025-04-27 16:16:59,982 - database - INFO - Database tables created
+2025-04-27 16:16:59,982 - web - INFO - Initializing FTMSDeviceManager with use_simulator=True, device_type=bike
+2025-04-27 16:16:59,983 - ftms - INFO - Using FTMS device simulator for bike
+2025-04-27 16:16:59,983 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:16:59,983 - web - INFO - Using FTMS device simulator for bike
+2025-04-27 16:16:59,984 - web - INFO - Flask application initialized. FTMS scanning thread started.
+2025-04-27 16:16:59,995 - werkzeug - WARNING -  * Debugger is active!
+2025-04-27 16:16:59,998 - werkzeug - INFO -  * Debugger PIN: 630-738-736
+2025-04-27 16:17:00,441 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:00] "GET /api/status HTTP/1.1" 200 -
+2025-04-27 16:17:02,742 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:02] "GET /api/status HTTP/1.1" 200 -
+2025-04-27 16:17:03,095 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:17:03,095 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:03] "POST /api/discover HTTP/1.1" 200 -
+2025-04-27 16:17:04,745 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:04] "GET /api/status HTTP/1.1" 200 -
+2025-04-27 16:17:04,780 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:17:04,985 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:17:06,426 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:06] "GET /api/status HTTP/1.1" 200 -
+2025-04-27 16:17:08,752 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:08] "GET /api/status HTTP/1.1" 200 -
+2025-04-27 16:17:09,004 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:17:09,005 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:09] "POST /api/discover HTTP/1.1" 200 -
+2025-04-27 16:17:09,781 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:17:09,985 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:17:10,442 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:10] "GET /api/status HTTP/1.1" 200 -
+2025-04-27 16:17:10,775 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:10] "GET /settings HTTP/1.1" 200 -
+2025-04-27 16:17:10,814 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-27 16:17:11,027 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:11] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-04-27 16:17:11,338 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:11] "GET /api/user_profile HTTP/1.1" 200 -
+2025-04-27 16:17:11,338 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:11] "GET /api/settings HTTP/1.1" 200 -
+2025-04-27 16:17:12,381 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:12] "POST /api/settings HTTP/1.1" 200 -
+2025-04-27 16:17:14,782 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:17:14,986 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:17:15,051 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:15] "GET /devices HTTP/1.1" 200 -
+2025-04-27 16:17:15,253 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:15] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-27 16:17:15,315 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:15] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-04-27 16:17:15,377 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:15] "GET /api/status HTTP/1.1" 200 -
+2025-04-27 16:17:16,233 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:17:16,234 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:16] "POST /api/discover HTTP/1.1" 200 -
+2025-04-27 16:17:17,639 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:17] "GET /api/status HTTP/1.1" 200 -
+2025-04-27 16:17:19,320 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:19] "GET /api/status HTTP/1.1" 200 -
+2025-04-27 16:17:19,782 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:17:19,987 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:17:20,147 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:17:20,147 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:20] "POST /api/discover HTTP/1.1" 200 -
+2025-04-27 16:17:21,326 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:21] "GET /api/status HTTP/1.1" 200 -
+2025-04-27 16:17:23,644 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:23] "GET /api/status HTTP/1.1" 200 -
+2025-04-27 16:17:24,783 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:17:24,988 - ftms - INFO - Discovering simulated FTMS devices
+2025-04-27 16:17:25,321 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 16:17:25] "GET /api/status HTTP/1.1" 200 -

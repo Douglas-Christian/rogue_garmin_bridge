@@ -79,18 +79,48 @@ class FTMSDeviceManager:
                 logger.error(f"Error in data callback: {str(e)}")
     
     def _handle_status(self, status, data):
-        """Handle status events from the device and forward to callbacks."""
-        self.device_status = status
-        if status == "connected":
-            self.connected_device = data
-        elif status == "disconnected":
-            self.connected_device = None
+        """Handle status updates from the device and forward to callbacks."""
+        logger.debug(f"Handling status update: {status}")
+        
+        try:
+            # For 'connected' status, extract the device information
+            if status == "connected":
+                # Extract the device object, which could be a SimulatedBLEDevice or a standard BLEDevice
+                device = data
+                
+                # Check if it's a SimulatedBLEDevice (which has a to_dict method)
+                if hasattr(device, 'to_dict') and callable(getattr(device, 'to_dict')):
+                    self.connected_device = device.to_dict()
+                else:
+                    # For a standard BLEDevice, create a dictionary with the required fields
+                    self.connected_device = {
+                        "address": device.address,
+                        "name": device.name,
+                        "rssi": getattr(device, 'rssi', None),
+                        "metadata": getattr(device, 'metadata', {})
+                    }
+                
+                self.device_status = "connected"
+                logger.info(f"Connected to device: {self.connected_device.get('name', 'Unknown')}")
             
-        for callback in self.status_callbacks:
-            try:
-                callback(status, data)
-            except Exception as e:
-                logger.error(f"Error in status callback: {str(e)}")
+            # For 'disconnected' status
+            elif status == "disconnected":
+                self.device_status = "disconnected"
+                logger.info("Disconnected from device")
+            
+            # For workout-related status updates
+            elif status in ["workout_started", "workout_ended", "workout_paused", "workout_resumed"]:
+                logger.info(f"Workout status: {status}")
+                # Pass the status update to callbacks
+            
+            # Pass the status update to all registered callbacks
+            for callback in self.status_callbacks:
+                try:
+                    callback(status, data)
+                except Exception as e:
+                    logger.error(f"Error in status callback: {str(e)}")
+        except Exception as e:
+            logger.error(f"Error handling status update: {str(e)}", exc_info=True)
     
     def start_scanning(self):
         """Start scanning for devices in a loop."""
@@ -113,8 +143,17 @@ class FTMSDeviceManager:
                 logger.error("No connector available for device discovery")
                 return {}
                 
-            # Explicitly check if the sync or async version exists
-            if hasattr(self.connector, 'discover_devices_sync'):
+            # Check explicitly for FTMSDeviceSimulator and handle differently
+            if isinstance(self.connector, FTMSDeviceSimulator):
+                try:
+                    logger.debug("Using simulator's discover_devices method")
+                    devices = self.connector.discover_devices()
+                    return devices
+                except Exception as e:
+                    logger.error(f"Error calling simulator's discover_devices: {str(e)}", exc_info=True)
+                    return {}
+            # Standard approach for other connectors
+            elif hasattr(self.connector, 'discover_devices_sync'):
                 logger.debug("Using synchronous discover_devices_sync method")
                 try:
                     devices = self.connector.discover_devices_sync()

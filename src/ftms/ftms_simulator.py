@@ -62,16 +62,11 @@ class FTMSDeviceSimulator:
         logger.info("Discovering simulated FTMS devices")
         
         # Return a JSON-serializable dictionary representation of the device
-        devices = {
-            self.device.address: {
-                "address": self.device.address,
-                "name": self.device.name,
-                "rssi": self.device.rssi,
-                "metadata": self.device.metadata
-            }
+        device_dict = {
+            self.device.address: self.device.to_dict()
         }
         
-        return devices
+        return device_dict
     
     def discover_devices_sync(self):
         """
@@ -112,6 +107,15 @@ class FTMSDeviceSimulator:
             
             def __str__(self):
                 return f"{self.name} ({self.address})"
+            
+            def to_dict(self):
+                """Convert to a dictionary for JSON serialization"""
+                return {
+                    "address": self.address,
+                    "name": self.name,
+                    "rssi": self.rssi,
+                    "metadata": self.metadata
+                }
         
         return SimulatedBLEDevice(device_dict)
     
