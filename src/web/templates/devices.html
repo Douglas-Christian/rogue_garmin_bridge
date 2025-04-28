@@ -184,7 +184,20 @@
             if (data.success) {
                 // Connected successfully
                 discoverStatus.innerHTML = `<div class="alert alert-success">Connected to ${name}</div>`;
-                updateStatus();
+                
+                // Set the connected device information immediately without waiting for status update
+                statusText.textContent = 'Connected';
+                statusText.className = 'badge bg-success';
+                deviceName.textContent = name;
+                deviceType.textContent = name.includes('Bike') ? 'Bike' : (name.includes('Rower') ? 'Rower' : 'Unknown');
+                deviceAddress.textContent = address;
+                disconnectBtn.disabled = false;
+                
+                // Highlight the connected device in the device list
+                highlightConnectedDevice(address);
+                
+                // Force a status update to ensure backend and frontend are in sync
+                setTimeout(updateStatus, 500);
             } else {
                 // Error
                 discoverStatus.innerHTML = `<div class="alert alert-danger">Error connecting: ${data.error || 'Unknown error'}</div>`;
@@ -194,6 +207,33 @@
             // Display error
             discoverStatus.innerHTML = `<div class="alert alert-danger">Error connecting: ${error.message}</div>`;
             console.error('Error connecting to device:', error);
+        });
+    }
+    
+    // Highlight the connected device in the list
+    function highlightConnectedDevice(address) {
+        // Remove highlight from all devices
+        document.querySelectorAll('.list-group-item').forEach(item => {
+            item.classList.remove('active', 'bg-success', 'text-white');
+            
+            // Re-enable connect button
+            const connectBtn = item.querySelector('.connect-btn');
+            if (connectBtn) {
+                connectBtn.disabled = false;
+                connectBtn.textContent = 'Connect';
+            }
+        });
+        
+        // Find and highlight the connected device
+        document.querySelectorAll('.list-group-item').forEach(item => {
+            const connectBtn = item.querySelector('.connect-btn');
+            if (connectBtn && connectBtn.dataset.address === address) {
+                item.classList.add('active', 'bg-success', 'text-white');
+                
+                // Disable and change button text
+                connectBtn.disabled = true;
+                connectBtn.textContent = 'Connected';
+            }
         });
     }
     
@@ -229,37 +269,53 @@
         fetch('/api/status')
             .then(response => response.json())
             .then(data => {
-                // Update device status
+                console.log("Device status data:", data); // Debug output
+                
+                // Always trust the server's connection status
                 if (data.device_status === 'connected') {
+                    // Update all UI elements to show connected status
                     statusText.textContent = 'Connected';
                     statusText.className = 'badge bg-success';
                     disconnectBtn.disabled = false;
+                    
+                    // Update device info
+                    deviceName.textContent = data.device_name || 'Unknown Device';
+                    deviceType.textContent = data.is_simulated ? 'Simulated' : 'Physical';
+                    if (data.latest_data && data.latest_data.type) {
+                        deviceType.textContent += ' ' + (data.latest_data.type.charAt(0).toUpperCase() + data.latest_data.type.slice(1));
+                    }
+                    deviceAddress.textContent = data.connected_device_address || 'None';
+                    
+                    // Highlight the connected device if it's in the device list
+                    if (data.connected_device_address) {
+                        highlightConnectedDevice(data.connected_device_address);
+                    }
                 } else {
+                    // Update all UI elements to show disconnected status
                     statusText.textContent = 'Disconnected';
                     statusText.className = 'badge bg-secondary';
                     disconnectBtn.disabled = true;
-                }
-                
-                // Update device info
-                if (data.latest_data) {
-                    if (data.latest_data.device_name) {
-                        deviceName.textContent = data.latest_data.device_name;
-                    }
-                    
-                    if (data.latest_data.type) {
-                        deviceType.textContent = data.latest_data.type.charAt(0).toUpperCase() + data.latest_data.type.slice(1);
-                    }
-                    
-                    if (data.latest_data.device_address) {
-                        deviceAddress.textContent = data.latest_data.device_address;
-                    }
-                } else {
                     deviceName.textContent = 'None';
                     deviceType.textContent = 'Unknown';
                     deviceAddress.textContent = 'None';
+                    
+                    // Remove highlight from any device in the list
+                    document.querySelectorAll('.list-group-item').forEach(item => {
+                        item.classList.remove('active', 'bg-success', 'text-white');
+                        
+                        // Re-enable all connect buttons
+                        const connectBtn = item.querySelector('.connect-btn');
+                        if (connectBtn) {
+                            connectBtn.disabled = false;
+                            connectBtn.textContent = 'Connect';
+                        }
+                    });
                 }
             })
-            .catch(error => console.error('Error fetching status:', error));
+            .catch(error => {
+                // Handle errors
+                console.error('Error fetching status:', error);
+            });
     }
     
     // Update on page load

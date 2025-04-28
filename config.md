@@ -6,7 +6,7 @@ This file contains configuration for deploying the Rogue to Garmin Bridge applic
 
 The following environment variables can be set to configure the application:
 
-- `PORT`: The port to run the application on (default: 8080)
+- `PORT`: The port to run the application on (default: 5000)
 - `DEBUG`: Set to "True" to enable debug mode (default: False)
 - `DATABASE_URL`: URL for the database (default: SQLite database in the data directory)
 - `SECRET_KEY`: Secret key for session encryption (required for production)

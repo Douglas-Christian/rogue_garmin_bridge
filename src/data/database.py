@@ -2,27 +2,27 @@
 """
 Database Module for Rogue to Garmin Bridge
 
-This module handles database operations for storing workout data,
-device information, and application configuration.
+This module handles the SQLite database operations for storing workout data.
 """
 
-import os
 import sqlite3
+import os
 import json
-import logging
 from datetime import datetime
-from typing import Dict, List, Any, Optional, Tuple, Union
+import sys
+from typing import Dict, List, Optional, Any
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger('database')
+# Add the project root to the path so we can use absolute imports
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+from src.utils.logging_config import get_component_logger
+
+# Get component logger
+logger = get_component_logger('database')
 
 class Database:
     """
-    Database class for managing SQLite database operations.
+    SQLite database handler for the Rogue Garmin Bridge.
+    Manages workout data storage and retrieval.
     """
     
     def __init__(self, db_path: str):
@@ -94,12 +94,12 @@ class Database:
                 )
             ''')
             
-            # Workout data table
+            # Workout data table - CRITICAL: Changed timestamp to REAL to handle fractional seconds
             self.cursor.execute('''
                 CREATE TABLE IF NOT EXISTS workout_data (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     workout_id INTEGER,
-                    timestamp INTEGER,
+                    timestamp REAL,  /* Changed from INTEGER to REAL to support fractional seconds */
                     data TEXT,
                     FOREIGN KEY (workout_id) REFERENCES workouts (id)
                 )
@@ -308,33 +308,54 @@ class Database:
         finally:
             self._disconnect()
     
-    def add_workout_data(self, workout_id: int, timestamp: int, data: Dict[str, Any]) -> bool:
+    def add_workout_data(self, workout_id: int, timestamp: float, data: Dict[str, Any]) -> bool: # Changed timestamp type hint to float
         """
         Add data point to a workout session.
-        
+
         Args:
             workout_id: Workout ID
-            timestamp: Data timestamp (seconds since workout start)
+            timestamp: Data timestamp (seconds since workout start, should be float)
             data: Workout data
-            
+
         Returns:
             True if successful, False otherwise
         """
+        logger.info(f"Attempting to add data point for workout {workout_id} at timestamp {timestamp:.6f}") # Log entry
         try:
             self._connect()
-            
+
+            # Verify workout exists
+            self.cursor.execute("SELECT id FROM workouts WHERE id = ?", (workout_id,))
+            workout = self.cursor.fetchone()
+            if not workout:
+                logger.error(f"Cannot add data point: Workout {workout_id} does not exist")
+                return False
+
             # Convert data to JSON string
             data_json = json.dumps(data)
-            
+
+            # Use a simple INSERT statement since timestamps should be unique
+            logger.debug(f"Executing INSERT for workout {workout_id}, timestamp {timestamp:.6f}") # Log before execute
             self.cursor.execute(
-                "INSERT INTO workout_data (workout_id, timestamp, data) VALUES (?, ?, ?)",
+                """
+                INSERT INTO workout_data (workout_id, timestamp, data)
+                VALUES (?, ?, ?)
+                """,
                 (workout_id, timestamp, data_json)
             )
-            
+
             self.conn.commit()
+            logger.info(f"Successfully added data point for workout {workout_id} at timestamp {timestamp:.6f}") # Log success
             return True
         except sqlite3.Error as e:
-            logger.error(f"Error adding workout data: {str(e)}")
+            logger.error(f"Error adding workout data for workout {workout_id}, timestamp {timestamp:.6f}: {str(e)}", exc_info=True) # Log specific error
+            # Attempt to rollback changes if commit failed
+            if self.conn:
+                try:
+                    self.conn.rollback()
+                    logger.warning(f"Rolled back transaction for workout {workout_id} due to error.")
+                except sqlite3.Error as rb_err:
+                    logger.error(f"Error during rollback for workout {workout_id}: {rb_err}")
             return False
         finally:
             self._disconnect()
@@ -377,15 +398,27 @@ class Database:
         """
         try:
             self._connect()
+            
+            # Get workout data points ordered by timestamp
             self.cursor.execute(
-                "SELECT * FROM workout_data WHERE workout_id = ? ORDER BY timestamp",
+                """
+                SELECT * FROM workout_data
+                WHERE workout_id = ?
+                ORDER BY timestamp ASC
+                """,
                 (workout_id,)
             )
-            data_points = []
             
+            data_points = []
             for row in self.cursor.fetchall():
                 data_point = dict(row)
-                data_point['data'] = json.loads(data_point['data'])
+                
+                # Parse JSON data
+                if data_point['data']:
+                    data_point['data'] = json.loads(data_point['data'])
+                else:
+                    data_point['data'] = {}
+                
                 data_points.append(data_point)
             
             return data_points
@@ -397,7 +430,7 @@ class Database:
     
     def get_workouts(self, limit: int = 10, offset: int = 0) -> List[Dict[str, Any]]:
         """
-        Get recent workouts.
+        Get recent workouts from the database.
         
         Args:
             limit: Maximum number of workouts to return
@@ -408,6 +441,8 @@ class Database:
         """
         try:
             self._connect()
+            
+            # Get workouts ordered by start time (most recent first)
             self.cursor.execute(
                 """
                 SELECT w.*, d.name as device_name, d.device_type 
@@ -418,11 +453,17 @@ class Database:
                 """,
                 (limit, offset)
             )
-            workouts = []
             
+            workouts = []
             for row in self.cursor.fetchall():
                 workout = dict(row)
-                workout['summary'] = json.loads(workout['summary'])
+                
+                # Parse JSON summary
+                if workout['summary']:
+                    workout['summary'] = json.loads(workout['summary'])
+                else:
+                    workout['summary'] = {}
+                
                 workouts.append(workout)
             
             return workouts

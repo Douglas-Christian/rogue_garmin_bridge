@@ -1,128 +1,87 @@
 #!/usr/bin/env python3
 """
-Web Application for Rogue to Garmin Bridge
-
-This module provides a Flask web application for the Rogue to Garmin Bridge,
-allowing users to connect to Rogue Echo equipment, view workout data,
-and convert/upload workouts to Garmin Connect.
+Flask web application for the Rogue Garmin Bridge.
+This provides a web interface for managing devices and workouts.
 """
 
 import os
-import json
+import time
+import argparse
 import asyncio
 import threading
-import logging
-from datetime import datetime
-from typing import Dict, List, Any, Optional
-
-from flask import Flask, render_template, request, jsonify, send_file, redirect, url_for
-
-# Import project modules
+import logging # Add logging import
+from flask import Flask, render_template, request, jsonify, redirect, url_for
 import sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from ftms.ftms_manager import FTMSDeviceManager
-from data.workout_manager import WorkoutManager
-from data.data_processor import DataProcessor
-from fit.fit_converter import FITConverter
-from fit.garmin_uploader import GarminUploader
+import importlib  # Add importlib for module reloading
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger('web_app')
+# Add the project root to the path so we can use absolute imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+# Force reload modules to avoid stale imports
+import src.ftms.ftms_manager
+importlib.reload(src.ftms.ftms_manager)
+import src.ftms.ftms_simulator
+importlib.reload(src.ftms.ftms_simulator)
 
-# Create Flask app
+from src.data.workout_manager import WorkoutManager
+from src.data.database import Database
+from src.ftms.ftms_manager import FTMSDeviceManager
+from src.utils.logging_config import get_component_logger
+
+# Parse command line arguments
+parser = argparse.ArgumentParser(description='Start the Rogue Garmin Bridge web application')
+parser.add_argument('--use-simulator', action='store_true', help='Use the FTMS device simulator instead of real devices')
+parser.add_argument('--device-type', default='bike', choices=['bike', 'rower'], help='Type of device to simulate (bike or rower)')
+args = parser.parse_args()
+
+# Get component logger
+logger = get_component_logger('web')
+
+# Initialize Flask app
 app = Flask(__name__)
 
-# Configuration
-DB_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'rogue_garmin.db')
-FIT_OUTPUT_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'fit_files')
+# Create database and workout manager
+db_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'src', 'data', 'rogue_garmin.db')
+db = Database(db_path)
+workout_manager = WorkoutManager(db)
 
-# Create output directories if they don't exist
-os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
-os.makedirs(FIT_OUTPUT_DIR, exist_ok=True)
+# Start FTMS device manager
+logger.info(f"Initializing FTMSDeviceManager with use_simulator={args.use_simulator}, device_type={args.device_type}")
+ftms_manager = FTMSDeviceManager(workout_manager, use_simulator=args.use_simulator, device_type=args.device_type)
 
-# Initialize components
-ftms_manager = None
-workout_manager = None
-data_processor = None
-fit_converter = None
-garmin_uploader = None
+if args.use_simulator:
+    logger.info(f"Using FTMS device simulator for {args.device_type}")
+else:
+    logger.info("Using real FTMS devices")
 
-# Global state
-current_workout_id = None
-current_device_id = None
-latest_data = {}
-device_status = "disconnected"
-use_simulator = False
+logger.info("Flask application initialized. FTMS manager created.")
 
-# Initialize components
-def init_components():
-    global ftms_manager, workout_manager, data_processor, fit_converter, garmin_uploader
-    
-    # Create FTMS manager
-    ftms_manager = FTMSDeviceManager(use_simulator=use_simulator)
-    
-    # Create workout manager
-    workout_manager = WorkoutManager(DB_PATH, ftms_manager)
-    
-    # Create data processor
-    data_processor = DataProcessor()
-    
-    # Create FIT converter
-    fit_converter = FITConverter(FIT_OUTPUT_DIR)
-    
-    # Create Garmin uploader
-    garmin_uploader = GarminUploader()
-    
-    # Register callbacks
-    ftms_manager.register_status_callback(handle_ftms_status)
-    ftms_manager.register_data_callback(handle_ftms_data)
-    workout_manager.register_status_callback(handle_workout_status)
-    workout_manager.register_data_callback(handle_workout_data)
-    
-    # Load user profile
-    user_profile = workout_manager.get_user_profile()
-    if user_profile:
-        data_processor.set_user_profile(user_profile)
+# Global variable for the asyncio loop and the thread running it
+background_loop = None
+loop_thread = None
 
-# Handle FTMS status updates
-def handle_ftms_status(status: str, data: Any):
-    global device_status
-    logger.info(f"FTMS status: {status}")
-    device_status = status
+def start_asyncio_loop():
+    """Starts the asyncio event loop in a separate thread."""
+    global background_loop
+    try:
+        logger.info("Background thread started. Creating new event loop.")
+        background_loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(background_loop)
+        logger.info("Starting background asyncio event loop run_forever.")
+        background_loop.run_forever()
+    except Exception as e:
+        logger.error(f"Exception in background asyncio loop: {e}", exc_info=True)
+    finally:
+        if background_loop and background_loop.is_running():
+            logger.info("Stopping background asyncio event loop.")
+            background_loop.stop()
+        logger.info("Background asyncio loop finished.")
+        background_loop = None # Ensure it's None if loop stops
 
-# Handle FTMS data
-def handle_ftms_data(data: Dict[str, Any]):
-    logger.debug(f"FTMS data: {data}")
-    # Data will be handled by workout manager
-
-# Handle workout status updates
-def handle_workout_status(status: str, data: Any):
-    global current_workout_id
-    logger.info(f"Workout status: {status}")
-    
-    if status == 'workout_started':
-        current_workout_id = data.get('workout_id')
-    elif status == 'workout_ended':
-        current_workout_id = None
-
-# Handle workout data
-def handle_workout_data(data: Dict[str, Any]):
-    global latest_data
-    logger.debug(f"Workout data: {data}")
-    latest_data = data
-
-# Run async tasks in a separate thread
-def run_async_task(coro):
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
-    return loop.run_until_complete(coro)
-
-# Initialize components on startup
-init_components()
+# Start the loop in a background thread when the app initializes
+logger.info("Starting background asyncio loop thread...")
+loop_thread = threading.Thread(target=start_asyncio_loop, daemon=True)
+loop_thread.start()
+logger.info("Background asyncio loop thread start initiated.")
 
 # Routes
 @app.route('/')
@@ -154,82 +113,214 @@ def settings():
 @app.route('/api/discover', methods=['POST'])
 def discover_devices():
     """Discover FTMS devices."""
+    logger.debug(f"/api/discover called. background_loop is {'set' if background_loop else 'None'}. Loop running: {background_loop.is_running() if background_loop else 'N/A'}")
     try:
-        # Run device discovery in a separate thread
-        devices = run_async_task(ftms_manager.discover_devices())
-        
-        # Convert devices to a serializable format
-        device_list = []
-        for addr, device in devices.items():
-            device_list.append({
-                'address': addr,
-                'name': device.name if hasattr(device, 'name') else 'Unknown',
-                'rssi': device.rssi if hasattr(device, 'rssi') else 0
-            })
-        
-        return jsonify({'success': True, 'devices': device_list})
+        if not background_loop or not background_loop.is_running():
+             logger.error("Asyncio background loop is not running.")
+             return jsonify({'success': False, 'error': 'Asyncio loop not running'})
+
+        # Schedule the async discover_devices method on the background loop
+        future = asyncio.run_coroutine_threadsafe(ftms_manager.discover_devices(), background_loop)
+        devices_dict = future.result(timeout=10) # Wait for the result with timeout
+
+        serializable_devices = []
+        if isinstance(devices_dict, dict): # Check if it's a dictionary
+            for address, dev_info in devices_dict.items(): # Iterate through dict items
+                # dev_info could be an object or already a dict
+                name = None
+                if hasattr(dev_info, 'name'):
+                    name = dev_info.name
+                elif isinstance(dev_info, dict) and 'name' in dev_info:
+                    name = dev_info['name']
+
+                # Address is the key in the dictionary
+                if name and address:
+                    serializable_devices.append({'name': name, 'address': address})
+                else:
+                    logger.warning(f"Could not serialize device with address {address}: {dev_info}")
+        else:
+             logger.warning(f"discover_devices returned unexpected type: {type(devices_dict)}")
+
+        return jsonify({'success': True, 'devices': serializable_devices})
+    except asyncio.TimeoutError:
+        logger.error("Device discovery timed out.")
+        return jsonify({'success': False, 'error': 'Device discovery timed out'})
     except Exception as e:
-        logger.error(f"Error discovering devices: {str(e)}")
+        logger.error(f"Error discovering devices: {str(e)}", exc_info=True)
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/settings', methods=['GET', 'POST'])
+def api_settings():
+    """Get or update application settings."""
+    try:
+        settings_file = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'settings.json')
+        
+        if request.method == 'POST':
+            # Update settings
+            settings = request.json
+            
+            # Load existing settings if file exists
+            existing_settings = {}
+            if os.path.exists(settings_file):
+                try:
+                    with open(settings_file, 'r') as f:
+                        existing_settings = importlib.import_module('json').load(f)
+                except Exception as e:
+                    logger.error(f"Error loading existing settings: {str(e)}")
+            
+            # Update settings with new values
+            existing_settings.update(settings)
+            
+            # Save settings
+            with open(settings_file, 'w') as f:
+                importlib.import_module('json').dump(existing_settings, f)
+            
+            # Apply settings if needed
+            if 'use_simulator' in settings:
+                ftms_manager.use_simulator = settings['use_simulator']
+            
+            return jsonify({'success': True})
+        else:
+            # Get settings
+            if os.path.exists(settings_file):
+                try:
+                    with open(settings_file, 'r') as f:
+                        settings = importlib.import_module('json').load(f)
+                    return jsonify({'success': True, 'settings': settings})
+                except Exception as e:
+                    logger.error(f"Error loading settings: {str(e)}")
+                    return jsonify({'success': False, 'error': str(e)})
+            else:
+                # Return default settings if file doesn't exist
+                return jsonify({'success': True, 'settings': {'use_simulator': False}})
+    except Exception as e:
+        logger.error(f"Error processing settings: {str(e)}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/user_profile', methods=['GET', 'POST'])
+def api_user_profile():
+    """Get or update user profile."""
+    try:
+        profile_file = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'user_profile.json')
+        
+        if request.method == 'POST':
+            # Update profile
+            profile = request.json
+            
+            # Load existing profile if file exists
+            existing_profile = {}
+            if os.path.exists(profile_file):
+                try:
+                    with open(profile_file, 'r') as f:
+                        existing_profile = importlib.import_module('json').load(f)
+                except Exception as e:
+                    logger.error(f"Error loading existing profile: {str(e)}")
+            
+            # Update profile with new values
+            existing_profile.update(profile)
+            
+            # Save profile
+            with open(profile_file, 'w') as f:
+                importlib.import_module('json').dump(existing_profile, f)
+            
+            return jsonify({'success': True})
+        else:
+            # Get profile
+            if os.path.exists(profile_file):
+                try:
+                    with open(profile_file, 'r') as f:
+                        profile = importlib.import_module('json').load(f)
+                    return jsonify({'success': True, 'profile': profile})
+                except Exception as e:
+                    logger.error(f"Error loading profile: {str(e)}")
+                    return jsonify({'success': False, 'error': str(e)})
+            else:
+                # Return empty profile if file doesn't exist
+                return jsonify({'success': True, 'profile': {}})
+    except Exception as e:
+        logger.error(f"Error processing user profile: {str(e)}")
         return jsonify({'success': False, 'error': str(e)})
 
 @app.route('/api/connect', methods=['POST'])
 def connect_device():
     """Connect to an FTMS device."""
+    device_address = request.json.get('address')
+    logger.debug(f"/api/connect called for {device_address}. background_loop is {'set' if background_loop else 'None'}. Loop running: {background_loop.is_running() if background_loop else 'N/A'}")
     try:
-        device_address = request.json.get('address')
         if not device_address:
             return jsonify({'success': False, 'error': 'Device address is required'})
-        
-        # Connect to device in a separate thread
-        success = run_async_task(ftms_manager.connect(device_address))
-        
+
+        if not background_loop or not background_loop.is_running():
+             logger.error("Asyncio background loop is not running.")
+             return jsonify({'success': False, 'error': 'Asyncio loop not running'})
+
+        # Schedule the async connect method on the background loop
+        logger.info(f"Scheduling connect task for {device_address} on background loop.")
+        future = asyncio.run_coroutine_threadsafe(ftms_manager.connect(device_address), background_loop)
+        success = future.result(timeout=40) # Wait for the connection attempt to complete with timeout
+
+        logger.info(f"Connect task for {device_address} completed with result: {success}")
         return jsonify({'success': success})
+    except asyncio.TimeoutError:
+        logger.error(f"Connection to {device_address} timed out.")
+        return jsonify({'success': False, 'error': 'Connection timed out'})
     except Exception as e:
-        logger.error(f"Error connecting to device: {str(e)}")
+        logger.error(f"Error connecting to device {device_address}: {str(e)}", exc_info=True)
         return jsonify({'success': False, 'error': str(e)})
 
 @app.route('/api/disconnect', methods=['POST'])
 def disconnect_device():
     """Disconnect from the current FTMS device."""
+    logger.debug(f"/api/disconnect called. background_loop is {'set' if background_loop else 'None'}. Loop running: {background_loop.is_running() if background_loop else 'N/A'}")
     try:
-        # Disconnect from device in a separate thread
-        success = run_async_task(ftms_manager.disconnect())
-        
+        if not background_loop or not background_loop.is_running():
+             logger.error("Asyncio background loop is not running.")
+             return jsonify({'success': False, 'error': 'Asyncio loop not running'})
+
+        # Schedule the async disconnect method on the background loop
+        logger.info("Scheduling disconnect task on background loop.")
+        future = asyncio.run_coroutine_threadsafe(ftms_manager.disconnect(), background_loop)
+        success = future.result(timeout=10) # Wait for the result with timeout
+
+        logger.info(f"Disconnect task completed with result: {success}")
         return jsonify({'success': success})
+    except asyncio.TimeoutError:
+        logger.error("Device disconnection timed out.")
+        return jsonify({'success': False, 'error': 'Disconnection timed out'})
     except Exception as e:
-        logger.error(f"Error disconnecting from device: {str(e)}")
+        logger.error(f"Error disconnecting from device: {str(e)}", exc_info=True)
         return jsonify({'success': False, 'error': str(e)})
 
 @app.route('/api/status')
 def get_status():
     """Get current status."""
-    global device_status, latest_data, current_workout_id
+    status = {
+        'device_status': ftms_manager.device_status,
+        # Serialize connected device info
+        'connected_device': {
+            'name': getattr(ftms_manager.connected_device, 'name', None),
+            'address': getattr(ftms_manager.connected_device, 'address', None)
+        } if ftms_manager.connected_device else None,
+        'connected_device_address': getattr(ftms_manager, 'connected_device_address', None), # Keep this for compatibility if needed
+        'device_name': getattr(ftms_manager.connected_device, 'name', None) if ftms_manager.connected_device else None, # Redundant but maybe used elsewhere
+        'workout_active': workout_manager.active_workout_id is not None,
+        'is_simulated': ftms_manager.use_simulator
+    }
     
-    return jsonify({
-        'device_status': device_status,
-        'workout_active': current_workout_id is not None,
-        'workout_id': current_workout_id,
-        'latest_data': latest_data
-    })
+    # Include latest data if available
+    if hasattr(ftms_manager, 'latest_data') and ftms_manager.latest_data:
+        # Ensure latest_data is serializable (assuming it's already a dict)
+        status['latest_data'] = ftms_manager.latest_data
+        
+    return jsonify(status)
 
 @app.route('/api/start_workout', methods=['POST'])
 def start_workout():
     """Start a new workout."""
     try:
         device_id = request.json.get('device_id')
-        workout_type = request.json.get('workout_type', 'unknown')
-        
-        if not device_id:
-            # Get the first device from the database
-            devices = workout_manager.get_devices()
-            if devices:
-                device_id = devices[0]['id']
-            else:
-                return jsonify({'success': False, 'error': 'No devices available'})
-        
-        # Start workout
+        workout_type = request.json.get('workout_type', 'bike')  # Default to 'bike' if not provided
         workout_id = workout_manager.start_workout(device_id, workout_type)
-        
         return jsonify({'success': True, 'workout_id': workout_id})
     except Exception as e:
         logger.error(f"Error starting workout: {str(e)}")
@@ -239,14 +330,8 @@ def start_workout():
 def end_workout():
     """End the current workout."""
     try:
-        workout_id = request.json.get('workout_id', current_workout_id)
-        
-        if not workout_id:
-            return jsonify({'success': False, 'error': 'No active workout'})
-        
-        # End workout
+        workout_id = request.json.get('workout_id', workout_manager.active_workout_id)
         success = workout_manager.end_workout(workout_id)
-        
         return jsonify({'success': success})
     except Exception as e:
         logger.error(f"Error ending workout: {str(e)}")
@@ -256,12 +341,7 @@ def end_workout():
 def get_workouts():
     """Get workout history."""
     try:
-        limit = request.args.get('limit', 10, type=int)
-        offset = request.args.get('offset', 0, type=int)
-        
-        # Get workouts
-        workouts = workout_manager.get_workouts(limit, offset)
-        
+        workouts = workout_manager.get_workouts()
         return jsonify({'success': True, 'workouts': workouts})
     except Exception as e:
         logger.error(f"Error getting workouts: {str(e)}")
@@ -271,232 +351,13 @@ def get_workouts():
 def get_workout(workout_id):
     """Get workout details."""
     try:
-        # Get workout
         workout = workout_manager.get_workout(workout_id)
-        
         if not workout:
             return jsonify({'success': False, 'error': 'Workout not found'})
-        
-        # Get workout data
-        data = workout_manager.get_workout_data(workout_id)
-        
-        # Process workout data
-        start_time = datetime.fromisoformat(workout['start_time']) if workout.get('start_time') else datetime.now()
-        processed_data = data_processor.process_workout_data(
-            [d['data'] for d in data],
-            workout['workout_type'],
-            start_time
-        )
-        
-        # Estimate VO2 max
-        vo2max = data_processor.estimate_vo2max(processed_data)
-        if vo2max:
-            processed_data['vo2max'] = vo2max
-        
-        return jsonify({
-            'success': True,
-            'workout': workout,
-            'processed_data': processed_data
-        })
+        return jsonify({'success': True, 'workout': workout})
     except Exception as e:
         logger.error(f"Error getting workout details: {str(e)}")
         return jsonify({'success': False, 'error': str(e)})
-
-@app.route('/api/convert_fit/<int:workout_id>', methods=['POST'])
-def convert_to_fit(workout_id):
-    """Convert workout to FIT file."""
-    try:
-        # Get workout
-        workout = workout_manager.get_workout(workout_id)
-        
-        if not workout:
-            return jsonify({'success': False, 'error': 'Workout not found'})
-        
-        # Get workout data
-        data = workout_manager.get_workout_data(workout_id)
-        
-        # Process workout data
-        start_time = datetime.fromisoformat(workout['start_time']) if workout.get('start_time') else datetime.now()
-        processed_data = data_processor.process_workout_data(
-            [d['data'] for d in data],
-            workout['workout_type'],
-            start_time
-        )
-        
-        # Get user profile
-        user_profile = workout_manager.get_user_profile()
-        
-        # Convert to FIT
-        fit_file_path = fit_converter.convert_workout(processed_data, user_profile)
-        
-        if not fit_file_path:
-            return jsonify({'success': False, 'error': 'Failed to create FIT file'})
-        
-        # Update workout with FIT file path
-        workout_manager.database.end_workout(workout_id, fit_file_path=fit_file_path)
-        
-        return jsonify({
-            'success': True,
-            'fit_file_path': fit_file_path,
-            'fit_file_name': os.path.basename(fit_file_path)
-        })
-    except Exception as e:
-        logger.error(f"Error converting workout to FIT: {str(e)}")
-        return jsonify({'success': False, 'error': str(e)})
-
-@app.route('/api/download_fit/<int:workout_id>')
-def download_fit(workout_id):
-    """Download FIT file for a workout."""
-    try:
-        # Get workout
-        workout = workout_manager.get_workout(workout_id)
-        
-        if not workout:
-            return jsonify({'success': False, 'error': 'Workout not found'})
-        
-        fit_file_path = workout.get('fit_file_path')
-        
-        if not fit_file_path or not os.path.exists(fit_file_path):
-            # Try to create FIT file
-            return redirect(url_for('convert_to_fit', workout_id=workout_id))
-        
-        # Send file
-        return send_file(
-            fit_file_path,
-            as_attachment=True,
-            download_name=os.path.basename(fit_file_path)
-        )
-    except Exception as e:
-        logger.error(f"Error downloading FIT file: {str(e)}")
-        return jsonify({'success': False, 'error': str(e)})
-
-@app.route('/api/upload_garmin/<int:workout_id>', methods=['POST'])
-def upload_to_garmin(workout_id):
-    """Upload workout to Garmin Connect."""
-    try:
-        # Get workout
-        workout = workout_manager.get_workout(workout_id)
-        
-        if not workout:
-            return jsonify({'success': False, 'error': 'Workout not found'})
-        
-        fit_file_path = workout.get('fit_file_path')
-        
-        if not fit_file_path or not os.path.exists(fit_file_path):
-            # Try to create FIT file
-            result = convert_to_fit(workout_id)
-            result_data = json.loads(result.get_data(as_text=True))
-            
-            if not result_data.get('success'):
-                return jsonify({'success': False, 'error': 'Failed to create FIT file'})
-            
-            fit_file_path = result_data.get('fit_file_path')
-        
-        # Get user profile for Garmin credentials
-        user_profile = workout_manager.get_user_profile()
-        
-        if not user_profile or not user_profile.get('garmin_username') or not user_profile.get('garmin_password'):
-            return jsonify({'success': False, 'error': 'Garmin Connect credentials not configured'})
-        
-        # Authenticate with Garmin Connect
-        auth_success = garmin_uploader.authenticate(
-            user_profile.get('garmin_username'),
-            user_profile.get('garmin_password')
-        )
-        
-        if not auth_success:
-            return jsonify({'success': False, 'error': 'Failed to authenticate with Garmin Connect'})
-        
-        # Upload FIT file
-        upload_success, activity_id = garmin_uploader.upload_fit_file(fit_file_path)
-        
-        if not upload_success:
-            return jsonify({'success': False, 'error': 'Failed to upload to Garmin Connect'})
-        
-        # Mark workout as uploaded
-        workout_manager.database.mark_workout_uploaded(workout_id)
-        
-        return jsonify({
-            'success': True,
-            'activity_id': activity_id
-        })
-    except Exception as e:
-        logger.error(f"Error uploading to Garmin Connect: {str(e)}")
-        return jsonify({'success': False, 'error': str(e)})
-
-@app.route('/api/user_profile', methods=['GET', 'POST'])
-def user_profile():
-    """Get or update user profile."""
-    if request.method == 'GET':
-        try:
-            # Get user profile
-            profile = workout_manager.get_user_profile()
-            
-            if not profile:
-                return jsonify({'success': True, 'profile': {}})
-            
-            # Remove sensitive data
-            if 'garmin_password' in profile:
-                profile['garmin_password'] = '********' if profile['garmin_password'] else ''
-            
-            return jsonify({'success': True, 'profile': profile})
-        except Exception as e:
-            logger.error(f"Error getting user profile: {str(e)}")
-            return jsonify({'success': False, 'error': str(e)})
-    else:  # POST
-        try:
-            profile_data = request.json
-            
-            # Handle password
-            if profile_data.get('garmin_password') == '********':
-                # Password unchanged, get original from database
-                current_profile = workout_manager.get_user_profile()
-                if current_profile and current_profile.get('garmin_password'):
-                    profile_data['garmin_password'] = current_profile['garmin_password']
-            
-            # Update user profile
-            success = workout_manager.set_user_profile(profile_data)
-            
-            # Update data processor
-            if success:
-                data_processor.set_user_profile(profile_data)
-            
-            return jsonify({'success': success})
-        except Exception as e:
-            logger.error(f"Error updating user profile: {str(e)}")
-            return jsonify({'success': False, 'error': str(e)})
-
-@app.route('/api/settings', methods=['GET', 'POST'])
-def app_settings():
-    """Get or update application settings."""
-    global use_simulator
-    
-    if request.method == 'GET':
-        try:
-            # Get settings
-            settings = {
-                'use_simulator': use_simulator
-            }
-            
-            return jsonify({'success': True, 'settings': settings})
-        except Exception as e:
-            logger.error(f"Error getting settings: {str(e)}")
-            return jsonify({'success': False, 'error': str(e)})
-    else:  # POST
-        try:
-            settings_data = request.json
-            
-            # Update settings
-            if 'use_simulator' in settings_data:
-                use_simulator = settings_data['use_simulator']
-                
-                # Reinitialize components if simulator setting changed
-                init_components()
-            
-            return jsonify({'success': True})
-        except Exception as e:
-            logger.error(f"Error updating settings: {str(e)}")
-            return jsonify({'success': False, 'error': str(e)})
 
 # Run the app
 if __name__ == '__main__':
