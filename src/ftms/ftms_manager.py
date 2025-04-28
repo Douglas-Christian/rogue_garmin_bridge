@@ -80,11 +80,17 @@ class FTMSDeviceManager:
         logger.debug(f"Received data from device: {data}")
         
         # Forward data to all registered callbacks
+        self._notify_data_callbacks(data)
+
+    def _notify_data_callbacks(self, data: Dict[str, Any]):
+        """Notify all registered data callbacks with new FTMS data."""
+        logger.debug(f"FTMS Manager notifying {len(self.data_callbacks)} data callbacks.") # Log callback notification attempt
         for callback in self.data_callbacks:
             try:
+                logger.debug(f"Calling data callback: {callback.__name__ if hasattr(callback, '__name__') else str(callback)}") # Log specific callback call
                 callback(data)
             except Exception as e:
-                logger.error(f"Error in data callback: {str(e)}")
+                logger.error(f"Error in FTMS data callback: {str(e)}", exc_info=True)
     
     def _handle_status(self, status, data):
         """Handle status updates from the device and forward to callbacks."""

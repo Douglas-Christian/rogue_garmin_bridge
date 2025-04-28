@@ -308,46 +308,54 @@ class Database:
         finally:
             self._disconnect()
     
-    def add_workout_data(self, workout_id: int, timestamp: int, data: Dict[str, Any]) -> bool:
+    def add_workout_data(self, workout_id: int, timestamp: float, data: Dict[str, Any]) -> bool: # Changed timestamp type hint to float
         """
         Add data point to a workout session.
-        
+
         Args:
             workout_id: Workout ID
-            timestamp: Data timestamp (seconds since workout start)
+            timestamp: Data timestamp (seconds since workout start, should be float)
             data: Workout data
-            
+
         Returns:
             True if successful, False otherwise
         """
+        logger.info(f"Attempting to add data point for workout {workout_id} at timestamp {timestamp:.6f}") # Log entry
         try:
             self._connect()
-            
+
             # Verify workout exists
             self.cursor.execute("SELECT id FROM workouts WHERE id = ?", (workout_id,))
             workout = self.cursor.fetchone()
             if not workout:
                 logger.error(f"Cannot add data point: Workout {workout_id} does not exist")
                 return False
-            
+
             # Convert data to JSON string
             data_json = json.dumps(data)
-            
-            # Use REPLACE to ensure we don't get duplicate timestamps
-            # This will overwrite any existing record with the same workout_id and timestamp
+
+            # Use a simple INSERT statement since timestamps should be unique
+            logger.debug(f"Executing INSERT for workout {workout_id}, timestamp {timestamp:.6f}") # Log before execute
             self.cursor.execute(
                 """
-                INSERT OR REPLACE INTO workout_data (workout_id, timestamp, data) 
+                INSERT INTO workout_data (workout_id, timestamp, data)
                 VALUES (?, ?, ?)
                 """,
                 (workout_id, timestamp, data_json)
             )
-            
+
             self.conn.commit()
-            logger.debug(f"Added data point to workout {workout_id} at timestamp {timestamp}")
+            logger.info(f"Successfully added data point for workout {workout_id} at timestamp {timestamp:.6f}") # Log success
             return True
         except sqlite3.Error as e:
-            logger.error(f"Error adding workout data: {str(e)}")
+            logger.error(f"Error adding workout data for workout {workout_id}, timestamp {timestamp:.6f}: {str(e)}", exc_info=True) # Log specific error
+            # Attempt to rollback changes if commit failed
+            if self.conn:
+                try:
+                    self.conn.rollback()
+                    logger.warning(f"Rolled back transaction for workout {workout_id} due to error.")
+                except sqlite3.Error as rb_err:
+                    logger.error(f"Error during rollback for workout {workout_id}: {rb_err}")
             return False
         finally:
             self._disconnect()

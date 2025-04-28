@@ -114,3 +114,15 @@
 2025-04-27 19:43:29,904 - database - INFO - Database tables created
 2025-04-27 19:44:03,619 - database - INFO - Started workout 73 with device C9:02:CB:68:17:C1
 2025-04-27 19:44:22,342 - database - INFO - Ended workout 73, duration: 18s
+2025-04-27 19:58:00,018 - database - INFO - Database tables created
+2025-04-27 19:58:00,473 - database - INFO - Database tables created
+2025-04-27 19:59:15,183 - database - INFO - Started workout 74 with device C9:02:CB:68:17:C1
+2025-04-27 20:02:33,449 - database - INFO - Ended workout 74, duration: 198s
+2025-04-27 20:10:19,338 - database - INFO - Database tables created
+2025-04-27 20:10:20,020 - database - INFO - Database tables created
+2025-04-27 20:11:20,076 - database - INFO - Started workout 75 with device C9:02:CB:68:17:C1
+2025-04-27 20:13:14,831 - database - INFO - Ended workout 75, duration: 114s
+2025-04-27 20:18:21,254 - database - INFO - Database tables created
+2025-04-27 20:18:22,173 - database - INFO - Database tables created
+2025-04-27 20:18:53,764 - database - INFO - Started workout 76 with device C9:02:CB:68:17:C1
+2025-04-27 20:20:32,043 - database - INFO - Ended workout 76, duration: 98s

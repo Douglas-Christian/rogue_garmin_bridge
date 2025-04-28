@@ -347,98 +347,32 @@ class WorkoutManager:
         """
         return self.database.set_user_profile(profile)
     
-    def _handle_ftms_data(self, data: Dict[str, Any]) -> bool:
-        """
-        Handle data received from FTMS devices and integrate it into the active workout.
-        
-        This method serves as the critical bridge between raw data from devices (real or simulated)
-        and the workout database. It performs the following key operations:
-        
-        1. Receives raw FTMS data points from connected devices/simulators 
-        2. Validates, enriches, and normalizes the data (adding timestamps, IDs, etc.)
-        3. Stores the data in the database under the active workout
-        4. Updates local metrics tracking (including summary statistics)
-        5. Notifies registered callbacks of new data for UI updates
-        
-        The method incorporates timestamp collision prevention by adding microsecond precision
-        to timestamps, ensuring each data point has a unique identifier in the database.
-        
-        Args:
-            data: Dictionary containing raw FTMS data from a device or simulator
-                  Expected keys vary by device type but typically include:
-                  - power measurements
-                  - cadence/stroke rate
-                  - distance
-                  - calories
-                  - heart rate (if available)
-                  - timestamp or elapsed_time
-        
-        Returns:
-            bool: True if data was successfully processed and stored, False otherwise
-        
-        Raises:
-            No exceptions are raised directly. Exceptions are caught, logged, and False is returned.
-        """
-        try:
-            # Log more information about the incoming data point to track data flow
-            data_id = data.get('data_id', 'unknown')
-            timestamp = data.get('timestamp', 'unknown')
+    def _handle_ftms_data(self, data: Dict[str, Any]):
+        """Handle incoming FTMS data points."""
+        logger.debug(f"Workout manager received FTMS data point: {data}") # Log data reception
+        if self.active_workout_id is not None and self.workout_start_time is not None:
+            # Calculate timestamp relative to workout start
+            # Ensure high precision timestamp
+            now = datetime.now()
+            timestamp = (now - self.workout_start_time).total_seconds()
+            # Add microseconds for higher precision, avoiding potential collisions
+            timestamp += now.microsecond / 1000000.0 
             
-            logger.info(f"[DATA_FLOW] Workout manager received FTMS data point ID={data_id}, timestamp={timestamp}, " +
-                      f"type={data.get('type', 'unknown')}, power={data.get('instantaneous_power', 'N/A')}")
+            logger.info(f"Processing data point for workout {self.active_workout_id} at relative timestamp {timestamp:.6f}") # Log processing attempt
             
-            if self.active_workout_id:
-                # Make sure total_calories is present since some metrics depend on it
-                if 'total_calories' not in data and 'calories' in data:
-                    data['total_calories'] = data['calories']
-                    
-                # Make sure there's a timestamp
-                if 'timestamp' not in data:
-                    if 'elapsed_time' in data:
-                        data['timestamp'] = data['elapsed_time']
-                    else:
-                        data['timestamp'] = int(time.time() - self.workout_start_time)
-                
-                # CRITICAL FIX: Ensure every timestamp is unique by adding a fractional part
-                # This is the most reliable way to ensure unique timestamps
-                if isinstance(data['timestamp'], int):
-                    # Convert integer timestamp to float with microsecond precision
-                    microsecond_part = datetime.now().microsecond / 1000000
-                    data['timestamp'] = float(data['timestamp']) + microsecond_part
-                
-                # Debug the exact data being saved
-                logger.info(f"[DATA_FLOW] Adding data point to workout {self.active_workout_id}: " +
-                           f"time={data['timestamp']:.6f}s, data_id={data_id}")
-                
-                # Store in database - CRITICAL: Use a copy of the data to avoid modification issues
-                data_copy = data.copy()
-                success = self.database.add_workout_data(self.active_workout_id, data_copy['timestamp'], data_copy)
-                
-                if success:
-                    # Store data point locally
-                    self.data_points.append(data_copy)
-                    
-                    # Update summary metrics
-                    self._update_summary_metrics(data_copy)
-                    
-                    # Notify data callbacks
-                    self._notify_data(data_copy)
-                    
-                    logger.info(f"[DATA_FLOW] Successfully stored data point ID={data_id}")
-                    return True
-                else:
-                    logger.error(f"[DATA_FLOW] Failed to add data point ID={data_id} to workout {self.active_workout_id}")
-                    return False
+            # Add data point to the database
+            success = self.database.add_workout_data(self.active_workout_id, timestamp, data)
+            
+            if success:
+                logger.info(f"Successfully requested database add for workout {self.active_workout_id}, timestamp {timestamp:.6f}") # Log success call
             else:
-                logger.info(f"[DATA_FLOW] Received FTMS data but no active workout - ID={data_id}")
-                # Still update latest data even if no workout is active
-                self._notify_data(data)
-                return False
-        except Exception as e:
-            logger.error(f"Error handling FTMS data: {str(e)}", exc_info=True)
-            import traceback
-            traceback.print_exc()
-            return False
+                logger.error(f"Failed to request database add for workout {self.active_workout_id}, timestamp {timestamp:.6f}") # Log failed call
+                
+            # Update live data
+            self.live_workout_data = data
+            self.live_workout_data['timestamp'] = timestamp # Add relative timestamp
+        else:
+            logger.warning("Received FTMS data but no active workout. Ignoring.") # Log ignored data
     
     def _handle_ftms_status(self, status: str, data: Any) -> None:
         """
