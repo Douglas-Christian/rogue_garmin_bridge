@@ -360,17 +360,28 @@ class WorkoutManager:
             
             logger.info(f"Processing data point for workout {self.active_workout_id} at relative timestamp {timestamp:.6f}") # Log processing attempt
             
+            # Add timestamp to data for local tracking
+            data_with_timestamp = data.copy()
+            data_with_timestamp['timestamp'] = timestamp
+            
+            # Add data point to local memory (for summary calculation)
+            self.data_points.append(data_with_timestamp)
+            
+            # Update summary metrics
+            self._update_summary_metrics(data_with_timestamp)
+            
             # Add data point to the database
             success = self.database.add_workout_data(self.active_workout_id, timestamp, data)
             
             if success:
                 logger.info(f"Successfully requested database add for workout {self.active_workout_id}, timestamp {timestamp:.6f}") # Log success call
+                # Notify data callbacks about the new data
+                self._notify_data(data_with_timestamp)
             else:
                 logger.error(f"Failed to request database add for workout {self.active_workout_id}, timestamp {timestamp:.6f}") # Log failed call
                 
             # Update live data
-            self.live_workout_data = data
-            self.live_workout_data['timestamp'] = timestamp # Add relative timestamp
+            self.live_workout_data = data_with_timestamp
         else:
             logger.warning("Received FTMS data but no active workout. Ignoring.") # Log ignored data
     

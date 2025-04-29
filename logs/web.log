@@ -433,3 +433,47 @@ TypeError: A coroutine object is required
 2025-04-29 07:27:21,524 - web - INFO - Background thread started. Creating new event loop.
 2025-04-29 07:27:21,524 - web - INFO - Background asyncio loop thread start initiated.
 2025-04-29 07:27:21,527 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 18:51:58,954 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 18:51:58,955 - web - INFO - Using real FTMS devices
+2025-04-29 18:51:58,956 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 18:51:58,956 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 18:51:58,958 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 18:51:58,958 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 18:51:58,964 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 18:51:59,565 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 18:51:59,566 - web - INFO - Using real FTMS devices
+2025-04-29 18:51:59,566 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 18:51:59,566 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 18:51:59,567 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 18:51:59,567 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 18:51:59,572 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 18:53:15,968 - web - INFO - Scheduling connect task for C9:02:CB:68:17:C1 on background loop.
+2025-04-29 18:53:25,432 - web - INFO - Connect task for C9:02:CB:68:17:C1 completed with result: True
+2025-04-29 18:57:52,430 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 18:57:52,436 - web - INFO - Using real FTMS devices
+2025-04-29 18:57:52,437 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 18:57:52,437 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 18:57:52,440 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 18:57:52,440 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 18:57:52,452 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 18:57:53,374 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 18:57:53,374 - web - INFO - Using real FTMS devices
+2025-04-29 18:57:53,374 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 18:57:53,374 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 18:57:53,383 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 18:57:53,383 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 18:57:53,394 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 18:59:52,029 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 18:59:52,030 - web - INFO - Using real FTMS devices
+2025-04-29 18:59:52,031 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 18:59:52,031 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 18:59:52,033 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 18:59:52,033 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 18:59:52,046 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 19:00:02,034 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 19:00:02,037 - web - INFO - Using real FTMS devices
+2025-04-29 19:00:02,038 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 19:00:02,039 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 19:00:02,041 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 19:00:02,041 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 19:00:02,051 - web - INFO - Starting background asyncio event loop run_forever.

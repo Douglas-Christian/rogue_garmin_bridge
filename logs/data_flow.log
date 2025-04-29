@@ -128,3 +128,11 @@
 2025-04-27 20:20:32,043 - database - INFO - Ended workout 76, duration: 98s
 2025-04-29 07:27:21,301 - database - INFO - Database tables created
 2025-04-29 07:27:21,522 - database - INFO - Database tables created
+2025-04-29 18:51:58,953 - database - INFO - Database tables created
+2025-04-29 18:51:59,564 - database - INFO - Database tables created
+2025-04-29 18:53:29,674 - database - INFO - Started workout 77 with device C9:02:CB:68:17:C1
+2025-04-29 18:54:06,539 - database - INFO - Ended workout 77, duration: 36s
+2025-04-29 18:57:52,430 - database - INFO - Database tables created
+2025-04-29 18:57:53,374 - database - INFO - Database tables created
+2025-04-29 18:59:52,028 - database - INFO - Database tables created
+2025-04-29 19:00:02,034 - database - INFO - Database tables created

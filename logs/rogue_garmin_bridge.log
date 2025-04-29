@@ -6346,3 +6346,279 @@ AttributeError: 'IndoorBikeData' object has no attribute 'get'
 2025-04-29 07:27:41,630 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 07:27:41] "POST /api/discover HTTP/1.1" 200 -
 2025-04-29 07:27:41,753 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 07:27:41] "GET /api/status HTTP/1.1" 200 -
 2025-04-29 07:27:43,751 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 07:27:43] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:51:58,911 - root - INFO - Logging initialized at 2025-04-29T18:51:58.911117
+2025-04-29 18:51:58,912 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-29 18:51:58,953 - database - INFO - Database tables created
+2025-04-29 18:51:58,954 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 18:51:58,954 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-29 18:51:58,955 - web - INFO - Using real FTMS devices
+2025-04-29 18:51:58,956 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 18:51:58,956 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 18:51:58,958 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 18:51:58,958 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 18:51:58,964 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 18:51:59,113 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-04-29 18:51:59,114 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-29 18:51:59,136 - werkzeug - INFO -  * Restarting with stat
+2025-04-29 18:51:59,548 - root - INFO - Logging initialized at 2025-04-29T18:51:59.548466
+2025-04-29 18:51:59,549 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-29 18:51:59,564 - database - INFO - Database tables created
+2025-04-29 18:51:59,565 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 18:51:59,565 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-29 18:51:59,566 - web - INFO - Using real FTMS devices
+2025-04-29 18:51:59,566 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 18:51:59,566 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 18:51:59,567 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 18:51:59,567 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 18:51:59,572 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 18:51:59,596 - werkzeug - WARNING -  * Debugger is active!
+2025-04-29 18:51:59,603 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-29 18:52:16,643 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:16] "GET / HTTP/1.1" 200 -
+2025-04-29 18:52:16,732 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-29 18:52:16,864 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:16] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-04-29 18:52:17,172 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:17] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:52:17,175 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:17] "GET /api/workouts?limit=10 HTTP/1.1" 200 -
+2025-04-29 18:52:17,327 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-29 18:52:18,872 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:18] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:52:21,179 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:21] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:52:22,880 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:22] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:52:25,241 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:25] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:52:26,892 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:26] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:52:29,186 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:29] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:52:30,886 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:30] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:52:33,193 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:33] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:52:34,873 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:34] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:52:37,192 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:37] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:52:38,887 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:38] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:52:41,186 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:41] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:52:42,887 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:42] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:52:45,191 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:45] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:52:46,884 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:46] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:52:49,181 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:49] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:52:50,873 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:50] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:52:53,187 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:53] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:52:54,886 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:54] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:52:56,499 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:56] "GET /devices HTTP/1.1" 200 -
+2025-04-29 18:52:56,557 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-29 18:52:56,650 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:56] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-04-29 18:52:56,968 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:56] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:52:58,535 - ftms_connector - INFO - Scanning for FTMS devices for 5 seconds...
+2025-04-29 18:52:58,976 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:52:58] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:00,975 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:00] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:02,982 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:02] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:04,109 - ftms_connector - INFO - Discovered 0 FTMS devices
+2025-04-29 18:53:04,115 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:04] "POST /api/discover HTTP/1.1" 200 -
+2025-04-29 18:53:04,972 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:04] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:06,675 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:06] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:08,972 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:08] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:09,376 - ftms_connector - INFO - Scanning for FTMS devices for 5 seconds...
+2025-04-29 18:53:10,984 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:10] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:11,629 - ftms_connector - INFO - Found FTMS device: ECHO_BIKE_077937 (C9:02:CB:68:17:C1)
+2025-04-29 18:53:11,755 - ftms_connector - INFO - Found FTMS device: ECHO_BIKE_077937 (C9:02:CB:68:17:C1)
+2025-04-29 18:53:11,759 - ftms_connector - INFO - Found FTMS device: ECHO_BIKE_077937 (C9:02:CB:68:17:C1)
+2025-04-29 18:53:12,976 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:12] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:13,746 - ftms_connector - INFO - Found FTMS device: ECHO_BIKE_077937 (C9:02:CB:68:17:C1)
+2025-04-29 18:53:13,753 - ftms_connector - INFO - Found FTMS device: ECHO_BIKE_077937 (C9:02:CB:68:17:C1)
+2025-04-29 18:53:14,412 - ftms_connector - INFO - Discovered 1 FTMS devices
+2025-04-29 18:53:14,413 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:14] "POST /api/discover HTTP/1.1" 200 -
+2025-04-29 18:53:14,986 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:14] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:15,968 - web - INFO - Scheduling connect task for C9:02:CB:68:17:C1 on background loop.
+2025-04-29 18:53:15,970 - ftms_connector - INFO - Connecting to ECHO_BIKE_077937 (C9:02:CB:68:17:C1)...
+2025-04-29 18:53:16,976 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:16] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:18,972 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:18] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:20,988 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:20] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:22,971 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:22] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:24,920 - ftms_connector - INFO - Setting FTMS data handlers...
+2025-04-29 18:53:24,921 - ftms_connector - INFO - Attempting to enable FTMS notifications...
+2025-04-29 18:53:24,984 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:24] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:25,427 - ftms_connector - INFO - FTMS notifications enabled successfully.
+2025-04-29 18:53:25,428 - ftms_connector - INFO - FTMS data handlers set.
+2025-04-29 18:53:25,429 - ftms_connector - INFO - Connected to ECHO_BIKE_077937 (C9:02:CB:68:17:C1)
+2025-04-29 18:53:25,430 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-29 18:53:25,432 - web - INFO - Connect task for C9:02:CB:68:17:C1 completed with result: True
+2025-04-29 18:53:25,433 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:25] "POST /api/connect HTTP/1.1" 200 -
+2025-04-29 18:53:26,261 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:26] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:26,674 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:26] "GET /workout HTTP/1.1" 200 -
+2025-04-29 18:53:26,917 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-29 18:53:27,026 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:27] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-04-29 18:53:27,079 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:27] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:27,392 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:27] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:27,616 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=20.91, average_speed=0.0, instant_cadence=35.0, average_cadence=0.0, total_distance=0, resistance_level=None, instant_power=62, average_power=0, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=0, remaining_time=None)
+2025-04-29 18:53:28,086 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:28] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:28,516 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=20.91, average_speed=1.34, instant_cadence=35.0, average_cadence=36.0, total_distance=0, resistance_level=None, instant_power=62, average_power=66, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=1, remaining_time=None)
+2025-04-29 18:53:29,278 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:29] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:29,541 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:29] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:29,617 - workout_manager - INFO - Starting new bike workout on device C9:02:CB:68:17:C1
+2025-04-29 18:53:29,625 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=21.56, average_speed=1.45, instant_cadence=36.0, average_cadence=39.0, total_distance=0, resistance_level=None, instant_power=66, average_power=78, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=2, remaining_time=None)
+2025-04-29 18:53:29,674 - database - INFO - Started workout 77 with device C9:02:CB:68:17:C1
+2025-04-29 18:53:29,676 - workout_manager - INFO - Started workout 77 with device C9:02:CB:68:17:C1
+2025-04-29 18:53:29,678 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:29] "POST /api/start_workout HTTP/1.1" 200 -
+2025-04-29 18:53:29,684 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:29] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:30,404 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:30] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:30,525 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=21.56, average_speed=1.34, instant_cadence=36.0, average_cadence=36.0, total_distance=16, resistance_level=None, instant_power=66, average_power=66, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=3, remaining_time=None)
+2025-04-29 18:53:31,081 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:31] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:31,516 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=22.04, average_speed=1.39, instant_cadence=37.0, average_cadence=37.0, total_distance=16, resistance_level=None, instant_power=70, average_power=70, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=4, remaining_time=None)
+2025-04-29 18:53:32,402 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:32] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:32,626 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=22.68, average_speed=1.43, instant_cadence=38.0, average_cadence=38.0, total_distance=32, resistance_level=None, instant_power=74, average_power=74, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=5, remaining_time=None)
+2025-04-29 18:53:33,081 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:33] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:33,526 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.41, instant_cadence=39.0, average_cadence=38.0, total_distance=32, resistance_level=None, instant_power=78, average_power=74, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=6, remaining_time=None)
+2025-04-29 18:53:34,396 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:34] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:34,726 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.43, instant_cadence=39.0, average_cadence=38.0, total_distance=48, resistance_level=None, instant_power=78, average_power=74, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=7, remaining_time=None)
+2025-04-29 18:53:35,536 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.45, instant_cadence=39.0, average_cadence=39.0, total_distance=48, resistance_level=None, instant_power=78, average_power=78, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=8, remaining_time=None)
+2025-04-29 18:53:35,788 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:35] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:36,526 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.44, instant_cadence=39.0, average_cadence=38.0, total_distance=48, resistance_level=None, instant_power=78, average_power=74, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=9, remaining_time=None)
+2025-04-29 18:53:37,095 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:37] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:37,546 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.45, instant_cadence=39.0, average_cadence=39.0, total_distance=64, resistance_level=None, instant_power=78, average_power=78, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=10, remaining_time=None)
+2025-04-29 18:53:37,776 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:37] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:38,535 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.46, instant_cadence=39.0, average_cadence=39.0, total_distance=64, resistance_level=None, instant_power=78, average_power=78, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=11, remaining_time=None)
+2025-04-29 18:53:39,101 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:39] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:39,519 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.97, average_speed=1.47, instant_cadence=40.0, average_cadence=39.0, total_distance=80, resistance_level=None, instant_power=82, average_power=78, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=12, remaining_time=None)
+2025-04-29 18:53:39,780 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:39] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:40,570 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.97, average_speed=1.46, instant_cadence=40.0, average_cadence=39.0, total_distance=80, resistance_level=None, instant_power=82, average_power=78, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=13, remaining_time=None)
+2025-04-29 18:53:41,082 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:41] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:41,627 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.97, average_speed=1.46, instant_cadence=40.0, average_cadence=39.0, total_distance=80, resistance_level=None, instant_power=82, average_power=78, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=14, remaining_time=None)
+2025-04-29 18:53:41,785 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:41] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:42,527 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.97, average_speed=1.47, instant_cadence=40.0, average_cadence=39.0, total_distance=96, resistance_level=None, instant_power=82, average_power=78, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=15, remaining_time=None)
+2025-04-29 18:53:43,087 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:43] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:43,517 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.97, average_speed=1.48, instant_cadence=40.0, average_cadence=39.0, total_distance=96, resistance_level=None, instant_power=82, average_power=78, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=16, remaining_time=None)
+2025-04-29 18:53:43,786 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:43] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:44,627 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.97, average_speed=1.45, instant_cadence=40.0, average_cadence=39.0, total_distance=112, resistance_level=None, instant_power=82, average_power=78, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=17, remaining_time=None)
+2025-04-29 18:53:45,086 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:45] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:45,527 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.97, average_speed=1.46, instant_cadence=40.0, average_cadence=39.0, total_distance=112, resistance_level=None, instant_power=82, average_power=78, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=18, remaining_time=None)
+2025-04-29 18:53:45,782 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:45] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:46,517 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.97, average_speed=1.45, instant_cadence=40.0, average_cadence=39.0, total_distance=112, resistance_level=None, instant_power=82, average_power=78, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=19, remaining_time=None)
+2025-04-29 18:53:47,082 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:47] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:47,627 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.46, instant_cadence=39.0, average_cadence=39.0, total_distance=128, resistance_level=None, instant_power=78, average_power=78, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=20, remaining_time=None)
+2025-04-29 18:53:47,782 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:47] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:48,527 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.46, instant_cadence=39.0, average_cadence=39.0, total_distance=128, resistance_level=None, instant_power=78, average_power=78, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=21, remaining_time=None)
+2025-04-29 18:53:49,083 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:49] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:49,517 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.46, instant_cadence=39.0, average_cadence=39.0, total_distance=144, resistance_level=None, instant_power=78, average_power=78, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=22, remaining_time=None)
+2025-04-29 18:53:49,779 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:49] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:50,538 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.46, instant_cadence=39.0, average_cadence=39.0, total_distance=144, resistance_level=None, instant_power=78, average_power=78, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=23, remaining_time=None)
+2025-04-29 18:53:51,096 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:51] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:51,527 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.45, instant_cadence=39.0, average_cadence=39.0, total_distance=160, resistance_level=None, instant_power=78, average_power=78, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=24, remaining_time=None)
+2025-04-29 18:53:51,784 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:51] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:52,726 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.45, instant_cadence=39.0, average_cadence=39.0, total_distance=160, resistance_level=None, instant_power=78, average_power=78, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=25, remaining_time=None)
+2025-04-29 18:53:53,089 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:53] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:53,536 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.46, instant_cadence=39.0, average_cadence=39.0, total_distance=160, resistance_level=None, instant_power=78, average_power=78, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=26, remaining_time=None)
+2025-04-29 18:53:53,783 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:53] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:54,403 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:54] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:54,617 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.45, instant_cadence=39.0, average_cadence=39.0, total_distance=176, resistance_level=None, instant_power=78, average_power=78, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=27, remaining_time=None)
+2025-04-29 18:53:55,086 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:55] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:55,517 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.46, instant_cadence=39.0, average_cadence=39.0, total_distance=176, resistance_level=None, instant_power=78, average_power=78, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=28, remaining_time=None)
+2025-04-29 18:53:56,391 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:56] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:56,536 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.45, instant_cadence=39.0, average_cadence=39.0, total_distance=193, resistance_level=None, instant_power=78, average_power=78, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=29, remaining_time=None)
+2025-04-29 18:53:57,088 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:57] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:57,557 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.46, instant_cadence=39.0, average_cadence=39.0, total_distance=193, resistance_level=None, instant_power=78, average_power=78, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=30, remaining_time=None)
+2025-04-29 18:53:58,399 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:58] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:58,517 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.46, instant_cadence=39.0, average_cadence=39.0, total_distance=193, resistance_level=None, instant_power=78, average_power=78, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=31, remaining_time=None)
+2025-04-29 18:53:59,083 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:53:59] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:53:59,627 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.45, instant_cadence=39.0, average_cadence=39.0, total_distance=209, resistance_level=None, instant_power=78, average_power=78, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=32, remaining_time=None)
+2025-04-29 18:54:00,391 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:54:00] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:54:00,527 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.45, instant_cadence=39.0, average_cadence=39.0, total_distance=209, resistance_level=None, instant_power=78, average_power=78, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=33, remaining_time=None)
+2025-04-29 18:54:01,091 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:54:01] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:54:01,517 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.46, instant_cadence=39.0, average_cadence=39.0, total_distance=225, resistance_level=None, instant_power=78, average_power=78, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=34, remaining_time=None)
+2025-04-29 18:54:02,399 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:54:02] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:54:02,537 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.45, instant_cadence=39.0, average_cadence=39.0, total_distance=225, resistance_level=None, instant_power=78, average_power=78, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=35, remaining_time=None)
+2025-04-29 18:54:03,094 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:54:03] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:54:03,527 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.45, instant_cadence=39.0, average_cadence=39.0, total_distance=225, resistance_level=None, instant_power=78, average_power=78, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=36, remaining_time=None)
+2025-04-29 18:54:04,400 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:54:04] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:54:04,636 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.46, instant_cadence=39.0, average_cadence=39.0, total_distance=241, resistance_level=None, instant_power=78, average_power=78, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=37, remaining_time=None)
+2025-04-29 18:54:05,086 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:54:05] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:54:05,537 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.45, instant_cadence=39.0, average_cadence=39.0, total_distance=241, resistance_level=None, instant_power=78, average_power=78, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=38, remaining_time=None)
+2025-04-29 18:54:06,403 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:54:06] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:54:06,528 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.46, instant_cadence=39.0, average_cadence=39.0, total_distance=257, resistance_level=None, instant_power=78, average_power=78, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=39, remaining_time=None)
+2025-04-29 18:54:06,528 - workout_manager - INFO - Ending workout (ID: 77)
+2025-04-29 18:54:06,539 - database - INFO - Ended workout 77, duration: 36s
+2025-04-29 18:54:06,540 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:54:06] "POST /api/end_workout HTTP/1.1" 200 -
+2025-04-29 18:54:07,547 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=22.68, average_speed=1.45, instant_cadence=38.0, average_cadence=39.0, total_distance=257, resistance_level=None, instant_power=74, average_power=78, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=40, remaining_time=None)
+2025-04-29 18:54:08,718 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=19.14, average_speed=1.44, instant_cadence=32.0, average_cadence=38.0, total_distance=257, resistance_level=None, instant_power=49, average_power=74, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=41, remaining_time=None)
+2025-04-29 18:54:09,528 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=19.14, average_speed=1.41, instant_cadence=32.0, average_cadence=38.0, total_distance=257, resistance_level=None, instant_power=49, average_power=74, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=42, remaining_time=None)
+2025-04-29 18:54:10,517 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=16.73, average_speed=1.38, instant_cadence=28.0, average_cadence=37.0, total_distance=257, resistance_level=None, instant_power=36, average_power=70, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=43, remaining_time=None)
+2025-04-29 18:54:11,089 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:54:11] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:54:11,405 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:54:11] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:54:11,537 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=13.67, average_speed=1.35, instant_cadence=23.0, average_cadence=36.0, total_distance=257, resistance_level=None, instant_power=23, average_power=66, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=44, remaining_time=None)
+2025-04-29 18:54:12,089 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:54:12] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:54:12,528 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=0.0, average_speed=1.32, instant_cadence=0.0, average_cadence=35.0, total_distance=257, resistance_level=None, instant_power=0, average_power=62, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=45, remaining_time=None)
+2025-04-29 18:54:13,408 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:54:13] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:54:13,548 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=0.0, average_speed=1.29, instant_cadence=0.0, average_cadence=34.0, total_distance=257, resistance_level=None, instant_power=0, average_power=57, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=46, remaining_time=None)
+2025-04-29 18:54:14,090 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:54:14] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:54:14,627 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=0.0, average_speed=1.26, instant_cadence=0.0, average_cadence=33.0, total_distance=257, resistance_level=None, instant_power=0, average_power=53, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=47, remaining_time=None)
+2025-04-29 18:54:15,393 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:54:15] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:54:15,618 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=0.0, average_speed=1.23, instant_cadence=0.0, average_cadence=33.0, total_distance=257, resistance_level=None, instant_power=0, average_power=53, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=48, remaining_time=None)
+2025-04-29 18:54:16,090 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:54:16] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:54:16,517 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=0.0, average_speed=1.21, instant_cadence=0.0, average_cadence=32.0, total_distance=257, resistance_level=None, instant_power=0, average_power=49, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=49, remaining_time=None)
+2025-04-29 18:54:17,393 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:54:17] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:54:17,628 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=0.0, average_speed=1.18, instant_cadence=0.0, average_cadence=31.0, total_distance=257, resistance_level=None, instant_power=0, average_power=45, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=50, remaining_time=None)
+2025-04-29 18:54:18,081 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:54:18] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:54:18,828 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=0.0, average_speed=1.16, instant_cadence=0.0, average_cadence=31.0, total_distance=257, resistance_level=None, instant_power=0, average_power=45, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=51, remaining_time=None)
+2025-04-29 18:54:19,518 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=0.0, average_speed=1.14, instant_cadence=0.0, average_cadence=30.0, total_distance=257, resistance_level=None, instant_power=0, average_power=41, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=52, remaining_time=None)
+2025-04-29 18:54:20,105 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:54:20] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:54:20,628 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=0.0, average_speed=1.12, instant_cadence=0.0, average_cadence=30.0, total_distance=257, resistance_level=None, instant_power=0, average_power=41, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=53, remaining_time=None)
+2025-04-29 18:54:20,786 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:54:20] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 18:57:52,396 - root - INFO - Logging initialized at 2025-04-29T18:57:52.396602
+2025-04-29 18:57:52,398 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-29 18:57:52,430 - database - INFO - Database tables created
+2025-04-29 18:57:52,430 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 18:57:52,433 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-29 18:57:52,436 - web - INFO - Using real FTMS devices
+2025-04-29 18:57:52,437 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 18:57:52,437 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 18:57:52,440 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 18:57:52,440 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 18:57:52,452 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 18:57:52,522 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-04-29 18:57:52,527 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-29 18:57:52,531 - werkzeug - INFO -  * Restarting with stat
+2025-04-29 18:57:53,339 - root - INFO - Logging initialized at 2025-04-29T18:57:53.339247
+2025-04-29 18:57:53,342 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-29 18:57:53,374 - database - INFO - Database tables created
+2025-04-29 18:57:53,374 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 18:57:53,374 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-29 18:57:53,374 - web - INFO - Using real FTMS devices
+2025-04-29 18:57:53,374 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 18:57:53,374 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 18:57:53,383 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 18:57:53,383 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 18:57:53,394 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 18:57:53,439 - werkzeug - WARNING -  * Debugger is active!
+2025-04-29 18:57:53,442 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-29 18:57:53,622 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:57:53] "GET /history HTTP/1.1" 200 -
+2025-04-29 18:57:53,760 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:57:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-29 18:57:53,774 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 18:57:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-04-29 18:59:51,210 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\ftms\\ftms_manager.py', reloading
+2025-04-29 18:59:51,286 - werkzeug - INFO -  * Restarting with stat
+2025-04-29 18:59:51,977 - root - INFO - Logging initialized at 2025-04-29T18:59:51.977074
+2025-04-29 18:59:51,977 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-29 18:59:52,028 - database - INFO - Database tables created
+2025-04-29 18:59:52,029 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 18:59:52,029 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-29 18:59:52,030 - web - INFO - Using real FTMS devices
+2025-04-29 18:59:52,031 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 18:59:52,031 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 18:59:52,033 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 18:59:52,033 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 18:59:52,046 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 18:59:52,080 - werkzeug - WARNING -  * Debugger is active!
+2025-04-29 18:59:52,084 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-29 19:00:01,216 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\ftms\\ftms_manager.py', reloading
+2025-04-29 19:00:01,290 - werkzeug - INFO -  * Restarting with stat
+2025-04-29 19:00:01,984 - root - INFO - Logging initialized at 2025-04-29T19:00:01.984846
+2025-04-29 19:00:01,984 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-29 19:00:02,034 - database - INFO - Database tables created
+2025-04-29 19:00:02,034 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 19:00:02,037 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-29 19:00:02,037 - web - INFO - Using real FTMS devices
+2025-04-29 19:00:02,038 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 19:00:02,039 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 19:00:02,041 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 19:00:02,041 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 19:00:02,051 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 19:00:02,085 - werkzeug - WARNING -  * Debugger is active!
+2025-04-29 19:00:02,087 - werkzeug - INFO -  * Debugger PIN: 791-193-465

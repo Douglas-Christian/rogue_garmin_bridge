@@ -60,3 +60,6 @@
 2025-04-27 20:18:53,707 - workout_manager - INFO - Starting new bike workout on device C9:02:CB:68:17:C1
 2025-04-27 20:18:53,766 - workout_manager - INFO - Started workout 76 with device C9:02:CB:68:17:C1
 2025-04-27 20:20:31,981 - workout_manager - INFO - Ending workout (ID: 76)
+2025-04-29 18:53:29,617 - workout_manager - INFO - Starting new bike workout on device C9:02:CB:68:17:C1
+2025-04-29 18:53:29,676 - workout_manager - INFO - Started workout 77 with device C9:02:CB:68:17:C1
+2025-04-29 18:54:06,528 - workout_manager - INFO - Ending workout (ID: 77)
