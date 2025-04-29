@@ -136,3 +136,81 @@
 2025-04-29 18:57:53,374 - database - INFO - Database tables created
 2025-04-29 18:59:52,028 - database - INFO - Database tables created
 2025-04-29 19:00:02,034 - database - INFO - Database tables created
+2025-04-29 19:27:22,093 - database - INFO - Database tables created
+2025-04-29 19:28:15,137 - database - INFO - Database tables created
+2025-04-29 19:28:15,147 - database - INFO - Started workout 78 with device 1
+2025-04-29 19:28:15,150 - database - INFO - Attempting to add data point for workout 78 at timestamp 0.822357
+2025-04-29 19:28:15,161 - database - INFO - Successfully added data point for workout 78 at timestamp 0.822357
+2025-04-29 19:28:15,267 - database - INFO - Attempting to add data point for workout 78 at timestamp 1.138598
+2025-04-29 19:28:15,282 - database - INFO - Successfully added data point for workout 78 at timestamp 1.138598
+2025-04-29 19:28:15,385 - database - INFO - Attempting to add data point for workout 78 at timestamp 2.511642
+2025-04-29 19:28:15,396 - database - INFO - Successfully added data point for workout 78 at timestamp 2.511642
+2025-04-29 19:28:15,499 - database - INFO - Attempting to add data point for workout 78 at timestamp 3.974704
+2025-04-29 19:28:15,512 - database - INFO - Successfully added data point for workout 78 at timestamp 3.974704
+2025-04-29 19:28:15,617 - database - INFO - Attempting to add data point for workout 78 at timestamp 4.229622
+2025-04-29 19:28:15,636 - database - INFO - Successfully added data point for workout 78 at timestamp 4.229622
+2025-04-29 19:28:15,738 - database - INFO - Attempting to add data point for workout 78 at timestamp 5.693081
+2025-04-29 19:28:15,756 - database - INFO - Successfully added data point for workout 78 at timestamp 5.693081
+2025-04-29 19:28:15,861 - database - INFO - Attempting to add data point for workout 78 at timestamp 6.237769
+2025-04-29 19:28:15,879 - database - INFO - Successfully added data point for workout 78 at timestamp 6.237769
+2025-04-29 19:28:15,983 - database - INFO - Attempting to add data point for workout 78 at timestamp 7.932687
+2025-04-29 19:28:15,994 - database - INFO - Successfully added data point for workout 78 at timestamp 7.932687
+2025-04-29 19:28:16,096 - database - INFO - Attempting to add data point for workout 78 at timestamp 8.043160
+2025-04-29 19:28:16,113 - database - INFO - Successfully added data point for workout 78 at timestamp 8.043160
+2025-04-29 19:28:16,216 - database - INFO - Attempting to add data point for workout 78 at timestamp 9.298353
+2025-04-29 19:28:16,231 - database - INFO - Successfully added data point for workout 78 at timestamp 9.298353
+2025-04-29 19:28:16,345 - database - INFO - Ended workout 78, duration: 1s
+2025-04-29 19:30:28,630 - database - INFO - Database tables created
+2025-04-29 19:30:29,509 - database - INFO - Database tables created
+2025-04-29 19:31:22,380 - database - INFO - Started workout 79 with device C9:02:CB:68:17:C1
+2025-04-29 19:31:23,173 - database - INFO - Attempting to add data point for workout 79 at timestamp 0.792134
+2025-04-29 19:31:23,233 - database - INFO - Successfully added data point for workout 79 at timestamp 0.792134
+2025-04-29 19:31:24,074 - database - INFO - Attempting to add data point for workout 79 at timestamp 1.693148
+2025-04-29 19:31:24,132 - database - INFO - Successfully added data point for workout 79 at timestamp 1.693148
+2025-04-29 19:31:25,064 - database - INFO - Attempting to add data point for workout 79 at timestamp 2.682231
+2025-04-29 19:31:25,122 - database - INFO - Successfully added data point for workout 79 at timestamp 2.682231
+2025-04-29 19:31:26,083 - database - INFO - Attempting to add data point for workout 79 at timestamp 3.701981
+2025-04-29 19:31:26,136 - database - INFO - Successfully added data point for workout 79 at timestamp 3.701981
+2025-04-29 19:31:27,073 - database - INFO - Attempting to add data point for workout 79 at timestamp 4.692049
+2025-04-29 19:31:27,135 - database - INFO - Successfully added data point for workout 79 at timestamp 4.692049
+2025-04-29 19:31:28,093 - database - INFO - Attempting to add data point for workout 79 at timestamp 5.712694
+2025-04-29 19:31:28,153 - database - INFO - Successfully added data point for workout 79 at timestamp 5.712694
+2025-04-29 19:31:29,053 - database - INFO - Attempting to add data point for workout 79 at timestamp 6.672658
+2025-04-29 19:31:29,066 - database - INFO - Successfully added data point for workout 79 at timestamp 6.672658
+2025-04-29 19:31:30,072 - database - INFO - Attempting to add data point for workout 79 at timestamp 7.691647
+2025-04-29 19:31:30,082 - database - INFO - Successfully added data point for workout 79 at timestamp 7.691647
+2025-04-29 19:31:31,066 - database - INFO - Attempting to add data point for workout 79 at timestamp 8.682320
+2025-04-29 19:31:31,121 - database - INFO - Successfully added data point for workout 79 at timestamp 8.682320
+2025-04-29 19:31:32,083 - database - INFO - Attempting to add data point for workout 79 at timestamp 9.702102
+2025-04-29 19:31:32,142 - database - INFO - Successfully added data point for workout 79 at timestamp 9.702102
+2025-04-29 19:31:33,074 - database - INFO - Attempting to add data point for workout 79 at timestamp 10.693118
+2025-04-29 19:31:33,135 - database - INFO - Successfully added data point for workout 79 at timestamp 10.693118
+2025-04-29 19:31:34,063 - database - INFO - Attempting to add data point for workout 79 at timestamp 11.682245
+2025-04-29 19:31:34,072 - database - INFO - Successfully added data point for workout 79 at timestamp 11.682245
+2025-04-29 19:31:35,049 - database - INFO - Attempting to add data point for workout 79 at timestamp 12.668565
+2025-04-29 19:31:35,063 - database - INFO - Successfully added data point for workout 79 at timestamp 12.668565
+2025-04-29 19:31:36,163 - database - INFO - Attempting to add data point for workout 79 at timestamp 13.782878
+2025-04-29 19:31:36,174 - database - INFO - Successfully added data point for workout 79 at timestamp 13.782878
+2025-04-29 19:31:37,062 - database - INFO - Attempting to add data point for workout 79 at timestamp 14.681872
+2025-04-29 19:31:37,087 - database - INFO - Successfully added data point for workout 79 at timestamp 14.681872
+2025-04-29 19:31:38,053 - database - INFO - Attempting to add data point for workout 79 at timestamp 15.672470
+2025-04-29 19:31:38,110 - database - INFO - Successfully added data point for workout 79 at timestamp 15.672470
+2025-04-29 19:31:39,074 - database - INFO - Attempting to add data point for workout 79 at timestamp 16.692999
+2025-04-29 19:31:39,094 - database - INFO - Successfully added data point for workout 79 at timestamp 16.692999
+2025-04-29 19:31:40,063 - database - INFO - Attempting to add data point for workout 79 at timestamp 17.682469
+2025-04-29 19:31:40,119 - database - INFO - Successfully added data point for workout 79 at timestamp 17.682469
+2025-04-29 19:31:41,083 - database - INFO - Attempting to add data point for workout 79 at timestamp 18.702824
+2025-04-29 19:31:41,141 - database - INFO - Successfully added data point for workout 79 at timestamp 18.702824
+2025-04-29 19:31:42,073 - database - INFO - Attempting to add data point for workout 79 at timestamp 19.692759
+2025-04-29 19:31:42,132 - database - INFO - Successfully added data point for workout 79 at timestamp 19.692759
+2025-04-29 19:31:43,123 - database - INFO - Attempting to add data point for workout 79 at timestamp 20.742773
+2025-04-29 19:31:43,183 - database - INFO - Successfully added data point for workout 79 at timestamp 20.742773
+2025-04-29 19:31:44,053 - database - INFO - Attempting to add data point for workout 79 at timestamp 21.671963
+2025-04-29 19:31:44,106 - database - INFO - Successfully added data point for workout 79 at timestamp 21.671963
+2025-04-29 19:31:45,073 - database - INFO - Attempting to add data point for workout 79 at timestamp 22.692848
+2025-04-29 19:31:45,082 - database - INFO - Successfully added data point for workout 79 at timestamp 22.692848
+2025-04-29 19:31:46,095 - database - INFO - Attempting to add data point for workout 79 at timestamp 23.714747
+2025-04-29 19:31:46,158 - database - INFO - Successfully added data point for workout 79 at timestamp 23.714747
+2025-04-29 19:31:47,053 - database - INFO - Attempting to add data point for workout 79 at timestamp 24.671999
+2025-04-29 19:31:47,109 - database - INFO - Successfully added data point for workout 79 at timestamp 24.671999
+2025-04-29 19:31:47,148 - database - INFO - Ended workout 79, duration: 24s

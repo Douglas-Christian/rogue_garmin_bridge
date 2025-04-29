@@ -6622,3 +6622,360 @@ AttributeError: 'IndoorBikeData' object has no attribute 'get'
 2025-04-29 19:00:02,051 - web - INFO - Starting background asyncio event loop run_forever.
 2025-04-29 19:00:02,085 - werkzeug - WARNING -  * Debugger is active!
 2025-04-29 19:00:02,087 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-29 19:27:21,744 - root - INFO - Logging initialized at 2025-04-29T19:27:21.744544
+2025-04-29 19:27:21,745 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-29 19:27:22,093 - database - INFO - Database tables created
+2025-04-29 19:28:14,922 - root - INFO - Logging initialized at 2025-04-29T19:28:14.922494
+2025-04-29 19:28:14,930 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-29 19:28:15,137 - database - INFO - Database tables created
+2025-04-29 19:28:15,147 - database - INFO - Started workout 78 with device 1
+2025-04-29 19:28:15,150 - database - INFO - Attempting to add data point for workout 78 at timestamp 0.822357
+2025-04-29 19:28:15,161 - database - INFO - Successfully added data point for workout 78 at timestamp 0.822357
+2025-04-29 19:28:15,267 - database - INFO - Attempting to add data point for workout 78 at timestamp 1.138598
+2025-04-29 19:28:15,282 - database - INFO - Successfully added data point for workout 78 at timestamp 1.138598
+2025-04-29 19:28:15,385 - database - INFO - Attempting to add data point for workout 78 at timestamp 2.511642
+2025-04-29 19:28:15,396 - database - INFO - Successfully added data point for workout 78 at timestamp 2.511642
+2025-04-29 19:28:15,499 - database - INFO - Attempting to add data point for workout 78 at timestamp 3.974704
+2025-04-29 19:28:15,512 - database - INFO - Successfully added data point for workout 78 at timestamp 3.974704
+2025-04-29 19:28:15,617 - database - INFO - Attempting to add data point for workout 78 at timestamp 4.229622
+2025-04-29 19:28:15,636 - database - INFO - Successfully added data point for workout 78 at timestamp 4.229622
+2025-04-29 19:28:15,738 - database - INFO - Attempting to add data point for workout 78 at timestamp 5.693081
+2025-04-29 19:28:15,756 - database - INFO - Successfully added data point for workout 78 at timestamp 5.693081
+2025-04-29 19:28:15,861 - database - INFO - Attempting to add data point for workout 78 at timestamp 6.237769
+2025-04-29 19:28:15,879 - database - INFO - Successfully added data point for workout 78 at timestamp 6.237769
+2025-04-29 19:28:15,983 - database - INFO - Attempting to add data point for workout 78 at timestamp 7.932687
+2025-04-29 19:28:15,994 - database - INFO - Successfully added data point for workout 78 at timestamp 7.932687
+2025-04-29 19:28:16,096 - database - INFO - Attempting to add data point for workout 78 at timestamp 8.043160
+2025-04-29 19:28:16,113 - database - INFO - Successfully added data point for workout 78 at timestamp 8.043160
+2025-04-29 19:28:16,216 - database - INFO - Attempting to add data point for workout 78 at timestamp 9.298353
+2025-04-29 19:28:16,231 - database - INFO - Successfully added data point for workout 78 at timestamp 9.298353
+2025-04-29 19:28:16,345 - database - INFO - Ended workout 78, duration: 1s
+2025-04-29 19:30:28,553 - root - INFO - Logging initialized at 2025-04-29T19:30:28.552593
+2025-04-29 19:30:28,553 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-29 19:30:28,630 - database - INFO - Database tables created
+2025-04-29 19:30:28,631 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 19:30:28,634 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-29 19:30:28,636 - web - INFO - Using real FTMS devices
+2025-04-29 19:30:28,637 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 19:30:28,641 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 19:30:28,643 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 19:30:28,644 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 19:30:28,718 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 19:30:28,830 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-04-29 19:30:28,831 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-29 19:30:28,841 - werkzeug - INFO -  * Restarting with stat
+2025-04-29 19:30:29,484 - root - INFO - Logging initialized at 2025-04-29T19:30:29.484454
+2025-04-29 19:30:29,485 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-29 19:30:29,509 - database - INFO - Database tables created
+2025-04-29 19:30:29,510 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 19:30:29,511 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-29 19:30:29,512 - web - INFO - Using real FTMS devices
+2025-04-29 19:30:29,513 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 19:30:29,514 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 19:30:29,515 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 19:30:29,516 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 19:30:29,525 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 19:30:29,556 - werkzeug - WARNING -  * Debugger is active!
+2025-04-29 19:30:29,608 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-29 19:30:38,547 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:30:38] "GET /devices HTTP/1.1" 200 -
+2025-04-29 19:30:38,881 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:30:38] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-04-29 19:30:38,881 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:30:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-29 19:30:38,939 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:30:38] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:30:41,258 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:30:41] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:30:42,943 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:30:42] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:30:45,248 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:30:45] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:30:46,941 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:30:46] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:30:49,256 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:30:49] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:30:50,943 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:30:50] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:30:53,270 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:30:53] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:30:54,942 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:30:54] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:30:57,259 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:30:57] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:30:58,948 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:30:58] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:01,251 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:01] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:02,183 - ftms_connector - INFO - Scanning for FTMS devices for 5 seconds...
+2025-04-29 19:31:03,256 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:03] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:05,254 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:05] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:05,569 - ftms_connector - INFO - Found FTMS device: ECHO_BIKE_077937 (C9:02:CB:68:17:C1)
+2025-04-29 19:31:06,870 - ftms_connector - INFO - Found FTMS device: ECHO_BIKE_077937 (C9:02:CB:68:17:C1)
+2025-04-29 19:31:06,880 - ftms_connector - INFO - Found FTMS device: ECHO_BIKE_077937 (C9:02:CB:68:17:C1)
+2025-04-29 19:31:07,249 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:07] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:07,594 - ftms_connector - INFO - Discovered 1 FTMS devices
+2025-04-29 19:31:07,597 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:07] "POST /api/discover HTTP/1.1" 200 -
+2025-04-29 19:31:09,254 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:09] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:09,506 - web - INFO - Scheduling connect task for C9:02:CB:68:17:C1 on background loop.
+2025-04-29 19:31:09,508 - ftms_connector - INFO - Connecting to ECHO_BIKE_077937 (C9:02:CB:68:17:C1)...
+2025-04-29 19:31:10,938 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:10] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:13,247 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:13] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:15,265 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:15] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:16,755 - ftms_connector - INFO - Setting FTMS data handlers...
+2025-04-29 19:31:16,755 - ftms_connector - INFO - Attempting to enable FTMS notifications...
+2025-04-29 19:31:17,051 - ftms_connector - INFO - FTMS notifications enabled successfully.
+2025-04-29 19:31:17,052 - ftms_connector - INFO - FTMS data handlers set.
+2025-04-29 19:31:17,054 - ftms_connector - INFO - Connected to ECHO_BIKE_077937 (C9:02:CB:68:17:C1)
+2025-04-29 19:31:17,055 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-04-29 19:31:17,056 - web - INFO - Connect task for C9:02:CB:68:17:C1 completed with result: True
+2025-04-29 19:31:17,057 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:17] "POST /api/connect HTTP/1.1" 200 -
+2025-04-29 19:31:17,259 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:17] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:17,889 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:17] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:18,939 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:18] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:19,060 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=0.0, average_speed=0.0, instant_cadence=0.0, average_cadence=0.0, total_distance=0, resistance_level=None, instant_power=0, average_power=0, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=0, remaining_time=None)
+2025-04-29 19:31:19,062 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 0.0, 'average_speed': 0.0, 'instant_cadence': 0.0, 'average_cadence': 0.0, 'total_distance': 0, 'resistance_level': None, 'instant_power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 0, 'remaining_time': None, 'timestamp': 1745969479.0625875}
+2025-04-29 19:31:19,065 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-04-29 19:31:19,409 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:19] "GET /workout HTTP/1.1" 200 -
+2025-04-29 19:31:19,465 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-29 19:31:19,602 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:19] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-04-29 19:31:19,988 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:19] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:20,050 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=20.91, average_speed=1.34, instant_cadence=35.0, average_cadence=36.0, total_distance=0, resistance_level=None, instant_power=62, average_power=66, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=1, remaining_time=None)
+2025-04-29 19:31:20,050 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 20.91, 'average_speed': 1.34, 'instant_cadence': 35.0, 'average_cadence': 36.0, 'total_distance': 0, 'resistance_level': None, 'instant_power': 62, 'average_power': 66, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 1, 'remaining_time': None, 'timestamp': 1745969480.0501964}
+2025-04-29 19:31:20,051 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-04-29 19:31:20,251 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:20] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:20,684 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:20] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:21,071 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=20.27, average_speed=1.22, instant_cadence=34.0, average_cadence=33.0, total_distance=0, resistance_level=None, instant_power=57, average_power=53, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=2, remaining_time=None)
+2025-04-29 19:31:21,071 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 20.27, 'average_speed': 1.22, 'instant_cadence': 34.0, 'average_cadence': 33.0, 'total_distance': 0, 'resistance_level': None, 'instant_power': 57, 'average_power': 53, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 2, 'remaining_time': None, 'timestamp': 1745969481.0711584}
+2025-04-29 19:31:21,072 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-04-29 19:31:21,999 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:21] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:22,061 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=20.27, average_speed=1.26, instant_cadence=34.0, average_cadence=34.0, total_distance=16, resistance_level=None, instant_power=57, average_power=57, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=3, remaining_time=None)
+2025-04-29 19:31:22,062 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 20.27, 'average_speed': 1.26, 'instant_cadence': 34.0, 'average_cadence': 34.0, 'total_distance': 16, 'resistance_level': None, 'instant_power': 57, 'average_power': 57, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 3, 'remaining_time': None, 'timestamp': 1745969482.0621326}
+2025-04-29 19:31:22,063 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-04-29 19:31:22,259 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:22] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:22,322 - workout_manager - INFO - Starting new bike workout on device C9:02:CB:68:17:C1
+2025-04-29 19:31:22,380 - database - INFO - Started workout 79 with device C9:02:CB:68:17:C1
+2025-04-29 19:31:22,381 - workout_manager - INFO - Started workout 79 with device C9:02:CB:68:17:C1
+2025-04-29 19:31:22,382 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:22] "POST /api/start_workout HTTP/1.1" 200 -
+2025-04-29 19:31:22,568 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:22] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:22,691 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:22] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:23,171 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=20.27, average_speed=1.28, instant_cadence=34.0, average_cadence=34.0, total_distance=16, resistance_level=None, instant_power=57, average_power=57, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=4, remaining_time=None)
+2025-04-29 19:31:23,171 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 20.27, 'average_speed': 1.28, 'instant_cadence': 34.0, 'average_cadence': 34.0, 'total_distance': 16, 'resistance_level': None, 'instant_power': 57, 'average_power': 57, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 4, 'remaining_time': None, 'timestamp': 1745969483.1712325}
+2025-04-29 19:31:23,171 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:23,173 - database - INFO - Attempting to add data point for workout 79 at timestamp 0.792134
+2025-04-29 19:31:23,233 - database - INFO - Successfully added data point for workout 79 at timestamp 0.792134
+2025-04-29 19:31:23,235 - workout_manager - INFO - Added data point to workout 79: time=0.792s, power=57, distance=16.00m, calories=0
+2025-04-29 19:31:23,693 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:23] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:24,072 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=20.91, average_speed=1.34, instant_cadence=35.0, average_cadence=36.0, total_distance=16, resistance_level=None, instant_power=62, average_power=66, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=5, remaining_time=None)
+2025-04-29 19:31:24,073 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 20.91, 'average_speed': 1.34, 'instant_cadence': 35.0, 'average_cadence': 36.0, 'total_distance': 16, 'resistance_level': None, 'instant_power': 62, 'average_power': 66, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 5, 'remaining_time': None, 'timestamp': 1745969484.072255}
+2025-04-29 19:31:24,073 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:24,074 - database - INFO - Attempting to add data point for workout 79 at timestamp 1.693148
+2025-04-29 19:31:24,132 - database - INFO - Successfully added data point for workout 79 at timestamp 1.693148
+2025-04-29 19:31:24,133 - workout_manager - INFO - Added data point to workout 79: time=1.693s, power=62, distance=16.00m, calories=0
+2025-04-29 19:31:24,986 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:24] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:25,061 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=20.91, average_speed=1.3, instant_cadence=35.0, average_cadence=35.0, total_distance=32, resistance_level=None, instant_power=62, average_power=62, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=6, remaining_time=None)
+2025-04-29 19:31:25,062 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 20.91, 'average_speed': 1.3, 'instant_cadence': 35.0, 'average_cadence': 35.0, 'total_distance': 32, 'resistance_level': None, 'instant_power': 62, 'average_power': 62, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 6, 'remaining_time': None, 'timestamp': 1745969485.0623426}
+2025-04-29 19:31:25,063 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:25,064 - database - INFO - Attempting to add data point for workout 79 at timestamp 2.682231
+2025-04-29 19:31:25,122 - database - INFO - Successfully added data point for workout 79 at timestamp 2.682231
+2025-04-29 19:31:25,123 - workout_manager - INFO - Added data point to workout 79: time=2.682s, power=62, distance=32.00m, calories=0
+2025-04-29 19:31:25,691 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:25] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:26,081 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=20.91, average_speed=1.3, instant_cadence=35.0, average_cadence=35.0, total_distance=32, resistance_level=None, instant_power=62, average_power=62, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=7, remaining_time=None)
+2025-04-29 19:31:26,081 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 20.91, 'average_speed': 1.3, 'instant_cadence': 35.0, 'average_cadence': 35.0, 'total_distance': 32, 'resistance_level': None, 'instant_power': 62, 'average_power': 62, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 7, 'remaining_time': None, 'timestamp': 1745969486.081546}
+2025-04-29 19:31:26,083 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:26,083 - database - INFO - Attempting to add data point for workout 79 at timestamp 3.701981
+2025-04-29 19:31:26,136 - database - INFO - Successfully added data point for workout 79 at timestamp 3.701981
+2025-04-29 19:31:26,142 - workout_manager - INFO - Added data point to workout 79: time=3.702s, power=62, distance=32.00m, calories=0
+2025-04-29 19:31:27,003 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:27] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:27,071 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=21.56, average_speed=1.34, instant_cadence=36.0, average_cadence=36.0, total_distance=48, resistance_level=None, instant_power=66, average_power=66, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=8, remaining_time=None)
+2025-04-29 19:31:27,072 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 21.56, 'average_speed': 1.34, 'instant_cadence': 36.0, 'average_cadence': 36.0, 'total_distance': 48, 'resistance_level': None, 'instant_power': 66, 'average_power': 66, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 8, 'remaining_time': None, 'timestamp': 1745969487.0721576}
+2025-04-29 19:31:27,073 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:27,073 - database - INFO - Attempting to add data point for workout 79 at timestamp 4.692049
+2025-04-29 19:31:27,135 - database - INFO - Successfully added data point for workout 79 at timestamp 4.692049
+2025-04-29 19:31:27,137 - workout_manager - INFO - Added data point to workout 79: time=4.692s, power=66, distance=48.00m, calories=0
+2025-04-29 19:31:27,682 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:27] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:28,091 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=21.56, average_speed=1.34, instant_cadence=36.0, average_cadence=36.0, total_distance=48, resistance_level=None, instant_power=66, average_power=66, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=9, remaining_time=None)
+2025-04-29 19:31:28,092 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 21.56, 'average_speed': 1.34, 'instant_cadence': 36.0, 'average_cadence': 36.0, 'total_distance': 48, 'resistance_level': None, 'instant_power': 66, 'average_power': 66, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 9, 'remaining_time': None, 'timestamp': 1745969488.0927987}
+2025-04-29 19:31:28,093 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:28,093 - database - INFO - Attempting to add data point for workout 79 at timestamp 5.712694
+2025-04-29 19:31:28,153 - database - INFO - Successfully added data point for workout 79 at timestamp 5.712694
+2025-04-29 19:31:28,154 - workout_manager - INFO - Added data point to workout 79: time=5.713s, power=66, distance=48.00m, calories=0
+2025-04-29 19:31:28,991 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:28] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:29,051 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=21.56, average_speed=1.36, instant_cadence=36.0, average_cadence=36.0, total_distance=48, resistance_level=None, instant_power=66, average_power=66, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=10, remaining_time=None)
+2025-04-29 19:31:29,052 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 21.56, 'average_speed': 1.36, 'instant_cadence': 36.0, 'average_cadence': 36.0, 'total_distance': 48, 'resistance_level': None, 'instant_power': 66, 'average_power': 66, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 10, 'remaining_time': None, 'timestamp': 1745969489.052769}
+2025-04-29 19:31:29,052 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:29,053 - database - INFO - Attempting to add data point for workout 79 at timestamp 6.672658
+2025-04-29 19:31:29,066 - database - INFO - Successfully added data point for workout 79 at timestamp 6.672658
+2025-04-29 19:31:29,067 - workout_manager - INFO - Added data point to workout 79: time=6.673s, power=66, distance=48.00m, calories=0
+2025-04-29 19:31:29,691 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:29] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:30,071 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=22.04, average_speed=1.34, instant_cadence=37.0, average_cadence=36.0, total_distance=64, resistance_level=None, instant_power=70, average_power=66, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=11, remaining_time=None)
+2025-04-29 19:31:30,071 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 22.04, 'average_speed': 1.34, 'instant_cadence': 37.0, 'average_cadence': 36.0, 'total_distance': 64, 'resistance_level': None, 'instant_power': 70, 'average_power': 66, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 11, 'remaining_time': None, 'timestamp': 1745969490.0715399}
+2025-04-29 19:31:30,072 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:30,072 - database - INFO - Attempting to add data point for workout 79 at timestamp 7.691647
+2025-04-29 19:31:30,082 - database - INFO - Successfully added data point for workout 79 at timestamp 7.691647
+2025-04-29 19:31:30,083 - workout_manager - INFO - Added data point to workout 79: time=7.692s, power=70, distance=64.00m, calories=0
+2025-04-29 19:31:30,992 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:30] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:31,059 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=22.04, average_speed=1.36, instant_cadence=37.0, average_cadence=36.0, total_distance=64, resistance_level=None, instant_power=70, average_power=66, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=12, remaining_time=None)
+2025-04-29 19:31:31,059 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 22.04, 'average_speed': 1.36, 'instant_cadence': 37.0, 'average_cadence': 36.0, 'total_distance': 64, 'resistance_level': None, 'instant_power': 70, 'average_power': 66, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 12, 'remaining_time': None, 'timestamp': 1745969491.0592697}
+2025-04-29 19:31:31,063 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:31,066 - database - INFO - Attempting to add data point for workout 79 at timestamp 8.682320
+2025-04-29 19:31:31,121 - database - INFO - Successfully added data point for workout 79 at timestamp 8.682320
+2025-04-29 19:31:31,121 - workout_manager - INFO - Added data point to workout 79: time=8.682s, power=70, distance=64.00m, calories=0
+2025-04-29 19:31:31,690 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:31] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:32,081 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=22.04, average_speed=1.35, instant_cadence=37.0, average_cadence=36.0, total_distance=80, resistance_level=None, instant_power=70, average_power=66, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=13, remaining_time=None)
+2025-04-29 19:31:32,081 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 22.04, 'average_speed': 1.35, 'instant_cadence': 37.0, 'average_cadence': 36.0, 'total_distance': 80, 'resistance_level': None, 'instant_power': 70, 'average_power': 66, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 13, 'remaining_time': None, 'timestamp': 1745969492.0817611}
+2025-04-29 19:31:32,083 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:32,083 - database - INFO - Attempting to add data point for workout 79 at timestamp 9.702102
+2025-04-29 19:31:32,142 - database - INFO - Successfully added data point for workout 79 at timestamp 9.702102
+2025-04-29 19:31:32,142 - workout_manager - INFO - Added data point to workout 79: time=9.702s, power=70, distance=80.00m, calories=0
+2025-04-29 19:31:32,985 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:32] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:33,072 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=22.68, average_speed=1.37, instant_cadence=38.0, average_cadence=36.0, total_distance=80, resistance_level=None, instant_power=74, average_power=66, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=14, remaining_time=None)
+2025-04-29 19:31:33,073 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 22.68, 'average_speed': 1.37, 'instant_cadence': 38.0, 'average_cadence': 36.0, 'total_distance': 80, 'resistance_level': None, 'instant_power': 74, 'average_power': 66, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 14, 'remaining_time': None, 'timestamp': 1745969493.0721996}
+2025-04-29 19:31:33,073 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:33,074 - database - INFO - Attempting to add data point for workout 79 at timestamp 10.693118
+2025-04-29 19:31:33,135 - database - INFO - Successfully added data point for workout 79 at timestamp 10.693118
+2025-04-29 19:31:33,135 - workout_manager - INFO - Added data point to workout 79: time=10.693s, power=74, distance=80.00m, calories=0
+2025-04-29 19:31:33,691 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:33] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:34,060 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=22.04, average_speed=1.37, instant_cadence=37.0, average_cadence=36.0, total_distance=80, resistance_level=None, instant_power=70, average_power=66, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=15, remaining_time=None)
+2025-04-29 19:31:34,060 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 22.04, 'average_speed': 1.37, 'instant_cadence': 37.0, 'average_cadence': 36.0, 'total_distance': 80, 'resistance_level': None, 'instant_power': 70, 'average_power': 66, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 15, 'remaining_time': None, 'timestamp': 1745969494.060714}
+2025-04-29 19:31:34,063 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:34,063 - database - INFO - Attempting to add data point for workout 79 at timestamp 11.682245
+2025-04-29 19:31:34,072 - database - INFO - Successfully added data point for workout 79 at timestamp 11.682245
+2025-04-29 19:31:34,075 - workout_manager - INFO - Added data point to workout 79: time=11.682s, power=70, distance=80.00m, calories=0
+2025-04-29 19:31:35,002 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:35] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:35,049 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=22.68, average_speed=1.38, instant_cadence=38.0, average_cadence=37.0, total_distance=96, resistance_level=None, instant_power=74, average_power=70, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=16, remaining_time=None)
+2025-04-29 19:31:35,049 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 22.68, 'average_speed': 1.38, 'instant_cadence': 38.0, 'average_cadence': 37.0, 'total_distance': 96, 'resistance_level': None, 'instant_power': 74, 'average_power': 70, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 16, 'remaining_time': None, 'timestamp': 1745969495.0496778}
+2025-04-29 19:31:35,049 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:35,049 - database - INFO - Attempting to add data point for workout 79 at timestamp 12.668565
+2025-04-29 19:31:35,063 - database - INFO - Successfully added data point for workout 79 at timestamp 12.668565
+2025-04-29 19:31:35,065 - workout_manager - INFO - Added data point to workout 79: time=12.669s, power=74, distance=96.00m, calories=0
+2025-04-29 19:31:35,683 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:35] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:36,161 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=22.68, average_speed=1.39, instant_cadence=38.0, average_cadence=37.0, total_distance=96, resistance_level=None, instant_power=74, average_power=70, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=17, remaining_time=None)
+2025-04-29 19:31:36,162 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 22.68, 'average_speed': 1.39, 'instant_cadence': 38.0, 'average_cadence': 37.0, 'total_distance': 96, 'resistance_level': None, 'instant_power': 74, 'average_power': 70, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 17, 'remaining_time': None, 'timestamp': 1745969496.1625128}
+2025-04-29 19:31:36,162 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:36,163 - database - INFO - Attempting to add data point for workout 79 at timestamp 13.782878
+2025-04-29 19:31:36,174 - database - INFO - Successfully added data point for workout 79 at timestamp 13.782878
+2025-04-29 19:31:36,176 - workout_manager - INFO - Added data point to workout 79: time=13.783s, power=74, distance=96.00m, calories=0
+2025-04-29 19:31:36,991 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:36] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:37,061 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.33, average_speed=1.37, instant_cadence=39.0, average_cadence=37.0, total_distance=112, resistance_level=None, instant_power=78, average_power=70, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=18, remaining_time=None)
+2025-04-29 19:31:37,061 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 23.33, 'average_speed': 1.37, 'instant_cadence': 39.0, 'average_cadence': 37.0, 'total_distance': 112, 'resistance_level': None, 'instant_power': 78, 'average_power': 70, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 18, 'remaining_time': None, 'timestamp': 1745969497.0614302}
+2025-04-29 19:31:37,062 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:37,062 - database - INFO - Attempting to add data point for workout 79 at timestamp 14.681872
+2025-04-29 19:31:37,087 - database - INFO - Successfully added data point for workout 79 at timestamp 14.681872
+2025-04-29 19:31:37,088 - workout_manager - INFO - Added data point to workout 79: time=14.682s, power=78, distance=112.00m, calories=1
+2025-04-29 19:31:37,682 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:37] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:38,051 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.97, average_speed=1.38, instant_cadence=40.0, average_cadence=37.0, total_distance=112, resistance_level=None, instant_power=82, average_power=70, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=19, remaining_time=None)
+2025-04-29 19:31:38,052 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 23.97, 'average_speed': 1.38, 'instant_cadence': 40.0, 'average_cadence': 37.0, 'total_distance': 112, 'resistance_level': None, 'instant_power': 82, 'average_power': 70, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 19, 'remaining_time': None, 'timestamp': 1745969498.0513558}
+2025-04-29 19:31:38,052 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:38,053 - database - INFO - Attempting to add data point for workout 79 at timestamp 15.672470
+2025-04-29 19:31:38,110 - database - INFO - Successfully added data point for workout 79 at timestamp 15.672470
+2025-04-29 19:31:38,111 - workout_manager - INFO - Added data point to workout 79: time=15.672s, power=82, distance=112.00m, calories=1
+2025-04-29 19:31:39,006 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:39] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:39,072 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=24.45, average_speed=1.41, instant_cadence=41.0, average_cadence=38.0, total_distance=112, resistance_level=None, instant_power=89, average_power=74, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=20, remaining_time=None)
+2025-04-29 19:31:39,073 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 24.45, 'average_speed': 1.41, 'instant_cadence': 41.0, 'average_cadence': 38.0, 'total_distance': 112, 'resistance_level': None, 'instant_power': 89, 'average_power': 74, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 20, 'remaining_time': None, 'timestamp': 1745969499.0731046}
+2025-04-29 19:31:39,074 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:39,074 - database - INFO - Attempting to add data point for workout 79 at timestamp 16.692999
+2025-04-29 19:31:39,094 - database - INFO - Successfully added data point for workout 79 at timestamp 16.692999
+2025-04-29 19:31:39,095 - workout_manager - INFO - Added data point to workout 79: time=16.693s, power=89, distance=112.00m, calories=1
+2025-04-29 19:31:39,690 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:39] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:40,061 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=26.22, average_speed=1.42, instant_cadence=44.0, average_cadence=38.0, total_distance=128, resistance_level=None, instant_power=108, average_power=74, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=21, remaining_time=None)
+2025-04-29 19:31:40,062 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 26.22, 'average_speed': 1.42, 'instant_cadence': 44.0, 'average_cadence': 38.0, 'total_distance': 128, 'resistance_level': None, 'instant_power': 108, 'average_power': 74, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 21, 'remaining_time': None, 'timestamp': 1745969500.062576}
+2025-04-29 19:31:40,062 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:40,063 - database - INFO - Attempting to add data point for workout 79 at timestamp 17.682469
+2025-04-29 19:31:40,119 - database - INFO - Successfully added data point for workout 79 at timestamp 17.682469
+2025-04-29 19:31:40,121 - workout_manager - INFO - Added data point to workout 79: time=17.682s, power=108, distance=128.00m, calories=1
+2025-04-29 19:31:40,997 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:40] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:41,081 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=27.51, average_speed=1.46, instant_cadence=46.0, average_cadence=39.0, total_distance=144, resistance_level=None, instant_power=122, average_power=78, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=22, remaining_time=None)
+2025-04-29 19:31:41,082 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 27.51, 'average_speed': 1.46, 'instant_cadence': 46.0, 'average_cadence': 39.0, 'total_distance': 144, 'resistance_level': None, 'instant_power': 122, 'average_power': 78, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 22, 'remaining_time': None, 'timestamp': 1745969501.0829353}
+2025-04-29 19:31:41,082 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:41,083 - database - INFO - Attempting to add data point for workout 79 at timestamp 18.702824
+2025-04-29 19:31:41,141 - database - INFO - Successfully added data point for workout 79 at timestamp 18.702824
+2025-04-29 19:31:41,142 - workout_manager - INFO - Added data point to workout 79: time=18.703s, power=122, distance=144.00m, calories=1
+2025-04-29 19:31:41,693 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:41] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:42,071 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=29.92, average_speed=1.49, instant_cadence=50.0, average_cadence=40.0, total_distance=144, resistance_level=None, instant_power=148, average_power=82, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=23, remaining_time=None)
+2025-04-29 19:31:42,072 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 29.92, 'average_speed': 1.49, 'instant_cadence': 50.0, 'average_cadence': 40.0, 'total_distance': 144, 'resistance_level': None, 'instant_power': 148, 'average_power': 82, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 23, 'remaining_time': None, 'timestamp': 1745969502.0725837}
+2025-04-29 19:31:42,073 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:42,073 - database - INFO - Attempting to add data point for workout 79 at timestamp 19.692759
+2025-04-29 19:31:42,132 - database - INFO - Successfully added data point for workout 79 at timestamp 19.692759
+2025-04-29 19:31:42,134 - workout_manager - INFO - Added data point to workout 79: time=19.693s, power=148, distance=144.00m, calories=1
+2025-04-29 19:31:42,989 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:42] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:43,121 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=29.92, average_speed=1.5, instant_cadence=50.0, average_cadence=40.0, total_distance=160, resistance_level=None, instant_power=148, average_power=82, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=24, remaining_time=None)
+2025-04-29 19:31:43,121 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 29.92, 'average_speed': 1.5, 'instant_cadence': 50.0, 'average_cadence': 40.0, 'total_distance': 160, 'resistance_level': None, 'instant_power': 148, 'average_power': 82, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 24, 'remaining_time': None, 'timestamp': 1745969503.1213448}
+2025-04-29 19:31:43,122 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:43,123 - database - INFO - Attempting to add data point for workout 79 at timestamp 20.742773
+2025-04-29 19:31:43,183 - database - INFO - Successfully added data point for workout 79 at timestamp 20.742773
+2025-04-29 19:31:43,186 - workout_manager - INFO - Added data point to workout 79: time=20.743s, power=148, distance=160.00m, calories=1
+2025-04-29 19:31:43,682 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:43] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:44,051 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=28.64, average_speed=1.51, instant_cadence=48.0, average_cadence=40.0, total_distance=160, resistance_level=None, instant_power=135, average_power=82, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=25, remaining_time=None)
+2025-04-29 19:31:44,051 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 28.64, 'average_speed': 1.51, 'instant_cadence': 48.0, 'average_cadence': 40.0, 'total_distance': 160, 'resistance_level': None, 'instant_power': 135, 'average_power': 82, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 25, 'remaining_time': None, 'timestamp': 1745969504.0514388}
+2025-04-29 19:31:44,053 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:44,053 - database - INFO - Attempting to add data point for workout 79 at timestamp 21.671963
+2025-04-29 19:31:44,106 - database - INFO - Successfully added data point for workout 79 at timestamp 21.671963
+2025-04-29 19:31:44,107 - workout_manager - INFO - Added data point to workout 79: time=21.672s, power=135, distance=160.00m, calories=1
+2025-04-29 19:31:44,992 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:44] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:45,071 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=26.87, average_speed=1.5, instant_cadence=45.0, average_cadence=40.0, total_distance=160, resistance_level=None, instant_power=115, average_power=82, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=26, remaining_time=None)
+2025-04-29 19:31:45,072 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 26.87, 'average_speed': 1.5, 'instant_cadence': 45.0, 'average_cadence': 40.0, 'total_distance': 160, 'resistance_level': None, 'instant_power': 115, 'average_power': 82, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 26, 'remaining_time': None, 'timestamp': 1745969505.0729718}
+2025-04-29 19:31:45,073 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:45,073 - database - INFO - Attempting to add data point for workout 79 at timestamp 22.692848
+2025-04-29 19:31:45,082 - database - INFO - Successfully added data point for workout 79 at timestamp 22.692848
+2025-04-29 19:31:45,084 - workout_manager - INFO - Added data point to workout 79: time=22.693s, power=115, distance=160.00m, calories=1
+2025-04-29 19:31:45,688 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:45] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:46,091 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=25.74, average_speed=1.49, instant_cadence=43.0, average_cadence=40.0, total_distance=176, resistance_level=None, instant_power=102, average_power=82, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=27, remaining_time=None)
+2025-04-29 19:31:46,092 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 25.74, 'average_speed': 1.49, 'instant_cadence': 43.0, 'average_cadence': 40.0, 'total_distance': 176, 'resistance_level': None, 'instant_power': 102, 'average_power': 82, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 27, 'remaining_time': None, 'timestamp': 1745969506.0926933}
+2025-04-29 19:31:46,094 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:46,095 - database - INFO - Attempting to add data point for workout 79 at timestamp 23.714747
+2025-04-29 19:31:46,158 - database - INFO - Successfully added data point for workout 79 at timestamp 23.714747
+2025-04-29 19:31:46,159 - workout_manager - INFO - Added data point to workout 79: time=23.715s, power=102, distance=176.00m, calories=1
+2025-04-29 19:31:46,999 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:46] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:47,051 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=23.97, average_speed=1.48, instant_cadence=40.0, average_cadence=39.0, total_distance=176, resistance_level=None, instant_power=82, average_power=78, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=28, remaining_time=None)
+2025-04-29 19:31:47,052 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 23.97, 'average_speed': 1.48, 'instant_cadence': 40.0, 'average_cadence': 39.0, 'total_distance': 176, 'resistance_level': None, 'instant_power': 82, 'average_power': 78, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 28, 'remaining_time': None, 'timestamp': 1745969507.0520995}
+2025-04-29 19:31:47,052 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 79)
+2025-04-29 19:31:47,053 - database - INFO - Attempting to add data point for workout 79 at timestamp 24.671999
+2025-04-29 19:31:47,109 - database - INFO - Successfully added data point for workout 79 at timestamp 24.671999
+2025-04-29 19:31:47,109 - workout_manager - INFO - Added data point to workout 79: time=24.672s, power=82, distance=176.00m, calories=1
+2025-04-29 19:31:47,139 - workout_manager - INFO - Ending workout (ID: 79)
+2025-04-29 19:31:47,148 - database - INFO - Ended workout 79, duration: 24s
+2025-04-29 19:31:47,149 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:47] "POST /api/end_workout HTTP/1.1" 200 -
+2025-04-29 19:31:48,161 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=22.04, average_speed=1.46, instant_cadence=37.0, average_cadence=39.0, total_distance=176, resistance_level=None, instant_power=70, average_power=78, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=29, remaining_time=None)
+2025-04-29 19:31:48,162 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 22.04, 'average_speed': 1.46, 'instant_cadence': 37.0, 'average_cadence': 39.0, 'total_distance': 176, 'resistance_level': None, 'instant_power': 70, 'average_power': 78, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 29, 'remaining_time': None, 'timestamp': 1745969508.162328}
+2025-04-29 19:31:48,162 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-04-29 19:31:49,061 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=19.62, average_speed=1.43, instant_cadence=33.0, average_cadence=38.0, total_distance=176, resistance_level=None, instant_power=53, average_power=74, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=30, remaining_time=None)
+2025-04-29 19:31:49,062 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 19.62, 'average_speed': 1.43, 'instant_cadence': 33.0, 'average_cadence': 38.0, 'total_distance': 176, 'resistance_level': None, 'instant_power': 53, 'average_power': 74, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 30, 'remaining_time': None, 'timestamp': 1745969509.0623374}
+2025-04-29 19:31:49,062 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-04-29 19:31:49,074 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:49] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:49,393 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:49] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:49,686 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:49] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:50,051 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=19.62, average_speed=1.38, instant_cadence=33.0, average_cadence=37.0, total_distance=176, resistance_level=None, instant_power=53, average_power=70, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=31, remaining_time=None)
+2025-04-29 19:31:50,052 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 19.62, 'average_speed': 1.38, 'instant_cadence': 33.0, 'average_cadence': 37.0, 'total_distance': 176, 'resistance_level': None, 'instant_power': 53, 'average_power': 70, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 31, 'remaining_time': None, 'timestamp': 1745969510.0523593}
+2025-04-29 19:31:50,053 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-04-29 19:31:50,990 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:50] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:51,072 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=16.73, average_speed=1.34, instant_cadence=28.0, average_cadence=36.0, total_distance=176, resistance_level=None, instant_power=36, average_power=66, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=32, remaining_time=None)
+2025-04-29 19:31:51,073 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 16.73, 'average_speed': 1.34, 'instant_cadence': 28.0, 'average_cadence': 36.0, 'total_distance': 176, 'resistance_level': None, 'instant_power': 36, 'average_power': 66, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 32, 'remaining_time': None, 'timestamp': 1745969511.073165}
+2025-04-29 19:31:51,074 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-04-29 19:31:51,684 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:51] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:52,061 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=14.32, average_speed=1.3, instant_cadence=24.0, average_cadence=34.0, total_distance=176, resistance_level=None, instant_power=25, average_power=57, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=33, remaining_time=None)
+2025-04-29 19:31:52,062 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 14.32, 'average_speed': 1.3, 'instant_cadence': 24.0, 'average_cadence': 34.0, 'total_distance': 176, 'resistance_level': None, 'instant_power': 25, 'average_power': 57, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 33, 'remaining_time': None, 'timestamp': 1745969512.0623176}
+2025-04-29 19:31:52,064 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-04-29 19:31:52,989 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:52] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:53,171 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=0.0, average_speed=1.26, instant_cadence=0.0, average_cadence=33.0, total_distance=176, resistance_level=None, instant_power=0, average_power=53, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=34, remaining_time=None)
+2025-04-29 19:31:53,211 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 0.0, 'average_speed': 1.26, 'instant_cadence': 0.0, 'average_cadence': 33.0, 'total_distance': 176, 'resistance_level': None, 'instant_power': 0, 'average_power': 53, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 34, 'remaining_time': None, 'timestamp': 1745969513.2114027}
+2025-04-29 19:31:53,215 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-04-29 19:31:53,683 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:53] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 19:31:54,041 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=0.0, average_speed=1.22, instant_cadence=0.0, average_cadence=32.0, total_distance=176, resistance_level=None, instant_power=0, average_power=49, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=35, remaining_time=None)
+2025-04-29 19:31:54,042 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 0.0, 'average_speed': 1.22, 'instant_cadence': 0.0, 'average_cadence': 32.0, 'total_distance': 176, 'resistance_level': None, 'instant_power': 0, 'average_power': 49, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 35, 'remaining_time': None, 'timestamp': 1745969514.0429974}
+2025-04-29 19:31:54,042 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-04-29 19:31:54,457 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:54] "GET /history HTTP/1.1" 200 -
+2025-04-29 19:31:54,622 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-29 19:31:54,716 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 19:31:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-04-29 19:31:55,061 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=0.0, average_speed=1.19, instant_cadence=0.0, average_cadence=32.0, total_distance=176, resistance_level=None, instant_power=0, average_power=49, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=36, remaining_time=None)
+2025-04-29 19:31:55,063 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 0.0, 'average_speed': 1.19, 'instant_cadence': 0.0, 'average_cadence': 32.0, 'total_distance': 176, 'resistance_level': None, 'instant_power': 0, 'average_power': 49, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 36, 'remaining_time': None, 'timestamp': 1745969515.06197}
+2025-04-29 19:31:55,063 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-04-29 19:31:56,081 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=0.0, average_speed=1.16, instant_cadence=0.0, average_cadence=31.0, total_distance=176, resistance_level=None, instant_power=0, average_power=45, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=37, remaining_time=None)
+2025-04-29 19:31:56,082 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 0.0, 'average_speed': 1.16, 'instant_cadence': 0.0, 'average_cadence': 31.0, 'total_distance': 176, 'resistance_level': None, 'instant_power': 0, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 37, 'remaining_time': None, 'timestamp': 1745969516.0827777}
+2025-04-29 19:31:56,083 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-04-29 19:31:57,071 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=0.0, average_speed=1.12, instant_cadence=0.0, average_cadence=30.0, total_distance=176, resistance_level=None, instant_power=0, average_power=41, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=38, remaining_time=None)
+2025-04-29 19:31:57,072 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 0.0, 'average_speed': 1.12, 'instant_cadence': 0.0, 'average_cadence': 30.0, 'total_distance': 176, 'resistance_level': None, 'instant_power': 0, 'average_power': 41, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 38, 'remaining_time': None, 'timestamp': 1745969517.072984}
+2025-04-29 19:31:57,074 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-04-29 19:31:58,151 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=0.0, average_speed=1.1, instant_cadence=0.0, average_cadence=29.0, total_distance=176, resistance_level=None, instant_power=0, average_power=38, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=39, remaining_time=None)
+2025-04-29 19:31:58,152 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 0.0, 'average_speed': 1.1, 'instant_cadence': 0.0, 'average_cadence': 29.0, 'total_distance': 176, 'resistance_level': None, 'instant_power': 0, 'average_power': 38, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 39, 'remaining_time': None, 'timestamp': 1745969518.1525264}
+2025-04-29 19:31:58,153 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-04-29 19:31:59,082 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=0.0, average_speed=1.07, instant_cadence=0.0, average_cadence=28.0, total_distance=176, resistance_level=None, instant_power=0, average_power=36, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=40, remaining_time=None)
+2025-04-29 19:31:59,083 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 0.0, 'average_speed': 1.07, 'instant_cadence': 0.0, 'average_cadence': 28.0, 'total_distance': 176, 'resistance_level': None, 'instant_power': 0, 'average_power': 36, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 40, 'remaining_time': None, 'timestamp': 1745969519.083745}
+2025-04-29 19:31:59,084 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-04-29 19:32:00,072 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=0.0, average_speed=1.04, instant_cadence=0.0, average_cadence=28.0, total_distance=176, resistance_level=None, instant_power=0, average_power=36, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=41, remaining_time=None)
+2025-04-29 19:32:00,073 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 0.0, 'average_speed': 1.04, 'instant_cadence': 0.0, 'average_cadence': 28.0, 'total_distance': 176, 'resistance_level': None, 'instant_power': 0, 'average_power': 36, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 41, 'remaining_time': None, 'timestamp': 1745969520.0739923}
+2025-04-29 19:32:00,073 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-04-29 19:32:01,062 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=0.0, average_speed=1.02, instant_cadence=0.0, average_cadence=27.0, total_distance=176, resistance_level=None, instant_power=0, average_power=33, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=42, remaining_time=None)
+2025-04-29 19:32:01,063 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 0.0, 'average_speed': 1.02, 'instant_cadence': 0.0, 'average_cadence': 27.0, 'total_distance': 176, 'resistance_level': None, 'instant_power': 0, 'average_power': 33, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 42, 'remaining_time': None, 'timestamp': 1745969521.0623195}
+2025-04-29 19:32:01,063 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-04-29 19:32:02,167 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=0.0, average_speed=0.99, instant_cadence=0.0, average_cadence=26.0, total_distance=176, resistance_level=None, instant_power=0, average_power=31, total_energy=2, energy_per_hour=0, energy_per_minute=0, heart_rate=0, metabolic_equivalent=None, elapsed_time=43, remaining_time=None)
+2025-04-29 19:32:02,173 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 0.0, 'average_speed': 0.99, 'instant_cadence': 0.0, 'average_cadence': 26.0, 'total_distance': 176, 'resistance_level': None, 'instant_power': 0, 'average_power': 31, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 0, 'metabolic_equivalent': None, 'elapsed_time': 43, 'remaining_time': None, 'timestamp': 1745969522.1735015}
+2025-04-29 19:32:02,173 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
