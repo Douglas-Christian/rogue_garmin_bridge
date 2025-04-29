@@ -7,8 +7,10 @@ This provides a web interface for managing devices and workouts.
 import os
 import time
 import argparse
-from flask import Flask, render_template, request, jsonify, redirect, url_for
+import asyncio
 import threading
+import logging # Add logging import
+from flask import Flask, render_template, request, jsonify, redirect, url_for
 import sys
 import importlib  # Add importlib for module reloading
 
@@ -42,18 +44,44 @@ db_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.a
 db = Database(db_path)
 workout_manager = WorkoutManager(db)
 
-# Start FTMS device manager in a separate thread
+# Start FTMS device manager
 logger.info(f"Initializing FTMSDeviceManager with use_simulator={args.use_simulator}, device_type={args.device_type}")
 ftms_manager = FTMSDeviceManager(workout_manager, use_simulator=args.use_simulator, device_type=args.device_type)
-ftms_thread = threading.Thread(target=ftms_manager.start_scanning, daemon=True)
-ftms_thread.start()
 
 if args.use_simulator:
     logger.info(f"Using FTMS device simulator for {args.device_type}")
 else:
     logger.info("Using real FTMS devices")
 
-logger.info("Flask application initialized. FTMS scanning thread started.")
+logger.info("Flask application initialized. FTMS manager created.")
+
+# Global variable for the asyncio loop and the thread running it
+background_loop = None
+loop_thread = None
+
+def start_asyncio_loop():
+    """Starts the asyncio event loop in a separate thread."""
+    global background_loop
+    try:
+        logger.info("Background thread started. Creating new event loop.")
+        background_loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(background_loop)
+        logger.info("Starting background asyncio event loop run_forever.")
+        background_loop.run_forever()
+    except Exception as e:
+        logger.error(f"Exception in background asyncio loop: {e}", exc_info=True)
+    finally:
+        if background_loop and background_loop.is_running():
+            logger.info("Stopping background asyncio event loop.")
+            background_loop.stop()
+        logger.info("Background asyncio loop finished.")
+        background_loop = None # Ensure it's None if loop stops
+
+# Start the loop in a background thread when the app initializes
+logger.info("Starting background asyncio loop thread...")
+loop_thread = threading.Thread(target=start_asyncio_loop, daemon=True)
+loop_thread.start()
+logger.info("Background asyncio loop thread start initiated.")
 
 # Routes
 @app.route('/')
@@ -85,11 +113,40 @@ def settings():
 @app.route('/api/discover', methods=['POST'])
 def discover_devices():
     """Discover FTMS devices."""
+    logger.debug(f"/api/discover called. background_loop is {'set' if background_loop else 'None'}. Loop running: {background_loop.is_running() if background_loop else 'N/A'}")
     try:
-        devices = ftms_manager.discover_devices()
-        return jsonify({'success': True, 'devices': devices})
+        if not background_loop or not background_loop.is_running():
+             logger.error("Asyncio background loop is not running.")
+             return jsonify({'success': False, 'error': 'Asyncio loop not running'})
+
+        # Schedule the async discover_devices method on the background loop
+        future = asyncio.run_coroutine_threadsafe(ftms_manager.discover_devices(), background_loop)
+        devices_dict = future.result(timeout=10) # Wait for the result with timeout
+
+        serializable_devices = []
+        if isinstance(devices_dict, dict): # Check if it's a dictionary
+            for address, dev_info in devices_dict.items(): # Iterate through dict items
+                # dev_info could be an object or already a dict
+                name = None
+                if hasattr(dev_info, 'name'):
+                    name = dev_info.name
+                elif isinstance(dev_info, dict) and 'name' in dev_info:
+                    name = dev_info['name']
+
+                # Address is the key in the dictionary
+                if name and address:
+                    serializable_devices.append({'name': name, 'address': address})
+                else:
+                    logger.warning(f"Could not serialize device with address {address}: {dev_info}")
+        else:
+             logger.warning(f"discover_devices returned unexpected type: {type(devices_dict)}")
+
+        return jsonify({'success': True, 'devices': serializable_devices})
+    except asyncio.TimeoutError:
+        logger.error("Device discovery timed out.")
+        return jsonify({'success': False, 'error': 'Device discovery timed out'})
     except Exception as e:
-        logger.error(f"Error discovering devices: {str(e)}")
+        logger.error(f"Error discovering devices: {str(e)}", exc_info=True)
         return jsonify({'success': False, 'error': str(e)})
 
 @app.route('/api/settings', methods=['GET', 'POST'])
@@ -187,25 +244,51 @@ def api_user_profile():
 @app.route('/api/connect', methods=['POST'])
 def connect_device():
     """Connect to an FTMS device."""
+    device_address = request.json.get('address')
+    logger.debug(f"/api/connect called for {device_address}. background_loop is {'set' if background_loop else 'None'}. Loop running: {background_loop.is_running() if background_loop else 'N/A'}")
     try:
-        device_address = request.json.get('address')
         if not device_address:
             return jsonify({'success': False, 'error': 'Device address is required'})
-        
-        success = ftms_manager.connect(device_address)
+
+        if not background_loop or not background_loop.is_running():
+             logger.error("Asyncio background loop is not running.")
+             return jsonify({'success': False, 'error': 'Asyncio loop not running'})
+
+        # Schedule the async connect method on the background loop
+        logger.info(f"Scheduling connect task for {device_address} on background loop.")
+        future = asyncio.run_coroutine_threadsafe(ftms_manager.connect(device_address), background_loop)
+        success = future.result(timeout=40) # Wait for the connection attempt to complete with timeout
+
+        logger.info(f"Connect task for {device_address} completed with result: {success}")
         return jsonify({'success': success})
+    except asyncio.TimeoutError:
+        logger.error(f"Connection to {device_address} timed out.")
+        return jsonify({'success': False, 'error': 'Connection timed out'})
     except Exception as e:
-        logger.error(f"Error connecting to device: {str(e)}")
+        logger.error(f"Error connecting to device {device_address}: {str(e)}", exc_info=True)
         return jsonify({'success': False, 'error': str(e)})
 
 @app.route('/api/disconnect', methods=['POST'])
 def disconnect_device():
     """Disconnect from the current FTMS device."""
+    logger.debug(f"/api/disconnect called. background_loop is {'set' if background_loop else 'None'}. Loop running: {background_loop.is_running() if background_loop else 'N/A'}")
     try:
-        success = ftms_manager.disconnect()
+        if not background_loop or not background_loop.is_running():
+             logger.error("Asyncio background loop is not running.")
+             return jsonify({'success': False, 'error': 'Asyncio loop not running'})
+
+        # Schedule the async disconnect method on the background loop
+        logger.info("Scheduling disconnect task on background loop.")
+        future = asyncio.run_coroutine_threadsafe(ftms_manager.disconnect(), background_loop)
+        success = future.result(timeout=10) # Wait for the result with timeout
+
+        logger.info(f"Disconnect task completed with result: {success}")
         return jsonify({'success': success})
+    except asyncio.TimeoutError:
+        logger.error("Device disconnection timed out.")
+        return jsonify({'success': False, 'error': 'Disconnection timed out'})
     except Exception as e:
-        logger.error(f"Error disconnecting from device: {str(e)}")
+        logger.error(f"Error disconnecting from device: {str(e)}", exc_info=True)
         return jsonify({'success': False, 'error': str(e)})
 
 @app.route('/api/status')
@@ -213,9 +296,22 @@ def get_status():
     """Get current status."""
     status = {
         'device_status': ftms_manager.device_status,
-        'connected_device': ftms_manager.connected_device,
-        'workout_active': workout_manager.active_workout_id is not None
+        # Serialize connected device info
+        'connected_device': {
+            'name': getattr(ftms_manager.connected_device, 'name', None),
+            'address': getattr(ftms_manager.connected_device, 'address', None)
+        } if ftms_manager.connected_device else None,
+        'connected_device_address': getattr(ftms_manager, 'connected_device_address', None), # Keep this for compatibility if needed
+        'device_name': getattr(ftms_manager.connected_device, 'name', None) if ftms_manager.connected_device else None, # Redundant but maybe used elsewhere
+        'workout_active': workout_manager.active_workout_id is not None,
+        'is_simulated': ftms_manager.use_simulator
     }
+    
+    # Include latest data if available
+    if hasattr(ftms_manager, 'latest_data') and ftms_manager.latest_data:
+        # Ensure latest_data is serializable (assuming it's already a dict)
+        status['latest_data'] = ftms_manager.latest_data
+        
     return jsonify(status)
 
 @app.route('/api/start_workout', methods=['POST'])
