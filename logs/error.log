@@ -33,3 +33,259 @@
 2025-04-27 13:06:54,630 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
 2025-04-27 13:06:54,840 - ftms - ERROR - Error discovering devices: 'FTMSDeviceSimulator' object has no attribute 'discover_devices'
 2025-04-27 13:11:51,028 - web - ERROR - Error discovering devices: Object of type SimulatedBLEDevice is not JSON serializable
+2025-04-27 16:50:54,212 - web - ERROR - Error discovering devices: Object of type BLEDevice is not JSON serializable
+2025-04-27 16:51:02,577 - web - ERROR - Error discovering devices: Object of type BLEDevice is not JSON serializable
+2025-04-27 16:56:03,127 - web - ERROR - Error discovering devices: 'str' object has no attribute 'name'
+2025-04-27 17:05:38,417 - web - ERROR - Error connecting to device: 'FTMSDeviceManager' object has no attribute 'connect'
+2025-04-27 17:09:09,055 - web - ERROR - Error connecting to device: name 'asyncio' is not defined
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\web\app.py", line 212, in connect_device
+    success = asyncio.run(ftms_manager.connect(device_address))
+              ^^^^^^^
+NameError: name 'asyncio' is not defined. Did you forget to import 'asyncio'
+2025-04-27 17:10:12,123 - ftms_connector - ERROR - Error initializing FTMS service: 'FitnessMachineService' object has no attribute 'enable_notifications'
+2025-04-27 17:10:15,562 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 17:10:24,806 - ftms_connector - ERROR - Error initializing FTMS service: 'FitnessMachineService' object has no attribute 'enable_notifications'
+2025-04-27 17:10:30,162 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 17:10:33,725 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 17:12:58,302 - ftms_connector - ERROR - Error initializing FTMS service: 'FitnessMachineService' object has no attribute 'enable_notifications'
+2025-04-27 17:13:01,636 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 17:15:30,766 - ftms_connector - ERROR - Error connecting to device after maximum retries: 'NoneType' object has no attribute 'bluetooth_address'
+2025-04-27 17:15:30,768 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 17:16:58,842 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 17:17:01,784 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 17:18:20,065 - ftms_connector - ERROR - Error initializing FTMS service: 'FitnessMachineService' object has no attribute 'set_rower_data_handler'
+2025-04-27 17:18:23,426 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 17:20:23,079 - workout_manager - ERROR - Cannot start workout: No device ID provided
+2025-04-27 17:20:29,788 - workout_manager - ERROR - Cannot start workout: No device ID provided
+2025-04-27 17:20:51,877 - workout_manager - ERROR - Cannot start workout: No device ID provided
+2025-04-27 17:20:51,954 - workout_manager - ERROR - Cannot start workout: No device ID provided
+2025-04-27 17:20:52,206 - workout_manager - ERROR - Cannot start workout: No device ID provided
+2025-04-27 17:20:52,405 - workout_manager - ERROR - Cannot start workout: No device ID provided
+2025-04-27 17:20:52,559 - workout_manager - ERROR - Cannot start workout: No device ID provided
+2025-04-27 17:20:52,591 - workout_manager - ERROR - Cannot start workout: No device ID provided
+2025-04-27 17:21:07,873 - workout_manager - ERROR - Cannot start workout: No device ID provided
+2025-04-27 17:21:08,198 - workout_manager - ERROR - Cannot start workout: No device ID provided
+2025-04-27 17:21:08,291 - workout_manager - ERROR - Cannot start workout: No device ID provided
+2025-04-27 17:38:22,317 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 17:47:48,941 - workout_manager - ERROR - Error starting workout: Database.start_workout() got an unexpected keyword argument 'start_time'
+2025-04-27 17:47:54,951 - workout_manager - ERROR - Error starting workout: Database.start_workout() got an unexpected keyword argument 'start_time'
+2025-04-27 17:54:41,383 - web - ERROR - Error ending workout: WorkoutManager.end_workout() takes 1 positional argument but 2 were given
+2025-04-27 18:02:38,531 - workout_manager - ERROR - Error ending workout: 'WorkoutManager' object has no attribute 'fit_converter'
+2025-04-27 18:02:51,591 - workout_manager - ERROR - Error ending workout: 'WorkoutManager' object has no attribute 'fit_converter'
+2025-04-27 18:07:05,617 - ftms_connector - ERROR - Error during disconnect: 'NoneType' object is not iterable
+2025-04-27 18:07:08,262 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 18:07:08,372 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 18:07:08,409 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 18:07:08,411 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 18:07:08,684 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 18:17:46,202 - ftms_connector - ERROR - Error initializing FTMS service: 'FitnessMachineService' object has no attribute 'enable_notifications'
+2025-04-27 18:17:49,592 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:18:03,969 - ftms_connector - ERROR - Error initializing FTMS service: 'FitnessMachineService' object has no attribute 'enable_notifications'
+2025-04-27 18:18:07,210 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:18:15,976 - ftms_connector - ERROR - Error initializing FTMS service: 'FitnessMachineService' object has no attribute 'enable_notifications'
+2025-04-27 18:18:19,308 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:18:42,493 - ftms_connector - ERROR - Error initializing FTMS service: 'FitnessMachineService' object has no attribute 'enable_notifications'
+2025-04-27 18:18:45,795 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:18:55,409 - ftms_connector - ERROR - Error initializing FTMS service: 'FitnessMachineService' object has no attribute 'enable_notifications'
+2025-04-27 18:18:58,710 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:19:20,203 - ftms_connector - ERROR - Error initializing FTMS service: 'FitnessMachineService' object has no attribute 'enable_notifications'
+2025-04-27 18:19:23,505 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:51:03,560 - ftms_connector - ERROR - Error initializing FTMS service or enabling notifications: 'FitnessMachineService' object has no attribute 'set_rower_data_handler'
+2025-04-27 18:51:06,807 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:51:21,776 - ftms_connector - ERROR - Error initializing FTMS service or enabling notifications: 'FitnessMachineService' object has no attribute 'set_rower_data_handler'
+2025-04-27 18:51:25,055 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:53:54,325 - ftms_connector - ERROR - Error initializing FTMS service or enabling notifications: 'FitnessMachineService' object has no attribute 'set_rower_data_handler'
+2025-04-27 18:53:57,692 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:54:05,787 - ftms_connector - ERROR - Error initializing FTMS service or enabling notifications: 'FitnessMachineService' object has no attribute 'set_rower_data_handler'
+2025-04-27 18:54:09,034 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:54:21,242 - ftms_connector - ERROR - Error initializing FTMS service or enabling notifications: 'FitnessMachineService' object has no attribute 'set_rower_data_handler'
+2025-04-27 18:54:24,546 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 18:56:16,459 - ftms_connector - ERROR - Error initializing FTMS service or enabling notifications: 'FitnessMachineService' object has no attribute 'set_rower_data_handler'
+2025-04-27 18:56:19,612 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 19:17:31,884 - ftms - ERROR - Connection attempt timed out after 15 seconds
+2025-04-27 19:20:05,987 - ftms_connector - ERROR - Error initializing FTMS service or enabling notifications: 'FitnessMachineService' object has no attribute 'set_rower_data_handler'
+2025-04-27 19:20:09,173 - ftms - ERROR - Failed to connect to device C9:02:CB:68:17:C1
+2025-04-27 19:26:39,812 - web - ERROR - Asyncio background loop is not running.
+2025-04-27 19:27:51,733 - web - ERROR - Asyncio background loop is not running.
+2025-04-27 19:27:56,278 - web - ERROR - Asyncio background loop is not running.
+2025-04-27 19:29:01,782 - web - ERROR - Error discovering devices: A coroutine object is required
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\web\app.py", line 123, in discover_devices
+    future = asyncio.run_coroutine_threadsafe(ftms_manager.discover_devices(), background_loop)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\AppData\Local\Programs\Python\Python312\Lib\asyncio\tasks.py", line 937, in run_coroutine_threadsafe
+    raise TypeError('A coroutine object is required')
+TypeError: A coroutine object is required
+2025-04-27 19:29:09,279 - web - ERROR - Error discovering devices: A coroutine object is required
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\web\app.py", line 123, in discover_devices
+    future = asyncio.run_coroutine_threadsafe(ftms_manager.discover_devices(), background_loop)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\AppData\Local\Programs\Python\Python312\Lib\asyncio\tasks.py", line 937, in run_coroutine_threadsafe
+    raise TypeError('A coroutine object is required')
+TypeError: A coroutine object is required
+2025-04-27 19:29:30,042 - web - ERROR - Error discovering devices: A coroutine object is required
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\web\app.py", line 123, in discover_devices
+    future = asyncio.run_coroutine_threadsafe(ftms_manager.discover_devices(), background_loop)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\AppData\Local\Programs\Python\Python312\Lib\asyncio\tasks.py", line 937, in run_coroutine_threadsafe
+    raise TypeError('A coroutine object is required')
+TypeError: A coroutine object is required
+2025-04-27 19:31:08,456 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:09,387 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:10,376 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:11,396 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:12,387 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:13,426 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:14,397 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:15,418 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:16,378 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:17,397 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:18,417 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:19,377 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:20,427 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:21,387 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:22,408 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:23,397 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:24,388 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:25,406 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:26,397 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:27,388 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:28,424 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:29,398 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:30,448 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:31,378 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:32,505 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-27 19:31:33,448 - ftms_connector - ERROR - Error processing indoor bike data: 'IndoorBikeData' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 407, in _handle_indoor_bike_data
+    'timestamp': data.get('elapsed_time', 0),
+                ^^^^^^^^
+AttributeError: 'IndoorBikeData' object has no attribute 'get'
