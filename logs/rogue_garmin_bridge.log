@@ -6299,3 +6299,50 @@ AttributeError: 'IndoorBikeData' object has no attribute 'get'
 2025-04-27 20:20:43,114 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 20:20:43] "GET /api/status HTTP/1.1" 200 -
 2025-04-27 20:20:43,715 - ftms_connector - INFO - [FTMSConnector] Received raw indoor bike data: IndoorBikeData(instant_speed=0.0, average_speed=1.51, instant_cadence=0.0, average_cadence=40.0, total_distance=756, resistance_level=None, instant_power=0, average_power=82, total_energy=17, energy_per_hour=0, energy_per_minute=0, heart_rate=145, metabolic_equivalent=None, elapsed_time=113, remaining_time=None)
 2025-04-27 20:20:43,814 - werkzeug - INFO - 127.0.0.1 - - [27/Apr/2025 20:20:43] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 07:27:21,283 - root - INFO - Logging initialized at 2025-04-29T07:27:21.283347
+2025-04-29 07:27:21,283 - root - INFO - Log files located at: E:\rogue_garmin_bridge\logs
+2025-04-29 07:27:21,301 - database - INFO - Database tables created
+2025-04-29 07:27:21,302 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 07:27:21,302 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-29 07:27:21,302 - web - INFO - Using real FTMS devices
+2025-04-29 07:27:21,303 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 07:27:21,303 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 07:27:21,303 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 07:27:21,303 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 07:27:21,306 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 07:27:21,330 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.26:5000
+2025-04-29 07:27:21,330 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-29 07:27:21,331 - werkzeug - INFO -  * Restarting with stat
+2025-04-29 07:27:21,515 - root - INFO - Logging initialized at 2025-04-29T07:27:21.515206
+2025-04-29 07:27:21,515 - root - INFO - Log files located at: E:\rogue_garmin_bridge\logs
+2025-04-29 07:27:21,522 - database - INFO - Database tables created
+2025-04-29 07:27:21,522 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 07:27:21,523 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-29 07:27:21,523 - web - INFO - Using real FTMS devices
+2025-04-29 07:27:21,523 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 07:27:21,523 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 07:27:21,524 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 07:27:21,524 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 07:27:21,527 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 07:27:21,537 - werkzeug - WARNING -  * Debugger is active!
+2025-04-29 07:27:21,540 - werkzeug - INFO -  * Debugger PIN: 630-738-736
+2025-04-29 07:27:32,898 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 07:27:32] "GET / HTTP/1.1" 200 -
+2025-04-29 07:27:32,936 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 07:27:32] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-04-29 07:27:33,154 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 07:27:33] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-04-29 07:27:33,462 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 07:27:33] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 07:27:33,466 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 07:27:33] "GET /api/workouts?limit=10 HTTP/1.1" 200 -
+2025-04-29 07:27:33,540 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 07:27:33] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-29 07:27:35,109 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 07:27:35] "GET /devices HTTP/1.1" 200 -
+2025-04-29 07:27:35,419 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 07:27:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-29 07:27:35,435 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 07:27:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-04-29 07:27:35,746 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 07:27:35] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 07:27:36,497 - ftms_connector - INFO - Scanning for FTMS devices for 5 seconds...
+2025-04-29 07:27:37,743 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 07:27:37] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 07:27:39,747 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 07:27:39] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 07:27:41,630 - ftms_connector - INFO - Discovered 0 FTMS devices
+2025-04-29 07:27:41,630 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 07:27:41] "POST /api/discover HTTP/1.1" 200 -
+2025-04-29 07:27:41,753 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 07:27:41] "GET /api/status HTTP/1.1" 200 -
+2025-04-29 07:27:43,751 - werkzeug - INFO - 127.0.0.1 - - [29/Apr/2025 07:27:43] "GET /api/status HTTP/1.1" 200 -
