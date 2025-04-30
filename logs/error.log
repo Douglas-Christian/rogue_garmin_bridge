@@ -519,3 +519,150 @@ Traceback (most recent call last):
     self.cursor.execute(
 sqlite3.OperationalError: database is locked
 2025-04-29 20:17:38,281 - workout_manager - ERROR - Failed to add data point to workout None
+2025-04-29 20:49:17,906 - fit_converter - ERROR - Unsupported workout type: unknown
+2025-04-29 20:49:18,152 - fit_converter - ERROR - Unsupported workout type: unknown
+2025-04-29 20:49:30,226 - fit_converter - ERROR - Error converting bike workout to FIT: time_created encoded value -629319626 is not in valid range [0, 4294967295]
+2025-04-29 21:05:13,532 - database - ERROR - Error adding workout data for workout 2, timestamp 0.231590: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 26600 and this is thread id 34136.
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 347, in add_workout_data
+    self.conn.commit()
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 26600 and this is thread id 34136.
+2025-04-29 21:05:13,536 - workout_manager - ERROR - Failed to add data point to workout 2
+2025-04-29 21:05:19,954 - database - ERROR - Error adding workout data for workout 2, timestamp 1.217360: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 21:05:19,957 - workout_manager - ERROR - Failed to add data point to workout 2
+2025-04-29 21:05:20,220 - ftms_connector - ERROR - AttributeError processing indoor bike data: 'NoneType' object has no attribute 'commit'. Data object: IndoorBikeData(instant_speed=14.96, average_speed=0.89, instant_cadence=25.0, average_cadence=24.0, total_distance=32, resistance_level=None, instant_power=28, average_power=25, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=96, metabolic_equivalent=None, elapsed_time=11, remaining_time=None)
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 423, in _handle_indoor_bike_data
+    callback(processed_data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 83, in _handle_data
+    self._notify_data_callbacks(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 90, in _notify_data_callbacks
+    self._handle_ftms_data(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 299, in _handle_ftms_data
+    self.workout_manager.add_data_point(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\workout_manager.py", line 265, in add_data_point
+    success = self.database.add_workout_data(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 347, in add_workout_data
+    self.conn.commit()
+    ^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'commit'
+2025-04-29 21:05:25,759 - database - ERROR - Error adding workout data for workout 2, timestamp 6.994592: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 21:05:25,762 - workout_manager - ERROR - Failed to add data point to workout 2
+2025-04-29 21:05:31,292 - database - ERROR - Error adding workout data for workout 2, timestamp 12.518916: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 21:05:31,295 - workout_manager - ERROR - Failed to add data point to workout 2
+2025-04-29 21:05:36,764 - database - ERROR - Error adding workout data for workout 2, timestamp 18.051172: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 21:05:36,766 - workout_manager - ERROR - Failed to add data point to workout 2
+2025-04-29 21:05:37,245 - database - ERROR - Error ending workout: database is locked
+2025-04-29 21:05:37,246 - workout_manager - ERROR - Error ending workout: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 34136 and this is thread id 31396.
+2025-04-29 21:05:42,266 - database - ERROR - Error adding workout data for workout 2, timestamp 23.522678: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 21:05:42,268 - database - ERROR - Error during rollback for workout 2: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 35492 and this is thread id 34136.
+2025-04-29 21:05:42,269 - ftms_connector - ERROR - Error processing indoor bike data: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 35492 and this is thread id 34136.. Data object: IndoorBikeData(instant_speed=14.96, average_speed=0.9, instant_cadence=25.0, average_cadence=24.0, total_distance=48, resistance_level=None, instant_power=28, average_power=25, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=97, metabolic_equivalent=None, elapsed_time=15, remaining_time=None)
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 423, in _handle_indoor_bike_data
+    callback(processed_data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 83, in _handle_data
+    self._notify_data_callbacks(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 90, in _notify_data_callbacks
+    self._handle_ftms_data(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 299, in _handle_ftms_data
+    self.workout_manager.add_data_point(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\workout_manager.py", line 265, in add_data_point
+    success = self.database.add_workout_data(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 361, in add_workout_data
+    self._disconnect()
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 61, in _disconnect
+    self.conn.close()
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 35492 and this is thread id 34136.
+2025-04-29 21:05:42,792 - database - ERROR - Error ending workout: database is locked
+2025-04-29 21:05:42,794 - workout_manager - ERROR - Failed to update workout 2 in database
+2025-04-29 21:05:47,081 - database - ERROR - Error ending workout: database is locked
+2025-04-29 21:05:47,082 - workout_manager - ERROR - Failed to update workout 2 in database
+2025-04-29 21:05:47,776 - database - ERROR - Error adding workout data for workout 2, timestamp 29.029523: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 21:05:47,778 - workout_manager - ERROR - Failed to add data point to workout None
+2025-04-29 21:40:40,449 - web - ERROR - Error getting workouts: 'Database' object has no attribute '_connect'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\web\app.py", line 376, in get_workouts
+    db._connect()
+    ^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute '_connect'
+2025-04-29 21:54:39,639 - fit_converter - ERROR - Error converting bike workout to FIT: time_created encoded value -629319622 is not in valid range [0, 4294967295]
+2025-04-29 22:04:47,839 - fit_converter - ERROR - Error converting bike workout to FIT: time_created encoded value -629319621 is not in valid range [0, 4294967295]
+2025-04-29 22:04:47,840 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-29 22:13:24,703 - fit_converter - ERROR - Error converting bike workout to FIT: time_created encoded value -629319626 is not in valid range [0, 4294967295]
+2025-04-29 22:13:24,703 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-29 22:13:45,469 - workout_manager - ERROR - Error deleting workout: 'Database' object has no attribute '_connect'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\workout_manager.py", line 717, in delete_workout
+    self.database._connect()
+    ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute '_connect'
+2025-04-29 22:14:24,330 - fit_converter - ERROR - Error converting bike workout to FIT: time_created encoded value -629319624 is not in valid range [0, 4294967295]
+2025-04-29 22:14:24,330 - web - ERROR - FIT conversion returned None for workout 4
+2025-04-29 22:31:16,283 - fit_converter - ERROR - Error converting bike workout to FIT: time_created encoded value -629950708 is not in valid range [0, 4294967295]
+2025-04-29 22:31:16,283 - web - ERROR - FIT conversion returned None for workout 4
+2025-04-29 22:31:36,926 - fit_converter - ERROR - Error converting bike workout to FIT: time_created encoded value -629950708 is not in valid range [0, 4294967295]
+2025-04-29 22:31:36,926 - web - ERROR - FIT conversion returned None for workout 4
+2025-04-29 22:33:42,556 - fit_converter - ERROR - Error converting bike workout to FIT: time_created encoded value -629319620 is not in valid range [0, 4294967295]
+2025-04-29 22:33:42,556 - web - ERROR - FIT conversion returned None for workout 4
+2025-04-29 22:33:54,633 - fit_converter - ERROR - Error converting bike workout to FIT: time_created encoded value -629319620 is not in valid range [0, 4294967295]
+2025-04-29 22:33:54,634 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-29 22:37:30,260 - fit_converter - ERROR - Error converting bike workout to FIT: time_created encoded value -629487702 is not in valid range [0, 4294967295]
+2025-04-29 22:37:30,260 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-29 22:37:34,008 - fit_converter - ERROR - Error converting bike workout to FIT: time_created encoded value -629487702 is not in valid range [0, 4294967295]
+2025-04-29 22:37:34,010 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-29 22:39:11,552 - fit_converter - ERROR - Error converting bike workout to FIT: time_created encoded value -630118915 is not in valid range [0, 4294967295]
+2025-04-29 22:39:11,553 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-29 22:41:08,083 - fit_converter - ERROR - Error converting bike workout to FIT: time_created encoded value -630065600 is not in valid range [0, 4294967295]
+2025-04-29 22:41:08,084 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-29 22:42:52,465 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950709 is not in valid range [0, 4294967295]
+2025-04-29 22:42:52,466 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-29 22:43:16,938 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950709 is not in valid range [0, 4294967295]
+2025-04-29 22:43:16,938 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-29 22:44:13,876 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950709 is not in valid range [0, 4294967295]
+2025-04-29 22:44:13,877 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-29 22:53:38,434 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950684 is not in valid range [0, 4294967295]
+2025-04-29 22:53:38,435 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-29 22:53:38,435 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-29 22:55:49,749 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950684 is not in valid range [0, 4294967295]
+2025-04-29 22:55:49,750 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-29 22:55:49,750 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-29 22:56:01,607 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950684 is not in valid range [0, 4294967295]
+2025-04-29 22:56:01,607 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-29 22:56:01,608 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-29 22:57:57,727 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950684 is not in valid range [0, 4294967295]
+2025-04-29 22:57:57,728 - test_fit - ERROR - FileIdMessage creation failed! The fix did not work.
+2025-04-30 06:15:34,040 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -630065600 is not in valid range [0, 4294967295]
+2025-04-30 06:15:34,040 - test_fit - ERROR - FileIdMessage creation failed! The fix did not work.
+2025-04-30 06:16:41,512 - fit_converter - ERROR - Error creating FileIdMessage: 'FitFileBuilder' object has no attribute 'messages'
+2025-04-30 06:16:41,512 - test_fit - ERROR - FileIdMessage creation failed! The fix did not work.
+2025-04-30 06:16:59,097 - fit_converter - ERROR - Error creating FileIdMessage: 'FitFileBuilder' object has no attribute 'messages'
+2025-04-30 06:16:59,098 - test_fit - ERROR - FileIdMessage creation failed! The fix did not work.
+2025-04-30 06:17:26,504 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950657 is not in valid range [0, 4294967295]
+2025-04-30 06:17:26,505 - test_fit - ERROR - Failed to create FIT file
+2025-04-30 06:17:26,505 - test_fit - ERROR - Full FIT conversion failed! The fix did not solve all problems.
