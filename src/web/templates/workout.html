@@ -426,12 +426,31 @@
         } else {
             html += `
                 <div class="col-6">
-                    <p><strong>Est. VO2 Max:</strong> <span id="est-vo2max">-</span></p>
+                    <p><strong>Est. VO2 Max:</strong> <span id="est-vo2max">-</span> <i class="fa fa-info-circle" data-bs-toggle="tooltip" title="For VO2Max calculation: 1) Set your weight in Settings, 2) Use a heart rate monitor, 3) Maintain HR above 120bpm"></i></p>
                 </div>
             `;
         }
         
         html += '</div>';
+        
+        // Add note about VO2Max requirements if no valid VO2Max
+        if (!vo2max || vo2max <= 0) {
+            html += `
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <div class="alert alert-info py-2" role="alert" style="font-size: 0.9rem;">
+                            <strong>VO2Max Requirements:</strong> 
+                            <ol class="mb-0 ps-3">
+                                <li>Set your weight in <a href="/settings">Settings</a></li>
+                                <li>Wear a heart rate monitor</li>
+                                <li>Maintain heart rate > 120bpm</li>
+                                <li>Exercise for at least 2-3 minutes</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
         
         // If we have a workout ID, add a link to view detailed summary
         if (data.workout_id) {
@@ -443,6 +462,12 @@
         }
         
         summaryElement.innerHTML = html;
+        
+        // Initialize tooltips if they exist
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
         
         // Debug output for troubleshooting
         console.log("Workout summary data:", summary);
