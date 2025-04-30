@@ -115,7 +115,20 @@ class FITConverter:
             # Convert start time to timestamp
             if isinstance(start_time, datetime):
                 start_timestamp = int(start_time.timestamp())
+            elif isinstance(start_time, str):
+                try:
+                    # Try to parse the ISO format date string
+                    dt = datetime.fromisoformat(start_time.replace('Z', '+00:00'))
+                    start_timestamp = int(dt.timestamp())
+                except Exception as e:
+                    logger.error(f"Error parsing start_time string: {str(e)}")
+                    start_timestamp = int(datetime.now().timestamp())
             else:
+                start_timestamp = int(datetime.now().timestamp())
+            
+            # Ensure the timestamp is positive and in the valid range
+            if start_timestamp < 0:
+                logger.warning(f"Invalid negative timestamp detected: {start_timestamp}, using current time instead")
                 start_timestamp = int(datetime.now().timestamp())
             
             # Add File ID message
@@ -312,7 +325,20 @@ class FITConverter:
             # Convert start time to timestamp
             if isinstance(start_time, datetime):
                 start_timestamp = int(start_time.timestamp())
+            elif isinstance(start_time, str):
+                try:
+                    # Try to parse the ISO format date string
+                    dt = datetime.fromisoformat(start_time.replace('Z', '+00:00'))
+                    start_timestamp = int(dt.timestamp())
+                except Exception as e:
+                    logger.error(f"Error parsing start_time string: {str(e)}")
+                    start_timestamp = int(datetime.now().timestamp())
             else:
+                start_timestamp = int(datetime.now().timestamp())
+            
+            # Ensure the timestamp is positive and in the valid range
+            if start_timestamp < 0:
+                logger.warning(f"Invalid negative timestamp detected: {start_timestamp}, using current time instead")
                 start_timestamp = int(datetime.now().timestamp())
             
             # Add File ID message

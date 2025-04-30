@@ -369,6 +369,23 @@ def get_workouts():
         # Log the result for debugging
         logger.info(f"Retrieved {len(workouts) if workouts else 0} workouts from database")
         
+        # Process each workout to ensure summary is properly parsed
+        for workout in workouts:
+            # Ensure summary is a dictionary, not a string
+            if 'summary' in workout:
+                if isinstance(workout['summary'], str):
+                    try:
+                        import json
+                        workout['summary'] = json.loads(workout['summary'])
+                        logger.info(f"Parsed summary JSON string for workout {workout['id']}")
+                    except Exception as e:
+                        logger.error(f"Error parsing summary for workout {workout['id']}: {str(e)}")
+                        workout['summary'] = {}  # Use empty dict if parsing fails
+                elif workout['summary'] is None:
+                    workout['summary'] = {}
+            else:
+                workout['summary'] = {}
+                
         if not workouts:
             # Check if database has any workouts at all
             logger.warning("No workouts found in database")
@@ -437,6 +454,17 @@ def workout_operations(workout_id):
             if hasattr(workout, 'keys'):
                 workout = dict(workout)
                 
+            # Handle summary data - ensure it's properly parsed from JSON if needed
+            if 'summary' in workout and workout['summary']:
+                if isinstance(workout['summary'], str):
+                    try:
+                        import json
+                        workout['summary'] = json.loads(workout['summary'])
+                        logger.info(f"Successfully parsed workout summary from JSON string for workout {workout_id}")
+                    except Exception as e:
+                        logger.error(f"Error parsing workout summary JSON for workout {workout_id}: {str(e)}")
+                        # Keep the summary as is if it cannot be parsed
+                
             # Add data series to workout
             workout['data_series'] = {
                 'timestamps': timestamps,
@@ -468,6 +496,16 @@ def convert_workout_to_fit(workout_id):
         if not workout:
             return jsonify({'success': False, 'error': 'Workout not found'})
         
+        # Handle summary as JSON string if needed
+        if 'summary' in workout and workout['summary'] and isinstance(workout['summary'], str):
+            try:
+                import json
+                workout['summary'] = json.loads(workout['summary'])
+                logger.info(f"Successfully parsed workout summary from JSON string for workout {workout_id}")
+            except Exception as e:
+                logger.error(f"Error parsing workout summary JSON for workout {workout_id}: {str(e)}")
+                workout['summary'] = {} # Use empty dict if parsing fails
+                
         # Get workout data points
         workout_data = workout_manager.get_workout_data(workout_id)
         
@@ -477,7 +515,8 @@ def convert_workout_to_fit(workout_id):
         if os.path.exists(profile_file):
             try:
                 with open(profile_file, 'r') as f:
-                    user_profile = importlib.import_module('json').load(f)
+                    import json
+                    user_profile = json.load(f)
             except Exception as e:
                 logger.error(f"Error loading user profile: {str(e)}")
         
@@ -493,6 +532,7 @@ def convert_workout_to_fit(workout_id):
                 'heart_rates': [],
                 'speeds': [],
                 'distances': [],
+                'stroke_rates': []  # Adding stroke_rates explicitly for rowers
             }
         }
         
@@ -531,6 +571,16 @@ def convert_workout_to_fit(workout_id):
             # Extract data metrics
             data = data_point.get('data', {})
             
+            # If data is a string (serialized JSON), parse it
+            if isinstance(data, str):
+                try:
+                    import json
+                    data = json.loads(data)
+                    logger.info(f"Successfully parsed data point from JSON string")
+                except Exception as e:
+                    logger.error(f"Error parsing data point JSON: {str(e)}")
+                    data = {}  # Use empty dict if parsing fails
+            
             # Extract power - check different possible key names
             power = data.get('instant_power', data.get('instantaneous_power', data.get('power', 0)))
             processed_data['data_series']['powers'].append(power)
@@ -542,6 +592,7 @@ def convert_workout_to_fit(workout_id):
             elif processed_data['workout_type'] == 'rower':
                 stroke_rate = data.get('stroke_rate', 0)
                 processed_data['data_series']['cadences'].append(stroke_rate)
+                processed_data['data_series']['stroke_rates'].append(stroke_rate)
             
             # Extract heart rate
             heart_rate = data.get('heart_rate', 0)
@@ -560,6 +611,12 @@ def convert_workout_to_fit(workout_id):
         os.makedirs(fit_output_dir, exist_ok=True)
         converter = FITConverter(fit_output_dir)
         
+        # Log what we're sending to the converter for debugging
+        logger.info(f"Converting workout {workout_id} to FIT file")
+        logger.info(f"Workout type: {processed_data['workout_type']}")
+        logger.info(f"Duration: {processed_data['total_duration']}")
+        logger.info(f"Data points: {len(processed_data['data_series']['timestamps'])}")
+        
         # Convert workout to FIT file
         fit_file_path = converter.convert_workout(processed_data, user_profile)
         
@@ -574,6 +631,7 @@ def convert_workout_to_fit(workout_id):
             
             return jsonify({'success': True, 'fit_file_path': fit_file_path, 'fit_file_name': fit_file_name})
         else:
+            logger.error(f"FIT conversion returned None for workout {workout_id}")
             return jsonify({'success': False, 'error': 'Failed to create FIT file'})
             
     except Exception as e:
