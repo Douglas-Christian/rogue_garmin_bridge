@@ -10,7 +10,22 @@
             <div class="col-md-12">
                 <div class="card mb-4">
                     <div class="card-header">
-                        <h5>Recent Workouts</h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5>Recent Workouts</h5>
+                            <div class="sorting-controls">
+                                <label for="sort-by" class="me-2">Sort by:</label>
+                                <select id="sort-by" class="form-select form-select-sm" style="width: auto; display: inline-block;">
+                                    <option value="date-desc">Date (newest first)</option>
+                                    <option value="date-asc">Date (oldest first)</option>
+                                    <option value="duration-desc">Duration (longest first)</option>
+                                    <option value="duration-asc">Duration (shortest first)</option>
+                                    <option value="distance-desc">Distance (longest first)</option>
+                                    <option value="distance-asc">Distance (shortest first)</option>
+                                    <option value="calories-desc">Calories (highest first)</option>
+                                    <option value="calories-asc">Calories (lowest first)</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div id="workouts-list">
@@ -52,11 +67,14 @@
     const prevPageBtn = document.getElementById('prev-page-btn');
     const nextPageBtn = document.getElementById('next-page-btn');
     const pageInfo = document.getElementById('page-info');
+    const sortBySelect = document.getElementById('sort-by');
     
-    // Pagination
+    // Pagination and sorting state
     let currentPage = 1;
     const pageSize = 10;
     let totalWorkouts = 0;
+    let currentSort = 'date-desc'; // Default sort
+    let allWorkouts = []; // Store all loaded workouts for client-side sorting
     
     // Format duration function
     function formatDuration(seconds) {
@@ -83,6 +101,116 @@
         const secs = seconds % 60;
         
         return `${minutes}:${secs.toString().padStart(2, '0')}`;
+    }
+    
+    // Sort workouts based on the selected sort option
+    function sortWorkouts(workouts, sortOption) {
+        const [field, direction] = sortOption.split('-');
+        const directionMultiplier = direction === 'asc' ? 1 : -1;
+        
+        return [...workouts].sort((a, b) => {
+            let valueA, valueB;
+            
+            switch (field) {
+                case 'date':
+                    // Convert dates to timestamps for comparison
+                    valueA = a.start_time ? new Date(a.start_time).getTime() : 0;
+                    valueB = b.start_time ? new Date(b.start_time).getTime() : 0;
+                    break;
+                    
+                case 'duration':
+                    valueA = a.duration || 0;
+                    valueB = b.duration || 0;
+                    break;
+                    
+                case 'distance':
+                    // Extract distance from summary or default to 0
+                    valueA = (a.summary && a.summary.total_distance) ? a.summary.total_distance : 0;
+                    valueB = (b.summary && b.summary.total_distance) ? b.summary.total_distance : 0;
+                    break;
+                    
+                case 'calories':
+                    // Extract calories from summary or default to 0
+                    valueA = (a.summary && a.summary.total_calories) ? a.summary.total_calories : 0;
+                    valueB = (b.summary && b.summary.total_calories) ? b.summary.total_calories : 0;
+                    break;
+                    
+                default:
+                    return 0;
+            }
+            
+            return directionMultiplier * (valueA - valueB);
+        });
+    }
+    
+    // Load and display all workouts
+    function loadAllWorkouts() {
+        workoutsList.innerHTML = '<p><i class="fas fa-spinner fa-spin"></i> Loading workouts...</p>';
+        
+        console.log("Fetching workouts from /api/workouts...");
+        
+        fetch('/api/workouts')
+            .then(response => {
+                console.log("Response status:", response.status);
+                return response.json();
+            })
+            .then(data => {
+                console.log("Workouts API full response:", data); // Enhanced debug output
+                
+                if (data.success && data.workouts && data.workouts.length > 0) {
+                    console.log(`Successfully loaded ${data.workouts.length} workouts`);
+                    // Store all workouts
+                    allWorkouts = data.workouts;
+                    
+                    // Apply sorting and display the first page
+                    applySort();
+                } else if (data.success && (!data.workouts || data.workouts.length === 0)) {
+                    console.log("No workouts found in the response");
+                    workoutsList.innerHTML = '<div class="alert alert-info">No workouts found. Start tracking your workouts on the <a href="/workout">Workout</a> page.</div>';
+                    prevPageBtn.disabled = true;
+                    nextPageBtn.disabled = true;
+                } else {
+                    console.error("Error in API response:", data);
+                    workoutsList.innerHTML = `<div class="alert alert-danger">Error loading workouts: ${data.error || 'Unknown error'}</div>`;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching workouts:', error);
+                workoutsList.innerHTML = `<div class="alert alert-danger">Error loading workouts: ${error.message}</div>`;
+            });
+    }
+    
+    // Apply current sort option and show the appropriate page
+    function applySort() {
+        if (allWorkouts.length === 0) return;
+        
+        // Get sort option from the select element
+        currentSort = sortBySelect.value;
+        
+        // Sort the workouts
+        const sortedWorkouts = sortWorkouts(allWorkouts, currentSort);
+        
+        // Calculate pagination details
+        totalWorkouts = sortedWorkouts.length;
+        const totalPages = Math.ceil(totalWorkouts / pageSize);
+        
+        // Ensure currentPage is within valid range
+        if (currentPage > totalPages) {
+            currentPage = totalPages;
+        }
+        
+        // Get the workouts for the current page
+        const startIndex = (currentPage - 1) * pageSize;
+        const endIndex = Math.min(startIndex + pageSize, sortedWorkouts.length);
+        const pagedWorkouts = sortedWorkouts.slice(startIndex, endIndex);
+        
+        // Display the workouts
+        displayWorkouts(pagedWorkouts);
+        
+        // Update pagination controls
+        pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+        prevPageBtn.disabled = currentPage === 1;
+        nextPageBtn.disabled = currentPage >= totalPages;
     }
     
     // Load workouts
@@ -655,18 +783,27 @@
     // Initialize on document load
     document.addEventListener('DOMContentLoaded', function() {
         // Load initial data
-        loadWorkouts();
+        loadAllWorkouts();
+        
+        // Set up sorting change event
+        sortBySelect.addEventListener('change', function() {
+            currentPage = 1; // Reset to first page when sort changes
+            applySort();
+        });
         
         // Set up pagination
         prevPageBtn.addEventListener('click', function() {
             if (currentPage > 1) {
-                loadWorkouts(currentPage - 1);
+                currentPage--;
+                applySort(); // Apply sorting with new page
             }
         });
         
         nextPageBtn.addEventListener('click', function() {
-            if (totalWorkouts === pageSize) {
-                loadWorkouts(currentPage + 1);
+            const totalPages = Math.ceil(totalWorkouts / pageSize);
+            if (currentPage < totalPages) {
+                currentPage++;
+                applySort(); // Apply sorting with new page
             }
         });
         

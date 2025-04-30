@@ -370,17 +370,14 @@
         
         // Update speed - with unit conversion based on user preference
         if (data.instant_speed !== undefined || data.speed !== undefined) {
-            const speedMs = data.instant_speed || data.speed || 0;
+            const speedVal = data.instant_speed || data.speed || 0;
             
+            // Display the speed value directly (assuming it's already in mph or km/h)
             if (userUnitSystem === 'imperial') {
-                // Convert m/s to mph
-                const speedMph = unitConversions.msToMph(speedMs);
-                speedValue.textContent = speedMph.toFixed(1);
+                speedValue.textContent = speedVal.toFixed(1);
                 speedUnit.textContent = 'mph';
             } else {
-                // Convert m/s to km/h
-                const speedKmh = unitConversions.msToKph(speedMs);
-                speedValue.textContent = speedKmh.toFixed(1);
+                speedValue.textContent = speedVal.toFixed(1);
                 speedUnit.textContent = 'km/h';
             }
         }
@@ -455,6 +452,9 @@
         // Check if data includes workout_summary - the backend should send this
         const summary = data.workout_summary || {};
         
+        // Debug logging to see what's in the summary data
+        console.log("Raw workout summary data received:", summary);
+        
         // Create summary HTML
         let html = '<div class="row">';
         
@@ -468,8 +468,8 @@
             `;
         }
         
-        // Average heart rate
-        if (data.heart_rate !== undefined) {
+        // Always include heart rate section if we have heart rate data
+        if (data.heart_rate !== undefined || summary.avg_heart_rate !== undefined) {
             const avgHeartRate = summary.avg_heart_rate !== undefined ? summary.avg_heart_rate : 0;
             html += `
                 <div class="col-6">
@@ -497,23 +497,20 @@
         
         // Average speed with unit conversion
         if (summary.avg_speed !== undefined) {
-            let avgSpeedDisplay, speedUnit;
+            let avgSpeedDisplay, speedUnitText;
             
+            // Use the speed value directly without conversion from m/s
             if (userUnitSystem === 'imperial') {
-                // Convert m/s to mph
-                const avgSpeedMph = unitConversions.msToMph(summary.avg_speed);
-                avgSpeedDisplay = avgSpeedMph.toFixed(1);
-                speedUnit = 'mph';
+                avgSpeedDisplay = summary.avg_speed.toFixed(1);
+                speedUnitText = 'mph';
             } else {
-                // Convert m/s to km/h
-                const avgSpeedKmh = unitConversions.msToKph(summary.avg_speed);
-                avgSpeedDisplay = avgSpeedKmh.toFixed(1);
-                speedUnit = 'km/h';
+                avgSpeedDisplay = summary.avg_speed.toFixed(1);
+                speedUnitText = 'km/h';
             }
             
             html += `
                 <div class="col-6">
-                    <p><strong>Avg Speed:</strong> <span id="avg-speed">${avgSpeedDisplay}</span> ${speedUnit}</p>
+                    <p><strong>Avg Speed:</strong> <span id="avg-speed">${avgSpeedDisplay}</span> ${speedUnitText}</p>
                 </div>
             `;
         }

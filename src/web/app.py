@@ -424,6 +424,131 @@ def workout_operations(workout_id):
         logger.error(f"Error in workout operations: {str(e)}", exc_info=True)
         return jsonify({'success': False, 'error': str(e)})
 
+@app.route('/api/convert_fit/<int:workout_id>', methods=['POST'])
+def convert_workout_to_fit(workout_id):
+    """Convert workout to FIT file and return the file path."""
+    try:
+        # Import the FIT converter
+        from src.fit.fit_converter import FITConverter
+        
+        # Get workout details
+        workout = workout_manager.get_workout(workout_id)
+        
+        if not workout:
+            return jsonify({'success': False, 'error': 'Workout not found'})
+        
+        # Get workout data points
+        workout_data = workout_manager.get_workout_data(workout_id)
+        
+        # Get user profile
+        user_profile = None
+        profile_file = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'user_profile.json')
+        if os.path.exists(profile_file):
+            try:
+                with open(profile_file, 'r') as f:
+                    user_profile = importlib.import_module('json').load(f)
+            except Exception as e:
+                logger.error(f"Error loading user profile: {str(e)}")
+        
+        # Create processed data for FIT converter
+        processed_data = {
+            'workout_type': workout.get('workout_type', 'bike'),
+            'start_time': workout.get('start_time'),
+            'total_duration': workout.get('duration', 0),
+            'data_series': {
+                'timestamps': [],
+                'powers': [],
+                'cadences': [],
+                'heart_rates': [],
+                'speeds': [],
+                'distances': [],
+            }
+        }
+        
+        # Extract summary metrics
+        if 'summary' in workout and workout['summary']:
+            summary = workout['summary']
+            processed_data.update({
+                'total_distance': summary.get('total_distance', 0),
+                'total_calories': summary.get('total_calories', 0),
+                'avg_power': summary.get('avg_power', 0),
+                'max_power': summary.get('max_power', 0),
+                'normalized_power': summary.get('normalized_power', 0),
+                'avg_heart_rate': summary.get('avg_heart_rate', 0),
+                'max_heart_rate': summary.get('max_heart_rate', 0),
+                'avg_speed': summary.get('avg_speed', 0),
+                'max_speed': summary.get('max_speed', 0)
+            })
+            
+            if processed_data['workout_type'] == 'bike':
+                processed_data.update({
+                    'avg_cadence': summary.get('avg_cadence', 0),
+                    'max_cadence': summary.get('max_cadence', 0)
+                })
+            elif processed_data['workout_type'] == 'rower':
+                processed_data.update({
+                    'avg_stroke_rate': summary.get('avg_stroke_rate', 0),
+                    'max_stroke_rate': summary.get('max_stroke_rate', 0),
+                    'total_strokes': summary.get('total_strokes', 0)
+                })
+        
+        # Process data points
+        for data_point in workout_data:
+            # Extract timestamp
+            processed_data['data_series']['timestamps'].append(data_point.get('timestamp', 0))
+            
+            # Extract data metrics
+            data = data_point.get('data', {})
+            
+            # Extract power - check different possible key names
+            power = data.get('instant_power', data.get('instantaneous_power', data.get('power', 0)))
+            processed_data['data_series']['powers'].append(power)
+            
+            # Extract cadence or stroke rate
+            if processed_data['workout_type'] == 'bike':
+                cadence = data.get('instant_cadence', data.get('instantaneous_cadence', data.get('cadence', 0)))
+                processed_data['data_series']['cadences'].append(cadence)
+            elif processed_data['workout_type'] == 'rower':
+                stroke_rate = data.get('stroke_rate', 0)
+                processed_data['data_series']['cadences'].append(stroke_rate)
+            
+            # Extract heart rate
+            heart_rate = data.get('heart_rate', 0)
+            processed_data['data_series']['heart_rates'].append(heart_rate)
+            
+            # Extract speed
+            speed = data.get('instant_speed', data.get('instantaneous_speed', data.get('speed', 0)))
+            processed_data['data_series']['speeds'].append(speed)
+            
+            # Extract distance
+            distance = data.get('total_distance', data.get('distance', 0))
+            processed_data['data_series']['distances'].append(distance)
+        
+        # Create FIT converter with output directory
+        fit_output_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'fit_files')
+        os.makedirs(fit_output_dir, exist_ok=True)
+        converter = FITConverter(fit_output_dir)
+        
+        # Convert workout to FIT file
+        fit_file_path = converter.convert_workout(processed_data, user_profile)
+        
+        if fit_file_path:
+            fit_file_name = os.path.basename(fit_file_path)
+            
+            # Store FIT file path in workout record
+            try:
+                workout_manager.update_workout_fit_file(workout_id, fit_file_path)
+            except Exception as e:
+                logger.error(f"Error updating workout with FIT file path: {str(e)}")
+            
+            return jsonify({'success': True, 'fit_file_path': fit_file_path, 'fit_file_name': fit_file_name})
+        else:
+            return jsonify({'success': False, 'error': 'Failed to create FIT file'})
+            
+    except Exception as e:
+        logger.error(f"Error converting workout to FIT: {str(e)}", exc_info=True)
+        return jsonify({'success': False, 'error': str(e)})
+
 # Run the app
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
