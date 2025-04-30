@@ -362,60 +362,66 @@ def get_workouts():
         logger.error(f"Error getting workouts: {str(e)}")
         return jsonify({'success': False, 'error': str(e)})
 
-@app.route('/api/workout/<int:workout_id>')
-def get_workout(workout_id):
-    """Get workout details."""
+@app.route('/api/workout/<int:workout_id>', methods=['GET', 'DELETE'])
+def workout_operations(workout_id):
+    """Get or delete workout details."""
     try:
-        # Get workout details
-        workout = workout_manager.get_workout(workout_id)
-        if not workout:
-            return jsonify({'success': False, 'error': 'Workout not found'})
+        if request.method == 'DELETE':
+            # Delete the workout
+            success = workout_manager.delete_workout(workout_id)
+            return jsonify({'success': success})
+        else:
+            # GET method - Get workout details
+            # Get workout details
+            workout = workout_manager.get_workout(workout_id)
+            if not workout:
+                return jsonify({'success': False, 'error': 'Workout not found'})
+                
+            # Get workout data points
+            workout_data = workout_manager.get_workout_data(workout_id)
             
-        # Get workout data points
-        workout_data = workout_manager.get_workout_data(workout_id)
-        
-        # Process data for charts
-        timestamps = []
-        powers = []
-        cadences = []
-        heart_rates = []
-        speeds = []
-        distances = []
-        
-        for data_point in workout_data:
-            # Extract the data from the data point structure
-            data = data_point.get('data', {})
+            # Process data for charts
+            timestamps = []
+            powers = []
+            cadences = []
+            heart_rates = []
+            speeds = []
+            distances = []
             
-            # Add the timestamp (this should always be available)
-            timestamps.append(data_point.get('timestamp', 0))
+            for data_point in workout_data:
+                # Extract the data from the data point structure
+                data = data_point.get('data', {})
+                
+                # Add the timestamp (this should always be available)
+                timestamps.append(data_point.get('timestamp', 0))
+                
+                # Extract metrics - check for different possible key names
+                powers.append(data.get('instant_power', data.get('instantaneous_power', data.get('power', 0))))
+                cadences.append(data.get('instant_cadence', data.get('instantaneous_cadence', data.get('cadence', 0))))
+                heart_rates.append(data.get('heart_rate', 0))
+                speeds.append(data.get('instant_speed', data.get('instantaneous_speed', data.get('speed', 0))))
+                distances.append(data.get('total_distance', data.get('distance', 0)))
             
-            # Extract metrics - check for different possible key names
-            powers.append(data.get('instant_power', data.get('instantaneous_power', data.get('power', 0))))
-            cadences.append(data.get('instant_cadence', data.get('instantaneous_cadence', data.get('cadence', 0))))
-            heart_rates.append(data.get('heart_rate', 0))
-            speeds.append(data.get('instant_speed', data.get('instantaneous_speed', data.get('speed', 0))))
-            distances.append(data.get('total_distance', data.get('distance', 0)))
-        
-        # Convert workout to a regular dict if it's a sqlite Row
-        if hasattr(workout, 'keys'):
-            workout = dict(workout)
+            # Convert workout to a regular dict if it's a sqlite Row
+            if hasattr(workout, 'keys'):
+                workout = dict(workout)
+                
+            # Add data series to workout
+            workout['data_series'] = {
+                'timestamps': timestamps,
+                'powers': powers,
+                'cadences': cadences,
+                'heart_rates': heart_rates,
+                'speeds': speeds,
+                'distances': distances
+            }
             
-        # Add data series to workout
-        workout['data_series'] = {
-            'timestamps': timestamps,
-            'powers': powers,
-            'cadences': cadences,
-            'heart_rates': heart_rates,
-            'speeds': speeds,
-            'distances': distances
-        }
-        
-        # Add data point count for UI reference
-        workout['data_point_count'] = len(workout_data)
-        
-        return jsonify({'success': True, 'workout': workout})
+            # Add data point count for UI reference
+            workout['data_point_count'] = len(workout_data)
+            
+            return jsonify({'success': True, 'workout': workout})
     except Exception as e:
-        logger.error(f"Error getting workout details: {str(e)}", exc_info=True)
+        logger.error(f"Error in workout operations: {str(e)}", exc_info=True)
         return jsonify({'success': False, 'error': str(e)})
 
 # Run the app

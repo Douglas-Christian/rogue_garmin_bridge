@@ -89,6 +89,24 @@
                                 <label class="form-check-label" for="use_simulator">Use Simulator</label>
                                 <div class="form-text">Enable this option to use a simulator instead of real devices for testing.</div>
                             </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Unit System</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="unit_system" id="metric_units" value="metric" checked>
+                                    <label class="form-check-label" for="metric_units">
+                                        Metric (kg, cm, km, km/h)
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="unit_system" id="imperial_units" value="imperial">
+                                    <label class="form-check-label" for="imperial_units">
+                                        Imperial (lbs, ft/in, miles, mph)
+                                    </label>
+                                </div>
+                                <div class="form-text">Choose your preferred unit system for displaying measurements.</div>
+                            </div>
+                            
                             <button type="submit" class="btn btn-primary">Save App Settings</button>
                         </form>
                     </div>
@@ -106,6 +124,97 @@
     const garminSettingsForm = document.getElementById('garmin-settings-form');
     const appSettingsForm = document.getElementById('app-settings-form');
     
+    // Unit conversion utilities
+    const unitConversions = {
+        // Weight conversions
+        kgToLbs: (kg) => kg * 2.20462,
+        lbsToKg: (lbs) => lbs / 2.20462,
+        
+        // Height conversions
+        cmToInches: (cm) => cm / 2.54,
+        inchesToCm: (inches) => inches * 2.54,
+        
+        // Distance conversions
+        kmToMiles: (km) => km * 0.621371,
+        milesToKm: (miles) => miles / 0.621371,
+        
+        // Speed conversions
+        kphToMph: (kph) => kph * 0.621371,
+        mphToKph: (mph) => mph / 0.621371,
+        
+        // Format height in feet/inches
+        cmToFeetInches: function(cm) {
+            const totalInches = this.cmToInches(cm);
+            const feet = Math.floor(totalInches / 12);
+            const inches = Math.round(totalInches % 12);
+            return { feet, inches };
+        },
+        
+        // Convert feet/inches to cm
+        feetInchesToCm: function(feet, inches) {
+            const totalInches = (feet * 12) + inches;
+            return this.inchesToCm(totalInches);
+        }
+    };
+    
+    // Current unit system (default to metric)
+    let currentUnitSystem = 'metric';
+    
+    // Update form labels and values based on unit system
+    function updateUnitDisplay(unitSystem) {
+        currentUnitSystem = unitSystem;
+        
+        // Update weight field
+        const weightLabel = document.querySelector('label[for="weight"]');
+        const weightInput = document.getElementById('weight');
+        
+        // Update height field
+        const heightLabel = document.querySelector('label[for="height"]');
+        const heightInput = document.getElementById('height');
+        
+        if (unitSystem === 'imperial') {
+            // Convert to imperial if values exist
+            if (weightInput.value) {
+                weightInput.value = unitConversions.kgToLbs(parseFloat(weightInput.value)).toFixed(1);
+            }
+            weightLabel.textContent = 'Weight (lbs)';
+            weightInput.step = '0.1';
+            weightInput.min = '1';
+            weightInput.max = '660';  // ~300kg in lbs
+            
+            // For imperial, we'll keep the single input but change the label
+            if (heightInput.value) {
+                heightInput.value = unitConversions.cmToInches(parseFloat(heightInput.value)).toFixed(0);
+            }
+            heightLabel.textContent = 'Height (inches)';
+            heightInput.min = '1';
+            heightInput.max = '120';  // 10 feet in inches
+        } else {
+            // Convert to metric if values exist
+            if (weightInput.value) {
+                weightInput.value = unitConversions.lbsToKg(parseFloat(weightInput.value)).toFixed(1);
+            }
+            weightLabel.textContent = 'Weight (kg)';
+            weightInput.step = '0.1';
+            weightInput.min = '1';
+            weightInput.max = '300';
+            
+            if (heightInput.value) {
+                heightInput.value = unitConversions.inchesToCm(parseFloat(heightInput.value)).toFixed(0);
+            }
+            heightLabel.textContent = 'Height (cm)';
+            heightInput.min = '1';
+            heightInput.max = '300';
+        }
+    }
+    
+    // Handle unit system change
+    document.querySelectorAll('input[name="unit_system"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            updateUnitDisplay(this.value);
+        });
+    });
+    
     // Load user profile
     function loadUserProfile() {
         fetch('/api/user_profile')
@@ -117,14 +226,26 @@
                     
                     if (profile.name) document.getElementById('name').value = profile.name;
                     if (profile.age) document.getElementById('age').value = profile.age;
+                    
+                    // Store metric values initially - will be updated if needed by updateUnitDisplay
                     if (profile.weight) document.getElementById('weight').value = profile.weight;
                     if (profile.height) document.getElementById('height').value = profile.height;
+                    
                     if (profile.gender) document.getElementById('gender').value = profile.gender;
                     if (profile.max_heart_rate) document.getElementById('max_heart_rate').value = profile.max_heart_rate;
                     if (profile.resting_heart_rate) document.getElementById('resting_heart_rate').value = profile.resting_heart_rate;
                     if (profile.ftp) document.getElementById('ftp').value = profile.ftp;
                     if (profile.garmin_username) document.getElementById('garmin_username').value = profile.garmin_username;
                     if (profile.garmin_password) document.getElementById('garmin_password').value = profile.garmin_password;
+                    
+                    // Apply unit preference if it's been set previously
+                    if (profile.unit_preference) {
+                        const unitRadio = document.getElementById(`${profile.unit_preference}_units`);
+                        if (unitRadio) {
+                            unitRadio.checked = true;
+                            updateUnitDisplay(profile.unit_preference);
+                        }
+                    }
                 }
             })
             .catch(error => console.error('Error loading user profile:', error));
@@ -141,6 +262,15 @@
                     
                     if (settings.use_simulator !== undefined) {
                         document.getElementById('use_simulator').checked = settings.use_simulator;
+                    }
+                    
+                    // Set unit system
+                    if (settings.unit_system) {
+                        const unitRadio = document.getElementById(`${settings.unit_system}_units`);
+                        if (unitRadio) {
+                            unitRadio.checked = true;
+                            updateUnitDisplay(settings.unit_system);
+                        }
                     }
                 }
             })
@@ -161,14 +291,27 @@
                 if (['age', 'max_heart_rate', 'resting_heart_rate', 'ftp'].includes(key)) {
                     profile[key] = parseInt(value);
                 } else if (key === 'weight') {
-                    profile[key] = parseFloat(value);
+                    // Convert weight to kg if in imperial units
+                    let weightValue = parseFloat(value);
+                    if (currentUnitSystem === 'imperial') {
+                        weightValue = unitConversions.lbsToKg(weightValue);
+                    }
+                    profile[key] = weightValue;
                 } else if (key === 'height') {
-                    profile[key] = parseInt(value);
+                    // Convert height to cm if in imperial units
+                    let heightValue = parseInt(value);
+                    if (currentUnitSystem === 'imperial') {
+                        heightValue = unitConversions.inchesToCm(heightValue);
+                    }
+                    profile[key] = heightValue;
                 } else {
                     profile[key] = value;
                 }
             }
         }
+        
+        // Add unit system preference to user profile
+        profile.unit_preference = currentUnitSystem;
         
         // Save profile
         fetch('/api/user_profile', {
@@ -234,7 +377,8 @@
         
         // Get form data
         const settings = {
-            use_simulator: document.getElementById('use_simulator').checked
+            use_simulator: document.getElementById('use_simulator').checked,
+            unit_system: document.querySelector('input[name="unit_system"]:checked').value
         };
         
         // Save settings

@@ -156,8 +156,71 @@
     const cadenceValue = document.getElementById('cadence-value');
     const cadenceUnit = document.getElementById('cadence-unit');
     const speedValue = document.getElementById('speed-value');
+    const speedUnit = document.querySelector('.metric-card:has(#speed-value) .metric-unit');
     const distanceValue = document.getElementById('distance-value');
+    const distanceUnit = document.querySelector('.metric-card:has(#distance-value) .metric-unit');
     const caloriesValue = document.getElementById('calories-value');
+    
+    // Unit conversion utilities
+    const unitConversions = {
+        // Weight conversions
+        kgToLbs: (kg) => kg * 2.20462,
+        lbsToKg: (lbs) => lbs / 2.20462,
+        
+        // Distance conversions
+        mToFt: (m) => m * 3.28084,
+        ftToM: (ft) => ft / 3.28084,
+        mToMi: (m) => m / 1609.34,
+        miToM: (mi) => mi * 1609.34,
+        
+        // Speed conversions
+        msToKph: (ms) => ms * 3.6,
+        msToMph: (ms) => ms * 2.23694,
+        kphToMph: (kph) => kph * 0.621371,
+        mphToKph: (mph) => mph / 0.621371
+    };
+    
+    // User's unit preference (will be loaded from settings)
+    let userUnitSystem = 'metric';
+    
+    // Load user preferences
+    function loadUserPreferences() {
+        // First try to get from settings
+        fetch('/api/settings')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.settings && data.settings.unit_system) {
+                    userUnitSystem = data.settings.unit_system;
+                    updateUnitLabels();
+                } else {
+                    // If not in settings, try user profile
+                    return fetch('/api/user_profile');
+                }
+            })
+            .then(response => {
+                if (response) return response.json();
+            })
+            .then(data => {
+                if (data && data.success && data.profile && data.profile.unit_preference) {
+                    userUnitSystem = data.profile.unit_preference;
+                    updateUnitLabels();
+                }
+            })
+            .catch(error => {
+                console.error('Error loading user preferences:', error);
+            });
+    }
+    
+    // Update unit labels based on user preference
+    function updateUnitLabels() {
+        if (userUnitSystem === 'imperial') {
+            speedUnit.textContent = 'mph';
+            distanceUnit.textContent = 'mi';
+        } else {
+            speedUnit.textContent = 'km/h';
+            distanceUnit.textContent = 'km';
+        }
+    }
     
     // Charts
     let powerChart, heartRateChart, cadenceChart;
@@ -277,7 +340,7 @@
         const workoutType = data.type || 'unknown';
         
         // Update power
-        if (data.instant_power !== undefined || data.power !== undefined) { // Corrected key: instant_power
+        if (data.instant_power !== undefined || data.power !== undefined) {
             const power = data.instant_power || data.power || 0;
             powerValue.textContent = Math.round(power);
         }
@@ -292,7 +355,7 @@
             cadenceLabel.textContent = 'Cadence';
             cadenceUnit.textContent = 'rpm';
             
-            if (data.instant_cadence !== undefined || data.cadence !== undefined) { // Corrected key: instant_cadence
+            if (data.instant_cadence !== undefined || data.cadence !== undefined) {
                 const cadence = data.instant_cadence || data.cadence || 0;
                 cadenceValue.textContent = Math.round(cadence);
             }
@@ -305,18 +368,51 @@
             }
         }
         
-        // Update speed
-        if (data.instant_speed !== undefined || data.speed !== undefined) { // Corrected key: instant_speed
-            const speed = data.instant_speed || data.speed || 0;
-            // Convert m/s to km/h
-            const speedKmh = speed * 3.6;
-            speedValue.textContent = speedKmh.toFixed(1);
+        // Update speed - with unit conversion based on user preference
+        if (data.instant_speed !== undefined || data.speed !== undefined) {
+            const speedMs = data.instant_speed || data.speed || 0;
+            
+            if (userUnitSystem === 'imperial') {
+                // Convert m/s to mph
+                const speedMph = unitConversions.msToMph(speedMs);
+                speedValue.textContent = speedMph.toFixed(1);
+                speedUnit.textContent = 'mph';
+            } else {
+                // Convert m/s to km/h
+                const speedKmh = unitConversions.msToKph(speedMs);
+                speedValue.textContent = speedKmh.toFixed(1);
+                speedUnit.textContent = 'km/h';
+            }
         }
         
-        // Update distance
+        // Update distance - with unit conversion based on user preference
         if (data.total_distance !== undefined || data.distance !== undefined) {
-            const distance = data.total_distance || data.distance || 0;
-            distanceValue.textContent = Math.round(distance);
+            const distanceM = data.total_distance || data.distance || 0;
+            
+            if (userUnitSystem === 'imperial') {
+                if (distanceM >= 1609.34) { // More than a mile
+                    // Convert meters to miles
+                    const distanceMi = unitConversions.mToMi(distanceM);
+                    distanceValue.textContent = distanceMi.toFixed(2);
+                    distanceUnit.textContent = 'mi';
+                } else {
+                    // For shorter distances, show feet
+                    const distanceFt = unitConversions.mToFt(distanceM);
+                    distanceValue.textContent = Math.round(distanceFt);
+                    distanceUnit.textContent = 'ft';
+                }
+            } else {
+                if (distanceM >= 1000) { // More than a kilometer
+                    // Convert meters to kilometers
+                    const distanceKm = distanceM / 1000;
+                    distanceValue.textContent = distanceKm.toFixed(2);
+                    distanceUnit.textContent = 'km';
+                } else {
+                    // For shorter distances, show meters
+                    distanceValue.textContent = Math.round(distanceM);
+                    distanceUnit.textContent = 'm';
+                }
+            }
         }
         
         // Update calories
@@ -399,11 +495,61 @@
             `;
         }
         
-        // Total distance
+        // Average speed with unit conversion
+        if (summary.avg_speed !== undefined) {
+            let avgSpeedDisplay, speedUnit;
+            
+            if (userUnitSystem === 'imperial') {
+                // Convert m/s to mph
+                const avgSpeedMph = unitConversions.msToMph(summary.avg_speed);
+                avgSpeedDisplay = avgSpeedMph.toFixed(1);
+                speedUnit = 'mph';
+            } else {
+                // Convert m/s to km/h
+                const avgSpeedKmh = unitConversions.msToKph(summary.avg_speed);
+                avgSpeedDisplay = avgSpeedKmh.toFixed(1);
+                speedUnit = 'km/h';
+            }
+            
+            html += `
+                <div class="col-6">
+                    <p><strong>Avg Speed:</strong> <span id="avg-speed">${avgSpeedDisplay}</span> ${speedUnit}</p>
+                </div>
+            `;
+        }
+        
+        // Total distance with unit conversion
         const totalDistance = data.total_distance || summary.total_distance || 0;
+        let distanceDisplay, distanceUnit;
+        
+        if (userUnitSystem === 'imperial') {
+            if (totalDistance >= 1609.34) { // More than a mile
+                // Convert meters to miles
+                const distanceMi = unitConversions.mToMi(totalDistance);
+                distanceDisplay = distanceMi.toFixed(2);
+                distanceUnit = 'mi';
+            } else {
+                // For shorter distances, show feet
+                const distanceFt = unitConversions.mToFt(totalDistance);
+                distanceDisplay = Math.round(distanceFt);
+                distanceUnit = 'ft';
+            }
+        } else {
+            if (totalDistance >= 1000) { // More than a kilometer
+                // Convert meters to kilometers
+                const distanceKm = totalDistance / 1000;
+                distanceDisplay = distanceKm.toFixed(2);
+                distanceUnit = 'km';
+            } else {
+                // For shorter distances, show meters
+                distanceDisplay = Math.round(totalDistance);
+                distanceUnit = 'm';
+            }
+        }
+        
         html += `
             <div class="col-6">
-                <p><strong>Total Distance:</strong> <span id="total-distance">${isNaN(totalDistance) ? 0 : Math.round(totalDistance)}</span> m</p>
+                <p><strong>Total Distance:</strong> <span id="total-distance">${distanceDisplay}</span> ${distanceUnit}</p>
             </div>
         `;
         
@@ -649,6 +795,7 @@
     // Initialize charts on page load
     document.addEventListener('DOMContentLoaded', function() {
         initCharts();
+        loadUserPreferences(); // Load user preferences on startup
         
         // Initial status check
         fetch('/api/status')

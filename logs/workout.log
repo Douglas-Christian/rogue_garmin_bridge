@@ -339,3 +339,255 @@
 2025-04-29 19:54:19,413 - workout_manager - INFO - Added data point to workout 84: time=92.924s, power=0, distance=627.00m, calories=11
 2025-04-29 19:54:20,120 - workout_manager - INFO - Ending workout (ID: 84)
 2025-04-29 19:54:20,122 - workout_manager - INFO - User weight not available for VO2max calculation
+2025-04-29 20:10:50,572 - workout_manager - INFO - Deleting workout 53
+2025-04-29 20:10:50,575 - workout_manager - ERROR - Error deleting workout: 'Database' object has no attribute 'execute'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\workout_manager.py", line 716, in delete_workout
+    data_deleted = self.database.execute(
+                   ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'execute'
+2025-04-29 20:12:16,686 - workout_manager - INFO - Deleting workout 53
+2025-04-29 20:12:16,701 - workout_manager - INFO - Deleted workout 53 and its data points
+2025-04-29 20:12:22,450 - workout_manager - INFO - Deleting workout 78
+2025-04-29 20:12:22,509 - workout_manager - INFO - Deleted workout 78 and its data points
+2025-04-29 20:12:27,634 - workout_manager - INFO - Deleting workout 60
+2025-04-29 20:12:27,644 - workout_manager - INFO - Deleted workout 60 and its data points
+2025-04-29 20:12:33,617 - workout_manager - INFO - Deleting workout 59
+2025-04-29 20:12:33,673 - workout_manager - INFO - Deleted workout 59 and its data points
+2025-04-29 20:12:51,788 - workout_manager - INFO - Deleting workout 55
+2025-04-29 20:12:51,827 - workout_manager - INFO - Deleted workout 55 and its data points
+2025-04-29 20:13:05,660 - workout_manager - INFO - Deleting workout 58
+2025-04-29 20:13:05,717 - workout_manager - INFO - Deleted workout 58 and its data points
+2025-04-29 20:13:13,477 - workout_manager - INFO - Deleting workout 57
+2025-04-29 20:13:13,534 - workout_manager - INFO - Deleted workout 57 and its data points
+2025-04-29 20:13:19,441 - workout_manager - INFO - Deleting workout 49
+2025-04-29 20:13:19,494 - workout_manager - INFO - Deleted workout 49 and its data points
+2025-04-29 20:13:32,398 - workout_manager - INFO - Deleting workout 51
+2025-04-29 20:13:32,455 - workout_manager - INFO - Deleted workout 51 and its data points
+2025-04-29 20:13:38,073 - workout_manager - INFO - Deleting workout 45
+2025-04-29 20:13:38,084 - workout_manager - INFO - Deleted workout 45 and its data points
+2025-04-29 20:13:44,692 - workout_manager - INFO - Deleting workout 43
+2025-04-29 20:13:44,749 - workout_manager - INFO - Deleted workout 43 and its data points
+2025-04-29 20:13:50,617 - workout_manager - INFO - Deleting workout 48
+2025-04-29 20:13:50,674 - workout_manager - INFO - Deleted workout 48 and its data points
+2025-04-29 20:14:14,731 - workout_manager - INFO - Deleting workout 54
+2025-04-29 20:14:14,793 - workout_manager - INFO - Deleted workout 54 and its data points
+2025-04-29 20:15:21,823 - workout_manager - INFO - Starting new bike workout on device C9:02:CB:68:17:C1
+2025-04-29 20:15:21,831 - workout_manager - INFO - Started workout 85 with device C9:02:CB:68:17:C1
+2025-04-29 20:15:22,004 - workout_manager - INFO - Added data point to workout 85: time=0.159s, power=25, distance=16.00m, calories=0
+2025-04-29 20:15:22,948 - workout_manager - INFO - Added data point to workout 85: time=1.059s, power=25, distance=16.00m, calories=0
+2025-04-29 20:15:23,937 - workout_manager - INFO - Added data point to workout 85: time=2.049s, power=23, distance=16.00m, calories=0
+2025-04-29 20:15:24,925 - workout_manager - INFO - Added data point to workout 85: time=3.038s, power=20, distance=16.00m, calories=0
+2025-04-29 20:15:25,987 - workout_manager - INFO - Added data point to workout 85: time=4.148s, power=14, distance=32.00m, calories=0
+2025-04-29 20:15:26,888 - workout_manager - INFO - Added data point to workout 85: time=5.049s, power=14, distance=32.00m, calories=0
+2025-04-29 20:15:27,926 - workout_manager - INFO - Added data point to workout 85: time=6.039s, power=13, distance=32.00m, calories=0
+2025-04-29 20:15:29,035 - workout_manager - INFO - Added data point to workout 85: time=7.148s, power=12, distance=32.00m, calories=0
+2025-04-29 20:15:29,937 - workout_manager - INFO - Added data point to workout 85: time=8.049s, power=11, distance=32.00m, calories=0
+2025-04-29 20:15:30,951 - workout_manager - INFO - Added data point to workout 85: time=9.068s, power=11, distance=32.00m, calories=0
+2025-04-29 20:15:31,899 - workout_manager - INFO - Added data point to workout 85: time=10.059s, power=11, distance=32.00m, calories=0
+2025-04-29 20:15:33,026 - workout_manager - INFO - Added data point to workout 85: time=11.138s, power=10, distance=32.00m, calories=0
+2025-04-29 20:15:33,914 - workout_manager - INFO - Added data point to workout 85: time=12.069s, power=11, distance=48.00m, calories=0
+2025-04-29 20:15:34,946 - workout_manager - INFO - Added data point to workout 85: time=13.058s, power=12, distance=48.00m, calories=0
+2025-04-29 20:15:36,026 - workout_manager - INFO - Added data point to workout 85: time=14.139s, power=14, distance=48.00m, calories=0
+2025-04-29 20:15:37,045 - workout_manager - INFO - Added data point to workout 85: time=15.159s, power=14, distance=48.00m, calories=0
+2025-04-29 20:15:37,945 - workout_manager - INFO - Added data point to workout 85: time=16.056s, power=13, distance=64.00m, calories=0
+2025-04-29 20:15:38,937 - workout_manager - INFO - Added data point to workout 85: time=17.049s, power=20, distance=64.00m, calories=0
+2025-04-29 20:15:39,909 - workout_manager - INFO - Added data point to workout 85: time=18.071s, power=38, distance=80.00m, calories=0
+2025-04-29 20:15:40,989 - workout_manager - INFO - Added data point to workout 85: time=19.150s, power=66, distance=80.00m, calories=0
+2025-04-29 20:15:41,907 - workout_manager - INFO - Added data point to workout 85: time=20.049s, power=82, distance=96.00m, calories=0
+2025-04-29 20:15:42,956 - workout_manager - INFO - Added data point to workout 85: time=21.069s, power=122, distance=112.00m, calories=0
+2025-04-29 20:15:43,947 - workout_manager - INFO - Added data point to workout 85: time=22.060s, power=148, distance=112.00m, calories=0
+2025-04-29 20:15:44,993 - workout_manager - INFO - Added data point to workout 85: time=23.152s, power=176, distance=128.00m, calories=0
+2025-04-29 20:15:45,925 - workout_manager - INFO - Added data point to workout 85: time=24.039s, power=185, distance=128.00m, calories=0
+2025-04-29 20:15:46,908 - workout_manager - INFO - Added data point to workout 85: time=25.058s, power=203, distance=144.00m, calories=1
+2025-04-29 20:15:48,026 - workout_manager - INFO - Added data point to workout 85: time=26.139s, power=212, distance=160.00m, calories=1
+2025-04-29 20:15:48,927 - workout_manager - INFO - Added data point to workout 85: time=27.039s, power=222, distance=160.00m, calories=1
+2025-04-29 20:15:50,126 - workout_manager - INFO - Added data point to workout 85: time=28.239s, power=240, distance=176.00m, calories=1
+2025-04-29 20:15:50,937 - workout_manager - INFO - Added data point to workout 85: time=29.048s, power=254, distance=193.00m, calories=1
+2025-04-29 20:15:51,879 - workout_manager - INFO - Added data point to workout 85: time=30.037s, power=254, distance=193.00m, calories=2
+2025-04-29 20:15:52,946 - workout_manager - INFO - Added data point to workout 85: time=31.057s, power=254, distance=209.00m, calories=2
+2025-04-29 20:15:53,937 - workout_manager - INFO - Added data point to workout 85: time=32.049s, power=254, distance=225.00m, calories=2
+2025-04-29 20:15:54,928 - workout_manager - INFO - Added data point to workout 85: time=33.039s, power=254, distance=225.00m, calories=2
+2025-04-29 20:15:56,126 - workout_manager - INFO - Added data point to workout 85: time=34.240s, power=254, distance=241.00m, calories=3
+2025-04-29 20:15:56,921 - workout_manager - INFO - Added data point to workout 85: time=35.049s, power=254, distance=241.00m, calories=3
+2025-04-29 20:15:58,051 - workout_manager - INFO - Added data point to workout 85: time=36.160s, power=254, distance=257.00m, calories=3
+2025-04-29 20:15:59,037 - workout_manager - INFO - Added data point to workout 85: time=37.149s, power=254, distance=273.00m, calories=3
+2025-04-29 20:15:59,939 - workout_manager - INFO - Added data point to workout 85: time=38.050s, power=254, distance=273.00m, calories=3
+2025-04-29 20:16:00,957 - workout_manager - INFO - Added data point to workout 85: time=39.069s, power=254, distance=289.00m, calories=4
+2025-04-29 20:16:01,926 - workout_manager - INFO - Added data point to workout 85: time=40.059s, power=254, distance=305.00m, calories=4
+2025-04-29 20:16:02,938 - workout_manager - INFO - Added data point to workout 85: time=41.049s, power=268, distance=305.00m, calories=4
+2025-04-29 20:16:03,957 - workout_manager - INFO - Added data point to workout 85: time=42.069s, power=268, distance=321.00m, calories=4
+2025-04-29 20:16:04,946 - workout_manager - INFO - Added data point to workout 85: time=43.059s, power=268, distance=337.00m, calories=4
+2025-04-29 20:16:06,026 - workout_manager - INFO - Added data point to workout 85: time=44.140s, power=268, distance=337.00m, calories=5
+2025-04-29 20:16:06,879 - workout_manager - INFO - Added data point to workout 85: time=45.039s, power=268, distance=353.00m, calories=5
+2025-04-29 20:16:08,039 - workout_manager - INFO - Added data point to workout 85: time=46.149s, power=268, distance=370.00m, calories=5
+2025-04-29 20:16:08,889 - workout_manager - INFO - Added data point to workout 85: time=47.049s, power=282, distance=370.00m, calories=5
+2025-04-29 20:16:09,957 - workout_manager - INFO - Added data point to workout 85: time=48.070s, power=282, distance=386.00m, calories=6
+2025-04-29 20:16:10,990 - workout_manager - INFO - Added data point to workout 85: time=49.149s, power=282, distance=402.00m, calories=6
+2025-04-29 20:16:11,934 - workout_manager - INFO - Added data point to workout 85: time=50.049s, power=282, distance=402.00m, calories=6
+2025-04-29 20:16:12,928 - workout_manager - INFO - Added data point to workout 85: time=51.041s, power=282, distance=418.00m, calories=6
+2025-04-29 20:16:14,247 - workout_manager - INFO - Added data point to workout 85: time=52.359s, power=268, distance=434.00m, calories=7
+2025-04-29 20:16:14,992 - workout_manager - INFO - Added data point to workout 85: time=53.152s, power=268, distance=434.00m, calories=7
+2025-04-29 20:16:15,927 - workout_manager - INFO - Added data point to workout 85: time=54.039s, power=268, distance=450.00m, calories=7
+2025-04-29 20:16:16,943 - workout_manager - INFO - Added data point to workout 85: time=55.060s, power=268, distance=450.00m, calories=7
+2025-04-29 20:16:17,939 - workout_manager - INFO - Added data point to workout 85: time=56.043s, power=282, distance=466.00m, calories=7
+2025-04-29 20:16:19,047 - workout_manager - INFO - Added data point to workout 85: time=57.160s, power=282, distance=482.00m, calories=8
+2025-04-29 20:16:19,946 - workout_manager - INFO - Added data point to workout 85: time=58.060s, power=282, distance=482.00m, calories=8
+2025-04-29 20:16:21,027 - workout_manager - INFO - Added data point to workout 85: time=59.140s, power=282, distance=498.00m, calories=8
+2025-04-29 20:16:21,882 - workout_manager - INFO - Added data point to workout 85: time=60.039s, power=282, distance=514.00m, calories=8
+2025-04-29 20:16:22,948 - workout_manager - INFO - Added data point to workout 85: time=61.060s, power=282, distance=514.00m, calories=9
+2025-04-29 20:16:23,941 - workout_manager - INFO - Added data point to workout 85: time=62.050s, power=282, distance=530.00m, calories=9
+2025-04-29 20:16:25,048 - workout_manager - INFO - Added data point to workout 85: time=63.160s, power=282, distance=547.00m, calories=9
+2025-04-29 20:16:25,899 - workout_manager - INFO - Added data point to workout 85: time=64.059s, power=282, distance=547.00m, calories=9
+2025-04-29 20:16:26,980 - workout_manager - INFO - Added data point to workout 85: time=65.140s, power=282, distance=563.00m, calories=10
+2025-04-29 20:16:27,927 - workout_manager - INFO - Added data point to workout 85: time=66.041s, power=282, distance=579.00m, calories=10
+2025-04-29 20:16:28,899 - workout_manager - INFO - Added data point to workout 85: time=67.060s, power=282, distance=579.00m, calories=10
+2025-04-29 20:16:29,939 - workout_manager - INFO - Added data point to workout 85: time=68.050s, power=282, distance=595.00m, calories=10
+2025-04-29 20:16:30,927 - workout_manager - INFO - Added data point to workout 85: time=69.040s, power=282, distance=611.00m, calories=10
+2025-04-29 20:16:32,079 - workout_manager - INFO - Added data point to workout 85: time=70.241s, power=282, distance=611.00m, calories=11
+2025-04-29 20:16:33,058 - workout_manager - INFO - Added data point to workout 85: time=71.171s, power=282, distance=627.00m, calories=11
+2025-04-29 20:16:33,909 - workout_manager - INFO - Added data point to workout 85: time=72.070s, power=282, distance=643.00m, calories=11
+2025-04-29 20:16:34,950 - workout_manager - INFO - Added data point to workout 85: time=73.062s, power=282, distance=643.00m, calories=11
+2025-04-29 20:16:35,941 - workout_manager - INFO - Added data point to workout 85: time=74.050s, power=282, distance=659.00m, calories=12
+2025-04-29 20:16:36,930 - workout_manager - INFO - Added data point to workout 85: time=75.042s, power=282, distance=659.00m, calories=12
+2025-04-29 20:16:37,949 - workout_manager - INFO - Added data point to workout 85: time=76.061s, power=282, distance=675.00m, calories=12
+2025-04-29 20:16:38,935 - workout_manager - INFO - Added data point to workout 85: time=77.050s, power=282, distance=691.00m, calories=12
+2025-04-29 20:16:39,962 - workout_manager - INFO - Added data point to workout 85: time=78.064s, power=268, distance=691.00m, calories=13
+2025-04-29 20:16:41,122 - workout_manager - INFO - Added data point to workout 85: time=79.240s, power=268, distance=707.00m, calories=13
+2025-04-29 20:16:41,936 - workout_manager - INFO - Added data point to workout 85: time=80.048s, power=268, distance=724.00m, calories=13
+2025-04-29 20:16:42,956 - workout_manager - INFO - Added data point to workout 85: time=81.071s, power=254, distance=724.00m, calories=13
+2025-04-29 20:16:43,948 - workout_manager - INFO - Added data point to workout 85: time=82.061s, power=254, distance=740.00m, calories=13
+2025-04-29 20:16:44,938 - workout_manager - INFO - Added data point to workout 85: time=83.050s, power=254, distance=740.00m, calories=14
+2025-04-29 20:16:45,958 - workout_manager - INFO - Added data point to workout 85: time=84.071s, power=240, distance=756.00m, calories=14
+2025-04-29 20:16:46,949 - workout_manager - INFO - Added data point to workout 85: time=85.062s, power=240, distance=772.00m, calories=14
+2025-04-29 20:16:48,027 - workout_manager - INFO - Added data point to workout 85: time=86.141s, power=240, distance=772.00m, calories=14
+2025-04-29 20:16:48,927 - workout_manager - INFO - Added data point to workout 85: time=87.041s, power=240, distance=788.00m, calories=14
+2025-04-29 20:16:49,948 - workout_manager - INFO - Added data point to workout 85: time=88.060s, power=231, distance=804.00m, calories=15
+2025-04-29 20:16:51,029 - workout_manager - INFO - Added data point to workout 85: time=89.141s, power=222, distance=804.00m, calories=15
+2025-04-29 20:16:51,881 - workout_manager - INFO - Added data point to workout 85: time=90.041s, power=222, distance=820.00m, calories=15
+2025-04-29 20:16:52,949 - workout_manager - INFO - Added data point to workout 85: time=91.062s, power=222, distance=820.00m, calories=15
+2025-04-29 20:16:54,028 - workout_manager - INFO - Added data point to workout 85: time=92.141s, power=212, distance=836.00m, calories=15
+2025-04-29 20:16:54,929 - workout_manager - INFO - Added data point to workout 85: time=93.042s, power=212, distance=836.00m, calories=16
+2025-04-29 20:16:56,040 - workout_manager - INFO - Added data point to workout 85: time=94.150s, power=203, distance=852.00m, calories=16
+2025-04-29 20:16:56,980 - workout_manager - INFO - Added data point to workout 85: time=95.142s, power=203, distance=868.00m, calories=16
+2025-04-29 20:16:57,958 - workout_manager - INFO - Added data point to workout 85: time=96.072s, power=212, distance=868.00m, calories=16
+2025-04-29 20:16:58,948 - workout_manager - INFO - Added data point to workout 85: time=97.062s, power=212, distance=884.00m, calories=16
+2025-04-29 20:16:59,979 - workout_manager - INFO - Added data point to workout 85: time=98.141s, power=222, distance=884.00m, calories=16
+2025-04-29 20:17:00,925 - workout_manager - INFO - Added data point to workout 85: time=99.038s, power=212, distance=901.00m, calories=17
+2025-04-29 20:17:01,948 - workout_manager - INFO - Added data point to workout 85: time=100.061s, power=203, distance=901.00m, calories=17
+2025-04-29 20:17:03,148 - workout_manager - INFO - Added data point to workout 85: time=101.261s, power=176, distance=917.00m, calories=17
+2025-04-29 20:17:04,049 - workout_manager - INFO - Added data point to workout 85: time=102.161s, power=166, distance=917.00m, calories=17
+2025-04-29 20:17:05,256 - workout_manager - INFO - Added data point to workout 85: time=103.363s, power=166, distance=933.00m, calories=17
+2025-04-29 20:17:06,031 - workout_manager - INFO - Added data point to workout 85: time=104.142s, power=166, distance=949.00m, calories=17
+2025-04-29 20:17:06,882 - workout_manager - INFO - Added data point to workout 85: time=105.042s, power=185, distance=949.00m, calories=18
+2025-04-29 20:17:08,040 - workout_manager - INFO - Added data point to workout 85: time=106.152s, power=222, distance=965.00m, calories=18
+2025-04-29 20:17:08,940 - workout_manager - INFO - Added data point to workout 85: time=107.052s, power=254, distance=981.00m, calories=18
+2025-04-29 20:17:10,048 - workout_manager - INFO - Added data point to workout 85: time=108.161s, power=254, distance=981.00m, calories=18
+2025-04-29 20:17:10,995 - workout_manager - INFO - Added data point to workout 85: time=109.152s, power=254, distance=997.00m, calories=18
+2025-04-29 20:17:11,937 - workout_manager - INFO - Added data point to workout 85: time=110.049s, power=254, distance=1013.00m, calories=19
+2025-04-29 20:17:12,929 - workout_manager - INFO - Added data point to workout 85: time=111.042s, power=240, distance=1013.00m, calories=19
+2025-04-29 20:17:13,952 - workout_manager - INFO - Added data point to workout 85: time=112.062s, power=222, distance=1029.00m, calories=19
+2025-04-29 20:17:14,894 - workout_manager - INFO - Added data point to workout 85: time=113.052s, power=222, distance=1029.00m, calories=19
+2025-04-29 20:17:15,959 - workout_manager - INFO - Added data point to workout 85: time=114.072s, power=194, distance=1045.00m, calories=19
+2025-04-29 20:17:17,250 - workout_manager - ERROR - Failed to add data point to workout 85
+2025-04-29 20:17:23,515 - workout_manager - ERROR - Failed to add data point to workout 85
+2025-04-29 20:17:29,807 - workout_manager - INFO - Ending workout (ID: 85)
+2025-04-29 20:17:29,809 - workout_manager - INFO - User weight not available for VO2max calculation
+2025-04-29 20:17:32,665 - workout_manager - INFO - Ending workout (ID: 85)
+2025-04-29 20:17:32,682 - workout_manager - INFO - User weight not available for VO2max calculation
+2025-04-29 20:17:35,328 - workout_manager - ERROR - Failed to update workout 85 in database
+2025-04-29 20:17:38,263 - workout_manager - ERROR - Failed to update workout 85 in database
+2025-04-29 20:17:38,281 - workout_manager - ERROR - Failed to add data point to workout None
+2025-04-29 20:18:35,081 - workout_manager - INFO - Starting new bike workout on device C9:02:CB:68:17:C1
+2025-04-29 20:18:35,140 - workout_manager - INFO - Started workout 86 with device C9:02:CB:68:17:C1
+2025-04-29 20:18:35,936 - workout_manager - INFO - Added data point to workout 86: time=0.738s, power=23, distance=16.00m, calories=0
+2025-04-29 20:18:36,988 - workout_manager - INFO - Added data point to workout 86: time=1.791s, power=20, distance=16.00m, calories=0
+2025-04-29 20:18:37,947 - workout_manager - INFO - Added data point to workout 86: time=2.751s, power=14, distance=16.00m, calories=0
+2025-04-29 20:18:38,969 - workout_manager - INFO - Added data point to workout 86: time=3.771s, power=13, distance=32.00m, calories=0
+2025-04-29 20:18:39,927 - workout_manager - INFO - Added data point to workout 86: time=4.732s, power=13, distance=32.00m, calories=0
+2025-04-29 20:18:40,930 - workout_manager - INFO - Added data point to workout 86: time=5.781s, power=14, distance=32.00m, calories=0
+2025-04-29 20:18:41,939 - workout_manager - INFO - Added data point to workout 86: time=6.740s, power=14, distance=32.00m, calories=0
+2025-04-29 20:18:42,959 - workout_manager - INFO - Added data point to workout 86: time=7.756s, power=14, distance=32.00m, calories=0
+2025-04-29 20:18:43,948 - workout_manager - INFO - Added data point to workout 86: time=8.784s, power=14, distance=48.00m, calories=0
+2025-04-29 20:18:44,933 - workout_manager - INFO - Added data point to workout 86: time=9.782s, power=14, distance=48.00m, calories=0
+2025-04-29 20:18:45,987 - workout_manager - INFO - Added data point to workout 86: time=10.790s, power=41, distance=64.00m, calories=0
+2025-04-29 20:18:46,947 - workout_manager - INFO - Added data point to workout 86: time=11.747s, power=78, distance=64.00m, calories=0
+2025-04-29 20:18:48,004 - workout_manager - INFO - Added data point to workout 86: time=12.800s, power=95, distance=80.00m, calories=0
+2025-04-29 20:18:48,925 - workout_manager - INFO - Added data point to workout 86: time=13.730s, power=128, distance=96.00m, calories=0
+2025-04-29 20:18:49,956 - workout_manager - INFO - Added data point to workout 86: time=14.782s, power=157, distance=96.00m, calories=0
+2025-04-29 20:18:50,998 - workout_manager - INFO - Added data point to workout 86: time=15.801s, power=176, distance=112.00m, calories=0
+2025-04-29 20:18:51,928 - workout_manager - INFO - Added data point to workout 86: time=16.731s, power=176, distance=112.00m, calories=0
+2025-04-29 20:18:52,947 - workout_manager - INFO - Added data point to workout 86: time=17.750s, power=185, distance=128.00m, calories=0
+2025-04-29 20:18:53,970 - workout_manager - INFO - Added data point to workout 86: time=18.772s, power=203, distance=144.00m, calories=1
+2025-04-29 20:18:54,928 - workout_manager - INFO - Added data point to workout 86: time=19.731s, power=203, distance=144.00m, calories=1
+2025-04-29 20:18:55,930 - workout_manager - INFO - Added data point to workout 86: time=20.781s, power=212, distance=160.00m, calories=1
+2025-04-29 20:18:56,961 - workout_manager - INFO - Added data point to workout 86: time=21.800s, power=212, distance=160.00m, calories=1
+2025-04-29 20:18:57,959 - workout_manager - INFO - Added data point to workout 86: time=22.761s, power=212, distance=176.00m, calories=1
+2025-04-29 20:18:58,947 - workout_manager - INFO - Added data point to workout 86: time=23.751s, power=222, distance=193.00m, calories=1
+2025-04-29 20:18:59,927 - workout_manager - INFO - Added data point to workout 86: time=24.779s, power=222, distance=193.00m, calories=2
+2025-04-29 20:19:00,988 - workout_manager - INFO - Added data point to workout 86: time=25.791s, power=222, distance=209.00m, calories=2
+2025-04-29 20:19:01,947 - workout_manager - INFO - Added data point to workout 86: time=26.752s, power=222, distance=209.00m, calories=2
+2025-04-29 20:19:02,968 - workout_manager - INFO - Added data point to workout 86: time=27.771s, power=222, distance=225.00m, calories=2
+2025-04-29 20:19:03,929 - workout_manager - INFO - Added data point to workout 86: time=28.731s, power=212, distance=241.00m, calories=2
+2025-04-29 20:19:04,947 - workout_manager - INFO - Added data point to workout 86: time=29.751s, power=212, distance=241.00m, calories=3
+2025-04-29 20:19:05,967 - workout_manager - INFO - Added data point to workout 86: time=30.771s, power=212, distance=257.00m, calories=3
+2025-04-29 20:19:06,961 - workout_manager - INFO - Added data point to workout 86: time=31.762s, power=203, distance=257.00m, calories=3
+2025-04-29 20:19:07,947 - workout_manager - INFO - Added data point to workout 86: time=32.752s, power=203, distance=273.00m, calories=3
+2025-04-29 20:19:08,940 - workout_manager - INFO - Added data point to workout 86: time=33.742s, power=203, distance=273.00m, calories=3
+2025-04-29 20:19:09,988 - workout_manager - INFO - Added data point to workout 86: time=34.791s, power=194, distance=289.00m, calories=3
+2025-04-29 20:19:10,902 - workout_manager - INFO - Added data point to workout 86: time=35.751s, power=194, distance=305.00m, calories=4
+2025-04-29 20:19:11,940 - workout_manager - INFO - Added data point to workout 86: time=36.742s, power=194, distance=305.00m, calories=4
+2025-04-29 20:19:12,989 - workout_manager - INFO - Added data point to workout 86: time=37.791s, power=194, distance=321.00m, calories=4
+2025-04-29 20:19:13,979 - workout_manager - INFO - Added data point to workout 86: time=38.781s, power=185, distance=321.00m, calories=4
+2025-04-29 20:19:14,920 - workout_manager - INFO - Added data point to workout 86: time=39.772s, power=176, distance=337.00m, calories=4
+2025-04-29 20:19:15,928 - workout_manager - INFO - Added data point to workout 86: time=40.732s, power=166, distance=337.00m, calories=4
+2025-04-29 20:19:17,010 - workout_manager - INFO - Added data point to workout 86: time=41.812s, power=166, distance=353.00m, calories=5
+2025-04-29 20:19:17,998 - workout_manager - INFO - Added data point to workout 86: time=42.801s, power=166, distance=353.00m, calories=5
+2025-04-29 20:19:18,961 - workout_manager - INFO - Added data point to workout 86: time=43.762s, power=166, distance=370.00m, calories=5
+2025-04-29 20:19:20,011 - workout_manager - INFO - Added data point to workout 86: time=44.812s, power=166, distance=370.00m, calories=5
+2025-04-29 20:19:20,939 - workout_manager - INFO - Added data point to workout 86: time=45.742s, power=176, distance=386.00m, calories=5
+2025-04-29 20:19:21,928 - workout_manager - INFO - Added data point to workout 86: time=46.732s, power=176, distance=386.00m, calories=5
+2025-04-29 20:19:22,950 - workout_manager - INFO - Added data point to workout 86: time=47.753s, power=176, distance=402.00m, calories=5
+2025-04-29 20:19:23,941 - workout_manager - INFO - Added data point to workout 86: time=48.742s, power=176, distance=418.00m, calories=6
+2025-04-29 20:19:24,962 - workout_manager - INFO - Added data point to workout 86: time=49.763s, power=176, distance=418.00m, calories=6
+2025-04-29 20:19:25,898 - workout_manager - INFO - Added data point to workout 86: time=50.750s, power=176, distance=434.00m, calories=6
+2025-04-29 20:19:26,941 - workout_manager - INFO - Added data point to workout 86: time=51.742s, power=176, distance=434.00m, calories=6
+2025-04-29 20:19:27,912 - workout_manager - INFO - Added data point to workout 86: time=52.762s, power=185, distance=450.00m, calories=6
+2025-04-29 20:19:28,930 - workout_manager - INFO - Added data point to workout 86: time=53.783s, power=185, distance=450.00m, calories=6
+2025-04-29 20:19:29,914 - workout_manager - INFO - Added data point to workout 86: time=54.763s, power=194, distance=466.00m, calories=6
+2025-04-29 20:19:30,929 - workout_manager - INFO - Added data point to workout 86: time=55.732s, power=203, distance=482.00m, calories=7
+2025-04-29 20:19:31,951 - workout_manager - INFO - Added data point to workout 86: time=56.753s, power=203, distance=482.00m, calories=7
+2025-04-29 20:19:32,996 - workout_manager - INFO - Added data point to workout 86: time=57.799s, power=212, distance=498.00m, calories=7
+2025-04-29 20:19:33,934 - workout_manager - INFO - Added data point to workout 86: time=58.736s, power=212, distance=498.00m, calories=7
+2025-04-29 20:19:34,948 - workout_manager - INFO - Added data point to workout 86: time=59.752s, power=212, distance=514.00m, calories=7
+2025-04-29 20:19:35,999 - workout_manager - INFO - Added data point to workout 86: time=60.803s, power=212, distance=530.00m, calories=7
+2025-04-29 20:19:36,929 - workout_manager - INFO - Added data point to workout 86: time=61.732s, power=212, distance=530.00m, calories=8
+2025-04-29 20:19:37,929 - workout_manager - INFO - Added data point to workout 86: time=62.782s, power=231, distance=547.00m, calories=8
+2025-04-29 20:19:38,945 - workout_manager - INFO - Added data point to workout 86: time=63.742s, power=268, distance=563.00m, calories=8
+2025-04-29 20:19:39,990 - workout_manager - INFO - Added data point to workout 86: time=64.792s, power=323, distance=563.00m, calories=8
+2025-04-29 20:19:40,904 - workout_manager - INFO - Added data point to workout 86: time=65.752s, power=337, distance=579.00m, calories=9
+2025-04-29 20:19:41,968 - workout_manager - INFO - Added data point to workout 86: time=66.771s, power=323, distance=595.00m, calories=9
+2025-04-29 20:19:42,930 - workout_manager - INFO - Added data point to workout 86: time=67.733s, power=268, distance=595.00m, calories=9
+2025-04-29 20:19:43,979 - workout_manager - INFO - Added data point to workout 86: time=68.782s, power=231, distance=611.00m, calories=9
+2025-04-29 20:19:44,917 - workout_manager - INFO - Added data point to workout 86: time=69.770s, power=148, distance=611.00m, calories=9
+2025-04-29 20:19:45,991 - workout_manager - INFO - Added data point to workout 86: time=70.793s, power=115, distance=611.00m, calories=10
+2025-04-29 20:19:46,947 - workout_manager - INFO - Added data point to workout 86: time=71.753s, power=115, distance=611.00m, calories=10
+2025-04-29 20:19:47,943 - workout_manager - INFO - Added data point to workout 86: time=72.742s, power=74, distance=611.00m, calories=10
+2025-04-29 20:19:48,991 - workout_manager - INFO - Added data point to workout 86: time=73.793s, power=74, distance=611.00m, calories=10
+2025-04-29 20:19:49,948 - workout_manager - INFO - Added data point to workout 86: time=74.745s, power=49, distance=611.00m, calories=10
+2025-04-29 20:19:50,999 - workout_manager - INFO - Added data point to workout 86: time=75.802s, power=33, distance=611.00m, calories=10
+2025-04-29 20:19:51,962 - workout_manager - INFO - Added data point to workout 86: time=76.763s, power=0, distance=611.00m, calories=10
+2025-04-29 20:19:53,012 - workout_manager - INFO - Added data point to workout 86: time=77.812s, power=0, distance=611.00m, calories=10
+2025-04-29 20:19:53,940 - workout_manager - INFO - Added data point to workout 86: time=78.742s, power=0, distance=611.00m, calories=10
+2025-04-29 20:19:54,523 - workout_manager - INFO - Ending workout (ID: 86)
+2025-04-29 20:19:54,526 - workout_manager - INFO - User weight not available for VO2max calculation
+2025-04-29 20:31:28,496 - workout_manager - INFO - Deleting workout 61
+2025-04-29 20:31:28,542 - workout_manager - INFO - Deleted workout 61 and its data points
+2025-04-29 20:31:55,782 - workout_manager - INFO - Deleting workout 41
+2025-04-29 20:31:55,839 - workout_manager - INFO - Deleted workout 41 and its data points
+2025-04-29 20:32:01,358 - workout_manager - INFO - Deleting workout 46
+2025-04-29 20:32:01,415 - workout_manager - INFO - Deleted workout 46 and its data points
+2025-04-29 20:32:07,115 - workout_manager - INFO - Deleting workout 47
+2025-04-29 20:32:07,173 - workout_manager - INFO - Deleted workout 47 and its data points
+2025-04-29 20:32:12,309 - workout_manager - INFO - Deleting workout 42
+2025-04-29 20:32:12,371 - workout_manager - INFO - Deleted workout 42 and its data points

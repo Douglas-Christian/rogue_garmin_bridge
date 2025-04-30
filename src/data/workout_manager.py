@@ -692,6 +692,65 @@ class WorkoutManager:
                 summary['estimated_vo2max'] = 0
                 
         return summary
+    
+    def delete_workout(self, workout_id: int) -> bool:
+        """
+        Delete a workout and all its associated data from the database.
+        
+        Args:
+            workout_id: ID of the workout to delete
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        try:
+            logger.info(f"Deleting workout {workout_id}")
+            
+            # First check if the workout exists
+            workout = self.get_workout(workout_id)
+            if not workout:
+                logger.warning(f"Workout {workout_id} not found, cannot delete")
+                return False
+                
+            # Since there's no direct delete method in the Database class,
+            # we'll establish a connection and execute SQL directly
+            self.database._connect()
+            
+            # Delete workout data points first
+            self.database.cursor.execute(
+                "DELETE FROM workout_data WHERE workout_id = ?", 
+                (workout_id,)
+            )
+            
+            # Then delete the workout itself
+            self.database.cursor.execute(
+                "DELETE FROM workouts WHERE id = ?", 
+                (workout_id,)
+            )
+            
+            # Commit the changes
+            self.database.conn.commit()
+            
+            # Disconnect from the database
+            self.database._disconnect()
+            
+            logger.info(f"Deleted workout {workout_id} and its data points")
+            
+            return True
+            
+        except Exception as e:
+            logger.error(f"Error deleting workout: {str(e)}", exc_info=True)
+            
+            # Make sure to rollback and close the connection on error
+            if hasattr(self.database, 'conn') and self.database.conn:
+                try:
+                    self.database.conn.rollback()
+                except:
+                    pass
+                finally:
+                    self.database._disconnect()
+                    
+            return False
 
 
 # Example usage
