@@ -639,6 +639,59 @@ class WorkoutManager:
                 callback(status, data)
             except Exception as e:
                 logger.error(f"Error in status callback: {str(e)}")
+    
+    def get_workout_summary_metrics(self) -> Dict[str, Any]:
+        """
+        Get the current summary metrics for the active workout.
+        Used to provide live summary data to the frontend.
+        
+        Returns:
+            Dictionary of summary metrics
+        """
+        # If no active workout, return empty dict
+        if not self.active_workout_id:
+            return {}
+            
+        # Create a copy of the summary metrics to avoid reference issues
+        summary = self.summary_metrics.copy()
+        
+        # Handle any potential NaN values and convert them to proper formats
+        for key, value in summary.items():
+            # Check if value is NaN or None
+            if value is None or (isinstance(value, float) and (value != value)):  # NaN check
+                summary[key] = 0
+                
+        # Only add estimated VO2max if we have enough data
+        if (summary.get('avg_heart_rate', 0) > 0 and 
+            summary.get('avg_power', 0) > 0):
+            
+            # Get user profile for weight
+            user_profile = self.get_user_profile()
+            
+            if user_profile and 'weight_kg' in user_profile:
+                weight_kg = user_profile.get('weight_kg', 70)  # Default to 70kg if not available
+                max_hr = summary.get('max_heart_rate', 0)
+                avg_hr = summary.get('avg_heart_rate', 0)
+                avg_power = summary.get('avg_power', 0)
+                
+                # Only estimate if we have a significant heart rate
+                if avg_hr > 120 and max_hr > 130:
+                    # Simplified VO2max estimation
+                    power_per_kg = avg_power / weight_kg
+                    hr_ratio = avg_hr / max_hr
+                    
+                    estimated_vo2max = power_per_kg * 10.8 * (1 + (1 - hr_ratio))
+                    estimated_vo2max = max(min(estimated_vo2max, 90), 20)
+                    
+                    summary['estimated_vo2max'] = round(estimated_vo2max, 1)
+                else:
+                    # Add a placeholder value that's not null
+                    summary['estimated_vo2max'] = 0
+            else:
+                # Set a default value when user weight isn't available
+                summary['estimated_vo2max'] = 0
+                
+        return summary
 
 
 # Example usage

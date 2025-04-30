@@ -310,7 +310,22 @@ def get_status():
     # Include latest data if available
     if hasattr(ftms_manager, 'latest_data') and ftms_manager.latest_data:
         # Ensure latest_data is serializable (assuming it's already a dict)
-        status['latest_data'] = ftms_manager.latest_data
+        latest_data = ftms_manager.latest_data.copy()
+        
+        # Include the active workout ID
+        if workout_manager.active_workout_id:
+            latest_data['workout_id'] = workout_manager.active_workout_id
+            
+            # Add accumulated workout summary statistics
+            try:
+                # Get real-time summary metrics from workout_manager
+                summary = workout_manager.get_workout_summary_metrics()
+                if summary:
+                    latest_data['workout_summary'] = summary
+            except Exception as e:
+                logger.error(f"Error getting workout summary: {str(e)}")
+                
+        status['latest_data'] = latest_data
         
     return jsonify(status)
 

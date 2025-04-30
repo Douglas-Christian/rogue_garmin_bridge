@@ -178,7 +178,7 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    displayWorkoutDetails(data.workout, data.processed_data);
+                    displayWorkoutDetails(data.workout);
                 } else {
                     workoutDetails.innerHTML = `<div class="alert alert-danger">Error loading workout details: ${data.error || 'Unknown error'}</div>`;
                 }
@@ -190,11 +190,13 @@
     }
     
     // Display workout details
-    function displayWorkoutDetails(workout, processedData) {
+    function displayWorkoutDetails(workout) {
+        console.log("Displaying workout details:", workout);
+        
         const startTime = new Date(workout.start_time);
         const endTime = workout.end_time ? new Date(workout.end_time) : null;
         const duration = workout.duration ? formatDuration(workout.duration) : '-';
-        const workoutType = workout.workout_type.charAt(0).toUpperCase() + workout.workout_type.slice(1);
+        const workoutType = workout.workout_type ? workout.workout_type.charAt(0).toUpperCase() + workout.workout_type.slice(1) : 'Unknown';
         
         let html = '<div class="row">';
         
@@ -220,18 +222,8 @@
                         <td>${workout.device_name || '-'}</td>
                     </tr>
                     <tr>
-                        <th>FIT File</th>
-                        <td>${workout.fit_file_path ? 
-                            `<a href="/api/download_fit/${workout.id}" class="btn btn-sm btn-primary">Download</a>` : 
-                            `<button class="btn btn-sm btn-secondary fit-btn" data-workout-id="${workout.id}">Generate</button>`
-                        }</td>
-                    </tr>
-                    <tr>
-                        <th>Uploaded to Garmin</th>
-                        <td>${workout.uploaded_to_garmin ? 
-                            '<span class="badge bg-success">Yes</span>' : 
-                            `<button class="btn btn-sm btn-info upload-btn" data-workout-id="${workout.id}">Upload</button>`
-                        }</td>
+                        <th>Data Points</th>
+                        <td>${workout.data_point_count || 0}</td>
                     </tr>
                 </table>
             </div>
@@ -241,75 +233,77 @@
         html += '<div class="col-md-6">';
         html += '<h5>Summary Metrics</h5>';
         
-        if (processedData) {
+        if (workout.summary) {
             html += '<table class="table">';
             
             // Add metrics based on workout type
             if (workout.workout_type === 'bike') {
                 // Bike metrics
-                if (processedData.avg_power !== undefined) {
-                    html += `<tr><th>Avg Power</th><td>${Math.round(processedData.avg_power)} W</td></tr>`;
+                if (workout.summary.avg_power !== undefined) {
+                    html += `<tr><th>Avg Power</th><td>${Math.round(workout.summary.avg_power)} W</td></tr>`;
                 }
-                if (processedData.max_power !== undefined) {
-                    html += `<tr><th>Max Power</th><td>${Math.round(processedData.max_power)} W</td></tr>`;
+                if (workout.summary.max_power !== undefined) {
+                    html += `<tr><th>Max Power</th><td>${Math.round(workout.summary.max_power)} W</td></tr>`;
                 }
-                if (processedData.normalized_power !== undefined) {
-                    html += `<tr><th>Normalized Power</th><td>${Math.round(processedData.normalized_power)} W</td></tr>`;
+                if (workout.summary.avg_cadence !== undefined) {
+                    html += `<tr><th>Avg Cadence</th><td>${Math.round(workout.summary.avg_cadence)} rpm</td></tr>`;
                 }
-                if (processedData.avg_cadence !== undefined) {
-                    html += `<tr><th>Avg Cadence</th><td>${Math.round(processedData.avg_cadence)} rpm</td></tr>`;
+                if (workout.summary.max_cadence !== undefined) {
+                    html += `<tr><th>Max Cadence</th><td>${Math.round(workout.summary.max_cadence)} rpm</td></tr>`;
                 }
-                if (processedData.avg_speed !== undefined) {
-                    html += `<tr><th>Avg Speed</th><td>${processedData.avg_speed.toFixed(1)} km/h</td></tr>`;
+                if (workout.summary.avg_speed !== undefined) {
+                    html += `<tr><th>Avg Speed</th><td>${workout.summary.avg_speed.toFixed(1)} km/h</td></tr>`;
                 }
             } else if (workout.workout_type === 'rower') {
                 // Rower metrics
-                if (processedData.avg_power !== undefined) {
-                    html += `<tr><th>Avg Power</th><td>${Math.round(processedData.avg_power)} W</td></tr>`;
+                if (workout.summary.avg_power !== undefined) {
+                    html += `<tr><th>Avg Power</th><td>${Math.round(workout.summary.avg_power)} W</td></tr>`;
                 }
-                if (processedData.max_power !== undefined) {
-                    html += `<tr><th>Max Power</th><td>${Math.round(processedData.max_power)} W</td></tr>`;
+                if (workout.summary.max_power !== undefined) {
+                    html += `<tr><th>Max Power</th><td>${Math.round(workout.summary.max_power)} W</td></tr>`;
                 }
-                if (processedData.avg_stroke_rate !== undefined) {
-                    html += `<tr><th>Avg Stroke Rate</th><td>${Math.round(processedData.avg_stroke_rate)} spm</td></tr>`;
+                if (workout.summary.avg_stroke_rate !== undefined) {
+                    html += `<tr><th>Avg Stroke Rate</th><td>${Math.round(workout.summary.avg_stroke_rate)} spm</td></tr>`;
                 }
-                if (processedData.total_strokes !== undefined) {
-                    html += `<tr><th>Total Strokes</th><td>${Math.round(processedData.total_strokes)}</td></tr>`;
+                if (workout.summary.max_stroke_rate !== undefined) {
+                    html += `<tr><th>Max Stroke Rate</th><td>${Math.round(workout.summary.max_stroke_rate)} spm</td></tr>`;
                 }
-                if (processedData.avg_pace !== undefined) {
-                    const minutes = Math.floor(processedData.avg_pace / 60);
-                    const seconds = Math.round(processedData.avg_pace % 60);
-                    html += `<tr><th>Avg Pace (500m)</th><td>${minutes}:${seconds.toString().padStart(2, '0')}</td></tr>`;
+                if (workout.summary.total_strokes !== undefined) {
+                    html += `<tr><th>Total Strokes</th><td>${Math.round(workout.summary.total_strokes)}</td></tr>`;
                 }
             }
             
             // Common metrics
-            if (processedData.avg_heart_rate !== undefined) {
-                html += `<tr><th>Avg Heart Rate</th><td>${Math.round(processedData.avg_heart_rate)} bpm</td></tr>`;
+            if (workout.summary.avg_heart_rate !== undefined) {
+                html += `<tr><th>Avg Heart Rate</th><td>${Math.round(workout.summary.avg_heart_rate)} bpm</td></tr>`;
             }
-            if (processedData.max_heart_rate !== undefined) {
-                html += `<tr><th>Max Heart Rate</th><td>${Math.round(processedData.max_heart_rate)} bpm</td></tr>`;
+            if (workout.summary.max_heart_rate !== undefined) {
+                html += `<tr><th>Max Heart Rate</th><td>${Math.round(workout.summary.max_heart_rate)} bpm</td></tr>`;
             }
-            if (processedData.total_distance !== undefined) {
-                html += `<tr><th>Total Distance</th><td>${Math.round(processedData.total_distance)} m</td></tr>`;
+            if (workout.summary.total_distance !== undefined) {
+                html += `<tr><th>Total Distance</th><td>${Math.round(workout.summary.total_distance)} m</td></tr>`;
             }
-            if (processedData.total_calories !== undefined) {
-                html += `<tr><th>Total Calories</th><td>${Math.round(processedData.total_calories)} kcal</td></tr>`;
+            if (workout.summary.total_calories !== undefined) {
+                html += `<tr><th>Total Calories</th><td>${Math.round(workout.summary.total_calories)} kcal</td></tr>`;
             }
-            if (processedData.vo2max !== undefined) {
-                html += `<tr><th>Estimated VO2 Max</th><td>${processedData.vo2max.toFixed(1)} ml/kg/min</td></tr>`;
+            if (workout.summary.estimated_vo2max !== undefined) {
+                html += `<tr><th>Estimated VO2 Max</th><td>${workout.summary.estimated_vo2max.toFixed(1)} ml/kg/min</td></tr>`;
             }
             
             html += '</table>';
         } else {
-            html += '<p>No processed data available.</p>';
+            html += '<p>No summary data available.</p>';
         }
         
         html += '</div>';
         html += '</div>';
         
-        // Add chart if processed data is available
-        if (processedData && processedData.data_series) {
+        // Add chart if data series is available
+        if (workout.data_series && 
+            (workout.data_series.powers.length > 0 || 
+             workout.data_series.heart_rates.length > 0 || 
+             workout.data_series.cadences.length > 0)) {
+            
             html += `
                 <div class="row mt-4">
                     <div class="col-md-12">
@@ -324,35 +318,24 @@
         
         workoutDetails.innerHTML = html;
         
-        // Create chart if processed data is available
-        if (processedData && processedData.data_series) {
-            createWorkoutChart(processedData);
+        // Create chart if data series is available
+        if (workout.data_series && 
+            (workout.data_series.powers.length > 0 || 
+             workout.data_series.heart_rates.length > 0 || 
+             workout.data_series.cadences.length > 0)) {
+            createWorkoutChart(workout);
         }
-        
-        // Add event listeners to buttons
-        document.querySelectorAll('.fit-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const workoutId = this.dataset.workoutId;
-                convertToFIT(workoutId);
-            });
-        });
-        
-        document.querySelectorAll('.upload-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const workoutId = this.dataset.workoutId;
-                uploadToGarmin(workoutId);
-            });
-        });
     }
     
-    // Create workout chart
-    function createWorkoutChart(processedData) {
+    // Create workout chart - modified to use the workout object directly
+    function createWorkoutChart(workout) {
         const ctx = document.getElementById('workout-chart').getContext('2d');
         
-        // Get data series
-        const timestamps = processedData.data_series.timestamps || [];
-        const powers = processedData.data_series.powers || [];
-        const heartRates = processedData.data_series.heart_rates || [];
+        // Get data series from the workout object
+        const timestamps = workout.data_series.timestamps || [];
+        const powers = workout.data_series.powers || [];
+        const heartRates = workout.data_series.heart_rates || [];
+        const cadences = workout.data_series.cadences || [];
         
         // Create datasets
         const datasets = [];
@@ -376,6 +359,17 @@
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 yAxisID: 'y1',
                 fill: true
+            });
+        }
+        
+        if (cadences.length > 0) {
+            datasets.push({
+                label: 'Cadence (rpm)',
+                data: cadences,
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                yAxisID: 'y2',
+                fill: false
             });
         }
         
@@ -423,6 +417,18 @@
                         title: {
                             display: true,
                             text: 'Heart Rate (bpm)'
+                        },
+                        grid: {
+                            drawOnChartArea: false
+                        }
+                    },
+                    y2: {
+                        type: 'linear',
+                        display: (datasets.length > 2), // Only show if we have cadence data
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Cadence (rpm)'
                         },
                         grid: {
                             drawOnChartArea: false

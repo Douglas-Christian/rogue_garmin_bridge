@@ -289,3 +289,164 @@ Traceback (most recent call last):
     'timestamp': data.get('elapsed_time', 0),
                 ^^^^^^^^
 AttributeError: 'IndoorBikeData' object has no attribute 'get'
+2025-04-29 19:45:49,626 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:49,685 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:50,377 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:51,704 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:52,386 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:53,693 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:54,391 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:55,708 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:56,379 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:57,697 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:58,386 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:59,698 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:00,382 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:01,689 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:02,393 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:03,704 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:04,382 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:05,684 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:06,380 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:07,696 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:13,570 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:13,830 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:14,527 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:15,834 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:16,526 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:17,849 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:18,531 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:19,833 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:20,534 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:21,832 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:22,532 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:23,832 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:24,519 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:25,835 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:50:25,420 - database - ERROR - Error adding workout data for workout 83, timestamp 0.681871: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 25448 and this is thread id 38576.
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 347, in add_workout_data
+    self.conn.commit()
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 25448 and this is thread id 38576.
+2025-04-29 19:50:25,425 - workout_manager - ERROR - Failed to add data point to workout 83
+2025-04-29 19:50:27,531 - ftms_connector - ERROR - AttributeError processing indoor bike data: 'NoneType' object has no attribute 'commit'. Data object: IndoorBikeData(instant_speed=12.55, average_speed=0.78, instant_cadence=21.0, average_cadence=21.0, total_distance=16, resistance_level=None, instant_power=18, average_power=18, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=89, metabolic_equivalent=None, elapsed_time=6, remaining_time=None)
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 423, in _handle_indoor_bike_data
+    callback(processed_data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 83, in _handle_data
+    self._notify_data_callbacks(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 90, in _notify_data_callbacks
+    self._handle_ftms_data(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 299, in _handle_ftms_data
+    self.workout_manager.add_data_point(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\workout_manager.py", line 265, in add_data_point
+    success = self.database.add_workout_data(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 347, in add_workout_data
+    self.conn.commit()
+    ^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'commit'
+2025-04-29 19:50:33,075 - database - ERROR - Error adding workout data for workout 83, timestamp 2.853219: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 19:50:33,078 - workout_manager - ERROR - Failed to add data point to workout 83
+2025-04-29 19:50:38,499 - database - ERROR - Error adding workout data for workout 83, timestamp 8.395774: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 19:50:38,499 - workout_manager - ERROR - Failed to add data point to workout 83
+2025-04-29 19:50:43,972 - database - ERROR - Error adding workout data for workout 83, timestamp 13.818413: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 19:50:43,973 - workout_manager - ERROR - Failed to add data point to workout 83
+2025-04-29 19:50:49,485 - database - ERROR - Error adding workout data for workout 83, timestamp 19.292214: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 19:50:49,487 - workout_manager - ERROR - Failed to add data point to workout 83
+2025-04-29 19:50:54,983 - database - ERROR - Error adding workout data for workout 83, timestamp 24.804143: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 19:50:54,984 - workout_manager - ERROR - Failed to add data point to workout 83
+2025-04-29 19:51:00,498 - database - ERROR - Error adding workout data for workout 83, timestamp 30.302045: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 19:51:00,500 - workout_manager - ERROR - Failed to add data point to workout 83
+2025-04-29 19:51:06,041 - database - ERROR - Error adding workout data for workout 83, timestamp 35.818930: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 19:51:06,042 - workout_manager - ERROR - Failed to add data point to workout 83
+2025-04-29 19:51:11,558 - database - ERROR - Error adding workout data for workout 83, timestamp 41.361323: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 19:51:11,560 - workout_manager - ERROR - Failed to add data point to workout 83
+2025-04-29 19:51:17,043 - database - ERROR - Error adding workout data for workout 83, timestamp 46.878251: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 19:51:17,045 - workout_manager - ERROR - Failed to add data point to workout 83
+2025-04-29 19:51:22,572 - database - ERROR - Error adding workout data for workout 83, timestamp 52.364046: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 19:51:22,574 - workout_manager - ERROR - Failed to add data point to workout 83
+2025-04-29 19:51:27,980 - database - ERROR - Error adding workout data for workout 83, timestamp 57.891984: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 19:51:27,982 - workout_manager - ERROR - Failed to add data point to workout 83
+2025-04-29 19:51:33,453 - database - ERROR - Error adding workout data for workout 83, timestamp 63.300150: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 19:51:33,454 - workout_manager - ERROR - Failed to add data point to workout 83
+2025-04-29 19:51:38,961 - database - ERROR - Error adding workout data for workout 83, timestamp 68.771712: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 19:51:38,962 - workout_manager - ERROR - Failed to add data point to workout 83
+2025-04-29 19:51:44,491 - database - ERROR - Error adding workout data for workout 83, timestamp 74.281098: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 19:51:44,493 - workout_manager - ERROR - Failed to add data point to workout 83
+2025-04-29 19:51:45,559 - database - ERROR - Error ending workout: database is locked
+2025-04-29 19:51:45,560 - workout_manager - ERROR - Error ending workout: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 32724 and this is thread id 45376.
+2025-04-29 19:51:47,286 - database - ERROR - Error ending workout: database is locked
+2025-04-29 19:51:47,287 - workout_manager - ERROR - Error ending workout: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 32724 and this is thread id 40284.
+2025-04-29 19:51:50,020 - database - ERROR - Error adding workout data for workout 83, timestamp 79.811638: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 19:51:50,021 - workout_manager - ERROR - Failed to add data point to workout 83
+2025-04-29 19:51:50,858 - database - ERROR - Error ending workout: database is locked
+2025-04-29 19:51:50,859 - workout_manager - ERROR - Failed to update workout 83 in database
+2025-04-29 19:51:51,088 - database - ERROR - Error ending workout: database is locked
+2025-04-29 19:51:51,089 - workout_manager - ERROR - Failed to update workout 83 in database
+2025-04-29 19:51:55,550 - database - ERROR - Error adding workout data for workout 83, timestamp 85.338522: database is locked
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 339, in add_workout_data
+    self.cursor.execute(
+sqlite3.OperationalError: database is locked
+2025-04-29 19:51:55,552 - workout_manager - ERROR - Failed to add data point to workout None

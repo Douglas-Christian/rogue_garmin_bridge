@@ -493,3 +493,117 @@ TypeError: A coroutine object is required
 2025-04-29 19:30:29,525 - web - INFO - Starting background asyncio event loop run_forever.
 2025-04-29 19:31:09,506 - web - INFO - Scheduling connect task for C9:02:CB:68:17:C1 on background loop.
 2025-04-29 19:31:17,056 - web - INFO - Connect task for C9:02:CB:68:17:C1 completed with result: True
+2025-04-29 19:38:55,568 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 19:38:55,571 - web - INFO - Using real FTMS devices
+2025-04-29 19:38:55,572 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 19:38:55,572 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 19:38:55,575 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 19:38:55,575 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 19:38:55,589 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 19:38:56,361 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 19:38:56,363 - web - INFO - Using real FTMS devices
+2025-04-29 19:38:56,364 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 19:38:56,366 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 19:38:56,367 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 19:38:56,367 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 19:38:56,381 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 19:40:53,101 - web - INFO - Scheduling connect task for C9:02:CB:68:17:C1 on background loop.
+2025-04-29 19:40:59,532 - web - INFO - Connect task for C9:02:CB:68:17:C1 completed with result: True
+2025-04-29 19:45:13,447 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 19:45:13,449 - web - INFO - Using real FTMS devices
+2025-04-29 19:45:13,450 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 19:45:13,451 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 19:45:13,452 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 19:45:13,452 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 19:45:13,465 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 19:45:14,130 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 19:45:14,132 - web - INFO - Using real FTMS devices
+2025-04-29 19:45:14,132 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 19:45:14,133 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 19:45:14,134 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 19:45:14,134 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 19:45:14,147 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 19:45:37,623 - web - INFO - Scheduling connect task for C9:02:CB:68:17:C1 on background loop.
+2025-04-29 19:45:42,685 - web - INFO - Connect task for C9:02:CB:68:17:C1 completed with result: True
+2025-04-29 19:45:49,626 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:49,685 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:50,377 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:51,704 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:52,386 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:53,693 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:54,391 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:55,708 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:56,379 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:57,697 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:58,386 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:45:59,698 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:00,382 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:01,689 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:02,393 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:03,704 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:04,382 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:05,684 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:06,380 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:07,696 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:13,570 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:13,830 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:14,527 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:15,834 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:16,526 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:17,849 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:18,531 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:19,833 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:20,534 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:21,832 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:22,532 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:23,832 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:24,519 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:46:25,835 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-04-29 19:47:46,227 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 19:47:46,229 - web - INFO - Using real FTMS devices
+2025-04-29 19:47:46,229 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 19:47:46,231 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 19:47:46,233 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 19:47:46,234 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 19:47:46,243 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 19:47:46,858 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 19:47:46,859 - web - INFO - Using real FTMS devices
+2025-04-29 19:47:46,859 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 19:47:46,860 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 19:47:46,861 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 19:47:46,862 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 19:47:46,871 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 19:48:22,434 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 19:48:22,435 - web - INFO - Using real FTMS devices
+2025-04-29 19:48:22,436 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 19:48:22,436 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 19:48:22,437 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 19:48:22,437 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 19:48:22,444 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 19:48:23,023 - web - INFO - Scheduling connect task for C9:02:CB:68:17:C1 on background loop.
+2025-04-29 19:48:30,697 - web - INFO - Connect task for C9:02:CB:68:17:C1 completed with result: True
+2025-04-29 19:49:31,283 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 19:49:31,284 - web - INFO - Using real FTMS devices
+2025-04-29 19:49:31,285 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 19:49:31,285 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 19:49:31,286 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 19:49:31,286 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 19:49:31,296 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 19:50:13,623 - web - INFO - Scheduling connect task for C9:02:CB:68:17:C1 on background loop.
+2025-04-29 19:50:17,985 - web - INFO - Connect task for C9:02:CB:68:17:C1 completed with result: True
+2025-04-29 19:52:05,218 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 19:52:05,221 - web - INFO - Using real FTMS devices
+2025-04-29 19:52:05,221 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 19:52:05,222 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 19:52:05,224 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 19:52:05,224 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 19:52:05,236 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 19:52:06,060 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-29 19:52:06,061 - web - INFO - Using real FTMS devices
+2025-04-29 19:52:06,062 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-29 19:52:06,063 - web - INFO - Starting background asyncio loop thread...
+2025-04-29 19:52:06,065 - web - INFO - Background thread started. Creating new event loop.
+2025-04-29 19:52:06,065 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-29 19:52:06,077 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-29 19:52:35,073 - web - INFO - Scheduling connect task for C9:02:CB:68:17:C1 on background loop.
+2025-04-29 19:52:39,562 - web - INFO - Connect task for C9:02:CB:68:17:C1 completed with result: True

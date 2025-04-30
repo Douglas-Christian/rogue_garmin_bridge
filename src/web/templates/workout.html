@@ -356,67 +356,96 @@
         // Get workout type
         const workoutType = data.type || 'unknown';
         
+        // Check if data includes workout_summary - the backend should send this
+        const summary = data.workout_summary || {};
+        
         // Create summary HTML
         let html = '<div class="row">';
         
         // Average power
-        if (data.instant_power || data.power) {
-            const power = data.instant_power || data.power || 0;
+        if (data.instant_power !== undefined || data.power !== undefined) {
+            const avgPower = summary.avg_power !== undefined ? summary.avg_power : 0;
             html += `
                 <div class="col-6">
-                    <p><strong>Avg Power:</strong> <span id="avg-power">-</span> W</p>
+                    <p><strong>Avg Power:</strong> <span id="avg-power">${isNaN(avgPower) ? 0 : Math.round(avgPower)}</span> W</p>
                 </div>
             `;
         }
         
         // Average heart rate
-        if (data.heart_rate) {
+        if (data.heart_rate !== undefined) {
+            const avgHeartRate = summary.avg_heart_rate !== undefined ? summary.avg_heart_rate : 0;
             html += `
                 <div class="col-6">
-                    <p><strong>Avg Heart Rate:</strong> <span id="avg-heart-rate">-</span> bpm</p>
+                    <p><strong>Avg Heart Rate:</strong> <span id="avg-heart-rate">${isNaN(avgHeartRate) ? 0 : Math.round(avgHeartRate)}</span> bpm</p>
                 </div>
             `;
         }
         
         // Average cadence or stroke rate
         if (workoutType === 'bike') {
+            const avgCadence = summary.avg_cadence !== undefined ? summary.avg_cadence : 0;
             html += `
                 <div class="col-6">
-                    <p><strong>Avg Cadence:</strong> <span id="avg-cadence">-</span> rpm</p>
+                    <p><strong>Avg Cadence:</strong> <span id="avg-cadence">${isNaN(avgCadence) ? 0 : Math.round(avgCadence)}</span> rpm</p>
                 </div>
             `;
         } else if (workoutType === 'rower') {
+            const avgStrokeRate = summary.avg_stroke_rate !== undefined ? summary.avg_stroke_rate : 0;
             html += `
                 <div class="col-6">
-                    <p><strong>Avg Stroke Rate:</strong> <span id="avg-stroke-rate">-</span> spm</p>
+                    <p><strong>Avg Stroke Rate:</strong> <span id="avg-stroke-rate">${isNaN(avgStrokeRate) ? 0 : Math.round(avgStrokeRate)}</span> spm</p>
                 </div>
             `;
         }
         
         // Total distance
+        const totalDistance = data.total_distance || summary.total_distance || 0;
         html += `
             <div class="col-6">
-                <p><strong>Total Distance:</strong> <span id="total-distance">-</span> m</p>
+                <p><strong>Total Distance:</strong> <span id="total-distance">${isNaN(totalDistance) ? 0 : Math.round(totalDistance)}</span> m</p>
             </div>
         `;
         
         // Total calories
+        const totalCalories = data.total_energy || data.calories || summary.total_calories || 0;
         html += `
             <div class="col-6">
-                <p><strong>Total Calories:</strong> <span id="total-calories">-</span> kcal</p>
+                <p><strong>Total Calories:</strong> <span id="total-calories">${isNaN(totalCalories) ? 0 : Math.round(totalCalories)}</span> kcal</p>
             </div>
         `;
         
-        // Estimated VO2 Max
-        html += `
-            <div class="col-6">
-                <p><strong>Est. VO2 Max:</strong> <span id="est-vo2max">-</span></p>
-            </div>
-        `;
+        // Estimated VO2 Max - only show if a value is available
+        const vo2max = summary.estimated_vo2max;
+        if (vo2max !== undefined && vo2max > 0) {
+            html += `
+                <div class="col-6">
+                    <p><strong>Est. VO2 Max:</strong> <span id="est-vo2max">${isNaN(vo2max) ? '-' : vo2max.toFixed(1)}</span> ml/kg/min</p>
+                </div>
+            `;
+        } else {
+            html += `
+                <div class="col-6">
+                    <p><strong>Est. VO2 Max:</strong> <span id="est-vo2max">-</span></p>
+                </div>
+            `;
+        }
         
         html += '</div>';
         
+        // If we have a workout ID, add a link to view detailed summary
+        if (data.workout_id) {
+            html += `
+                <div class="mt-3 text-center">
+                    <a href="/history?workout_id=${data.workout_id}" class="btn btn-sm btn-outline-primary">View Detailed Summary</a>
+                </div>
+            `;
+        }
+        
         summaryElement.innerHTML = html;
+        
+        // Debug output for troubleshooting
+        console.log("Workout summary data:", summary);
     }
     
     // Start workout button listener
@@ -548,7 +577,7 @@
                 if (data.latest_data) {
                     updateMetrics(data.latest_data);
                     updateCharts(data.latest_data);
-                    // updateWorkoutSummary(data.latest_data); // Keep summary commented for now
+                    updateWorkoutSummary(data.latest_data); // Uncommented this line
                 } else {
                     updateMetrics({}); 
                 }
