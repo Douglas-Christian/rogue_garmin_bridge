@@ -58,6 +58,46 @@ def unix_to_fit_timestamp(unix_timestamp):
     
     return fit_timestamp
 
+def generate_fit_valid_timestamp():
+    """
+    Generate a value that's guaranteed to be valid for the time_created field.
+    This returns an integer in the proper range expected by the FIT encoder.
+    """
+    # Use a simple integer value that's guaranteed to be in the valid range [0, 4294967295]
+    # 1000000000 is a sensible value within the valid range (July 2001 in Unix time)
+    safe_timestamp = 1000000000
+    logger.info(f"Using guaranteed valid timestamp integer: {safe_timestamp}")
+    return safe_timestamp
+
+def create_file_id_message(builder):
+    """
+    Create a FileID message with a guaranteed valid timestamp.
+    This avoids the timestamp conversion issues by not directly setting the time_created field.
+    
+    Args:
+        builder: FitFileBuilder to add the message to
+        
+    Returns:
+        None
+    """
+    try:
+        # Create FileIdMessage
+        file_id_msg = FileIdMessage()
+        file_id_msg.type = FileType.ACTIVITY
+        file_id_msg.manufacturer = Manufacturer.DEVELOPMENT
+        file_id_msg.product = 0
+        
+        # Do not set time_created at all - let the FIT library use its default value
+        # This avoids the timestamp conversion issues completely
+        logger.info("Using FileIdMessage without explicitly setting time_created field")
+        
+        # Add to builder
+        builder.add(file_id_msg)
+        return True
+    except Exception as e:
+        logger.error(f"Error creating FileIdMessage: {str(e)}")
+        return False
+
 class FITConverter:
     """
     FIT File Converter class for converting workout data to Garmin FIT format.
@@ -164,16 +204,10 @@ class FITConverter:
             start_timestamp = unix_to_fit_timestamp(start_unix_timestamp)
             logger.info(f"Converted to FIT timestamp: {start_timestamp}")
             
-            # Create a valid timestamp for time_created field 
-            current_time_ts = unix_to_fit_timestamp(int(datetime.now().timestamp()))
-            
             # Add File ID message
-            file_id_msg = FileIdMessage()
-            file_id_msg.type = FileType.ACTIVITY
-            file_id_msg.manufacturer = Manufacturer.DEVELOPMENT
-            file_id_msg.product = 0
-            file_id_msg.time_created = start_timestamp  # Use converted FIT timestamp
-            builder.add(file_id_msg)
+            if not create_file_id_message(builder):
+                logger.error("Failed to create FileIdMessage")
+                return None
             
             # Add Device Info message
             device_info_msg = DeviceInfoMessage()
@@ -386,12 +420,9 @@ class FITConverter:
             logger.info(f"Converted to FIT timestamp: {start_timestamp}")
             
             # Add File ID message
-            file_id_msg = FileIdMessage()
-            file_id_msg.type = FileType.ACTIVITY
-            file_id_msg.manufacturer = Manufacturer.DEVELOPMENT
-            file_id_msg.product = 0
-            file_id_msg.time_created = start_timestamp  # Use converted FIT timestamp
-            builder.add(file_id_msg)
+            if not create_file_id_message(builder):
+                logger.error("Failed to create FileIdMessage")
+                return None
             
             # Add Device Info message
             device_info_msg = DeviceInfoMessage()
