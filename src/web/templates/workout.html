@@ -307,7 +307,7 @@
     // Update charts with new data
     function updateCharts(data) {
         // Update power chart
-        if (data.instant_power !== undefined || data.power !== undefined) { // Corrected key: instant_power
+        if (data.instant_power !== undefined || data.power !== undefined) {
             const power = data.instant_power || data.power || 0;
             powerData.datasets[0].data.push(power);
             powerData.datasets[0].data.shift();
@@ -322,7 +322,7 @@
         }
         
         // Update cadence chart
-        if (data.instant_cadence !== undefined || data.cadence !== undefined || data.stroke_rate !== undefined) { // Corrected key: instant_cadence
+        if (data.instant_cadence !== undefined || data.cadence !== undefined || data.stroke_rate !== undefined) {
             const cadence = data.instant_cadence || data.cadence || data.stroke_rate || 0;
             cadenceData.datasets[0].data.push(cadence);
             cadenceData.datasets[0].data.shift();
@@ -368,18 +368,16 @@
             }
         }
         
-        // Update speed - with unit conversion based on user preference
+        // Update speed - with unit display based on user preference
+        // The data already comes in the correct units (mph or km/h) from the device
         if (data.instant_speed !== undefined || data.speed !== undefined) {
             const speedVal = data.instant_speed || data.speed || 0;
             
-            // Display the speed value directly (assuming it's already in mph or km/h)
-            if (userUnitSystem === 'imperial') {
-                speedValue.textContent = speedVal.toFixed(1);
-                speedUnit.textContent = 'mph';
-            } else {
-                speedValue.textContent = speedVal.toFixed(1);
-                speedUnit.textContent = 'km/h';
-            }
+            // Display the speed value without additional conversion
+            speedValue.textContent = speedVal.toFixed(1);
+            
+            // Just set the units based on preference
+            speedUnit.textContent = userUnitSystem === 'imperial' ? 'mph' : 'km/h';
         }
         
         // Update distance - with unit conversion based on user preference

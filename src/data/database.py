@@ -10,6 +10,7 @@ import os
 import json
 from datetime import datetime
 import sys
+import threading
 from typing import Dict, List, Optional, Any
 
 # Add the project root to the path so we can use absolute imports
@@ -22,7 +23,7 @@ logger = get_component_logger('database')
 class Database:
     """
     SQLite database handler for the Rogue Garmin Bridge.
-    Manages workout data storage and retrieval.
+    Manages workout data storage and retrieval with thread-safe connections.
     """
     
     def __init__(self, db_path: str):
@@ -33,41 +34,48 @@ class Database:
             db_path: Path to the SQLite database file
         """
         self.db_path = db_path
-        self.conn = None
-        self.cursor = None
+        # Thread-local storage for connections
+        self.local = threading.local()
         
         # Create database directory if it doesn't exist
         os.makedirs(os.path.dirname(db_path), exist_ok=True)
         
-        # Initialize database
-        self._connect()
-        self._create_tables()
-        self._disconnect()
+        # Initialize database - create tables once
+        with self._get_connection() as conn:
+            self._create_tables(conn)
     
-    def _connect(self) -> None:
-        """Connect to the SQLite database."""
+    def _get_connection(self):
+        """
+        Get a thread-local connection to the database.
+        Each thread gets its own connection to avoid SQLite threading issues.
+        
+        Returns:
+            SQLite connection object
+        """
+        # Create a new connection for this thread if it doesn't exist
+        if not hasattr(self.local, 'conn') or self.local.conn is None:
+            try:
+                logger.debug(f"Creating new database connection for thread {threading.get_ident()}")
+                self.local.conn = sqlite3.connect(self.db_path)
+                self.local.conn.row_factory = sqlite3.Row  # Return rows as dictionaries
+            except sqlite3.Error as e:
+                logger.error(f"Error connecting to database: {str(e)}")
+                raise
+        
+        return self.local.conn
+    
+    def _create_tables(self, conn) -> None:
+        """
+        Create database tables if they don't exist.
+        
+        Args:
+            conn: SQLite connection
+        """
         try:
-            self.conn = sqlite3.connect(self.db_path)
-            self.conn.row_factory = sqlite3.Row  # Return rows as dictionaries
-            self.cursor = self.conn.cursor()
-            logger.debug("Connected to database")
-        except sqlite3.Error as e:
-            logger.error(f"Error connecting to database: {str(e)}")
-            raise
-    
-    def _disconnect(self) -> None:
-        """Disconnect from the SQLite database."""
-        if self.conn:
-            self.conn.close()
-            self.conn = None
-            self.cursor = None
-            logger.debug("Disconnected from database")
-    
-    def _create_tables(self) -> None:
-        """Create database tables if they don't exist."""
-        try:
+            cursor = conn.cursor()
+            
             # Devices table
-            self.cursor.execute('''
+            cursor.execute('''
                 CREATE TABLE IF NOT EXISTS devices (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     address TEXT UNIQUE,
@@ -79,7 +87,7 @@ class Database:
             ''')
             
             # Workouts table
-            self.cursor.execute('''
+            cursor.execute('''
                 CREATE TABLE IF NOT EXISTS workouts (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     device_id INTEGER,
@@ -94,19 +102,19 @@ class Database:
                 )
             ''')
             
-            # Workout data table - CRITICAL: Changed timestamp to REAL to handle fractional seconds
-            self.cursor.execute('''
+            # Workout data table
+            cursor.execute('''
                 CREATE TABLE IF NOT EXISTS workout_data (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     workout_id INTEGER,
-                    timestamp REAL,  /* Changed from INTEGER to REAL to support fractional seconds */
+                    timestamp REAL,  /* Using REAL to support fractional seconds */
                     data TEXT,
                     FOREIGN KEY (workout_id) REFERENCES workouts (id)
                 )
             ''')
             
             # Configuration table
-            self.cursor.execute('''
+            cursor.execute('''
                 CREATE TABLE IF NOT EXISTS configuration (
                     key TEXT PRIMARY KEY,
                     value TEXT
@@ -114,7 +122,7 @@ class Database:
             ''')
             
             # User profile table
-            self.cursor.execute('''
+            cursor.execute('''
                 CREATE TABLE IF NOT EXISTS user_profile (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT,
@@ -129,7 +137,7 @@ class Database:
                 )
             ''')
             
-            self.conn.commit()
+            conn.commit()
             logger.info("Database tables created")
         except sqlite3.Error as e:
             logger.error(f"Error creating tables: {str(e)}")
@@ -149,41 +157,40 @@ class Database:
             Device ID
         """
         try:
-            self._connect()
+            conn = self._get_connection()
+            cursor = conn.cursor()
             
             # Convert metadata to JSON string
             metadata_json = json.dumps(metadata) if metadata else '{}'
             
             # Check if device already exists
-            self.cursor.execute(
+            cursor.execute(
                 "SELECT id FROM devices WHERE address = ?",
                 (address,)
             )
-            result = self.cursor.fetchone()
+            result = cursor.fetchone()
             
             if result:
                 # Update existing device
                 device_id = result['id']
-                self.cursor.execute(
+                cursor.execute(
                     "UPDATE devices SET name = ?, device_type = ?, last_connected = ?, metadata = ? WHERE id = ?",
                     (name, device_type, datetime.now().isoformat(), metadata_json, device_id)
                 )
             else:
                 # Insert new device
-                self.cursor.execute(
+                cursor.execute(
                     "INSERT INTO devices (address, name, device_type, last_connected, metadata) VALUES (?, ?, ?, ?, ?)",
                     (address, name, device_type, datetime.now().isoformat(), metadata_json)
                 )
-                device_id = self.cursor.lastrowid
+                device_id = cursor.lastrowid
             
-            self.conn.commit()
+            conn.commit()
             logger.info(f"Device {name} ({address}) {'updated' if result else 'added'} with ID {device_id}")
             return device_id
         except sqlite3.Error as e:
             logger.error(f"Error adding device: {str(e)}")
             raise
-        finally:
-            self._disconnect()
     
     def get_devices(self) -> List[Dict[str, Any]]:
         """
@@ -193,9 +200,11 @@ class Database:
             List of device dictionaries
         """
         try:
-            self._connect()
-            self.cursor.execute("SELECT * FROM devices")
-            devices = [dict(row) for row in self.cursor.fetchall()]
+            conn = self._get_connection()
+            cursor = conn.cursor()
+            
+            cursor.execute("SELECT * FROM devices")
+            devices = [dict(row) for row in cursor.fetchall()]
             
             # Parse metadata JSON
             for device in devices:
@@ -205,8 +214,6 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Error getting devices: {str(e)}")
             return []
-        finally:
-            self._disconnect()
     
     def get_device(self, device_id: int) -> Optional[Dict[str, Any]]:
         """
@@ -219,9 +226,11 @@ class Database:
             Device dictionary or None if not found
         """
         try:
-            self._connect()
-            self.cursor.execute("SELECT * FROM devices WHERE id = ?", (device_id,))
-            device = self.cursor.fetchone()
+            conn = self._get_connection()
+            cursor = conn.cursor()
+            
+            cursor.execute("SELECT * FROM devices WHERE id = ?", (device_id,))
+            device = cursor.fetchone()
             
             if device:
                 device_dict = dict(device)
@@ -231,8 +240,6 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Error getting device: {str(e)}")
             return None
-        finally:
-            self._disconnect()
     
     def start_workout(self, device_id: int, workout_type: str) -> int:
         """
@@ -246,23 +253,23 @@ class Database:
             Workout ID
         """
         try:
-            self._connect()
+            conn = self._get_connection()
+            cursor = conn.cursor()
+            
             start_time = datetime.now().isoformat()
             
-            self.cursor.execute(
+            cursor.execute(
                 "INSERT INTO workouts (device_id, start_time, workout_type, summary) VALUES (?, ?, ?, ?)",
                 (device_id, start_time, workout_type, '{}')
             )
-            workout_id = self.cursor.lastrowid
+            workout_id = cursor.lastrowid
             
-            self.conn.commit()
+            conn.commit()
             logger.info(f"Started workout {workout_id} with device {device_id}")
             return workout_id
         except sqlite3.Error as e:
             logger.error(f"Error starting workout: {str(e)}")
             raise
-        finally:
-            self._disconnect()
     
     def end_workout(self, workout_id: int, summary: Dict[str, Any] = None, fit_file_path: str = None) -> bool:
         """
@@ -277,11 +284,12 @@ class Database:
             True if successful, False otherwise
         """
         try:
-            self._connect()
+            conn = self._get_connection()
+            cursor = conn.cursor()
             
             # Get start time
-            self.cursor.execute("SELECT start_time FROM workouts WHERE id = ?", (workout_id,))
-            result = self.cursor.fetchone()
+            cursor.execute("SELECT start_time FROM workouts WHERE id = ?", (workout_id,))
+            result = cursor.fetchone()
             
             if not result:
                 logger.error(f"Workout {workout_id} not found")
@@ -294,39 +302,40 @@ class Database:
             # Convert summary to JSON string
             summary_json = json.dumps(summary) if summary else '{}'
             
-            self.cursor.execute(
+            cursor.execute(
                 "UPDATE workouts SET end_time = ?, duration = ?, summary = ?, fit_file_path = ? WHERE id = ?",
                 (end_time.isoformat(), duration, summary_json, fit_file_path, workout_id)
             )
             
-            self.conn.commit()
+            conn.commit()
             logger.info(f"Ended workout {workout_id}, duration: {duration}s")
             return True
         except sqlite3.Error as e:
             logger.error(f"Error ending workout: {str(e)}")
             return False
-        finally:
-            self._disconnect()
     
-    def add_workout_data(self, workout_id: int, timestamp: float, data: Dict[str, Any]) -> bool: # Changed timestamp type hint to float
+    def add_workout_data(self, workout_id: int, timestamp: float, data: Dict[str, Any]) -> bool:
         """
         Add data point to a workout session.
 
         Args:
             workout_id: Workout ID
-            timestamp: Data timestamp (seconds since workout start, should be float)
+            timestamp: Data timestamp (seconds since workout start)
             data: Workout data
 
         Returns:
             True if successful, False otherwise
         """
-        logger.info(f"Attempting to add data point for workout {workout_id} at timestamp {timestamp:.6f}") # Log entry
+        thread_id = threading.get_ident()
+        logger.info(f"Adding data point for workout {workout_id} at timestamp {timestamp:.6f} in thread {thread_id}")
+        
         try:
-            self._connect()
+            conn = self._get_connection()
+            cursor = conn.cursor()
 
             # Verify workout exists
-            self.cursor.execute("SELECT id FROM workouts WHERE id = ?", (workout_id,))
-            workout = self.cursor.fetchone()
+            cursor.execute("SELECT id FROM workouts WHERE id = ?", (workout_id,))
+            workout = cursor.fetchone()
             if not workout:
                 logger.error(f"Cannot add data point: Workout {workout_id} does not exist")
                 return False
@@ -334,31 +343,26 @@ class Database:
             # Convert data to JSON string
             data_json = json.dumps(data)
 
-            # Use a simple INSERT statement since timestamps should be unique
-            logger.debug(f"Executing INSERT for workout {workout_id}, timestamp {timestamp:.6f}") # Log before execute
-            self.cursor.execute(
+            # Insert data point - using REPLACE to handle any potential timestamp duplicates
+            cursor.execute(
                 """
-                INSERT INTO workout_data (workout_id, timestamp, data)
+                INSERT OR REPLACE INTO workout_data (workout_id, timestamp, data)
                 VALUES (?, ?, ?)
                 """,
                 (workout_id, timestamp, data_json)
             )
 
-            self.conn.commit()
-            logger.info(f"Successfully added data point for workout {workout_id} at timestamp {timestamp:.6f}") # Log success
+            conn.commit()
+            logger.info(f"Successfully added data point for workout {workout_id} at timestamp {timestamp:.6f}")
             return True
         except sqlite3.Error as e:
-            logger.error(f"Error adding workout data for workout {workout_id}, timestamp {timestamp:.6f}: {str(e)}", exc_info=True) # Log specific error
-            # Attempt to rollback changes if commit failed
-            if self.conn:
-                try:
-                    self.conn.rollback()
-                    logger.warning(f"Rolled back transaction for workout {workout_id} due to error.")
-                except sqlite3.Error as rb_err:
-                    logger.error(f"Error during rollback for workout {workout_id}: {rb_err}")
+            logger.error(f"Error adding workout data for workout {workout_id}, timestamp {timestamp}: {str(e)}")
+            # Attempt to rollback if needed
+            try:
+                conn.rollback()
+            except Exception as rollback_error:
+                logger.error(f"Error during rollback: {str(rollback_error)}")
             return False
-        finally:
-            self._disconnect()
     
     def get_workout(self, workout_id: int) -> Optional[Dict[str, Any]]:
         """
@@ -371,9 +375,11 @@ class Database:
             Workout dictionary or None if not found
         """
         try:
-            self._connect()
-            self.cursor.execute("SELECT * FROM workouts WHERE id = ?", (workout_id,))
-            workout = self.cursor.fetchone()
+            conn = self._get_connection()
+            cursor = conn.cursor()
+            
+            cursor.execute("SELECT * FROM workouts WHERE id = ?", (workout_id,))
+            workout = cursor.fetchone()
             
             if workout:
                 workout_dict = dict(workout)
@@ -383,8 +389,6 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Error getting workout: {str(e)}")
             return None
-        finally:
-            self._disconnect()
     
     def get_workout_data(self, workout_id: int) -> List[Dict[str, Any]]:
         """
@@ -397,10 +401,11 @@ class Database:
             List of workout data dictionaries
         """
         try:
-            self._connect()
+            conn = self._get_connection()
+            cursor = conn.cursor()
             
             # Get workout data points ordered by timestamp
-            self.cursor.execute(
+            cursor.execute(
                 """
                 SELECT * FROM workout_data
                 WHERE workout_id = ?
@@ -410,7 +415,7 @@ class Database:
             )
             
             data_points = []
-            for row in self.cursor.fetchall():
+            for row in cursor.fetchall():
                 data_point = dict(row)
                 
                 # Parse JSON data
@@ -425,8 +430,6 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Error getting workout data: {str(e)}")
             return []
-        finally:
-            self._disconnect()
     
     def get_workouts(self, limit: int = 10, offset: int = 0) -> List[Dict[str, Any]]:
         """
@@ -440,10 +443,11 @@ class Database:
             List of workout dictionaries
         """
         try:
-            self._connect()
+            conn = self._get_connection()
+            cursor = conn.cursor()
             
             # Get workouts ordered by start time (most recent first)
-            self.cursor.execute(
+            cursor.execute(
                 """
                 SELECT w.*, d.name as device_name, d.device_type 
                 FROM workouts w
@@ -455,7 +459,7 @@ class Database:
             )
             
             workouts = []
-            for row in self.cursor.fetchall():
+            for row in cursor.fetchall():
                 workout = dict(row)
                 
                 # Parse JSON summary
@@ -470,8 +474,6 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Error getting workouts: {str(e)}")
             return []
-        finally:
-            self._disconnect()
     
     def set_config(self, key: str, value: Any) -> bool:
         """
@@ -485,24 +487,23 @@ class Database:
             True if successful, False otherwise
         """
         try:
-            self._connect()
+            conn = self._get_connection()
+            cursor = conn.cursor()
             
             # Convert value to JSON string
             value_json = json.dumps(value)
             
-            self.cursor.execute(
+            cursor.execute(
                 "INSERT OR REPLACE INTO configuration (key, value) VALUES (?, ?)",
                 (key, value_json)
             )
             
-            self.conn.commit()
+            conn.commit()
             logger.debug(f"Set config {key} = {value}")
             return True
         except sqlite3.Error as e:
             logger.error(f"Error setting config: {str(e)}")
             return False
-        finally:
-            self._disconnect()
     
     def get_config(self, key: str, default: Any = None) -> Any:
         """
@@ -516,9 +517,11 @@ class Database:
             Configuration value
         """
         try:
-            self._connect()
-            self.cursor.execute("SELECT value FROM configuration WHERE key = ?", (key,))
-            result = self.cursor.fetchone()
+            conn = self._get_connection()
+            cursor = conn.cursor()
+            
+            cursor.execute("SELECT value FROM configuration WHERE key = ?", (key,))
+            result = cursor.fetchone()
             
             if result:
                 return json.loads(result['value'])
@@ -526,8 +529,6 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Error getting config: {str(e)}")
             return default
-        finally:
-            self._disconnect()
     
     def set_user_profile(self, profile: Dict[str, Any]) -> bool:
         """
@@ -540,15 +541,16 @@ class Database:
             True if successful, False otherwise
         """
         try:
-            self._connect()
+            conn = self._get_connection()
+            cursor = conn.cursor()
             
             # Check if profile exists
-            self.cursor.execute("SELECT COUNT(*) as count FROM user_profile")
-            count = self.cursor.fetchone()['count']
+            cursor.execute("SELECT COUNT(*) as count FROM user_profile")
+            count = cursor.fetchone()['count']
             
             if count > 0:
                 # Update existing profile
-                self.cursor.execute(
+                cursor.execute(
                     """
                     UPDATE user_profile SET 
                     name = ?, age = ?, weight = ?, height = ?, gender = ?,
@@ -570,7 +572,7 @@ class Database:
                 )
             else:
                 # Insert new profile
-                self.cursor.execute(
+                cursor.execute(
                     """
                     INSERT INTO user_profile 
                     (name, age, weight, height, gender, max_heart_rate, resting_heart_rate, garmin_username, garmin_password)
@@ -589,14 +591,12 @@ class Database:
                     )
                 )
             
-            self.conn.commit()
+            conn.commit()
             logger.info("User profile updated")
             return True
         except sqlite3.Error as e:
             logger.error(f"Error setting user profile: {str(e)}")
             return False
-        finally:
-            self._disconnect()
     
     def get_user_profile(self) -> Optional[Dict[str, Any]]:
         """
@@ -606,9 +606,11 @@ class Database:
             User profile dictionary or None if not found
         """
         try:
-            self._connect()
-            self.cursor.execute("SELECT * FROM user_profile LIMIT 1")
-            profile = self.cursor.fetchone()
+            conn = self._get_connection()
+            cursor = conn.cursor()
+            
+            cursor.execute("SELECT * FROM user_profile LIMIT 1")
+            profile = cursor.fetchone()
             
             if profile:
                 return dict(profile)
@@ -616,8 +618,6 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Error getting user profile: {str(e)}")
             return None
-        finally:
-            self._disconnect()
     
     def mark_workout_uploaded(self, workout_id: int) -> bool:
         """
@@ -630,19 +630,19 @@ class Database:
             True if successful, False otherwise
         """
         try:
-            self._connect()
-            self.cursor.execute(
+            conn = self._get_connection()
+            cursor = conn.cursor()
+            
+            cursor.execute(
                 "UPDATE workouts SET uploaded_to_garmin = 1 WHERE id = ?",
                 (workout_id,)
             )
-            self.conn.commit()
+            conn.commit()
             logger.info(f"Workout {workout_id} marked as uploaded to Garmin Connect")
             return True
         except sqlite3.Error as e:
             logger.error(f"Error marking workout as uploaded: {str(e)}")
             return False
-        finally:
-            self._disconnect()
 
 
 # Example usage
