@@ -27,6 +27,37 @@ from src.utils.logging_config import get_component_logger
 # Get component logger
 logger = get_component_logger('fit_converter')
 
+# Constants for timestamp conversion
+# Garmin FIT epoch (December 31, 1989 00:00:00 UTC)
+FIT_EPOCH = datetime(1989, 12, 31, 0, 0, 0).timestamp()
+
+def unix_to_fit_timestamp(unix_timestamp):
+    """
+    Convert Unix timestamp (seconds since Jan 1, 1970) to FIT timestamp (seconds since Dec 31, 1989)
+    
+    Args:
+        unix_timestamp: Unix timestamp (seconds since Jan 1, 1970)
+        
+    Returns:
+        FIT timestamp (seconds since Dec 31, 1989)
+    """
+    # FIT timestamp is seconds since FIT_EPOCH
+    fit_timestamp = int(unix_timestamp - FIT_EPOCH)
+    
+    # Ensure timestamp is within valid range
+    if fit_timestamp < 0:
+        logger.warning(f"Negative FIT timestamp calculated: {fit_timestamp}, unix timestamp: {unix_timestamp}")
+        # Use current time as fallback
+        fit_timestamp = int(datetime.now().timestamp() - FIT_EPOCH)
+    
+    # Upper limit for FIT timestamp (semi-arbitrary)
+    if fit_timestamp > 4294967295:
+        logger.warning(f"FIT timestamp out of range: {fit_timestamp}, unix timestamp: {unix_timestamp}")
+        # Use current time as fallback
+        fit_timestamp = int(datetime.now().timestamp() - FIT_EPOCH)
+    
+    return fit_timestamp
+
 class FITConverter:
     """
     FIT File Converter class for converting workout data to Garmin FIT format.
@@ -112,36 +143,41 @@ class FITConverter:
             # Create FIT file builder
             builder = FitFileBuilder()
             
-            # Convert start time to timestamp
+            # Convert start time to Unix timestamp
             if isinstance(start_time, datetime):
-                start_timestamp = int(start_time.timestamp())
+                start_unix_timestamp = int(start_time.timestamp())
             elif isinstance(start_time, str):
                 try:
                     # Try to parse the ISO format date string
                     dt = datetime.fromisoformat(start_time.replace('Z', '+00:00'))
-                    start_timestamp = int(dt.timestamp())
+                    start_unix_timestamp = int(dt.timestamp())
                 except Exception as e:
                     logger.error(f"Error parsing start_time string: {str(e)}")
-                    start_timestamp = int(datetime.now().timestamp())
+                    start_unix_timestamp = int(datetime.now().timestamp())
             else:
-                start_timestamp = int(datetime.now().timestamp())
+                start_unix_timestamp = int(datetime.now().timestamp())
             
-            # Ensure the timestamp is positive and in the valid range
-            if start_timestamp < 0:
-                logger.warning(f"Invalid negative timestamp detected: {start_timestamp}, using current time instead")
-                start_timestamp = int(datetime.now().timestamp())
+            # Log the Unix timestamp for debugging
+            logger.info(f"Workout start Unix timestamp: {start_unix_timestamp} ({datetime.fromtimestamp(start_unix_timestamp).isoformat()})")
+            
+            # Convert Unix timestamp to FIT timestamp
+            start_timestamp = unix_to_fit_timestamp(start_unix_timestamp)
+            logger.info(f"Converted to FIT timestamp: {start_timestamp}")
+            
+            # Create a valid timestamp for time_created field 
+            current_time_ts = unix_to_fit_timestamp(int(datetime.now().timestamp()))
             
             # Add File ID message
             file_id_msg = FileIdMessage()
             file_id_msg.type = FileType.ACTIVITY
             file_id_msg.manufacturer = Manufacturer.DEVELOPMENT
             file_id_msg.product = 0
-            file_id_msg.time_created = start_timestamp
+            file_id_msg.time_created = start_timestamp  # Use converted FIT timestamp
             builder.add(file_id_msg)
             
             # Add Device Info message
             device_info_msg = DeviceInfoMessage()
-            device_info_msg.timestamp = start_timestamp
+            device_info_msg.timestamp = start_timestamp  # Use converted FIT timestamp
             device_info_msg.manufacturer = Manufacturer.DEVELOPMENT
             device_info_msg.product = 0
             device_info_msg.device_index = 0
@@ -152,7 +188,7 @@ class FITConverter:
             
             # Add Event message (start)
             event_msg = EventMessage()
-            event_msg.timestamp = start_timestamp
+            event_msg.timestamp = start_timestamp  # Use converted FIT timestamp
             event_msg.event = Event.TIMER
             event_msg.event_type = EventType.START
             builder.add(event_msg)
@@ -161,8 +197,11 @@ class FITConverter:
             for i in range(len(timestamps)):
                 # Calculate timestamp
                 if i < len(absolute_timestamps) and isinstance(absolute_timestamps[i], datetime):
-                    timestamp = int(absolute_timestamps[i].timestamp())
+                    # If we have absolute timestamps, convert them to FIT timestamps
+                    unix_ts = int(absolute_timestamps[i].timestamp())
+                    timestamp = unix_to_fit_timestamp(unix_ts)
                 else:
+                    # Otherwise add the relative timestamp to the start timestamp
                     timestamp = start_timestamp + (timestamps[i] if i < len(timestamps) else 0)
                 
                 # Create record message
@@ -192,9 +231,12 @@ class FITConverter:
                 
                 builder.add(record_msg)
             
+            # For end timestamp, add duration to the start timestamp
+            end_timestamp = start_timestamp + total_duration
+            
             # Add Lap message
             lap_msg = LapMessage()
-            lap_msg.timestamp = start_timestamp + total_duration
+            lap_msg.timestamp = end_timestamp
             lap_msg.start_time = start_timestamp
             lap_msg.total_elapsed_time = float(total_duration)
             lap_msg.total_timer_time = float(total_duration)
@@ -216,7 +258,7 @@ class FITConverter:
             
             # Add Session message
             session_msg = SessionMessage()
-            session_msg.timestamp = start_timestamp + total_duration
+            session_msg.timestamp = end_timestamp
             session_msg.start_time = start_timestamp
             session_msg.total_elapsed_time = float(total_duration)
             session_msg.total_timer_time = float(total_duration)
@@ -258,7 +300,7 @@ class FITConverter:
             
             # Add Activity message
             activity_msg = ActivityMessage()
-            activity_msg.timestamp = start_timestamp + total_duration
+            activity_msg.timestamp = end_timestamp
             activity_msg.total_timer_time = float(total_duration)
             activity_msg.num_sessions = 1
             activity_msg.type = 0  # Manual activity
@@ -266,8 +308,8 @@ class FITConverter:
             activity_msg.event_type = EventType.STOP
             builder.add(activity_msg)
             
-            # Generate filename
-            timestamp_str = datetime.fromtimestamp(start_timestamp).strftime('%Y%m%d_%H%M%S')
+            # Generate filename - use original Unix timestamp for filename to maintain readability
+            timestamp_str = datetime.fromtimestamp(start_unix_timestamp).strftime('%Y%m%d_%H%M%S')
             filename = f"indoor_cycling_{timestamp_str}.fit"
             filepath = os.path.join(self.output_dir, filename)
             
@@ -322,36 +364,38 @@ class FITConverter:
             # Create FIT file builder
             builder = FitFileBuilder()
             
-            # Convert start time to timestamp
+            # Convert start time to Unix timestamp
             if isinstance(start_time, datetime):
-                start_timestamp = int(start_time.timestamp())
+                start_unix_timestamp = int(start_time.timestamp())
             elif isinstance(start_time, str):
                 try:
                     # Try to parse the ISO format date string
                     dt = datetime.fromisoformat(start_time.replace('Z', '+00:00'))
-                    start_timestamp = int(dt.timestamp())
+                    start_unix_timestamp = int(dt.timestamp())
                 except Exception as e:
                     logger.error(f"Error parsing start_time string: {str(e)}")
-                    start_timestamp = int(datetime.now().timestamp())
+                    start_unix_timestamp = int(datetime.now().timestamp())
             else:
-                start_timestamp = int(datetime.now().timestamp())
+                start_unix_timestamp = int(datetime.now().timestamp())
             
-            # Ensure the timestamp is positive and in the valid range
-            if start_timestamp < 0:
-                logger.warning(f"Invalid negative timestamp detected: {start_timestamp}, using current time instead")
-                start_timestamp = int(datetime.now().timestamp())
+            # Log the Unix timestamp for debugging
+            logger.info(f"Workout start Unix timestamp: {start_unix_timestamp} ({datetime.fromtimestamp(start_unix_timestamp).isoformat()})")
+            
+            # Convert Unix timestamp to FIT timestamp
+            start_timestamp = unix_to_fit_timestamp(start_unix_timestamp)
+            logger.info(f"Converted to FIT timestamp: {start_timestamp}")
             
             # Add File ID message
             file_id_msg = FileIdMessage()
             file_id_msg.type = FileType.ACTIVITY
             file_id_msg.manufacturer = Manufacturer.DEVELOPMENT
             file_id_msg.product = 0
-            file_id_msg.time_created = start_timestamp
+            file_id_msg.time_created = start_timestamp  # Use converted FIT timestamp
             builder.add(file_id_msg)
             
             # Add Device Info message
             device_info_msg = DeviceInfoMessage()
-            device_info_msg.timestamp = start_timestamp
+            device_info_msg.timestamp = start_timestamp  # Use converted FIT timestamp
             device_info_msg.manufacturer = Manufacturer.DEVELOPMENT
             device_info_msg.product = 0
             device_info_msg.device_index = 0
@@ -362,7 +406,7 @@ class FITConverter:
             
             # Add Event message (start)
             event_msg = EventMessage()
-            event_msg.timestamp = start_timestamp
+            event_msg.timestamp = start_timestamp  # Use converted FIT timestamp
             event_msg.event = Event.TIMER
             event_msg.event_type = EventType.START
             builder.add(event_msg)
@@ -371,8 +415,11 @@ class FITConverter:
             for i in range(len(timestamps)):
                 # Calculate timestamp
                 if i < len(absolute_timestamps) and isinstance(absolute_timestamps[i], datetime):
-                    timestamp = int(absolute_timestamps[i].timestamp())
+                    # If we have absolute timestamps, convert them to FIT timestamps
+                    unix_ts = int(absolute_timestamps[i].timestamp())
+                    timestamp = unix_to_fit_timestamp(unix_ts)
                 else:
+                    # Otherwise add the relative timestamp to the start timestamp
                     timestamp = start_timestamp + (timestamps[i] if i < len(timestamps) else 0)
                 
                 # Create record message
@@ -397,9 +444,12 @@ class FITConverter:
                 
                 builder.add(record_msg)
             
+            # For end timestamp, add duration to the start timestamp
+            end_timestamp = start_timestamp + total_duration
+            
             # Add Lap message
             lap_msg = LapMessage()
-            lap_msg.timestamp = start_timestamp + total_duration
+            lap_msg.timestamp = end_timestamp
             lap_msg.start_time = start_timestamp
             lap_msg.total_elapsed_time = float(total_duration)
             lap_msg.total_timer_time = float(total_duration)
@@ -420,7 +470,7 @@ class FITConverter:
             
             # Add Session message
             session_msg = SessionMessage()
-            session_msg.timestamp = start_timestamp + total_duration
+            session_msg.timestamp = end_timestamp
             session_msg.start_time = start_timestamp
             session_msg.total_elapsed_time = float(total_duration)
             session_msg.total_timer_time = float(total_duration)
@@ -461,7 +511,7 @@ class FITConverter:
             
             # Add Activity message
             activity_msg = ActivityMessage()
-            activity_msg.timestamp = start_timestamp + total_duration
+            activity_msg.timestamp = end_timestamp
             activity_msg.total_timer_time = float(total_duration)
             activity_msg.num_sessions = 1
             activity_msg.type = 0  # Manual activity
@@ -469,8 +519,8 @@ class FITConverter:
             activity_msg.event_type = EventType.STOP
             builder.add(activity_msg)
             
-            # Generate filename
-            timestamp_str = datetime.fromtimestamp(start_timestamp).strftime('%Y%m%d_%H%M%S')
+            # Generate filename - use original Unix timestamp for filename to maintain readability
+            timestamp_str = datetime.fromtimestamp(start_unix_timestamp).strftime('%Y%m%d_%H%M%S')
             filename = f"indoor_rowing_{timestamp_str}.fit"
             filepath = os.path.join(self.output_dir, filename)
             
