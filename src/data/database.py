@@ -446,12 +446,13 @@ class Database:
             conn = self._get_connection()
             cursor = conn.cursor()
             
-            # Get workouts ordered by start time (most recent first)
+            # Modified query to handle both string and numeric device IDs
+            # Use LEFT JOIN instead of JOIN to include workouts with invalid device references
             cursor.execute(
                 """
                 SELECT w.*, d.name as device_name, d.device_type 
                 FROM workouts w
-                JOIN devices d ON w.device_id = d.id
+                LEFT JOIN devices d ON w.device_id = d.id
                 ORDER BY w.start_time DESC
                 LIMIT ? OFFSET ?
                 """,
@@ -462,9 +463,25 @@ class Database:
             for row in cursor.fetchall():
                 workout = dict(row)
                 
+                # If device_name is NULL from the LEFT JOIN, add a placeholder value
+                if workout.get('device_name') is None:
+                    # Try to use the device_id as device_name if it's a string (like a MAC address)
+                    device_id = workout.get('device_id')
+                    if isinstance(device_id, str):
+                        workout['device_name'] = f"Device {device_id}"
+                    else:
+                        workout['device_name'] = "Unknown Device"
+                
+                # If device_type is NULL, add a default based on workout_type
+                if workout.get('device_type') is None:
+                    workout['device_type'] = workout.get('workout_type', 'unknown')
+                
                 # Parse JSON summary
                 if workout['summary']:
-                    workout['summary'] = json.loads(workout['summary'])
+                    try:
+                        workout['summary'] = json.loads(workout['summary'])
+                    except (json.JSONDecodeError, TypeError):
+                        workout['summary'] = {}
                 else:
                     workout['summary'] = {}
                 

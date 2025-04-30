@@ -10,6 +10,7 @@ import argparse
 import asyncio
 import threading
 import logging # Add logging import
+import sqlite3 # Add sqlite3 import for direct database access
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 import sys
 import importlib  # Add importlib for module reloading
@@ -356,10 +357,40 @@ def end_workout():
 def get_workouts():
     """Get workout history."""
     try:
-        workouts = workout_manager.get_workouts()
+        # Get query parameters for pagination
+        limit = request.args.get('limit', 100, type=int)  # Increase default limit
+        offset = request.args.get('offset', 0, type=int)
+        
+        logger.info(f"Getting workouts with limit={limit}, offset={offset}")
+        
+        # Get workouts from database
+        workouts = workout_manager.get_workouts(limit, offset)
+        
+        # Log the result for debugging
+        logger.info(f"Retrieved {len(workouts) if workouts else 0} workouts from database")
+        
+        if not workouts:
+            # Check if database has any workouts at all
+            logger.warning("No workouts found in database")
+            
+            # For debugging, try to check for workouts using direct SQL
+            try:
+                conn = sqlite3.connect(db.db_path)
+                cursor = conn.cursor()
+                cursor.execute("SELECT COUNT(*) FROM workouts")
+                count = cursor.fetchone()[0]
+                conn.close()
+                
+                logger.info(f"Database reports {count} workouts exist")
+            except Exception as db_error:
+                logger.error(f"Error checking database directly: {str(db_error)}")
+            
+            # Still return empty list with success=True
+            return jsonify({'success': True, 'workouts': []})
+            
         return jsonify({'success': True, 'workouts': workouts})
     except Exception as e:
-        logger.error(f"Error getting workouts: {str(e)}")
+        logger.error(f"Error getting workouts: {str(e)}", exc_info=True)
         return jsonify({'success': False, 'error': str(e)})
 
 @app.route('/api/workout/<int:workout_id>', methods=['GET', 'DELETE'])

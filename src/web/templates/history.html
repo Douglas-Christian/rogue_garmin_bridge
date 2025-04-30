@@ -76,6 +76,24 @@
     let currentSort = 'date-desc'; // Default sort
     let allWorkouts = []; // Store all loaded workouts for client-side sorting
     
+    // User's unit preference (will be loaded from settings)
+    let userUnitSystem = 'metric';
+    
+    // Unit conversion utilities
+    const unitConversions = {
+        // Distance conversions
+        mToMi: (m) => m / 1609.34,
+        miToM: (mi) => mi * 1609.34,
+        mToKm: (m) => m / 1000,
+        kmToM: (km) => km * 1000,
+        
+        // Speed conversions
+        msToKph: (ms) => ms * 3.6,
+        msToMph: (ms) => ms * 2.23694,
+        kphToMph: (kph) => kph * 0.621371,
+        mphToKph: (mph) => mph / 0.621371
+    };
+    
     // Format duration function
     function formatDuration(seconds) {
         if (!seconds || isNaN(seconds)) return '-';
@@ -278,8 +296,23 @@
             
             // Safely extract summary values with fallbacks
             const duration = formatDuration(workout.duration);
-            const distance = (workout.summary && workout.summary.total_distance) ? 
-                Math.round(workout.summary.total_distance) + ' m' : '-';
+            
+            // Format distance with unit conversion based on user preference
+            let distanceText = '-';
+            if (workout.summary && workout.summary.total_distance) {
+                const distanceM = workout.summary.total_distance;
+                
+                if (userUnitSystem === 'imperial') {
+                    // Convert meters to miles
+                    const distanceMi = unitConversions.mToMi(distanceM);
+                    distanceText = distanceMi.toFixed(2) + ' mi';
+                } else {
+                    // Convert meters to kilometers
+                    const distanceKm = unitConversions.mToKm(distanceM);
+                    distanceText = distanceKm.toFixed(2) + ' km';
+                }
+            }
+            
             const calories = (workout.summary && workout.summary.total_calories) ? 
                 Math.round(workout.summary.total_calories) + ' kcal' : '-';
                 
@@ -291,7 +324,7 @@
                     <td>${startTimeStr}</td>
                     <td>${workoutType}</td>
                     <td>${duration}</td>
-                    <td>${distance}</td>
+                    <td>${distanceText}</td>
                     <td>${calories}</td>
                     <td>
                         <button class="btn btn-sm btn-primary view-btn" data-workout-id="${workout.id}">View</button>
@@ -496,7 +529,23 @@
                 html += `<tr><th>Max Heart Rate</th><td>${Math.round(workout.summary.max_heart_rate)} bpm</td></tr>`;
             }
             if (workout.summary.total_distance !== undefined) {
-                html += `<tr><th>Total Distance</th><td>${Math.round(workout.summary.total_distance)} m</td></tr>`;
+                // Format distance with the appropriate units
+                let distanceDisplay;
+                let distanceUnit;
+                
+                if (userUnitSystem === 'imperial') {
+                    // Convert meters to miles
+                    const distanceMi = unitConversions.mToMi(workout.summary.total_distance);
+                    distanceDisplay = distanceMi.toFixed(2);
+                    distanceUnit = 'mi';
+                } else {
+                    // Convert meters to kilometers
+                    const distanceKm = unitConversions.mToKm(workout.summary.total_distance);
+                    distanceDisplay = distanceKm.toFixed(2);
+                    distanceUnit = 'km';
+                }
+                
+                html += `<tr><th>Total Distance</th><td>${distanceDisplay} ${distanceUnit}</td></tr>`;
             }
             if (workout.summary.total_calories !== undefined) {
                 html += `<tr><th>Total Calories</th><td>${Math.round(workout.summary.total_calories)} kcal</td></tr>`;
@@ -780,10 +829,39 @@
         });
     }
     
+    // Load user preferences
+    function loadUserPreferences() {
+        // First try to get from settings
+        fetch('/api/settings')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.settings && data.settings.unit_system) {
+                    userUnitSystem = data.settings.unit_system;
+                    console.log("Loaded unit preference from settings:", userUnitSystem);
+                } else {
+                    // If not in settings, try user profile
+                    return fetch('/api/user_profile');
+                }
+            })
+            .then(response => {
+                if (response) return response.json();
+            })
+            .then(data => {
+                if (data && data.success && data.profile && data.profile.unit_preference) {
+                    userUnitSystem = data.profile.unit_preference;
+                    console.log("Loaded unit preference from profile:", userUnitSystem);
+                }
+            })
+            .catch(error => {
+                console.error('Error loading user preferences:', error);
+            });
+    }
+    
     // Initialize on document load
     document.addEventListener('DOMContentLoaded', function() {
         // Load initial data
         loadAllWorkouts();
+        loadUserPreferences(); // Load user preferences
         
         // Set up sorting change event
         sortBySelect.addEventListener('change', function() {

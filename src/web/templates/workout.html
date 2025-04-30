@@ -385,28 +385,15 @@
             const distanceM = data.total_distance || data.distance || 0;
             
             if (userUnitSystem === 'imperial') {
-                if (distanceM >= 1609.34) { // More than a mile
-                    // Convert meters to miles
-                    const distanceMi = unitConversions.mToMi(distanceM);
-                    distanceValue.textContent = distanceMi.toFixed(2);
-                    distanceUnit.textContent = 'mi';
-                } else {
-                    // For shorter distances, show feet
-                    const distanceFt = unitConversions.mToFt(distanceM);
-                    distanceValue.textContent = Math.round(distanceFt);
-                    distanceUnit.textContent = 'ft';
-                }
+                // Always convert to miles for imperial
+                const distanceMi = unitConversions.mToMi(distanceM);
+                distanceValue.textContent = distanceMi.toFixed(2);
+                distanceUnit.textContent = 'mi';
             } else {
-                if (distanceM >= 1000) { // More than a kilometer
-                    // Convert meters to kilometers
-                    const distanceKm = distanceM / 1000;
-                    distanceValue.textContent = distanceKm.toFixed(2);
-                    distanceUnit.textContent = 'km';
-                } else {
-                    // For shorter distances, show meters
-                    distanceValue.textContent = Math.round(distanceM);
-                    distanceUnit.textContent = 'm';
-                }
+                // Always convert to kilometers for metric
+                const distanceKm = distanceM / 1000;
+                distanceValue.textContent = distanceKm.toFixed(2);
+                distanceUnit.textContent = 'km';
             }
         }
         
@@ -493,18 +480,11 @@
             `;
         }
         
-        // Average speed with unit conversion
+        // Average speed - use value directly without conversion from m/s
         if (summary.avg_speed !== undefined) {
-            let avgSpeedDisplay, speedUnitText;
-            
-            // Use the speed value directly without conversion from m/s
-            if (userUnitSystem === 'imperial') {
-                avgSpeedDisplay = summary.avg_speed.toFixed(1);
-                speedUnitText = 'mph';
-            } else {
-                avgSpeedDisplay = summary.avg_speed.toFixed(1);
-                speedUnitText = 'km/h';
-            }
+            // The avg_speed already comes in the user's preferred units (mph/km/h)
+            const avgSpeedDisplay = summary.avg_speed.toFixed(1);
+            const speedUnitText = userUnitSystem === 'imperial' ? 'mph' : 'km/h';
             
             html += `
                 <div class="col-6">
@@ -516,30 +496,17 @@
         // Total distance with unit conversion
         const totalDistance = data.total_distance || summary.total_distance || 0;
         let distanceDisplay, distanceUnit;
-        
+
         if (userUnitSystem === 'imperial') {
-            if (totalDistance >= 1609.34) { // More than a mile
-                // Convert meters to miles
-                const distanceMi = unitConversions.mToMi(totalDistance);
-                distanceDisplay = distanceMi.toFixed(2);
-                distanceUnit = 'mi';
-            } else {
-                // For shorter distances, show feet
-                const distanceFt = unitConversions.mToFt(totalDistance);
-                distanceDisplay = Math.round(distanceFt);
-                distanceUnit = 'ft';
-            }
+            // Always convert to miles for imperial
+            const distanceMi = unitConversions.mToMi(totalDistance);
+            distanceDisplay = distanceMi.toFixed(2);
+            distanceUnit = 'mi';
         } else {
-            if (totalDistance >= 1000) { // More than a kilometer
-                // Convert meters to kilometers
-                const distanceKm = totalDistance / 1000;
-                distanceDisplay = distanceKm.toFixed(2);
-                distanceUnit = 'km';
-            } else {
-                // For shorter distances, show meters
-                distanceDisplay = Math.round(totalDistance);
-                distanceUnit = 'm';
-            }
+            // Always convert to kilometers for metric
+            const distanceKm = totalDistance / 1000;
+            distanceDisplay = distanceKm.toFixed(2);
+            distanceUnit = 'km';
         }
         
         html += `
