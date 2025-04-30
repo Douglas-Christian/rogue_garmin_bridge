@@ -35,7 +35,12 @@
 
 /* Chart container */
 .chart-container {
-    margin-top: 20px;
+    position: relative;
+    height: 400px;
+    width: 100%;
+    margin-bottom: 20px;
+    max-width: 100%;
+    overflow: hidden; /* Prevent chart from overflowing */
 }
 
 /* Status badges */
@@ -55,6 +60,23 @@
 
 .list-group-item:hover {
     background-color: rgba(0, 123, 255, 0.05);
+}
+
+/* Make the workout details expand properly to fit content */
+#workout-details {
+    width: 100%;
+    overflow: hidden; /* Prevent content overflow */
+}
+
+/* Make sure the workout details card expands to fit content */
+.card-body {
+    min-height: 100px;
+    overflow: visible; /* Allow content to determine height */
+}
+
+/* Add responsive styling to tables */
+.table-responsive {
+    overflow-x: auto;
 }
 
 /* Responsive adjustments */

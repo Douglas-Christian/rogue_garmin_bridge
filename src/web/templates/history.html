@@ -403,6 +403,19 @@
                 console.log("Workout details API response:", data); // Debug output
                 
                 if (data.success && data.workout) {
+                    // Ensure summary data is properly parsed
+                    if (data.workout.summary && typeof data.workout.summary === 'string') {
+                        try {
+                            data.workout.summary = JSON.parse(data.workout.summary);
+                            console.log("Successfully parsed summary from string:", data.workout.summary);
+                        } catch (e) {
+                            console.error("Error parsing summary JSON:", e);
+                            data.workout.summary = {};
+                        }
+                    } else if (!data.workout.summary) {
+                        data.workout.summary = {};
+                    }
+                    
                     displayWorkoutDetails(data.workout);
                 } else {
                     workoutDetails.innerHTML = `<div class="alert alert-danger">Error loading workout details: ${data.error || 'Unknown error'}</div>`;
@@ -417,6 +430,18 @@
     // Display workout details
     function displayWorkoutDetails(workout) {
         console.log("Displaying workout details:", workout);
+        
+        // Make sure summary exists and is parsed as an object
+        if (workout.summary && typeof workout.summary === 'string') {
+            try {
+                workout.summary = JSON.parse(workout.summary);
+            } catch (e) {
+                console.error("Error parsing summary JSON:", e);
+                workout.summary = {};
+            }
+        } else if (!workout.summary) {
+            workout.summary = {};
+        }
         
         // Parse dates with fallback handling
         let startTimeStr = '-';
@@ -572,7 +597,7 @@
                 <div class="row mt-4">
                     <div class="col-md-12">
                         <h5>Workout Chart</h5>
-                        <div class="chart-container" style="position: relative; height:300px; max-height:300px; margin-bottom:20px;">
+                        <div class="chart-container" style="position: relative; height:400px; width:100%; margin-bottom:20px;">
                             <canvas id="workout-chart"></canvas>
                         </div>
                     </div>
