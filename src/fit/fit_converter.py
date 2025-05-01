@@ -28,8 +28,8 @@ from src.utils.logging_config import get_component_logger
 logger = get_component_logger('fit_converter')
 
 # Constants for timestamp conversion
-# Garmin FIT epoch (December 31, 1989 00:00:00 UTC) with explicit timezone
-FIT_EPOCH = datetime(1989, 12, 31, 0, 0, 0, tzinfo=timezone.utc).timestamp()
+# Garmin FIT epoch (December 31, 1989 00:00:00 UTC)
+FIT_EPOCH_SECONDS = 631065600  # Seconds between Unix epoch and FIT epoch
 
 def unix_to_fit_timestamp(unix_timestamp):
     """
@@ -41,102 +41,23 @@ def unix_to_fit_timestamp(unix_timestamp):
     Returns:
         FIT timestamp (seconds since Dec 31, 1989)
     """
-    try:
-        # Validate input
-        if not isinstance(unix_timestamp, (int, float)):
-            logger.warning(f"Invalid unix_timestamp type: {type(unix_timestamp)}, value: {unix_timestamp}")
-            # Use current time as fallback
-            unix_timestamp = datetime.now(timezone.utc).timestamp()
-            logger.info(f"Using current time as fallback: {unix_timestamp}")
-        
-        # FIT timestamp is seconds since FIT_EPOCH
-        fit_timestamp = int(unix_timestamp - FIT_EPOCH)
-        
-        # Ensure timestamp is within valid range
-        if fit_timestamp < 0:
-            logger.warning(f"Negative FIT timestamp calculated: {fit_timestamp}, unix timestamp: {unix_timestamp}")
-            # Use current time as fallback instead of negative value
-            fit_timestamp = int(datetime.now(timezone.utc).timestamp() - FIT_EPOCH)
-            logger.info(f"Using current time as fallback, new fit_timestamp: {fit_timestamp}")
-        
-        # Upper limit for FIT timestamp (semi-arbitrary)
-        if fit_timestamp > 4294967295:
-            logger.warning(f"FIT timestamp out of range: {fit_timestamp}, unix timestamp: {unix_timestamp}")
-            # Cap at max valid value instead of using current time
-            fit_timestamp = 4294967295
-            logger.info(f"Capping timestamp at maximum valid value: {fit_timestamp}")
-        
-        logger.debug(f"Converted Unix timestamp {unix_timestamp} to FIT timestamp {fit_timestamp}")
-        return fit_timestamp
-    except Exception as e:
-        logger.error(f"Error in unix_to_fit_timestamp: {str(e)}")
-        # Return a safe timestamp value as fallback
-        return generate_fit_valid_timestamp()
-
-def ensure_valid_timestamp(timestamp):
-    """
-    Ensures a timestamp is valid for FIT file format.
+    # Simple conversion using constant epoch difference
+    fit_timestamp = int(unix_timestamp - FIT_EPOCH_SECONDS)
     
-    Args:
-        timestamp: The timestamp to validate
+    # Ensure the timestamp is in the valid range for FIT files
+    if fit_timestamp < 0:
+        logger.warning(f"[TIMESTAMP FIX] Calculated negative FIT timestamp ({fit_timestamp}), adjusting to current time")
+        # Use current time instead if result would be negative
+        current_time = int(datetime.now(timezone.utc).timestamp())
+        fit_timestamp = int(current_time - FIT_EPOCH_SECONDS)
         
-    Returns:
-        A valid timestamp value for FIT format
-    """
-    # FIT timestamps must be in the range [0, 4294967295]
-    try:
-        timestamp_int = int(timestamp)
-        if 0 <= timestamp_int <= 4294967295:
-            return timestamp_int
-        else:
-            logger.warning(f"Invalid timestamp value: {timestamp_int}, using safe value")
-            return generate_fit_valid_timestamp()
-    except (ValueError, TypeError) as e:
-        logger.warning(f"Failed to convert timestamp {timestamp} to int: {str(e)}")
-        return generate_fit_valid_timestamp()
-
-def generate_fit_valid_timestamp():
-    """
-    Generate a value that's guaranteed to be valid for the time_created field.
-    This returns an integer in the proper range expected by the FIT encoder.
-    """
-    # Use current time converted to FIT timestamp format, which is guaranteed to be valid
-    current_time = int(datetime.now(timezone.utc).timestamp())
-    safe_timestamp = int(current_time - FIT_EPOCH)
-    
-    # Ensure it's in valid range [0, 4294967295]
-    safe_timestamp = max(0, min(safe_timestamp, 4294967295))
-    
-    logger.info(f"Generated guaranteed valid timestamp: {safe_timestamp}")
-    return safe_timestamp
-
-def create_file_id_message(builder):
-    """
-    Create a FileID message with a guaranteed valid timestamp.
-    
-    Args:
-        builder: FitFileBuilder to add the message to
+    # Ensure within maximum uint32 range (0 to 4294967295)
+    if fit_timestamp > 4294967295:
+        logger.warning(f"[TIMESTAMP FIX] Calculated FIT timestamp too large ({fit_timestamp}), adjusting to max value")
+        fit_timestamp = 4294967295
         
-    Returns:
-        Boolean indicating success or failure
-    """
-    try:
-        # Create FileIdMessage
-        file_id_msg = FileIdMessage()
-        file_id_msg.type = FileType.ACTIVITY
-        file_id_msg.manufacturer = Manufacturer.DEVELOPMENT
-        file_id_msg.product = 0
-        
-        # Important: Skip setting the time_created field entirely
-        # The FIT SDK will automatically use a valid default value
-        
-        # Add the message to the builder
-        builder.add(file_id_msg)
-        
-        return True
-    except Exception as e:
-        logger.error(f"Error creating FileIdMessage: {str(e)}")
-        return False
+    logger.info(f"[TIMESTAMP FIX] Unix timestamp {unix_timestamp} converted to safe FIT timestamp {fit_timestamp}")
+    return fit_timestamp
 
 def parse_timestamp(timestamp_value):
     """
@@ -180,6 +101,38 @@ def parse_timestamp(timestamp_value):
     except Exception as e:
         logger.error(f"Error parsing timestamp {timestamp_value}: {str(e)}")
         return int(datetime.now(timezone.utc).timestamp())
+
+def create_file_id_message(builder, workout_timestamp=None):
+    """
+    Creates a FileIdMessage and adds it to the builder.
+    DOES NOT set the time_created field to avoid issues with timestamp conversions.
+    
+    Args:
+        builder: FitFileBuilder instance to add the message to
+        workout_timestamp: FIT timestamp to use (already converted from Unix time) - IGNORED
+        
+    Returns:
+        True if successful, False otherwise
+    """
+    try:
+        file_id_msg = FileIdMessage()
+        file_id_msg.type = FileType.ACTIVITY
+        file_id_msg.manufacturer = Manufacturer.DEVELOPMENT
+        file_id_msg.product = 0
+        file_id_msg.serial_number = 0
+        
+        # DO NOT set the time_created field at all
+        # This allows the FIT SDK to use its default value
+        # and avoids the encoding error with negative values
+        
+        logger.info("[TIMESTAMP FIX] Skipping time_created field to avoid timestamp encoding issues")
+        
+        # Add the message to the builder
+        builder.add(file_id_msg)
+        return True
+    except Exception as e:
+        logger.error(f"Error creating FileIdMessage: {str(e)}")
+        return False
 
 class FITConverter:
     """
@@ -241,7 +194,6 @@ class FITConverter:
             
             # Extract arrays from data series (ensure these are defined)
             timestamps = data_series.get('timestamps', [])
-            absolute_timestamps = data_series.get('absolute_timestamps', [])
             powers = data_series.get('powers', [])
             cadences = data_series.get('cadences', [])
             heart_rates = data_series.get('heart_rates', [])
@@ -270,20 +222,25 @@ class FITConverter:
             start_unix_timestamp = parse_timestamp(start_time)
             
             # Log the Unix timestamp for debugging
-            logger.info(f"Workout start Unix timestamp: {start_unix_timestamp} ({datetime.fromtimestamp(start_unix_timestamp).isoformat()})")
+            logger.info(f"[TIMESTAMP FIX] Workout start Unix timestamp: {start_unix_timestamp} ({datetime.fromtimestamp(start_unix_timestamp).isoformat()})")
             
-            # Convert Unix timestamp to FIT timestamp
+            # Convert Unix timestamp to FIT timestamp (seconds since FIT epoch)
             start_timestamp = unix_to_fit_timestamp(start_unix_timestamp)
-            logger.info(f"Converted to FIT timestamp: {start_timestamp}")
+            logger.info(f"[TIMESTAMP FIX] Converted to FIT timestamp: {start_timestamp}")
             
-            # Add File ID message with safe timestamp
-            if not create_file_id_message(builder):
+            # Process relative timestamps into FIT timestamps
+            # (Use our standalone function for this critical step)
+            fit_timestamps = process_relative_timestamps(start_unix_timestamp, timestamps)
+            logger.info(f"[TIMESTAMP FIX] Processed {len(fit_timestamps)} relative timestamps to FIT format")
+            
+            # Add File ID message with the workout start timestamp - CRITICAL for correct date in Garmin Connect
+            if not create_file_id_message(builder, start_timestamp):
                 logger.error("Failed to create FileIdMessage")
                 return None
             
             # Add Device Info message
             device_info_msg = DeviceInfoMessage()
-            device_info_msg.timestamp = ensure_valid_timestamp(start_timestamp)
+            device_info_msg.timestamp = start_timestamp
             device_info_msg.manufacturer = Manufacturer.DEVELOPMENT
             device_info_msg.product = 0
             device_info_msg.device_index = 0
@@ -294,55 +251,52 @@ class FITConverter:
             
             # Add Event message (start)
             event_msg = EventMessage()
-            event_msg.timestamp = ensure_valid_timestamp(start_timestamp)
+            event_msg.timestamp = start_timestamp
             event_msg.event = Event.TIMER
             event_msg.event_type = EventType.START
             builder.add(event_msg)
             
             # Add Record messages
-            for i in range(len(timestamps)):
-                # Calculate timestamp
-                if i < len(absolute_timestamps):
-                    # If we have absolute timestamps, parse and convert them to FIT timestamps
-                    unix_ts = parse_timestamp(absolute_timestamps[i])
-                    timestamp = unix_to_fit_timestamp(unix_ts)
-                else:
-                    # Otherwise add the relative timestamp to the start timestamp
-                    rel_time = timestamps[i] if i < len(timestamps) else 0
-                    timestamp = start_timestamp + rel_time
-                
-                # Ensure timestamp is valid
-                timestamp = ensure_valid_timestamp(timestamp)
-                
-                # Create record message
-                record_msg = RecordMessage()
-                record_msg.timestamp = timestamp
-                
-                # Set power
-                if i < len(powers):
-                    record_msg.power = int(powers[i])
-                
-                # Set cadence
-                if i < len(cadences):
-                    record_msg.cadence = int(cadences[i])
-                
-                # Set heart rate
-                if i < len(heart_rates) and heart_rates[i] > 0:
-                    record_msg.heart_rate = int(heart_rates[i])
-                
-                # Set speed
-                if i < len(speeds):
-                    # Convert km/h to m/s
-                    record_msg.speed = float(speeds[i]) / 3.6
-                
-                # Set distance
-                if i < len(distances):
-                    record_msg.distance = float(distances[i])
-                
-                builder.add(record_msg)
+            for i in range(len(fit_timestamps)):
+                try:
+                    # Use the pre-computed FIT timestamp from our standalone function
+                    timestamp = fit_timestamps[i]
+                    
+                    # Log the first few points to verify it's working
+                    if i < 3:  # Only log first 3 points to avoid log spam
+                        logger.info(f"[TIMESTAMP FIX] Point {i}: Using processed FIT timestamp: {timestamp}")
+                    
+                    # Create record message
+                    record_msg = RecordMessage()
+                    record_msg.timestamp = timestamp
+                    
+                    # Set power
+                    if i < len(powers):
+                        record_msg.power = int(powers[i])
+                    
+                    # Set cadence
+                    if i < len(cadences):
+                        record_msg.cadence = int(cadences[i])
+                    
+                    # Set heart rate
+                    if i < len(heart_rates) and heart_rates[i] > 0:
+                        record_msg.heart_rate = int(heart_rates[i])
+                    
+                    # Set speed
+                    if i < len(speeds):
+                        # Convert km/h to m/s
+                        record_msg.speed = float(speeds[i]) / 3.6
+                    
+                    # Set distance
+                    if i < len(distances):
+                        record_msg.distance = float(distances[i])
+                    
+                    builder.add(record_msg)
+                except Exception as e:
+                    logger.error(f"Error processing record at index {i}: {str(e)}")
             
             # For end timestamp, add duration to the start timestamp
-            end_timestamp = ensure_valid_timestamp(start_timestamp + total_duration)
+            end_timestamp = start_timestamp + int(total_duration)
             
             # Add Lap message
             lap_msg = LapMessage()
@@ -456,11 +410,11 @@ class FITConverter:
             
             # Extract arrays from data series (ensure these are defined)
             timestamps = data_series.get('timestamps', [])
-            absolute_timestamps = data_series.get('absolute_timestamps', [])
             powers = data_series.get('powers', [])
             stroke_rates = data_series.get('stroke_rates', [])
             heart_rates = data_series.get('heart_rates', [])
             distances = data_series.get('distances', [])
+            stroke_counts = data_series.get('stroke_counts', [])
             
             # Extract summary metrics
             start_time = workout_data.get('start_time', datetime.now(timezone.utc))
@@ -483,20 +437,25 @@ class FITConverter:
             start_unix_timestamp = parse_timestamp(start_time)
             
             # Log the Unix timestamp for debugging
-            logger.info(f"Workout start Unix timestamp: {start_unix_timestamp} ({datetime.fromtimestamp(start_unix_timestamp).isoformat()})")
+            logger.info(f"[TIMESTAMP FIX] Workout start Unix timestamp: {start_unix_timestamp} ({datetime.fromtimestamp(start_unix_timestamp).isoformat()})")
             
-            # Convert Unix timestamp to FIT timestamp
+            # Convert Unix timestamp to FIT timestamp (seconds since FIT epoch)
             start_timestamp = unix_to_fit_timestamp(start_unix_timestamp)
-            logger.info(f"Converted to FIT timestamp: {start_timestamp}")
+            logger.info(f"[TIMESTAMP FIX] Converted to FIT timestamp: {start_timestamp}")
             
-            # Add File ID message with safe timestamp
-            if not create_file_id_message(builder):
+            # Process relative timestamps into FIT timestamps
+            # (Use our standalone function for this critical step)
+            fit_timestamps = process_relative_timestamps(start_unix_timestamp, timestamps)
+            logger.info(f"[TIMESTAMP FIX] Processed {len(fit_timestamps)} relative timestamps to FIT format")
+            
+            # Add File ID message with the workout start timestamp - CRITICAL for correct date in Garmin Connect
+            if not create_file_id_message(builder, start_timestamp):
                 logger.error("Failed to create FileIdMessage")
                 return None
             
             # Add Device Info message
             device_info_msg = DeviceInfoMessage()
-            device_info_msg.timestamp = ensure_valid_timestamp(start_timestamp)
+            device_info_msg.timestamp = start_timestamp
             device_info_msg.manufacturer = Manufacturer.DEVELOPMENT
             device_info_msg.product = 0
             device_info_msg.device_index = 0
@@ -507,50 +466,47 @@ class FITConverter:
             
             # Add Event message (start)
             event_msg = EventMessage()
-            event_msg.timestamp = ensure_valid_timestamp(start_timestamp)
+            event_msg.timestamp = start_timestamp
             event_msg.event = Event.TIMER
             event_msg.event_type = EventType.START
             builder.add(event_msg)
             
             # Add Record messages
-            for i in range(len(timestamps)):
-                # Calculate timestamp
-                if i < len(absolute_timestamps):
-                    # If we have absolute timestamps, parse and convert them to FIT timestamps
-                    unix_ts = parse_timestamp(absolute_timestamps[i])
-                    timestamp = unix_to_fit_timestamp(unix_ts)
-                else:
-                    # Otherwise add the relative timestamp to the start timestamp
-                    rel_time = timestamps[i] if i < len(timestamps) else 0
-                    timestamp = start_timestamp + rel_time
-                
-                # Ensure timestamp is valid
-                timestamp = ensure_valid_timestamp(timestamp)
-                
-                # Create record message
-                record_msg = RecordMessage()
-                record_msg.timestamp = timestamp
-                
-                # Set power
-                if i < len(powers):
-                    record_msg.power = int(powers[i])
-                
-                # Set cadence (stroke rate)
-                if i < len(stroke_rates):
-                    record_msg.cadence = int(stroke_rates[i])
-                
-                # Set heart rate
-                if i < len(heart_rates) and heart_rates[i] > 0:
-                    record_msg.heart_rate = int(heart_rates[i])
-                
-                # Set distance
-                if i < len(distances):
-                    record_msg.distance = float(distances[i])
-                
-                builder.add(record_msg)
+            for i in range(len(fit_timestamps)):
+                try:
+                    # Use the pre-computed FIT timestamp from our standalone function
+                    timestamp = fit_timestamps[i]
+                    
+                    # Log the first few points to verify it's working
+                    if i < 3:  # Only log first 3 points to avoid log spam
+                        logger.info(f"[TIMESTAMP FIX] Point {i}: Using processed FIT timestamp: {timestamp}")
+                    
+                    # Create record message
+                    record_msg = RecordMessage()
+                    record_msg.timestamp = timestamp
+                    
+                    # Set power
+                    if i < len(powers):
+                        record_msg.power = int(powers[i])
+                    
+                    # Set cadence (stroke rate)
+                    if i < len(stroke_rates):
+                        record_msg.cadence = int(stroke_rates[i])
+                    
+                    # Set heart rate
+                    if i < len(heart_rates) and heart_rates[i] > 0:
+                        record_msg.heart_rate = int(heart_rates[i])
+                    
+                    # Set distance
+                    if i < len(distances):
+                        record_msg.distance = float(distances[i])
+                    
+                    builder.add(record_msg)
+                except Exception as e:
+                    logger.error(f"Error processing record at index {i}: {str(e)}")
             
             # For end timestamp, add duration to the start timestamp
-            end_timestamp = ensure_valid_timestamp(start_timestamp + total_duration)
+            end_timestamp = start_timestamp + int(total_duration)
             
             # Add Lap message
             lap_msg = LapMessage()
@@ -665,8 +621,9 @@ class FITConverter:
             # Create a completely fresh builder instead of using the potentially problematic one
             new_builder = FitFileBuilder()
             
-            # Generate guaranteed safe FIT timestamp for start time
-            safe_start_timestamp = generate_fit_valid_timestamp()
+            # Use a simple FIT timestamp conversion without validation
+            current_unix_timestamp = int(datetime.now(timezone.utc).timestamp())
+            safe_start_timestamp = unix_to_fit_timestamp(current_unix_timestamp)
             logger.info(f"Generated fallback safe FIT timestamp: {safe_start_timestamp}")
             
             # Add File ID message but carefully avoid setting the time_created field
@@ -805,6 +762,32 @@ class FITConverter:
         except Exception as e:
             logger.error(f"Failed to create emergency FIT file: {str(e)}", exc_info=True)
             return None
+        
+def process_relative_timestamps(start_unix_timestamp, relative_timestamps):
+    """
+    Process a list of relative timestamps (seconds from workout start)
+    by adding the absolute start time to each value and converting to FIT timestamps.
+    
+    Args:
+        start_unix_timestamp: Unix timestamp of workout start (seconds since epoch)
+        relative_timestamps: List of relative timestamps (seconds since workout start)
+        
+    Returns:
+        List of FIT timestamps (seconds since FIT epoch)
+    """
+    # FIT epoch is Dec 31, 1989 00:00:00 UTC
+    FIT_EPOCH_SECONDS = 631065600
+    
+    # Calculate absolute unix timestamps from relative ones
+    absolute_unix_timestamps = [start_unix_timestamp + rel_time for rel_time in relative_timestamps]
+    
+    # Convert unix timestamps to FIT timestamps
+    fit_timestamps = [int(unix_time - FIT_EPOCH_SECONDS) for unix_time in absolute_unix_timestamps]
+    
+    # Ensure all timestamps are in valid range
+    fit_timestamps = [max(0, min(fit_timestamp, 4294967295)) for fit_timestamp in fit_timestamps]
+    
+    return fit_timestamps
 
 
 # Example usage

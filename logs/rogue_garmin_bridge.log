@@ -15799,3 +15799,1930 @@ AttributeError: 'Database' object has no attribute '_connect'
 2025-04-30 06:17:26,504 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950657 is not in valid range [0, 4294967295]
 2025-04-30 06:17:26,505 - test_fit - ERROR - Failed to create FIT file
 2025-04-30 06:17:26,505 - test_fit - ERROR - Full FIT conversion failed! The fix did not solve all problems.
+2025-04-30 06:34:44,855 - root - INFO - Logging initialized at 2025-04-30T06:34:44.855064
+2025-04-30 06:34:44,856 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 06:34:45,244 - test_fit - INFO - Testing FileIdMessage creation
+2025-04-30 06:34:45,245 - test_fit - INFO - FileIdMessage creation result: True
+2025-04-30 06:34:45,245 - test_fit - INFO - FileIdMessage creation succeeded! The fix is working.
+2025-04-30 06:34:45,245 - test_fit - INFO - Testing full FIT file conversion
+2025-04-30 06:34:45,246 - fit_converter - INFO - Workout start Unix timestamp: 1746009285 (2025-04-30T06:34:45)
+2025-04-30 06:34:45,246 - fit_converter - INFO - Converted to FIT timestamp: 1114943685
+2025-04-30 06:34:45,246 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950656 is not in valid range [0, 4294967295]
+2025-04-30 06:34:45,248 - test_fit - ERROR - Failed to create FIT file
+2025-04-30 06:34:45,248 - test_fit - ERROR - Full FIT conversion failed! The fix did not solve all problems.
+2025-04-30 06:34:53,655 - root - INFO - Logging initialized at 2025-04-30T06:34:53.655073
+2025-04-30 06:34:53,655 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 06:34:53,724 - database - INFO - Database tables created
+2025-04-30 06:34:53,725 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 06:34:53,725 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 06:34:53,725 - web - INFO - Using real FTMS devices
+2025-04-30 06:34:53,726 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 06:34:53,726 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 06:34:53,727 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 06:34:53,727 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 06:34:53,733 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 06:34:53,789 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-04-30 06:34:53,789 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-30 06:34:53,795 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 06:34:54,255 - root - INFO - Logging initialized at 2025-04-30T06:34:54.255261
+2025-04-30 06:34:54,255 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 06:34:54,268 - database - INFO - Database tables created
+2025-04-30 06:34:54,269 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 06:34:54,270 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 06:34:54,270 - web - INFO - Using real FTMS devices
+2025-04-30 06:34:54,270 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 06:34:54,272 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 06:34:54,273 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 06:34:54,273 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 06:34:54,280 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 06:34:54,303 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 06:34:54,306 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 06:35:00,655 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 06:35:00] "GET /history HTTP/1.1" 200 -
+2025-04-30 06:35:00,720 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 06:35:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-30 06:35:00,894 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 06:35:00] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-04-30 06:35:01,217 - web - INFO - Getting workouts with limit=100, offset=0
+2025-04-30 06:35:01,219 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 06:35:01] "GET /api/settings HTTP/1.1" 200 -
+2025-04-30 06:35:01,220 - web - ERROR - Error getting workouts: 'str' object cannot be interpreted as an integer
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\web\app.py", line 367, in get_workouts
+    workouts = workout_manager.get_workouts(limit, offset)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\workout_manager.py", line 325, in get_workouts
+    return self.database.get_workouts(limit, offset)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 515, in get_workouts
+    workout['start_time_iso'] = datetime.fromtimestamp(
+                                ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'str' object cannot be interpreted as an integer
+2025-04-30 06:35:01,224 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 06:35:01] "GET /api/workouts HTTP/1.1" 200 -
+2025-04-30 06:35:06,575 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 06:35:06] "GET /history HTTP/1.1" 200 -
+2025-04-30 06:35:06,886 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 06:35:06] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-30 06:35:06,902 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 06:35:06] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-04-30 06:35:07,221 - web - INFO - Getting workouts with limit=100, offset=0
+2025-04-30 06:35:07,222 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 06:35:07] "GET /api/settings HTTP/1.1" 200 -
+2025-04-30 06:35:07,224 - web - ERROR - Error getting workouts: 'str' object cannot be interpreted as an integer
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\web\app.py", line 367, in get_workouts
+    workouts = workout_manager.get_workouts(limit, offset)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\workout_manager.py", line 325, in get_workouts
+    return self.database.get_workouts(limit, offset)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 515, in get_workouts
+    workout['start_time_iso'] = datetime.fromtimestamp(
+                                ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'str' object cannot be interpreted as an integer
+2025-04-30 06:35:07,226 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 06:35:07] "GET /api/workouts HTTP/1.1" 200 -
+2025-04-30 06:56:41,636 - root - INFO - Logging initialized at 2025-04-30T06:56:41.636962
+2025-04-30 06:56:41,637 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 06:56:41,787 - timestamp_migration - INFO - Starting timestamp migration for database at C:\Users\dougl\rogue_garmin_bridge\src\data\rogue_garmin.db
+2025-04-30 06:56:41,788 - timestamp_migration - INFO - Migrating timestamps in workouts table...
+2025-04-30 06:56:41,789 - timestamp_migration - WARNING - Could not convert start_time '2025-04-29T20:53:45.345493' to float for workout 1
+2025-04-30 06:56:41,789 - timestamp_migration - WARNING - Could not convert end_time '2025-04-29T20:54:47.900479' to float for workout 1
+2025-04-30 06:56:41,790 - timestamp_migration - WARNING - Could not convert start_time '2025-04-29T21:05:13.190566' to float for workout 2
+2025-04-30 06:56:41,790 - timestamp_migration - WARNING - Could not convert start_time '2025-04-29T21:06:42.168629' to float for workout 3
+2025-04-30 06:56:41,790 - timestamp_migration - WARNING - Could not convert end_time '2025-04-29T21:07:07.179884' to float for workout 3
+2025-04-30 06:56:41,790 - timestamp_migration - WARNING - Could not convert start_time '2025-04-29T21:17:48.114801' to float for workout 4
+2025-04-30 06:56:41,791 - timestamp_migration - WARNING - Could not convert end_time '2025-04-29T21:19:18.813788' to float for workout 4
+2025-04-30 06:56:41,791 - timestamp_migration - WARNING - Could not convert start_time '2025-04-29T21:42:51.965955' to float for workout 5
+2025-04-30 06:56:41,791 - timestamp_migration - WARNING - Could not convert end_time '2025-04-29T21:42:53.086106' to float for workout 5
+2025-04-30 06:56:41,791 - timestamp_migration - WARNING - Could not convert start_time '2025-04-29T21:43:21.276602' to float for workout 6
+2025-04-30 06:56:41,791 - timestamp_migration - WARNING - Could not convert end_time '2025-04-29T21:43:22.471999' to float for workout 6
+2025-04-30 06:56:41,792 - timestamp_migration - INFO - Migrating timestamps in workout_data table...
+2025-04-30 06:56:41,792 - timestamp_migration - INFO - Timestamp migration completed. Converted 0 timestamp values to float.
+2025-04-30 06:58:09,475 - root - INFO - Logging initialized at 2025-04-30T06:58:09.475087
+2025-04-30 06:58:09,476 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 06:58:09,604 - timestamp_migration - INFO - Starting timestamp migration for database at C:\Users\dougl\rogue_garmin_bridge\src\data\rogue_garmin.db
+2025-04-30 06:58:09,606 - timestamp_migration - INFO - Migrating timestamps in workouts table...
+2025-04-30 06:58:09,607 - timestamp_migration - INFO - Converting start_time for workout 1 from 2025-04-29T20:53:45.345493 to 1745974425.345493
+2025-04-30 06:58:09,613 - timestamp_migration - INFO - Converting end_time for workout 1 from 2025-04-29T20:54:47.900479 to 1745974487.900479
+2025-04-30 06:58:09,613 - timestamp_migration - INFO - Converting start_time for workout 2 from 2025-04-29T21:05:13.190566 to 1745975113.190566
+2025-04-30 06:58:09,614 - timestamp_migration - INFO - Converting start_time for workout 3 from 2025-04-29T21:06:42.168629 to 1745975202.168629
+2025-04-30 06:58:09,614 - timestamp_migration - INFO - Converting end_time for workout 3 from 2025-04-29T21:07:07.179884 to 1745975227.179884
+2025-04-30 06:58:09,614 - timestamp_migration - INFO - Converting start_time for workout 4 from 2025-04-29T21:17:48.114801 to 1745975868.114801
+2025-04-30 06:58:09,614 - timestamp_migration - INFO - Converting end_time for workout 4 from 2025-04-29T21:19:18.813788 to 1745975958.813788
+2025-04-30 06:58:09,615 - timestamp_migration - INFO - Converting start_time for workout 5 from 2025-04-29T21:42:51.965955 to 1745977371.965955
+2025-04-30 06:58:09,615 - timestamp_migration - INFO - Converting end_time for workout 5 from 2025-04-29T21:42:53.086106 to 1745977373.086106
+2025-04-30 06:58:09,615 - timestamp_migration - INFO - Converting start_time for workout 6 from 2025-04-29T21:43:21.276602 to 1745977401.276602
+2025-04-30 06:58:09,615 - timestamp_migration - INFO - Converting end_time for workout 6 from 2025-04-29T21:43:22.471999 to 1745977402.471999
+2025-04-30 06:58:09,616 - timestamp_migration - INFO - Migrating timestamps in workout_data table...
+2025-04-30 06:58:09,621 - timestamp_migration - INFO - Timestamp migration completed. Converted 11 timestamp values to float.
+2025-04-30 06:58:56,099 - root - INFO - Logging initialized at 2025-04-30T06:58:56.099794
+2025-04-30 06:58:56,101 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 06:58:56,242 - timestamp_migration - INFO - Starting timestamp migration for database at C:\Users\dougl\rogue_garmin_bridge\src\data\rogue_garmin.db
+2025-04-30 06:58:56,243 - timestamp_migration - INFO - Migrating timestamps in workouts table...
+2025-04-30 06:58:56,245 - timestamp_migration - INFO - Converting start_time for workout 1 from 1745974425.34549 to 1745974425.34549
+2025-04-30 06:58:56,245 - timestamp_migration - INFO - Converting end_time for workout 1 from 1745974487.90048 to 1745974487.90048
+2025-04-30 06:58:56,245 - timestamp_migration - INFO - Converting start_time for workout 2 from 1745975113.19057 to 1745975113.19057
+2025-04-30 06:58:56,246 - timestamp_migration - INFO - Converting start_time for workout 3 from 1745975202.16863 to 1745975202.16863
+2025-04-30 06:58:56,246 - timestamp_migration - INFO - Converting end_time for workout 3 from 1745975227.17988 to 1745975227.17988
+2025-04-30 06:58:56,246 - timestamp_migration - INFO - Converting start_time for workout 4 from 1745975868.1148 to 1745975868.1148
+2025-04-30 06:58:56,247 - timestamp_migration - INFO - Converting end_time for workout 4 from 1745975958.81379 to 1745975958.81379
+2025-04-30 06:58:56,247 - timestamp_migration - INFO - Converting start_time for workout 5 from 1745977371.96596 to 1745977371.96596
+2025-04-30 06:58:56,247 - timestamp_migration - INFO - Converting end_time for workout 5 from 1745977373.08611 to 1745977373.08611
+2025-04-30 06:58:56,248 - timestamp_migration - INFO - Converting start_time for workout 6 from 1745977401.2766 to 1745977401.2766
+2025-04-30 06:58:56,248 - timestamp_migration - INFO - Converting end_time for workout 6 from 1745977402.472 to 1745977402.472
+2025-04-30 06:58:56,249 - timestamp_migration - INFO - Migrating timestamps in workout_data table...
+2025-04-30 06:58:56,249 - timestamp_migration - INFO - Timestamp migration completed. Converted 11 timestamp values to float.
+2025-04-30 06:59:04,874 - root - INFO - Logging initialized at 2025-04-30T06:59:04.874967
+2025-04-30 06:59:04,875 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 06:59:05,134 - timestamp_migration - INFO - Starting timestamp migration for database at C:\Users\dougl\rogue_garmin_bridge\src\data\rogue_garmin.db
+2025-04-30 06:59:05,136 - timestamp_migration - INFO - Migrating timestamps in workouts table...
+2025-04-30 06:59:05,138 - timestamp_migration - INFO - Converting start_time for workout 1 from 1745974425.34549 to 1745974425.34549
+2025-04-30 06:59:05,139 - timestamp_migration - INFO - Converting end_time for workout 1 from 1745974487.90048 to 1745974487.90048
+2025-04-30 06:59:05,140 - timestamp_migration - INFO - Converting start_time for workout 2 from 1745975113.19057 to 1745975113.19057
+2025-04-30 06:59:05,141 - timestamp_migration - INFO - Converting start_time for workout 3 from 1745975202.16863 to 1745975202.16863
+2025-04-30 06:59:05,142 - timestamp_migration - INFO - Converting end_time for workout 3 from 1745975227.17988 to 1745975227.17988
+2025-04-30 06:59:05,143 - timestamp_migration - INFO - Converting start_time for workout 4 from 1745975868.1148 to 1745975868.1148
+2025-04-30 06:59:05,146 - timestamp_migration - INFO - Converting end_time for workout 4 from 1745975958.81379 to 1745975958.81379
+2025-04-30 06:59:05,149 - timestamp_migration - INFO - Converting start_time for workout 5 from 1745977371.96596 to 1745977371.96596
+2025-04-30 06:59:05,150 - timestamp_migration - INFO - Converting end_time for workout 5 from 1745977373.08611 to 1745977373.08611
+2025-04-30 06:59:05,151 - timestamp_migration - INFO - Converting start_time for workout 6 from 1745977401.2766 to 1745977401.2766
+2025-04-30 06:59:05,152 - timestamp_migration - INFO - Converting end_time for workout 6 from 1745977402.472 to 1745977402.472
+2025-04-30 06:59:05,152 - timestamp_migration - INFO - Migrating timestamps in workout_data table...
+2025-04-30 06:59:05,155 - timestamp_migration - INFO - Timestamp migration completed. Converted 11 timestamp values to float.
+2025-04-30 07:02:03,683 - root - INFO - Logging initialized at 2025-04-30T07:02:03.683732
+2025-04-30 07:02:03,683 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 07:02:03,812 - timestamp_migration - INFO - Starting timestamp migration for database at C:\Users\dougl\rogue_garmin_bridge\src\data\rogue_garmin.db
+2025-04-30 07:02:03,813 - timestamp_migration - INFO - Migrating timestamps in workouts table...
+2025-04-30 07:02:03,813 - timestamp_migration - INFO - Migrating timestamps in workout_data table...
+2025-04-30 07:02:03,814 - timestamp_migration - INFO - Timestamp migration completed. Converted 0 timestamp values to float.
+2025-04-30 07:02:14,199 - root - INFO - Logging initialized at 2025-04-30T07:02:14.199475
+2025-04-30 07:02:14,200 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 07:02:14,334 - timestamp_migration - INFO - Starting timestamp migration for database at C:\Users\dougl\rogue_garmin_bridge\src\data\rogue_garmin.db
+2025-04-30 07:02:14,334 - timestamp_migration - INFO - Migrating timestamps in workouts table...
+2025-04-30 07:02:14,335 - timestamp_migration - INFO - Migrating timestamps in workout_data table...
+2025-04-30 07:02:14,336 - timestamp_migration - INFO - Timestamp migration completed. Converted 0 timestamp values to float.
+2025-04-30 07:02:30,948 - root - INFO - Logging initialized at 2025-04-30T07:02:30.948790
+2025-04-30 07:02:30,949 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 07:02:30,961 - database - INFO - Database tables created
+2025-04-30 07:02:30,961 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 07:02:30,962 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 07:02:30,963 - web - INFO - Using real FTMS devices
+2025-04-30 07:02:30,963 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 07:02:30,963 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 07:02:30,964 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 07:02:30,964 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 07:02:30,973 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 07:02:31,009 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-04-30 07:02:31,010 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-30 07:02:31,014 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 07:02:31,458 - root - INFO - Logging initialized at 2025-04-30T07:02:31.458050
+2025-04-30 07:02:31,458 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 07:02:31,471 - database - INFO - Database tables created
+2025-04-30 07:02:31,471 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 07:02:31,472 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 07:02:31,472 - web - INFO - Using real FTMS devices
+2025-04-30 07:02:31,472 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 07:02:31,473 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 07:02:31,474 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 07:02:31,474 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 07:02:31,482 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 07:02:31,501 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 07:02:31,503 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 07:02:35,428 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:02:35] "GET /history HTTP/1.1" 200 -
+2025-04-30 07:02:35,491 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:02:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-30 07:02:35,667 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:02:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-04-30 07:02:35,977 - web - INFO - Getting workouts with limit=100, offset=0
+2025-04-30 07:02:35,980 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:02:35] "GET /api/settings HTTP/1.1" 200 -
+2025-04-30 07:02:35,980 - database - ERROR - Error getting workouts: no such column: type
+2025-04-30 07:02:35,980 - web - INFO - Retrieved 0 workouts from database
+2025-04-30 07:02:35,980 - web - WARNING - No workouts found in database
+2025-04-30 07:02:35,982 - web - INFO - Database reports 6 workouts exist
+2025-04-30 07:02:35,983 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:02:35] "GET /api/workouts HTTP/1.1" 200 -
+2025-04-30 07:02:41,472 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:02:41] "GET /workout HTTP/1.1" 200 -
+2025-04-30 07:02:41,785 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:02:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-30 07:02:41,816 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:02:41] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-04-30 07:02:42,169 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:02:42] "GET /api/status HTTP/1.1" 200 -
+2025-04-30 07:02:42,170 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:02:42] "GET /api/settings HTTP/1.1" 200 -
+2025-04-30 07:02:42,417 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:02:42] "GET /api/status HTTP/1.1" 200 -
+2025-04-30 07:02:42,865 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:02:42] "GET /api/status HTTP/1.1" 200 -
+2025-04-30 07:02:44,163 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:02:44] "GET /api/status HTTP/1.1" 200 -
+2025-04-30 07:02:44,858 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:02:44] "GET /api/status HTTP/1.1" 200 -
+2025-04-30 07:02:46,032 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:02:46] "GET /history HTTP/1.1" 200 -
+2025-04-30 07:02:46,184 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:02:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-30 07:02:46,277 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:02:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-04-30 07:02:46,369 - web - INFO - Getting workouts with limit=100, offset=0
+2025-04-30 07:02:46,372 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:02:46] "GET /api/settings HTTP/1.1" 200 -
+2025-04-30 07:02:46,372 - database - ERROR - Error getting workouts: no such column: type
+2025-04-30 07:02:46,373 - web - INFO - Retrieved 0 workouts from database
+2025-04-30 07:02:46,373 - web - WARNING - No workouts found in database
+2025-04-30 07:02:46,375 - web - INFO - Database reports 6 workouts exist
+2025-04-30 07:02:46,375 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:02:46] "GET /api/workouts HTTP/1.1" 200 -
+2025-04-30 07:04:54,648 - root - INFO - Logging initialized at 2025-04-30T07:04:54.647464
+2025-04-30 07:04:54,648 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 07:04:54,685 - database - INFO - Database tables created
+2025-04-30 07:04:54,685 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 07:04:54,686 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 07:04:54,686 - web - INFO - Using real FTMS devices
+2025-04-30 07:04:54,687 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 07:04:54,687 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 07:04:54,689 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 07:04:54,689 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 07:04:54,697 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 07:04:54,737 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-04-30 07:04:54,737 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-30 07:04:54,740 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 07:04:55,179 - root - INFO - Logging initialized at 2025-04-30T07:04:55.179881
+2025-04-30 07:04:55,179 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 07:04:55,193 - database - INFO - Database tables created
+2025-04-30 07:04:55,193 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 07:04:55,193 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 07:04:55,194 - web - INFO - Using real FTMS devices
+2025-04-30 07:04:55,194 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 07:04:55,194 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 07:04:55,196 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 07:04:55,196 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 07:04:55,205 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 07:04:55,227 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 07:04:55,229 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 07:05:00,173 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:05:00] "GET /history HTTP/1.1" 200 -
+2025-04-30 07:05:00,230 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:05:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-30 07:05:00,405 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:05:00] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-04-30 07:05:00,713 - web - INFO - Getting workouts with limit=100, offset=0
+2025-04-30 07:05:00,715 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:05:00] "GET /api/settings HTTP/1.1" 200 -
+2025-04-30 07:05:00,716 - web - ERROR - Error getting workouts: 'str' object cannot be interpreted as an integer
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\web\app.py", line 367, in get_workouts
+    workouts = workout_manager.get_workouts(limit, offset)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\workout_manager.py", line 325, in get_workouts
+    return self.database.get_workouts(limit, offset)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 508, in get_workouts
+    workout['start_time_iso'] = datetime.fromtimestamp(
+                                ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'str' object cannot be interpreted as an integer
+2025-04-30 07:05:00,721 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:05:00] "GET /api/workouts HTTP/1.1" 200 -
+2025-04-30 07:06:53,051 - root - INFO - Logging initialized at 2025-04-30T07:06:53.051222
+2025-04-30 07:06:53,052 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 07:06:53,085 - database - INFO - Database tables created
+2025-04-30 07:06:53,086 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 07:06:53,087 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 07:06:53,087 - web - INFO - Using real FTMS devices
+2025-04-30 07:06:53,087 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 07:06:53,087 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 07:06:53,088 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 07:06:53,088 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 07:06:53,097 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 07:06:53,134 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-04-30 07:06:53,134 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-30 07:06:53,137 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 07:06:53,588 - root - INFO - Logging initialized at 2025-04-30T07:06:53.588415
+2025-04-30 07:06:53,589 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 07:06:53,603 - database - INFO - Database tables created
+2025-04-30 07:06:53,603 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 07:06:53,604 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 07:06:53,604 - web - INFO - Using real FTMS devices
+2025-04-30 07:06:53,604 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 07:06:53,605 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 07:06:53,606 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 07:06:53,606 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 07:06:53,614 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 07:06:53,633 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 07:06:53,635 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 07:06:57,870 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:06:57] "GET /history HTTP/1.1" 200 -
+2025-04-30 07:06:57,928 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:06:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-30 07:06:58,105 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:06:58] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-04-30 07:06:58,427 - web - INFO - Getting workouts with limit=100, offset=0
+2025-04-30 07:06:58,429 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:06:58] "GET /api/settings HTTP/1.1" 200 -
+2025-04-30 07:06:58,431 - web - INFO - Retrieved 6 workouts from database
+2025-04-30 07:06:58,432 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:06:58] "GET /api/workouts HTTP/1.1" 200 -
+2025-04-30 07:07:19,073 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\data\\database.py', reloading
+2025-04-30 07:07:19,143 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 07:07:19,622 - root - INFO - Logging initialized at 2025-04-30T07:07:19.622005
+2025-04-30 07:07:19,622 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 07:08:45,230 - root - INFO - Logging initialized at 2025-04-30T07:08:45.230148
+2025-04-30 07:08:45,230 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 07:08:45,415 - test_fit - INFO - Testing FileIdMessage creation
+2025-04-30 07:08:45,416 - test_fit - INFO - FileIdMessage creation result: True
+2025-04-30 07:08:45,416 - test_fit - INFO - FileIdMessage creation succeeded! The fix is working.
+2025-04-30 07:08:45,417 - test_fit - INFO - Testing full FIT file conversion
+2025-04-30 07:08:45,417 - fit_converter - INFO - Workout start Unix timestamp: 1746011325 (2025-04-30T07:08:45)
+2025-04-30 07:08:45,417 - fit_converter - INFO - Converted to FIT timestamp: 1114945725
+2025-04-30 07:08:45,418 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950654 is not in valid range [0, 4294967295]
+2025-04-30 07:08:45,418 - test_fit - ERROR - Failed to create FIT file
+2025-04-30 07:08:45,418 - test_fit - ERROR - Full FIT conversion failed! The fix did not solve all problems.
+2025-04-30 07:09:00,060 - root - INFO - Logging initialized at 2025-04-30T07:09:00.060864
+2025-04-30 07:09:00,061 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 07:09:00,253 - test_fit - INFO - Testing FileIdMessage creation
+2025-04-30 07:09:00,254 - test_fit - INFO - FileIdMessage creation result: True
+2025-04-30 07:09:00,254 - test_fit - INFO - FileIdMessage creation succeeded! The fix is working.
+2025-04-30 07:09:00,254 - test_fit - INFO - Testing full FIT file conversion
+2025-04-30 07:09:00,255 - fit_converter - INFO - Workout start Unix timestamp: 1746011340 (2025-04-30T07:09:00)
+2025-04-30 07:09:00,255 - fit_converter - INFO - Converted to FIT timestamp: 1114945740
+2025-04-30 07:09:00,256 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950654 is not in valid range [0, 4294967295]
+2025-04-30 07:09:00,257 - test_fit - ERROR - Failed to create FIT file
+2025-04-30 07:09:00,257 - test_fit - ERROR - Full FIT conversion failed! The fix did not solve all problems.
+2025-04-30 07:09:08,278 - root - INFO - Logging initialized at 2025-04-30T07:09:08.278960
+2025-04-30 07:09:08,280 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 07:09:08,310 - database - INFO - Database tables created
+2025-04-30 07:09:08,311 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 07:09:08,311 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 07:09:08,312 - web - INFO - Using real FTMS devices
+2025-04-30 07:09:08,312 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 07:09:08,312 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 07:09:08,313 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 07:09:08,313 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 07:09:08,321 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 07:09:08,361 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-04-30 07:09:08,361 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-30 07:09:08,362 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 07:09:08,816 - root - INFO - Logging initialized at 2025-04-30T07:09:08.816382
+2025-04-30 07:09:08,816 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 07:09:08,830 - database - INFO - Database tables created
+2025-04-30 07:09:08,831 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 07:09:08,831 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 07:09:08,832 - web - INFO - Using real FTMS devices
+2025-04-30 07:09:08,832 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 07:09:08,832 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 07:09:08,833 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 07:09:08,833 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 07:09:08,842 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 07:09:08,862 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 07:09:08,865 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 07:09:12,766 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:09:12] "GET /api/workout/1 HTTP/1.1" 200 -
+2025-04-30 07:09:15,809 - web - INFO - Converting workout 1 to FIT file
+2025-04-30 07:09:15,809 - web - INFO - Workout type: bike
+2025-04-30 07:09:15,810 - web - INFO - Duration: 62
+2025-04-30 07:09:15,810 - web - INFO - Data points: 63
+2025-04-30 07:09:15,810 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 07:09:15,811 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 07:09:15,812 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 07:09:15,812 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 07:09:15,813 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 07:09:15] "POST /api/convert_fit/1 HTTP/1.1" 200 -
+2025-04-30 16:48:12,180 - root - INFO - Logging initialized at 2025-04-30T16:48:12.180477
+2025-04-30 16:48:12,180 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 16:48:12,196 - database - INFO - Database tables created
+2025-04-30 16:48:12,197 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 16:48:12,198 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 16:48:12,199 - web - INFO - Using real FTMS devices
+2025-04-30 16:48:12,199 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 16:48:12,200 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 16:48:12,201 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 16:48:12,201 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 16:48:12,210 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 16:48:12,279 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-04-30 16:48:12,280 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-30 16:48:12,282 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 16:48:12,749 - root - INFO - Logging initialized at 2025-04-30T16:48:12.749292
+2025-04-30 16:48:12,750 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 16:48:12,760 - database - INFO - Database tables created
+2025-04-30 16:48:12,760 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 16:48:12,762 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 16:48:12,763 - web - INFO - Using real FTMS devices
+2025-04-30 16:48:12,763 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 16:48:12,763 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 16:48:12,764 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 16:48:12,764 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 16:48:12,772 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 16:48:12,793 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 16:48:12,794 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 16:48:17,708 - web - INFO - Converting workout 1 to FIT file
+2025-04-30 16:48:17,708 - web - INFO - Workout type: bike
+2025-04-30 16:48:17,709 - web - INFO - Duration: 62
+2025-04-30 16:48:17,709 - web - INFO - Data points: 63
+2025-04-30 16:48:17,710 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 16:48:17,710 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 16:48:17,710 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 16:48:17,712 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 16:48:17,712 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 16:48:17] "POST /api/convert_fit/1 HTTP/1.1" 200 -
+2025-04-30 16:48:51,464 - root - INFO - Logging initialized at 2025-04-30T16:48:51.463799
+2025-04-30 16:48:51,465 - root - INFO - Log files located at: c:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 16:48:51,511 - database - INFO - Database tables created
+2025-04-30 16:48:57,196 - database - INFO - Database tables created
+2025-04-30 16:49:00,185 - database - INFO - Database tables created
+2025-04-30 19:44:13,496 - root - INFO - Logging initialized at 2025-04-30T19:44:13.496571
+2025-04-30 19:44:13,497 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 19:44:13,506 - database - INFO - Database tables created
+2025-04-30 19:44:13,506 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 19:44:13,507 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 19:44:13,508 - web - INFO - Using real FTMS devices
+2025-04-30 19:44:13,508 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 19:44:13,508 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 19:44:13,510 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 19:44:13,510 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 19:44:13,519 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 19:44:13,564 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-04-30 19:44:13,564 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-30 19:44:13,566 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 19:44:13,952 - root - INFO - Logging initialized at 2025-04-30T19:44:13.952521
+2025-04-30 19:44:13,952 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 19:44:13,963 - database - INFO - Database tables created
+2025-04-30 19:44:13,963 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 19:44:13,964 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 19:44:13,964 - web - INFO - Using real FTMS devices
+2025-04-30 19:44:13,966 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 19:44:13,966 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 19:44:13,967 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 19:44:13,967 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 19:44:13,974 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 19:44:13,995 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 19:44:14,003 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 19:44:18,056 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 19:44:18] "GET /history HTTP/1.1" 200 -
+2025-04-30 19:44:18,142 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 19:44:18] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-30 19:44:18,300 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 19:44:18] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-04-30 19:44:18,617 - web - INFO - Getting workouts with limit=100, offset=0
+2025-04-30 19:44:18,618 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 19:44:18] "GET /api/settings HTTP/1.1" 200 -
+2025-04-30 19:44:18,621 - web - INFO - Retrieved 6 workouts from database
+2025-04-30 19:44:18,622 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 19:44:18] "GET /api/workouts HTTP/1.1" 200 -
+2025-04-30 19:44:20,643 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 19:44:20] "GET /api/workout/1 HTTP/1.1" 200 -
+2025-04-30 19:44:24,466 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 19:44:24] "GET /api/workout/1 HTTP/1.1" 200 -
+2025-04-30 19:44:28,025 - web - INFO - Converting workout 1 to FIT file
+2025-04-30 19:44:28,026 - web - INFO - Workout type: bike
+2025-04-30 19:44:28,026 - web - INFO - Duration: 62
+2025-04-30 19:44:28,027 - web - INFO - Data points: 63
+2025-04-30 19:44:28,027 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 19:44:28,028 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 19:44:28,028 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 19:44:28,029 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 19:44:28,030 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 19:44:28] "POST /api/convert_fit/1 HTTP/1.1" 200 -
+2025-04-30 20:06:07,544 - root - INFO - Logging initialized at 2025-04-30T20:06:07.544286
+2025-04-30 20:06:07,545 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:06:07,554 - database - INFO - Database tables created
+2025-04-30 20:06:07,555 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:06:07,555 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:06:07,556 - web - INFO - Using real FTMS devices
+2025-04-30 20:06:07,556 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:06:07,557 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:06:07,558 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:06:07,558 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:06:07,564 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:06:07,611 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-04-30 20:06:07,611 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-30 20:06:07,613 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:06:07,975 - root - INFO - Logging initialized at 2025-04-30T20:06:07.975799
+2025-04-30 20:06:07,975 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:06:07,983 - database - INFO - Database tables created
+2025-04-30 20:06:07,984 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:06:07,984 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:06:07,985 - web - INFO - Using real FTMS devices
+2025-04-30 20:06:07,985 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:06:07,985 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:06:07,986 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:06:07,986 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:06:07,994 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:06:08,014 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:06:08,022 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:06:11,911 - web - INFO - Converting workout 1 to FIT file
+2025-04-30 20:06:11,912 - web - INFO - Workout type: bike
+2025-04-30 20:06:11,912 - web - INFO - Duration: 62
+2025-04-30 20:06:11,912 - web - INFO - Data points: 63
+2025-04-30 20:06:11,913 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 20:06:11,913 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 20:06:11,914 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:06:11,914 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 20:06:11,915 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:06:11] "POST /api/convert_fit/1 HTTP/1.1" 200 -
+2025-04-30 20:21:46,693 - root - INFO - Logging initialized at 2025-04-30T20:21:46.693707
+2025-04-30 20:21:46,695 - root - INFO - Log files located at: c:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:35:38,274 - root - INFO - Logging initialized at 2025-04-30T20:35:38.274620
+2025-04-30 20:35:38,274 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:35:38,320 - database - INFO - Database tables created
+2025-04-30 20:35:38,321 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:35:38,322 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:35:38,322 - web - INFO - Using real FTMS devices
+2025-04-30 20:35:38,323 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:35:38,323 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:35:38,324 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:35:38,324 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:35:38,332 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:35:38,368 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-04-30 20:35:38,369 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-30 20:35:38,371 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:35:38,741 - root - INFO - Logging initialized at 2025-04-30T20:35:38.741396
+2025-04-30 20:35:38,742 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:35:38,752 - database - INFO - Database tables created
+2025-04-30 20:35:38,753 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:35:38,754 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:35:38,754 - web - INFO - Using real FTMS devices
+2025-04-30 20:35:38,754 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:35:38,755 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:35:38,757 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:35:38,757 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:35:38,763 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:35:38,785 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:35:38,787 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:35:42,999 - web - INFO - Converting workout 1 to FIT file
+2025-04-30 20:35:43,000 - web - INFO - Workout type: bike
+2025-04-30 20:35:43,000 - web - INFO - Duration: 62
+2025-04-30 20:35:43,001 - web - INFO - Data points: 63
+2025-04-30 20:35:43,001 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 20:35:43,001 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 20:35:43,002 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:35:43,002 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 20:35:43,003 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:35:43] "POST /api/convert_fit/1 HTTP/1.1" 200 -
+2025-04-30 20:36:28,926 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\data\\migrate_timestamps.py', reloading
+2025-04-30 20:36:29,052 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:36:29,511 - root - INFO - Logging initialized at 2025-04-30T20:36:29.511294
+2025-04-30 20:36:29,512 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:36:29,559 - database - INFO - Database tables created
+2025-04-30 20:36:29,559 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:36:29,560 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:36:29,560 - web - INFO - Using real FTMS devices
+2025-04-30 20:36:29,561 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:36:29,561 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:36:29,562 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:36:29,562 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:36:29,570 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:36:29,589 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:36:29,591 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:45:00,655 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 20:45:00,714 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:45:01,166 - root - INFO - Logging initialized at 2025-04-30T20:45:01.166698
+2025-04-30 20:45:01,167 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:45:01,182 - database - INFO - Database tables created
+2025-04-30 20:45:01,182 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:45:01,183 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:45:01,185 - web - INFO - Using real FTMS devices
+2025-04-30 20:45:01,186 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:45:01,191 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:45:01,193 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:45:01,193 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:45:01,204 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:45:01,241 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:45:01,243 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:45:10,433 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 20:45:10,513 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:45:10,914 - root - INFO - Logging initialized at 2025-04-30T20:45:10.914822
+2025-04-30 20:45:10,914 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:45:10,927 - database - INFO - Database tables created
+2025-04-30 20:45:10,927 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:45:10,928 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:45:10,928 - web - INFO - Using real FTMS devices
+2025-04-30 20:45:10,928 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:45:10,928 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:45:10,930 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:45:10,930 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:45:10,937 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:45:10,958 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:45:10,960 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:45:47,603 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 20:45:47,673 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:45:48,094 - root - INFO - Logging initialized at 2025-04-30T20:45:48.094346
+2025-04-30 20:45:48,094 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:45:48,105 - database - INFO - Database tables created
+2025-04-30 20:45:48,105 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:45:48,106 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:45:48,106 - web - INFO - Using real FTMS devices
+2025-04-30 20:45:48,107 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:45:48,107 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:45:48,109 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:45:48,109 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:45:48,117 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:45:48,139 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:45:48,141 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:45:54,243 - web - INFO - Converting workout 1 to FIT file
+2025-04-30 20:45:54,243 - web - INFO - Workout type: bike
+2025-04-30 20:45:54,243 - web - INFO - Duration: 62
+2025-04-30 20:45:54,244 - web - INFO - Data points: 63
+2025-04-30 20:45:54,244 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 20:45:54,244 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 20:45:54,245 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:45:54,245 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 20:45:54,246 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:45:54] "POST /api/convert_fit/1 HTTP/1.1" 200 -
+2025-04-30 20:46:05,527 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 20:46:05,605 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:46:06,000 - root - INFO - Logging initialized at 2025-04-30T20:46:05.999588
+2025-04-30 20:46:06,000 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:46:06,011 - database - INFO - Database tables created
+2025-04-30 20:46:06,012 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:46:06,012 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:46:06,012 - web - INFO - Using real FTMS devices
+2025-04-30 20:46:06,013 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:46:06,013 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:46:06,014 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:46:06,014 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:46:06,022 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:46:06,041 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:46:06,043 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:46:14,878 - web - INFO - Converting workout 1 to FIT file
+2025-04-30 20:46:14,878 - web - INFO - Workout type: bike
+2025-04-30 20:46:14,878 - web - INFO - Duration: 62
+2025-04-30 20:46:14,879 - web - INFO - Data points: 63
+2025-04-30 20:46:14,879 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 20:46:14,880 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 20:46:14,881 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:46:14,882 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 20:46:14,882 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:46:14] "POST /api/convert_fit/1 HTTP/1.1" 200 -
+2025-04-30 20:46:32,960 - root - INFO - Logging initialized at 2025-04-30T20:46:32.960749
+2025-04-30 20:46:32,961 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:46:32,972 - database - INFO - Database tables created
+2025-04-30 20:46:32,972 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:46:32,972 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:46:32,974 - web - INFO - Using real FTMS devices
+2025-04-30 20:46:32,974 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:46:32,974 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:46:32,976 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:46:32,976 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:46:32,984 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:46:33,017 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-04-30 20:46:33,018 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-30 20:46:33,020 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:46:33,404 - root - INFO - Logging initialized at 2025-04-30T20:46:33.404270
+2025-04-30 20:46:33,404 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:46:33,414 - database - INFO - Database tables created
+2025-04-30 20:46:33,414 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:46:33,415 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:46:33,415 - web - INFO - Using real FTMS devices
+2025-04-30 20:46:33,415 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:46:33,415 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:46:33,418 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:46:33,418 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:46:33,424 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:46:33,447 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:46:33,450 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:46:38,267 - web - INFO - Converting workout 1 to FIT file
+2025-04-30 20:46:38,268 - web - INFO - Workout type: bike
+2025-04-30 20:46:38,268 - web - INFO - Duration: 62
+2025-04-30 20:46:38,269 - web - INFO - Data points: 63
+2025-04-30 20:46:38,269 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 20:46:38,269 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 20:46:38,270 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:46:38,270 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 20:46:38,271 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:46:38] "POST /api/convert_fit/1 HTTP/1.1" 200 -
+2025-04-30 20:48:32,930 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 20:48:33,004 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:48:33,426 - root - INFO - Logging initialized at 2025-04-30T20:48:33.426138
+2025-04-30 20:48:33,426 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:48:33,435 - database - INFO - Database tables created
+2025-04-30 20:48:33,435 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:48:33,435 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:48:33,436 - web - INFO - Using real FTMS devices
+2025-04-30 20:48:33,436 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:48:33,436 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:48:33,437 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:48:33,437 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:48:33,444 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:48:33,465 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:48:33,468 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:48:59,937 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 20:48:59,995 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:49:00,387 - root - INFO - Logging initialized at 2025-04-30T20:49:00.387848
+2025-04-30 20:49:00,389 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:49:00,397 - database - INFO - Database tables created
+2025-04-30 20:49:00,398 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:49:00,398 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:49:00,398 - web - INFO - Using real FTMS devices
+2025-04-30 20:49:00,399 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:49:00,399 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:49:00,400 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:49:00,400 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:49:00,409 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:49:00,429 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:49:00,432 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:49:20,796 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 20:49:20,868 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:49:21,287 - root - INFO - Logging initialized at 2025-04-30T20:49:21.287944
+2025-04-30 20:49:21,288 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:49:21,297 - database - INFO - Database tables created
+2025-04-30 20:49:21,298 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:49:21,298 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:49:21,298 - web - INFO - Using real FTMS devices
+2025-04-30 20:49:21,298 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:49:21,299 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:49:21,300 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:49:21,300 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:49:21,308 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:49:21,328 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:49:21,330 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:49:25,418 - web - INFO - Converting workout 1 to FIT file
+2025-04-30 20:49:25,418 - web - INFO - Workout type: bike
+2025-04-30 20:49:25,420 - web - INFO - Duration: 62
+2025-04-30 20:49:25,420 - web - INFO - Data points: 63
+2025-04-30 20:49:25,421 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 20:49:25,422 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 20:49:25,422 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:49:25,423 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 20:49:25,424 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:49:25] "POST /api/convert_fit/1 HTTP/1.1" 200 -
+2025-04-30 20:49:37,008 - root - INFO - Logging initialized at 2025-04-30T20:49:37.008140
+2025-04-30 20:49:37,009 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:49:37,016 - database - INFO - Database tables created
+2025-04-30 20:49:37,017 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:49:37,017 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:49:37,018 - web - INFO - Using real FTMS devices
+2025-04-30 20:49:37,018 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:49:37,019 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:49:37,019 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:49:37,020 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:49:37,029 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:49:37,063 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-04-30 20:49:37,064 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-30 20:49:37,066 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:49:37,423 - root - INFO - Logging initialized at 2025-04-30T20:49:37.423679
+2025-04-30 20:49:37,423 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:49:37,431 - database - INFO - Database tables created
+2025-04-30 20:49:37,432 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:49:37,432 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:49:37,433 - web - INFO - Using real FTMS devices
+2025-04-30 20:49:37,434 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:49:37,434 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:49:37,436 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:49:37,436 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:49:37,443 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:49:37,462 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:49:37,464 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:49:40,923 - web - INFO - Converting workout 1 to FIT file
+2025-04-30 20:49:40,924 - web - INFO - Workout type: bike
+2025-04-30 20:49:40,925 - web - INFO - Duration: 62
+2025-04-30 20:49:40,925 - web - INFO - Data points: 63
+2025-04-30 20:49:40,926 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 20:49:40,926 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 20:49:40,927 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:49:40,927 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 20:49:40,928 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:49:40] "POST /api/convert_fit/1 HTTP/1.1" 200 -
+2025-04-30 20:50:49,990 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 20:50:50,112 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:50:50,535 - root - INFO - Logging initialized at 2025-04-30T20:50:50.535469
+2025-04-30 20:50:50,536 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:50:50,544 - database - INFO - Database tables created
+2025-04-30 20:50:50,544 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:50:50,545 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:50:50,545 - web - INFO - Using real FTMS devices
+2025-04-30 20:50:50,546 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:50:50,546 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:50:50,547 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:50:50,547 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:50:50,554 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:50:50,573 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:50:50,575 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:51:21,105 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 20:51:21,194 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:51:21,665 - root - INFO - Logging initialized at 2025-04-30T20:51:21.665261
+2025-04-30 20:51:21,665 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:51:21,675 - database - INFO - Database tables created
+2025-04-30 20:51:21,676 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:51:21,676 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:51:21,677 - web - INFO - Using real FTMS devices
+2025-04-30 20:51:21,677 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:51:21,677 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:51:21,678 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:51:21,678 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:51:21,685 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:51:21,707 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:51:21,710 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:51:44,102 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 20:51:44,159 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:51:44,553 - root - INFO - Logging initialized at 2025-04-30T20:51:44.553069
+2025-04-30 20:51:44,554 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:51:44,562 - database - INFO - Database tables created
+2025-04-30 20:51:44,563 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:51:44,563 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:51:44,564 - web - INFO - Using real FTMS devices
+2025-04-30 20:51:44,564 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:51:44,564 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:51:44,565 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:51:44,565 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:51:44,573 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:51:44,594 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:51:44,597 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:51:49,638 - web - INFO - Converting workout 1 to FIT file
+2025-04-30 20:51:49,639 - web - INFO - Workout type: bike
+2025-04-30 20:51:49,640 - web - INFO - Duration: 62
+2025-04-30 20:51:49,640 - web - INFO - Data points: 63
+2025-04-30 20:51:49,641 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 20:51:49,641 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 20:51:49,641 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:51:49,642 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 20:51:49,643 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:51:49] "POST /api/convert_fit/1 HTTP/1.1" 200 -
+2025-04-30 20:51:58,069 - root - INFO - Logging initialized at 2025-04-30T20:51:58.069954
+2025-04-30 20:51:58,070 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:51:58,079 - database - INFO - Database tables created
+2025-04-30 20:51:58,079 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:51:58,079 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:51:58,080 - web - INFO - Using real FTMS devices
+2025-04-30 20:51:58,080 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:51:58,081 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:51:58,082 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:51:58,082 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:51:58,091 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:51:58,126 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-04-30 20:51:58,127 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-30 20:51:58,128 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:51:58,509 - root - INFO - Logging initialized at 2025-04-30T20:51:58.508504
+2025-04-30 20:51:58,509 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:51:58,518 - database - INFO - Database tables created
+2025-04-30 20:51:58,518 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:51:58,519 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:51:58,519 - web - INFO - Using real FTMS devices
+2025-04-30 20:51:58,520 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:51:58,520 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:51:58,522 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:51:58,522 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:51:58,529 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:51:58,548 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:51:58,550 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:52:05,177 - web - INFO - Converting workout 1 to FIT file
+2025-04-30 20:52:05,178 - web - INFO - Workout type: bike
+2025-04-30 20:52:05,178 - web - INFO - Duration: 62
+2025-04-30 20:52:05,178 - web - INFO - Data points: 63
+2025-04-30 20:52:05,179 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 20:52:05,179 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 20:52:05,180 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:52:05,181 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 20:52:05,183 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:52:05] "POST /api/convert_fit/1 HTTP/1.1" 200 -
+2025-04-30 20:53:32,469 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 20:53:32,598 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:53:33,057 - root - INFO - Logging initialized at 2025-04-30T20:53:33.057654
+2025-04-30 20:53:33,058 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:53:33,067 - database - INFO - Database tables created
+2025-04-30 20:53:33,067 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:53:33,067 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:53:33,067 - web - INFO - Using real FTMS devices
+2025-04-30 20:53:33,067 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:53:33,069 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:53:33,070 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:53:33,070 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:53:33,077 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:53:33,100 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:53:33,103 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:53:39,243 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 20:53:39,321 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:53:39,700 - root - INFO - Logging initialized at 2025-04-30T20:53:39.700551
+2025-04-30 20:53:39,700 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:53:39,710 - database - INFO - Database tables created
+2025-04-30 20:53:39,710 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:53:39,711 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:53:39,711 - web - INFO - Using real FTMS devices
+2025-04-30 20:53:39,711 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:53:39,712 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:53:39,713 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:53:39,713 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:53:39,720 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:53:39,740 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:53:39,743 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:54:08,260 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 20:54:08,371 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:54:08,811 - root - INFO - Logging initialized at 2025-04-30T20:54:08.811443
+2025-04-30 20:54:08,812 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:54:08,819 - database - INFO - Database tables created
+2025-04-30 20:54:08,820 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:54:08,820 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:54:08,822 - web - INFO - Using real FTMS devices
+2025-04-30 20:54:08,822 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:54:08,822 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:54:08,824 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:54:08,824 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:54:08,831 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:54:08,851 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:54:08,853 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:54:11,938 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 20:54:11,999 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:54:12,367 - root - INFO - Logging initialized at 2025-04-30T20:54:12.367735
+2025-04-30 20:54:12,368 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:54:12,376 - database - INFO - Database tables created
+2025-04-30 20:54:12,377 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:54:12,377 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:54:12,378 - web - INFO - Using real FTMS devices
+2025-04-30 20:54:12,378 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:54:12,378 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:54:12,379 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:54:12,380 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:54:12,386 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:54:12,405 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:54:12,408 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:54:16,260 - web - INFO - Converting workout 1 to FIT file
+2025-04-30 20:54:16,261 - web - INFO - Workout type: bike
+2025-04-30 20:54:16,261 - web - INFO - Duration: 62
+2025-04-30 20:54:16,262 - web - INFO - Data points: 63
+2025-04-30 20:54:16,262 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 20:54:16,263 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 20:54:16,263 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:54:16,264 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 20:54:16,265 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:54:16] "POST /api/convert_fit/1 HTTP/1.1" 200 -
+2025-04-30 20:55:09,613 - root - INFO - Logging initialized at 2025-04-30T20:55:09.613471
+2025-04-30 20:55:09,613 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:55:09,620 - database - INFO - Database tables created
+2025-04-30 20:55:09,621 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:55:09,621 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:55:09,622 - web - INFO - Using real FTMS devices
+2025-04-30 20:55:09,622 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:55:09,624 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:55:09,625 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:55:09,625 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:55:09,632 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:55:09,667 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-04-30 20:55:09,668 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-30 20:55:09,669 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:55:10,054 - root - INFO - Logging initialized at 2025-04-30T20:55:10.054960
+2025-04-30 20:55:10,054 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:55:10,063 - database - INFO - Database tables created
+2025-04-30 20:55:10,063 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:55:10,063 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:55:10,063 - web - INFO - Using real FTMS devices
+2025-04-30 20:55:10,065 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:55:10,065 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:55:10,066 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:55:10,066 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:55:10,074 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:55:10,095 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:55:10,097 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:55:15,731 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:55:15] "GET /api/workout/2 HTTP/1.1" 200 -
+2025-04-30 20:55:16,545 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:55:16] "GET /api/workout/3 HTTP/1.1" 200 -
+2025-04-30 20:55:21,858 - web - INFO - Converting workout 3 to FIT file
+2025-04-30 20:55:21,859 - web - INFO - Workout type: bike
+2025-04-30 20:55:21,860 - web - INFO - Duration: 25
+2025-04-30 20:55:21,860 - web - INFO - Data points: 25
+2025-04-30 20:55:21,860 - fit_converter - INFO - Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 20:55:21,861 - fit_converter - INFO - Converted to FIT timestamp: 1114909602
+2025-04-30 20:55:21,861 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 20:55:21,862 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 20:55:21,862 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:55:21] "POST /api/convert_fit/3 HTTP/1.1" 200 -
+2025-04-30 20:58:10,758 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 20:58:10,843 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:58:11,249 - root - INFO - Logging initialized at 2025-04-30T20:58:11.249839
+2025-04-30 20:58:11,250 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:58:11,258 - database - INFO - Database tables created
+2025-04-30 20:58:11,258 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:58:11,258 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:58:11,259 - web - INFO - Using real FTMS devices
+2025-04-30 20:58:11,259 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:58:11,260 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:58:11,261 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:58:11,261 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:58:11,270 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:58:11,294 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:58:11,296 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:58:13,368 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 20:58:13,425 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:58:13,796 - root - INFO - Logging initialized at 2025-04-30T20:58:13.796319
+2025-04-30 20:58:13,797 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:58:13,808 - database - INFO - Database tables created
+2025-04-30 20:58:13,809 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:58:13,809 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:58:13,810 - web - INFO - Using real FTMS devices
+2025-04-30 20:58:13,810 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:58:13,810 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:58:13,811 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:58:13,811 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:58:13,820 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:58:13,837 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:58:13,839 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:58:18,036 - web - INFO - Converting workout 3 to FIT file
+2025-04-30 20:58:18,036 - web - INFO - Workout type: bike
+2025-04-30 20:58:18,037 - web - INFO - Duration: 25
+2025-04-30 20:58:18,037 - web - INFO - Data points: 25
+2025-04-30 20:58:18,037 - fit_converter - INFO - Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 20:58:18,038 - fit_converter - INFO - Converted to FIT timestamp: 1114909602
+2025-04-30 20:58:18,038 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 20:58:18,039 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 20:58:18,039 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:58:18] "POST /api/convert_fit/3 HTTP/1.1" 200 -
+2025-04-30 20:58:47,704 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 20:58:47,780 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:58:48,215 - root - INFO - Logging initialized at 2025-04-30T20:58:48.215046
+2025-04-30 20:58:48,216 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:58:48,223 - database - INFO - Database tables created
+2025-04-30 20:58:48,224 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:58:48,224 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:58:48,225 - web - INFO - Using real FTMS devices
+2025-04-30 20:58:48,225 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:58:48,225 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:58:48,227 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:58:48,227 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:58:48,235 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:58:48,252 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:58:48,254 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:59:08,611 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 20:59:08,669 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:59:09,061 - root - INFO - Logging initialized at 2025-04-30T20:59:09.061681
+2025-04-30 20:59:09,062 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:59:09,070 - database - INFO - Database tables created
+2025-04-30 20:59:09,071 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:59:09,071 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:59:09,072 - web - INFO - Using real FTMS devices
+2025-04-30 20:59:09,072 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:59:09,073 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:59:09,074 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:59:09,074 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:59:09,081 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:59:09,101 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:59:09,103 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:59:12,738 - web - INFO - Converting workout 3 to FIT file
+2025-04-30 20:59:12,739 - web - INFO - Workout type: bike
+2025-04-30 20:59:12,739 - web - INFO - Duration: 25
+2025-04-30 20:59:12,740 - web - INFO - Data points: 25
+2025-04-30 20:59:12,740 - fit_converter - INFO - Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 20:59:12,740 - fit_converter - INFO - Converted to FIT timestamp: 1114909602
+2025-04-30 20:59:12,742 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 20:59:12,742 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 20:59:12,743 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:59:12] "POST /api/convert_fit/3 HTTP/1.1" 200 -
+2025-04-30 20:59:22,209 - root - INFO - Logging initialized at 2025-04-30T20:59:22.209924
+2025-04-30 20:59:22,210 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:59:22,218 - database - INFO - Database tables created
+2025-04-30 20:59:22,219 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:59:22,220 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:59:22,220 - web - INFO - Using real FTMS devices
+2025-04-30 20:59:22,221 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:59:22,221 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:59:22,222 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:59:22,222 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:59:22,229 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:59:22,264 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-04-30 20:59:22,265 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-30 20:59:22,267 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 20:59:22,627 - root - INFO - Logging initialized at 2025-04-30T20:59:22.627429
+2025-04-30 20:59:22,627 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 20:59:22,636 - database - INFO - Database tables created
+2025-04-30 20:59:22,636 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 20:59:22,636 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 20:59:22,637 - web - INFO - Using real FTMS devices
+2025-04-30 20:59:22,637 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 20:59:22,638 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 20:59:22,638 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 20:59:22,639 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 20:59:22,646 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 20:59:22,664 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 20:59:22,666 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 20:59:26,504 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:59:26] "GET /history HTTP/1.1" 200 -
+2025-04-30 20:59:26,573 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:59:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-30 20:59:26,743 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:59:26] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-04-30 20:59:27,052 - web - INFO - Getting workouts with limit=100, offset=0
+2025-04-30 20:59:27,054 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:59:27] "GET /api/settings HTTP/1.1" 200 -
+2025-04-30 20:59:27,057 - web - INFO - Retrieved 6 workouts from database
+2025-04-30 20:59:27,058 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:59:27] "GET /api/workouts HTTP/1.1" 200 -
+2025-04-30 20:59:32,414 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:59:32] "GET /api/workout/3 HTTP/1.1" 200 -
+2025-04-30 20:59:36,270 - web - INFO - Converting workout 3 to FIT file
+2025-04-30 20:59:36,270 - web - INFO - Workout type: bike
+2025-04-30 20:59:36,271 - web - INFO - Duration: 25
+2025-04-30 20:59:36,271 - web - INFO - Data points: 25
+2025-04-30 20:59:36,272 - fit_converter - INFO - Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 20:59:36,272 - fit_converter - INFO - Converted to FIT timestamp: 1114909602
+2025-04-30 20:59:36,273 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 20:59:36,273 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 20:59:36,274 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 20:59:36] "POST /api/convert_fit/3 HTTP/1.1" 200 -
+2025-04-30 21:00:30,044 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:00:30,130 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:00:30,608 - root - INFO - Logging initialized at 2025-04-30T21:00:30.608333
+2025-04-30 21:00:30,609 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:00:30,618 - database - INFO - Database tables created
+2025-04-30 21:00:30,619 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:00:30,619 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:00:30,619 - web - INFO - Using real FTMS devices
+2025-04-30 21:00:30,621 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:00:30,621 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:00:30,622 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:00:30,622 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:00:30,630 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:00:30,663 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:00:30,666 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:00:57,113 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:00:57,193 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:00:57,615 - root - INFO - Logging initialized at 2025-04-30T21:00:57.615150
+2025-04-30 21:00:57,615 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:00:57,626 - database - INFO - Database tables created
+2025-04-30 21:00:57,627 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:00:57,627 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:00:57,628 - web - INFO - Using real FTMS devices
+2025-04-30 21:00:57,628 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:00:57,628 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:00:57,630 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:00:57,630 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:00:57,639 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:00:57,664 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:00:57,667 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:02:11,910 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:02:11,969 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:02:12,356 - root - INFO - Logging initialized at 2025-04-30T21:02:12.356810
+2025-04-30 21:02:12,357 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:02:12,365 - database - INFO - Database tables created
+2025-04-30 21:02:12,365 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:02:12,366 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:02:12,367 - web - INFO - Using real FTMS devices
+2025-04-30 21:02:12,367 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:02:12,368 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:02:12,369 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:02:12,369 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:02:12,376 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:02:12,398 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:02:12,400 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:02:40,897 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:02:40,954 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:02:41,377 - root - INFO - Logging initialized at 2025-04-30T21:02:41.377995
+2025-04-30 21:02:41,377 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:02:41,386 - database - INFO - Database tables created
+2025-04-30 21:02:41,387 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:02:41,388 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:02:41,388 - web - INFO - Using real FTMS devices
+2025-04-30 21:02:41,388 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:02:41,388 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:02:41,390 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:02:41,390 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:02:41,398 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:02:41,416 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:02:41,418 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:03:13,955 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:03:14,011 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:03:14,391 - root - INFO - Logging initialized at 2025-04-30T21:03:14.391677
+2025-04-30 21:03:14,392 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:03:14,400 - database - INFO - Database tables created
+2025-04-30 21:03:14,400 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:03:14,401 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:03:14,401 - web - INFO - Using real FTMS devices
+2025-04-30 21:03:14,401 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:03:14,402 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:03:14,402 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:03:14,403 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:03:14,410 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:03:14,430 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:03:14,432 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:03:17,077 - web - INFO - Converting workout 3 to FIT file
+2025-04-30 21:03:17,077 - web - INFO - Workout type: bike
+2025-04-30 21:03:17,077 - web - INFO - Duration: 25
+2025-04-30 21:03:17,078 - web - INFO - Data points: 25
+2025-04-30 21:03:17,078 - fit_converter - INFO - Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 21:03:17,078 - fit_converter - INFO - Converted to FIT timestamp: 1114909602
+2025-04-30 21:03:17,079 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:03:17,080 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 21:03:17,080 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:03:17] "POST /api/convert_fit/3 HTTP/1.1" 200 -
+2025-04-30 21:05:16,005 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:05:16,126 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:05:16,539 - root - INFO - Logging initialized at 2025-04-30T21:05:16.539476
+2025-04-30 21:05:16,539 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:05:16,548 - database - INFO - Database tables created
+2025-04-30 21:05:16,549 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:05:16,549 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:05:16,549 - web - INFO - Using real FTMS devices
+2025-04-30 21:05:16,550 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:05:16,550 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:05:16,550 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:05:16,552 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:05:16,559 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:05:16,578 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:05:16,580 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:05:19,663 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:05:19,721 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:05:20,118 - root - INFO - Logging initialized at 2025-04-30T21:05:20.118143
+2025-04-30 21:05:20,119 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:05:20,127 - database - INFO - Database tables created
+2025-04-30 21:05:20,127 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:05:20,128 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:05:20,129 - web - INFO - Using real FTMS devices
+2025-04-30 21:05:20,129 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:05:20,130 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:05:20,131 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:05:20,131 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:05:20,138 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:05:20,157 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:05:20,159 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:05:44,720 - web - INFO - Converting workout 3 to FIT file
+2025-04-30 21:05:44,721 - web - INFO - Workout type: bike
+2025-04-30 21:05:44,721 - web - INFO - Duration: 25
+2025-04-30 21:05:44,721 - web - INFO - Data points: 25
+2025-04-30 21:05:44,723 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 21:05:44,723 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114909602
+2025-04-30 21:05:44,723 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:05:44,724 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 21:05:44,724 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:05:44] "POST /api/convert_fit/3 HTTP/1.1" 200 -
+2025-04-30 21:05:48,562 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:05:48] "GET /history HTTP/1.1" 200 -
+2025-04-30 21:05:48,900 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:05:48] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-04-30 21:05:48,931 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:05:48] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-04-30 21:05:49,245 - web - INFO - Getting workouts with limit=100, offset=0
+2025-04-30 21:05:49,247 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:05:49] "GET /api/settings HTTP/1.1" 200 -
+2025-04-30 21:05:49,248 - web - INFO - Retrieved 6 workouts from database
+2025-04-30 21:05:49,250 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:05:49] "GET /api/workouts HTTP/1.1" 200 -
+2025-04-30 21:05:49,382 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:05:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-30 21:05:52,546 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:05:52] "GET /api/workout/4 HTTP/1.1" 200 -
+2025-04-30 21:05:57,350 - web - INFO - Converting workout 4 to FIT file
+2025-04-30 21:05:57,351 - web - INFO - Workout type: bike
+2025-04-30 21:05:57,352 - web - INFO - Duration: 90
+2025-04-30 21:05:57,352 - web - INFO - Data points: 91
+2025-04-30 21:05:57,353 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975868 (2025-04-29T21:17:48)
+2025-04-30 21:05:57,353 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114910268
+2025-04-30 21:05:57,353 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:05:57,354 - web - ERROR - FIT conversion returned None for workout 4
+2025-04-30 21:05:57,354 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:05:57] "POST /api/convert_fit/4 HTTP/1.1" 200 -
+2025-04-30 21:14:25,900 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:14:26,054 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:14:26,492 - root - INFO - Logging initialized at 2025-04-30T21:14:26.492280
+2025-04-30 21:14:26,493 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:14:26,502 - database - INFO - Database tables created
+2025-04-30 21:14:26,503 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:14:26,503 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:14:26,503 - web - INFO - Using real FTMS devices
+2025-04-30 21:14:26,503 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:14:26,504 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:14:26,505 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:14:26,505 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:14:26,512 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:14:26,532 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:14:26,535 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:16:28,479 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:16:28,535 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:16:28,935 - root - INFO - Logging initialized at 2025-04-30T21:16:28.935562
+2025-04-30 21:16:28,936 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:16:28,944 - database - INFO - Database tables created
+2025-04-30 21:16:28,944 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:16:28,945 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:16:28,945 - web - INFO - Using real FTMS devices
+2025-04-30 21:16:28,946 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:16:28,946 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:16:28,947 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:16:28,947 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:16:28,955 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:16:28,975 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:16:28,977 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:16:51,941 - web - INFO - Converting workout 4 to FIT file
+2025-04-30 21:16:51,941 - web - INFO - Workout type: bike
+2025-04-30 21:16:51,942 - web - INFO - Duration: 90
+2025-04-30 21:16:51,942 - web - INFO - Data points: 91
+2025-04-30 21:16:51,942 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975868 (2025-04-29T21:17:48)
+2025-04-30 21:16:51,943 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114910268
+2025-04-30 21:16:51,944 - fit_converter - INFO - [TIMESTAMP FIX] Setting explicit time_created value: 1114996611
+2025-04-30 21:16:51,944 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950603 is not in valid range [0, 4294967295]
+2025-04-30 21:16:51,945 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:16:51,945 - web - ERROR - FIT conversion returned None for workout 4
+2025-04-30 21:16:51,946 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:16:51] "POST /api/convert_fit/4 HTTP/1.1" 200 -
+2025-04-30 21:21:48,227 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:21:48,356 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:21:48,778 - root - INFO - Logging initialized at 2025-04-30T21:21:48.778771
+2025-04-30 21:21:48,780 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:21:48,789 - database - INFO - Database tables created
+2025-04-30 21:21:48,789 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:21:48,790 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:21:48,790 - web - INFO - Using real FTMS devices
+2025-04-30 21:21:48,791 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:21:48,791 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:21:48,792 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:21:48,792 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:21:48,799 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:21:48,821 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:21:48,824 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:21:58,005 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:21:58,079 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:21:58,472 - root - INFO - Logging initialized at 2025-04-30T21:21:58.472734
+2025-04-30 21:21:58,472 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:21:58,480 - database - INFO - Database tables created
+2025-04-30 21:21:58,480 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:21:58,481 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:21:58,481 - web - INFO - Using real FTMS devices
+2025-04-30 21:21:58,482 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:21:58,482 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:21:58,483 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:21:58,483 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:21:58,490 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:21:58,512 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:21:58,515 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:22:05,369 - web - INFO - Converting workout 4 to FIT file
+2025-04-30 21:22:05,369 - web - INFO - Workout type: bike
+2025-04-30 21:22:05,371 - web - INFO - Duration: 90
+2025-04-30 21:22:05,371 - web - INFO - Data points: 91
+2025-04-30 21:22:05,371 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975868 (2025-04-29T21:17:48)
+2025-04-30 21:22:05,372 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114910268
+2025-04-30 21:22:05,373 - fit_converter - INFO - [TIMESTAMP FIX] Setting explicit time_created value: 1114996925
+2025-04-30 21:22:05,373 - fit_converter - INFO - [TIMESTAMP FIX] This corresponds to UTC time: 2025-05-01T01:22:05+00:00
+2025-04-30 21:22:05,374 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950603 is not in valid range [0, 4294967295]
+2025-04-30 21:22:05,374 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:22:05,375 - web - ERROR - FIT conversion returned None for workout 4
+2025-04-30 21:22:05,376 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:22:05] "POST /api/convert_fit/4 HTTP/1.1" 200 -
+2025-04-30 21:22:55,743 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:22:55,845 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:22:56,279 - root - INFO - Logging initialized at 2025-04-30T21:22:56.279360
+2025-04-30 21:22:56,280 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:22:56,289 - database - INFO - Database tables created
+2025-04-30 21:22:56,289 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:22:56,290 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:22:56,290 - web - INFO - Using real FTMS devices
+2025-04-30 21:22:56,290 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:22:56,291 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:22:56,293 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:22:56,293 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:22:56,301 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:22:56,320 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:22:56,322 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:23:00,420 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:23:00,480 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:23:00,858 - root - INFO - Logging initialized at 2025-04-30T21:23:00.858504
+2025-04-30 21:23:00,859 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:23:00,868 - database - INFO - Database tables created
+2025-04-30 21:23:00,868 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:23:00,869 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:23:00,869 - web - INFO - Using real FTMS devices
+2025-04-30 21:23:00,870 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:23:00,870 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:23:00,871 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:23:00,871 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:23:00,878 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:23:00,897 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:23:00,899 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:23:07,657 - web - INFO - Converting workout 4 to FIT file
+2025-04-30 21:23:07,657 - web - INFO - Workout type: bike
+2025-04-30 21:23:07,658 - web - INFO - Duration: 90
+2025-04-30 21:23:07,658 - web - INFO - Data points: 91
+2025-04-30 21:23:07,658 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975868 (2025-04-29T21:17:48)
+2025-04-30 21:23:07,658 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745975868 converted to safe FIT timestamp 1114910268
+2025-04-30 21:23:07,658 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114910268
+2025-04-30 21:23:07,660 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1746062587 converted to safe FIT timestamp 1114996987
+2025-04-30 21:23:07,660 - fit_converter - INFO - [TIMESTAMP FIX] Setting explicit time_created value: 1114996987
+2025-04-30 21:23:07,660 - fit_converter - INFO - [TIMESTAMP FIX] This corresponds to UTC time: 2025-05-01T01:23:07+00:00
+2025-04-30 21:23:07,661 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950603 is not in valid range [0, 4294967295]
+2025-04-30 21:23:07,661 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:23:07,662 - web - ERROR - FIT conversion returned None for workout 4
+2025-04-30 21:23:07,663 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:23:07] "POST /api/convert_fit/4 HTTP/1.1" 200 -
+2025-04-30 21:24:31,753 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:24:31,859 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:24:32,361 - root - INFO - Logging initialized at 2025-04-30T21:24:32.361226
+2025-04-30 21:24:32,362 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:24:32,371 - database - INFO - Database tables created
+2025-04-30 21:24:32,371 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:24:32,371 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:24:32,371 - web - INFO - Using real FTMS devices
+2025-04-30 21:24:32,373 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:24:32,373 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:24:32,374 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:24:32,374 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:24:32,382 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:24:32,404 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:24:32,406 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:24:58,877 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:24:58,973 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:24:59,340 - root - INFO - Logging initialized at 2025-04-30T21:24:59.340771
+2025-04-30 21:24:59,341 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:24:59,349 - database - INFO - Database tables created
+2025-04-30 21:24:59,350 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:24:59,350 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:24:59,350 - web - INFO - Using real FTMS devices
+2025-04-30 21:24:59,351 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:24:59,351 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:24:59,352 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:24:59,352 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:24:59,360 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:24:59,379 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:24:59,381 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:25:24,827 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:25:24,891 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:25:25,275 - root - INFO - Logging initialized at 2025-04-30T21:25:25.275453
+2025-04-30 21:25:25,275 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:25:25,283 - database - INFO - Database tables created
+2025-04-30 21:25:25,283 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:25:25,284 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:25:25,284 - web - INFO - Using real FTMS devices
+2025-04-30 21:25:25,284 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:25:25,284 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:25:25,286 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:25:25,286 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:25:25,294 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:25:25,315 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:25:25,317 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:25:45,677 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:25:45,735 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:25:46,118 - root - INFO - Logging initialized at 2025-04-30T21:25:46.118147
+2025-04-30 21:25:46,118 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:25:46,126 - database - INFO - Database tables created
+2025-04-30 21:25:46,127 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:25:46,127 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:25:46,128 - web - INFO - Using real FTMS devices
+2025-04-30 21:25:46,128 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:25:46,128 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:25:46,129 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:25:46,129 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:25:46,137 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:25:46,155 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:25:46,157 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:25:49,288 - web - INFO - Converting workout 4 to FIT file
+2025-04-30 21:25:49,290 - web - INFO - Workout type: bike
+2025-04-30 21:25:49,290 - web - INFO - Duration: 90
+2025-04-30 21:25:49,290 - web - INFO - Data points: 91
+2025-04-30 21:25:49,291 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975868 (2025-04-29T21:17:48)
+2025-04-30 21:25:49,291 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745975868 converted to safe FIT timestamp 1114910268
+2025-04-30 21:25:49,292 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114910268
+2025-04-30 21:25:49,292 - fit_converter - INFO - [TIMESTAMP FIX] Using workout start timestamp for time_created: 1114910268
+2025-04-30 21:25:49,292 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:25:49,293 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:25:49,293 - web - ERROR - FIT conversion returned None for workout 4
+2025-04-30 21:25:49,295 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:25:49] "POST /api/convert_fit/4 HTTP/1.1" 200 -
+2025-04-30 21:26:01,906 - root - INFO - Logging initialized at 2025-04-30T21:26:01.906734
+2025-04-30 21:26:01,907 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:26:01,915 - database - INFO - Database tables created
+2025-04-30 21:26:01,915 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:26:01,916 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:26:01,916 - web - INFO - Using real FTMS devices
+2025-04-30 21:26:01,916 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:26:01,917 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:26:01,918 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:26:01,918 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:26:01,926 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:26:01,962 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-04-30 21:26:01,962 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-30 21:26:01,964 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:26:02,325 - root - INFO - Logging initialized at 2025-04-30T21:26:02.325008
+2025-04-30 21:26:02,326 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:26:02,334 - database - INFO - Database tables created
+2025-04-30 21:26:02,334 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:26:02,334 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:26:02,336 - web - INFO - Using real FTMS devices
+2025-04-30 21:26:02,336 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:26:02,336 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:26:02,336 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:26:02,336 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:26:02,344 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:26:02,364 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:26:02,367 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:26:06,315 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:26:06] "GET /api/workout/1 HTTP/1.1" 200 -
+2025-04-30 21:26:09,142 - web - INFO - Converting workout 1 to FIT file
+2025-04-30 21:26:09,143 - web - INFO - Workout type: bike
+2025-04-30 21:26:09,143 - web - INFO - Duration: 62
+2025-04-30 21:26:09,144 - web - INFO - Data points: 63
+2025-04-30 21:26:09,144 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 21:26:09,145 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745974425 converted to safe FIT timestamp 1114908825
+2025-04-30 21:26:09,145 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114908825
+2025-04-30 21:26:09,145 - fit_converter - INFO - [TIMESTAMP FIX] Using workout start timestamp for time_created: 1114908825
+2025-04-30 21:26:09,146 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 21:26:09,146 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:26:09,147 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 21:26:09,147 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:26:09] "POST /api/convert_fit/1 HTTP/1.1" 200 -
+2025-04-30 21:27:57,676 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:27:57,765 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:27:58,204 - root - INFO - Logging initialized at 2025-04-30T21:27:58.204488
+2025-04-30 21:27:58,204 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:27:58,213 - database - INFO - Database tables created
+2025-04-30 21:27:58,213 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:27:58,213 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:27:58,214 - web - INFO - Using real FTMS devices
+2025-04-30 21:27:58,214 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:27:58,214 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:27:58,215 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:27:58,215 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:27:58,224 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:27:58,244 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:27:58,247 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:28:31,819 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:28:31,884 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:28:32,319 - root - INFO - Logging initialized at 2025-04-30T21:28:32.319962
+2025-04-30 21:28:32,319 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:28:32,330 - database - INFO - Database tables created
+2025-04-30 21:28:32,331 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:28:32,331 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:28:32,331 - web - INFO - Using real FTMS devices
+2025-04-30 21:28:32,331 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:28:32,332 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:28:32,333 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:28:32,333 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:28:32,340 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:28:32,363 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:28:32,366 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:29:48,622 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:29:48,695 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:29:49,088 - root - INFO - Logging initialized at 2025-04-30T21:29:49.088498
+2025-04-30 21:29:49,089 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:29:49,098 - database - INFO - Database tables created
+2025-04-30 21:29:49,098 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:29:49,098 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:29:49,098 - web - INFO - Using real FTMS devices
+2025-04-30 21:29:49,099 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:29:49,099 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:29:49,100 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:29:49,100 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:29:49,108 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:29:49,130 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:29:49,132 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:30:08,469 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:30:08,529 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:30:08,915 - root - INFO - Logging initialized at 2025-04-30T21:30:08.915381
+2025-04-30 21:30:08,916 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:30:08,925 - database - INFO - Database tables created
+2025-04-30 21:30:08,926 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:30:08,926 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:30:08,927 - web - INFO - Using real FTMS devices
+2025-04-30 21:30:08,927 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:30:08,927 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:30:08,928 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:30:08,928 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:30:08,935 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:30:08,954 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:30:08,957 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:30:22,112 - web - INFO - Converting workout 1 to FIT file
+2025-04-30 21:30:22,112 - web - INFO - Workout type: bike
+2025-04-30 21:30:22,113 - web - INFO - Duration: 62
+2025-04-30 21:30:22,113 - web - INFO - Data points: 63
+2025-04-30 21:30:22,113 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 21:30:22,114 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745974425 converted to safe FIT timestamp 1114908825
+2025-04-30 21:30:22,114 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114908825
+2025-04-30 21:30:22,115 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 21:30:22,115 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:30:22,115 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 21:30:22,116 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:30:22] "POST /api/convert_fit/1 HTTP/1.1" 200 -
+2025-04-30 21:34:15,897 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:34:16,159 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:34:16,658 - root - INFO - Logging initialized at 2025-04-30T21:34:16.658263
+2025-04-30 21:34:16,658 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:34:16,667 - database - INFO - Database tables created
+2025-04-30 21:34:16,668 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:34:16,668 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:34:16,668 - web - INFO - Using real FTMS devices
+2025-04-30 21:34:16,669 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:34:16,669 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:34:16,670 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:34:16,670 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:34:16,678 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:34:16,697 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:34:16,700 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:35:17,734 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:35:17,792 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:35:18,163 - root - INFO - Logging initialized at 2025-04-30T21:35:18.163070
+2025-04-30 21:35:18,164 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:35:18,172 - database - INFO - Database tables created
+2025-04-30 21:35:18,172 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:35:18,173 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:35:18,173 - web - INFO - Using real FTMS devices
+2025-04-30 21:35:18,174 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:35:18,174 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:35:18,175 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:35:18,175 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:35:18,182 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:35:18,201 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:35:18,204 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:35:58,862 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:35:58,926 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:35:59,385 - root - INFO - Logging initialized at 2025-04-30T21:35:59.385948
+2025-04-30 21:35:59,386 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:35:59,394 - database - INFO - Database tables created
+2025-04-30 21:35:59,395 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:35:59,395 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:35:59,396 - web - INFO - Using real FTMS devices
+2025-04-30 21:35:59,396 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:35:59,396 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:35:59,397 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:35:59,397 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:35:59,404 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:35:59,424 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:35:59,426 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:36:01,821 - web - INFO - Converting workout 1 to FIT file
+2025-04-30 21:36:01,821 - web - INFO - Workout type: bike
+2025-04-30 21:36:01,822 - web - INFO - Duration: 62
+2025-04-30 21:36:01,822 - web - INFO - Data points: 63
+2025-04-30 21:36:01,822 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 21:36:01,823 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745974425 converted to safe FIT timestamp 1114908825
+2025-04-30 21:36:01,823 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114908825
+2025-04-30 21:36:01,823 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 21:36:01,824 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:36:01,824 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 21:36:01,825 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:36:01] "POST /api/convert_fit/1 HTTP/1.1" 200 -
+2025-04-30 21:36:06,566 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:36:06] "GET /history HTTP/1.1" 200 -
+2025-04-30 21:36:06,899 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:36:06] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-04-30 21:36:06,903 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:36:06] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-04-30 21:36:07,219 - web - INFO - Getting workouts with limit=100, offset=0
+2025-04-30 21:36:07,221 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:36:07] "GET /api/settings HTTP/1.1" 200 -
+2025-04-30 21:36:07,222 - web - INFO - Retrieved 6 workouts from database
+2025-04-30 21:36:07,223 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:36:07] "GET /api/workouts HTTP/1.1" 200 -
+2025-04-30 21:36:07,360 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:36:07] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-30 21:36:12,934 - root - INFO - Logging initialized at 2025-04-30T21:36:12.934682
+2025-04-30 21:36:12,934 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:36:12,942 - database - INFO - Database tables created
+2025-04-30 21:36:12,942 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:36:12,943 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:36:12,943 - web - INFO - Using real FTMS devices
+2025-04-30 21:36:12,944 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:36:12,944 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:36:12,945 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:36:12,946 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:36:12,955 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:36:12,988 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-04-30 21:36:12,989 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-30 21:36:12,990 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:36:13,356 - root - INFO - Logging initialized at 2025-04-30T21:36:13.356050
+2025-04-30 21:36:13,357 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:36:13,364 - database - INFO - Database tables created
+2025-04-30 21:36:13,365 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:36:13,365 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:36:13,365 - web - INFO - Using real FTMS devices
+2025-04-30 21:36:13,366 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:36:13,366 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:36:13,368 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:36:13,368 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:36:13,375 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:36:13,395 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:36:13,397 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:36:17,891 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:36:17] "GET /api/workout/3 HTTP/1.1" 200 -
+2025-04-30 21:36:20,551 - web - INFO - Converting workout 3 to FIT file
+2025-04-30 21:36:20,551 - web - INFO - Workout type: bike
+2025-04-30 21:36:20,552 - web - INFO - Duration: 25
+2025-04-30 21:36:20,552 - web - INFO - Data points: 25
+2025-04-30 21:36:20,553 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 21:36:20,553 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745975202 converted to safe FIT timestamp 1114909602
+2025-04-30 21:36:20,554 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114909602
+2025-04-30 21:36:20,555 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:36:20,555 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:36:20,555 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 21:36:20,556 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:36:20] "POST /api/convert_fit/3 HTTP/1.1" 200 -
+2025-04-30 21:37:13,689 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:37:13,778 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:37:14,286 - root - INFO - Logging initialized at 2025-04-30T21:37:14.286815
+2025-04-30 21:37:14,287 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:37:14,296 - database - INFO - Database tables created
+2025-04-30 21:37:14,296 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:37:14,297 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:37:14,297 - web - INFO - Using real FTMS devices
+2025-04-30 21:37:14,297 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:37:14,298 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:37:14,299 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:37:14,299 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:37:14,306 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:37:14,328 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:37:14,331 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:38:03,148 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:38:03,207 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:38:03,588 - root - INFO - Logging initialized at 2025-04-30T21:38:03.588868
+2025-04-30 21:38:03,589 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:38:03,598 - database - INFO - Database tables created
+2025-04-30 21:38:03,599 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:38:03,599 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:38:03,600 - web - INFO - Using real FTMS devices
+2025-04-30 21:38:03,600 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:38:03,601 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:38:03,602 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:38:03,602 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:38:03,611 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:38:03,633 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:38:03,636 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:38:07,511 - web - INFO - Converting workout 3 to FIT file
+2025-04-30 21:38:07,511 - web - INFO - Workout type: bike
+2025-04-30 21:38:07,512 - web - INFO - Duration: 25
+2025-04-30 21:38:07,512 - web - INFO - Data points: 25
+2025-04-30 21:38:07,513 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 21:38:07,513 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745975202 converted to safe FIT timestamp 1114909602
+2025-04-30 21:38:07,513 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114909602
+2025-04-30 21:38:07,514 - fit_converter - INFO - [TIMESTAMP FIX] Setting time_created to safe value: 1114909602
+2025-04-30 21:38:07,515 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:38:07,515 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:38:07,515 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 21:38:07,517 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:38:07] "POST /api/convert_fit/3 HTTP/1.1" 200 -
+2025-04-30 21:43:25,128 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:43:25,214 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:43:25,671 - root - INFO - Logging initialized at 2025-04-30T21:43:25.671412
+2025-04-30 21:43:25,671 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:43:25,681 - database - INFO - Database tables created
+2025-04-30 21:43:25,681 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:43:25,682 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:43:25,682 - web - INFO - Using real FTMS devices
+2025-04-30 21:43:25,682 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:43:25,683 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:43:25,684 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:43:25,684 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:43:25,695 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:43:25,719 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:43:25,722 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:44:35,912 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:44:35,978 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:44:36,429 - root - INFO - Logging initialized at 2025-04-30T21:44:36.429426
+2025-04-30 21:44:36,430 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:44:36,439 - database - INFO - Database tables created
+2025-04-30 21:44:36,439 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:44:36,440 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:44:36,440 - web - INFO - Using real FTMS devices
+2025-04-30 21:44:36,441 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:44:36,441 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:44:36,442 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:44:36,443 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:44:36,451 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:44:36,471 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:44:36,474 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:45:37,491 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:45:37,565 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:45:37,952 - root - INFO - Logging initialized at 2025-04-30T21:45:37.952173
+2025-04-30 21:45:37,952 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:45:37,961 - database - INFO - Database tables created
+2025-04-30 21:45:37,961 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:45:37,962 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:45:37,962 - web - INFO - Using real FTMS devices
+2025-04-30 21:45:37,963 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:45:37,963 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:45:37,964 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:45:37,964 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:45:37,971 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:45:37,992 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:45:37,995 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:46:15,640 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:46:15,699 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:46:16,066 - root - INFO - Logging initialized at 2025-04-30T21:46:16.066740
+2025-04-30 21:46:16,066 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:46:16,076 - database - INFO - Database tables created
+2025-04-30 21:46:16,077 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:46:16,078 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:46:16,078 - web - INFO - Using real FTMS devices
+2025-04-30 21:46:16,079 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:46:16,079 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:46:16,080 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:46:16,080 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:46:16,087 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:46:16,105 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:46:16,108 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:46:44,415 - web - INFO - Converting workout 3 to FIT file
+2025-04-30 21:46:44,416 - web - INFO - Workout type: bike
+2025-04-30 21:46:44,416 - web - INFO - Duration: 25
+2025-04-30 21:46:44,416 - web - INFO - Data points: 25
+2025-04-30 21:46:44,417 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 21:46:44,417 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745975202 converted to safe FIT timestamp 1114909602
+2025-04-30 21:46:44,418 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114909602
+2025-04-30 21:46:44,418 - fit_converter - INFO - [TIMESTAMP FIX] Processed 25 relative timestamps to FIT format
+2025-04-30 21:46:44,418 - fit_converter - INFO - [TIMESTAMP FIX] Setting time_created to safe value: 1114909602
+2025-04-30 21:46:44,418 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:46:44,419 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:46:44,419 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 21:46:44,420 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:46:44] "POST /api/convert_fit/3 HTTP/1.1" 200 -
+2025-04-30 21:46:54,370 - root - INFO - Logging initialized at 2025-04-30T21:46:54.370704
+2025-04-30 21:46:54,370 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:46:54,379 - database - INFO - Database tables created
+2025-04-30 21:46:54,379 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:46:54,380 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:46:54,380 - web - INFO - Using real FTMS devices
+2025-04-30 21:46:54,381 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:46:54,381 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:46:54,382 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:46:54,382 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:46:54,390 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:46:54,425 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-04-30 21:46:54,425 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-30 21:46:54,427 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:46:54,799 - root - INFO - Logging initialized at 2025-04-30T21:46:54.799292
+2025-04-30 21:46:54,799 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:46:54,808 - database - INFO - Database tables created
+2025-04-30 21:46:54,808 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:46:54,808 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:46:54,809 - web - INFO - Using real FTMS devices
+2025-04-30 21:46:54,809 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:46:54,810 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:46:54,811 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:46:54,811 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:46:54,818 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:46:54,836 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:46:54,838 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:46:58,616 - web - INFO - Converting workout 3 to FIT file
+2025-04-30 21:46:58,616 - web - INFO - Workout type: bike
+2025-04-30 21:46:58,616 - web - INFO - Duration: 25
+2025-04-30 21:46:58,616 - web - INFO - Data points: 25
+2025-04-30 21:46:58,617 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 21:46:58,617 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745975202 converted to safe FIT timestamp 1114909602
+2025-04-30 21:46:58,617 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114909602
+2025-04-30 21:46:58,618 - fit_converter - INFO - [TIMESTAMP FIX] Processed 25 relative timestamps to FIT format
+2025-04-30 21:46:58,618 - fit_converter - INFO - [TIMESTAMP FIX] Setting time_created to safe value: 1114909602
+2025-04-30 21:46:58,619 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:46:58,619 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:46:58,620 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 21:46:58,620 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:46:58] "POST /api/convert_fit/3 HTTP/1.1" 200 -
+2025-04-30 21:48:19,599 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:48:19,688 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:48:20,117 - root - INFO - Logging initialized at 2025-04-30T21:48:20.117433
+2025-04-30 21:48:20,118 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:48:20,127 - database - INFO - Database tables created
+2025-04-30 21:48:20,128 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:48:20,128 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:48:20,128 - web - INFO - Using real FTMS devices
+2025-04-30 21:48:20,129 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:48:20,129 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:48:20,130 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:48:20,130 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:48:20,139 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:48:20,162 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:48:20,166 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:48:32,404 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:48:32,471 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:48:32,886 - root - INFO - Logging initialized at 2025-04-30T21:48:32.885501
+2025-04-30 21:48:32,886 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:48:32,895 - database - INFO - Database tables created
+2025-04-30 21:48:32,896 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:48:32,896 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:48:32,897 - web - INFO - Using real FTMS devices
+2025-04-30 21:48:32,897 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:48:32,897 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:48:32,898 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:48:32,898 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:48:32,906 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:48:32,926 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:48:32,929 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:49:45,138 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:49:45,198 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:49:45,606 - root - INFO - Logging initialized at 2025-04-30T21:49:45.606935
+2025-04-30 21:49:45,607 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:49:45,615 - database - INFO - Database tables created
+2025-04-30 21:49:45,617 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:49:45,617 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:49:45,617 - web - INFO - Using real FTMS devices
+2025-04-30 21:49:45,618 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:49:45,618 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:49:45,619 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:49:45,619 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:49:45,627 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:49:45,647 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:49:45,649 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:49:48,739 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:49:48,797 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:49:49,165 - root - INFO - Logging initialized at 2025-04-30T21:49:49.165191
+2025-04-30 21:49:49,165 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:49:49,173 - database - INFO - Database tables created
+2025-04-30 21:49:49,174 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:49:49,174 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:49:49,174 - web - INFO - Using real FTMS devices
+2025-04-30 21:49:49,175 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:49:49,175 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:49:49,176 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:49:49,176 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:49:49,184 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:49:49,202 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:49:49,204 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:50:20,444 - web - INFO - Converting workout 3 to FIT file
+2025-04-30 21:50:20,445 - web - INFO - Workout type: bike
+2025-04-30 21:50:20,445 - web - INFO - Duration: 25
+2025-04-30 21:50:20,446 - web - INFO - Data points: 25
+2025-04-30 21:50:20,446 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 21:50:20,447 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745975202 converted to safe FIT timestamp 1114909602
+2025-04-30 21:50:20,447 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114909602
+2025-04-30 21:50:20,447 - fit_converter - INFO - [TIMESTAMP FIX] Processed 25 relative timestamps to FIT format
+2025-04-30 21:50:20,448 - fit_converter - INFO - [TIMESTAMP FIX] Current time Unix timestamp: 1746064220
+2025-04-30 21:50:20,448 - fit_converter - INFO - [TIMESTAMP FIX] Current time FIT timestamp: 1114998620
+2025-04-30 21:50:20,449 - fit_converter - INFO - [TIMESTAMP FIX] Setting time_created to current time
+2025-04-30 21:50:20,449 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950601 is not in valid range [0, 4294967295]
+2025-04-30 21:50:20,449 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:50:20,449 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 21:50:20,450 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:50:20] "POST /api/convert_fit/3 HTTP/1.1" 200 -
+2025-04-30 21:50:44,235 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:50:44,352 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:50:44,896 - root - INFO - Logging initialized at 2025-04-30T21:50:44.896942
+2025-04-30 21:50:44,897 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:50:44,906 - database - INFO - Database tables created
+2025-04-30 21:50:44,907 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:50:44,908 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:50:44,908 - web - INFO - Using real FTMS devices
+2025-04-30 21:50:44,908 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:50:44,909 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:50:44,910 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:50:44,910 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:50:44,919 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:50:44,942 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:50:44,945 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:51:02,257 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-04-30 21:51:02,316 - werkzeug - INFO -  * Restarting with stat
+2025-04-30 21:51:02,708 - root - INFO - Logging initialized at 2025-04-30T21:51:02.707340
+2025-04-30 21:51:02,708 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-04-30 21:51:02,717 - database - INFO - Database tables created
+2025-04-30 21:51:02,717 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-04-30 21:51:02,718 - ftms - INFO - Using FTMSConnector for real device.
+2025-04-30 21:51:02,718 - web - INFO - Using real FTMS devices
+2025-04-30 21:51:02,718 - web - INFO - Flask application initialized. FTMS manager created.
+2025-04-30 21:51:02,718 - web - INFO - Starting background asyncio loop thread...
+2025-04-30 21:51:02,720 - web - INFO - Background thread started. Creating new event loop.
+2025-04-30 21:51:02,720 - web - INFO - Background asyncio loop thread start initiated.
+2025-04-30 21:51:02,726 - web - INFO - Starting background asyncio event loop run_forever.
+2025-04-30 21:51:02,748 - werkzeug - WARNING -  * Debugger is active!
+2025-04-30 21:51:02,751 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-04-30 21:51:23,418 - web - INFO - Converting workout 3 to FIT file
+2025-04-30 21:51:23,418 - web - INFO - Workout type: bike
+2025-04-30 21:51:23,419 - web - INFO - Duration: 25
+2025-04-30 21:51:23,419 - web - INFO - Data points: 25
+2025-04-30 21:51:23,420 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 21:51:23,420 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745975202 converted to safe FIT timestamp 1114909602
+2025-04-30 21:51:23,421 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114909602
+2025-04-30 21:51:23,421 - fit_converter - INFO - [TIMESTAMP FIX] Processed 25 relative timestamps to FIT format
+2025-04-30 21:51:23,422 - fit_converter - INFO - [TIMESTAMP FIX] Skipping time_created field to avoid timestamp encoding issues
+2025-04-30 21:51:23,422 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:51:23,422 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 21:51:23,423 - werkzeug - INFO - 127.0.0.1 - - [30/Apr/2025 21:51:23] "POST /api/convert_fit/3 HTTP/1.1" 200 -

@@ -1766,3 +1766,247 @@ sqlite3.OperationalError: database is locked
 2025-04-30 06:17:26,504 - fit_converter - INFO - Workout start Unix timestamp: 1746008246 (2025-04-30T06:17:26)
 2025-04-30 06:17:26,504 - fit_converter - INFO - Converted to FIT timestamp: 1114942646
 2025-04-30 06:17:26,504 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950657 is not in valid range [0, 4294967295]
+2025-04-30 06:34:45,246 - fit_converter - INFO - Workout start Unix timestamp: 1746009285 (2025-04-30T06:34:45)
+2025-04-30 06:34:45,246 - fit_converter - INFO - Converted to FIT timestamp: 1114943685
+2025-04-30 06:34:45,246 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950656 is not in valid range [0, 4294967295]
+2025-04-30 06:34:53,724 - database - INFO - Database tables created
+2025-04-30 06:34:54,268 - database - INFO - Database tables created
+2025-04-30 07:02:30,961 - database - INFO - Database tables created
+2025-04-30 07:02:31,471 - database - INFO - Database tables created
+2025-04-30 07:02:35,980 - database - ERROR - Error getting workouts: no such column: type
+2025-04-30 07:02:46,372 - database - ERROR - Error getting workouts: no such column: type
+2025-04-30 07:04:54,685 - database - INFO - Database tables created
+2025-04-30 07:04:55,193 - database - INFO - Database tables created
+2025-04-30 07:06:53,085 - database - INFO - Database tables created
+2025-04-30 07:06:53,603 - database - INFO - Database tables created
+2025-04-30 07:08:45,417 - fit_converter - INFO - Workout start Unix timestamp: 1746011325 (2025-04-30T07:08:45)
+2025-04-30 07:08:45,417 - fit_converter - INFO - Converted to FIT timestamp: 1114945725
+2025-04-30 07:08:45,418 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950654 is not in valid range [0, 4294967295]
+2025-04-30 07:09:00,255 - fit_converter - INFO - Workout start Unix timestamp: 1746011340 (2025-04-30T07:09:00)
+2025-04-30 07:09:00,255 - fit_converter - INFO - Converted to FIT timestamp: 1114945740
+2025-04-30 07:09:00,256 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950654 is not in valid range [0, 4294967295]
+2025-04-30 07:09:08,310 - database - INFO - Database tables created
+2025-04-30 07:09:08,830 - database - INFO - Database tables created
+2025-04-30 07:09:15,810 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 07:09:15,811 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 07:09:15,812 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 16:48:12,196 - database - INFO - Database tables created
+2025-04-30 16:48:12,760 - database - INFO - Database tables created
+2025-04-30 16:48:17,710 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 16:48:17,710 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 16:48:17,710 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 16:48:51,511 - database - INFO - Database tables created
+2025-04-30 16:48:57,196 - database - INFO - Database tables created
+2025-04-30 16:49:00,185 - database - INFO - Database tables created
+2025-04-30 19:44:13,506 - database - INFO - Database tables created
+2025-04-30 19:44:13,963 - database - INFO - Database tables created
+2025-04-30 19:44:28,027 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 19:44:28,028 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 19:44:28,028 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:06:07,554 - database - INFO - Database tables created
+2025-04-30 20:06:07,983 - database - INFO - Database tables created
+2025-04-30 20:06:11,913 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 20:06:11,913 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 20:06:11,914 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:35:38,320 - database - INFO - Database tables created
+2025-04-30 20:35:38,752 - database - INFO - Database tables created
+2025-04-30 20:35:43,001 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 20:35:43,001 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 20:35:43,002 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:36:29,559 - database - INFO - Database tables created
+2025-04-30 20:45:01,182 - database - INFO - Database tables created
+2025-04-30 20:45:10,927 - database - INFO - Database tables created
+2025-04-30 20:45:48,105 - database - INFO - Database tables created
+2025-04-30 20:45:54,244 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 20:45:54,244 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 20:45:54,245 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:46:06,011 - database - INFO - Database tables created
+2025-04-30 20:46:14,879 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 20:46:14,880 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 20:46:14,881 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:46:32,972 - database - INFO - Database tables created
+2025-04-30 20:46:33,414 - database - INFO - Database tables created
+2025-04-30 20:46:38,269 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 20:46:38,269 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 20:46:38,270 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:48:33,435 - database - INFO - Database tables created
+2025-04-30 20:49:00,397 - database - INFO - Database tables created
+2025-04-30 20:49:21,297 - database - INFO - Database tables created
+2025-04-30 20:49:25,421 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 20:49:25,422 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 20:49:25,422 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:49:37,016 - database - INFO - Database tables created
+2025-04-30 20:49:37,431 - database - INFO - Database tables created
+2025-04-30 20:49:40,926 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 20:49:40,926 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 20:49:40,927 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:50:50,544 - database - INFO - Database tables created
+2025-04-30 20:51:21,675 - database - INFO - Database tables created
+2025-04-30 20:51:44,562 - database - INFO - Database tables created
+2025-04-30 20:51:49,641 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 20:51:49,641 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 20:51:49,641 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:51:58,079 - database - INFO - Database tables created
+2025-04-30 20:51:58,518 - database - INFO - Database tables created
+2025-04-30 20:52:05,179 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 20:52:05,179 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 20:52:05,180 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:53:33,067 - database - INFO - Database tables created
+2025-04-30 20:53:39,710 - database - INFO - Database tables created
+2025-04-30 20:54:08,819 - database - INFO - Database tables created
+2025-04-30 20:54:12,376 - database - INFO - Database tables created
+2025-04-30 20:54:16,262 - fit_converter - INFO - Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 20:54:16,263 - fit_converter - INFO - Converted to FIT timestamp: 1114908825
+2025-04-30 20:54:16,263 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:55:09,620 - database - INFO - Database tables created
+2025-04-30 20:55:10,063 - database - INFO - Database tables created
+2025-04-30 20:55:21,860 - fit_converter - INFO - Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 20:55:21,861 - fit_converter - INFO - Converted to FIT timestamp: 1114909602
+2025-04-30 20:55:21,861 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 20:58:11,258 - database - INFO - Database tables created
+2025-04-30 20:58:13,808 - database - INFO - Database tables created
+2025-04-30 20:58:18,037 - fit_converter - INFO - Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 20:58:18,038 - fit_converter - INFO - Converted to FIT timestamp: 1114909602
+2025-04-30 20:58:18,038 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 20:58:48,223 - database - INFO - Database tables created
+2025-04-30 20:59:09,070 - database - INFO - Database tables created
+2025-04-30 20:59:12,740 - fit_converter - INFO - Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 20:59:12,740 - fit_converter - INFO - Converted to FIT timestamp: 1114909602
+2025-04-30 20:59:12,742 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 20:59:22,218 - database - INFO - Database tables created
+2025-04-30 20:59:22,636 - database - INFO - Database tables created
+2025-04-30 20:59:36,272 - fit_converter - INFO - Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 20:59:36,272 - fit_converter - INFO - Converted to FIT timestamp: 1114909602
+2025-04-30 20:59:36,273 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:00:30,618 - database - INFO - Database tables created
+2025-04-30 21:00:57,626 - database - INFO - Database tables created
+2025-04-30 21:02:12,365 - database - INFO - Database tables created
+2025-04-30 21:02:41,386 - database - INFO - Database tables created
+2025-04-30 21:03:14,400 - database - INFO - Database tables created
+2025-04-30 21:03:17,078 - fit_converter - INFO - Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 21:03:17,078 - fit_converter - INFO - Converted to FIT timestamp: 1114909602
+2025-04-30 21:03:17,079 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:05:16,548 - database - INFO - Database tables created
+2025-04-30 21:05:20,127 - database - INFO - Database tables created
+2025-04-30 21:05:44,723 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 21:05:44,723 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114909602
+2025-04-30 21:05:44,723 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:05:57,353 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975868 (2025-04-29T21:17:48)
+2025-04-30 21:05:57,353 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114910268
+2025-04-30 21:05:57,353 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:14:26,502 - database - INFO - Database tables created
+2025-04-30 21:16:28,944 - database - INFO - Database tables created
+2025-04-30 21:16:51,942 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975868 (2025-04-29T21:17:48)
+2025-04-30 21:16:51,943 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114910268
+2025-04-30 21:16:51,944 - fit_converter - INFO - [TIMESTAMP FIX] Setting explicit time_created value: 1114996611
+2025-04-30 21:16:51,944 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950603 is not in valid range [0, 4294967295]
+2025-04-30 21:16:51,945 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:21:48,789 - database - INFO - Database tables created
+2025-04-30 21:21:58,480 - database - INFO - Database tables created
+2025-04-30 21:22:05,371 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975868 (2025-04-29T21:17:48)
+2025-04-30 21:22:05,372 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114910268
+2025-04-30 21:22:05,373 - fit_converter - INFO - [TIMESTAMP FIX] Setting explicit time_created value: 1114996925
+2025-04-30 21:22:05,373 - fit_converter - INFO - [TIMESTAMP FIX] This corresponds to UTC time: 2025-05-01T01:22:05+00:00
+2025-04-30 21:22:05,374 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950603 is not in valid range [0, 4294967295]
+2025-04-30 21:22:05,374 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:22:56,289 - database - INFO - Database tables created
+2025-04-30 21:23:00,868 - database - INFO - Database tables created
+2025-04-30 21:23:07,658 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975868 (2025-04-29T21:17:48)
+2025-04-30 21:23:07,658 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745975868 converted to safe FIT timestamp 1114910268
+2025-04-30 21:23:07,658 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114910268
+2025-04-30 21:23:07,660 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1746062587 converted to safe FIT timestamp 1114996987
+2025-04-30 21:23:07,660 - fit_converter - INFO - [TIMESTAMP FIX] Setting explicit time_created value: 1114996987
+2025-04-30 21:23:07,660 - fit_converter - INFO - [TIMESTAMP FIX] This corresponds to UTC time: 2025-05-01T01:23:07+00:00
+2025-04-30 21:23:07,661 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950603 is not in valid range [0, 4294967295]
+2025-04-30 21:23:07,661 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:24:32,371 - database - INFO - Database tables created
+2025-04-30 21:24:59,349 - database - INFO - Database tables created
+2025-04-30 21:25:25,283 - database - INFO - Database tables created
+2025-04-30 21:25:46,126 - database - INFO - Database tables created
+2025-04-30 21:25:49,291 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975868 (2025-04-29T21:17:48)
+2025-04-30 21:25:49,291 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745975868 converted to safe FIT timestamp 1114910268
+2025-04-30 21:25:49,292 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114910268
+2025-04-30 21:25:49,292 - fit_converter - INFO - [TIMESTAMP FIX] Using workout start timestamp for time_created: 1114910268
+2025-04-30 21:25:49,292 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:25:49,293 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:26:01,915 - database - INFO - Database tables created
+2025-04-30 21:26:02,334 - database - INFO - Database tables created
+2025-04-30 21:26:09,144 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 21:26:09,145 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745974425 converted to safe FIT timestamp 1114908825
+2025-04-30 21:26:09,145 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114908825
+2025-04-30 21:26:09,145 - fit_converter - INFO - [TIMESTAMP FIX] Using workout start timestamp for time_created: 1114908825
+2025-04-30 21:26:09,146 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 21:26:09,146 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:27:58,213 - database - INFO - Database tables created
+2025-04-30 21:28:32,330 - database - INFO - Database tables created
+2025-04-30 21:29:49,098 - database - INFO - Database tables created
+2025-04-30 21:30:08,925 - database - INFO - Database tables created
+2025-04-30 21:30:22,113 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 21:30:22,114 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745974425 converted to safe FIT timestamp 1114908825
+2025-04-30 21:30:22,114 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114908825
+2025-04-30 21:30:22,115 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 21:30:22,115 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:34:16,667 - database - INFO - Database tables created
+2025-04-30 21:35:18,172 - database - INFO - Database tables created
+2025-04-30 21:35:59,394 - database - INFO - Database tables created
+2025-04-30 21:36:01,822 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-04-30 21:36:01,823 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745974425 converted to safe FIT timestamp 1114908825
+2025-04-30 21:36:01,823 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114908825
+2025-04-30 21:36:01,823 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 21:36:01,824 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:36:12,942 - database - INFO - Database tables created
+2025-04-30 21:36:13,364 - database - INFO - Database tables created
+2025-04-30 21:36:20,553 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 21:36:20,553 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745975202 converted to safe FIT timestamp 1114909602
+2025-04-30 21:36:20,554 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114909602
+2025-04-30 21:36:20,555 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:36:20,555 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:37:14,296 - database - INFO - Database tables created
+2025-04-30 21:38:03,598 - database - INFO - Database tables created
+2025-04-30 21:38:07,513 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 21:38:07,513 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745975202 converted to safe FIT timestamp 1114909602
+2025-04-30 21:38:07,513 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114909602
+2025-04-30 21:38:07,514 - fit_converter - INFO - [TIMESTAMP FIX] Setting time_created to safe value: 1114909602
+2025-04-30 21:38:07,515 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:38:07,515 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:43:25,681 - database - INFO - Database tables created
+2025-04-30 21:44:36,439 - database - INFO - Database tables created
+2025-04-30 21:45:37,961 - database - INFO - Database tables created
+2025-04-30 21:46:16,076 - database - INFO - Database tables created
+2025-04-30 21:46:44,417 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 21:46:44,417 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745975202 converted to safe FIT timestamp 1114909602
+2025-04-30 21:46:44,418 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114909602
+2025-04-30 21:46:44,418 - fit_converter - INFO - [TIMESTAMP FIX] Processed 25 relative timestamps to FIT format
+2025-04-30 21:46:44,418 - fit_converter - INFO - [TIMESTAMP FIX] Setting time_created to safe value: 1114909602
+2025-04-30 21:46:44,418 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:46:44,419 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:46:54,379 - database - INFO - Database tables created
+2025-04-30 21:46:54,808 - database - INFO - Database tables created
+2025-04-30 21:46:58,617 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 21:46:58,617 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745975202 converted to safe FIT timestamp 1114909602
+2025-04-30 21:46:58,617 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114909602
+2025-04-30 21:46:58,618 - fit_converter - INFO - [TIMESTAMP FIX] Processed 25 relative timestamps to FIT format
+2025-04-30 21:46:58,618 - fit_converter - INFO - [TIMESTAMP FIX] Setting time_created to safe value: 1114909602
+2025-04-30 21:46:58,619 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:46:58,619 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:48:20,127 - database - INFO - Database tables created
+2025-04-30 21:48:32,895 - database - INFO - Database tables created
+2025-04-30 21:49:45,615 - database - INFO - Database tables created
+2025-04-30 21:49:49,173 - database - INFO - Database tables created
+2025-04-30 21:50:20,446 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 21:50:20,447 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745975202 converted to safe FIT timestamp 1114909602
+2025-04-30 21:50:20,447 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114909602
+2025-04-30 21:50:20,447 - fit_converter - INFO - [TIMESTAMP FIX] Processed 25 relative timestamps to FIT format
+2025-04-30 21:50:20,448 - fit_converter - INFO - [TIMESTAMP FIX] Current time Unix timestamp: 1746064220
+2025-04-30 21:50:20,448 - fit_converter - INFO - [TIMESTAMP FIX] Current time FIT timestamp: 1114998620
+2025-04-30 21:50:20,449 - fit_converter - INFO - [TIMESTAMP FIX] Setting time_created to current time
+2025-04-30 21:50:20,449 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950601 is not in valid range [0, 4294967295]
+2025-04-30 21:50:20,449 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:50:44,906 - database - INFO - Database tables created
+2025-04-30 21:51:02,717 - database - INFO - Database tables created
+2025-04-30 21:51:23,420 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745975202 (2025-04-29T21:06:42)
+2025-04-30 21:51:23,420 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745975202 converted to safe FIT timestamp 1114909602
+2025-04-30 21:51:23,421 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114909602
+2025-04-30 21:51:23,421 - fit_converter - INFO - [TIMESTAMP FIX] Processed 25 relative timestamps to FIT format
+2025-04-30 21:51:23,422 - fit_converter - INFO - [TIMESTAMP FIX] Skipping time_created field to avoid timestamp encoding issues
+2025-04-30 21:51:23,422 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]

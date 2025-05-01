@@ -666,3 +666,128 @@ AttributeError: 'Database' object has no attribute '_connect'
 2025-04-30 06:17:26,504 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950657 is not in valid range [0, 4294967295]
 2025-04-30 06:17:26,505 - test_fit - ERROR - Failed to create FIT file
 2025-04-30 06:17:26,505 - test_fit - ERROR - Full FIT conversion failed! The fix did not solve all problems.
+2025-04-30 06:34:45,246 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950656 is not in valid range [0, 4294967295]
+2025-04-30 06:34:45,248 - test_fit - ERROR - Failed to create FIT file
+2025-04-30 06:34:45,248 - test_fit - ERROR - Full FIT conversion failed! The fix did not solve all problems.
+2025-04-30 06:35:01,220 - web - ERROR - Error getting workouts: 'str' object cannot be interpreted as an integer
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\web\app.py", line 367, in get_workouts
+    workouts = workout_manager.get_workouts(limit, offset)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\workout_manager.py", line 325, in get_workouts
+    return self.database.get_workouts(limit, offset)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 515, in get_workouts
+    workout['start_time_iso'] = datetime.fromtimestamp(
+                                ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'str' object cannot be interpreted as an integer
+2025-04-30 06:35:07,224 - web - ERROR - Error getting workouts: 'str' object cannot be interpreted as an integer
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\web\app.py", line 367, in get_workouts
+    workouts = workout_manager.get_workouts(limit, offset)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\workout_manager.py", line 325, in get_workouts
+    return self.database.get_workouts(limit, offset)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 515, in get_workouts
+    workout['start_time_iso'] = datetime.fromtimestamp(
+                                ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'str' object cannot be interpreted as an integer
+2025-04-30 07:02:35,980 - database - ERROR - Error getting workouts: no such column: type
+2025-04-30 07:02:46,372 - database - ERROR - Error getting workouts: no such column: type
+2025-04-30 07:05:00,716 - web - ERROR - Error getting workouts: 'str' object cannot be interpreted as an integer
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\web\app.py", line 367, in get_workouts
+    workouts = workout_manager.get_workouts(limit, offset)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\workout_manager.py", line 325, in get_workouts
+    return self.database.get_workouts(limit, offset)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 508, in get_workouts
+    workout['start_time_iso'] = datetime.fromtimestamp(
+                                ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'str' object cannot be interpreted as an integer
+2025-04-30 07:08:45,418 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950654 is not in valid range [0, 4294967295]
+2025-04-30 07:08:45,418 - test_fit - ERROR - Failed to create FIT file
+2025-04-30 07:08:45,418 - test_fit - ERROR - Full FIT conversion failed! The fix did not solve all problems.
+2025-04-30 07:09:00,256 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950654 is not in valid range [0, 4294967295]
+2025-04-30 07:09:00,257 - test_fit - ERROR - Failed to create FIT file
+2025-04-30 07:09:00,257 - test_fit - ERROR - Full FIT conversion failed! The fix did not solve all problems.
+2025-04-30 07:09:15,812 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 07:09:15,812 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 16:48:17,710 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 16:48:17,712 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 19:44:28,028 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 19:44:28,029 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 20:06:11,914 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:06:11,914 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 20:35:43,002 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:35:43,002 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 20:45:54,245 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:45:54,245 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 20:46:14,881 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:46:14,882 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 20:46:38,270 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:46:38,270 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 20:49:25,422 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:49:25,423 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 20:49:40,927 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:49:40,927 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 20:51:49,641 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:51:49,642 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 20:52:05,180 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:52:05,181 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 20:54:16,263 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 20:54:16,264 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 20:55:21,861 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 20:55:21,862 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 20:58:18,038 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 20:58:18,039 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 20:59:12,742 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 20:59:12,742 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 20:59:36,273 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 20:59:36,273 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 21:03:17,079 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:03:17,080 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 21:05:44,723 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:05:44,724 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 21:05:57,353 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:05:57,354 - web - ERROR - FIT conversion returned None for workout 4
+2025-04-30 21:16:51,944 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950603 is not in valid range [0, 4294967295]
+2025-04-30 21:16:51,945 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:16:51,945 - web - ERROR - FIT conversion returned None for workout 4
+2025-04-30 21:22:05,374 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950603 is not in valid range [0, 4294967295]
+2025-04-30 21:22:05,374 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:22:05,375 - web - ERROR - FIT conversion returned None for workout 4
+2025-04-30 21:23:07,661 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950603 is not in valid range [0, 4294967295]
+2025-04-30 21:23:07,661 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:23:07,662 - web - ERROR - FIT conversion returned None for workout 4
+2025-04-30 21:25:49,292 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:25:49,293 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:25:49,293 - web - ERROR - FIT conversion returned None for workout 4
+2025-04-30 21:26:09,146 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 21:26:09,146 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:26:09,147 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 21:30:22,115 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 21:30:22,115 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:30:22,115 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 21:36:01,823 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950691 is not in valid range [0, 4294967295]
+2025-04-30 21:36:01,824 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:36:01,824 - web - ERROR - FIT conversion returned None for workout 1
+2025-04-30 21:36:20,555 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:36:20,555 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:36:20,555 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 21:38:07,515 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:38:07,515 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:38:07,515 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 21:46:44,418 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:46:44,419 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:46:44,419 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 21:46:58,619 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:46:58,619 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:46:58,620 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 21:50:20,449 - fit_converter - ERROR - Error creating FileIdMessage: time_created encoded value -629950601 is not in valid range [0, 4294967295]
+2025-04-30 21:50:20,449 - fit_converter - ERROR - Failed to create FileIdMessage
+2025-04-30 21:50:20,449 - web - ERROR - FIT conversion returned None for workout 3
+2025-04-30 21:51:23,422 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-04-30 21:51:23,422 - web - ERROR - FIT conversion returned None for workout 3

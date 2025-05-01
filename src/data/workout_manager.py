@@ -10,7 +10,7 @@ import sys
 import json
 import time
 from typing import Dict, List, Any, Optional, Callable
-from datetime import datetime
+from datetime import datetime, timezone
 
 # Add the project root to the path so we can use absolute imports
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
@@ -48,7 +48,7 @@ class WorkoutManager:
         # Current workout state
         self.active_workout_id = None
         self.active_device_id = None
-        self.workout_start_time = None
+        self.workout_start_time = None  # Will store Unix timestamp
         self.workout_type = None
         self.data_points = []
         self.summary_metrics = {}
@@ -108,10 +108,14 @@ class WorkoutManager:
             
             logger.info(f"Starting new {workout_type} workout on device {device_id}")
             
-            # Create a new workout record - Remove start_time parameter to match database API
+            # Store start time as Unix timestamp
+            self.workout_start_time = time.time()
+            
+            # Create a new workout record
             workout_id = self.database.start_workout(
                 device_id=device_id,
-                workout_type=workout_type
+                workout_type=workout_type,
+                start_time=self.workout_start_time  # Pass Unix timestamp
             )
             
             if workout_id == -1:
@@ -120,7 +124,6 @@ class WorkoutManager:
                 
             self.active_workout_id = workout_id
             self.active_device_id = device_id
-            self.workout_start_time = datetime.now()
             self.workout_type = workout_type
             self.data_points = []
             self.summary_metrics = {
@@ -143,12 +146,13 @@ class WorkoutManager:
             if self.ftms_manager:
                 self.ftms_manager.notify_workout_start(workout_id, workout_type)
             
-            # Notify status
+            # Notify status - convert Unix timestamp to ISO format for UI display
             self._notify_status('workout_started', {
                 'workout_id': workout_id,
                 'device_id': device_id,
                 'workout_type': workout_type,
-                'start_time': datetime.now().isoformat()
+                'start_time': self.workout_start_time,
+                'start_time_iso': datetime.fromtimestamp(self.workout_start_time, tz=timezone.utc).isoformat()
             })
             
             logger.info(f"Started workout {workout_id} with device {device_id}")
@@ -180,8 +184,8 @@ class WorkoutManager:
             logger.info(f"Ending workout (ID: {workout_id})")
             
             # Calculate workout duration
-            end_time = datetime.now()
-            duration = (end_time - self.workout_start_time).total_seconds()
+            end_time = time.time()
+            duration = end_time - self.workout_start_time
             
             # Process workout data for summary metrics
             summary = self._calculate_summary_metrics()
@@ -189,6 +193,7 @@ class WorkoutManager:
             # Update the workout record
             success = self.database.end_workout(
                 workout_id=workout_id,
+                end_time=end_time,  # Pass Unix timestamp
                 summary=summary
             )
             
@@ -243,17 +248,20 @@ class WorkoutManager:
             logger.warning("No active workout to add data to")
             return False
         
-        # Calculate timestamp relative to workout start as a float
-        # Use datetime objects for accurate difference calculation
+        # Calculate timestamp (seconds since workout start)
         if not self.workout_start_time:
              logger.error("Workout start time not set, cannot calculate relative timestamp")
              return False
-             
-        current_time = datetime.now()
-        timestamp = (current_time - self.workout_start_time).total_seconds()
         
-        # Add timestamp to data
-        data['timestamp'] = timestamp
+        # Get current timestamp     
+        current_time = time.time()
+        
+        # Calculate relative seconds from workout start
+        relative_timestamp = current_time - self.workout_start_time
+        
+        # Add timestamps to data
+        data['timestamp'] = relative_timestamp  # Relative to workout start (seconds)
+        data['unix_timestamp'] = current_time   # Absolute Unix timestamp
         
         # Store data point locally (for summary calculation)
         self.data_points.append(data)
@@ -264,21 +272,20 @@ class WorkoutManager:
         # Store in database
         success = self.database.add_workout_data(
             self.active_workout_id,
-            timestamp, # Pass the float timestamp
+            current_time,  # Store absolute Unix timestamp in database
             data
         )
         
         if success:
-            logger.info(f"Added data point to workout {self.active_workout_id}: time={timestamp:.3f}s, " + 
-                       f"power={data.get('instant_power', 'N/A')}, " + # Corrected key
+            logger.info(f"Added data point to workout {self.active_workout_id}: time={relative_timestamp:.3f}s, " + 
+                       f"power={data.get('instant_power', 'N/A')}, " + 
                        f"distance={data.get('total_distance', 'N/A'):.2f}m, " +
-                       f"calories={data.get('total_energy', 'N/A')}") # Corrected key for calories
+                       f"calories={data.get('total_energy', 'N/A')}")
             # Notify data callbacks
             self._notify_data(data)
             return True
-        else:
-            logger.error(f"Failed to add data point to workout {self.active_workout_id}")
-            return False
+        
+        return False
     
     def get_workout(self, workout_id: int) -> Optional[Dict[str, Any]]:
         """
@@ -351,18 +358,18 @@ class WorkoutManager:
         """Handle incoming FTMS data points."""
         logger.debug(f"Workout manager received FTMS data point: {data}") # Log data reception
         if self.active_workout_id is not None and self.workout_start_time is not None:
-            # Calculate timestamp relative to workout start
-            # Ensure high precision timestamp
-            now = datetime.now()
-            timestamp = (now - self.workout_start_time).total_seconds()
-            # Add microseconds for higher precision, avoiding potential collisions
-            timestamp += now.microsecond / 1000000.0 
+            # Calculate timestamp - use Unix timestamp (seconds since epoch)
+            current_time = time.time()
             
-            logger.info(f"Processing data point for workout {self.active_workout_id} at relative timestamp {timestamp:.6f}") # Log processing attempt
+            # Calculate timestamp relative to workout start (in seconds)
+            relative_timestamp = current_time - self.workout_start_time
             
-            # Add timestamp to data for local tracking
+            logger.info(f"Processing data point for workout {self.active_workout_id} at relative timestamp {relative_timestamp:.6f}") # Log processing attempt
+            
+            # Add timestamps to data for local tracking
             data_with_timestamp = data.copy()
-            data_with_timestamp['timestamp'] = timestamp
+            data_with_timestamp['timestamp'] = relative_timestamp  # Seconds since workout start
+            data_with_timestamp['unix_timestamp'] = current_time   # Absolute Unix timestamp
             
             # Add data point to local memory (for summary calculation)
             self.data_points.append(data_with_timestamp)
@@ -370,15 +377,15 @@ class WorkoutManager:
             # Update summary metrics
             self._update_summary_metrics(data_with_timestamp)
             
-            # Add data point to the database
-            success = self.database.add_workout_data(self.active_workout_id, timestamp, data)
+            # Add data point to the database - store with absolute Unix timestamp
+            success = self.database.add_workout_data(self.active_workout_id, current_time, data)
             
             if success:
-                logger.info(f"Successfully requested database add for workout {self.active_workout_id}, timestamp {timestamp:.6f}") # Log success call
+                logger.info(f"Successfully requested database add for workout {self.active_workout_id}, timestamp {relative_timestamp:.6f}") # Log success call
                 # Notify data callbacks about the new data
                 self._notify_data(data_with_timestamp)
             else:
-                logger.error(f"Failed to request database add for workout {self.active_workout_id}, timestamp {timestamp:.6f}") # Log failed call
+                logger.error(f"Failed to request database add for workout {self.active_workout_id}, timestamp {relative_timestamp:.6f}") # Log failed call
                 
             # Update live data
             self.live_workout_data = data_with_timestamp
@@ -460,7 +467,7 @@ class WorkoutManager:
             self.summary_metrics['total_calories'] = data['total_energy']
         
         # Update power metrics
-        if 'instant_power' in data and data['instant_power'] is not None: # Corrected key
+        if 'instant_power' in data and data['instant_power'] is not None:
             power = data['instant_power']
             
             # Update max power
@@ -468,7 +475,7 @@ class WorkoutManager:
                 self.summary_metrics['max_power'] = power
             
             # Update average power
-            power_values = [d.get('instant_power', 0) for d in self.data_points if d.get('instant_power') is not None] # Corrected key
+            power_values = [d.get('instant_power', 0) for d in self.data_points if d.get('instant_power') is not None]
             if power_values:
                 self.summary_metrics['avg_power'] = sum(power_values) / len(power_values)
         
@@ -486,7 +493,7 @@ class WorkoutManager:
                 self.summary_metrics['avg_heart_rate'] = sum(hr_values) / len(hr_values)
         
         # Update cadence metrics
-        if 'instant_cadence' in data and data['instant_cadence'] is not None: # Corrected key
+        if 'instant_cadence' in data and data['instant_cadence'] is not None:
             cadence = data['instant_cadence']
             
             # Update max cadence
@@ -494,12 +501,12 @@ class WorkoutManager:
                 self.summary_metrics['max_cadence'] = cadence
             
             # Update average cadence
-            cadence_values = [d.get('instant_cadence', 0) for d in self.data_points if d.get('instant_cadence') is not None] # Corrected key
+            cadence_values = [d.get('instant_cadence', 0) for d in self.data_points if d.get('instant_cadence') is not None]
             if cadence_values:
                 self.summary_metrics['avg_cadence'] = sum(cadence_values) / len(cadence_values)
         
         # Update speed metrics
-        if 'instant_speed' in data and data['instant_speed'] is not None: # Corrected key
+        if 'instant_speed' in data and data['instant_speed'] is not None:
             speed = data['instant_speed']
             
             # Update max speed
@@ -507,7 +514,7 @@ class WorkoutManager:
                 self.summary_metrics['max_speed'] = speed
             
             # Update average speed
-            speed_values = [d.get('instant_speed', 0) for d in self.data_points if d.get('instant_speed') is not None] # Corrected key
+            speed_values = [d.get('instant_speed', 0) for d in self.data_points if d.get('instant_speed') is not None]
             if speed_values:
                 self.summary_metrics['avg_speed'] = sum(speed_values) / len(speed_values)
     

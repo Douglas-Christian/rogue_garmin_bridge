@@ -8,7 +8,8 @@ This module handles the SQLite database operations for storing workout data.
 import sqlite3
 import os
 import json
-from datetime import datetime
+import time
+from datetime import datetime, timezone
 import sys
 import threading
 from typing import Dict, List, Optional, Any
@@ -81,18 +82,18 @@ class Database:
                     address TEXT UNIQUE,
                     name TEXT,
                     device_type TEXT,
-                    last_connected TEXT,
+                    last_connected REAL,
                     metadata TEXT
                 )
             ''')
             
-            # Workouts table
+            # Workouts table - using REAL for timestamp fields to store Unix timestamps
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS workouts (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     device_id INTEGER,
-                    start_time TEXT,
-                    end_time TEXT,
+                    start_time REAL,
+                    end_time REAL,
                     duration INTEGER,
                     workout_type TEXT,
                     summary TEXT,
@@ -170,18 +171,21 @@ class Database:
             )
             result = cursor.fetchone()
             
+            # Get current Unix timestamp
+            current_time = time.time()
+            
             if result:
                 # Update existing device
                 device_id = result['id']
                 cursor.execute(
                     "UPDATE devices SET name = ?, device_type = ?, last_connected = ?, metadata = ? WHERE id = ?",
-                    (name, device_type, datetime.now().isoformat(), metadata_json, device_id)
+                    (name, device_type, current_time, metadata_json, device_id)
                 )
             else:
                 # Insert new device
                 cursor.execute(
                     "INSERT INTO devices (address, name, device_type, last_connected, metadata) VALUES (?, ?, ?, ?, ?)",
-                    (address, name, device_type, datetime.now().isoformat(), metadata_json)
+                    (address, name, device_type, current_time, metadata_json)
                 )
                 device_id = cursor.lastrowid
             
@@ -241,13 +245,14 @@ class Database:
             logger.error(f"Error getting device: {str(e)}")
             return None
     
-    def start_workout(self, device_id: int, workout_type: str) -> int:
+    def start_workout(self, device_id: int, workout_type: str, start_time: float = None) -> int:
         """
         Start a new workout session.
         
         Args:
             device_id: Device ID
             workout_type: Type of workout (bike, rower, etc.)
+            start_time: Unix timestamp of workout start (optional, defaults to current time)
             
         Returns:
             Workout ID
@@ -256,11 +261,12 @@ class Database:
             conn = self._get_connection()
             cursor = conn.cursor()
             
-            start_time = datetime.now().isoformat()
+            # Use provided timestamp or current time
+            current_timestamp = start_time if start_time is not None else time.time()
             
             cursor.execute(
                 "INSERT INTO workouts (device_id, start_time, workout_type, summary) VALUES (?, ?, ?, ?)",
-                (device_id, start_time, workout_type, '{}')
+                (device_id, current_timestamp, workout_type, '{}')
             )
             workout_id = cursor.lastrowid
             
@@ -271,45 +277,53 @@ class Database:
             logger.error(f"Error starting workout: {str(e)}")
             raise
     
-    def end_workout(self, workout_id: int, summary: Dict[str, Any] = None, fit_file_path: str = None) -> bool:
+    def end_workout(self, workout_id, end_time=None):
         """
-        End a workout session.
+        End a workout by updating its end_time.
         
         Args:
-            workout_id: Workout ID
-            summary: Workout summary data
-            fit_file_path: Path to generated FIT file
-            
+            workout_id (int): The ID of the workout to end
+            end_time (float, optional): The end time (timestamp) of the workout. 
+                                        If not provided, current time is used.
+                                        
         Returns:
-            True if successful, False otherwise
+            bool: True if successful, False otherwise
         """
         try:
             conn = self._get_connection()
             cursor = conn.cursor()
             
-            # Get start time
-            cursor.execute("SELECT start_time FROM workouts WHERE id = ?", (workout_id,))
+            # Use current time if end_time not provided
+            if end_time is None:
+                end_time = time.time()
+                
+            # Get the workout to update
+            cursor.execute(
+                "SELECT id, start_time FROM workouts WHERE id = ?", 
+                (workout_id,)
+            )
             result = cursor.fetchone()
             
             if not result:
-                logger.error(f"Workout {workout_id} not found")
+                logger.error(f"No workout found with ID {workout_id}")
                 return False
+                
+            # Get the workout start time
+            start_time = result['start_time']
+                
+            # Calculate duration
+            duration = end_time - start_time
             
-            start_time = datetime.fromisoformat(result['start_time'])
-            end_time = datetime.now()
-            duration = int((end_time - start_time).total_seconds())
-            
-            # Convert summary to JSON string
-            summary_json = json.dumps(summary) if summary else '{}'
-            
+            # Update the workout with end time and duration
             cursor.execute(
-                "UPDATE workouts SET end_time = ?, duration = ?, summary = ?, fit_file_path = ? WHERE id = ?",
-                (end_time.isoformat(), duration, summary_json, fit_file_path, workout_id)
+                "UPDATE workouts SET end_time = ?, duration = ? WHERE id = ?",
+                (end_time, duration, workout_id)
             )
-            
             conn.commit()
-            logger.info(f"Ended workout {workout_id}, duration: {duration}s")
+            
+            logger.info(f"Ended workout {workout_id} with duration {duration:.2f} seconds")
             return True
+            
         except sqlite3.Error as e:
             logger.error(f"Error ending workout: {str(e)}")
             return False
@@ -383,7 +397,39 @@ class Database:
             
             if workout:
                 workout_dict = dict(workout)
-                workout_dict['summary'] = json.loads(workout_dict['summary'])
+                
+                # Add ISO-formatted timestamps for UI display
+                if workout_dict['start_time'] is not None:
+                    try:
+                        # Convert string to float if needed
+                        start_time = float(workout_dict['start_time']) if isinstance(workout_dict['start_time'], str) else workout_dict['start_time']
+                        workout_dict['start_time_iso'] = datetime.fromtimestamp(
+                            start_time, tz=timezone.utc
+                        ).isoformat()
+                    except (ValueError, TypeError) as e:
+                        logger.warning(f"Could not convert start_time to timestamp: {e}")
+                        workout_dict['start_time_iso'] = "Unknown"
+                
+                if workout_dict['end_time'] is not None:
+                    try:
+                        # Convert string to float if needed
+                        end_time = float(workout_dict['end_time']) if isinstance(workout_dict['end_time'], str) else workout_dict['end_time']
+                        workout_dict['end_time_iso'] = datetime.fromtimestamp(
+                            end_time, tz=timezone.utc
+                        ).isoformat()
+                    except (ValueError, TypeError) as e:
+                        logger.warning(f"Could not convert end_time to timestamp: {e}")
+                        workout_dict['end_time_iso'] = "Unknown"
+                
+                # Parse JSON summary
+                if workout_dict['summary']:
+                    try:
+                        workout_dict['summary'] = json.loads(workout_dict['summary'])
+                    except (json.JSONDecodeError, TypeError):
+                        workout_dict['summary'] = {}
+                else:
+                    workout_dict['summary'] = {}
+                
                 return workout_dict
             return None
         except sqlite3.Error as e:
@@ -433,48 +479,72 @@ class Database:
     
     def get_workouts(self, limit: int = 10, offset: int = 0) -> List[Dict[str, Any]]:
         """
-        Get recent workouts from the database.
+        Get recent workouts.
         
         Args:
             limit: Maximum number of workouts to return
             offset: Offset for pagination
             
         Returns:
-            List of workout dictionaries
+            List of workouts
         """
         try:
             conn = self._get_connection()
             cursor = conn.cursor()
             
-            # Modified query to handle both string and numeric device IDs
-            # Use LEFT JOIN instead of JOIN to include workouts with invalid device references
             cursor.execute(
-                """
-                SELECT w.*, d.name as device_name, d.device_type 
-                FROM workouts w
-                LEFT JOIN devices d ON w.device_id = d.id
-                ORDER BY w.start_time DESC
-                LIMIT ? OFFSET ?
-                """,
+                "SELECT * FROM workouts ORDER BY start_time DESC LIMIT ? OFFSET ?",
                 (limit, offset)
             )
             
             workouts = []
-            for row in cursor.fetchall():
-                workout = dict(row)
+            for workout in cursor.fetchall():
+                workout = dict(workout)
                 
-                # If device_name is NULL from the LEFT JOIN, add a placeholder value
-                if workout.get('device_name') is None:
-                    # Try to use the device_id as device_name if it's a string (like a MAC address)
-                    device_id = workout.get('device_id')
-                    if isinstance(device_id, str):
-                        workout['device_name'] = f"Device {device_id}"
+                # Try to add device name from device table
+                if workout.get('device_id') is not None:
+                    cursor.execute(
+                        "SELECT name, device_type FROM devices WHERE id = ?", 
+                        (workout['device_id'],)
+                    )
+                    device = cursor.fetchone()
+                    if device:
+                        workout['device_name'] = device['name']
+                        workout['device_type'] = device['device_type']
                     else:
-                        workout['device_name'] = "Unknown Device"
+                        # Try to use the device_id as device_name if it's a string (like a MAC address)
+                        device_id = workout.get('device_id')
+                        if isinstance(device_id, str):
+                            workout['device_name'] = f"Device {device_id}"
+                        else:
+                            workout['device_name'] = "Unknown Device"
                 
                 # If device_type is NULL, add a default based on workout_type
                 if workout.get('device_type') is None:
                     workout['device_type'] = workout.get('workout_type', 'unknown')
+                
+                # Add ISO-formatted timestamps for UI display
+                if workout['start_time'] is not None:
+                    try:
+                        # Convert string to float if needed
+                        start_time = float(workout['start_time']) if isinstance(workout['start_time'], str) else workout['start_time']
+                        workout['start_time_iso'] = datetime.fromtimestamp(
+                            start_time, tz=timezone.utc
+                        ).isoformat()
+                    except (ValueError, TypeError) as e:
+                        logger.warning(f"Could not convert start_time to timestamp: {e}")
+                        workout['start_time_iso'] = "Unknown"
+                
+                if workout['end_time'] is not None:
+                    try:
+                        # Convert string to float if needed
+                        end_time = float(workout['end_time']) if isinstance(workout['end_time'], str) else workout['end_time']
+                        workout['end_time_iso'] = datetime.fromtimestamp(
+                            end_time, tz=timezone.utc
+                        ).isoformat()
+                    except (ValueError, TypeError) as e:
+                        logger.warning(f"Could not convert end_time to timestamp: {e}")
+                        workout['end_time_iso'] = "Unknown"
                 
                 # Parse JSON summary
                 if workout['summary']:
