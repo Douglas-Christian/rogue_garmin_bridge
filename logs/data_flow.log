@@ -2010,3 +2010,25 @@ sqlite3.OperationalError: database is locked
 2025-04-30 21:51:23,421 - fit_converter - INFO - [TIMESTAMP FIX] Processed 25 relative timestamps to FIT format
 2025-04-30 21:51:23,422 - fit_converter - INFO - [TIMESTAMP FIX] Skipping time_created field to avoid timestamp encoding issues
 2025-04-30 21:51:23,422 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950690 is not in valid range [0, 4294967295]
+2025-05-01 06:17:57,575 - database - INFO - Database tables created
+2025-05-01 06:17:57,990 - database - INFO - Database tables created
+2025-05-01 06:18:22,805 - fit_converter - INFO - [TIMESTAMP FIX] Workout start Unix timestamp: 1745974425 (2025-04-29T20:53:45)
+2025-05-01 06:18:22,805 - fit_converter - INFO - [TIMESTAMP FIX] Unix timestamp 1745974425 converted to safe FIT timestamp 1114908825
+2025-05-01 06:18:22,806 - fit_converter - INFO - [TIMESTAMP FIX] Converted to FIT timestamp: 1114908825
+2025-05-01 06:18:22,806 - fit_converter - INFO - [TIMESTAMP FIX] Processed 63 relative timestamps to FIT format
+2025-05-01 06:18:22,807 - fit_converter - INFO - [TIMESTAMP FIX] Skipping time_created field to avoid timestamp encoding issues
+2025-05-01 06:18:22,807 - fit_converter - ERROR - Error converting bike workout to FIT: timestamp encoded value -629950691 is not in valid range [0, 4294967295]
+2025-05-01 19:49:49,550 - database - INFO - Database tables created
+2025-05-01 19:50:18,786 - database - INFO - Database tables created
+2025-05-01 19:52:03,983 - database - INFO - Database tables created
+2025-05-01 19:52:03,984 - database - INFO - Database tables created
+2025-05-01 19:52:04,621 - database - INFO - Database tables created
+2025-05-01 19:52:04,622 - database - INFO - Database tables created
+2025-05-01 19:53:16,746 - database - INFO - Started workout 1 with device C9:02:CB:68:17:C1
+2025-05-01 19:57:28,568 - database - INFO - Database tables created
+2025-05-01 19:57:28,571 - database - INFO - Database tables created
+2025-05-01 19:57:29,601 - database - INFO - Database tables created
+2025-05-01 19:57:29,603 - database - INFO - Database tables created
+2025-05-01 19:58:11,720 - database - INFO - Started workout 2 with device C9:02:CB:68:17:C1
+2025-05-01 19:59:09,224 - fit_converter - ERROR - Error converting bike workout to FIT: time_created encoded value -629319456 is not in valid range [0, 4294967295]
+2025-05-01 19:59:09,283 - database - INFO - Ended workout 2, duration: 57s

@@ -870,3 +870,20 @@ Traceback (most recent call last):
     self.database._connect()
     ^^^^^^^^^^^^^^^^^^^^^^
 AttributeError: 'Database' object has no attribute '_connect'
+2025-05-01 06:35:04,773 - workout_manager - INFO - Deleting workout 1
+2025-05-01 06:35:04,780 - workout_manager - ERROR - Error deleting workout: 'Database' object has no attribute '_connect'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\workout_manager.py", line 724, in delete_workout
+    self.database._connect()
+    ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute '_connect'
+2025-05-01 06:35:11,470 - workout_manager - INFO - Deleting workout 1
+2025-05-01 06:35:11,472 - workout_manager - ERROR - Error deleting workout: 'Database' object has no attribute '_connect'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\workout_manager.py", line 724, in delete_workout
+    self.database._connect()
+    ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute '_connect'
+2025-05-01 19:53:16,747 - workout_manager - INFO - Started workout 1 with device C9:02:CB:68:17:C1
+2025-05-01 19:58:11,722 - workout_manager - INFO - Started workout 2 with device C9:02:CB:68:17:C1
+2025-05-01 19:59:09,284 - workout_manager - INFO - Ended workout 2, FIT file: None

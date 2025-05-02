@@ -43,7 +43,7 @@ app = Flask(__name__)
 # Create database and workout manager
 db_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'src', 'data', 'rogue_garmin.db')
 db = Database(db_path)
-workout_manager = WorkoutManager(db)
+workout_manager = WorkoutManager(db_path)  # Pass the path string, not the Database object
 
 # Start FTMS device manager
 logger.info(f"Initializing FTMSDeviceManager with use_simulator={args.use_simulator}, device_type={args.device_type}")
@@ -346,8 +346,8 @@ def start_workout():
 def end_workout():
     """End the current workout."""
     try:
-        workout_id = request.json.get('workout_id', workout_manager.active_workout_id)
-        success = workout_manager.end_workout(workout_id)
+        # Workout ID is not needed as end_workout() only ends the active workout
+        success = workout_manager.end_workout()
         return jsonify({'success': success})
     except Exception as e:
         logger.error(f"Error ending workout: {str(e)}")

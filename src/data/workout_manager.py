@@ -2,53 +2,52 @@
 """
 Workout Manager Module for Rogue to Garmin Bridge
 
-This module handles workout data management, storage, and retrieval.
+This module handles workout data collection, processing, and management.
+It serves as an intermediary between the FTMS module and the database.
 """
 
-import os
-import sys
-import json
+import logging
 import time
+import os  # Added for path joining
 from typing import Dict, List, Any, Optional, Callable
-from datetime import datetime, timezone
+from datetime import datetime
 
-# Add the project root to the path so we can use absolute imports
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-from src.data.database import Database
-from src.data.data_processor import DataProcessor
-from src.utils.logging_config import get_component_logger
-from src.ftms.ftms_manager import FTMSDeviceManager
+from ..ftms.ftms_manager import FTMSDeviceManager
+from .database import Database
+from .data_processor import DataProcessor  # Added import
+from ..fit.fit_converter import FITConverter  # Added import
 
-# Get component logger
-logger = get_component_logger('workout_manager')
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger('workout_manager')
 
 class WorkoutManager:
     """
-    Manages workout data, including data collection, processing, storage, and retrieval.
-    Interfaces between FTMS devices, the database, and FIT file generation.
+    Class for managing workout sessions, collecting and processing data.
     """
     
-    def __init__(self, db_path_or_instance, ftms_manager: FTMSDeviceManager = None):
+    def __init__(self, db_path: str, ftms_manager: FTMSDeviceManager = None):
         """
         Initialize the workout manager.
         
         Args:
-            db_path_or_instance: Path to the SQLite database file or a Database instance
+            db_path: Path to the SQLite database file
             ftms_manager: FTMS device manager instance (optional)
         """
-        # Check if db_path_or_instance is already a Database instance
-        if isinstance(db_path_or_instance, Database):
-            self.database = db_path_or_instance
-        else:
-            # Otherwise assume it's a path string
-            self.database = Database(db_path_or_instance)
-            
+        self.database = Database(db_path)
         self.ftms_manager = ftms_manager
+        self.data_processor = DataProcessor() # Initialize DataProcessor
+        # Define the output directory for FIT files relative to the project root
+        fit_output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "fit_files"))
+        self.fit_converter = FITConverter(output_dir=fit_output_dir) # Initialize FITConverter
         
         # Current workout state
         self.active_workout_id = None
         self.active_device_id = None
-        self.workout_start_time = None  # Will store Unix timestamp
+        self.workout_start_time = None
         self.workout_type = None
         self.data_points = []
         self.summary_metrics = {}
@@ -80,145 +79,109 @@ class WorkoutManager:
         """
         self.status_callbacks.append(callback)
     
-    def start_workout(self, device_id: str, workout_type: str) -> int:
+    def start_workout(self, device_id: int, workout_type: str) -> int:
         """
         Start a new workout session.
         
         Args:
-            device_id: ID of the connected device
-            workout_type: Type of workout (e.g., 'bike', 'rower')
+            device_id: Device ID
+            workout_type: Type of workout (bike, rower, etc.)
             
         Returns:
-            Workout ID if successful, -1 if failed
+            Workout ID
         """
-        try:
-            # Validate parameters
-            if not device_id:
-                logger.error("Cannot start workout: No device ID provided")
-                return -1
-                
-            if not workout_type:
-                logger.error("Cannot start workout: No workout type provided")
-                return -1
-                
-            # Check if already in a workout
-            if self.active_workout_id is not None:
-                logger.warning(f"Workout already in progress (ID: {self.active_workout_id}). Ending previous workout.")
-                self.end_workout()
-            
-            logger.info(f"Starting new {workout_type} workout on device {device_id}")
-            
-            # Store start time as Unix timestamp
-            self.workout_start_time = time.time()
-            
-            # Create a new workout record
-            workout_id = self.database.start_workout(
-                device_id=device_id,
-                workout_type=workout_type,
-                start_time=self.workout_start_time  # Pass Unix timestamp
-            )
-            
-            if workout_id == -1:
-                logger.error("Failed to create workout in database")
-                return -1
-                
-            self.active_workout_id = workout_id
-            self.active_device_id = device_id
-            self.workout_type = workout_type
-            self.data_points = []
-            self.summary_metrics = {
-                'total_distance': 0,
-                'total_calories': 0,
-                'avg_power': 0,
-                'max_power': 0,
-                'avg_heart_rate': 0,
-                'max_heart_rate': 0,
-                'avg_cadence': 0,
-                'max_cadence': 0,
-                'avg_speed': 0,
-                'max_speed': 0,
-                'total_strokes': 0,  # For rower
-                'avg_stroke_rate': 0,  # For rower
-                'max_stroke_rate': 0,  # For rower
-            }
-            
-            # Notify FTMS manager to start workout data generation if using simulator
-            if self.ftms_manager:
-                self.ftms_manager.notify_workout_start(workout_id, workout_type)
-            
-            # Notify status - convert Unix timestamp to ISO format for UI display
-            self._notify_status('workout_started', {
-                'workout_id': workout_id,
-                'device_id': device_id,
-                'workout_type': workout_type,
-                'start_time': self.workout_start_time,
-                'start_time_iso': datetime.fromtimestamp(self.workout_start_time, tz=timezone.utc).isoformat()
-            })
-            
-            logger.info(f"Started workout {workout_id} with device {device_id}")
-            return workout_id
+        if self.active_workout_id:
+            logger.warning("Workout already in progress, ending current workout")
+            self.end_workout()
         
-        except Exception as e:
-            logger.error(f"Error starting workout: {str(e)}")
-            return -1
+        # Start new workout in database
+        workout_id = self.database.start_workout(device_id, workout_type)
+        
+        # Set current workout state
+        self.active_workout_id = workout_id
+        self.active_device_id = device_id
+        self.workout_start_time = datetime.now()
+        self.workout_type = workout_type
+        self.data_points = []
+        self.summary_metrics = {
+            'total_distance': 0,
+            'total_calories': 0,
+            'avg_power': 0,
+            'max_power': 0,
+            'avg_heart_rate': 0,
+            'max_heart_rate': 0,
+            'avg_cadence': 0,
+            'max_cadence': 0,
+            'avg_speed': 0,
+            'max_speed': 0,
+            'total_strokes': 0,  # For rower
+            'avg_stroke_rate': 0,  # For rower
+            'max_stroke_rate': 0,  # For rower
+        }
+        
+        # Notify status
+        self._notify_status('workout_started', {
+            'workout_id': workout_id,
+            'device_id': device_id,
+            'workout_type': workout_type,
+            'start_time': datetime.now().isoformat()
+        })
+        
+        logger.info(f"Started workout {workout_id} with device {device_id}")
+        return workout_id
     
-    def end_workout(self, workout_id=None) -> bool:
+    def end_workout(self) -> bool:
         """
         End the current workout session.
         
-        Args:
-            workout_id: Optional workout ID to end. If None, ends the active workout.
-            
         Returns:
-            True if successful, False if failed
+            True if successful, False otherwise
         """
-        try:
-            # If no workout_id is provided, use the active workout
-            if workout_id is None:
-                workout_id = self.active_workout_id
-                
-            if workout_id is None:
-                logger.warning("No workout in progress to end")
-                return False
-                
-            logger.info(f"Ending workout (ID: {workout_id})")
+        if not self.active_workout_id:
+            logger.warning("No active workout to end")
+            return False
+        
+        # Store workout ID and type before clearing state
+        workout_id_to_end = self.active_workout_id
+        workout_type_to_end = self.workout_type
+        start_time_to_end = self.workout_start_time
+        
+        # Calculate final summary metrics
+        self._calculate_summary_metrics()
+        
+        # Get workout data for FIT conversion
+        workout_data = self.get_workout_data(workout_id_to_end)
+        
+        # Process data
+        processed_data = self.data_processor.process_workout_data(
+            workout_data, workout_type_to_end, start_time_to_end
+        )
+        
+        # Convert to FIT file
+        fit_file_path = self.fit_converter.convert_workout(
+            processed_data, user_profile=self.get_user_profile()
+        )
+        
+        # End workout in database, including FIT file path
+        success = self.database.end_workout(
+            workout_id_to_end,
+            summary=self.summary_metrics,
+            fit_file_path=fit_file_path
+        )
+        
+        if success:
+            # Notify status
+            duration = (datetime.now() - start_time_to_end).total_seconds()
+            self._notify_status("workout_ended", {
+                "workout_id": workout_id_to_end,
+                "device_id": self.active_device_id,
+                "workout_type": workout_type_to_end,
+                "duration": int(duration),
+                "summary": self.summary_metrics,
+                "fit_file_path": fit_file_path
+            })
             
-            # Calculate workout duration
-            end_time = time.time()
-            duration = end_time - self.workout_start_time
-            
-            # Process workout data for summary metrics
-            summary = self._calculate_summary_metrics()
-            
-            # Update the workout record
-            success = self.database.end_workout(
-                workout_id=workout_id,
-                end_time=end_time,  # Pass Unix timestamp
-                summary=summary
-            )
-            
-            if not success:
-                logger.error(f"Failed to update workout {workout_id} in database")
-                
-            # Notify any connected device managers
-            if self.ftms_manager:
-                self.ftms_manager.notify_workout_end(workout_id)
-                
-            # Generate FIT file (Commented out for now to avoid fit_converter error)
-            # if self.fit_converter and len(self.data_points) > 0:
-            #     try:
-            #         fit_file = self.fit_converter.convert_workout_to_fit(
-            #             workout_id=workout_id,
-            #             workout_type=self.workout_type,
-            #             data=self.data_points,
-            #             summary=summary
-            #         )
-            #         
-            #         # If Garmin uploader is available, upload the file
-            #         if self.garmin_uploader and fit_file:
-            #             self.garmin_uploader.upload_workout(fit_file)
-            #     except Exception as e:
-            #         logger.error(f"Error generating or uploading FIT file: {str(e)}")
+            logger.info(f"Ended workout {workout_id_to_end}, FIT file: {fit_file_path}")
             
             # Clear current workout state
             self.active_workout_id = None
@@ -228,10 +191,9 @@ class WorkoutManager:
             self.data_points = []
             self.summary_metrics = {}
             
-            return success
-            
-        except Exception as e:
-            logger.error(f"Error ending workout: {str(e)}")
+            return True
+        else:
+            logger.error(f"Failed to end workout {workout_id_to_end}")
             return False
     
     def add_data_point(self, data: Dict[str, Any]) -> bool:
@@ -248,44 +210,31 @@ class WorkoutManager:
             logger.warning("No active workout to add data to")
             return False
         
-        # Calculate timestamp (seconds since workout start)
-        if not self.workout_start_time:
-             logger.error("Workout start time not set, cannot calculate relative timestamp")
-             return False
+        # Get absolute timestamp
+        absolute_timestamp = datetime.now()
         
-        # Get current timestamp     
-        current_time = time.time()
-        
-        # Calculate relative seconds from workout start
-        relative_timestamp = current_time - self.workout_start_time
-        
-        # Add timestamps to data
-        data['timestamp'] = relative_timestamp  # Relative to workout start (seconds)
-        data['unix_timestamp'] = current_time   # Absolute Unix timestamp
-        
-        # Store data point locally (for summary calculation)
-        self.data_points.append(data)
+        # Store data point locally (optional, consider if needed for summary)
+        # Add absolute timestamp to local data point if keeping it
+        data_with_ts = data.copy()
+        data_with_ts["timestamp"] = absolute_timestamp 
+        self.data_points.append(data_with_ts)
         
         # Update summary metrics
         self._update_summary_metrics(data)
         
-        # Store in database
+        # Store in database using absolute timestamp
         success = self.database.add_workout_data(
             self.active_workout_id,
-            current_time,  # Store absolute Unix timestamp in database
-            data
-        )
-        
+            absolute_timestamp, # Pass the datetime object
+            data # Pass the original data without the timestamp field
+        ) 
         if success:
-            logger.info(f"Added data point to workout {self.active_workout_id}: time={relative_timestamp:.3f}s, " + 
-                       f"power={data.get('instant_power', 'N/A')}, " + 
-                       f"distance={data.get('total_distance', 'N/A'):.2f}m, " +
-                       f"calories={data.get('total_energy', 'N/A')}")
             # Notify data callbacks
             self._notify_data(data)
             return True
-        
-        return False
+        else:
+            logger.error(f"Failed to add data point to workout {self.active_workout_id}")
+            return False
     
     def get_workout(self, workout_id: int) -> Optional[Dict[str, Any]]:
         """
@@ -354,43 +303,15 @@ class WorkoutManager:
         """
         return self.database.set_user_profile(profile)
     
-    def _handle_ftms_data(self, data: Dict[str, Any]):
-        """Handle incoming FTMS data points."""
-        logger.debug(f"Workout manager received FTMS data point: {data}") # Log data reception
-        if self.active_workout_id is not None and self.workout_start_time is not None:
-            # Calculate timestamp - use Unix timestamp (seconds since epoch)
-            current_time = time.time()
-            
-            # Calculate timestamp relative to workout start (in seconds)
-            relative_timestamp = current_time - self.workout_start_time
-            
-            logger.info(f"Processing data point for workout {self.active_workout_id} at relative timestamp {relative_timestamp:.6f}") # Log processing attempt
-            
-            # Add timestamps to data for local tracking
-            data_with_timestamp = data.copy()
-            data_with_timestamp['timestamp'] = relative_timestamp  # Seconds since workout start
-            data_with_timestamp['unix_timestamp'] = current_time   # Absolute Unix timestamp
-            
-            # Add data point to local memory (for summary calculation)
-            self.data_points.append(data_with_timestamp)
-            
-            # Update summary metrics
-            self._update_summary_metrics(data_with_timestamp)
-            
-            # Add data point to the database - store with absolute Unix timestamp
-            success = self.database.add_workout_data(self.active_workout_id, current_time, data)
-            
-            if success:
-                logger.info(f"Successfully requested database add for workout {self.active_workout_id}, timestamp {relative_timestamp:.6f}") # Log success call
-                # Notify data callbacks about the new data
-                self._notify_data(data_with_timestamp)
-            else:
-                logger.error(f"Failed to request database add for workout {self.active_workout_id}, timestamp {relative_timestamp:.6f}") # Log failed call
-                
-            # Update live data
-            self.live_workout_data = data_with_timestamp
-        else:
-            logger.warning("Received FTMS data but no active workout. Ignoring.") # Log ignored data
+    def _handle_ftms_data(self, data: Dict[str, Any]) -> None:
+        """
+        Handle data from FTMS devices.
+        
+        Args:
+            data: Dictionary of FTMS data
+        """
+        if self.active_workout_id:
+            self.add_data_point(data)
     
     def _handle_ftms_status(self, status: str, data: Any) -> None:
         """
@@ -421,17 +342,9 @@ class WorkoutManager:
                 metadata={'rssi': getattr(device, 'rssi', 0)}
             )
             
-            # Don't automatically start a workout when device connects
-            # Let the user manually start workouts from the UI
-            logger.info(f"Device connected: {device.name} ({device.address}). Workout can be started manually.")
-            
-            # Notify status for connected device
-            self._notify_status('device_connected', {
-                'device_id': device_id,
-                'device_address': device.address,
-                'device_name': device.name,
-                'device_type': device_type
-            })
+            # Start workout if not already started
+            if not self.active_workout_id:
+                self.start_workout(device_id, device_type)
         
         elif status == 'disconnected':
             # End workout if in progress
@@ -459,28 +372,28 @@ class WorkoutManager:
             data: New data point
         """
         # Update distance
-        if 'total_distance' in data and data['total_distance'] is not None:
+        if 'total_distance' in data:
             self.summary_metrics['total_distance'] = data['total_distance']
         
         # Update calories
-        if 'total_energy' in data and data['total_energy'] is not None:
+        if 'total_energy' in data:
             self.summary_metrics['total_calories'] = data['total_energy']
         
         # Update power metrics
-        if 'instant_power' in data and data['instant_power'] is not None:
-            power = data['instant_power']
+        if 'instantaneous_power' in data:
+            power = data['instantaneous_power']
             
             # Update max power
             if power > self.summary_metrics.get('max_power', 0):
                 self.summary_metrics['max_power'] = power
             
             # Update average power
-            power_values = [d.get('instant_power', 0) for d in self.data_points if d.get('instant_power') is not None]
+            power_values = [d.get('instantaneous_power', 0) for d in self.data_points if 'instantaneous_power' in d]
             if power_values:
                 self.summary_metrics['avg_power'] = sum(power_values) / len(power_values)
         
         # Update heart rate metrics
-        if 'heart_rate' in data and data['heart_rate'] is not None:
+        if 'heart_rate' in data:
             hr = data['heart_rate']
             
             # Update max heart rate
@@ -488,33 +401,33 @@ class WorkoutManager:
                 self.summary_metrics['max_heart_rate'] = hr
             
             # Update average heart rate
-            hr_values = [d.get('heart_rate', 0) for d in self.data_points if d.get('heart_rate') is not None]
+            hr_values = [d.get('heart_rate', 0) for d in self.data_points if 'heart_rate' in d]
             if hr_values:
                 self.summary_metrics['avg_heart_rate'] = sum(hr_values) / len(hr_values)
         
         # Update cadence metrics
-        if 'instant_cadence' in data and data['instant_cadence'] is not None:
-            cadence = data['instant_cadence']
+        if 'instantaneous_cadence' in data:
+            cadence = data['instantaneous_cadence']
             
             # Update max cadence
             if cadence > self.summary_metrics.get('max_cadence', 0):
                 self.summary_metrics['max_cadence'] = cadence
             
             # Update average cadence
-            cadence_values = [d.get('instant_cadence', 0) for d in self.data_points if d.get('instant_cadence') is not None]
+            cadence_values = [d.get('instantaneous_cadence', 0) for d in self.data_points if 'instantaneous_cadence' in d]
             if cadence_values:
                 self.summary_metrics['avg_cadence'] = sum(cadence_values) / len(cadence_values)
         
         # Update speed metrics
-        if 'instant_speed' in data and data['instant_speed'] is not None:
-            speed = data['instant_speed']
+        if 'instantaneous_speed' in data:
+            speed = data['instantaneous_speed']
             
             # Update max speed
             if speed > self.summary_metrics.get('max_speed', 0):
                 self.summary_metrics['max_speed'] = speed
             
             # Update average speed
-            speed_values = [d.get('instant_speed', 0) for d in self.data_points if d.get('instant_speed') is not None]
+            speed_values = [d.get('instantaneous_speed', 0) for d in self.data_points if 'instantaneous_speed' in d]
             if speed_values:
                 self.summary_metrics['avg_speed'] = sum(speed_values) / len(speed_values)
     
@@ -578,47 +491,12 @@ class WorkoutManager:
     def _calculate_summary_metrics(self) -> None:
         """Calculate final summary metrics for the workout."""
         # Most metrics are already calculated incrementally
+        # This method can be used for any final calculations
         
         # Round average values
         for key in self.summary_metrics:
             if key.startswith('avg_'):
                 self.summary_metrics[key] = round(self.summary_metrics[key], 2)
-        
-        # Calculate estimated VO2max (if applicable)
-        # Only do this for workouts with heart rate data and power data
-        if (self.summary_metrics.get('avg_heart_rate', 0) > 0 and 
-            self.summary_metrics.get('avg_power', 0) > 0):
-            
-            # Get user profile for weight and other parameters
-            user_profile = self.get_user_profile()
-            
-            if user_profile and 'weight_kg' in user_profile:
-                weight_kg = user_profile.get('weight_kg', 70)  # Default to 70kg if not available
-                max_hr = self.summary_metrics.get('max_heart_rate', 0)
-                avg_hr = self.summary_metrics.get('avg_heart_rate', 0)
-                avg_power = self.summary_metrics.get('avg_power', 0)
-                
-                # Only estimate if we have a significant heart rate
-                if avg_hr > 120 and max_hr > 130:
-                    # Simplified VO2max estimation based on power output and heart rate
-                    # This is a basic formula and could be improved with more advanced models
-                    power_per_kg = avg_power / weight_kg
-                    hr_ratio = avg_hr / max_hr
-                    
-                    # Basic VO2max estimation formula
-                    # Adapted from standard exercise physiology formulas
-                    estimated_vo2max = power_per_kg * 10.8 * (1 + (1 - hr_ratio))
-                    
-                    # Ensure reasonable bounds
-                    estimated_vo2max = max(min(estimated_vo2max, 90), 20)
-                    
-                    # Add to summary metrics
-                    self.summary_metrics['estimated_vo2max'] = round(estimated_vo2max, 1)
-                    logger.info(f"Estimated VO2max: {estimated_vo2max:.1f} ml/kg/min")
-                else:
-                    logger.info("Heart rate too low for reliable VO2max estimation")
-            else:
-                logger.info("User weight not available for VO2max calculation")
     
     def _notify_data(self, data: Dict[str, Any]) -> None:
         """
@@ -646,123 +524,12 @@ class WorkoutManager:
                 callback(status, data)
             except Exception as e:
                 logger.error(f"Error in status callback: {str(e)}")
-    
-    def get_workout_summary_metrics(self) -> Dict[str, Any]:
-        """
-        Get the current summary metrics for the active workout.
-        Used to provide live summary data to the frontend.
-        
-        Returns:
-            Dictionary of summary metrics
-        """
-        # If no active workout, return empty dict
-        if not self.active_workout_id:
-            return {}
-            
-        # Create a copy of the summary metrics to avoid reference issues
-        summary = self.summary_metrics.copy()
-        
-        # Handle any potential NaN values and convert them to proper formats
-        for key, value in summary.items():
-            # Check if value is NaN or None
-            if value is None or (isinstance(value, float) and (value != value)):  # NaN check
-                summary[key] = 0
-                
-        # Only add estimated VO2max if we have enough data
-        if (summary.get('avg_heart_rate', 0) > 0 and 
-            summary.get('avg_power', 0) > 0):
-            
-            # Get user profile for weight
-            user_profile = self.get_user_profile()
-            
-            if user_profile and 'weight_kg' in user_profile:
-                weight_kg = user_profile.get('weight_kg', 70)  # Default to 70kg if not available
-                max_hr = summary.get('max_heart_rate', 0)
-                avg_hr = summary.get('avg_heart_rate', 0)
-                avg_power = summary.get('avg_power', 0)
-                
-                # Only estimate if we have a significant heart rate
-                if avg_hr > 120 and max_hr > 130:
-                    # Simplified VO2max estimation
-                    power_per_kg = avg_power / weight_kg
-                    hr_ratio = avg_hr / max_hr
-                    
-                    estimated_vo2max = power_per_kg * 10.8 * (1 + (1 - hr_ratio))
-                    estimated_vo2max = max(min(estimated_vo2max, 90), 20)
-                    
-                    summary['estimated_vo2max'] = round(estimated_vo2max, 1)
-                else:
-                    # Add a placeholder value that's not null
-                    summary['estimated_vo2max'] = 0
-            else:
-                # Set a default value when user weight isn't available
-                summary['estimated_vo2max'] = 0
-                
-        return summary
-    
-    def delete_workout(self, workout_id: int) -> bool:
-        """
-        Delete a workout and all its associated data from the database.
-        
-        Args:
-            workout_id: ID of the workout to delete
-            
-        Returns:
-            True if successful, False otherwise
-        """
-        try:
-            logger.info(f"Deleting workout {workout_id}")
-            
-            # First check if the workout exists
-            workout = self.get_workout(workout_id)
-            if not workout:
-                logger.warning(f"Workout {workout_id} not found, cannot delete")
-                return False
-                
-            # Since there's no direct delete method in the Database class,
-            # we'll establish a connection and execute SQL directly
-            self.database._connect()
-            
-            # Delete workout data points first
-            self.database.cursor.execute(
-                "DELETE FROM workout_data WHERE workout_id = ?", 
-                (workout_id,)
-            )
-            
-            # Then delete the workout itself
-            self.database.cursor.execute(
-                "DELETE FROM workouts WHERE id = ?", 
-                (workout_id,)
-            )
-            
-            # Commit the changes
-            self.database.conn.commit()
-            
-            # Disconnect from the database
-            self.database._disconnect()
-            
-            logger.info(f"Deleted workout {workout_id} and its data points")
-            
-            return True
-            
-        except Exception as e:
-            logger.error(f"Error deleting workout: {str(e)}", exc_info=True)
-            
-            # Make sure to rollback and close the connection on error
-            if hasattr(self.database, 'conn') and self.database.conn:
-                try:
-                    self.database.conn.rollback()
-                except:
-                    pass
-                finally:
-                    self.database._disconnect()
-                    
-            return False
 
 
 # Example usage
 if __name__ == "__main__":
     import asyncio
+    from ..ftms.ftms_manager import FTMSDeviceManager
     
     async def main():
         # Create FTMS manager with simulator

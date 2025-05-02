@@ -2045,3 +2045,211 @@ TypeError: 'str' object cannot be interpreted as an integer
 2025-04-30 21:51:23,419 - web - INFO - Duration: 25
 2025-04-30 21:51:23,419 - web - INFO - Data points: 25
 2025-04-30 21:51:23,422 - web - ERROR - FIT conversion returned None for workout 3
+2025-05-01 06:17:57,575 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-01 06:17:57,576 - web - INFO - Using real FTMS devices
+2025-05-01 06:17:57,577 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-01 06:17:57,577 - web - INFO - Starting background asyncio loop thread...
+2025-05-01 06:17:57,578 - web - INFO - Background thread started. Creating new event loop.
+2025-05-01 06:17:57,578 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-01 06:17:57,585 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-01 06:17:57,990 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-01 06:17:57,991 - web - INFO - Using real FTMS devices
+2025-05-01 06:17:57,992 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-01 06:17:57,992 - web - INFO - Starting background asyncio loop thread...
+2025-05-01 06:17:57,994 - web - INFO - Background thread started. Creating new event loop.
+2025-05-01 06:17:57,994 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-01 06:17:58,001 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-01 06:18:13,020 - web - INFO - Getting workouts with limit=10, offset=0
+2025-05-01 06:18:13,023 - web - INFO - Retrieved 6 workouts from database
+2025-05-01 06:18:16,002 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-01 06:18:16,003 - web - INFO - Retrieved 6 workouts from database
+2025-05-01 06:18:22,803 - web - INFO - Converting workout 1 to FIT file
+2025-05-01 06:18:22,804 - web - INFO - Workout type: bike
+2025-05-01 06:18:22,804 - web - INFO - Duration: 62
+2025-05-01 06:18:22,804 - web - INFO - Data points: 63
+2025-05-01 06:18:22,808 - web - ERROR - FIT conversion returned None for workout 1
+2025-05-01 19:52:03,985 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-01 19:52:03,985 - web - INFO - Using real FTMS devices
+2025-05-01 19:52:03,986 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-01 19:52:03,986 - web - INFO - Starting background asyncio loop thread...
+2025-05-01 19:52:03,988 - web - INFO - Background thread started. Creating new event loop.
+2025-05-01 19:52:03,988 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-01 19:52:03,994 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-01 19:52:04,622 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-01 19:52:04,623 - web - INFO - Using real FTMS devices
+2025-05-01 19:52:04,623 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-01 19:52:04,624 - web - INFO - Starting background asyncio loop thread...
+2025-05-01 19:52:04,625 - web - INFO - Background thread started. Creating new event loop.
+2025-05-01 19:52:04,625 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-01 19:52:04,632 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-01 19:52:15,247 - web - INFO - Getting workouts with limit=10, offset=0
+2025-05-01 19:52:15,249 - web - INFO - Retrieved 0 workouts from database
+2025-05-01 19:52:15,250 - web - WARNING - No workouts found in database
+2025-05-01 19:52:15,251 - web - INFO - Database reports 0 workouts exist
+2025-05-01 19:53:05,202 - web - INFO - Scheduling connect task for C9:02:CB:68:17:C1 on background loop.
+2025-05-01 19:53:14,292 - web - INFO - Connect task for C9:02:CB:68:17:C1 completed with result: True
+2025-05-01 19:53:17,542 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:18,241 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:19,550 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:20,233 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:21,549 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:22,241 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:23,548 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:24,230 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:25,543 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:26,237 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:27,551 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:28,231 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:29,543 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:30,237 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:31,548 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:32,241 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:33,552 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:34,231 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:35,543 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:36,244 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:37,540 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:49,922 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:49,926 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:50,926 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:51,622 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:52,937 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:53,615 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:53:54,929 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:13,578 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-01 19:54:13,582 - web - INFO - Retrieved 0 workouts from database
+2025-05-01 19:54:13,583 - web - WARNING - No workouts found in database
+2025-05-01 19:54:13,585 - web - INFO - Database reports 1 workouts exist
+2025-05-01 19:54:15,018 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:15,026 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:16,026 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:16,720 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:18,034 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:18,712 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:20,033 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:20,756 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:22,041 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:22,723 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:24,037 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:24,718 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:26,037 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:26,729 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:28,027 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:28,724 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:30,031 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:30,716 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:32,035 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:32,727 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:34,038 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:34,719 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:36,036 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:36,726 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:38,024 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:38,722 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:40,033 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:40,722 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:42,025 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:42,720 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:44,037 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:44,724 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:46,025 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:46,720 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:48,028 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:48,722 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:50,036 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:50,719 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:52,041 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:52,719 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:54,033 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:54,716 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:56,038 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:56,716 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:58,027 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:54:58,290 - web - ERROR - Error ending workout: WorkoutManager.end_workout() takes 1 positional argument but 2 were given
+2025-05-01 19:55:03,115 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:55:04,023 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:55:04,719 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:55:05,057 - web - ERROR - Error ending workout: WorkoutManager.end_workout() takes 1 positional argument but 2 were given
+2025-05-01 19:57:28,573 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-01 19:57:28,574 - web - INFO - Using real FTMS devices
+2025-05-01 19:57:28,575 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-01 19:57:28,575 - web - INFO - Starting background asyncio loop thread...
+2025-05-01 19:57:28,578 - web - INFO - Background thread started. Creating new event loop.
+2025-05-01 19:57:28,578 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-01 19:57:28,591 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-01 19:57:29,605 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-01 19:57:29,606 - web - INFO - Using real FTMS devices
+2025-05-01 19:57:29,606 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-01 19:57:29,607 - web - INFO - Starting background asyncio loop thread...
+2025-05-01 19:57:29,608 - web - INFO - Background thread started. Creating new event loop.
+2025-05-01 19:57:29,608 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-01 19:57:29,622 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-01 19:57:57,220 - web - INFO - Scheduling connect task for C9:02:CB:68:17:C1 on background loop.
+2025-05-01 19:58:04,365 - web - INFO - Connect task for C9:02:CB:68:17:C1 completed with result: True
+2025-05-01 19:58:11,962 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:11,968 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:12,977 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:13,663 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:14,977 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:15,673 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:16,987 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:17,664 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:18,973 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:19,666 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:20,984 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:21,665 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:22,983 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:23,665 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:24,972 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:25,665 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:26,988 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:27,671 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:28,972 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:29,665 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:30,985 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:31,664 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:32,980 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:33,665 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:34,973 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:35,669 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:36,972 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:37,666 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:38,979 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:39,676 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:40,985 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:41,673 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:42,988 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:43,680 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:44,972 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:45,662 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:46,980 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:47,672 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:48,974 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:49,668 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:50,980 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:51,664 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:52,980 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:53,673 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:54,979 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:55,667 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:56,981 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:57,677 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:58,975 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:58:59,672 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:59:00,971 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:59:01,672 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:59:02,975 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:59:03,668 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:59:04,968 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:59:05,670 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:59:06,976 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:59:07,665 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:59:08,965 - web - ERROR - Error getting workout summary: 'WorkoutManager' object has no attribute 'get_workout_summary_metrics'
+2025-05-01 19:59:15,571 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-01 19:59:15,576 - web - INFO - Retrieved 0 workouts from database
+2025-05-01 19:59:15,577 - web - WARNING - No workouts found in database
+2025-05-01 19:59:15,580 - web - INFO - Database reports 2 workouts exist
+2025-05-01 19:59:21,887 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-01 19:59:21,890 - web - INFO - Retrieved 0 workouts from database
+2025-05-01 19:59:21,891 - web - WARNING - No workouts found in database
+2025-05-01 19:59:21,893 - web - INFO - Database reports 2 workouts exist

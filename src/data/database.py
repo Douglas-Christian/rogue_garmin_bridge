@@ -2,29 +2,27 @@
 """
 Database Module for Rogue to Garmin Bridge
 
-This module handles the SQLite database operations for storing workout data.
+This module handles database operations for storing workout data,
+device information, and application configuration.
 """
 
-import sqlite3
 import os
+import sqlite3
 import json
-import time
-from datetime import datetime, timezone
-import sys
-import threading
-from typing import Dict, List, Optional, Any
+import logging
+from datetime import datetime
+from typing import Dict, List, Any, Optional, Tuple, Union
 
-# Add the project root to the path so we can use absolute imports
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-from src.utils.logging_config import get_component_logger
-
-# Get component logger
-logger = get_component_logger('database')
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger('database')
 
 class Database:
     """
-    SQLite database handler for the Rogue Garmin Bridge.
-    Manages workout data storage and retrieval with thread-safe connections.
+    Database class for managing SQLite database operations.
     """
     
     def __init__(self, db_path: str):
@@ -35,65 +33,58 @@ class Database:
             db_path: Path to the SQLite database file
         """
         self.db_path = db_path
-        # Thread-local storage for connections
-        self.local = threading.local()
+        self.conn = None
+        self.cursor = None
         
         # Create database directory if it doesn't exist
         os.makedirs(os.path.dirname(db_path), exist_ok=True)
         
-        # Initialize database - create tables once
-        with self._get_connection() as conn:
-            self._create_tables(conn)
+        # Initialize database
+        self._connect()
+        self._create_tables()
+        self._disconnect()
     
-    def _get_connection(self):
-        """
-        Get a thread-local connection to the database.
-        Each thread gets its own connection to avoid SQLite threading issues.
-        
-        Returns:
-            SQLite connection object
-        """
-        # Create a new connection for this thread if it doesn't exist
-        if not hasattr(self.local, 'conn') or self.local.conn is None:
-            try:
-                logger.debug(f"Creating new database connection for thread {threading.get_ident()}")
-                self.local.conn = sqlite3.connect(self.db_path)
-                self.local.conn.row_factory = sqlite3.Row  # Return rows as dictionaries
-            except sqlite3.Error as e:
-                logger.error(f"Error connecting to database: {str(e)}")
-                raise
-        
-        return self.local.conn
-    
-    def _create_tables(self, conn) -> None:
-        """
-        Create database tables if they don't exist.
-        
-        Args:
-            conn: SQLite connection
-        """
+    def _connect(self) -> None:
+        """Connect to the SQLite database."""
         try:
-            cursor = conn.cursor()
-            
+            self.conn = sqlite3.connect(self.db_path)
+            self.conn.row_factory = sqlite3.Row  # Return rows as dictionaries
+            self.cursor = self.conn.cursor()
+            logger.debug("Connected to database")
+        except sqlite3.Error as e:
+            logger.error(f"Error connecting to database: {str(e)}")
+            raise
+    
+    def _disconnect(self) -> None:
+        """Disconnect from the SQLite database."""
+        if self.conn:
+            self.conn.close()
+            self.conn = None
+            self.cursor = None
+            logger.debug("Disconnected from database")
+    
+    def _create_tables(self) -> None:
+        """Create database tables if they don't exist."""
+        try:
             # Devices table
-            cursor.execute('''
+            self.cursor.execute('''
                 CREATE TABLE IF NOT EXISTS devices (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     address TEXT UNIQUE,
                     name TEXT,
                     device_type TEXT,
-                    last_connected REAL,
+                    last_connected TEXT,
                     metadata TEXT
                 )
             ''')
             
-            # Workouts table - using REAL for timestamp fields to store Unix timestamps
-            cursor.execute('''
+            # Workouts table
+            self.cursor.execute('''
                 CREATE TABLE IF NOT EXISTS workouts (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     device_id INTEGER,
-                    start_time REAL,
-                    end_time REAL,
+                    start_time TEXT,
+                    end_time TEXT,
                     duration INTEGER,
                     workout_type TEXT,
                     summary TEXT,
@@ -104,18 +95,18 @@ class Database:
             ''')
             
             # Workout data table
-            cursor.execute('''
+            self.cursor.execute('''
                 CREATE TABLE IF NOT EXISTS workout_data (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     workout_id INTEGER,
-                    timestamp REAL,  /* Using REAL to support fractional seconds */
+                    timestamp TEXT,
                     data TEXT,
                     FOREIGN KEY (workout_id) REFERENCES workouts (id)
                 )
             ''')
             
             # Configuration table
-            cursor.execute('''
+            self.cursor.execute('''
                 CREATE TABLE IF NOT EXISTS configuration (
                     key TEXT PRIMARY KEY,
                     value TEXT
@@ -123,7 +114,7 @@ class Database:
             ''')
             
             # User profile table
-            cursor.execute('''
+            self.cursor.execute('''
                 CREATE TABLE IF NOT EXISTS user_profile (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT,
@@ -138,7 +129,7 @@ class Database:
                 )
             ''')
             
-            conn.commit()
+            self.conn.commit()
             logger.info("Database tables created")
         except sqlite3.Error as e:
             logger.error(f"Error creating tables: {str(e)}")
@@ -158,43 +149,41 @@ class Database:
             Device ID
         """
         try:
-            conn = self._get_connection()
-            cursor = conn.cursor()
+            self._connect()
             
             # Convert metadata to JSON string
             metadata_json = json.dumps(metadata) if metadata else '{}'
             
             # Check if device already exists
-            cursor.execute(
+            self.cursor.execute(
                 "SELECT id FROM devices WHERE address = ?",
                 (address,)
             )
-            result = cursor.fetchone()
-            
-            # Get current Unix timestamp
-            current_time = time.time()
+            result = self.cursor.fetchone()
             
             if result:
                 # Update existing device
                 device_id = result['id']
-                cursor.execute(
+                self.cursor.execute(
                     "UPDATE devices SET name = ?, device_type = ?, last_connected = ?, metadata = ? WHERE id = ?",
-                    (name, device_type, current_time, metadata_json, device_id)
+                    (name, device_type, datetime.now().isoformat(), metadata_json, device_id)
                 )
             else:
                 # Insert new device
-                cursor.execute(
+                self.cursor.execute(
                     "INSERT INTO devices (address, name, device_type, last_connected, metadata) VALUES (?, ?, ?, ?, ?)",
-                    (address, name, device_type, current_time, metadata_json)
+                    (address, name, device_type, datetime.now().isoformat(), metadata_json)
                 )
-                device_id = cursor.lastrowid
+                device_id = self.cursor.lastrowid
             
-            conn.commit()
+            self.conn.commit()
             logger.info(f"Device {name} ({address}) {'updated' if result else 'added'} with ID {device_id}")
             return device_id
         except sqlite3.Error as e:
             logger.error(f"Error adding device: {str(e)}")
             raise
+        finally:
+            self._disconnect()
     
     def get_devices(self) -> List[Dict[str, Any]]:
         """
@@ -204,11 +193,9 @@ class Database:
             List of device dictionaries
         """
         try:
-            conn = self._get_connection()
-            cursor = conn.cursor()
-            
-            cursor.execute("SELECT * FROM devices")
-            devices = [dict(row) for row in cursor.fetchall()]
+            self._connect()
+            self.cursor.execute("SELECT * FROM devices")
+            devices = [dict(row) for row in self.cursor.fetchall()]
             
             # Parse metadata JSON
             for device in devices:
@@ -218,6 +205,8 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Error getting devices: {str(e)}")
             return []
+        finally:
+            self._disconnect()
     
     def get_device(self, device_id: int) -> Optional[Dict[str, Any]]:
         """
@@ -230,11 +219,9 @@ class Database:
             Device dictionary or None if not found
         """
         try:
-            conn = self._get_connection()
-            cursor = conn.cursor()
-            
-            cursor.execute("SELECT * FROM devices WHERE id = ?", (device_id,))
-            device = cursor.fetchone()
+            self._connect()
+            self.cursor.execute("SELECT * FROM devices WHERE id = ?", (device_id,))
+            device = self.cursor.fetchone()
             
             if device:
                 device_dict = dict(device)
@@ -244,139 +231,116 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Error getting device: {str(e)}")
             return None
+        finally:
+            self._disconnect()
     
-    def start_workout(self, device_id: int, workout_type: str, start_time: float = None) -> int:
+    def start_workout(self, device_id: int, workout_type: str) -> int:
         """
         Start a new workout session.
         
         Args:
             device_id: Device ID
             workout_type: Type of workout (bike, rower, etc.)
-            start_time: Unix timestamp of workout start (optional, defaults to current time)
             
         Returns:
             Workout ID
         """
         try:
-            conn = self._get_connection()
-            cursor = conn.cursor()
+            self._connect()
+            start_time = datetime.now().isoformat()
             
-            # Use provided timestamp or current time
-            current_timestamp = start_time if start_time is not None else time.time()
-            
-            cursor.execute(
+            self.cursor.execute(
                 "INSERT INTO workouts (device_id, start_time, workout_type, summary) VALUES (?, ?, ?, ?)",
-                (device_id, current_timestamp, workout_type, '{}')
+                (device_id, start_time, workout_type, '{}')
             )
-            workout_id = cursor.lastrowid
+            workout_id = self.cursor.lastrowid
             
-            conn.commit()
+            self.conn.commit()
             logger.info(f"Started workout {workout_id} with device {device_id}")
             return workout_id
         except sqlite3.Error as e:
             logger.error(f"Error starting workout: {str(e)}")
             raise
+        finally:
+            self._disconnect()
     
-    def end_workout(self, workout_id, end_time=None):
+    def end_workout(self, workout_id: int, summary: Dict[str, Any] = None, fit_file_path: str = None) -> bool:
         """
-        End a workout by updating its end_time.
+        End a workout session.
         
         Args:
-            workout_id (int): The ID of the workout to end
-            end_time (float, optional): The end time (timestamp) of the workout. 
-                                        If not provided, current time is used.
-                                        
-        Returns:
-            bool: True if successful, False otherwise
-        """
-        try:
-            conn = self._get_connection()
-            cursor = conn.cursor()
-            
-            # Use current time if end_time not provided
-            if end_time is None:
-                end_time = time.time()
-                
-            # Get the workout to update
-            cursor.execute(
-                "SELECT id, start_time FROM workouts WHERE id = ?", 
-                (workout_id,)
-            )
-            result = cursor.fetchone()
-            
-            if not result:
-                logger.error(f"No workout found with ID {workout_id}")
-                return False
-                
-            # Get the workout start time
-            start_time = result['start_time']
-                
-            # Calculate duration
-            duration = end_time - start_time
-            
-            # Update the workout with end time and duration
-            cursor.execute(
-                "UPDATE workouts SET end_time = ?, duration = ? WHERE id = ?",
-                (end_time, duration, workout_id)
-            )
-            conn.commit()
-            
-            logger.info(f"Ended workout {workout_id} with duration {duration:.2f} seconds")
-            return True
-            
-        except sqlite3.Error as e:
-            logger.error(f"Error ending workout: {str(e)}")
-            return False
-    
-    def add_workout_data(self, workout_id: int, timestamp: float, data: Dict[str, Any]) -> bool:
-        """
-        Add data point to a workout session.
-
-        Args:
             workout_id: Workout ID
-            timestamp: Data timestamp (seconds since workout start)
-            data: Workout data
-
+            summary: Workout summary data
+            fit_file_path: Path to generated FIT file
+            
         Returns:
             True if successful, False otherwise
         """
-        thread_id = threading.get_ident()
-        logger.info(f"Adding data point for workout {workout_id} at timestamp {timestamp:.6f} in thread {thread_id}")
-        
         try:
-            conn = self._get_connection()
-            cursor = conn.cursor()
-
-            # Verify workout exists
-            cursor.execute("SELECT id FROM workouts WHERE id = ?", (workout_id,))
-            workout = cursor.fetchone()
-            if not workout:
-                logger.error(f"Cannot add data point: Workout {workout_id} does not exist")
+            self._connect()
+            
+            # Get start time
+            self.cursor.execute("SELECT start_time FROM workouts WHERE id = ?", (workout_id,))
+            result = self.cursor.fetchone()
+            
+            if not result:
+                logger.error(f"Workout {workout_id} not found")
                 return False
-
-            # Convert data to JSON string
-            data_json = json.dumps(data)
-
-            # Insert data point - using REPLACE to handle any potential timestamp duplicates
-            cursor.execute(
-                """
-                INSERT OR REPLACE INTO workout_data (workout_id, timestamp, data)
-                VALUES (?, ?, ?)
-                """,
-                (workout_id, timestamp, data_json)
+            
+            start_time = datetime.fromisoformat(result['start_time'])
+            end_time = datetime.now()
+            duration = int((end_time - start_time).total_seconds())
+            
+            # Convert summary to JSON string
+            summary_json = json.dumps(summary) if summary else '{}'
+            
+            self.cursor.execute(
+                "UPDATE workouts SET end_time = ?, duration = ?, summary = ?, fit_file_path = ? WHERE id = ?",
+                (end_time.isoformat(), duration, summary_json, fit_file_path, workout_id)
             )
-
-            conn.commit()
-            logger.info(f"Successfully added data point for workout {workout_id} at timestamp {timestamp:.6f}")
+            
+            self.conn.commit()
+            logger.info(f"Ended workout {workout_id}, duration: {duration}s")
             return True
         except sqlite3.Error as e:
-            logger.error(f"Error adding workout data for workout {workout_id}, timestamp {timestamp}: {str(e)}")
-            # Attempt to rollback if needed
-            try:
-                conn.rollback()
-            except Exception as rollback_error:
-                logger.error(f"Error during rollback: {str(rollback_error)}")
+            logger.error(f"Error ending workout: {str(e)}")
             return False
+        finally:
+            self._disconnect()
+    
+    def add_workout_data(self, workout_id: int, timestamp: datetime, data: Dict[str, Any]) -> bool:
+        """
+        Add data point to a workout session.
+        
+        Args:
+            workout_id: Workout ID
+            timestamp: Data timestamp (absolute datetime object)
+            data: Workout data
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        try:
+            self._connect()
+            
+            # Convert data to JSON string
+            data_json = json.dumps(data)
+            
+            # Convert timestamp to ISO 8601 string
+            timestamp_iso = timestamp.isoformat()
+            
+            self.cursor.execute(
+                "INSERT INTO workout_data (workout_id, timestamp, data) VALUES (?, ?, ?)",
+                (workout_id, timestamp_iso, data_json)
+            )
+            
+            self.conn.commit()
+            return True
+        except sqlite3.Error as e:
+            logger.error(f"Error adding workout data: {str(e)}")
+            return False
+        finally:
+            self._disconnect()
     
     def get_workout(self, workout_id: int) -> Optional[Dict[str, Any]]:
         """
@@ -389,52 +353,20 @@ class Database:
             Workout dictionary or None if not found
         """
         try:
-            conn = self._get_connection()
-            cursor = conn.cursor()
-            
-            cursor.execute("SELECT * FROM workouts WHERE id = ?", (workout_id,))
-            workout = cursor.fetchone()
+            self._connect()
+            self.cursor.execute("SELECT * FROM workouts WHERE id = ?", (workout_id,))
+            workout = self.cursor.fetchone()
             
             if workout:
                 workout_dict = dict(workout)
-                
-                # Add ISO-formatted timestamps for UI display
-                if workout_dict['start_time'] is not None:
-                    try:
-                        # Convert string to float if needed
-                        start_time = float(workout_dict['start_time']) if isinstance(workout_dict['start_time'], str) else workout_dict['start_time']
-                        workout_dict['start_time_iso'] = datetime.fromtimestamp(
-                            start_time, tz=timezone.utc
-                        ).isoformat()
-                    except (ValueError, TypeError) as e:
-                        logger.warning(f"Could not convert start_time to timestamp: {e}")
-                        workout_dict['start_time_iso'] = "Unknown"
-                
-                if workout_dict['end_time'] is not None:
-                    try:
-                        # Convert string to float if needed
-                        end_time = float(workout_dict['end_time']) if isinstance(workout_dict['end_time'], str) else workout_dict['end_time']
-                        workout_dict['end_time_iso'] = datetime.fromtimestamp(
-                            end_time, tz=timezone.utc
-                        ).isoformat()
-                    except (ValueError, TypeError) as e:
-                        logger.warning(f"Could not convert end_time to timestamp: {e}")
-                        workout_dict['end_time_iso'] = "Unknown"
-                
-                # Parse JSON summary
-                if workout_dict['summary']:
-                    try:
-                        workout_dict['summary'] = json.loads(workout_dict['summary'])
-                    except (json.JSONDecodeError, TypeError):
-                        workout_dict['summary'] = {}
-                else:
-                    workout_dict['summary'] = {}
-                
+                workout_dict['summary'] = json.loads(workout_dict['summary'])
                 return workout_dict
             return None
         except sqlite3.Error as e:
             logger.error(f"Error getting workout: {str(e)}")
             return None
+        finally:
+            self._disconnect()
     
     def get_workout_data(self, workout_id: int) -> List[Dict[str, Any]]:
         """
@@ -447,35 +379,26 @@ class Database:
             List of workout data dictionaries
         """
         try:
-            conn = self._get_connection()
-            cursor = conn.cursor()
-            
-            # Get workout data points ordered by timestamp
-            cursor.execute(
-                """
-                SELECT * FROM workout_data
-                WHERE workout_id = ?
-                ORDER BY timestamp ASC
-                """,
+            self._connect()
+            self.cursor.execute(
+                "SELECT * FROM workout_data WHERE workout_id = ? ORDER BY timestamp",
                 (workout_id,)
             )
-            
             data_points = []
-            for row in cursor.fetchall():
+            
+            for row in self.cursor.fetchall():
                 data_point = dict(row)
-                
-                # Parse JSON data
-                if data_point['data']:
-                    data_point['data'] = json.loads(data_point['data'])
-                else:
-                    data_point['data'] = {}
-                
+                # Convert timestamp string back to datetime object
+                data_point["timestamp"] = datetime.fromisoformat(data_point["timestamp"])
+                data_point["data"] = json.loads(data_point["data"])
                 data_points.append(data_point)
             
             return data_points
         except sqlite3.Error as e:
             logger.error(f"Error getting workout data: {str(e)}")
             return []
+        finally:
+            self._disconnect()
     
     def get_workouts(self, limit: int = 10, offset: int = 0) -> List[Dict[str, Any]]:
         """
@@ -486,81 +409,33 @@ class Database:
             offset: Offset for pagination
             
         Returns:
-            List of workouts
+            List of workout dictionaries
         """
         try:
-            conn = self._get_connection()
-            cursor = conn.cursor()
-            
-            cursor.execute(
-                "SELECT * FROM workouts ORDER BY start_time DESC LIMIT ? OFFSET ?",
+            self._connect()
+            self.cursor.execute(
+                """
+                SELECT w.*, d.name as device_name, d.device_type 
+                FROM workouts w
+                JOIN devices d ON w.device_id = d.id
+                ORDER BY w.start_time DESC
+                LIMIT ? OFFSET ?
+                """,
                 (limit, offset)
             )
-            
             workouts = []
-            for workout in cursor.fetchall():
-                workout = dict(workout)
-                
-                # Try to add device name from device table
-                if workout.get('device_id') is not None:
-                    cursor.execute(
-                        "SELECT name, device_type FROM devices WHERE id = ?", 
-                        (workout['device_id'],)
-                    )
-                    device = cursor.fetchone()
-                    if device:
-                        workout['device_name'] = device['name']
-                        workout['device_type'] = device['device_type']
-                    else:
-                        # Try to use the device_id as device_name if it's a string (like a MAC address)
-                        device_id = workout.get('device_id')
-                        if isinstance(device_id, str):
-                            workout['device_name'] = f"Device {device_id}"
-                        else:
-                            workout['device_name'] = "Unknown Device"
-                
-                # If device_type is NULL, add a default based on workout_type
-                if workout.get('device_type') is None:
-                    workout['device_type'] = workout.get('workout_type', 'unknown')
-                
-                # Add ISO-formatted timestamps for UI display
-                if workout['start_time'] is not None:
-                    try:
-                        # Convert string to float if needed
-                        start_time = float(workout['start_time']) if isinstance(workout['start_time'], str) else workout['start_time']
-                        workout['start_time_iso'] = datetime.fromtimestamp(
-                            start_time, tz=timezone.utc
-                        ).isoformat()
-                    except (ValueError, TypeError) as e:
-                        logger.warning(f"Could not convert start_time to timestamp: {e}")
-                        workout['start_time_iso'] = "Unknown"
-                
-                if workout['end_time'] is not None:
-                    try:
-                        # Convert string to float if needed
-                        end_time = float(workout['end_time']) if isinstance(workout['end_time'], str) else workout['end_time']
-                        workout['end_time_iso'] = datetime.fromtimestamp(
-                            end_time, tz=timezone.utc
-                        ).isoformat()
-                    except (ValueError, TypeError) as e:
-                        logger.warning(f"Could not convert end_time to timestamp: {e}")
-                        workout['end_time_iso'] = "Unknown"
-                
-                # Parse JSON summary
-                if workout['summary']:
-                    try:
-                        workout['summary'] = json.loads(workout['summary'])
-                    except (json.JSONDecodeError, TypeError):
-                        workout['summary'] = {}
-                else:
-                    workout['summary'] = {}
-                
+            
+            for row in self.cursor.fetchall():
+                workout = dict(row)
+                workout['summary'] = json.loads(workout['summary'])
                 workouts.append(workout)
             
             return workouts
         except sqlite3.Error as e:
             logger.error(f"Error getting workouts: {str(e)}")
             return []
+        finally:
+            self._disconnect()
     
     def set_config(self, key: str, value: Any) -> bool:
         """
@@ -574,23 +449,24 @@ class Database:
             True if successful, False otherwise
         """
         try:
-            conn = self._get_connection()
-            cursor = conn.cursor()
+            self._connect()
             
             # Convert value to JSON string
             value_json = json.dumps(value)
             
-            cursor.execute(
+            self.cursor.execute(
                 "INSERT OR REPLACE INTO configuration (key, value) VALUES (?, ?)",
                 (key, value_json)
             )
             
-            conn.commit()
+            self.conn.commit()
             logger.debug(f"Set config {key} = {value}")
             return True
         except sqlite3.Error as e:
             logger.error(f"Error setting config: {str(e)}")
             return False
+        finally:
+            self._disconnect()
     
     def get_config(self, key: str, default: Any = None) -> Any:
         """
@@ -604,11 +480,9 @@ class Database:
             Configuration value
         """
         try:
-            conn = self._get_connection()
-            cursor = conn.cursor()
-            
-            cursor.execute("SELECT value FROM configuration WHERE key = ?", (key,))
-            result = cursor.fetchone()
+            self._connect()
+            self.cursor.execute("SELECT value FROM configuration WHERE key = ?", (key,))
+            result = self.cursor.fetchone()
             
             if result:
                 return json.loads(result['value'])
@@ -616,6 +490,8 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Error getting config: {str(e)}")
             return default
+        finally:
+            self._disconnect()
     
     def set_user_profile(self, profile: Dict[str, Any]) -> bool:
         """
@@ -628,16 +504,15 @@ class Database:
             True if successful, False otherwise
         """
         try:
-            conn = self._get_connection()
-            cursor = conn.cursor()
+            self._connect()
             
             # Check if profile exists
-            cursor.execute("SELECT COUNT(*) as count FROM user_profile")
-            count = cursor.fetchone()['count']
+            self.cursor.execute("SELECT COUNT(*) as count FROM user_profile")
+            count = self.cursor.fetchone()['count']
             
             if count > 0:
                 # Update existing profile
-                cursor.execute(
+                self.cursor.execute(
                     """
                     UPDATE user_profile SET 
                     name = ?, age = ?, weight = ?, height = ?, gender = ?,
@@ -659,7 +534,7 @@ class Database:
                 )
             else:
                 # Insert new profile
-                cursor.execute(
+                self.cursor.execute(
                     """
                     INSERT INTO user_profile 
                     (name, age, weight, height, gender, max_heart_rate, resting_heart_rate, garmin_username, garmin_password)
@@ -678,12 +553,14 @@ class Database:
                     )
                 )
             
-            conn.commit()
+            self.conn.commit()
             logger.info("User profile updated")
             return True
         except sqlite3.Error as e:
             logger.error(f"Error setting user profile: {str(e)}")
             return False
+        finally:
+            self._disconnect()
     
     def get_user_profile(self) -> Optional[Dict[str, Any]]:
         """
@@ -693,11 +570,9 @@ class Database:
             User profile dictionary or None if not found
         """
         try:
-            conn = self._get_connection()
-            cursor = conn.cursor()
-            
-            cursor.execute("SELECT * FROM user_profile LIMIT 1")
-            profile = cursor.fetchone()
+            self._connect()
+            self.cursor.execute("SELECT * FROM user_profile LIMIT 1")
+            profile = self.cursor.fetchone()
             
             if profile:
                 return dict(profile)
@@ -705,6 +580,8 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Error getting user profile: {str(e)}")
             return None
+        finally:
+            self._disconnect()
     
     def mark_workout_uploaded(self, workout_id: int) -> bool:
         """
@@ -717,19 +594,19 @@ class Database:
             True if successful, False otherwise
         """
         try:
-            conn = self._get_connection()
-            cursor = conn.cursor()
-            
-            cursor.execute(
+            self._connect()
+            self.cursor.execute(
                 "UPDATE workouts SET uploaded_to_garmin = 1 WHERE id = ?",
                 (workout_id,)
             )
-            conn.commit()
+            self.conn.commit()
             logger.info(f"Workout {workout_id} marked as uploaded to Garmin Connect")
             return True
         except sqlite3.Error as e:
             logger.error(f"Error marking workout as uploaded: {str(e)}")
             return False
+        finally:
+            self._disconnect()
 
 
 # Example usage

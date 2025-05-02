@@ -1,26 +1,26 @@
 #!/usr/bin/env python3
 """
-Data Processor Module for Rogue to Garmin Bridge
+Data Processing Module for Rogue to Garmin Bridge
 
-This module processes raw data from FTMS devices into a format suitable for storage and export.
+This module handles data processing and analysis for workout data,
+including calculating metrics and preparing data for FIT file conversion.
 """
 
-import os
-import sys
-import json
-from typing import Dict, List, Any, Optional
+import logging
+import math
+from typing import Dict, List, Any, Optional, Tuple
+from datetime import datetime, timedelta
 
-# Add the project root to the path so we can use absolute imports
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-from src.utils.logging_config import get_component_logger
-
-# Get component logger
-logger = get_component_logger('data_flow')
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger('data_processor')
 
 class DataProcessor:
     """
-    Processes raw FTMS data into a structured format for storage and analysis.
-    Handles data normalization, unit conversion, and validation.
+    Class for processing and analyzing workout data.
     """
     
     def __init__(self, user_profile: Optional[Dict[str, Any]] = None):
@@ -42,13 +42,15 @@ class DataProcessor:
         self.user_profile = user_profile
     
     def process_workout_data(self, workout_data: List[Dict[str, Any]], 
-                            workout_type: str) -> Dict[str, Any]:
+                            workout_type: str, 
+                            start_time: datetime) -> Dict[str, Any]:
         """
         Process raw workout data to prepare for FIT file conversion.
         
         Args:
             workout_data: List of workout data points
             workout_type: Type of workout (bike, rower, etc.)
+            start_time: Start time of the workout
             
         Returns:
             Dictionary of processed workout data
@@ -62,25 +64,28 @@ class DataProcessor:
         
         # Process based on workout type
         if workout_type == 'bike':
-            return self._process_bike_data(workout_data)
+            return self._process_bike_data(workout_data, start_time)
         elif workout_type == 'rower':
-            return self._process_rower_data(workout_data)
+            return self._process_rower_data(workout_data, start_time)
         else:
             logger.warning(f"Unknown workout type: {workout_type}")
             return {}
     
-    def _process_bike_data(self, workout_data: List[Dict[str, Any]]) -> Dict[str, Any]:
+    def _process_bike_data(self, workout_data: List[Dict[str, Any]], 
+                          start_time: datetime) -> Dict[str, Any]:
         """
         Process bike workout data.
         
         Args:
             workout_data: List of bike workout data points
+            start_time: Start time of the workout
             
         Returns:
             Dictionary of processed bike workout data
         """
         # Extract relevant data series
-        timestamps = []
+        absolute_timestamps = [] # Store absolute datetime objects
+        relative_timestamps_sec = [] # Store relative seconds from start
         powers = []
         cadences = []
         heart_rates = []
@@ -88,31 +93,47 @@ class DataProcessor:
         distances = []
         
         for data_point in workout_data:
-            timestamp = data_point.get('timestamp', 0)
-            timestamps.append(timestamp)
+            # data_point["timestamp"] is already a datetime object from database.py
+            abs_ts = data_point.get("timestamp") 
+            if not isinstance(abs_ts, datetime):
+                # Fallback or error handling if timestamp is not datetime
+                logger.warning(f"Timestamp is not a datetime object: {abs_ts}")
+                # Attempt conversion if it's an ISO string (shouldn't happen with current db logic)
+                try:
+                    abs_ts = datetime.fromisoformat(str(abs_ts))
+                except (ValueError, TypeError):
+                     # Skip data point if timestamp is invalid
+                    logger.error(f"Skipping data point due to invalid timestamp: {data_point}")
+                    continue 
+
+            absolute_timestamps.append(abs_ts)
+            
+            # Calculate relative timestamp in seconds
+            relative_sec = (abs_ts - start_time).total_seconds()
+            relative_timestamps_sec.append(relative_sec)
             
             # Extract power data
-            power = data_point.get('instantaneous_power', data_point.get('power', 0))
+            power = data_point["data"].get("instantaneous_power", data_point["data"].get("power", 0))
             powers.append(power)
             
             # Extract cadence data
-            cadence = data_point.get('instantaneous_cadence', data_point.get('cadence', 0))
+            cadence = data_point["data"].get("instantaneous_cadence", data_point["data"].get("cadence", 0))
             cadences.append(cadence)
             
             # Extract heart rate data
-            heart_rate = data_point.get('heart_rate', 0)
+            heart_rate = data_point["data"].get("heart_rate", 0)
             heart_rates.append(heart_rate)
             
             # Extract speed data
-            speed = data_point.get('instantaneous_speed', data_point.get('speed', 0))
+            speed = data_point["data"].get("instantaneous_speed", data_point["data"].get("speed", 0))
             speeds.append(speed)
             
             # Extract distance data
-            distance = data_point.get('total_distance', data_point.get('distance', 0))
+            distance = data_point["data"].get("total_distance", data_point["data"].get("distance", 0))
             distances.append(distance)
         
         # Calculate derived metrics
-        total_duration = max(timestamps) if timestamps else 0
+        total_duration_sec = (absolute_timestamps[-1] - start_time).total_seconds() if absolute_timestamps else 0
         avg_power = sum(powers) / len(powers) if powers else 0
         max_power = max(powers) if powers else 0
         avg_cadence = sum(cadences) / len(cadences) if cadences else 0
@@ -123,51 +144,57 @@ class DataProcessor:
         max_speed = max(speeds) if speeds else 0
         total_distance = max(distances) if distances else 0
         
-        # Calculate calories if not provided
+        # Calculate calories if not provided (use total_duration_sec)
+        # Assuming the last data point has the final total_energy
+        last_reported_calories = workout_data[-1]["data"].get("total_energy", 0) if workout_data else 0
         total_calories = self._calculate_calories_bike(
-            avg_power, total_duration, workout_data[-1].get('total_energy', 0)
+            avg_power, total_duration_sec, last_reported_calories
         )
         
-        # Calculate training effect metrics
-        training_stress_score = self._calculate_tss(powers, timestamps)
+        # Calculate training effect metrics (use relative_timestamps_sec)
+        training_stress_score = self._calculate_tss(powers, relative_timestamps_sec)
         intensity_factor = self._calculate_intensity_factor(avg_power)
         normalized_power = self._calculate_normalized_power(powers)
         
         # Prepare processed data
         processed_data = {
-            'workout_type': 'bike',
-            'total_duration': total_duration,
-            'total_distance': total_distance,
-            'total_calories': total_calories,
-            'avg_power': avg_power,
-            'max_power': max_power,
-            'normalized_power': normalized_power,
-            'avg_cadence': avg_cadence,
-            'max_cadence': max_cadence,
-            'avg_heart_rate': avg_heart_rate,
-            'max_heart_rate': max_heart_rate,
-            'avg_speed': avg_speed,
-            'max_speed': max_speed,
-            'training_stress_score': training_stress_score,
-            'intensity_factor': intensity_factor,
-            'data_series': {
-                'timestamps': timestamps,
-                'powers': powers,
-                'cadences': cadences,
-                'heart_rates': heart_rates,
-                'speeds': speeds,
-                'distances': distances
+            "workout_type": "bike",
+            "start_time": start_time, # Keep absolute start time
+            "total_duration": total_duration_sec, # Use duration in seconds
+            "total_distance": total_distance,
+            "total_calories": total_calories,
+            "avg_power": avg_power,
+            "max_power": max_power,
+            "normalized_power": normalized_power,
+            "avg_cadence": avg_cadence,
+            "max_cadence": max_cadence,
+            "avg_heart_rate": avg_heart_rate,
+            "max_heart_rate": max_heart_rate,
+            "avg_speed": avg_speed,
+            "max_speed": max_speed,
+            "training_stress_score": training_stress_score,
+            "intensity_factor": intensity_factor,
+            "data_series": {
+                "timestamps": relative_timestamps_sec, # Relative seconds for compatibility if needed elsewhere
+                "absolute_timestamps": absolute_timestamps, # Absolute datetime objects for FIT converter
+                "powers": powers,
+                "cadences": cadences,
+                "heart_rates": heart_rates,
+                "speeds": speeds,
+                "distances": distances
             }
         }
         
         return processed_data
     
-    def _process_rower_data(self, workout_data: List[Dict[str, Any]]) -> Dict[str, Any]:
+    def _process_rower_data(self, workout_data: List[Dict[str, Any]], 
+                           start_time: datetime) -> Dict[str, Any]:
         """
         Process rower workout data.
         
         Args:
             workout_data: List of rower workout data points
+            start_time: Start time of the workout
             
         Returns:
             Dictionary of processed rower workout data
@@ -228,9 +255,13 @@ class DataProcessor:
         intensity_factor = self._calculate_intensity_factor(avg_power)
         normalized_power = self._calculate_normalized_power(powers)
         
+        # Generate absolute timestamps for each data point
+        absolute_timestamps = [start_time + timedelta(seconds=ts) for ts in timestamps]
+        
         # Prepare processed data
         processed_data = {
             'workout_type': 'rower',
+            'start_time': start_time,
             'total_duration': total_duration,
             'total_distance': total_distance,
             'total_calories': total_calories,
@@ -247,6 +278,7 @@ class DataProcessor:
             'intensity_factor': intensity_factor,
             'data_series': {
                 'timestamps': timestamps,
+                'absolute_timestamps': absolute_timestamps,
                 'powers': powers,
                 'stroke_rates': stroke_rates,
                 'heart_rates': heart_rates,
@@ -496,7 +528,7 @@ if __name__ == "__main__":
     
     # Process bike data
     processed_bike_data = processor.process_workout_data(
-        bike_data, 'bike'
+        bike_data, 'bike', datetime.now()
     )
     
     # Estimate VO2 max
