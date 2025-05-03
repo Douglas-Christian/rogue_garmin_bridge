@@ -137,10 +137,56 @@ class FTMSDeviceManager:
                 self.latest_data = None
                 logger.info("Disconnected from device")
             
+            # Handle device-initiated workout start/stop/pause actions
+            elif status == "workout_started":
+                logger.info("Device initiated workout start")
+                # Start a workout if one isn't already active
+                if self.workout_manager and not self.workout_manager.active_workout_id:
+                    logger.info("Starting workout based on device button press")
+                    # Auto-detect device type from the connected device name if possible
+                    device_type = "bike"  # Default
+                    if self.connected_device and "name" in self.connected_device:
+                        device_name = self.connected_device["name"].lower()
+                        if "rower" in device_name:
+                            device_type = "rower"
+                    
+                    try:
+                        # Start a new workout with the detected type
+                        workout_id = self.workout_manager.start_workout(device_type)
+                        logger.info(f"Started new workout with ID: {workout_id}")
+                    except Exception as e:
+                        logger.error(f"Error starting workout from device button: {str(e)}")
+                else:
+                    logger.info("Workout already in progress or workout manager not available")
+            
+            elif status == "workout_stopped":
+                logger.info("Device initiated workout stop")
+                # End the workout if one is active
+                if self.workout_manager and self.workout_manager.active_workout_id:
+                    try:
+                        logger.info(f"Ending workout {self.workout_manager.active_workout_id} based on device button press")
+                        self.workout_manager.end_workout()
+                    except Exception as e:
+                        logger.error(f"Error ending workout from device button: {str(e)}")
+                else:
+                    logger.info("No active workout to stop")
+            
+            elif status == "workout_paused":
+                logger.info("Device initiated workout pause")
+                # Pause functionality could be added here if supported by your application
+                if self.workout_manager and hasattr(self.workout_manager, 'pause_workout'):
+                    try:
+                        logger.info(f"Pausing workout {self.workout_manager.active_workout_id} based on device button press")
+                        self.workout_manager.pause_workout()
+                    except Exception as e:
+                        logger.error(f"Error pausing workout from device button: {str(e)}")
+                else:
+                    logger.info("Workout pause not supported or no active workout")
+            
             # For workout-related status updates
-            elif status in ["workout_started", "workout_ended", "workout_paused", "workout_resumed"]:
+            elif status in ["workout_resumed", "workout_update", "reset"]:
                 logger.info(f"Workout status: {status}")
-                # Pass the status update to callbacks
+                # Handle additional workout actions if needed
             
             # Pass the status update to all registered callbacks
             for callback in self.status_callbacks:

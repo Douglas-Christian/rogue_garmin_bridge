@@ -931,3 +931,15 @@ AttributeError: 'Database' object has no attribute '_connect'
 2025-05-03 15:13:06,514 - workout_manager - INFO - Started workout 9 with device C9:02:CB:68:17:C1
 2025-05-03 15:14:35,547 - workout_manager - WARNING - Failed to create FIT file for workout 9
 2025-05-03 15:21:12,263 - workout_manager - INFO - Updating workout 9 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_151306.fit
+2025-05-03 15:52:24,859 - workout_manager - INFO - Started workout 10 with device C9:02:CB:68:17:C1
+2025-05-03 15:55:14,840 - workout_manager - INFO - Successfully created FIT file for workout 10: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_155224.fit
+2025-05-03 15:55:43,781 - workout_manager - INFO - Updating workout 10 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_155224.fit
+2025-05-03 16:36:20,032 - workout_manager - INFO - Started workout 11 with device C9:02:CB:68:17:C1
+2025-05-03 16:41:05,303 - workout_manager - INFO - Successfully created FIT file for workout 11: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_163620.fit
+2025-05-03 16:41:26,612 - workout_manager - INFO - Updating workout 11 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_163620.fit
+2025-05-03 17:15:19,002 - workout_manager - INFO - Deleting workout 7
+2025-05-03 17:15:24,652 - workout_manager - INFO - Deleting workout 6
+2025-05-03 17:15:24,661 - workout_manager - INFO - Deleted FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_144738.fit
+2025-05-03 17:17:37,599 - workout_manager - INFO - Started workout 12 with device C9:02:CB:68:17:C1
+2025-05-03 17:24:00,332 - workout_manager - INFO - Successfully created FIT file for workout 12: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_171737.fit
+2025-05-03 17:30:59,064 - workout_manager - INFO - Updating workout 12 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_171737.fit

@@ -2320,3 +2320,58 @@ Exception: avg_speed encoded value 580000 is not in valid range [0, 65535]
 2025-05-03 15:55:33,708 - database - INFO - Retrieved 10 workouts from database
 2025-05-03 15:55:43,775 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_155224.fit
 2025-05-03 15:55:43,781 - database - INFO - Updated FIT file path for workout 10: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_155224.fit
+2025-05-03 15:59:07,785 - database - INFO - Database tables created
+2025-05-03 15:59:07,786 - database - INFO - Retrieved 10 workouts from database
+2025-05-03 16:00:49,927 - database - INFO - Database tables created
+2025-05-03 16:00:49,929 - database - INFO - Retrieved 10 workouts from database
+2025-05-03 16:07:17,161 - database - INFO - Database tables created
+2025-05-03 16:07:17,164 - database - INFO - Database tables created
+2025-05-03 16:07:18,215 - database - INFO - Database tables created
+2025-05-03 16:07:18,218 - database - INFO - Database tables created
+2025-05-03 16:07:22,508 - database - INFO - Retrieved 10 workouts from database
+2025-05-03 16:09:28,159 - database - INFO - Retrieved 10 workouts from database
+2025-05-03 16:13:13,733 - database - INFO - Database tables created
+2025-05-03 16:13:13,734 - database - INFO - Database tables created
+2025-05-03 16:13:58,086 - database - INFO - Database tables created
+2025-05-03 16:13:58,088 - database - INFO - Database tables created
+2025-05-03 16:18:32,953 - database - INFO - Database tables created
+2025-05-03 16:18:32,954 - database - INFO - Database tables created
+2025-05-03 16:34:24,870 - database - INFO - Retrieved 10 workouts from database
+2025-05-03 16:36:20,029 - database - INFO - Started workout 11 with device C9:02:CB:68:17:C1
+2025-05-03 16:41:04,980 - database - INFO - Ended workout 11, duration: 284s
+2025-05-03 16:41:04,985 - database - INFO - Database tables created
+2025-05-03 16:41:05,242 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_163620.fit
+2025-05-03 16:41:05,301 - database - INFO - Updated FIT file path for workout 11: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_163620.fit
+2025-05-03 16:41:24,051 - database - INFO - Retrieved 11 workouts from database
+2025-05-03 16:41:26,606 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_163620.fit
+2025-05-03 16:41:26,613 - database - INFO - Updated FIT file path for workout 11: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_163620.fit
+2025-05-03 16:44:01,105 - database - INFO - Database tables created
+2025-05-03 16:44:01,106 - database - INFO - Retrieved 11 workouts from database
+2025-05-03 17:10:45,162 - database - INFO - Database tables created
+2025-05-03 17:10:45,163 - database - INFO - Database tables created
+2025-05-03 17:10:45,749 - database - INFO - Database tables created
+2025-05-03 17:10:45,751 - database - INFO - Database tables created
+2025-05-03 17:13:59,909 - database - INFO - Database tables created
+2025-05-03 17:13:59,911 - database - INFO - Database tables created
+2025-05-03 17:14:30,473 - database - INFO - Database tables created
+2025-05-03 17:14:30,475 - database - INFO - Database tables created
+2025-05-03 17:15:13,971 - database - INFO - Database tables created
+2025-05-03 17:15:13,972 - database - INFO - Database tables created
+2025-05-03 17:15:19,007 - database - INFO - Deleted all data points for workout 7
+2025-05-03 17:15:19,008 - database - INFO - Deleted workout 7
+2025-05-03 17:15:19,266 - database - INFO - Retrieved 10 workouts from database
+2025-05-03 17:15:24,655 - database - INFO - Deleted all data points for workout 6
+2025-05-03 17:15:24,656 - database - INFO - Deleted workout 6
+2025-05-03 17:15:24,983 - database - INFO - Retrieved 9 workouts from database
+2025-05-03 17:17:37,598 - database - INFO - Started workout 12 with device C9:02:CB:68:17:C1
+2025-05-03 17:24:00,109 - database - INFO - Ended workout 12, duration: 382s
+2025-05-03 17:24:00,114 - database - INFO - Database tables created
+2025-05-03 17:24:00,318 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_171737.fit
+2025-05-03 17:24:00,331 - database - INFO - Updated FIT file path for workout 12: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_171737.fit
+2025-05-03 17:30:46,350 - database - INFO - Database tables created
+2025-05-03 17:30:46,353 - database - INFO - Database tables created
+2025-05-03 17:30:47,287 - database - INFO - Database tables created
+2025-05-03 17:30:47,290 - database - INFO - Database tables created
+2025-05-03 17:30:49,862 - database - INFO - Retrieved 10 workouts from database
+2025-05-03 17:30:59,052 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_171737.fit
+2025-05-03 17:30:59,066 - database - INFO - Updated FIT file path for workout 12: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_171737.fit

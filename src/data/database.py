@@ -803,6 +803,47 @@ class Database:
             conn.rollback()
             return False
     
+    def delete_workout(self, workout_id: int) -> bool:
+        """
+        Delete a workout and its associated data from the database.
+        
+        Args:
+            workout_id: ID of the workout to delete
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        try:
+            conn = self._get_connection()
+            cursor = conn.cursor()
+            
+            # Start a transaction
+            conn.execute("BEGIN TRANSACTION")
+            
+            # First delete all workout data points
+            cursor.execute("DELETE FROM workout_data WHERE workout_id = ?", (workout_id,))
+            logger.info(f"Deleted all data points for workout {workout_id}")
+            
+            # Then delete the workout record
+            cursor.execute("DELETE FROM workouts WHERE id = ?", (workout_id,))
+            
+            # Check if any rows were affected
+            if cursor.rowcount == 0:
+                logger.warning(f"No workout found with ID {workout_id} to delete")
+                conn.rollback()
+                return False
+            
+            logger.info(f"Deleted workout {workout_id}")
+            
+            # Commit the transaction
+            conn.commit()
+            return True
+            
+        except sqlite3.Error as e:
+            logger.error(f"Error deleting workout: {str(e)}")
+            conn.rollback()
+            return False
+    
     def close(self):
         """Close all database connections."""
         try:

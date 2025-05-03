@@ -211,6 +211,15 @@ class FITConverter:
             
             # Add Record messages
             try:
+                # Track if we need to calculate our own average speed from the data points
+                needs_avg_speed_calculation = avg_speed == 0
+                
+                # Store all speed values to calculate average if needed
+                all_speeds = []
+                
+                # Store all average speeds from data points if available
+                device_reported_avg_speeds = []
+                
                 for i in range(len(timestamps)):
                     record_msg = RecordMessage()
                     
@@ -249,13 +258,31 @@ class FITConverter:
                     # Set speed - use instantaneous speed for record messages
                     if i < len(speeds):
                         # Convert km/h to m/s (using proper conversion, no extra scaling)
-                        record_msg.speed = int(speeds[i] * 1000 / 3600)
+                        speed_ms = speeds[i] * 1000 / 3600  # km/h to m/s conversion
+                        record_msg.speed = int(speed_ms)
+                        all_speeds.append(speeds[i])  # Store for average calculation
                     
                     # Set distance
                     if i < len(distances):
                         record_msg.distance = float(distances[i])
                     
+                    # Check if this data point has a device-reported average speed
+                    if i < len(data_series.get('average_speeds', [])) and data_series['average_speeds'][i] > 0:
+                        device_reported_avg_speeds.append(data_series['average_speeds'][i])
+                    
                     builder.add(record_msg)
+                
+                # If we need to calculate average speed and we have the data to do so
+                if needs_avg_speed_calculation:
+                    # First try to use device-reported average speeds if available
+                    if device_reported_avg_speeds:
+                        # Use the most recent device-reported average speed
+                        avg_speed = device_reported_avg_speeds[-1]
+                        logger.info(f"Using most recent device-reported average speed: {avg_speed} km/h")
+                    # Otherwise calculate from instantaneous speed values
+                    elif all_speeds:
+                        avg_speed = sum(all_speeds) / len(all_speeds)
+                        logger.info(f"Calculated average speed from {len(all_speeds)} data points: {avg_speed} km/h")
                 
                 logger.debug(f"Added {len(timestamps)} Record messages")
             except Exception as e:

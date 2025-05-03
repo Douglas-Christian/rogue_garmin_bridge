@@ -278,8 +278,15 @@
                     statusText.className = 'badge bg-success';
                     disconnectBtn.disabled = false;
                     
-                    // Update device info
-                    deviceName.textContent = data.device_name || 'Unknown Device';
+                    // Update device info - prefer current name if it's not "None" to avoid replacing with "Unknown"
+                    const currentName = deviceName.textContent;
+                    if (data.device_name && data.device_name.trim() !== '') {
+                        deviceName.textContent = data.device_name;
+                    } else if (currentName === 'None') {
+                        deviceName.textContent = 'Unknown Device';
+                    }
+                    // Keep the name that was set during the connection process
+                    
                     deviceType.textContent = data.is_simulated ? 'Simulated' : 'Physical';
                     if (data.latest_data && data.latest_data.type) {
                         deviceType.textContent += ' ' + (data.latest_data.type.charAt(0).toUpperCase() + data.latest_data.type.slice(1));

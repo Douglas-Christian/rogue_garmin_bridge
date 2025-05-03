@@ -329,7 +329,7 @@
                     <td>
                         <button class="btn btn-sm btn-primary view-btn" data-workout-id="${workout.id}">View</button>
                         <button class="btn btn-sm btn-success fit-btn" data-workout-id="${workout.id}">FIT</button>
-                        <button class="btn btn-sm btn-info upload-btn" data-workout-id="${workout.id}">Upload</button>
+                        <!-- Upload to Garmin button removed due to 2FA requirements -->
                         <button class="btn btn-sm btn-danger delete-btn" data-workout-id="${workout.id}">Delete</button>
                     </td>
                 </tr>
@@ -357,14 +357,6 @@
                 e.stopPropagation(); // Prevent triggering row click
                 const workoutId = this.dataset.workoutId;
                 convertToFIT(workoutId);
-            });
-        });
-        
-        document.querySelectorAll('.upload-btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.stopPropagation(); // Prevent triggering row click
-                const workoutId = this.dataset.workoutId;
-                uploadToGarmin(workoutId);
             });
         });
         

@@ -57,28 +57,10 @@
                 </div>
             </div>
             
+            <!-- Removed Garmin Connect Settings section due to 2FA requirements -->
+            
             <div class="col-md-6">
                 <div class="card mb-4">
-                    <div class="card-header">
-                        <h5>Garmin Connect Settings</h5>
-                    </div>
-                    <div class="card-body">
-                        <form id="garmin-settings-form">
-                            <div class="mb-3">
-                                <label for="garmin_username" class="form-label">Garmin Connect Username</label>
-                                <input type="text" class="form-control" id="garmin_username" name="garmin_username">
-                            </div>
-                            <div class="mb-3">
-                                <label for="garmin_password" class="form-label">Garmin Connect Password</label>
-                                <input type="password" class="form-control" id="garmin_password" name="garmin_password">
-                                <div class="form-text">Your password is stored securely and only used for Garmin Connect uploads.</div>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Save Garmin Settings</button>
-                        </form>
-                    </div>
-                </div>
-                
-                <div class="card">
                     <div class="card-header">
                         <h5>Application Settings</h5>
                     </div>
@@ -121,7 +103,6 @@
 <script>
     // DOM elements
     const userProfileForm = document.getElementById('user-profile-form');
-    const garminSettingsForm = document.getElementById('garmin-settings-form');
     const appSettingsForm = document.getElementById('app-settings-form');
     
     // Unit conversion utilities
@@ -235,8 +216,6 @@
                     if (profile.max_heart_rate) document.getElementById('max_heart_rate').value = profile.max_heart_rate;
                     if (profile.resting_heart_rate) document.getElementById('resting_heart_rate').value = profile.resting_heart_rate;
                     if (profile.ftp) document.getElementById('ftp').value = profile.ftp;
-                    if (profile.garmin_username) document.getElementById('garmin_username').value = profile.garmin_username;
-                    if (profile.garmin_password) document.getElementById('garmin_password').value = profile.garmin_password;
                     
                     // Apply unit preference if it's been set previously
                     if (profile.unit_preference) {
@@ -332,42 +311,6 @@
         .catch(error => {
             alert(`Error saving user profile: ${error.message}`);
             console.error('Error saving user profile:', error);
-        });
-    });
-    
-    // Save Garmin settings
-    garminSettingsForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(garminSettingsForm);
-        const settings = {};
-        
-        for (const [key, value] of formData.entries()) {
-            if (value) {
-                settings[key] = value;
-            }
-        }
-        
-        // Save settings
-        fetch('/api/user_profile', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(settings)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Garmin settings saved successfully');
-            } else {
-                alert(`Error saving Garmin settings: ${data.error || 'Unknown error'}`);
-            }
-        })
-        .catch(error => {
-            alert(`Error saving Garmin settings: ${error.message}`);
-            console.error('Error saving Garmin settings:', error);
         });
     });
     

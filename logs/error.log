@@ -1284,3 +1284,15 @@ Exception: avg_speed encoded value 580000 is not in valid range [0, 65535]
 Exception: avg_speed encoded value 580000 is not in valid range [0, 65535]
 
 2025-05-03 15:15:26,771 - web - ERROR - FIT conversion returned None for workout 9
+2025-05-03 17:11:01,772 - web - ERROR - Error in workout operations: 'WorkoutManager' object has no attribute 'delete_workout'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\web\app.py", line 419, in workout_operations
+    success = workout_manager.delete_workout(workout_id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'WorkoutManager' object has no attribute 'delete_workout'. Did you mean: 'get_workout'?
+2025-05-03 17:11:07,299 - web - ERROR - Error in workout operations: 'WorkoutManager' object has no attribute 'delete_workout'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\web\app.py", line 419, in workout_operations
+    success = workout_manager.delete_workout(workout_id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'WorkoutManager' object has no attribute 'delete_workout'. Did you mean: 'get_workout'?

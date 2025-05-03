@@ -630,6 +630,45 @@ class WorkoutManager:
         """
         logger.info(f"Updating workout {workout_id} with FIT file path: {fit_file_path}")
         return self.database.update_workout_fit_path(workout_id, fit_file_path)
+    
+    def delete_workout(self, workout_id: int) -> bool:
+        """
+        Delete a workout and its associated data.
+        
+        Args:
+            workout_id: ID of the workout to delete
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        logger.info(f"Deleting workout {workout_id}")
+        
+        # Check if this is the active workout
+        if self.active_workout_id == workout_id:
+            logger.warning(f"Cannot delete active workout {workout_id}. Ending it first.")
+            self.end_workout()
+        
+        # Get the workout info before deletion (for fit file cleanup)
+        workout_info = self.database.get_workout(workout_id)
+        
+        # Delete the workout from the database
+        success = self.database.delete_workout(workout_id)
+        
+        if success and workout_info and workout_info.get('fit_file_path'):
+            # Try to delete associated FIT file if it exists
+            fit_file_path = workout_info['fit_file_path']
+            try:
+                if os.path.exists(fit_file_path):
+                    os.remove(fit_file_path)
+                    logger.info(f"Deleted FIT file: {fit_file_path}")
+            except Exception as e:
+                # Log but don't fail if file deletion fails
+                logger.warning(f"Could not delete FIT file {fit_file_path}: {str(e)}")
+        
+        # Notify status
+        self._notify_status("workout_deleted", {"workout_id": workout_id, "success": success})
+        
+        return success
 
 
 # Example usage

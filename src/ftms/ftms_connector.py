@@ -439,11 +439,42 @@ class FTMSConnector:
                 logger.warning("Received empty fitness machine status")
                 return
                 
-            logger.debug(f"Received fitness machine status: {data}")
-            self._notify_status("machine_status", data)
+            logger.info(f"Received fitness machine status: {data}")
+            
+            # Map FTMS status codes to appropriate workout events
+            # Reference FTMS specification: https://www.bluetooth.com/specifications/specs/fitness-machine-service-1-0/
+            if 'op_code' in data:
+                op_code = data['op_code']
+                
+                # Map relevant FTMS status codes to workout events
+                status_mapping = {
+                    # Common codes
+                    1: "reset",              # Reset
+                    2: "workout_stopped",    # Stopped by User
+                    3: "workout_paused",     # Paused by User
+                    4: "workout_stopped",    # Stopped by Safety Key
+                    5: "workout_started",    # Started/Resumed by User
+                    
+                    # These are additional status codes that might be relevant
+                    15: "workout_update",    # New Training Time
+                    19: "workout_update",    # New Parameters
+                }
+                
+                if op_code in status_mapping:
+                    status_event = status_mapping[op_code]
+                    logger.info(f"Mapping FTMS status {op_code} to event: {status_event}")
+                    
+                    # Notify the status callback with the mapped event
+                    self._notify_status(status_event, data)
+                else:
+                    # For other status codes, just pass through
+                    self._notify_status("machine_status", data)
+            else:
+                self._notify_status("machine_status", data)
             
         except Exception as e:
             logger.error(f"Error processing fitness machine status: {str(e)}")
+            logger.exception(e)
     
     def _notify_data(self, data: Dict[str, Any]) -> None:
         """

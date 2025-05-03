@@ -91,6 +91,7 @@ class DataProcessor:
         heart_rates = []
         speeds = []
         distances = []
+        average_speeds = [] # Track average speeds from each data point
         
         for data_point in workout_data:
             # data_point["timestamp"] is already a datetime object from database.py
@@ -113,23 +114,34 @@ class DataProcessor:
             relative_timestamps_sec.append(relative_sec)
             
             # Extract power data
-            power = data_point["data"].get("instantaneous_power", data_point["data"].get("power", 0))
+            power = data_point["data"].get("instantaneous_power", 
+                   data_point["data"].get("instant_power", 
+                   data_point["data"].get("power", 0)))
             powers.append(power)
             
             # Extract cadence data
-            cadence = data_point["data"].get("instantaneous_cadence", data_point["data"].get("cadence", 0))
+            cadence = data_point["data"].get("instantaneous_cadence", 
+                    data_point["data"].get("instant_cadence", 
+                    data_point["data"].get("cadence", 0)))
             cadences.append(cadence)
             
             # Extract heart rate data
             heart_rate = data_point["data"].get("heart_rate", 0)
             heart_rates.append(heart_rate)
             
-            # Extract speed data
-            speed = data_point["data"].get("instantaneous_speed", data_point["data"].get("speed", 0))
+            # Extract speed data - check multiple possible field names
+            speed = data_point["data"].get("instantaneous_speed", 
+                  data_point["data"].get("instant_speed",
+                  data_point["data"].get("speed", 0)))
             speeds.append(speed)
             
+            # Extract average speed data - this comes directly from the FTMS device
+            avg_speed = data_point["data"].get("average_speed", 0)
+            average_speeds.append(avg_speed)
+            
             # Extract distance data
-            distance = data_point["data"].get("total_distance", data_point["data"].get("distance", 0))
+            distance = data_point["data"].get("total_distance", 
+                     data_point["data"].get("distance", 0))
             distances.append(distance)
         
         # Calculate derived metrics
@@ -140,7 +152,20 @@ class DataProcessor:
         max_cadence = max(cadences) if cadences else 0
         avg_heart_rate = sum(heart_rates) / len(heart_rates) if heart_rates else 0
         max_heart_rate = max(heart_rates) if heart_rates else 0
-        avg_speed = sum(speeds) / len(speeds) if speeds else 0
+        
+        # Determine average speed:
+        # 1. If device-reported average speeds are available, use the latest one
+        # 2. Otherwise calculate from instantaneous speeds
+        device_reported_avg_speeds = [s for s in average_speeds if s > 0]
+        if device_reported_avg_speeds:
+            # Use the latest (most accurate) device-reported average speed
+            avg_speed = device_reported_avg_speeds[-1]
+            logger.info(f"Using device-reported average speed: {avg_speed} km/h")
+        else:
+            # Calculate from instantaneous speeds
+            avg_speed = sum(speeds) / len(speeds) if speeds else 0
+            logger.info(f"Calculated average speed from {len(speeds)} data points: {avg_speed} km/h")
+        
         max_speed = max(speeds) if speeds else 0
         total_distance = max(distances) if distances else 0
         
@@ -181,7 +206,8 @@ class DataProcessor:
                 "cadences": cadences,
                 "heart_rates": heart_rates,
                 "speeds": speeds,
-                "distances": distances
+                "distances": distances,
+                "average_speeds": average_speeds  # Include the array of average speeds from each data point
             }
         }
         
