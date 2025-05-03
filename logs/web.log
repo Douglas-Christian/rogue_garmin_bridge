@@ -2545,3 +2545,21 @@ TypeError: 'str' object cannot be interpreted as an integer
 2025-05-03 14:07:48,058 - web - INFO - Duration: 79
 2025-05-03 14:07:48,058 - web - INFO - Data points: 80
 2025-05-03 14:07:48,060 - web - ERROR - FIT conversion returned None for workout 1
+2025-05-03 14:11:39,325 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-03 14:11:39,326 - web - INFO - Using real FTMS devices
+2025-05-03 14:11:39,326 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-03 14:11:39,327 - web - INFO - Starting background asyncio loop thread...
+2025-05-03 14:11:39,328 - web - INFO - Background thread started. Creating new event loop.
+2025-05-03 14:11:39,328 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-03 14:11:39,336 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-03 14:11:40,073 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-03 14:11:40,074 - web - INFO - Using real FTMS devices
+2025-05-03 14:11:40,075 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-03 14:11:40,075 - web - INFO - Starting background asyncio loop thread...
+2025-05-03 14:11:40,078 - web - INFO - Background thread started. Creating new event loop.
+2025-05-03 14:11:40,078 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-03 14:11:40,086 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-03 14:11:45,115 - web - INFO - Converting workout 2 to FIT file
+2025-05-03 14:11:45,115 - web - INFO - Workout type: bike
+2025-05-03 14:11:45,116 - web - INFO - Duration: 60
+2025-05-03 14:11:45,116 - web - INFO - Data points: 60

@@ -2109,3 +2109,10 @@ sqlite3.OperationalError: database is locked
 2025-05-03 14:07:43,096 - fit_converter - WARNING - No timestamp data available
 2025-05-03 14:07:48,060 - fit_converter - WARNING - No timestamp data available
 2025-05-03 14:08:08,389 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_114253.fit
+2025-05-03 14:11:25,481 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_125244.fit
+2025-05-03 14:11:39,322 - database - INFO - Database tables created
+2025-05-03 14:11:39,323 - database - INFO - Database tables created
+2025-05-03 14:11:40,070 - database - INFO - Database tables created
+2025-05-03 14:11:40,073 - database - INFO - Database tables created
+2025-05-03 14:11:45,186 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_125244.fit
+2025-05-03 14:11:45,189 - database - INFO - Updated FIT file path for workout 2: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_125244.fit

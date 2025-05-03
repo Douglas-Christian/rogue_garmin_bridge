@@ -20428,3 +20428,48 @@ AttributeError: 'Database' object has no attribute '_connect'
 2025-05-03 14:08:05,221 - root - INFO - Logging initialized at 2025-05-03T14:08:05.221784
 2025-05-03 14:08:05,222 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
 2025-05-03 14:08:08,389 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_114253.fit
+2025-05-03 14:11:23,961 - root - INFO - Logging initialized at 2025-05-03T14:11:23.961481
+2025-05-03 14:11:23,962 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-03 14:11:25,481 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_125244.fit
+2025-05-03 14:11:39,143 - root - INFO - Logging initialized at 2025-05-03T14:11:39.142121
+2025-05-03 14:11:39,143 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-03 14:11:39,322 - database - INFO - Database tables created
+2025-05-03 14:11:39,323 - database - INFO - Database tables created
+2025-05-03 14:11:39,325 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-03 14:11:39,325 - ftms - INFO - Using FTMSConnector for real device.
+2025-05-03 14:11:39,326 - web - INFO - Using real FTMS devices
+2025-05-03 14:11:39,326 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-03 14:11:39,327 - web - INFO - Starting background asyncio loop thread...
+2025-05-03 14:11:39,328 - web - INFO - Background thread started. Creating new event loop.
+2025-05-03 14:11:39,328 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-03 14:11:39,336 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-03 14:11:39,378 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-05-03 14:11:39,378 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-03 14:11:39,382 - werkzeug - INFO -  * Restarting with stat
+2025-05-03 14:11:39,901 - root - INFO - Logging initialized at 2025-05-03T14:11:39.900925
+2025-05-03 14:11:39,901 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-03 14:11:40,070 - database - INFO - Database tables created
+2025-05-03 14:11:40,073 - database - INFO - Database tables created
+2025-05-03 14:11:40,073 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-03 14:11:40,074 - ftms - INFO - Using FTMSConnector for real device.
+2025-05-03 14:11:40,074 - web - INFO - Using real FTMS devices
+2025-05-03 14:11:40,075 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-03 14:11:40,075 - web - INFO - Starting background asyncio loop thread...
+2025-05-03 14:11:40,078 - web - INFO - Background thread started. Creating new event loop.
+2025-05-03 14:11:40,078 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-03 14:11:40,086 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-03 14:11:40,114 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 14:11:40,117 - werkzeug - INFO -  * Debugger PIN: 791-193-465
+2025-05-03 14:11:44,216 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 14:11:44] "GET /api/workout/2 HTTP/1.1" 200 -
+2025-05-03 14:11:45,115 - web - INFO - Converting workout 2 to FIT file
+2025-05-03 14:11:45,115 - web - INFO - Workout type: bike
+2025-05-03 14:11:45,116 - web - INFO - Duration: 60
+2025-05-03 14:11:45,116 - web - INFO - Data points: 60
+2025-05-03 14:11:45,186 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_125244.fit
+2025-05-03 14:11:45,188 - workout_manager - INFO - Updating workout 2 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_125244.fit
+2025-05-03 14:11:45,189 - database - INFO - Updated FIT file path for workout 2: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_125244.fit
+2025-05-03 14:11:45,189 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 14:11:45] "POST /api/convert_fit/2 HTTP/1.1" 200 -
+2025-05-03 14:11:45,528 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 14:11:45] "[33mGET /fit_files/indoor_cycling_20250503_125244.fit HTTP/1.1[0m" 404 -
