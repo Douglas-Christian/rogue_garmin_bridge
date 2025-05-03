@@ -105,27 +105,34 @@ class FITProcessor:
     
     def _structure_data_for_fit(self, workout: Dict[str, Any], data_points: List[Dict[str, Any]]) -> Dict[str, Any]:
         """
-        Structure workout data in the format expected by fit_converter.
-        
-        This method efficiently transforms data points into the exact structure
-        needed by the fit_converter, avoiding redundant transformations.
+        Structure workout data for FIT converter.
         
         Args:
             workout: Workout metadata
-            data_points: Workout data points
+            data_points: List of workout data points
             
         Returns:
-            Structured data for fit_converter
+            Structured data for FIT converter
         """
-        # Extract data series in a single pass
-        # Use 'workout_type' as the field name instead of 'type'
-        workout_type = workout.get('workout_type', 'bike')  # Default to 'bike' if not found
+        # Extract workout type
+        workout_type = workout.get('workout_type', 'bike')
+        
+        # Extract data series
         data_series = self._extract_data_series(data_points, workout_type)
         
-        # Get the summary from the workout metadata or calculate if not available
-        summary = workout.get('summary', {})
+        # If summary exists in workout as string, parse it
+        summary = {}
+        if 'summary' in workout:
+            if isinstance(workout['summary'], str):
+                try:
+                    import json
+                    summary = json.loads(workout['summary'])
+                except Exception as e:
+                    logger.error(f"Error parsing summary JSON: {str(e)}")
+            else:
+                summary = workout['summary']
         
-        # Prepare the basic structure with required fields
+        # Create structured data
         structured_data = {
             'workout_type': workout_type,
             'start_time': workout['start_time'],
@@ -140,7 +147,8 @@ class FITProcessor:
             'avg_power': 'avg_power',
             'max_power': 'max_power',
             'avg_heart_rate': 'avg_heart_rate',
-            'max_heart_rate': 'max_heart_rate'
+            'max_heart_rate': 'max_heart_rate',
+            'estimated_vo2max': 'estimated_vo2max'  # Add VO2max mapping
         }
         
         # Add common metrics from summary or calculate if not available

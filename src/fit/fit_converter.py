@@ -381,6 +381,11 @@ class FITConverter:
                     if 'age' in user_profile:
                         session_msg.age = user_profile['age']
                 
+                # Add VO2max if available
+                vo2max = processed_data.get('estimated_vo2max', 0)
+                if vo2max > 0:
+                    session_msg.vo2_max = int(vo2max * 10)  # FIT files store VO2max multiplied by 10
+                
                 builder.add(session_msg)
                 logger.debug("Added Session message")
                 logger.debug(f"Session avg_speed: {session_msg.avg_speed}, from {avg_speed} km/h")
@@ -695,6 +700,11 @@ class FITConverter:
                     
                     if 'age' in user_profile:
                         session_msg.age = user_profile['age']
+                
+                # Add VO2max if available
+                vo2max = processed_data.get('estimated_vo2max', 0)
+                if vo2max > 0:
+                    session_msg.vo2_max = int(vo2max * 10)  # FIT files store VO2max multiplied by 10
                 
                 builder.add(session_msg)
                 logger.debug("Added Session message")
