@@ -438,7 +438,7 @@
         }
         
         // Get workout type
-        const workoutType = data.type || 'unknown';
+        const workoutType = data.type || data.workout_type || 'unknown';
         
         // Check if data includes workout_summary - the backend should send this
         const summary = data.workout_summary || {};
@@ -449,27 +449,23 @@
         // Create summary HTML
         let html = '<div class="row">';
         
-        // Average power
-        if (data.instant_power !== undefined || data.power !== undefined) {
-            const avgPower = summary.avg_power !== undefined ? summary.avg_power : 0;
-            html += `
-                <div class="col-6">
-                    <p><strong>Avg Power:</strong> <span id="avg-power">${isNaN(avgPower) ? 0 : Math.round(avgPower)}</span> W</p>
-                </div>
-            `;
-        }
+        // Average power - include even if not in summary but we have instant power data
+        const avgPower = summary.avg_power !== undefined ? summary.avg_power : 0;
+        html += `
+            <div class="col-6">
+                <p><strong>Avg Power:</strong> <span id="avg-power">${isNaN(avgPower) ? 0 : Math.round(avgPower)}</span> W</p>
+            </div>
+        `;
         
-        // Always include heart rate section if we have heart rate data
-        if (data.heart_rate !== undefined || summary.avg_heart_rate !== undefined) {
-            const avgHeartRate = summary.avg_heart_rate !== undefined ? summary.avg_heart_rate : 0;
-            html += `
-                <div class="col-6">
-                    <p><strong>Avg Heart Rate:</strong> <span id="avg-heart-rate">${isNaN(avgHeartRate) ? 0 : Math.round(avgHeartRate)}</span> bpm</p>
-                </div>
-            `;
-        }
+        // Average heart rate - include always
+        const avgHeartRate = summary.avg_heart_rate !== undefined ? summary.avg_heart_rate : 0;
+        html += `
+            <div class="col-6">
+                <p><strong>Avg Heart Rate:</strong> <span id="avg-heart-rate">${isNaN(avgHeartRate) ? 0 : Math.round(avgHeartRate)}</span> bpm</p>
+            </div>
+        `;
         
-        // Average cadence or stroke rate
+        // Average cadence or stroke rate based on workout type
         if (workoutType === 'bike') {
             const avgCadence = summary.avg_cadence !== undefined ? summary.avg_cadence : 0;
             html += `
@@ -486,28 +482,26 @@
             `;
         }
         
-        // Average speed - with proper unit conversion
-        if (summary.avg_speed !== undefined) {
-            let avgSpeed = summary.avg_speed;
-            let speedUnitText;
-            
-            // Convert speed based on unit preference
-            if (userUnitSystem === 'imperial') {
-                // Convert from km/h to mph
-                avgSpeed = unitConversions.kphToMph(avgSpeed);
-                speedUnitText = 'mph';
-            } else {
-                speedUnitText = 'km/h';
-            }
-            
-            const avgSpeedDisplay = avgSpeed.toFixed(1);
-            
-            html += `
-                <div class="col-6">
-                    <p><strong>Avg Speed:</strong> <span id="avg-speed">${avgSpeedDisplay}</span> ${speedUnitText}</p>
-                </div>
-            `;
+        // Average speed - always include, and apply unit conversion
+        let avgSpeed = summary.avg_speed !== undefined ? summary.avg_speed : 0;
+        let speedUnitText;
+        
+        // Convert speed based on unit preference
+        if (userUnitSystem === 'imperial') {
+            // Convert from km/h to mph
+            avgSpeed = unitConversions.kphToMph(avgSpeed);
+            speedUnitText = 'mph';
+        } else {
+            speedUnitText = 'km/h';
         }
+        
+        const avgSpeedDisplay = isNaN(avgSpeed) ? "0.0" : avgSpeed.toFixed(1);
+        
+        html += `
+            <div class="col-6">
+                <p><strong>Avg Speed:</strong> <span id="avg-speed">${avgSpeedDisplay}</span> ${speedUnitText}</p>
+            </div>
+        `;
         
         // Total distance with unit conversion
         const totalDistance = data.total_distance || summary.total_distance || 0;

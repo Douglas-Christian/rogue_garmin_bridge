@@ -2151,3 +2151,67 @@ sqlite3.OperationalError: database is locked
 2025-05-03 14:41:40,783 - database - INFO - Retrieved 3 workouts from database
 2025-05-03 14:41:55,784 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_144026.fit
 2025-05-03 14:41:55,789 - database - INFO - Updated FIT file path for workout 3: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_144026.fit
+2025-05-03 14:44:12,246 - database - INFO - Started workout 4 with device C9:02:CB:68:17:C1
+2025-05-03 14:44:41,084 - database - INFO - Ended workout 4, duration: 28s
+2025-05-03 14:44:41,090 - database - INFO - Database tables created
+2025-05-03 14:44:41,128 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_144412.fit
+2025-05-03 14:44:41,138 - database - INFO - Updated FIT file path for workout 4: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_144412.fit
+2025-05-03 14:44:51,474 - database - INFO - Database tables created
+2025-05-03 14:44:51,477 - database - INFO - Database tables created
+2025-05-03 14:44:52,625 - database - INFO - Database tables created
+2025-05-03 14:44:52,628 - database - INFO - Database tables created
+2025-05-03 14:45:50,151 - database - INFO - Started workout 5 with device C9:02:CB:68:17:C1
+2025-05-03 14:46:25,155 - database - ERROR - Error adding workout data: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 58136 and this is thread id 78304.
+2025-05-03 14:46:30,642 - database - ERROR - Error ending workout: database is locked
+2025-05-03 14:46:31,679 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:46:37,165 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:46:38,931 - database - INFO - Ended workout 5, duration: 48s
+2025-05-03 14:46:38,937 - database - INFO - Database tables created
+2025-05-03 14:46:39,008 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_144550.fit
+2025-05-03 14:46:42,674 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:47:12,683 - database - INFO - Database tables created
+2025-05-03 14:47:12,686 - database - INFO - Database tables created
+2025-05-03 14:47:13,544 - database - INFO - Database tables created
+2025-05-03 14:47:13,547 - database - INFO - Database tables created
+2025-05-03 14:47:38,896 - database - INFO - Started workout 6 with device C9:02:CB:68:17:C1
+2025-05-03 14:47:55,659 - database - INFO - Ended workout 6, duration: 16s
+2025-05-03 14:47:55,664 - database - INFO - Database tables created
+2025-05-03 14:47:55,725 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_144738.fit
+2025-05-03 14:47:55,736 - database - INFO - Updated FIT file path for workout 6: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_144738.fit
+2025-05-03 14:54:41,009 - database - INFO - Database tables created
+2025-05-03 14:54:41,011 - database - INFO - Database tables created
+2025-05-03 14:54:41,910 - database - INFO - Database tables created
+2025-05-03 14:54:41,912 - database - INFO - Database tables created
+2025-05-03 14:55:06,214 - database - INFO - Started workout 7 with device C9:02:CB:68:17:C1
+2025-05-03 14:55:09,205 - database - ERROR - Error adding workout data: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 62092 and this is thread id 10540.
+2025-05-03 14:55:15,601 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:55:24,740 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:55:30,250 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:55:35,760 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:55:41,265 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:55:46,751 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:55:52,259 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:55:57,778 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:56:03,298 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:56:08,772 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:56:14,299 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:56:24,790 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:56:30,300 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:56:31,355 - database - ERROR - Error adding workout data: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 47596 and this is thread id 10540.
+2025-05-03 14:56:36,416 - database - ERROR - Error ending workout: database is locked
+2025-05-03 14:56:36,835 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:56:42,318 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:56:43,481 - database - ERROR - Error ending workout: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 75228 and this is thread id 67312.
+2025-05-03 14:56:47,836 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 15:02:18,024 - database - INFO - Database tables created
+2025-05-03 15:02:18,027 - database - INFO - Database tables created
+2025-05-03 15:02:19,185 - database - INFO - Database tables created
+2025-05-03 15:02:19,185 - database - INFO - Database tables created
+2025-05-03 15:03:00,444 - database - INFO - Started workout 8 with device C9:02:CB:68:17:C1
+2025-05-03 15:04:47,132 - database - INFO - Ended workout 8, duration: 106s
+2025-05-03 15:04:47,166 - database - INFO - Database tables created
+2025-05-03 15:04:47,277 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_150300.fit
+2025-05-03 15:04:47,287 - database - INFO - Updated FIT file path for workout 8: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_150300.fit
+2025-05-03 15:05:02,750 - database - INFO - Retrieved 8 workouts from database
+2025-05-03 15:05:14,146 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_150300.fit
+2025-05-03 15:05:14,152 - database - INFO - Updated FIT file path for workout 8: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_150300.fit

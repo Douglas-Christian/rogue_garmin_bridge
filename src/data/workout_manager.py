@@ -398,16 +398,26 @@ class WorkoutManager:
         if 'total_energy' in data:
             self.summary_metrics['total_calories'] = data['total_energy']
         
-        # Update power metrics
-        if 'instantaneous_power' in data:
-            power = data['instantaneous_power']
+        # Update power metrics - check both instant and average values
+        if 'instant_power' in data or 'instantaneous_power' in data or 'power' in data:
+            # Get the instantaneous power value from various possible keys
+            power = data.get('instant_power', data.get('instantaneous_power', data.get('power', 0)))
             
-            # Update max power
+            # Update max power if higher
             if power > self.summary_metrics.get('max_power', 0):
                 self.summary_metrics['max_power'] = power
-            
-            # Update average power
-            power_values = [d.get('instantaneous_power', 0) for d in self.data_points if 'instantaneous_power' in d]
+        
+        # Use average power directly from device if available
+        if 'average_power' in data and data['average_power'] is not None:
+            self.summary_metrics['avg_power'] = data['average_power']
+        # Otherwise calculate from instantaneous values
+        elif any(key in data for key in ['instant_power', 'instantaneous_power', 'power']):
+            power_values = []
+            for d in self.data_points:
+                for key in ['instant_power', 'instantaneous_power', 'power']:
+                    if key in d and d[key] is not None:
+                        power_values.append(d[key])
+                        break
             if power_values:
                 self.summary_metrics['avg_power'] = sum(power_values) / len(power_values)
         
@@ -424,29 +434,49 @@ class WorkoutManager:
             if hr_values:
                 self.summary_metrics['avg_heart_rate'] = sum(hr_values) / len(hr_values)
         
-        # Update cadence metrics
-        if 'instantaneous_cadence' in data:
-            cadence = data['instantaneous_cadence']
+        # Update cadence metrics - check both instant and average values
+        if 'instant_cadence' in data or 'instantaneous_cadence' in data or 'cadence' in data:
+            # Get the instantaneous cadence value from various possible keys
+            cadence = data.get('instant_cadence', data.get('instantaneous_cadence', data.get('cadence', 0)))
             
-            # Update max cadence
+            # Update max cadence if higher
             if cadence > self.summary_metrics.get('max_cadence', 0):
                 self.summary_metrics['max_cadence'] = cadence
-            
-            # Update average cadence
-            cadence_values = [d.get('instantaneous_cadence', 0) for d in self.data_points if 'instantaneous_cadence' in d]
+        
+        # Use average cadence directly from device if available
+        if 'average_cadence' in data and data['average_cadence'] is not None:
+            self.summary_metrics['avg_cadence'] = data['average_cadence']
+        # Otherwise calculate from instantaneous values
+        elif any(key in data for key in ['instant_cadence', 'instantaneous_cadence', 'cadence']):
+            cadence_values = []
+            for d in self.data_points:
+                for key in ['instant_cadence', 'instantaneous_cadence', 'cadence']:
+                    if key in d and d[key] is not None:
+                        cadence_values.append(d[key])
+                        break
             if cadence_values:
                 self.summary_metrics['avg_cadence'] = sum(cadence_values) / len(cadence_values)
         
-        # Update speed metrics
-        if 'instantaneous_speed' in data:
-            speed = data['instantaneous_speed']
+        # Update speed metrics - check both instant and average values
+        if 'instant_speed' in data or 'instantaneous_speed' in data or 'speed' in data:
+            # Get the instantaneous speed value from various possible keys
+            speed = data.get('instant_speed', data.get('instantaneous_speed', data.get('speed', 0)))
             
-            # Update max speed
+            # Update max speed if higher
             if speed > self.summary_metrics.get('max_speed', 0):
                 self.summary_metrics['max_speed'] = speed
-            
-            # Update average speed
-            speed_values = [d.get('instantaneous_speed', 0) for d in self.data_points if 'instantaneous_speed' in d]
+        
+        # Use average speed directly from device if available
+        if 'average_speed' in data and data['average_speed'] is not None:
+            self.summary_metrics['avg_speed'] = data['average_speed']
+        # Otherwise calculate from instantaneous values
+        elif any(key in data for key in ['instant_speed', 'instantaneous_speed', 'speed']):
+            speed_values = []
+            for d in self.data_points:
+                for key in ['instant_speed', 'instantaneous_speed', 'speed']:
+                    if key in d and d[key] is not None:
+                        speed_values.append(d[key])
+                        break
             if speed_values:
                 self.summary_metrics['avg_speed'] = sum(speed_values) / len(speed_values)
     

@@ -208,7 +208,10 @@ class FITProcessor:
         if workout_type == 'bike':
             series.update({
                 'cadences': [],
-                'speeds': []
+                'speeds': [],
+                'average_powers': [],    # Added for tracking average power
+                'average_cadences': [],  # Added for tracking average cadence
+                'average_speeds': []     # Added for tracking average speed
             })
         elif workout_type == 'rower':
             series.update({
@@ -228,15 +231,38 @@ class FITProcessor:
                 rel_ts = (abs_ts - start_time).total_seconds()
                 series['timestamps'].append(rel_ts)
             
-            # Add common metrics
-            series['powers'].append(point.get('instantaneous_power', 0))
+            # Add common metrics - check multiple possible field names
+            # For power, check various field names with fallback
+            power = point.get('instant_power', 
+                      point.get('instantaneous_power', 
+                      point.get('power', 0)))
+            series['powers'].append(power)
+            
+            # Heart rate
             series['heart_rates'].append(point.get('heart_rate', 0))
+            
+            # Distance
             series['distances'].append(point.get('total_distance', 0))
             
             # Add workout type specific metrics
             if workout_type == 'bike':
-                series['cadences'].append(point.get('instantaneous_cadence', 0))
-                series['speeds'].append(point.get('instantaneous_speed', 0))
+                # For cadence, check various field names with fallback
+                cadence = point.get('instant_cadence', 
+                           point.get('instantaneous_cadence', 
+                           point.get('cadence', 0)))
+                series['cadences'].append(cadence)
+                
+                # For speed, check various field names with fallback
+                speed = point.get('instant_speed', 
+                         point.get('instantaneous_speed', 
+                         point.get('speed', 0)))
+                series['speeds'].append(speed)
+                
+                # Add average values when available
+                series['average_powers'].append(point.get('average_power', power))
+                series['average_cadences'].append(point.get('average_cadence', cadence))
+                series['average_speeds'].append(point.get('average_speed', speed))
+                
             elif workout_type == 'rower':
                 series['stroke_rates'].append(point.get('stroke_rate', 0))
         

@@ -1049,3 +1049,157 @@ AttributeError: 'Database' object has no attribute '_connect'
 2025-05-03 14:07:40,024 - web - ERROR - FIT conversion returned None for workout 1
 2025-05-03 14:07:43,096 - web - ERROR - FIT conversion returned None for workout 2
 2025-05-03 14:07:48,060 - web - ERROR - FIT conversion returned None for workout 1
+2025-05-03 14:46:25,155 - database - ERROR - Error adding workout data: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 58136 and this is thread id 78304.
+2025-05-03 14:46:25,157 - ftms_connector - ERROR - Error processing indoor bike data: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 58136 and this is thread id 78304.. Data object: IndoorBikeData(instant_speed=19.14, average_speed=1.16, instant_cadence=32.0, average_cadence=31.0, total_distance=225, resistance_level=None, instant_power=49, average_power=45, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=102, metabolic_equivalent=None, elapsed_time=44, remaining_time=None)
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 423, in _handle_indoor_bike_data
+    callback(processed_data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 83, in _handle_data
+    self._notify_data_callbacks(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 90, in _notify_data_callbacks
+    self._handle_ftms_data(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 299, in _handle_ftms_data
+    self.workout_manager.add_data_point(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\workout_manager.py", line 245, in add_data_point
+    success = self.database.add_workout_data(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 343, in add_workout_data
+    self._disconnect()
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 61, in _disconnect
+    self.conn.close()
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 58136 and this is thread id 78304.
+2025-05-03 14:46:30,642 - database - ERROR - Error ending workout: database is locked
+2025-05-03 14:46:30,645 - web - ERROR - Error ending workout: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 78304 and this is thread id 58136.
+2025-05-03 14:46:31,679 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:46:31,680 - workout_manager - ERROR - Failed to add data point to workout 5
+2025-05-03 14:46:37,165 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:46:37,166 - workout_manager - ERROR - Failed to add data point to workout 5
+2025-05-03 14:46:39,003 - web - ERROR - Error ending workout: 'NoneType' object has no attribute 'commit'
+2025-05-03 14:46:42,674 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:46:42,678 - ftms_connector - ERROR - Error processing indoor bike data: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 67368 and this is thread id 78304.. Data object: IndoorBikeData(instant_speed=13.67, average_speed=1.11, instant_cadence=23.0, average_cadence=30.0, total_distance=225, resistance_level=None, instant_power=23, average_power=41, total_energy=1, energy_per_hour=0, energy_per_minute=0, heart_rate=103, metabolic_equivalent=None, elapsed_time=47, remaining_time=None)
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 423, in _handle_indoor_bike_data
+    callback(processed_data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 83, in _handle_data
+    self._notify_data_callbacks(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 90, in _notify_data_callbacks
+    self._handle_ftms_data(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 299, in _handle_ftms_data
+    self.workout_manager.add_data_point(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\workout_manager.py", line 245, in add_data_point
+    success = self.database.add_workout_data(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 343, in add_workout_data
+    self._disconnect()
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 61, in _disconnect
+    self.conn.close()
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 67368 and this is thread id 78304.
+2025-05-03 14:55:07,171 - ftms_connector - ERROR - Error processing indoor bike data: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 80228 and this is thread id 10540.. Data object: IndoorBikeData(instant_speed=10.13, average_speed=0.62, instant_cadence=17.0, average_cadence=16.0, total_distance=0, resistance_level=None, instant_power=13, average_power=12, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=84, metabolic_equivalent=None, elapsed_time=5, remaining_time=None)
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 423, in _handle_indoor_bike_data
+    callback(processed_data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 83, in _handle_data
+    self._notify_data_callbacks(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 90, in _notify_data_callbacks
+    self._handle_ftms_data(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 299, in _handle_ftms_data
+    self.workout_manager.add_data_point(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\workout_manager.py", line 245, in add_data_point
+    success = self.database.add_workout_data(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 343, in add_workout_data
+    self._disconnect()
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 61, in _disconnect
+    self.conn.close()
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 80228 and this is thread id 10540.
+2025-05-03 14:55:09,205 - database - ERROR - Error adding workout data: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 62092 and this is thread id 10540.
+2025-05-03 14:55:09,215 - workout_manager - ERROR - Failed to add data point to workout 7
+2025-05-03 14:55:15,601 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:55:15,602 - workout_manager - ERROR - Failed to add data point to workout 7
+2025-05-03 14:55:19,199 - ftms_connector - ERROR - AttributeError processing indoor bike data: 'NoneType' object has no attribute 'commit'. Data object: IndoorBikeData(instant_speed=10.78, average_speed=0.67, instant_cadence=18.0, average_cadence=18.0, total_distance=16, resistance_level=None, instant_power=14, average_power=14, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=85, metabolic_equivalent=None, elapsed_time=9, remaining_time=None)
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 423, in _handle_indoor_bike_data
+    callback(processed_data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 83, in _handle_data
+    self._notify_data_callbacks(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 90, in _notify_data_callbacks
+    self._handle_ftms_data(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 299, in _handle_ftms_data
+    self.workout_manager.add_data_point(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\workout_manager.py", line 245, in add_data_point
+    success = self.database.add_workout_data(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 337, in add_workout_data
+    self.conn.commit()
+    ^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'commit'
+2025-05-03 14:55:24,740 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:55:24,741 - workout_manager - ERROR - Failed to add data point to workout 7
+2025-05-03 14:55:30,250 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:55:30,251 - workout_manager - ERROR - Failed to add data point to workout 7
+2025-05-03 14:55:35,760 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:55:35,762 - workout_manager - ERROR - Failed to add data point to workout 7
+2025-05-03 14:55:41,265 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:55:41,266 - workout_manager - ERROR - Failed to add data point to workout 7
+2025-05-03 14:55:46,751 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:55:46,752 - workout_manager - ERROR - Failed to add data point to workout 7
+2025-05-03 14:55:52,259 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:55:52,259 - workout_manager - ERROR - Failed to add data point to workout 7
+2025-05-03 14:55:57,778 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:55:57,779 - workout_manager - ERROR - Failed to add data point to workout 7
+2025-05-03 14:56:03,298 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:56:03,301 - workout_manager - ERROR - Failed to add data point to workout 7
+2025-05-03 14:56:08,772 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:56:08,772 - workout_manager - ERROR - Failed to add data point to workout 7
+2025-05-03 14:56:14,299 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:56:14,301 - workout_manager - ERROR - Failed to add data point to workout 7
+2025-05-03 14:56:19,267 - ftms_connector - ERROR - AttributeError processing indoor bike data: 'NoneType' object has no attribute 'commit'. Data object: IndoorBikeData(instant_speed=8.84, average_speed=0.58, instant_cadence=15.0, average_cadence=15.0, total_distance=48, resistance_level=None, instant_power=11, average_power=11, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=85, metabolic_equivalent=None, elapsed_time=20, remaining_time=None)
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 423, in _handle_indoor_bike_data
+    callback(processed_data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 83, in _handle_data
+    self._notify_data_callbacks(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 90, in _notify_data_callbacks
+    self._handle_ftms_data(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 299, in _handle_ftms_data
+    self.workout_manager.add_data_point(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\workout_manager.py", line 245, in add_data_point
+    success = self.database.add_workout_data(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 337, in add_workout_data
+    self.conn.commit()
+    ^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'commit'
+2025-05-03 14:56:24,790 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:56:24,791 - workout_manager - ERROR - Failed to add data point to workout 7
+2025-05-03 14:56:30,300 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:56:30,301 - workout_manager - ERROR - Failed to add data point to workout 7
+2025-05-03 14:56:31,355 - database - ERROR - Error adding workout data: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 47596 and this is thread id 10540.
+2025-05-03 14:56:31,356 - ftms_connector - ERROR - Error processing indoor bike data: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 47596 and this is thread id 10540.. Data object: IndoorBikeData(instant_speed=11.9, average_speed=0.66, instant_cadence=20.0, average_cadence=17.0, total_distance=64, resistance_level=None, instant_power=15, average_power=13, total_energy=0, energy_per_hour=0, energy_per_minute=0, heart_rate=87, metabolic_equivalent=None, elapsed_time=23, remaining_time=None)
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 423, in _handle_indoor_bike_data
+    callback(processed_data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 83, in _handle_data
+    self._notify_data_callbacks(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 90, in _notify_data_callbacks
+    self._handle_ftms_data(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_manager.py", line 299, in _handle_ftms_data
+    self.workout_manager.add_data_point(data)
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\workout_manager.py", line 245, in add_data_point
+    success = self.database.add_workout_data(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 343, in add_workout_data
+    self._disconnect()
+  File "C:\Users\dougl\rogue_garmin_bridge\src\data\database.py", line 61, in _disconnect
+    self.conn.close()
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 47596 and this is thread id 10540.
+2025-05-03 14:56:36,416 - database - ERROR - Error ending workout: database is locked
+2025-05-03 14:56:36,418 - workout_manager - ERROR - Failed to end workout 7
+2025-05-03 14:56:36,835 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:56:36,835 - workout_manager - ERROR - Failed to add data point to workout 7
+2025-05-03 14:56:42,318 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:56:42,319 - workout_manager - ERROR - Failed to add data point to workout 7
+2025-05-03 14:56:43,481 - database - ERROR - Error ending workout: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 75228 and this is thread id 67312.
+2025-05-03 14:56:43,483 - workout_manager - ERROR - Failed to end workout 7
+2025-05-03 14:56:47,836 - database - ERROR - Error adding workout data: database is locked
+2025-05-03 14:56:47,838 - workout_manager - ERROR - Failed to add data point to workout 7

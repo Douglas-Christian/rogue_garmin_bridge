@@ -119,6 +119,11 @@ class FITConverter:
             speeds = data_series.get('speeds', [])
             distances = data_series.get('distances', [])
             
+            # Also get the average values if available in data series
+            average_powers = data_series.get('average_powers', [])
+            average_cadences = data_series.get('average_cadences', [])
+            average_speeds = data_series.get('average_speeds', [])
+            
             if not timestamps or not absolute_timestamps:
                 logger.warning("No timestamp data available")
                 return None
@@ -229,11 +234,11 @@ class FITConverter:
                         record_msg.timestamp = unix_record_timestamp_ms
                         logger.debug(f"Record {i}: Using relative timestamp {timestamps[i]} sec -> {unix_record_timestamp_ms} ms")
                     
-                    # Set power
+                    # Set power - use instantaneous power for record messages
                     if i < len(powers):
                         record_msg.power = int(powers[i])
                     
-                    # Set cadence
+                    # Set cadence - use instantaneous cadence for record messages
                     if i < len(cadences):
                         record_msg.cadence = int(cadences[i])
                     
@@ -241,7 +246,7 @@ class FITConverter:
                     if i < len(heart_rates) and heart_rates[i] > 0:
                         record_msg.heart_rate = int(heart_rates[i])
                     
-                    # Set speed
+                    # Set speed - use instantaneous speed for record messages
                     if i < len(speeds):
                         # Convert km/h to m/s
                         record_msg.speed = int(speeds[i] * 1000 / 3600)
@@ -283,15 +288,25 @@ class FITConverter:
                 lap_msg.total_timer_time = float(total_duration)
                 lap_msg.total_distance = float(total_distance)
                 lap_msg.total_calories = int(total_calories)
+                
+                # Use average power from data if available
                 lap_msg.avg_power = int(avg_power)
+                
                 lap_msg.max_power = int(max_power)
+                
+                # Use average cadence from data if available
                 lap_msg.avg_cadence = int(avg_cadence)
+                
                 lap_msg.max_cadence = int(max_cadence)
+                
                 if avg_heart_rate > 0:
                     lap_msg.avg_heart_rate = int(avg_heart_rate)
                 if max_heart_rate > 0:
                     lap_msg.max_heart_rate = int(max_heart_rate)
+                
+                # Use average speed from data if available
                 lap_msg.avg_speed = int(avg_speed * 1000 / 3600)  # Convert km/h to m/s
+                
                 lap_msg.max_speed = int(max_speed * 1000 / 3600)  # Convert km/h to m/s
                 lap_msg.lap_trigger = LapTrigger.SESSION_END
                 lap_msg.sport = Sport.CYCLING
@@ -311,15 +326,25 @@ class FITConverter:
                 session_msg.total_timer_time = float(total_duration)
                 session_msg.total_distance = float(total_distance)
                 session_msg.total_calories = int(total_calories)
+                
+                # Use the summary average power, which may be directly from the device
                 session_msg.avg_power = int(avg_power)
+                
                 session_msg.max_power = int(max_power)
+                
+                # Use the summary average cadence, which may be directly from the device
                 session_msg.avg_cadence = int(avg_cadence)
+                
                 session_msg.max_cadence = int(max_cadence)
+                
                 if avg_heart_rate > 0:
                     session_msg.avg_heart_rate = int(avg_heart_rate)
                 if max_heart_rate > 0:
                     session_msg.max_heart_rate = int(max_heart_rate)
+                
+                # Use the summary average speed, which may be directly from the device
                 session_msg.avg_speed = int(avg_speed * 1000 / 3600)  # Convert km/h to m/s
+                
                 session_msg.max_speed = int(max_speed * 1000 / 3600)  # Convert km/h to m/s
                 session_msg.first_lap_index = 0
                 session_msg.num_laps = 1
@@ -333,7 +358,10 @@ class FITConverter:
                 
                 # Add user profile data if available
                 if user_profile:
-                    if 'weight' in user_profile:
+                    if 'weight_kg' in user_profile:
+                        # Convert kg to g
+                        session_msg.total_weight = int(user_profile['weight_kg'] * 1000)
+                    elif 'weight' in user_profile:
                         # Convert kg to g
                         session_msg.total_weight = int(user_profile['weight'] * 1000)
                     

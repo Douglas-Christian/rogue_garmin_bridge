@@ -10,6 +10,7 @@ import os
 import sqlite3
 import json
 import logging
+import threading
 from datetime import datetime
 from typing import Dict, List, Any, Optional, Tuple, Union
 
@@ -19,6 +20,26 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger('database')
+
+class ThreadLocalConnection:
+    """A thread-local SQLite connection manager."""
+    
+    def __init__(self, db_path: str):
+        self.db_path = db_path
+        self.local = threading.local()
+    
+    def get_connection(self):
+        """Get a SQLite connection for the current thread."""
+        if not hasattr(self.local, 'connection') or self.local.connection is None:
+            self.local.connection = sqlite3.connect(self.db_path)
+            self.local.connection.row_factory = sqlite3.Row
+        return self.local.connection
+    
+    def close_connection(self):
+        """Close the SQLite connection for the current thread."""
+        if hasattr(self.local, 'connection') and self.local.connection is not None:
+            self.local.connection.close()
+            self.local.connection = None
 
 class Database:
     """
@@ -33,41 +54,32 @@ class Database:
             db_path: Path to the SQLite database file
         """
         self.db_path = db_path
-        self.conn = None
-        self.cursor = None
         
         # Create database directory if it doesn't exist
         os.makedirs(os.path.dirname(db_path), exist_ok=True)
         
+        # Initialize thread-local connections
+        self.connections = ThreadLocalConnection(db_path)
+        
         # Initialize database
-        self._connect()
         self._create_tables()
-        self._disconnect()
     
-    def _connect(self) -> None:
-        """Connect to the SQLite database."""
-        try:
-            self.conn = sqlite3.connect(self.db_path)
-            self.conn.row_factory = sqlite3.Row  # Return rows as dictionaries
-            self.cursor = self.conn.cursor()
-            logger.debug("Connected to database")
-        except sqlite3.Error as e:
-            logger.error(f"Error connecting to database: {str(e)}")
-            raise
+    def _get_connection(self):
+        """Get a connection for the current thread."""
+        return self.connections.get_connection()
     
-    def _disconnect(self) -> None:
-        """Disconnect from the SQLite database."""
-        if self.conn:
-            self.conn.close()
-            self.conn = None
-            self.cursor = None
-            logger.debug("Disconnected from database")
+    def _get_cursor(self):
+        """Get a cursor for the current thread."""
+        return self._get_connection().cursor()
     
     def _create_tables(self) -> None:
         """Create database tables if they don't exist."""
         try:
+            conn = self._get_connection()
+            cursor = conn.cursor()
+            
             # Devices table
-            self.cursor.execute('''
+            cursor.execute('''
                 CREATE TABLE IF NOT EXISTS devices (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     address TEXT UNIQUE,
@@ -79,7 +91,7 @@ class Database:
             ''')
             
             # Workouts table
-            self.cursor.execute('''
+            cursor.execute('''
                 CREATE TABLE IF NOT EXISTS workouts (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     device_id INTEGER,
@@ -95,7 +107,7 @@ class Database:
             ''')
             
             # Workout data table
-            self.cursor.execute('''
+            cursor.execute('''
                 CREATE TABLE IF NOT EXISTS workout_data (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     workout_id INTEGER,
@@ -106,7 +118,7 @@ class Database:
             ''')
             
             # Configuration table
-            self.cursor.execute('''
+            cursor.execute('''
                 CREATE TABLE IF NOT EXISTS configuration (
                     key TEXT PRIMARY KEY,
                     value TEXT
@@ -114,7 +126,7 @@ class Database:
             ''')
             
             # User profile table
-            self.cursor.execute('''
+            cursor.execute('''
                 CREATE TABLE IF NOT EXISTS user_profile (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT,
@@ -129,7 +141,7 @@ class Database:
                 )
             ''')
             
-            self.conn.commit()
+            conn.commit()
             logger.info("Database tables created")
         except sqlite3.Error as e:
             logger.error(f"Error creating tables: {str(e)}")
@@ -149,41 +161,41 @@ class Database:
             Device ID
         """
         try:
-            self._connect()
+            conn = self._get_connection()
+            cursor = conn.cursor()
             
             # Convert metadata to JSON string
             metadata_json = json.dumps(metadata) if metadata else '{}'
             
             # Check if device already exists
-            self.cursor.execute(
+            cursor.execute(
                 "SELECT id FROM devices WHERE address = ?",
                 (address,)
             )
-            result = self.cursor.fetchone()
+            result = cursor.fetchone()
             
             if result:
                 # Update existing device
                 device_id = result['id']
-                self.cursor.execute(
+                cursor.execute(
                     "UPDATE devices SET name = ?, device_type = ?, last_connected = ?, metadata = ? WHERE id = ?",
                     (name, device_type, datetime.now().isoformat(), metadata_json, device_id)
                 )
             else:
                 # Insert new device
-                self.cursor.execute(
+                cursor.execute(
                     "INSERT INTO devices (address, name, device_type, last_connected, metadata) VALUES (?, ?, ?, ?, ?)",
                     (address, name, device_type, datetime.now().isoformat(), metadata_json)
                 )
-                device_id = self.cursor.lastrowid
+                device_id = cursor.lastrowid
             
-            self.conn.commit()
+            conn.commit()
             logger.info(f"Device {name} ({address}) {'updated' if result else 'added'} with ID {device_id}")
             return device_id
         except sqlite3.Error as e:
             logger.error(f"Error adding device: {str(e)}")
+            conn.rollback()
             raise
-        finally:
-            self._disconnect()
     
     def get_devices(self) -> List[Dict[str, Any]]:
         """
@@ -193,9 +205,11 @@ class Database:
             List of device dictionaries
         """
         try:
-            self._connect()
-            self.cursor.execute("SELECT * FROM devices")
-            devices = [dict(row) for row in self.cursor.fetchall()]
+            conn = self._get_connection()
+            cursor = conn.cursor()
+            
+            cursor.execute("SELECT * FROM devices")
+            devices = [dict(row) for row in cursor.fetchall()]
             
             # Parse metadata JSON
             for device in devices:
@@ -205,8 +219,6 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Error getting devices: {str(e)}")
             return []
-        finally:
-            self._disconnect()
     
     def get_device(self, device_id: int) -> Optional[Dict[str, Any]]:
         """
@@ -219,9 +231,11 @@ class Database:
             Device dictionary or None if not found
         """
         try:
-            self._connect()
-            self.cursor.execute("SELECT * FROM devices WHERE id = ?", (device_id,))
-            device = self.cursor.fetchone()
+            conn = self._get_connection()
+            cursor = conn.cursor()
+            
+            cursor.execute("SELECT * FROM devices WHERE id = ?", (device_id,))
+            device = cursor.fetchone()
             
             if device:
                 device_dict = dict(device)
@@ -231,8 +245,6 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Error getting device: {str(e)}")
             return None
-        finally:
-            self._disconnect()
     
     def start_workout(self, device_id: int, workout_type: str) -> int:
         """
@@ -246,23 +258,24 @@ class Database:
             Workout ID
         """
         try:
-            self._connect()
+            conn = self._get_connection()
+            cursor = conn.cursor()
+            
             start_time = datetime.now().isoformat()
             
-            self.cursor.execute(
+            cursor.execute(
                 "INSERT INTO workouts (device_id, start_time, workout_type, summary) VALUES (?, ?, ?, ?)",
                 (device_id, start_time, workout_type, '{}')
             )
-            workout_id = self.cursor.lastrowid
+            workout_id = cursor.lastrowid
             
-            self.conn.commit()
+            conn.commit()
             logger.info(f"Started workout {workout_id} with device {device_id}")
             return workout_id
         except sqlite3.Error as e:
             logger.error(f"Error starting workout: {str(e)}")
+            conn.rollback()
             raise
-        finally:
-            self._disconnect()
     
     def end_workout(self, workout_id: int, summary: Dict[str, Any] = None, fit_file_path: str = None) -> bool:
         """
@@ -277,11 +290,12 @@ class Database:
             True if successful, False otherwise
         """
         try:
-            self._connect()
+            conn = self._get_connection()
+            cursor = conn.cursor()
             
             # Get start time
-            self.cursor.execute("SELECT start_time FROM workouts WHERE id = ?", (workout_id,))
-            result = self.cursor.fetchone()
+            cursor.execute("SELECT start_time FROM workouts WHERE id = ?", (workout_id,))
+            result = cursor.fetchone()
             
             if not result:
                 logger.error(f"Workout {workout_id} not found")
@@ -294,19 +308,18 @@ class Database:
             # Convert summary to JSON string
             summary_json = json.dumps(summary) if summary else '{}'
             
-            self.cursor.execute(
+            cursor.execute(
                 "UPDATE workouts SET end_time = ?, duration = ?, summary = ?, fit_file_path = ? WHERE id = ?",
                 (end_time.isoformat(), duration, summary_json, fit_file_path, workout_id)
             )
             
-            self.conn.commit()
+            conn.commit()
             logger.info(f"Ended workout {workout_id}, duration: {duration}s")
             return True
         except sqlite3.Error as e:
             logger.error(f"Error ending workout: {str(e)}")
+            conn.rollback()
             return False
-        finally:
-            self._disconnect()
     
     def add_workout_data(self, workout_id: int, timestamp: datetime, data: Dict[str, Any]) -> bool:
         """
@@ -321,7 +334,8 @@ class Database:
             True if successful, False otherwise
         """
         try:
-            self._connect()
+            conn = self._get_connection()
+            cursor = conn.cursor()
             
             # Convert data to JSON string
             data_json = json.dumps(data)
@@ -329,19 +343,18 @@ class Database:
             # Convert timestamp to ISO 8601 string
             timestamp_iso = timestamp.isoformat()
             
-            self.cursor.execute(
+            cursor.execute(
                 "INSERT INTO workout_data (workout_id, timestamp, data) VALUES (?, ?, ?)",
                 (workout_id, timestamp_iso, data_json)
             )
             
-            self.conn.commit()
+            conn.commit()
             return True
         except sqlite3.Error as e:
             logger.error(f"Error adding workout data: {str(e)}")
+            conn.rollback()
             return False
-        finally:
-            self._disconnect()
-    
+
     def get_workout(self, workout_id: int) -> Optional[Dict[str, Any]]:
         """
         Get workout information.
@@ -353,9 +366,11 @@ class Database:
             Workout dictionary or None if not found
         """
         try:
-            self._connect()
-            self.cursor.execute("SELECT * FROM workouts WHERE id = ?", (workout_id,))
-            workout = self.cursor.fetchone()
+            conn = self._get_connection()
+            cursor = conn.cursor()
+            
+            cursor.execute("SELECT * FROM workouts WHERE id = ?", (workout_id,))
+            workout = cursor.fetchone()
             
             if workout:
                 workout_dict = dict(workout)
@@ -365,8 +380,6 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Error getting workout: {str(e)}")
             return None
-        finally:
-            self._disconnect()
     
     def get_workout_data(self, workout_id: int) -> List[Dict[str, Any]]:
         """
@@ -379,14 +392,16 @@ class Database:
             List of workout data dictionaries
         """
         try:
-            self._connect()
-            self.cursor.execute(
+            conn = self._get_connection()
+            cursor = conn.cursor()
+            
+            cursor.execute(
                 "SELECT * FROM workout_data WHERE workout_id = ? ORDER BY timestamp",
                 (workout_id,)
             )
             data_points = []
             
-            for row in self.cursor.fetchall():
+            for row in cursor.fetchall():
                 data_point = dict(row)
                 # Convert timestamp string back to datetime object
                 data_point["timestamp"] = datetime.fromisoformat(data_point["timestamp"])
@@ -397,8 +412,6 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Error getting workout data: {str(e)}")
             return []
-        finally:
-            self._disconnect()
     
     def get_workout_data_optimized(self, workout_id: int) -> List[Dict[str, Any]]:
         """
@@ -414,7 +427,8 @@ class Database:
             List of workout data dictionaries with optimized structure
         """
         try:
-            self._connect()
+            conn = self._get_connection()
+            cursor = conn.cursor()
             
             # Use a single SQL query to extract all needed fields directly
             query = """
@@ -425,28 +439,58 @@ class Database:
                 json_extract(data, '$.total_distance') as total_distance,
                 json_extract(data, '$.instantaneous_cadence') as instantaneous_cadence,
                 json_extract(data, '$.instantaneous_speed') as instantaneous_speed,
-                json_extract(data, '$.stroke_rate') as stroke_rate
+                json_extract(data, '$.stroke_rate') as stroke_rate,
+                json_extract(data, '$.average_power') as average_power,
+                json_extract(data, '$.average_cadence') as average_cadence,
+                json_extract(data, '$.average_speed') as average_speed,
+                json_extract(data, '$.instant_power') as instant_power,
+                json_extract(data, '$.instant_cadence') as instant_cadence,
+                json_extract(data, '$.instant_speed') as instant_speed
             FROM workout_data
             WHERE workout_id = ?
             ORDER BY timestamp ASC
             """
             
-            self.cursor.execute(query, (workout_id,))
+            cursor.execute(query, (workout_id,))
             
             data_points = []
-            for row in self.cursor.fetchall():
+            for row in cursor.fetchall():
                 # Convert timestamp string to datetime object
                 timestamp = datetime.fromisoformat(row['timestamp'])
+                
+                # Find the power value from any available field
+                power = None
+                for field in ['instantaneous_power', 'instant_power']:
+                    if row[field] is not None:
+                        power = float(row[field])
+                        break
+                
+                # Find the cadence value from any available field
+                cadence = None
+                for field in ['instantaneous_cadence', 'instant_cadence']:
+                    if row[field] is not None:
+                        cadence = float(row[field])
+                        break
+                
+                # Find the speed value from any available field
+                speed = None
+                for field in ['instantaneous_speed', 'instant_speed']:
+                    if row[field] is not None:
+                        speed = float(row[field])
+                        break
                 
                 # Create data point with exact structure needed for FIT conversion
                 data_point = {
                     'timestamp': timestamp,
-                    'instantaneous_power': int(row['instantaneous_power'] or 0),
-                    'heart_rate': int(row['heart_rate'] or 0),
-                    'total_distance': float(row['total_distance'] or 0),
-                    'instantaneous_cadence': int(row['instantaneous_cadence'] or 0),
-                    'instantaneous_speed': float(row['instantaneous_speed'] or 0),
-                    'stroke_rate': int(row['stroke_rate'] or 0)
+                    'instantaneous_power': int(power) if power is not None else 0,
+                    'heart_rate': int(row['heart_rate']) if row['heart_rate'] is not None else 0,
+                    'total_distance': float(row['total_distance']) if row['total_distance'] is not None else 0,
+                    'instantaneous_cadence': int(cadence) if cadence is not None else 0,
+                    'instantaneous_speed': float(speed) if speed is not None else 0,
+                    'stroke_rate': int(row['stroke_rate']) if row['stroke_rate'] is not None else 0,
+                    'average_power': int(float(row['average_power'])) if row['average_power'] is not None else None,
+                    'average_cadence': int(float(row['average_cadence'])) if row['average_cadence'] is not None else None,
+                    'average_speed': float(row['average_speed']) if row['average_speed'] is not None else None
                 }
                 
                 data_points.append(data_point)
@@ -455,8 +499,6 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Error getting optimized workout data: {str(e)}")
             return []
-        finally:
-            self._disconnect()
     
     def get_workouts(self, limit: int = 10, offset: int = 0) -> List[Dict[str, Any]]:
         """
@@ -470,9 +512,11 @@ class Database:
             List of workout dictionaries
         """
         try:
-            self._connect()
+            conn = self._get_connection()
+            cursor = conn.cursor()
+            
             # Use LEFT JOIN instead of INNER JOIN to include workouts with missing device data
-            self.cursor.execute(
+            cursor.execute(
                 """
                 SELECT w.*, d.name as device_name, d.device_type 
                 FROM workouts w
@@ -484,7 +528,7 @@ class Database:
             )
             workouts = []
             
-            for row in self.cursor.fetchall():
+            for row in cursor.fetchall():
                 workout = dict(row)
                 # Make sure none of the key values are None to avoid JSON parsing errors
                 if workout['summary'] is not None:
@@ -507,8 +551,6 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Error getting workouts: {str(e)}")
             return []
-        finally:
-            self._disconnect()
     
     def get_workouts_without_fit_files(self, limit: Optional[int] = None) -> List[Dict[str, Any]]:
         """
@@ -521,7 +563,8 @@ class Database:
             List of workout dictionaries
         """
         try:
-            self._connect()
+            conn = self._get_connection()
+            cursor = conn.cursor()
             
             query = """
             SELECT w.*, d.name as device_name, d.device_type 
@@ -535,10 +578,10 @@ class Database:
             if limit is not None:
                 query += f" LIMIT {int(limit)}"
             
-            self.cursor.execute(query)
+            cursor.execute(query)
             
             workouts = []
-            for row in self.cursor.fetchall():
+            for row in cursor.fetchall():
                 workout = dict(row)
                 
                 # Make sure none of the key values are None to avoid JSON parsing errors
@@ -559,8 +602,6 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Error getting workouts without FIT files: {str(e)}")
             return []
-        finally:
-            self._disconnect()
     
     def update_workout_fit_path(self, workout_id: int, fit_file_path: str) -> bool:
         """
@@ -574,21 +615,21 @@ class Database:
             True if successful, False otherwise
         """
         try:
-            self._connect()
+            conn = self._get_connection()
+            cursor = conn.cursor()
             
-            self.cursor.execute(
+            cursor.execute(
                 "UPDATE workouts SET fit_file_path = ? WHERE id = ?",
                 (fit_file_path, workout_id)
             )
             
-            self.conn.commit()
+            conn.commit()
             logger.info(f"Updated FIT file path for workout {workout_id}: {fit_file_path}")
             return True
         except sqlite3.Error as e:
             logger.error(f"Error updating workout FIT file path: {str(e)}")
+            conn.rollback()
             return False
-        finally:
-            self._disconnect()
     
     def set_config(self, key: str, value: Any) -> bool:
         """
@@ -602,24 +643,24 @@ class Database:
             True if successful, False otherwise
         """
         try:
-            self._connect()
+            conn = self._get_connection()
+            cursor = conn.cursor()
             
             # Convert value to JSON string
             value_json = json.dumps(value)
             
-            self.cursor.execute(
+            cursor.execute(
                 "INSERT OR REPLACE INTO configuration (key, value) VALUES (?, ?)",
                 (key, value_json)
             )
             
-            self.conn.commit()
+            conn.commit()
             logger.debug(f"Set config {key} = {value}")
             return True
         except sqlite3.Error as e:
             logger.error(f"Error setting config: {str(e)}")
+            conn.rollback()
             return False
-        finally:
-            self._disconnect()
     
     def get_config(self, key: str, default: Any = None) -> Any:
         """
@@ -633,9 +674,11 @@ class Database:
             Configuration value
         """
         try:
-            self._connect()
-            self.cursor.execute("SELECT value FROM configuration WHERE key = ?", (key,))
-            result = self.cursor.fetchone()
+            conn = self._get_connection()
+            cursor = conn.cursor()
+            
+            cursor.execute("SELECT value FROM configuration WHERE key = ?", (key,))
+            result = cursor.fetchone()
             
             if result:
                 return json.loads(result['value'])
@@ -643,8 +686,6 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Error getting config: {str(e)}")
             return default
-        finally:
-            self._disconnect()
     
     def set_user_profile(self, profile: Dict[str, Any]) -> bool:
         """
@@ -657,15 +698,16 @@ class Database:
             True if successful, False otherwise
         """
         try:
-            self._connect()
+            conn = self._get_connection()
+            cursor = conn.cursor()
             
             # Check if profile exists
-            self.cursor.execute("SELECT COUNT(*) as count FROM user_profile")
-            count = self.cursor.fetchone()['count']
+            cursor.execute("SELECT COUNT(*) as count FROM user_profile")
+            count = cursor.fetchone()['count']
             
             if count > 0:
                 # Update existing profile
-                self.cursor.execute(
+                cursor.execute(
                     """
                     UPDATE user_profile SET 
                     name = ?, age = ?, weight = ?, height = ?, gender = ?,
@@ -687,7 +729,7 @@ class Database:
                 )
             else:
                 # Insert new profile
-                self.cursor.execute(
+                cursor.execute(
                     """
                     INSERT INTO user_profile 
                     (name, age, weight, height, gender, max_heart_rate, resting_heart_rate, garmin_username, garmin_password)
@@ -706,14 +748,13 @@ class Database:
                     )
                 )
             
-            self.conn.commit()
+            conn.commit()
             logger.info("User profile updated")
             return True
         except sqlite3.Error as e:
             logger.error(f"Error setting user profile: {str(e)}")
+            conn.rollback()
             return False
-        finally:
-            self._disconnect()
     
     def get_user_profile(self) -> Optional[Dict[str, Any]]:
         """
@@ -723,9 +764,11 @@ class Database:
             User profile dictionary or None if not found
         """
         try:
-            self._connect()
-            self.cursor.execute("SELECT * FROM user_profile LIMIT 1")
-            profile = self.cursor.fetchone()
+            conn = self._get_connection()
+            cursor = conn.cursor()
+            
+            cursor.execute("SELECT * FROM user_profile LIMIT 1")
+            profile = cursor.fetchone()
             
             if profile:
                 return dict(profile)
@@ -733,8 +776,6 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Error getting user profile: {str(e)}")
             return None
-        finally:
-            self._disconnect()
     
     def mark_workout_uploaded(self, workout_id: int) -> bool:
         """
@@ -747,19 +788,28 @@ class Database:
             True if successful, False otherwise
         """
         try:
-            self._connect()
-            self.cursor.execute(
+            conn = self._get_connection()
+            cursor = conn.cursor()
+            
+            cursor.execute(
                 "UPDATE workouts SET uploaded_to_garmin = 1 WHERE id = ?",
                 (workout_id,)
             )
-            self.conn.commit()
+            conn.commit()
             logger.info(f"Workout {workout_id} marked as uploaded to Garmin Connect")
             return True
         except sqlite3.Error as e:
             logger.error(f"Error marking workout as uploaded: {str(e)}")
+            conn.rollback()
             return False
-        finally:
-            self._disconnect()
+    
+    def close(self):
+        """Close all database connections."""
+        try:
+            self.connections.close_connection()
+            logger.debug("Closed all database connections")
+        except Exception as e:
+            logger.error(f"Error closing database connections: {str(e)}")
 
 
 # Example usage
@@ -778,9 +828,21 @@ if __name__ == "__main__":
     workout_id = db.start_workout(device_id, "bike")
     
     # Add some workout data
-    db.add_workout_data(workout_id, 0, {"power": 150, "cadence": 80, "heart_rate": 120})
-    db.add_workout_data(workout_id, 1, {"power": 155, "cadence": 82, "heart_rate": 122})
-    db.add_workout_data(workout_id, 2, {"power": 160, "cadence": 85, "heart_rate": 125})
+    db.add_workout_data(
+        workout_id, 
+        datetime.now(),
+        {"power": 150, "cadence": 80, "heart_rate": 120}
+    )
+    db.add_workout_data(
+        workout_id,
+        datetime.now(),
+        {"power": 155, "cadence": 82, "heart_rate": 122}
+    )
+    db.add_workout_data(
+        workout_id,
+        datetime.now(),
+        {"power": 160, "cadence": 85, "heart_rate": 125}
+    )
     
     # End the workout
     db.end_workout(workout_id, {"avg_power": 155, "avg_cadence": 82, "avg_heart_rate": 122})
@@ -803,3 +865,6 @@ if __name__ == "__main__":
     # Get user profile
     profile = db.get_user_profile()
     print(f"User profile: {profile}")
+    
+    # Properly close all connections
+    db.close()
