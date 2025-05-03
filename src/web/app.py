@@ -564,9 +564,49 @@ def convert_workout_to_fit(workout_id):
                 })
         
         # Process data points
+        # Store the absolute timestamps separately (needed by FIT converter)
+        absolute_timestamps = []
+        
+        # Calculate start time as datetime object for relative timestamps
+        start_time_obj = None
+        if workout.get('start_time'):
+            try:
+                from datetime import datetime
+                if isinstance(workout['start_time'], str):
+                    start_time_obj = datetime.fromisoformat(workout['start_time'])
+                else:
+                    start_time_obj = workout['start_time']
+            except Exception as e:
+                logger.error(f"Error parsing start time: {str(e)}")
+        
         for data_point in workout_data:
             # Extract timestamp
-            processed_data['data_series']['timestamps'].append(data_point.get('timestamp', 0))
+            timestamp = data_point.get('timestamp')
+            if timestamp and isinstance(timestamp, str):
+                try:
+                    from datetime import datetime
+                    # Convert string timestamp to datetime object
+                    timestamp_obj = datetime.fromisoformat(timestamp)
+                    absolute_timestamps.append(timestamp_obj)
+                except Exception as e:
+                    logger.error(f"Error parsing timestamp: {str(e)}")
+                    if start_time_obj:
+                        # If we have a start time, calculate relative timestamps
+                        from datetime import timedelta
+                        relative_seconds = len(processed_data['data_series']['timestamps'])
+                        timestamp_obj = start_time_obj + timedelta(seconds=relative_seconds)
+                        absolute_timestamps.append(timestamp_obj)
+            elif isinstance(timestamp, datetime):
+                # Already a datetime object
+                absolute_timestamps.append(timestamp)
+            elif start_time_obj:
+                # Use start time + sequence index as fallback
+                from datetime import timedelta
+                relative_seconds = len(processed_data['data_series']['timestamps'])
+                timestamp_obj = start_time_obj + timedelta(seconds=relative_seconds)
+                absolute_timestamps.append(timestamp_obj)
+            
+            processed_data['data_series']['timestamps'].append(len(processed_data['data_series']['timestamps']))
             
             # Extract data metrics
             data = data_point.get('data', {})
@@ -580,7 +620,7 @@ def convert_workout_to_fit(workout_id):
                 except Exception as e:
                     logger.error(f"Error parsing data point JSON: {str(e)}")
                     data = {}  # Use empty dict if parsing fails
-            
+                    
             # Extract power - check different possible key names
             power = data.get('instant_power', data.get('instantaneous_power', data.get('power', 0)))
             processed_data['data_series']['powers'].append(power)
@@ -605,6 +645,9 @@ def convert_workout_to_fit(workout_id):
             # Extract distance
             distance = data.get('total_distance', data.get('distance', 0))
             processed_data['data_series']['distances'].append(distance)
+        
+        # Add absolute timestamps to processed data
+        processed_data['data_series']['absolute_timestamps'] = absolute_timestamps
         
         # Create FIT converter with output directory
         fit_output_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'fit_files')

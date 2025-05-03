@@ -1,1 +1,1 @@
-{"name": "Douglas", "age": 50, "weight": 95, "height": 176, "gender": "male", "max_heart_rate": 195, "resting_heart_rate": 47}
+{"name": "Douglas", "age": 50, "weight": 95.25451098148434, "height": 175.26, "gender": "male", "max_heart_rate": 195, "resting_heart_rate": 47, "unit_preference": "imperial"}

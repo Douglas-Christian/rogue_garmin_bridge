@@ -543,6 +543,20 @@ class WorkoutManager:
                 callback(status, data)
             except Exception as e:
                 logger.error(f"Error in status callback: {str(e)}")
+    
+    def update_workout_fit_file(self, workout_id: int, fit_file_path: str) -> bool:
+        """
+        Update the FIT file path for a workout.
+        
+        Args:
+            workout_id: Workout ID
+            fit_file_path: Path to the generated FIT file
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        logger.info(f"Updating workout {workout_id} with FIT file path: {fit_file_path}")
+        return self.database.update_workout_fit_path(workout_id, fit_file_path)
 
 
 # Example usage

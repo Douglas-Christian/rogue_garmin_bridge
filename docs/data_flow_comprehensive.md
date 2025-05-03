@@ -117,17 +117,7 @@ The most critical data flow path is:
 
 ### Known Issues and Solutions
 
-1. **Timestamp Collision Issue**:
-   - **Problem**: Only a single data point being saved due to timestamp collisions
-   - **Solution**: Add microsecond precision to timestamps in `_handle_ftms_data()`
 
-2. **Simulator State Issues**:
-   - **Problem**: Simulator continues generating data after workout is ended
-   - **Solution**: Properly set `workout_active = False` in `end_workout()` and check this flag in the simulation loop
-
-3. **Data Point Generation Inconsistencies**:
-   - **Problem**: Simulator might generate data at irregular intervals
-   - **Solution**: Consistent 1-second interval in the simulation loop with timestamped logging
 
 ## Expected Behaviors
 

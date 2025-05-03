@@ -926,6 +926,45 @@
         });
     }
 
+    // Convert workout to FIT file (for the FIT button in the workout list)
+    function convertToFIT(workoutId) {
+        // Show progress indicator
+        const fitBtn = document.querySelector(`.fit-btn[data-workout-id="${workoutId}"]`);
+        const originalText = fitBtn.innerHTML;
+        fitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        fitBtn.disabled = true;
+        
+        // Call the API to convert the workout to FIT
+        fetch(`/api/convert_fit/${workoutId}`, {
+            method: 'POST'
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Restore button text
+            fitBtn.innerHTML = originalText;
+            fitBtn.disabled = false;
+            
+            if (data.success && data.fit_file_path) {
+                // Create a download link for the FIT file
+                const downloadLink = document.createElement('a');
+                downloadLink.href = `/fit_files/${data.fit_file_name}`;
+                downloadLink.download = data.fit_file_name;
+                downloadLink.click();
+                
+                // Show success message
+                alert(`FIT file created successfully: ${data.fit_file_name}`);
+            } else {
+                alert(`Error creating FIT file: ${data.error || 'Unknown error'}`);
+            }
+        })
+        .catch(error => {
+            // Restore button text
+            fitBtn.innerHTML = originalText;
+            fitBtn.disabled = false;
+            alert(`Error creating FIT file: ${error.message}`);
+        });
+    }
+
     // Delete a workout
     function deleteWorkout(workoutId) {
         fetch(`/api/workout/${workoutId}`, {

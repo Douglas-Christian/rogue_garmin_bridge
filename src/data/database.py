@@ -471,11 +471,12 @@ class Database:
         """
         try:
             self._connect()
+            # Use LEFT JOIN instead of INNER JOIN to include workouts with missing device data
             self.cursor.execute(
                 """
                 SELECT w.*, d.name as device_name, d.device_type 
                 FROM workouts w
-                JOIN devices d ON w.device_id = d.id
+                LEFT JOIN devices d ON w.device_id = d.id
                 ORDER BY w.start_time DESC
                 LIMIT ? OFFSET ?
                 """,
@@ -485,8 +486,22 @@ class Database:
             
             for row in self.cursor.fetchall():
                 workout = dict(row)
-                workout['summary'] = json.loads(workout['summary'])
+                # Make sure none of the key values are None to avoid JSON parsing errors
+                if workout['summary'] is not None:
+                    workout['summary'] = json.loads(workout['summary'])
+                else:
+                    workout['summary'] = {}
+                
+                # Add default device info if missing
+                if workout.get('device_name') is None:
+                    workout['device_name'] = 'Unknown Device'
+                if workout.get('device_type') is None:
+                    workout['device_type'] = 'unknown'
+                    
                 workouts.append(workout)
+            
+            # Log what we found
+            logger.info(f"Retrieved {len(workouts)} workouts from database")
             
             return workouts
         except sqlite3.Error as e:
@@ -511,7 +526,7 @@ class Database:
             query = """
             SELECT w.*, d.name as device_name, d.device_type 
             FROM workouts w
-            JOIN devices d ON w.device_id = d.id
+            LEFT JOIN devices d ON w.device_id = d.id
             WHERE (w.fit_file_path IS NULL OR w.fit_file_path = '')
             AND w.end_time IS NOT NULL
             ORDER BY w.start_time DESC
@@ -525,7 +540,19 @@ class Database:
             workouts = []
             for row in self.cursor.fetchall():
                 workout = dict(row)
-                workout['summary'] = json.loads(workout['summary'])
+                
+                # Make sure none of the key values are None to avoid JSON parsing errors
+                if workout['summary'] is not None:
+                    workout['summary'] = json.loads(workout['summary'])
+                else:
+                    workout['summary'] = {}
+                
+                # Add default device info if missing
+                if workout.get('device_name') is None:
+                    workout['device_name'] = 'Unknown Device'
+                if workout.get('device_type') is None:
+                    workout['device_type'] = 'unknown'
+                    
                 workouts.append(workout)
             
             return workouts
