@@ -669,30 +669,6 @@
             detailsContent += `<div class="alert alert-info">No workout data points available for charts.</div>`;
         }
         
-        // Add export buttons
-        detailsContent += `
-            <div class="row mb-4">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5>Export</h5>
-                        </div>
-                        <div class="card-body">
-                            <button class="btn btn-primary me-2" id="exportFitBtn">
-                                <i class="fas fa-file-export"></i> Export as FIT
-                            </button>
-                            <button class="btn btn-secondary me-2" id="exportCsvBtn">
-                                <i class="fas fa-file-csv"></i> Export as CSV
-                            </button>
-                            <button class="btn btn-success" id="uploadGarminBtn">
-                                <i class="fas fa-upload"></i> Upload to Garmin Connect
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-        
         // Set the HTML and show the modal
         workoutDetails.innerHTML = detailsContent;
         
@@ -700,19 +676,6 @@
         if (workout.data_series && workout.data_series.timestamps && workout.data_series.timestamps.length > 0) {
             setupCharts(workout);
         }
-        
-        // Set up export buttons
-        document.getElementById('exportFitBtn').addEventListener('click', function() {
-            exportWorkoutToFit(workout.id);
-        });
-        
-        document.getElementById('exportCsvBtn').addEventListener('click', function() {
-            alert('CSV export is not implemented yet');
-        });
-        
-        document.getElementById('uploadGarminBtn').addEventListener('click', function() {
-            alert('Garmin Connect upload is not implemented yet');
-        });
     }
     
     // Set up charts for workout visualization

@@ -368,16 +368,22 @@
             }
         }
         
-        // Update speed - with unit display based on user preference
-        // The data already comes in the correct units (mph or km/h) from the device
+        // Update speed - with proper unit conversion based on user preference
         if (data.instant_speed !== undefined || data.speed !== undefined) {
-            const speedVal = data.instant_speed || data.speed || 0;
+            let speedVal = data.instant_speed || data.speed || 0;
             
-            // Display the speed value without additional conversion
-            speedValue.textContent = speedVal.toFixed(1);
-            
-            // Just set the units based on preference
-            speedUnit.textContent = userUnitSystem === 'imperial' ? 'mph' : 'km/h';
+            // Convert speed value based on unit preference
+            // Assuming the incoming speed is always in km/h
+            if (userUnitSystem === 'imperial') {
+                // Convert from km/h to mph
+                speedVal = unitConversions.kphToMph(speedVal);
+                speedValue.textContent = speedVal.toFixed(1);
+                speedUnit.textContent = 'mph';
+            } else {
+                // Keep as km/h
+                speedValue.textContent = speedVal.toFixed(1);
+                speedUnit.textContent = 'km/h';
+            }
         }
         
         // Update distance - with unit conversion based on user preference
@@ -480,11 +486,21 @@
             `;
         }
         
-        // Average speed - use value directly without conversion from m/s
+        // Average speed - with proper unit conversion
         if (summary.avg_speed !== undefined) {
-            // The avg_speed already comes in the user's preferred units (mph/km/h)
-            const avgSpeedDisplay = summary.avg_speed.toFixed(1);
-            const speedUnitText = userUnitSystem === 'imperial' ? 'mph' : 'km/h';
+            let avgSpeed = summary.avg_speed;
+            let speedUnitText;
+            
+            // Convert speed based on unit preference
+            if (userUnitSystem === 'imperial') {
+                // Convert from km/h to mph
+                avgSpeed = unitConversions.kphToMph(avgSpeed);
+                speedUnitText = 'mph';
+            } else {
+                speedUnitText = 'km/h';
+            }
+            
+            const avgSpeedDisplay = avgSpeed.toFixed(1);
             
             html += `
                 <div class="col-6">

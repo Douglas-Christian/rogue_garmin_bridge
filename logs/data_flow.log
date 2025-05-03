@@ -2134,3 +2134,20 @@ sqlite3.OperationalError: database is locked
 2025-05-03 14:14:14,555 - database - INFO - Updated FIT file path for workout 2: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_125244.fit
 2025-05-03 14:14:42,741 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_125244.fit
 2025-05-03 14:14:42,752 - database - INFO - Updated FIT file path for workout 2: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_125244.fit
+2025-05-03 14:30:35,568 - database - INFO - Database tables created
+2025-05-03 14:30:35,571 - database - INFO - Database tables created
+2025-05-03 14:30:36,577 - database - INFO - Database tables created
+2025-05-03 14:30:36,579 - database - INFO - Database tables created
+2025-05-03 14:30:43,478 - database - INFO - Retrieved 2 workouts from database
+2025-05-03 14:36:00,491 - database - INFO - Database tables created
+2025-05-03 14:36:00,492 - database - INFO - Database tables created
+2025-05-03 14:38:31,867 - database - INFO - Database tables created
+2025-05-03 14:38:31,870 - database - INFO - Database tables created
+2025-05-03 14:40:26,605 - database - INFO - Started workout 3 with device C9:02:CB:68:17:C1
+2025-05-03 14:41:27,486 - database - INFO - Ended workout 3, duration: 60s
+2025-05-03 14:41:27,491 - database - INFO - Database tables created
+2025-05-03 14:41:27,560 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_144026.fit
+2025-05-03 14:41:27,570 - database - INFO - Updated FIT file path for workout 3: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_144026.fit
+2025-05-03 14:41:40,783 - database - INFO - Retrieved 3 workouts from database
+2025-05-03 14:41:55,784 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_144026.fit
+2025-05-03 14:41:55,789 - database - INFO - Updated FIT file path for workout 3: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_144026.fit

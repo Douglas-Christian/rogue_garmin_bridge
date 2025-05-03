@@ -507,6 +507,49 @@ class WorkoutManager:
             if stroke_rate_values:
                 self.summary_metrics['avg_stroke_rate'] = sum(stroke_rate_values) / len(stroke_rate_values)
     
+    def get_workout_summary_metrics(self) -> Dict[str, Any]:
+        """
+        Get the summary metrics for the active workout.
+        
+        Returns:
+            Dictionary of summary metrics or empty dict if no active workout
+        """
+        if not self.active_workout_id:
+            return {}
+        
+        # Make a copy of the summary metrics to avoid external modification
+        summary = self.summary_metrics.copy()
+        
+        # Calculate elapsed time
+        if self.workout_start_time:
+            elapsed_seconds = (datetime.now() - self.workout_start_time).total_seconds()
+            summary['elapsed_time'] = int(elapsed_seconds)
+        
+        # Add workout type
+        if self.workout_type:
+            summary['workout_type'] = self.workout_type
+        
+        # Round average values for display
+        for key in summary:
+            if key.startswith('avg_'):
+                summary[key] = round(summary[key], 2)
+                
+        # Calculate estimated VO2 max if we have heart rate and user weight data
+        if summary.get('avg_heart_rate', 0) > 0 and summary.get('avg_power', 0) > 0:
+            user_profile = self.get_user_profile()
+            if user_profile and 'weight_kg' in user_profile:
+                weight_kg = user_profile['weight_kg']
+                avg_hr = summary['avg_heart_rate']
+                avg_power = summary['avg_power']
+                
+                # Only calculate if HR is sufficiently high (exercise intensity)
+                if avg_hr > 120:
+                    # Estimation formula: VO2 = (Power in watts / Weight in kg) * 10.8 + 7
+                    estimated_vo2 = (avg_power / weight_kg) * 10.8 + 7
+                    summary['estimated_vo2max'] = round(estimated_vo2, 1)
+        
+        return summary
+    
     def _calculate_summary_metrics(self) -> None:
         """Calculate final summary metrics for the workout."""
         # Most metrics are already calculated incrementally
