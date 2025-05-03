@@ -2928,3 +2928,19 @@ AttributeError: 'WorkoutManager' object has no attribute 'delete_workout'. Did y
 2025-05-03 17:30:58,669 - web - INFO - Duration: 382
 2025-05-03 17:30:58,670 - web - INFO - Data points: 383
 2025-05-03 17:30:59,383 - web - INFO - Serving FIT file: indoor_cycling_20250503_171737.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files
+2025-05-03 17:40:29,562 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-03 17:40:29,563 - web - INFO - Using real FTMS devices
+2025-05-03 17:40:29,565 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-03 17:40:29,565 - web - INFO - Starting background asyncio loop thread...
+2025-05-03 17:40:29,567 - web - INFO - Background thread started. Creating new event loop.
+2025-05-03 17:40:29,567 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-03 17:40:29,582 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-03 17:40:30,791 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-03 17:40:30,791 - web - INFO - Using real FTMS devices
+2025-05-03 17:40:30,792 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-03 17:40:30,792 - web - INFO - Starting background asyncio loop thread...
+2025-05-03 17:40:30,793 - web - INFO - Background thread started. Creating new event loop.
+2025-05-03 17:40:30,793 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-03 17:40:30,805 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-03 17:40:54,368 - web - INFO - Scheduling connect task for C9:02:CB:68:17:C1 on background loop.
+2025-05-03 17:41:17,784 - web - INFO - Connect task for C9:02:CB:68:17:C1 completed with result: True

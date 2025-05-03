@@ -943,3 +943,5 @@ AttributeError: 'Database' object has no attribute '_connect'
 2025-05-03 17:17:37,599 - workout_manager - INFO - Started workout 12 with device C9:02:CB:68:17:C1
 2025-05-03 17:24:00,332 - workout_manager - INFO - Successfully created FIT file for workout 12: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_171737.fit
 2025-05-03 17:30:59,064 - workout_manager - INFO - Updating workout 12 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_171737.fit
+2025-05-03 17:41:22,409 - workout_manager - INFO - Started workout 13 with device C9:02:CB:68:17:C1
+2025-05-03 17:42:29,716 - workout_manager - INFO - Successfully created FIT file for workout 13: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_174122.fit
