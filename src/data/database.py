@@ -400,6 +400,64 @@ class Database:
         finally:
             self._disconnect()
     
+    def get_workout_data_optimized(self, workout_id: int) -> List[Dict[str, Any]]:
+        """
+        Get workout data points optimized for FIT conversion.
+        
+        This method uses a single efficient query that retrieves and formats
+        the data points with the exact fields needed for FIT conversion.
+        
+        Args:
+            workout_id: Workout ID
+            
+        Returns:
+            List of workout data dictionaries with optimized structure
+        """
+        try:
+            self._connect()
+            
+            # Use a single SQL query to extract all needed fields directly
+            query = """
+            SELECT 
+                timestamp,
+                json_extract(data, '$.instantaneous_power') as instantaneous_power,
+                json_extract(data, '$.heart_rate') as heart_rate,
+                json_extract(data, '$.total_distance') as total_distance,
+                json_extract(data, '$.instantaneous_cadence') as instantaneous_cadence,
+                json_extract(data, '$.instantaneous_speed') as instantaneous_speed,
+                json_extract(data, '$.stroke_rate') as stroke_rate
+            FROM workout_data
+            WHERE workout_id = ?
+            ORDER BY timestamp ASC
+            """
+            
+            self.cursor.execute(query, (workout_id,))
+            
+            data_points = []
+            for row in self.cursor.fetchall():
+                # Convert timestamp string to datetime object
+                timestamp = datetime.fromisoformat(row['timestamp'])
+                
+                # Create data point with exact structure needed for FIT conversion
+                data_point = {
+                    'timestamp': timestamp,
+                    'instantaneous_power': int(row['instantaneous_power'] or 0),
+                    'heart_rate': int(row['heart_rate'] or 0),
+                    'total_distance': float(row['total_distance'] or 0),
+                    'instantaneous_cadence': int(row['instantaneous_cadence'] or 0),
+                    'instantaneous_speed': float(row['instantaneous_speed'] or 0),
+                    'stroke_rate': int(row['stroke_rate'] or 0)
+                }
+                
+                data_points.append(data_point)
+            
+            return data_points
+        except sqlite3.Error as e:
+            logger.error(f"Error getting optimized workout data: {str(e)}")
+            return []
+        finally:
+            self._disconnect()
+    
     def get_workouts(self, limit: int = 10, offset: int = 0) -> List[Dict[str, Any]]:
         """
         Get recent workouts.
@@ -434,6 +492,74 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Error getting workouts: {str(e)}")
             return []
+        finally:
+            self._disconnect()
+    
+    def get_workouts_without_fit_files(self, limit: Optional[int] = None) -> List[Dict[str, Any]]:
+        """
+        Get workouts that don't have associated FIT files.
+        
+        Args:
+            limit: Maximum number of workouts to return (None for all)
+            
+        Returns:
+            List of workout dictionaries
+        """
+        try:
+            self._connect()
+            
+            query = """
+            SELECT w.*, d.name as device_name, d.device_type 
+            FROM workouts w
+            JOIN devices d ON w.device_id = d.id
+            WHERE (w.fit_file_path IS NULL OR w.fit_file_path = '')
+            AND w.end_time IS NOT NULL
+            ORDER BY w.start_time DESC
+            """
+            
+            if limit is not None:
+                query += f" LIMIT {int(limit)}"
+            
+            self.cursor.execute(query)
+            
+            workouts = []
+            for row in self.cursor.fetchall():
+                workout = dict(row)
+                workout['summary'] = json.loads(workout['summary'])
+                workouts.append(workout)
+            
+            return workouts
+        except sqlite3.Error as e:
+            logger.error(f"Error getting workouts without FIT files: {str(e)}")
+            return []
+        finally:
+            self._disconnect()
+    
+    def update_workout_fit_path(self, workout_id: int, fit_file_path: str) -> bool:
+        """
+        Update the FIT file path for a workout.
+        
+        Args:
+            workout_id: Workout ID
+            fit_file_path: Path to the FIT file
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        try:
+            self._connect()
+            
+            self.cursor.execute(
+                "UPDATE workouts SET fit_file_path = ? WHERE id = ?",
+                (fit_file_path, workout_id)
+            )
+            
+            self.conn.commit()
+            logger.info(f"Updated FIT file path for workout {workout_id}: {fit_file_path}")
+            return True
+        except sqlite3.Error as e:
+            logger.error(f"Error updating workout FIT file path: {str(e)}")
+            return False
         finally:
             self._disconnect()
     

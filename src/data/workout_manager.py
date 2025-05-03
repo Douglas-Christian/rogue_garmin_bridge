@@ -20,7 +20,7 @@ from ..fit.fit_converter import FITConverter  # Added import
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    format='%(asctime:s) - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger('workout_manager')
 
@@ -149,27 +149,39 @@ class WorkoutManager:
         # Calculate final summary metrics
         self._calculate_summary_metrics()
         
-        # Get workout data for FIT conversion
-        workout_data = self.get_workout_data(workout_id_to_end)
-        
-        # Process data
-        processed_data = self.data_processor.process_workout_data(
-            workout_data, workout_type_to_end, start_time_to_end
-        )
-        
-        # Convert to FIT file
-        fit_file_path = self.fit_converter.convert_workout(
-            processed_data, user_profile=self.get_user_profile()
-        )
-        
-        # End workout in database, including FIT file path
+        # End workout in database with summary metrics (but no FIT file path yet)
         success = self.database.end_workout(
             workout_id_to_end,
-            summary=self.summary_metrics,
-            fit_file_path=fit_file_path
+            summary=self.summary_metrics
         )
         
-        if success:
+        if not success:
+            logger.error(f"Failed to end workout {workout_id_to_end}")
+            return False
+        
+        # Use the optimized FIT processor to generate the FIT file
+        try:
+            # Import FITProcessor here to avoid circular imports
+            from ..fit.fit_processor import FITProcessor
+            
+            # Define the output directory for FIT files
+            fit_output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "fit_files"))
+            
+            # Create FIT processor
+            fit_processor = FITProcessor(self.database.db_path, fit_output_dir)
+            
+            # Process workout and generate FIT file
+            fit_file_path = fit_processor.process_workout(
+                workout_id_to_end, 
+                user_profile=self.get_user_profile()
+            )
+            
+            # Update the workout record with the FIT file path
+            if fit_file_path:
+                logger.info(f"Successfully created FIT file for workout {workout_id_to_end}: {fit_file_path}")
+            else:
+                logger.warning(f"Failed to create FIT file for workout {workout_id_to_end}")
+        
             # Notify status
             duration = (datetime.now() - start_time_to_end).total_seconds()
             self._notify_status("workout_ended", {
@@ -181,8 +193,6 @@ class WorkoutManager:
                 "fit_file_path": fit_file_path
             })
             
-            logger.info(f"Ended workout {workout_id_to_end}, FIT file: {fit_file_path}")
-            
             # Clear current workout state
             self.active_workout_id = None
             self.active_device_id = None
@@ -192,9 +202,18 @@ class WorkoutManager:
             self.summary_metrics = {}
             
             return True
-        else:
-            logger.error(f"Failed to end workout {workout_id_to_end}")
-            return False
+        except Exception as e:
+            logger.error(f"Error processing workout for FIT file: {str(e)}")
+            
+            # Clear current workout state
+            self.active_workout_id = None
+            self.active_device_id = None
+            self.workout_start_time = None
+            self.workout_type = None
+            self.data_points = []
+            self.summary_metrics = {}
+            
+            return True  # Still return True since the workout was ended in database
     
     def add_data_point(self, data: Dict[str, Any]) -> bool:
         """

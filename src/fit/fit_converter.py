@@ -8,6 +8,7 @@ This module handles conversion of processed workout data to Garmin FIT format.
 import os
 import logging
 import time
+import traceback
 from typing import Dict, List, Any, Optional, Tuple
 from datetime import datetime, timedelta
 
@@ -26,10 +27,15 @@ from fit_tool.profile.profile_type import (
 
 # Configure logging
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.DEBUG,  # Changed to DEBUG for more detailed logs
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger('fit_converter')
+
+# FIT timestamp constants
+# NOTE: fit_tool expects timestamps in milliseconds since Unix epoch (1970-01-01)
+# It applies an offset of -631065600000 ms and a scale of 0.001 internally
+FIT_EPOCH_OFFSET_MS = 631065600000  # Milliseconds from Unix epoch to FIT epoch
 
 class FITConverter:
     """
@@ -73,6 +79,19 @@ class FITConverter:
         else:
             logger.warning(f"Unknown workout type: {workout_type}")
             return None
+    
+    def _unix_to_fit_timestamp_ms(self, unix_timestamp_seconds: int) -> int:
+        """
+        Convert Unix timestamp (seconds) to fit_tool format (milliseconds).
+        
+        Args:
+            unix_timestamp_seconds: Unix timestamp in seconds
+            
+        Returns:
+            Timestamp in milliseconds since Unix epoch (1970-01-01)
+        """
+        # Convert seconds to milliseconds - fit_tool will apply the offset and scale
+        return unix_timestamp_seconds * 1000
     
     def _convert_bike_workout(self, processed_data: Dict[str, Any], 
                             user_profile: Optional[Dict[str, Any]] = None) -> Optional[str]:
@@ -119,167 +138,253 @@ class FITConverter:
             avg_speed = processed_data.get('avg_speed', 0)
             max_speed = processed_data.get('max_speed', 0)
             
-            # Convert start_time to timestamp if it's a datetime
+            # Convert start_time to Unix timestamp in seconds
             if isinstance(start_time, datetime):
-                start_timestamp = int(start_time.timestamp())
+                unix_start_timestamp_sec = int(start_time.timestamp())
+            elif isinstance(start_time, str):
+                # Try to parse the string as a datetime
+                try:
+                    unix_start_timestamp_sec = int(datetime.fromisoformat(start_time).timestamp())
+                except ValueError:
+                    logger.warning(f"Could not parse start_time string: {start_time}")
+                    unix_start_timestamp_sec = int(time.time())
             else:
-                start_timestamp = int(time.time())
+                unix_start_timestamp_sec = int(time.time())
+            
+            # Convert Unix timestamp (seconds) to fit_tool format (milliseconds)
+            unix_start_timestamp_ms = self._unix_to_fit_timestamp_ms(unix_start_timestamp_sec)
+            
+            # Debug output
+            logger.debug(f"Start time: {start_time}")
+            logger.debug(f"Unix timestamp (seconds): {unix_start_timestamp_sec}")
+            logger.debug(f"Unix timestamp (milliseconds): {unix_start_timestamp_ms}")
             
             # Add File ID message
-            file_id_msg = FileIdMessage()
-            file_id_msg.type = FileType.ACTIVITY
-            file_id_msg.manufacturer = Manufacturer.DEVELOPMENT.value
-            file_id_msg.product = 0
-            file_id_msg.time_created = start_timestamp
-            file_id_msg.serial_number = 0x12345678
-            builder.add(file_id_msg)
+            try:
+                file_id_msg = FileIdMessage()
+                file_id_msg.type = FileType.ACTIVITY
+                file_id_msg.manufacturer = Manufacturer.DEVELOPMENT.value
+                file_id_msg.product = 0
+                file_id_msg.time_created = unix_start_timestamp_ms  # Milliseconds since Unix epoch
+                file_id_msg.serial_number = 0x12345678
+                builder.add(file_id_msg)
+                logger.debug(f"Added File ID message with time_created: {unix_start_timestamp_ms} ms")
+            except Exception as e:
+                logger.error(f"Error creating File ID message: {str(e)}")
+                logger.error(traceback.format_exc())
+                raise
             
             # Add Device Info message
-            device_info_msg = DeviceInfoMessage()
-            device_info_msg.timestamp = start_timestamp
-            device_info_msg.manufacturer = Manufacturer.DEVELOPMENT.value
-            device_info_msg.product = 0
-            device_info_msg.device_index = 0
-            device_info_msg.serial_number = 0x12345678
-            device_info_msg.software_version = 100
-            device_info_msg.hardware_version = 1
-            builder.add(device_info_msg)
+            try:
+                device_info_msg = DeviceInfoMessage()
+                device_info_msg.timestamp = unix_start_timestamp_ms  # Milliseconds since Unix epoch
+                device_info_msg.manufacturer = Manufacturer.DEVELOPMENT.value
+                device_info_msg.product = 0
+                device_info_msg.device_index = 0
+                device_info_msg.serial_number = 0x12345678
+                device_info_msg.software_version = 100
+                device_info_msg.hardware_version = 1
+                builder.add(device_info_msg)
+                logger.debug("Added Device Info message")
+            except Exception as e:
+                logger.error(f"Error creating Device Info message: {str(e)}")
+                logger.error(traceback.format_exc())
+                raise
             
             # Add Event message (start)
-            event_msg = EventMessage()
-            event_msg.timestamp = start_timestamp
-            event_msg.event = Event.TIMER
-            event_msg.event_type = EventType.START
-            builder.add(event_msg)
+            try:
+                event_msg = EventMessage()
+                event_msg.timestamp = unix_start_timestamp_ms  # Milliseconds since Unix epoch
+                event_msg.event = Event.TIMER
+                event_msg.event_type = EventType.START
+                builder.add(event_msg)
+                logger.debug("Added Event (start) message")
+            except Exception as e:
+                logger.error(f"Error creating Event (start) message: {str(e)}")
+                logger.error(traceback.format_exc())
+                raise
             
             # Add Record messages
-            for i in range(len(timestamps)):
-                record_msg = RecordMessage()
+            try:
+                for i in range(len(timestamps)):
+                    record_msg = RecordMessage()
+                    
+                    # Set timestamp in milliseconds
+                    if i < len(absolute_timestamps):
+                        timestamp_obj = absolute_timestamps[i]
+                        if isinstance(timestamp_obj, datetime):
+                            unix_record_timestamp_sec = int(timestamp_obj.timestamp())
+                            unix_record_timestamp_ms = self._unix_to_fit_timestamp_ms(unix_record_timestamp_sec)
+                            record_msg.timestamp = unix_record_timestamp_ms
+                            logger.debug(f"Record {i}: Using absolute timestamp {timestamp_obj} -> {unix_record_timestamp_ms} ms")
+                        else:
+                            logger.warning(f"Record {i}: Invalid absolute timestamp type: {type(timestamp_obj)}")
+                            # Use relative timestamp as fallback
+                            unix_record_timestamp_ms = unix_start_timestamp_ms + int(timestamps[i] * 1000)
+                            record_msg.timestamp = unix_record_timestamp_ms
+                            logger.debug(f"Record {i}: Using fallback relative timestamp -> {unix_record_timestamp_ms} ms")
+                    else:
+                        # Use relative timestamp (seconds) converted to milliseconds
+                        unix_record_timestamp_ms = unix_start_timestamp_ms + int(timestamps[i] * 1000)
+                        record_msg.timestamp = unix_record_timestamp_ms
+                        logger.debug(f"Record {i}: Using relative timestamp {timestamps[i]} sec -> {unix_record_timestamp_ms} ms")
+                    
+                    # Set power
+                    if i < len(powers):
+                        record_msg.power = int(powers[i])
+                    
+                    # Set cadence
+                    if i < len(cadences):
+                        record_msg.cadence = int(cadences[i])
+                    
+                    # Set heart rate
+                    if i < len(heart_rates) and heart_rates[i] > 0:
+                        record_msg.heart_rate = int(heart_rates[i])
+                    
+                    # Set speed
+                    if i < len(speeds):
+                        # Convert km/h to m/s
+                        record_msg.speed = int(speeds[i] * 1000 / 3600)
+                    
+                    # Set distance
+                    if i < len(distances):
+                        record_msg.distance = float(distances[i])
+                    
+                    builder.add(record_msg)
                 
-                # Set timestamp
-                if i < len(absolute_timestamps):
-                    record_msg.timestamp = int(absolute_timestamps[i].timestamp())
-                else:
-                    record_msg.timestamp = start_timestamp + timestamps[i]
-                
-                # Set power
-                if i < len(powers):
-                    record_msg.power = int(powers[i])
-                
-                # Set cadence
-                if i < len(cadences):
-                    record_msg.cadence = int(cadences[i])
-                
-                # Set heart rate
-                if i < len(heart_rates) and heart_rates[i] > 0:
-                    record_msg.heart_rate = int(heart_rates[i])
-                
-                # Set speed
-                if i < len(speeds):
-                    # Convert km/h to m/s
-                    record_msg.speed = int(speeds[i] * 1000 / 3600)
-                
-                # Set distance
-                if i < len(distances):
-                    record_msg.distance = float(distances[i])
-                
-                builder.add(record_msg)
+                logger.debug(f"Added {len(timestamps)} Record messages")
+            except Exception as e:
+                logger.error(f"Error creating Record messages: {str(e)}")
+                logger.error(traceback.format_exc())
+                raise
             
             # Add Event message (stop)
-            event_msg = EventMessage()
-            event_msg.timestamp = start_timestamp + total_duration
-            event_msg.event = Event.TIMER
-            event_msg.event_type = EventType.STOP
-            builder.add(event_msg)
+            try:
+                unix_end_timestamp_sec = unix_start_timestamp_sec + int(total_duration)
+                unix_end_timestamp_ms = self._unix_to_fit_timestamp_ms(unix_end_timestamp_sec)
+                
+                event_msg = EventMessage()
+                event_msg.timestamp = unix_end_timestamp_ms  # Milliseconds since Unix epoch
+                event_msg.event = Event.TIMER
+                event_msg.event_type = EventType.STOP
+                builder.add(event_msg)
+                logger.debug(f"Added Event (stop) message with timestamp: {unix_end_timestamp_ms} ms")
+            except Exception as e:
+                logger.error(f"Error creating Event (stop) message: {str(e)}")
+                logger.error(traceback.format_exc())
+                raise
             
             # Add Lap message
-            lap_msg = LapMessage()
-            lap_msg.timestamp = start_timestamp + total_duration
-            lap_msg.start_time = start_timestamp
-            lap_msg.total_elapsed_time = float(total_duration)
-            lap_msg.total_timer_time = float(total_duration)
-            lap_msg.total_distance = float(total_distance)
-            lap_msg.total_calories = int(total_calories)
-            lap_msg.avg_power = int(avg_power)
-            lap_msg.max_power = int(max_power)
-            lap_msg.avg_cadence = int(avg_cadence)
-            lap_msg.max_cadence = int(max_cadence)
-            if avg_heart_rate > 0:
-                lap_msg.avg_heart_rate = int(avg_heart_rate)
-            if max_heart_rate > 0:
-                lap_msg.max_heart_rate = int(max_heart_rate)
-            lap_msg.avg_speed = int(avg_speed * 1000 / 3600)  # Convert km/h to m/s
-            lap_msg.max_speed = int(max_speed * 1000 / 3600)  # Convert km/h to m/s
-            lap_msg.lap_trigger = LapTrigger.SESSION_END
-            lap_msg.sport = Sport.CYCLING
-            builder.add(lap_msg)
+            try:
+                lap_msg = LapMessage()
+                lap_msg.timestamp = unix_end_timestamp_ms  # Milliseconds since Unix epoch
+                lap_msg.start_time = unix_start_timestamp_ms  # Milliseconds since Unix epoch
+                lap_msg.total_elapsed_time = float(total_duration)
+                lap_msg.total_timer_time = float(total_duration)
+                lap_msg.total_distance = float(total_distance)
+                lap_msg.total_calories = int(total_calories)
+                lap_msg.avg_power = int(avg_power)
+                lap_msg.max_power = int(max_power)
+                lap_msg.avg_cadence = int(avg_cadence)
+                lap_msg.max_cadence = int(max_cadence)
+                if avg_heart_rate > 0:
+                    lap_msg.avg_heart_rate = int(avg_heart_rate)
+                if max_heart_rate > 0:
+                    lap_msg.max_heart_rate = int(max_heart_rate)
+                lap_msg.avg_speed = int(avg_speed * 1000 / 3600)  # Convert km/h to m/s
+                lap_msg.max_speed = int(max_speed * 1000 / 3600)  # Convert km/h to m/s
+                lap_msg.lap_trigger = LapTrigger.SESSION_END
+                lap_msg.sport = Sport.CYCLING
+                builder.add(lap_msg)
+                logger.debug("Added Lap message")
+            except Exception as e:
+                logger.error(f"Error creating Lap message: {str(e)}")
+                logger.error(traceback.format_exc())
+                raise
             
             # Add Session message
-            session_msg = SessionMessage()
-            session_msg.timestamp = start_timestamp + total_duration
-            session_msg.start_time = start_timestamp
-            session_msg.total_elapsed_time = float(total_duration)
-            session_msg.total_timer_time = float(total_duration)
-            session_msg.total_distance = float(total_distance)
-            session_msg.total_calories = int(total_calories)
-            session_msg.avg_power = int(avg_power)
-            session_msg.max_power = int(max_power)
-            session_msg.avg_cadence = int(avg_cadence)
-            session_msg.max_cadence = int(max_cadence)
-            if avg_heart_rate > 0:
-                session_msg.avg_heart_rate = int(avg_heart_rate)
-            if max_heart_rate > 0:
-                session_msg.max_heart_rate = int(max_heart_rate)
-            session_msg.avg_speed = int(avg_speed * 1000 / 3600)  # Convert km/h to m/s
-            session_msg.max_speed = int(max_speed * 1000 / 3600)  # Convert km/h to m/s
-            session_msg.first_lap_index = 0
-            session_msg.num_laps = 1
-            session_msg.trigger = SessionTrigger.ACTIVITY_END
-            session_msg.sport = Sport.CYCLING
-            session_msg.sub_sport = SubSport.INDOOR_CYCLING
-            
-            # Add normalized power if available
-            if normalized_power > 0:
-                session_msg.normalized_power = int(normalized_power)
-            
-            # Add user profile data if available
-            if user_profile:
-                if 'weight' in user_profile:
-                    # Convert kg to g
-                    session_msg.total_weight = int(user_profile['weight'] * 1000)
+            try:
+                session_msg = SessionMessage()
+                session_msg.timestamp = unix_end_timestamp_ms  # Milliseconds since Unix epoch
+                session_msg.start_time = unix_start_timestamp_ms  # Milliseconds since Unix epoch
+                session_msg.total_elapsed_time = float(total_duration)
+                session_msg.total_timer_time = float(total_duration)
+                session_msg.total_distance = float(total_distance)
+                session_msg.total_calories = int(total_calories)
+                session_msg.avg_power = int(avg_power)
+                session_msg.max_power = int(max_power)
+                session_msg.avg_cadence = int(avg_cadence)
+                session_msg.max_cadence = int(max_cadence)
+                if avg_heart_rate > 0:
+                    session_msg.avg_heart_rate = int(avg_heart_rate)
+                if max_heart_rate > 0:
+                    session_msg.max_heart_rate = int(max_heart_rate)
+                session_msg.avg_speed = int(avg_speed * 1000 / 3600)  # Convert km/h to m/s
+                session_msg.max_speed = int(max_speed * 1000 / 3600)  # Convert km/h to m/s
+                session_msg.first_lap_index = 0
+                session_msg.num_laps = 1
+                session_msg.trigger = SessionTrigger.ACTIVITY_END
+                session_msg.sport = Sport.CYCLING
+                session_msg.sub_sport = SubSport.INDOOR_CYCLING
                 
-                if 'gender' in user_profile:
-                    session_msg.gender = 0 if user_profile['gender'].lower() == 'female' else 1
+                # Add normalized power if available
+                if normalized_power > 0:
+                    session_msg.normalized_power = int(normalized_power)
                 
-                if 'age' in user_profile:
-                    session_msg.age = user_profile['age']
-            
-            builder.add(session_msg)
+                # Add user profile data if available
+                if user_profile:
+                    if 'weight' in user_profile:
+                        # Convert kg to g
+                        session_msg.total_weight = int(user_profile['weight'] * 1000)
+                    
+                    if 'gender' in user_profile:
+                        session_msg.gender = 0 if user_profile['gender'].lower() == 'female' else 1
+                    
+                    if 'age' in user_profile:
+                        session_msg.age = user_profile['age']
+                
+                builder.add(session_msg)
+                logger.debug("Added Session message")
+            except Exception as e:
+                logger.error(f"Error creating Session message: {str(e)}")
+                logger.error(traceback.format_exc())
+                raise
             
             # Add Activity message
-            activity_msg = ActivityMessage()
-            activity_msg.timestamp = start_timestamp + total_duration
-            activity_msg.total_timer_time = float(total_duration)
-            activity_msg.num_sessions = 1
-            activity_msg.type = 0  # Manual activity
-            activity_msg.event = Event.ACTIVITY
-            activity_msg.event_type = EventType.STOP
-            builder.add(activity_msg)
+            try:
+                activity_msg = ActivityMessage()
+                activity_msg.timestamp = unix_end_timestamp_ms  # Milliseconds since Unix epoch
+                activity_msg.total_timer_time = float(total_duration)
+                activity_msg.num_sessions = 1
+                activity_msg.type = 0  # Manual activity
+                activity_msg.event = Event.ACTIVITY
+                activity_msg.event_type = EventType.STOP
+                builder.add(activity_msg)
+                logger.debug("Added Activity message")
+            except Exception as e:
+                logger.error(f"Error creating Activity message: {str(e)}")
+                logger.error(traceback.format_exc())
+                raise
             
-            # Generate filename
-            timestamp_str = datetime.fromtimestamp(start_timestamp).strftime('%Y%m%d_%H%M%S')
+            # Generate filename using datetime (from Unix timestamp)
+            timestamp_str = datetime.fromtimestamp(unix_start_timestamp_sec).strftime('%Y%m%d_%H%M%S')
             filename = f"indoor_cycling_{timestamp_str}.fit"
             filepath = os.path.join(self.output_dir, filename)
             
             # Build and save FIT file
-            fit_file = builder.build()
-            fit_file.to_file(filepath)
-            
-            logger.info(f"Created FIT file: {filepath}")
-            return filepath
+            try:
+                fit_file = builder.build()
+                fit_file.to_file(filepath)
+                logger.info(f"Created FIT file: {filepath}")
+                return filepath
+            except Exception as e:
+                logger.error(f"Error building/saving FIT file: {str(e)}")
+                logger.error(traceback.format_exc())
+                raise
             
         except Exception as e:
             logger.error(f"Error converting bike workout to FIT: {str(e)}")
+            logger.error(traceback.format_exc())
             return None
     
     def _convert_rower_workout(self, processed_data: Dict[str, Any], 
@@ -325,160 +430,246 @@ class FITConverter:
             max_heart_rate = processed_data.get('max_heart_rate', 0)
             total_strokes = processed_data.get('total_strokes', 0)
             
-            # Convert start_time to timestamp if it's a datetime
+            # Convert start_time to Unix timestamp in seconds
             if isinstance(start_time, datetime):
-                start_timestamp = int(start_time.timestamp())
+                unix_start_timestamp_sec = int(start_time.timestamp())
+            elif isinstance(start_time, str):
+                # Try to parse the string as a datetime
+                try:
+                    unix_start_timestamp_sec = int(datetime.fromisoformat(start_time).timestamp())
+                except ValueError:
+                    logger.warning(f"Could not parse start_time string: {start_time}")
+                    unix_start_timestamp_sec = int(time.time())
             else:
-                start_timestamp = int(time.time())
+                unix_start_timestamp_sec = int(time.time())
+            
+            # Convert Unix timestamp (seconds) to fit_tool format (milliseconds)
+            unix_start_timestamp_ms = self._unix_to_fit_timestamp_ms(unix_start_timestamp_sec)
+            
+            # Debug output
+            logger.debug(f"Start time: {start_time}")
+            logger.debug(f"Unix timestamp (seconds): {unix_start_timestamp_sec}")
+            logger.debug(f"Unix timestamp (milliseconds): {unix_start_timestamp_ms}")
             
             # Add File ID message
-            file_id_msg = FileIdMessage()
-            file_id_msg.type = FileType.ACTIVITY
-            file_id_msg.manufacturer = Manufacturer.DEVELOPMENT.value
-            file_id_msg.product = 0
-            file_id_msg.time_created = start_timestamp
-            file_id_msg.serial_number = 0x12345678
-            builder.add(file_id_msg)
+            try:
+                file_id_msg = FileIdMessage()
+                file_id_msg.type = FileType.ACTIVITY
+                file_id_msg.manufacturer = Manufacturer.DEVELOPMENT.value
+                file_id_msg.product = 0
+                file_id_msg.time_created = unix_start_timestamp_ms  # Milliseconds since Unix epoch
+                file_id_msg.serial_number = 0x12345678
+                builder.add(file_id_msg)
+                logger.debug(f"Added File ID message with time_created: {unix_start_timestamp_ms} ms")
+            except Exception as e:
+                logger.error(f"Error creating File ID message: {str(e)}")
+                logger.error(traceback.format_exc())
+                raise
             
             # Add Device Info message
-            device_info_msg = DeviceInfoMessage()
-            device_info_msg.timestamp = start_timestamp
-            device_info_msg.manufacturer = Manufacturer.DEVELOPMENT.value
-            device_info_msg.product = 0
-            device_info_msg.device_index = 0
-            device_info_msg.serial_number = 0x12345678
-            device_info_msg.software_version = 100
-            device_info_msg.hardware_version = 1
-            builder.add(device_info_msg)
+            try:
+                device_info_msg = DeviceInfoMessage()
+                device_info_msg.timestamp = unix_start_timestamp_ms  # Milliseconds since Unix epoch
+                device_info_msg.manufacturer = Manufacturer.DEVELOPMENT.value
+                device_info_msg.product = 0
+                device_info_msg.device_index = 0
+                device_info_msg.serial_number = 0x12345678
+                device_info_msg.software_version = 100
+                device_info_msg.hardware_version = 1
+                builder.add(device_info_msg)
+                logger.debug("Added Device Info message")
+            except Exception as e:
+                logger.error(f"Error creating Device Info message: {str(e)}")
+                logger.error(traceback.format_exc())
+                raise
             
             # Add Event message (start)
-            event_msg = EventMessage()
-            event_msg.timestamp = start_timestamp
-            event_msg.event = Event.TIMER
-            event_msg.event_type = EventType.START
-            builder.add(event_msg)
+            try:
+                event_msg = EventMessage()
+                event_msg.timestamp = unix_start_timestamp_ms  # Milliseconds since Unix epoch
+                event_msg.event = Event.TIMER
+                event_msg.event_type = EventType.START
+                builder.add(event_msg)
+                logger.debug("Added Event (start) message")
+            except Exception as e:
+                logger.error(f"Error creating Event (start) message: {str(e)}")
+                logger.error(traceback.format_exc())
+                raise
             
             # Add Record messages
-            for i in range(len(timestamps)):
-                record_msg = RecordMessage()
+            try:
+                for i in range(len(timestamps)):
+                    record_msg = RecordMessage()
+                    
+                    # Set timestamp in milliseconds
+                    if i < len(absolute_timestamps):
+                        timestamp_obj = absolute_timestamps[i]
+                        if isinstance(timestamp_obj, datetime):
+                            unix_record_timestamp_sec = int(timestamp_obj.timestamp())
+                            unix_record_timestamp_ms = self._unix_to_fit_timestamp_ms(unix_record_timestamp_sec)
+                            record_msg.timestamp = unix_record_timestamp_ms
+                            logger.debug(f"Record {i}: Using absolute timestamp {timestamp_obj} -> {unix_record_timestamp_ms} ms")
+                        else:
+                            logger.warning(f"Record {i}: Invalid absolute timestamp type: {type(timestamp_obj)}")
+                            # Use relative timestamp as fallback
+                            unix_record_timestamp_ms = unix_start_timestamp_ms + int(timestamps[i] * 1000)
+                            record_msg.timestamp = unix_record_timestamp_ms
+                            logger.debug(f"Record {i}: Using fallback relative timestamp -> {unix_record_timestamp_ms} ms")
+                    else:
+                        # Use relative timestamp (seconds) converted to milliseconds
+                        unix_record_timestamp_ms = unix_start_timestamp_ms + int(timestamps[i] * 1000)
+                        record_msg.timestamp = unix_record_timestamp_ms
+                        logger.debug(f"Record {i}: Using relative timestamp {timestamps[i]} sec -> {unix_record_timestamp_ms} ms")
+                    
+                    # Set power
+                    if i < len(powers):
+                        record_msg.power = int(powers[i])
+                    
+                    # Set cadence (stroke rate for rowing)
+                    if i < len(stroke_rates):
+                        record_msg.cadence = int(stroke_rates[i])
+                    
+                    # Set heart rate
+                    if i < len(heart_rates) and heart_rates[i] > 0:
+                        record_msg.heart_rate = int(heart_rates[i])
+                    
+                    # Set distance
+                    if i < len(distances):
+                        record_msg.distance = float(distances[i])
+                    
+                    builder.add(record_msg)
                 
-                # Set timestamp
-                if i < len(absolute_timestamps):
-                    record_msg.timestamp = int(absolute_timestamps[i].timestamp())
-                else:
-                    record_msg.timestamp = start_timestamp + timestamps[i]
-                
-                # Set power
-                if i < len(powers):
-                    record_msg.power = int(powers[i])
-                
-                # Set cadence (stroke rate for rowing)
-                if i < len(stroke_rates):
-                    record_msg.cadence = int(stroke_rates[i])
-                
-                # Set heart rate
-                if i < len(heart_rates) and heart_rates[i] > 0:
-                    record_msg.heart_rate = int(heart_rates[i])
-                
-                # Set distance
-                if i < len(distances):
-                    record_msg.distance = float(distances[i])
-                
-                builder.add(record_msg)
+                logger.debug(f"Added {len(timestamps)} Record messages")
+            except Exception as e:
+                logger.error(f"Error creating Record messages: {str(e)}")
+                logger.error(traceback.format_exc())
+                raise
             
             # Add Event message (stop)
-            event_msg = EventMessage()
-            event_msg.timestamp = start_timestamp + total_duration
-            event_msg.event = Event.TIMER
-            event_msg.event_type = EventType.STOP
-            builder.add(event_msg)
+            try:
+                unix_end_timestamp_sec = unix_start_timestamp_sec + int(total_duration)
+                unix_end_timestamp_ms = self._unix_to_fit_timestamp_ms(unix_end_timestamp_sec)
+                
+                event_msg = EventMessage()
+                event_msg.timestamp = unix_end_timestamp_ms  # Milliseconds since Unix epoch
+                event_msg.event = Event.TIMER
+                event_msg.event_type = EventType.STOP
+                builder.add(event_msg)
+                logger.debug(f"Added Event (stop) message with timestamp: {unix_end_timestamp_ms} ms")
+            except Exception as e:
+                logger.error(f"Error creating Event (stop) message: {str(e)}")
+                logger.error(traceback.format_exc())
+                raise
             
             # Add Lap message
-            lap_msg = LapMessage()
-            lap_msg.timestamp = start_timestamp + total_duration
-            lap_msg.start_time = start_timestamp
-            lap_msg.total_elapsed_time = float(total_duration)
-            lap_msg.total_timer_time = float(total_duration)
-            lap_msg.total_distance = float(total_distance)
-            lap_msg.total_calories = int(total_calories)
-            lap_msg.avg_power = int(avg_power)
-            lap_msg.max_power = int(max_power)
-            lap_msg.avg_cadence = int(avg_stroke_rate)  # Use stroke rate as cadence
-            lap_msg.max_cadence = int(max_stroke_rate)  # Use stroke rate as cadence
-            if avg_heart_rate > 0:
-                lap_msg.avg_heart_rate = int(avg_heart_rate)
-            if max_heart_rate > 0:
-                lap_msg.max_heart_rate = int(max_heart_rate)
-            lap_msg.total_cycles = int(total_strokes)  # Use strokes as cycles
-            lap_msg.lap_trigger = LapTrigger.SESSION_END
-            lap_msg.sport = Sport.ROWING
-            builder.add(lap_msg)
+            try:
+                lap_msg = LapMessage()
+                lap_msg.timestamp = unix_end_timestamp_ms  # Milliseconds since Unix epoch
+                lap_msg.start_time = unix_start_timestamp_ms  # Milliseconds since Unix epoch
+                lap_msg.total_elapsed_time = float(total_duration)
+                lap_msg.total_timer_time = float(total_duration)
+                lap_msg.total_distance = float(total_distance)
+                lap_msg.total_calories = int(total_calories)
+                lap_msg.avg_power = int(avg_power)
+                lap_msg.max_power = int(max_power)
+                lap_msg.avg_cadence = int(avg_stroke_rate)  # Use stroke rate as cadence
+                lap_msg.max_cadence = int(max_stroke_rate)  # Use stroke rate as cadence
+                if avg_heart_rate > 0:
+                    lap_msg.avg_heart_rate = int(avg_heart_rate)
+                if max_heart_rate > 0:
+                    lap_msg.max_heart_rate = int(max_heart_rate)
+                lap_msg.total_cycles = int(total_strokes)  # Use strokes as cycles
+                lap_msg.lap_trigger = LapTrigger.SESSION_END
+                lap_msg.sport = Sport.ROWING
+                builder.add(lap_msg)
+                logger.debug("Added Lap message")
+            except Exception as e:
+                logger.error(f"Error creating Lap message: {str(e)}")
+                logger.error(traceback.format_exc())
+                raise
             
             # Add Session message
-            session_msg = SessionMessage()
-            session_msg.timestamp = start_timestamp + total_duration
-            session_msg.start_time = start_timestamp
-            session_msg.total_elapsed_time = float(total_duration)
-            session_msg.total_timer_time = float(total_duration)
-            session_msg.total_distance = float(total_distance)
-            session_msg.total_calories = int(total_calories)
-            session_msg.avg_power = int(avg_power)
-            session_msg.max_power = int(max_power)
-            session_msg.avg_cadence = int(avg_stroke_rate)  # Use stroke rate as cadence
-            session_msg.max_cadence = int(max_stroke_rate)  # Use stroke rate as cadence
-            if avg_heart_rate > 0:
-                session_msg.avg_heart_rate = int(avg_heart_rate)
-            if max_heart_rate > 0:
-                session_msg.max_heart_rate = int(max_heart_rate)
-            session_msg.total_cycles = int(total_strokes)  # Use strokes as cycles
-            session_msg.first_lap_index = 0
-            session_msg.num_laps = 1
-            session_msg.trigger = SessionTrigger.ACTIVITY_END
-            session_msg.sport = Sport.ROWING
-            session_msg.sub_sport = SubSport.INDOOR_ROWING
-            
-            # Add normalized power if available
-            if normalized_power > 0:
-                session_msg.normalized_power = int(normalized_power)
-            
-            # Add user profile data if available
-            if user_profile:
-                if 'weight' in user_profile:
-                    # Convert kg to g
-                    session_msg.total_weight = int(user_profile['weight'] * 1000)
+            try:
+                session_msg = SessionMessage()
+                session_msg.timestamp = unix_end_timestamp_ms  # Milliseconds since Unix epoch
+                session_msg.start_time = unix_start_timestamp_ms  # Milliseconds since Unix epoch
+                session_msg.total_elapsed_time = float(total_duration)
+                session_msg.total_timer_time = float(total_duration)
+                session_msg.total_distance = float(total_distance)
+                session_msg.total_calories = int(total_calories)
+                session_msg.avg_power = int(avg_power)
+                session_msg.max_power = int(max_power)
+                session_msg.avg_cadence = int(avg_stroke_rate)  # Use stroke rate as cadence
+                session_msg.max_cadence = int(max_stroke_rate)  # Use stroke rate as cadence
+                if avg_heart_rate > 0:
+                    session_msg.avg_heart_rate = int(avg_heart_rate)
+                if max_heart_rate > 0:
+                    session_msg.max_heart_rate = int(max_heart_rate)
+                session_msg.total_cycles = int(total_strokes)  # Use strokes as cycles
+                session_msg.first_lap_index = 0
+                session_msg.num_laps = 1
+                session_msg.trigger = SessionTrigger.ACTIVITY_END
+                session_msg.sport = Sport.ROWING
+                session_msg.sub_sport = SubSport.INDOOR_ROWING
                 
-                if 'gender' in user_profile:
-                    session_msg.gender = 0 if user_profile['gender'].lower() == 'female' else 1
+                # Add normalized power if available
+                if normalized_power > 0:
+                    session_msg.normalized_power = int(normalized_power)
                 
-                if 'age' in user_profile:
-                    session_msg.age = user_profile['age']
-            
-            builder.add(session_msg)
+                # Add user profile data if available
+                if user_profile:
+                    if 'weight' in user_profile:
+                        # Convert kg to g
+                        session_msg.total_weight = int(user_profile['weight'] * 1000)
+                    
+                    if 'gender' in user_profile:
+                        session_msg.gender = 0 if user_profile['gender'].lower() == 'female' else 1
+                    
+                    if 'age' in user_profile:
+                        session_msg.age = user_profile['age']
+                
+                builder.add(session_msg)
+                logger.debug("Added Session message")
+            except Exception as e:
+                logger.error(f"Error creating Session message: {str(e)}")
+                logger.error(traceback.format_exc())
+                raise
             
             # Add Activity message
-            activity_msg = ActivityMessage()
-            activity_msg.timestamp = start_timestamp + total_duration
-            activity_msg.total_timer_time = float(total_duration)
-            activity_msg.num_sessions = 1
-            activity_msg.type = 0  # Manual activity
-            activity_msg.event = Event.ACTIVITY
-            activity_msg.event_type = EventType.STOP
-            builder.add(activity_msg)
+            try:
+                activity_msg = ActivityMessage()
+                activity_msg.timestamp = unix_end_timestamp_ms  # Milliseconds since Unix epoch
+                activity_msg.total_timer_time = float(total_duration)
+                activity_msg.num_sessions = 1
+                activity_msg.type = 0  # Manual activity
+                activity_msg.event = Event.ACTIVITY
+                activity_msg.event_type = EventType.STOP
+                builder.add(activity_msg)
+                logger.debug("Added Activity message")
+            except Exception as e:
+                logger.error(f"Error creating Activity message: {str(e)}")
+                logger.error(traceback.format_exc())
+                raise
             
-            # Generate filename
-            timestamp_str = datetime.fromtimestamp(start_timestamp).strftime('%Y%m%d_%H%M%S')
+            # Generate filename using datetime (from Unix timestamp)
+            timestamp_str = datetime.fromtimestamp(unix_start_timestamp_sec).strftime('%Y%m%d_%H%M%S')
             filename = f"indoor_rowing_{timestamp_str}.fit"
             filepath = os.path.join(self.output_dir, filename)
             
             # Build and save FIT file
-            fit_file = builder.build()
-            fit_file.to_file(filepath)
-            
-            logger.info(f"Created FIT file: {filepath}")
-            return filepath
+            try:
+                fit_file = builder.build()
+                fit_file.to_file(filepath)
+                logger.info(f"Created FIT file: {filepath}")
+                return filepath
+            except Exception as e:
+                logger.error(f"Error building/saving FIT file: {str(e)}")
+                logger.error(traceback.format_exc())
+                raise
             
         except Exception as e:
             logger.error(f"Error converting rower workout to FIT: {str(e)}")
+            logger.error(traceback.format_exc())
             return None
 
 
