@@ -2116,3 +2116,21 @@ sqlite3.OperationalError: database is locked
 2025-05-03 14:11:40,073 - database - INFO - Database tables created
 2025-05-03 14:11:45,186 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_125244.fit
 2025-05-03 14:11:45,189 - database - INFO - Updated FIT file path for workout 2: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_125244.fit
+2025-05-03 14:13:12,950 - database - INFO - Database tables created
+2025-05-03 14:13:12,952 - database - INFO - Database tables created
+2025-05-03 14:13:13,848 - database - INFO - Database tables created
+2025-05-03 14:13:13,850 - database - INFO - Database tables created
+2025-05-03 14:13:16,652 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_125244.fit
+2025-05-03 14:13:16,656 - database - INFO - Updated FIT file path for workout 2: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_125244.fit
+2025-05-03 14:13:30,184 - database - INFO - Database tables created
+2025-05-03 14:13:30,185 - database - INFO - Database tables created
+2025-05-03 14:13:41,687 - database - INFO - Database tables created
+2025-05-03 14:13:41,688 - database - INFO - Database tables created
+2025-05-03 14:13:51,970 - database - INFO - Database tables created
+2025-05-03 14:13:51,972 - database - INFO - Database tables created
+2025-05-03 14:14:12,624 - database - INFO - Database tables created
+2025-05-03 14:14:12,626 - database - INFO - Database tables created
+2025-05-03 14:14:14,552 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_125244.fit
+2025-05-03 14:14:14,555 - database - INFO - Updated FIT file path for workout 2: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_125244.fit
+2025-05-03 14:14:42,741 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_125244.fit
+2025-05-03 14:14:42,752 - database - INFO - Updated FIT file path for workout 2: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_125244.fit

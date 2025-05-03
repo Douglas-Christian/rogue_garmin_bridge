@@ -11,7 +11,7 @@ import asyncio
 import threading
 import logging # Add logging import
 import sqlite3 # Add sqlite3 import for direct database access
-from flask import Flask, render_template, request, jsonify, redirect, url_for
+from flask import Flask, render_template, request, jsonify, redirect, url_for, send_from_directory
 import sys
 import importlib  # Add importlib for module reloading
 
@@ -680,6 +680,14 @@ def convert_workout_to_fit(workout_id):
     except Exception as e:
         logger.error(f"Error converting workout to FIT: {str(e)}", exc_info=True)
         return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/fit_files/<path:filename>')
+def serve_fit_file(filename):
+    """Serve FIT files from the fit_files directory."""
+    # Calculate the absolute path to the fit_files directory
+    fit_files_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'fit_files')
+    logger.info(f"Serving FIT file: {filename} from directory: {fit_files_dir}")
+    return send_from_directory(fit_files_dir, filename, as_attachment=True)
 
 # Run the app
 if __name__ == '__main__':
