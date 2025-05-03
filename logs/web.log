@@ -2732,3 +2732,50 @@ TypeError: 'str' object cannot be interpreted as an integer
 2025-05-03 15:05:14,050 - web - INFO - Duration: 106
 2025-05-03 15:05:14,051 - web - INFO - Data points: 107
 2025-05-03 15:05:14,470 - web - INFO - Serving FIT file: indoor_cycling_20250503_150300.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files
+2025-05-03 15:12:26,594 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-03 15:12:26,596 - web - INFO - Using real FTMS devices
+2025-05-03 15:12:26,598 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-03 15:12:26,598 - web - INFO - Starting background asyncio loop thread...
+2025-05-03 15:12:26,600 - web - INFO - Background thread started. Creating new event loop.
+2025-05-03 15:12:26,600 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-03 15:12:26,616 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-03 15:12:27,994 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-03 15:12:27,994 - web - INFO - Using real FTMS devices
+2025-05-03 15:12:27,994 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-03 15:12:27,994 - web - INFO - Starting background asyncio loop thread...
+2025-05-03 15:12:27,999 - web - INFO - Background thread started. Creating new event loop.
+2025-05-03 15:12:27,999 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-03 15:12:28,014 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-03 15:12:56,431 - web - INFO - Scheduling connect task for C9:02:CB:68:17:C1 on background loop.
+2025-05-03 15:13:02,149 - web - INFO - Connect task for C9:02:CB:68:17:C1 completed with result: True
+2025-05-03 15:14:46,279 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-03 15:14:46,283 - web - INFO - Retrieved 9 workouts from database
+2025-05-03 15:15:10,876 - web - INFO - Converting workout 9 to FIT file
+2025-05-03 15:15:10,877 - web - INFO - Workout type: bike
+2025-05-03 15:15:10,878 - web - INFO - Duration: 88
+2025-05-03 15:15:10,879 - web - INFO - Data points: 89
+2025-05-03 15:15:10,985 - web - ERROR - FIT conversion returned None for workout 9
+2025-05-03 15:15:26,661 - web - INFO - Converting workout 9 to FIT file
+2025-05-03 15:15:26,661 - web - INFO - Workout type: bike
+2025-05-03 15:15:26,661 - web - INFO - Duration: 88
+2025-05-03 15:15:26,661 - web - INFO - Data points: 89
+2025-05-03 15:15:26,771 - web - ERROR - FIT conversion returned None for workout 9
+2025-05-03 15:21:04,079 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-03 15:21:04,080 - web - INFO - Using real FTMS devices
+2025-05-03 15:21:04,080 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-03 15:21:04,080 - web - INFO - Starting background asyncio loop thread...
+2025-05-03 15:21:04,081 - web - INFO - Background thread started. Creating new event loop.
+2025-05-03 15:21:04,081 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-03 15:21:04,088 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-03 15:21:04,672 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-03 15:21:04,672 - web - INFO - Using real FTMS devices
+2025-05-03 15:21:04,672 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-03 15:21:04,673 - web - INFO - Starting background asyncio loop thread...
+2025-05-03 15:21:04,674 - web - INFO - Background thread started. Creating new event loop.
+2025-05-03 15:21:04,674 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-03 15:21:04,682 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-03 15:21:12,201 - web - INFO - Converting workout 9 to FIT file
+2025-05-03 15:21:12,202 - web - INFO - Workout type: bike
+2025-05-03 15:21:12,203 - web - INFO - Duration: 88
+2025-05-03 15:21:12,203 - web - INFO - Data points: 89
+2025-05-03 15:21:12,459 - web - INFO - Serving FIT file: indoor_cycling_20250503_151306.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files

@@ -248,7 +248,7 @@ class FITConverter:
                     
                     # Set speed - use instantaneous speed for record messages
                     if i < len(speeds):
-                        # Convert km/h to m/s
+                        # Convert km/h to m/s (using proper conversion, no extra scaling)
                         record_msg.speed = int(speeds[i] * 1000 / 3600)
                     
                     # Set distance
@@ -304,14 +304,19 @@ class FITConverter:
                 if max_heart_rate > 0:
                     lap_msg.max_heart_rate = int(max_heart_rate)
                 
-                # Use average speed from data if available
-                lap_msg.avg_speed = int(avg_speed * 1000 / 3600)  # Convert km/h to m/s
+                # Use average speed from data if available - ensure proper scaling for Garmin Connect
+                if avg_speed > 0:
+                    # Convert km/h to m/s (no extra scaling needed)
+                    lap_msg.avg_speed = int(avg_speed * 1000 / 3600)  # Convert km/h to m/s
                 
-                lap_msg.max_speed = int(max_speed * 1000 / 3600)  # Convert km/h to m/s
+                if max_speed > 0:
+                    lap_msg.max_speed = int(max_speed * 1000 / 3600)  # Same conversion for max_speed
+                
                 lap_msg.lap_trigger = LapTrigger.SESSION_END
                 lap_msg.sport = Sport.CYCLING
                 builder.add(lap_msg)
                 logger.debug("Added Lap message")
+                logger.debug(f"Lap avg_speed: {lap_msg.avg_speed}, from {avg_speed} km/h")
             except Exception as e:
                 logger.error(f"Error creating Lap message: {str(e)}")
                 logger.error(traceback.format_exc())
@@ -343,9 +348,14 @@ class FITConverter:
                     session_msg.max_heart_rate = int(max_heart_rate)
                 
                 # Use the summary average speed, which may be directly from the device
-                session_msg.avg_speed = int(avg_speed * 1000 / 3600)  # Convert km/h to m/s
+                # Properly scale for Garmin Connect compatibility
+                if avg_speed > 0:
+                    # Convert km/h to m/s (no extra scaling needed)
+                    session_msg.avg_speed = int(avg_speed * 1000 / 3600)  # Convert km/h to m/s
                 
-                session_msg.max_speed = int(max_speed * 1000 / 3600)  # Convert km/h to m/s
+                if max_speed > 0:
+                    session_msg.max_speed = int(max_speed * 1000 / 3600)  # Same conversion for max_speed
+                
                 session_msg.first_lap_index = 0
                 session_msg.num_laps = 1
                 session_msg.trigger = SessionTrigger.ACTIVITY_END
@@ -373,6 +383,7 @@ class FITConverter:
                 
                 builder.add(session_msg)
                 logger.debug("Added Session message")
+                logger.debug(f"Session avg_speed: {session_msg.avg_speed}, from {avg_speed} km/h")
             except Exception as e:
                 logger.error(f"Error creating Session message: {str(e)}")
                 logger.error(traceback.format_exc())
@@ -606,11 +617,25 @@ class FITConverter:
                     lap_msg.avg_heart_rate = int(avg_heart_rate)
                 if max_heart_rate > 0:
                     lap_msg.max_heart_rate = int(max_heart_rate)
+                
+                # If we have an average speed for the rowing workout
+                avg_speed = processed_data.get('avg_speed', 0)
+                max_speed = processed_data.get('max_speed', 0)
+                
+                if avg_speed > 0:
+                    # Convert km/h to m/s (no extra scaling needed)
+                    lap_msg.avg_speed = int(avg_speed * 1000 / 3600)  # Convert km/h to m/s
+                
+                if max_speed > 0:
+                    lap_msg.max_speed = int(max_speed * 1000 / 3600)  # Same conversion for max_speed
+                
                 lap_msg.total_cycles = int(total_strokes)  # Use strokes as cycles
                 lap_msg.lap_trigger = LapTrigger.SESSION_END
                 lap_msg.sport = Sport.ROWING
                 builder.add(lap_msg)
                 logger.debug("Added Lap message")
+                if avg_speed > 0:
+                    logger.debug(f"Lap avg_speed: {lap_msg.avg_speed}, from {avg_speed} km/h")
             except Exception as e:
                 logger.error(f"Error creating Lap message: {str(e)}")
                 logger.error(traceback.format_exc())
@@ -633,6 +658,18 @@ class FITConverter:
                     session_msg.avg_heart_rate = int(avg_heart_rate)
                 if max_heart_rate > 0:
                     session_msg.max_heart_rate = int(max_heart_rate)
+                
+                # If we have an average speed for the rowing workout
+                avg_speed = processed_data.get('avg_speed', 0)
+                max_speed = processed_data.get('max_speed', 0)
+                
+                if avg_speed > 0:
+                    # Convert km/h to m/s (no extra scaling needed)
+                    session_msg.avg_speed = int(avg_speed * 1000 / 3600)  # Convert km/h to m/s
+                
+                if max_speed > 0:
+                    session_msg.max_speed = int(max_speed * 1000 / 3600)  # Same conversion for max_speed
+                
                 session_msg.total_cycles = int(total_strokes)  # Use strokes as cycles
                 session_msg.first_lap_index = 0
                 session_msg.num_laps = 1
@@ -646,7 +683,10 @@ class FITConverter:
                 
                 # Add user profile data if available
                 if user_profile:
-                    if 'weight' in user_profile:
+                    if 'weight_kg' in user_profile:
+                        # Convert kg to g
+                        session_msg.total_weight = int(user_profile['weight_kg'] * 1000)
+                    elif 'weight' in user_profile:
                         # Convert kg to g
                         session_msg.total_weight = int(user_profile['weight'] * 1000)
                     
@@ -658,6 +698,8 @@ class FITConverter:
                 
                 builder.add(session_msg)
                 logger.debug("Added Session message")
+                if avg_speed > 0:
+                    logger.debug(f"Session avg_speed: {session_msg.avg_speed}, from {avg_speed} km/h")
             except Exception as e:
                 logger.error(f"Error creating Session message: {str(e)}")
                 logger.error(traceback.format_exc())

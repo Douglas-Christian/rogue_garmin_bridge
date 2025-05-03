@@ -2215,3 +2215,95 @@ sqlite3.OperationalError: database is locked
 2025-05-03 15:05:02,750 - database - INFO - Retrieved 8 workouts from database
 2025-05-03 15:05:14,146 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_150300.fit
 2025-05-03 15:05:14,152 - database - INFO - Updated FIT file path for workout 8: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_150300.fit
+2025-05-03 15:12:26,591 - database - INFO - Database tables created
+2025-05-03 15:12:26,593 - database - INFO - Database tables created
+2025-05-03 15:12:27,985 - database - INFO - Database tables created
+2025-05-03 15:12:27,992 - database - INFO - Database tables created
+2025-05-03 15:13:06,513 - database - INFO - Started workout 9 with device C9:02:CB:68:17:C1
+2025-05-03 15:14:35,420 - database - INFO - Ended workout 9, duration: 88s
+2025-05-03 15:14:35,427 - database - INFO - Database tables created
+2025-05-03 15:14:35,531 - fit_converter - ERROR - Error creating Lap message: avg_speed encoded value 580000 is not in valid range [0, 65535]
+2025-05-03 15:14:35,541 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 310, in _convert_bike_workout
+    lap_msg.avg_speed = int(avg_speed * 1000 / 3600 * 1000)  # Scale by 1000 to preserve precision
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\venv\Lib\site-packages\fit_tool\profile\messages\lap_message.py", line 772, in avg_speed
+    field.set_value(0, value, sub_field)
+  File "C:\Users\dougl\rogue_garmin_bridge\venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "C:\Users\dougl\rogue_garmin_bridge\venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: avg_speed encoded value 580000 is not in valid range [0, 65535]
+
+2025-05-03 15:14:35,542 - fit_converter - ERROR - Error converting bike workout to FIT: avg_speed encoded value 580000 is not in valid range [0, 65535]
+2025-05-03 15:14:35,545 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 310, in _convert_bike_workout
+    lap_msg.avg_speed = int(avg_speed * 1000 / 3600 * 1000)  # Scale by 1000 to preserve precision
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\venv\Lib\site-packages\fit_tool\profile\messages\lap_message.py", line 772, in avg_speed
+    field.set_value(0, value, sub_field)
+  File "C:\Users\dougl\rogue_garmin_bridge\venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "C:\Users\dougl\rogue_garmin_bridge\venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: avg_speed encoded value 580000 is not in valid range [0, 65535]
+
+2025-05-03 15:14:46,282 - database - INFO - Retrieved 9 workouts from database
+2025-05-03 15:15:10,972 - fit_converter - ERROR - Error creating Lap message: avg_speed encoded value 580000 is not in valid range [0, 65535]
+2025-05-03 15:15:10,975 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 310, in _convert_bike_workout
+    lap_msg.avg_speed = int(avg_speed * 1000 / 3600 * 1000)  # Scale by 1000 to preserve precision
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\venv\Lib\site-packages\fit_tool\profile\messages\lap_message.py", line 772, in avg_speed
+    field.set_value(0, value, sub_field)
+  File "C:\Users\dougl\rogue_garmin_bridge\venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "C:\Users\dougl\rogue_garmin_bridge\venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: avg_speed encoded value 580000 is not in valid range [0, 65535]
+
+2025-05-03 15:15:10,976 - fit_converter - ERROR - Error converting bike workout to FIT: avg_speed encoded value 580000 is not in valid range [0, 65535]
+2025-05-03 15:15:10,979 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 310, in _convert_bike_workout
+    lap_msg.avg_speed = int(avg_speed * 1000 / 3600 * 1000)  # Scale by 1000 to preserve precision
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\venv\Lib\site-packages\fit_tool\profile\messages\lap_message.py", line 772, in avg_speed
+    field.set_value(0, value, sub_field)
+  File "C:\Users\dougl\rogue_garmin_bridge\venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "C:\Users\dougl\rogue_garmin_bridge\venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: avg_speed encoded value 580000 is not in valid range [0, 65535]
+
+2025-05-03 15:15:26,758 - fit_converter - ERROR - Error creating Lap message: avg_speed encoded value 580000 is not in valid range [0, 65535]
+2025-05-03 15:15:26,758 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 310, in _convert_bike_workout
+    lap_msg.avg_speed = int(avg_speed * 1000 / 3600 * 1000)  # Scale by 1000 to preserve precision
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\venv\Lib\site-packages\fit_tool\profile\messages\lap_message.py", line 772, in avg_speed
+    field.set_value(0, value, sub_field)
+  File "C:\Users\dougl\rogue_garmin_bridge\venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "C:\Users\dougl\rogue_garmin_bridge\venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: avg_speed encoded value 580000 is not in valid range [0, 65535]
+
+2025-05-03 15:15:26,758 - fit_converter - ERROR - Error converting bike workout to FIT: avg_speed encoded value 580000 is not in valid range [0, 65535]
+2025-05-03 15:15:26,765 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 310, in _convert_bike_workout
+    lap_msg.avg_speed = int(avg_speed * 1000 / 3600 * 1000)  # Scale by 1000 to preserve precision
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\rogue_garmin_bridge\venv\Lib\site-packages\fit_tool\profile\messages\lap_message.py", line 772, in avg_speed
+    field.set_value(0, value, sub_field)
+  File "C:\Users\dougl\rogue_garmin_bridge\venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "C:\Users\dougl\rogue_garmin_bridge\venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: avg_speed encoded value 580000 is not in valid range [0, 65535]
+
+2025-05-03 15:21:04,078 - database - INFO - Database tables created
+2025-05-03 15:21:04,079 - database - INFO - Database tables created
+2025-05-03 15:21:04,669 - database - INFO - Database tables created
+2025-05-03 15:21:04,671 - database - INFO - Database tables created
+2025-05-03 15:21:12,260 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_151306.fit
+2025-05-03 15:21:12,274 - database - INFO - Updated FIT file path for workout 9: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_151306.fit
