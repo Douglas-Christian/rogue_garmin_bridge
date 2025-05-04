@@ -724,4 +724,3 @@ if __name__ == "__main__":
             print("No FTMS devices found")
     
     asyncio.run(main())
-``` 

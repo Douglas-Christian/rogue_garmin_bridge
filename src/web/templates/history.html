@@ -648,10 +648,10 @@
                     <div class="col-md-6 mb-3">
                         <div class="card">
                             <div class="card-header">
-                                <h5>Distance</h5>
+                                <h5>Speed</h5>
                             </div>
                             <div class="card-body">
-                                <canvas id="distanceChart"></canvas>
+                                <canvas id="speedChart"></canvas>
                             </div>
                         </div>
                     </div>
@@ -677,7 +677,7 @@
         const powers = workout.data_series.powers || [];
         const cadences = workout.data_series.cadences || [];
         const heartRates = workout.data_series.heart_rates || [];
-        const distances = workout.data_series.distances || [];
+        const speeds = workout.data_series.speeds || []; // Use speeds instead of distances
         
         // Format timestamps for display
         const timeLabels = timestamps.map(formatTimestamp);
@@ -810,15 +810,26 @@
             heartRateContainer.innerHTML = '<div class="alert alert-info my-3">No heart rate data available for this workout.</div>';
         }
         
-        // Create distance chart
-        const distanceCtx = document.getElementById('distanceChart').getContext('2d');
-        new Chart(distanceCtx, {
+        // Create speed chart
+        const speedCtx = document.getElementById('speedChart').getContext('2d');
+        
+        // Determine speed unit based on user preferences
+        const speedUnit = userUnitSystem === 'imperial' ? 'mph' : 'km/h';
+        
+        // Convert speeds based on user preferences if needed
+        let speedData = speeds;
+        if (userUnitSystem === 'imperial') {
+            // Convert km/h to mph
+            speedData = speeds.map(speed => speed * 0.621371);
+        }
+        
+        new Chart(speedCtx, {
             type: 'line',
             data: {
                 labels: timeLabels,
                 datasets: [{
-                    label: 'Distance (m)',
-                    data: distances,
+                    label: `Speed (${speedUnit})`,
+                    data: speedData,
                     borderColor: 'rgba(75, 192, 192, 1)',
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                     borderWidth: 2,
@@ -833,7 +844,7 @@
                         beginAtZero: true,
                         title: {
                             display: true,
-                            text: 'Distance (m)'
+                            text: `Speed (${speedUnit})`
                         }
                     },
                     x: {

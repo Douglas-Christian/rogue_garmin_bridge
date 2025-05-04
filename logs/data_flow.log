@@ -2398,3 +2398,13 @@ Exception: avg_speed encoded value 580000 is not in valid range [0, 65535]
 2025-05-04 08:07:27,303 - database - INFO - Database tables created
 2025-05-04 08:07:27,307 - database - INFO - Database tables created
 2025-05-04 08:07:50,770 - database - INFO - Retrieved 11 workouts from database
+2025-05-04 08:16:51,637 - database - INFO - Database tables created
+2025-05-04 08:16:51,638 - database - INFO - Database tables created
+2025-05-04 08:16:52,185 - database - INFO - Database tables created
+2025-05-04 08:16:52,186 - database - INFO - Database tables created
+2025-05-04 08:17:04,704 - database - INFO - Retrieved 11 workouts from database
+2025-05-04 08:22:35,444 - database - INFO - Database tables created
+2025-05-04 08:22:35,446 - database - INFO - Database tables created
+2025-05-04 08:22:35,995 - database - INFO - Database tables created
+2025-05-04 08:22:35,996 - database - INFO - Database tables created
+2025-05-04 08:22:40,555 - database - INFO - Retrieved 11 workouts from database
