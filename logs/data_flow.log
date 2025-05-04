@@ -2408,3 +2408,34 @@ Exception: avg_speed encoded value 580000 is not in valid range [0, 65535]
 2025-05-04 08:22:35,995 - database - INFO - Database tables created
 2025-05-04 08:22:35,996 - database - INFO - Database tables created
 2025-05-04 08:22:40,555 - database - INFO - Retrieved 11 workouts from database
+2025-05-04 09:10:41,351 - database - INFO - Database tables created
+2025-05-04 09:10:41,353 - database - INFO - Database tables created
+2025-05-04 09:10:41,916 - database - INFO - Database tables created
+2025-05-04 09:10:41,916 - database - INFO - Database tables created
+2025-05-04 09:10:52,259 - fit_converter - INFO - Calculated average speed from 80 data points: 15.590875 km/h
+2025-05-04 09:10:52,267 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_114253.fit
+2025-05-04 09:10:52,274 - database - INFO - Updated FIT file path for workout 1: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_114253.fit
+2025-05-04 09:10:59,827 - fit_converter - INFO - Calculated average speed from 60 data points: 24.1265 km/h
+2025-05-04 09:10:59,838 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_125244.fit
+2025-05-04 09:10:59,840 - database - INFO - Updated FIT file path for workout 2: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_125244.fit
+2025-05-04 09:11:03,508 - fit_converter - INFO - Calculated average speed from 61 data points: 16.618360655737707 km/h
+2025-05-04 09:11:03,517 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_144026.fit
+2025-05-04 09:11:03,519 - database - INFO - Updated FIT file path for workout 3: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_144026.fit
+2025-05-04 09:11:06,434 - fit_converter - INFO - Calculated average speed from 29 data points: 12.385862068965517 km/h
+2025-05-04 09:11:06,442 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_144412.fit
+2025-05-04 09:11:06,445 - database - INFO - Updated FIT file path for workout 4: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_144412.fit
+2025-05-04 09:11:09,488 - fit_converter - INFO - Calculated average speed from 34 data points: 19.07529411764706 km/h
+2025-05-04 09:11:09,496 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_144550.fit
+2025-05-04 09:11:09,503 - database - INFO - Updated FIT file path for workout 5: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_144550.fit
+2025-05-04 09:11:12,803 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_150300.fit
+2025-05-04 09:11:12,806 - database - INFO - Updated FIT file path for workout 8: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_150300.fit
+2025-05-04 09:11:15,845 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_151306.fit
+2025-05-04 09:11:15,849 - database - INFO - Updated FIT file path for workout 9: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_151306.fit
+2025-05-04 09:11:18,706 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_155224.fit
+2025-05-04 09:11:18,710 - database - INFO - Updated FIT file path for workout 10: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_155224.fit
+2025-05-04 09:11:21,553 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_163620.fit
+2025-05-04 09:11:21,560 - database - INFO - Updated FIT file path for workout 11: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_163620.fit
+2025-05-04 09:11:24,209 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_171737.fit
+2025-05-04 09:11:24,216 - database - INFO - Updated FIT file path for workout 12: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_171737.fit
+2025-05-04 09:11:28,811 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_174122.fit
+2025-05-04 09:11:28,814 - database - INFO - Updated FIT file path for workout 13: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_174122.fit

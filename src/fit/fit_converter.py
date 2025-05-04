@@ -168,8 +168,8 @@ class FITConverter:
             try:
                 file_id_msg = FileIdMessage()
                 file_id_msg.type = FileType.ACTIVITY
-                file_id_msg.manufacturer = Manufacturer.DEVELOPMENT.value
-                file_id_msg.product = 0
+                file_id_msg.manufacturer = 260  # ZWIFT manufacturer ID
+                file_id_msg.product = 3907  # ZWIFT product ID
                 file_id_msg.time_created = unix_start_timestamp_ms  # Milliseconds since Unix epoch
                 file_id_msg.serial_number = 0x12345678
                 builder.add(file_id_msg)
@@ -183,8 +183,8 @@ class FITConverter:
             try:
                 device_info_msg = DeviceInfoMessage()
                 device_info_msg.timestamp = unix_start_timestamp_ms  # Milliseconds since Unix epoch
-                device_info_msg.manufacturer = Manufacturer.DEVELOPMENT.value
-                device_info_msg.product = 0
+                device_info_msg.manufacturer = 260  # ZWIFT manufacturer ID
+                device_info_msg.product = 3907  # ZWIFT product ID
                 device_info_msg.device_index = 0
                 device_info_msg.serial_number = 0x12345678
                 device_info_msg.software_version = 100
@@ -335,6 +335,12 @@ class FITConverter:
                 if avg_speed > 0:
                     # Convert km/h to m/s (no extra scaling needed)
                     lap_msg.avg_speed = int(avg_speed * 1000 / 3600)  # Convert km/h to m/s
+                else:
+                    # If avg_speed is 0 or not available, calculate from the record speeds
+                    if all_speeds:
+                        calculated_avg_speed = sum(all_speeds) / len(all_speeds)
+                        lap_msg.avg_speed = int(calculated_avg_speed * 1000 / 3600)  # Convert km/h to m/s
+                        logger.info(f"Using calculated average speed for Lap message: {calculated_avg_speed:.2f} km/h")
                 
                 if max_speed > 0:
                     lap_msg.max_speed = int(max_speed * 1000 / 3600)  # Same conversion for max_speed
@@ -379,6 +385,12 @@ class FITConverter:
                 if avg_speed > 0:
                     # Convert km/h to m/s (no extra scaling needed)
                     session_msg.avg_speed = int(avg_speed * 1000 / 3600)  # Convert km/h to m/s
+                else:
+                    # If avg_speed is 0 or not available, calculate from the record speeds
+                    if all_speeds:
+                        calculated_avg_speed = sum(all_speeds) / len(all_speeds)
+                        session_msg.avg_speed = int(calculated_avg_speed * 1000 / 3600)  # Convert km/h to m/s
+                        logger.info(f"Using calculated average speed for Session message: {calculated_avg_speed:.2f} km/h")
                 
                 if max_speed > 0:
                     session_msg.max_speed = int(max_speed * 1000 / 3600)  # Same conversion for max_speed

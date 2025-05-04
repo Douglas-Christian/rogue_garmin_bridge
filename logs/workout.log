@@ -945,3 +945,14 @@ AttributeError: 'Database' object has no attribute '_connect'
 2025-05-03 17:30:59,064 - workout_manager - INFO - Updating workout 12 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_171737.fit
 2025-05-03 17:41:22,409 - workout_manager - INFO - Started workout 13 with device C9:02:CB:68:17:C1
 2025-05-03 17:42:29,716 - workout_manager - INFO - Successfully created FIT file for workout 13: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_174122.fit
+2025-05-04 09:10:52,270 - workout_manager - INFO - Updating workout 1 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_114253.fit
+2025-05-04 09:10:59,839 - workout_manager - INFO - Updating workout 2 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_125244.fit
+2025-05-04 09:11:03,519 - workout_manager - INFO - Updating workout 3 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_144026.fit
+2025-05-04 09:11:06,444 - workout_manager - INFO - Updating workout 4 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_144412.fit
+2025-05-04 09:11:09,497 - workout_manager - INFO - Updating workout 5 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_144550.fit
+2025-05-04 09:11:12,805 - workout_manager - INFO - Updating workout 8 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_150300.fit
+2025-05-04 09:11:15,848 - workout_manager - INFO - Updating workout 9 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_151306.fit
+2025-05-04 09:11:18,709 - workout_manager - INFO - Updating workout 10 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_155224.fit
+2025-05-04 09:11:21,559 - workout_manager - INFO - Updating workout 11 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_163620.fit
+2025-05-04 09:11:24,215 - workout_manager - INFO - Updating workout 12 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_171737.fit
+2025-05-04 09:11:28,813 - workout_manager - INFO - Updating workout 13 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_174122.fit

@@ -3022,3 +3022,72 @@ AttributeError: 'WorkoutManager' object has no attribute 'delete_workout'. Did y
 2025-05-04 08:22:36,007 - web - INFO - Starting background asyncio event loop run_forever.
 2025-05-04 08:22:40,552 - web - INFO - Getting workouts with limit=100, offset=0
 2025-05-04 08:22:40,555 - web - INFO - Retrieved 11 workouts from database
+2025-05-04 09:10:41,353 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-04 09:10:41,354 - web - INFO - Using real FTMS devices
+2025-05-04 09:10:41,354 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-04 09:10:41,354 - web - INFO - Starting background asyncio loop thread...
+2025-05-04 09:10:41,356 - web - INFO - Background thread started. Creating new event loop.
+2025-05-04 09:10:41,356 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-04 09:10:41,363 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-04 09:10:41,918 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-04 09:10:41,918 - web - INFO - Using real FTMS devices
+2025-05-04 09:10:41,919 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-04 09:10:41,919 - web - INFO - Starting background asyncio loop thread...
+2025-05-04 09:10:41,921 - web - INFO - Background thread started. Creating new event loop.
+2025-05-04 09:10:41,921 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-04 09:10:41,926 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-04 09:10:52,209 - web - INFO - Converting workout 1 to FIT file
+2025-05-04 09:10:52,210 - web - INFO - Workout type: bike
+2025-05-04 09:10:52,210 - web - INFO - Duration: 79
+2025-05-04 09:10:52,211 - web - INFO - Data points: 80
+2025-05-04 09:10:52,584 - web - INFO - Serving FIT file: indoor_cycling_20250503_114253.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files
+2025-05-04 09:10:59,805 - web - INFO - Converting workout 2 to FIT file
+2025-05-04 09:10:59,805 - web - INFO - Workout type: bike
+2025-05-04 09:10:59,806 - web - INFO - Duration: 60
+2025-05-04 09:10:59,806 - web - INFO - Data points: 60
+2025-05-04 09:11:00,155 - web - INFO - Serving FIT file: indoor_cycling_20250503_125244.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files
+2025-05-04 09:11:03,484 - web - INFO - Converting workout 3 to FIT file
+2025-05-04 09:11:03,485 - web - INFO - Workout type: bike
+2025-05-04 09:11:03,485 - web - INFO - Duration: 60
+2025-05-04 09:11:03,486 - web - INFO - Data points: 61
+2025-05-04 09:11:03,834 - web - INFO - Serving FIT file: indoor_cycling_20250503_144026.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files
+2025-05-04 09:11:06,421 - web - INFO - Converting workout 4 to FIT file
+2025-05-04 09:11:06,421 - web - INFO - Workout type: bike
+2025-05-04 09:11:06,422 - web - INFO - Duration: 28
+2025-05-04 09:11:06,423 - web - INFO - Data points: 29
+2025-05-04 09:11:06,759 - web - INFO - Serving FIT file: indoor_cycling_20250503_144412.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files
+2025-05-04 09:11:09,475 - web - INFO - Converting workout 5 to FIT file
+2025-05-04 09:11:09,476 - web - INFO - Workout type: bike
+2025-05-04 09:11:09,476 - web - INFO - Duration: 48
+2025-05-04 09:11:09,477 - web - INFO - Data points: 34
+2025-05-04 09:11:09,813 - web - INFO - Serving FIT file: indoor_cycling_20250503_144550.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files
+2025-05-04 09:11:12,736 - web - INFO - Converting workout 8 to FIT file
+2025-05-04 09:11:12,738 - web - INFO - Workout type: bike
+2025-05-04 09:11:12,738 - web - INFO - Duration: 106
+2025-05-04 09:11:12,738 - web - INFO - Data points: 107
+2025-05-04 09:11:13,123 - web - INFO - Serving FIT file: indoor_cycling_20250503_150300.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files
+2025-05-04 09:11:15,805 - web - INFO - Converting workout 9 to FIT file
+2025-05-04 09:11:15,806 - web - INFO - Workout type: bike
+2025-05-04 09:11:15,806 - web - INFO - Duration: 88
+2025-05-04 09:11:15,807 - web - INFO - Data points: 89
+2025-05-04 09:11:16,161 - web - INFO - Serving FIT file: indoor_cycling_20250503_151306.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files
+2025-05-04 09:11:18,616 - web - INFO - Converting workout 10 to FIT file
+2025-05-04 09:11:18,617 - web - INFO - Workout type: bike
+2025-05-04 09:11:18,617 - web - INFO - Duration: 169
+2025-05-04 09:11:18,618 - web - INFO - Data points: 170
+2025-05-04 09:11:19,019 - web - INFO - Serving FIT file: indoor_cycling_20250503_155224.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files
+2025-05-04 09:11:21,438 - web - INFO - Converting workout 11 to FIT file
+2025-05-04 09:11:21,439 - web - INFO - Workout type: bike
+2025-05-04 09:11:21,440 - web - INFO - Duration: 284
+2025-05-04 09:11:21,440 - web - INFO - Data points: 285
+2025-05-04 09:11:21,867 - web - INFO - Serving FIT file: indoor_cycling_20250503_163620.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files
+2025-05-04 09:11:24,023 - web - INFO - Converting workout 12 to FIT file
+2025-05-04 09:11:24,023 - web - INFO - Workout type: bike
+2025-05-04 09:11:24,024 - web - INFO - Duration: 382
+2025-05-04 09:11:24,025 - web - INFO - Data points: 383
+2025-05-04 09:11:24,525 - web - INFO - Serving FIT file: indoor_cycling_20250503_171737.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files
+2025-05-04 09:11:28,778 - web - INFO - Converting workout 13 to FIT file
+2025-05-04 09:11:28,778 - web - INFO - Workout type: bike
+2025-05-04 09:11:28,779 - web - INFO - Duration: 67
+2025-05-04 09:11:28,779 - web - INFO - Data points: 67
+2025-05-04 09:11:29,122 - web - INFO - Serving FIT file: indoor_cycling_20250503_174122.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files
