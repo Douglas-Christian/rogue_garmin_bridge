@@ -3091,3 +3091,26 @@ AttributeError: 'WorkoutManager' object has no attribute 'delete_workout'. Did y
 2025-05-04 09:11:28,779 - web - INFO - Duration: 67
 2025-05-04 09:11:28,779 - web - INFO - Data points: 67
 2025-05-04 09:11:29,122 - web - INFO - Serving FIT file: indoor_cycling_20250503_174122.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files
+2025-05-04 09:48:43,365 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-04 09:48:43,366 - web - INFO - Using real FTMS devices
+2025-05-04 09:48:43,366 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-04 09:48:43,368 - web - INFO - Starting background asyncio loop thread...
+2025-05-04 09:48:43,368 - web - INFO - Background thread started. Creating new event loop.
+2025-05-04 09:48:43,368 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-04 09:48:43,374 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-04 09:48:43,926 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-04 09:48:43,926 - web - INFO - Using real FTMS devices
+2025-05-04 09:48:43,927 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-04 09:48:43,927 - web - INFO - Starting background asyncio loop thread...
+2025-05-04 09:48:43,928 - web - INFO - Background thread started. Creating new event loop.
+2025-05-04 09:48:43,928 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-04 09:48:43,936 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-04 09:49:44,869 - web - INFO - Scheduling connect task for C9:02:CB:68:17:C1 on background loop.
+2025-05-04 09:49:53,806 - web - INFO - Connect task for C9:02:CB:68:17:C1 completed with result: True
+2025-05-04 09:55:38,929 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-04 09:55:38,935 - web - INFO - Retrieved 12 workouts from database
+2025-05-04 09:56:03,595 - web - INFO - Converting workout 14 to FIT file
+2025-05-04 09:56:03,597 - web - INFO - Workout type: bike
+2025-05-04 09:56:03,599 - web - INFO - Duration: 327
+2025-05-04 09:56:03,600 - web - INFO - Data points: 328
+2025-05-04 09:56:04,233 - web - INFO - Serving FIT file: indoor_cycling_20250504_094958.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files

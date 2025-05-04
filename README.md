@@ -13,7 +13,9 @@ Rogue Garmin Bridge connects to Rogue Echo Bike and Rower equipment via Bluetoot
 - **FTMS Bluetooth Connectivity**: Connect to Rogue Echo Bike and Rower equipment via BLE
 - **Real-time Workout Tracking**: Monitor power, heart rate, cadence, speed, distance, and calories in real-time
 - **Workout History**: View past workout details with performance metrics and charts
-- **FIT File Generation**: Convert workout data to Garmin FIT format
+- **FIT File Generation**: Convert workout data to Garmin FIT format with proper device identification
+- **Training Load Calculation**: Generated FIT files correctly report training load in Garmin Connect
+- **Speed Data Analysis**: Improved speed calculations and display in workout history
 - **Garmin Connect Integration**: Upload workouts directly to Garmin Connect
 - **Web Interface**: User-friendly interface for monitoring, configuring, and managing workouts
 - **FTMS Device Simulator**: Test functionality without physical hardware (development mode)
@@ -93,13 +95,25 @@ Rogue Garmin Bridge connects to Rogue Echo Bike and Rower equipment via Bluetoot
 1. Navigate to the "History" page
 2. Browse through your past workouts
 3. Click on a workout to view detailed metrics and charts
+4. View speed data visualizations instead of distance for more useful analysis
 
 ### Uploading to Garmin Connect
 
 1. Navigate to the "History" page
 2. Select a workout from the list
-3. Click "Upload to Garmin" to send the workout to Garmin Connect
-4. Enter your Garmin Connect credentials if prompted
+3. Click the "FIT" button to generate and download the FIT file
+4. Manually upload the FIT file to Garmin Connect, or
+5. Click "Upload to Garmin" to send the workout directly to Garmin Connect
+6. Enter your Garmin Connect credentials if prompted
+
+## Recent Improvements
+
+### May 2025 Updates
+
+- **Proper Training Load Calculation**: FIT files now properly report training load in Garmin Connect by using appropriate device identification
+- **Improved Speed Metrics**: Fixed issues with average speed calculation and reporting in FIT files
+- **Enhanced Workout Visualization**: Added speed charts in workout history for better performance analysis
+- **FIT File Analysis Tools**: Added tools for analyzing and comparing FIT files to ensure compatibility with Garmin Connect
 
 ## Project Structure
 
@@ -108,6 +122,8 @@ Rogue Garmin Bridge connects to Rogue Echo Bike and Rower equipment via Bluetoot
 - `src/fit/`: FIT file conversion and Garmin Connect upload
 - `src/web/`: Web interface (Flask application)
 - `docs/`: Project documentation
+- `fit_files/`: Generated FIT files from workouts
+- `tools/`: Utility scripts for analysis and troubleshooting
 
 ## Configuration
 
@@ -133,6 +149,13 @@ For development without physical hardware, the application includes an FTMS devi
 
 3. For detailed instructions on using the simulator to test workouts, please see the [Testing with the FTMS Simulator](docs/testing_with_simulator.md) documentation.
 
+### FIT File Analysis
+
+The project includes tools for analyzing FIT files:
+
+- `compare_fit_files.py`: Compare device identification and other metadata between FIT files
+- `compare_speed_fields.py`: Analyze speed data in FIT files for troubleshooting
+
 ### Running Tests
 
 ```
@@ -146,6 +169,7 @@ pytest
 - **Bluetooth Connection Problems**: Ensure your Bluetooth adapter supports BLE and is enabled
 - **Device Not Found**: Make sure your Rogue equipment is powered on and in Bluetooth pairing mode
 - **Upload to Garmin Fails**: Check your internet connection and Garmin Connect credentials
+- **Incorrect Speed Data**: If speed is not showing in Garmin Connect, check your FIT files using the analysis tools
 
 ## Contributing
 
