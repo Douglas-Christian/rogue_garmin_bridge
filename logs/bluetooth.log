@@ -7192,3 +7192,9 @@
 2025-05-03 17:42:38,214 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
 2025-05-03 17:42:39,263 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 0.0, 'average_speed': 0.82, 'instant_cadence': 0.0, 'average_cadence': 22.0, 'total_distance': 289, 'resistance_level': None, 'instant_power': 0, 'average_power': 20, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 110, 'metabolic_equivalent': None, 'elapsed_time': 79, 'remaining_time': None, 'timestamp': 1746308559.263714}
 2025-05-03 17:42:39,264 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-04 07:54:53,098 - ftms - INFO - Using FTMSConnector for real device.
+2025-05-04 07:54:53,676 - ftms - INFO - Using FTMSConnector for real device.
+2025-05-04 08:04:09,793 - ftms - INFO - Using FTMSConnector for real device.
+2025-05-04 08:04:10,343 - ftms - INFO - Using FTMSConnector for real device.
+2025-05-04 08:07:26,797 - ftms - INFO - Using FTMSConnector for real device.
+2025-05-04 08:07:27,309 - ftms - INFO - Using FTMSConnector for real device.

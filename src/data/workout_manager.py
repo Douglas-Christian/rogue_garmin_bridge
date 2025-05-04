@@ -457,7 +457,7 @@ class WorkoutManager:
             if cadence_values:
                 self.summary_metrics['avg_cadence'] = sum(cadence_values) / len(cadence_values)
         
-        # Update speed metrics - check both instant and average values
+        # Update speed metrics - check instantaneous values only
         if 'instant_speed' in data or 'instantaneous_speed' in data or 'speed' in data:
             # Get the instantaneous speed value from various possible keys
             speed = data.get('instant_speed', data.get('instantaneous_speed', data.get('speed', 0)))
@@ -469,23 +469,22 @@ class WorkoutManager:
             if speed > self.summary_metrics.get('max_speed', 0):
                 self.summary_metrics['max_speed'] = speed
         
-        # Use average speed directly from device if available
-        if 'average_speed' in data and data['average_speed'] is not None:
-            # Log the device-reported average speed
-            logger.debug(f"Using device-reported average speed: {data['average_speed']} km/h")
-            self.summary_metrics['avg_speed'] = data['average_speed']
-        # Otherwise calculate from instantaneous values
-        elif any(key in data for key in ['instant_speed', 'instantaneous_speed', 'speed']):
-            speed_values = []
-            for d in self.data_points:
-                for key in ['instant_speed', 'instantaneous_speed', 'speed']:
-                    if key in d and d[key] is not None:
-                        speed_values.append(d[key])
-                        break
-            if speed_values:
-                avg_calculated_speed = sum(speed_values) / len(speed_values)
-                self.summary_metrics['avg_speed'] = avg_calculated_speed
-                logger.debug(f"Calculated average speed from {len(speed_values)} data points: {avg_calculated_speed} km/h")
+        # MODIFIED: Always calculate average speed from instantaneous values
+        # Ignore device-reported average_speed completely
+        speed_values = []
+        for d in self.data_points:
+            for key in ['instant_speed', 'instantaneous_speed', 'speed']:
+                if key in d and d[key] is not None:
+                    speed_values.append(d[key])
+                    break
+        if speed_values:
+            avg_calculated_speed = sum(speed_values) / len(speed_values)
+            self.summary_metrics['avg_speed'] = avg_calculated_speed
+            logger.info(f"Calculated average speed from {len(speed_values)} data points: {avg_calculated_speed} km/h")
+            
+            # If data contains an incorrect device-reported average_speed, log for debugging
+            if 'average_speed' in data and data['average_speed'] is not None:
+                logger.info(f"Ignoring device-reported average speed: {data['average_speed']} km/h")
     
     def _update_rower_metrics(self, data: Dict[str, Any]) -> None:
         """
@@ -725,3 +724,4 @@ if __name__ == "__main__":
             print("No FTMS devices found")
     
     asyncio.run(main())
+``` 

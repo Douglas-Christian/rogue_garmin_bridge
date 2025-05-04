@@ -2944,3 +2944,49 @@ AttributeError: 'WorkoutManager' object has no attribute 'delete_workout'. Did y
 2025-05-03 17:40:30,805 - web - INFO - Starting background asyncio event loop run_forever.
 2025-05-03 17:40:54,368 - web - INFO - Scheduling connect task for C9:02:CB:68:17:C1 on background loop.
 2025-05-03 17:41:17,784 - web - INFO - Connect task for C9:02:CB:68:17:C1 completed with result: True
+2025-05-04 07:54:53,097 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-04 07:54:53,098 - web - INFO - Using real FTMS devices
+2025-05-04 07:54:53,099 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-04 07:54:53,099 - web - INFO - Starting background asyncio loop thread...
+2025-05-04 07:54:53,100 - web - INFO - Background thread started. Creating new event loop.
+2025-05-04 07:54:53,100 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-04 07:54:53,106 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-04 07:54:53,675 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-04 07:54:53,676 - web - INFO - Using real FTMS devices
+2025-05-04 07:54:53,676 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-04 07:54:53,677 - web - INFO - Starting background asyncio loop thread...
+2025-05-04 07:54:53,678 - web - INFO - Background thread started. Creating new event loop.
+2025-05-04 07:54:53,678 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-04 07:54:53,685 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-04 07:55:07,532 - web - INFO - Getting workouts with limit=10, offset=0
+2025-05-04 07:55:07,536 - web - INFO - Retrieved 10 workouts from database
+2025-05-04 08:04:09,793 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-04 08:04:09,794 - web - INFO - Using real FTMS devices
+2025-05-04 08:04:09,794 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-04 08:04:09,795 - web - INFO - Starting background asyncio loop thread...
+2025-05-04 08:04:09,795 - web - INFO - Background thread started. Creating new event loop.
+2025-05-04 08:04:09,796 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-04 08:04:09,802 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-04 08:04:10,343 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-04 08:04:10,343 - web - INFO - Using real FTMS devices
+2025-05-04 08:04:10,344 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-04 08:04:10,344 - web - INFO - Starting background asyncio loop thread...
+2025-05-04 08:04:10,345 - web - INFO - Background thread started. Creating new event loop.
+2025-05-04 08:04:10,345 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-04 08:04:10,352 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-04 08:07:26,796 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-04 08:07:26,797 - web - INFO - Using real FTMS devices
+2025-05-04 08:07:26,797 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-04 08:07:26,797 - web - INFO - Starting background asyncio loop thread...
+2025-05-04 08:07:26,799 - web - INFO - Background thread started. Creating new event loop.
+2025-05-04 08:07:26,799 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-04 08:07:26,807 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-04 08:07:27,309 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-04 08:07:27,310 - web - INFO - Using real FTMS devices
+2025-05-04 08:07:27,310 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-04 08:07:27,310 - web - INFO - Starting background asyncio loop thread...
+2025-05-04 08:07:27,311 - web - INFO - Background thread started. Creating new event loop.
+2025-05-04 08:07:27,311 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-04 08:07:27,318 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-04 08:07:50,768 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-04 08:07:50,770 - web - INFO - Retrieved 11 workouts from database

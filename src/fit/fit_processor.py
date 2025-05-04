@@ -160,11 +160,21 @@ class FITProcessor:
             bike_metrics = {
                 'avg_cadence': 'avg_cadence',
                 'max_cadence': 'max_cadence',
-                'avg_speed': 'avg_speed',
                 'max_speed': 'max_speed'
             }
             for fit_key, db_key in bike_metrics.items():
                 structured_data[fit_key] = summary.get(db_key, 0)
+                
+            # For avg_speed, always use the calculated value from the summary
+            # This ensures we ignore the incorrect Echo bike reported value
+            structured_data['avg_speed'] = summary.get('avg_speed', 0)
+            
+            # If we don't have a valid average speed in the summary, calculate it from data points
+            if structured_data['avg_speed'] <= 0 and data_series.get('speeds'):
+                valid_speeds = [s for s in data_series['speeds'] if s > 0]
+                if valid_speeds:
+                    structured_data['avg_speed'] = sum(valid_speeds) / len(valid_speeds)
+                    logger.info(f"Calculated average speed for FIT file: {structured_data['avg_speed']} km/h")
                 
         elif workout_type == 'rower':
             rower_metrics = {
@@ -266,13 +276,29 @@ class FITProcessor:
                          point.get('speed', 0)))
                 series['speeds'].append(speed)
                 
-                # Add average values when available
+                # Add average values when available - but ignore average_speed from Echo bike
                 series['average_powers'].append(point.get('average_power', power))
                 series['average_cadences'].append(point.get('average_cadence', cadence))
-                series['average_speeds'].append(point.get('average_speed', speed))
+                
+                # Skip device-reported average_speed and leave it for recalculation later
+                # This ensures we don't use the incorrect values from the Echo bike
+                series['average_speeds'].append(0)  # Use 0 as a placeholder
                 
             elif workout_type == 'rower':
                 series['stroke_rates'].append(point.get('stroke_rate', 0))
+        
+        # Calculate the average speed ourselves if this is a bike workout
+        if workout_type == 'bike' and series['speeds']:
+            # Calculate a proper average speed from the instantaneous speed values
+            valid_speeds = [s for s in series['speeds'] if s > 0]
+            if valid_speeds:
+                avg_calculated_speed = sum(valid_speeds) / len(valid_speeds)
+                logger.info(f"Calculated average speed from {len(valid_speeds)} data points: {avg_calculated_speed} km/h")
+                
+                # Store this calculated average in the structured data for use in FIT file
+                # We'll add it to the return value of _structure_data_for_fit in the next step
+            else:
+                logger.warning("No valid speed values found to calculate average speed")
         
         return series
 

@@ -332,6 +332,30 @@ class FTMSDeviceManager:
         """
         # --- Added Logging ---
         logger.info(f"[FTMSManager] Received data from connector: {data}")
+        
+        # Check if weight data is present and needs conversion
+        if 'user_weight' in data:
+            # Get user's unit preference
+            unit_preference = self._get_user_unit_preference()
+            
+            # Always assume weight from device is in kg (metric)
+            weight_kg = data['user_weight']
+            
+            # Add original weight for debugging
+            data['original_weight_kg'] = weight_kg
+            
+            # If user prefers imperial, convert the display value
+            # Note: We're not changing the stored value, just adding a display value
+            if unit_preference == 'imperial':
+                # Convert kg to lbs for display
+                weight_lbs = weight_kg * 2.20462
+                data['user_weight_display'] = weight_lbs
+                data['user_weight_unit'] = 'lbs'
+                logger.info(f"[FTMSManager] Converting weight for display: {weight_kg} kg -> {weight_lbs} lbs")
+            else:
+                data['user_weight_display'] = weight_kg
+                data['user_weight_unit'] = 'kg'
+                logger.info(f"[FTMSManager] Using metric weight for display: {weight_kg} kg")
         # --- End Added Logging ---
         
         # Update latest data regardless of workout state
@@ -348,3 +372,33 @@ class FTMSDeviceManager:
             logger.info("[FTMSManager] No active workout, not passing data to WorkoutManager.")
             # --- End Added Logging ---
             pass # No active workout, just update latest_data
+            
+    def _get_user_unit_preference(self) -> str:
+        """
+        Get the user's unit preference from the user profile.
+        
+        Returns:
+            str: 'metric' or 'imperial'
+        """
+        try:
+            import os
+            import json
+            
+            # Get the user profile path
+            profile_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'user_profile.json')
+            
+            # Check if profile exists
+            if os.path.exists(profile_path):
+                with open(profile_path, 'r') as f:
+                    profile = json.load(f)
+                    
+                # Get unit preference, default to metric if not found
+                unit_preference = profile.get('unit_preference', 'metric')
+                logger.debug(f"[FTMSManager] User unit preference loaded: {unit_preference}")
+                return unit_preference
+            else:
+                logger.debug("[FTMSManager] User profile not found, defaulting to metric units")
+                return 'metric'
+        except Exception as e:
+            logger.error(f"[FTMSManager] Error loading user unit preference: {str(e)}")
+            return 'metric'  # Default to metric on error

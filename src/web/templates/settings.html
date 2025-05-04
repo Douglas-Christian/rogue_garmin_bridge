@@ -153,10 +153,16 @@
         const heightLabel = document.querySelector('label[for="height"]');
         const heightInput = document.getElementById('height');
         
+        console.log("UpdateUnitDisplay called with unit system:", unitSystem);
+        console.log("Current weight value before conversion:", weightInput.value);
+        
         if (unitSystem === 'imperial') {
             // Convert to imperial if values exist
             if (weightInput.value) {
-                weightInput.value = unitConversions.kgToLbs(parseFloat(weightInput.value)).toFixed(1);
+                let weightKg = parseFloat(weightInput.value);
+                let weightLbs = unitConversions.kgToLbs(weightKg);
+                console.log(`Converting weight from kg to lbs: ${weightKg} kg → ${weightLbs} lbs`);
+                weightInput.value = weightLbs.toFixed(1);
             }
             weightLabel.textContent = 'Weight (lbs)';
             weightInput.step = '0.1';
@@ -165,7 +171,10 @@
             
             // For imperial, we'll keep the single input but change the label
             if (heightInput.value) {
-                heightInput.value = unitConversions.cmToInches(parseFloat(heightInput.value)).toFixed(0);
+                let heightCm = parseFloat(heightInput.value);
+                let heightInches = unitConversions.cmToInches(heightCm);
+                console.log(`Converting height from cm to inches: ${heightCm} cm → ${heightInches} inches`);
+                heightInput.value = heightInches.toFixed(0);
             }
             heightLabel.textContent = 'Height (inches)';
             heightInput.min = '1';
@@ -173,7 +182,10 @@
         } else {
             // Convert to metric if values exist
             if (weightInput.value) {
-                weightInput.value = unitConversions.lbsToKg(parseFloat(weightInput.value)).toFixed(1);
+                let weightLbs = parseFloat(weightInput.value);
+                let weightKg = unitConversions.lbsToKg(weightLbs);
+                console.log(`Converting weight from lbs to kg: ${weightLbs} lbs → ${weightKg} kg`);
+                weightInput.value = weightKg.toFixed(1);
             }
             weightLabel.textContent = 'Weight (kg)';
             weightInput.step = '0.1';
@@ -181,12 +193,17 @@
             weightInput.max = '300';
             
             if (heightInput.value) {
-                heightInput.value = unitConversions.inchesToCm(parseFloat(heightInput.value)).toFixed(0);
+                let heightInches = parseFloat(heightInput.value);
+                let heightCm = unitConversions.inchesToCm(heightInches);
+                console.log(`Converting height from inches to cm: ${heightInches} inches → ${heightCm} cm`);
+                heightInput.value = heightCm.toFixed(0);
             }
             heightLabel.textContent = 'Height (cm)';
             heightInput.min = '1';
             heightInput.max = '300';
         }
+        
+        console.log("Weight value after conversion:", weightInput.value);
     }
     
     // Handle unit system change
@@ -204,12 +221,16 @@
                 if (data.success && data.profile) {
                     // Populate form fields
                     const profile = data.profile;
+                    console.log("Loading user profile:", profile); // Debug logging
                     
                     if (profile.name) document.getElementById('name').value = profile.name;
                     if (profile.age) document.getElementById('age').value = profile.age;
                     
-                    // Store metric values initially - will be updated if needed by updateUnitDisplay
-                    if (profile.weight) document.getElementById('weight').value = profile.weight;
+                    // Store metric values initially - no conversion at this point
+                    if (profile.weight) {
+                        console.log("Setting initial weight value:", profile.weight); // Debug logging
+                        document.getElementById('weight').value = profile.weight;
+                    }
                     if (profile.height) document.getElementById('height').value = profile.height;
                     
                     if (profile.gender) document.getElementById('gender').value = profile.gender;
@@ -219,9 +240,11 @@
                     
                     // Apply unit preference if it's been set previously
                     if (profile.unit_preference) {
+                        console.log("Setting unit preference:", profile.unit_preference); // Debug logging
                         const unitRadio = document.getElementById(`${profile.unit_preference}_units`);
                         if (unitRadio) {
                             unitRadio.checked = true;
+                            // Now apply the conversion once we know the units
                             updateUnitDisplay(profile.unit_preference);
                         }
                     }

@@ -2384,3 +2384,17 @@ Exception: avg_speed encoded value 580000 is not in valid range [0, 65535]
 2025-05-03 17:42:29,546 - database - INFO - Database tables created
 2025-05-03 17:42:29,650 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_174122.fit
 2025-05-03 17:42:29,714 - database - INFO - Updated FIT file path for workout 13: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250503_174122.fit
+2025-05-04 07:54:53,094 - database - INFO - Database tables created
+2025-05-04 07:54:53,096 - database - INFO - Database tables created
+2025-05-04 07:54:53,674 - database - INFO - Database tables created
+2025-05-04 07:54:53,675 - database - INFO - Database tables created
+2025-05-04 07:55:07,536 - database - INFO - Retrieved 10 workouts from database
+2025-05-04 08:04:09,789 - database - INFO - Database tables created
+2025-05-04 08:04:09,792 - database - INFO - Database tables created
+2025-05-04 08:04:10,341 - database - INFO - Database tables created
+2025-05-04 08:04:10,342 - database - INFO - Database tables created
+2025-05-04 08:07:26,794 - database - INFO - Database tables created
+2025-05-04 08:07:26,796 - database - INFO - Database tables created
+2025-05-04 08:07:27,303 - database - INFO - Database tables created
+2025-05-04 08:07:27,307 - database - INFO - Database tables created
+2025-05-04 08:07:50,770 - database - INFO - Retrieved 11 workouts from database
