@@ -2451,3 +2451,20 @@ Exception: avg_speed encoded value 580000 is not in valid range [0, 65535]
 2025-05-04 09:55:38,934 - database - INFO - Retrieved 12 workouts from database
 2025-05-04 09:56:03,897 - fit_converter - INFO - Created FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250504_094958.fit
 2025-05-04 09:56:03,908 - database - INFO - Updated FIT file path for workout 14: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250504_094958.fit
+2025-05-04 10:20:50,295 - database - INFO - Database tables created
+2025-05-04 10:20:50,299 - database - INFO - Database tables created
+2025-05-04 10:20:51,279 - database - INFO - Database tables created
+2025-05-04 10:20:51,281 - database - INFO - Database tables created
+2025-05-04 10:21:18,754 - database - INFO - Started workout 15 with device FC:5A:4D:64:E7:EE
+2025-05-04 10:25:13,542 - database - INFO - Ended workout 15, duration: 234s
+2025-05-04 10:25:13,546 - database - INFO - Database tables created
+2025-05-04 10:40:57,979 - database - INFO - Database tables created
+2025-05-04 10:40:57,981 - database - INFO - Database tables created
+2025-05-04 10:40:58,921 - database - INFO - Database tables created
+2025-05-04 10:40:58,924 - database - INFO - Database tables created
+2025-05-04 10:42:31,633 - database - INFO - Started workout 16 with device FC:5A:4D:64:E7:EE
+2025-05-04 10:56:25,234 - database - INFO - Database tables created
+2025-05-04 10:56:25,236 - database - INFO - Database tables created
+2025-05-04 10:56:25,787 - database - INFO - Database tables created
+2025-05-04 10:56:25,789 - database - INFO - Database tables created
+2025-05-04 10:57:40,537 - database - INFO - Started workout 17 with device FC:5A:4D:64:E7:EE

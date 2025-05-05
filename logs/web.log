@@ -3114,3 +3114,51 @@ AttributeError: 'WorkoutManager' object has no attribute 'delete_workout'. Did y
 2025-05-04 09:56:03,599 - web - INFO - Duration: 327
 2025-05-04 09:56:03,600 - web - INFO - Data points: 328
 2025-05-04 09:56:04,233 - web - INFO - Serving FIT file: indoor_cycling_20250504_094958.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files
+2025-05-04 10:20:50,299 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-04 10:20:50,301 - web - INFO - Using real FTMS devices
+2025-05-04 10:20:50,303 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-04 10:20:50,304 - web - INFO - Starting background asyncio loop thread...
+2025-05-04 10:20:50,306 - web - INFO - Background thread started. Creating new event loop.
+2025-05-04 10:20:50,306 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-04 10:20:50,320 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-04 10:20:51,282 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-04 10:20:51,284 - web - INFO - Using real FTMS devices
+2025-05-04 10:20:51,285 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-04 10:20:51,285 - web - INFO - Starting background asyncio loop thread...
+2025-05-04 10:20:51,288 - web - INFO - Background thread started. Creating new event loop.
+2025-05-04 10:20:51,288 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-04 10:20:51,307 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-04 10:21:09,249 - web - INFO - Scheduling connect task for FC:5A:4D:64:E7:EE on background loop.
+2025-05-04 10:21:12,783 - web - INFO - Connect task for FC:5A:4D:64:E7:EE completed with result: True
+2025-05-04 10:40:57,981 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-04 10:40:57,983 - web - INFO - Using real FTMS devices
+2025-05-04 10:40:57,983 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-04 10:40:57,984 - web - INFO - Starting background asyncio loop thread...
+2025-05-04 10:40:57,986 - web - INFO - Background thread started. Creating new event loop.
+2025-05-04 10:40:57,986 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-04 10:40:57,997 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-04 10:40:58,924 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-04 10:40:58,924 - web - INFO - Using real FTMS devices
+2025-05-04 10:40:58,924 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-04 10:40:58,924 - web - INFO - Starting background asyncio loop thread...
+2025-05-04 10:40:58,924 - web - INFO - Background thread started. Creating new event loop.
+2025-05-04 10:40:58,924 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-04 10:40:58,940 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-04 10:41:47,598 - web - INFO - Scheduling connect task for FC:5A:4D:64:E7:EE on background loop.
+2025-05-04 10:41:51,294 - web - INFO - Connect task for FC:5A:4D:64:E7:EE completed with result: True
+2025-05-04 10:56:25,237 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-04 10:56:25,238 - web - INFO - Using real FTMS devices
+2025-05-04 10:56:25,238 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-04 10:56:25,238 - web - INFO - Starting background asyncio loop thread...
+2025-05-04 10:56:25,241 - web - INFO - Background thread started. Creating new event loop.
+2025-05-04 10:56:25,241 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-04 10:56:25,247 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-04 10:56:25,790 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-04 10:56:25,791 - web - INFO - Using real FTMS devices
+2025-05-04 10:56:25,791 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-04 10:56:25,791 - web - INFO - Starting background asyncio loop thread...
+2025-05-04 10:56:25,793 - web - INFO - Background thread started. Creating new event loop.
+2025-05-04 10:56:25,793 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-04 10:56:25,800 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-04 10:57:34,072 - web - INFO - Scheduling connect task for FC:5A:4D:64:E7:EE on background loop.
+2025-05-04 10:57:36,822 - web - INFO - Connect task for FC:5A:4D:64:E7:EE completed with result: True

@@ -1615,3 +1615,7 @@ AttributeError: 'Database' object has no attribute '_connect'
 2025-05-04 09:55:26,137 - workout_manager - INFO - Ignoring device-reported average speed: 1.83 km/h
 2025-05-04 09:55:26,157 - workout_manager - INFO - Successfully created FIT file for workout 14: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250504_094958.fit
 2025-05-04 09:56:03,906 - workout_manager - INFO - Updating workout 14 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250504_094958.fit
+2025-05-04 10:21:18,755 - workout_manager - INFO - Started workout 15 with device FC:5A:4D:64:E7:EE
+2025-05-04 10:25:13,550 - workout_manager - WARNING - Failed to create FIT file for workout 15
+2025-05-04 10:42:31,634 - workout_manager - INFO - Started workout 16 with device FC:5A:4D:64:E7:EE
+2025-05-04 10:57:40,538 - workout_manager - INFO - Started workout 17 with device FC:5A:4D:64:E7:EE

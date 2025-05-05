@@ -12,6 +12,8 @@ import os
 from typing import Dict, List, Optional, Callable, Any
 import datetime
 import time
+import struct
+import binascii
 
 import bleak
 from bleak import BleakScanner, BleakClient
@@ -27,7 +29,10 @@ logger = get_component_logger('ftms_connector')
 
 # FTMS UUIDs
 FTMS_SERVICE_UUID = "00001826-0000-1000-8000-00805f9b34fb"
-FTMS_INDOOR_BIKE_DATA_UUID = "00002ad2-0000-1000-8000-00805f9b34fb" # Added Indoor Bike Data UUID
+FTMS_INDOOR_BIKE_DATA_UUID = "00002ad2-0000-1000-8000-00805f9b34fb" # Indoor Bike Data UUID
+FTMS_ROWER_DATA_UUID = "00002ad1-0000-1000-8000-00805f9b34fb" # Rower Data UUID
+FTMS_FITNESS_MACHINE_STATUS_UUID = "00002ada-0000-1000-8000-00805f9b34fb" # Machine Status UUID
+FTMS_CONTROL_POINT_UUID = "00002ad9-0000-1000-8000-00805f9b34fb" # Control Point UUID
 ROGUE_MANUFACTURER_NAME = "Rogue"  # Adjust if needed based on actual device advertising
 
 class FTMSConnector:
@@ -189,37 +194,143 @@ class FTMSConnector:
                 try:
                     self.ftms = FitnessMachineService(self.client)
                     
-                    # --- Add Logging ---
                     logger.info("Setting FTMS data handlers...")
-                    # --- End Add Logging ---
-
-                    # --- Add Notification Enabling for Bike and Status ---
+                    
+                    # First discover services to identify device type
+                    device_info = await self.discover_services()
+                    
+                    # Try to determine if this is a rower based on available characteristics
+                    is_rower = False
+                    if device_info:
+                        # Look for the FTMS service
+                        ftms_service = next((s for s in device_info["services"] 
+                                            if s["uuid"].lower() == FTMS_SERVICE_UUID.lower()), None)
+                        if ftms_service:
+                            # Check if it has the rower characteristic
+                            rower_char = next((c for c in ftms_service["characteristics"]
+                                            if c["uuid"].lower() == FTMS_ROWER_DATA_UUID.lower()), None)
+                            bike_char = next((c for c in ftms_service["characteristics"]
+                                            if c["uuid"].lower() == FTMS_INDOOR_BIKE_DATA_UUID.lower()), None)
+                            
+                            if rower_char:
+                                logger.info("Device identified as a rower based on available characteristics")
+                                is_rower = True
+                            elif bike_char:
+                                logger.info("Device identified as a bike based on available characteristics")
+                                is_rower = False
+                            else:
+                                # Fallback to name-based detection if no specific characteristic is found
+                                device_name = self.connected_device.name.lower() if self.connected_device and self.connected_device.name else ""
+                                is_rower = "rower" in device_name
+                    
+                    # Set the connected device so it's available for notification enabling
+                    self.connected_device = device
+                    
+                    # Enable appropriate notifications based on device type
                     try:
                         logger.info("Attempting to enable FTMS notifications...")
-                        # Enable notifications for indoor bike data
-                        await self.ftms.enable_indoor_bike_data_notify()
-                        # Enable fitness machine status notifications
-                        await self.ftms.enable_fitness_machine_status_notify()
-                        logger.info("FTMS notifications enabled successfully.")
-                    except AttributeError as ae:
-                        logger.warning(f"AttributeError enabling notifications: {ae}. Trying generic approach (might fail).")
+                        
+                        if is_rower:
+                            logger.info("Setting up as a rowing machine...")
+                            # Try to enable rower data notifications first
+                            try:
+                                await self.ftms.enable_rower_data_notify()
+                                logger.info("Rower data notifications enabled.")
+                            except AttributeError:
+                                logger.warning("AttributeError enabling rower notifications. Trying generic approach.")
+                                try:
+                                    # Fallback for rower data using direct BLE notifications
+                                    if device_info:
+                                        # Find the FTMS service and rower characteristic in our discovered services
+                                        ftms_service = next((s for s in device_info["services"] 
+                                                            if s["uuid"].lower() == FTMS_SERVICE_UUID.lower()), None)
+                                        if ftms_service:
+                                            rower_char = next((c for c in ftms_service["characteristics"]
+                                                            if c["uuid"].lower() == FTMS_ROWER_DATA_UUID.lower()), None)
+                                            if rower_char and "notify" in rower_char["properties"]:
+                                                await self.client.start_notify(rower_char["uuid"], self._handle_raw_notification)
+                                                logger.info(f"Started notifications for rower data: {rower_char['uuid']}")
+                                            else:
+                                                logger.warning("Rower data characteristic not found or doesn't support notifications")
+                                    else:
+                                        # Try the standard UUID if we don't have discovery info
+                                        await self.client.start_notify(FTMS_ROWER_DATA_UUID, self._handle_raw_notification)
+                                        logger.info("Fallback notification attempt initiated for Rower Data.")
+                                except Exception as fallback_exc:
+                                    logger.error(f"Fallback rower notification attempt failed: {fallback_exc}")
+                        else:
+                            logger.info("Setting up as a cycling machine...")
+                            # Enable notifications for indoor bike data
+                            try:
+                                await self.ftms.enable_indoor_bike_data_notify()
+                                logger.info("Indoor bike data notifications enabled.")
+                            except AttributeError:
+                                logger.warning("AttributeError enabling bike notifications. Trying generic approach.")
+                                try:
+                                    # Fallback for indoor bike data using direct BLE notifications
+                                    if device_info:
+                                        # Find the FTMS service and bike characteristic in our discovered services
+                                        ftms_service = next((s for s in device_info["services"] 
+                                                        if s["uuid"].lower() == FTMS_SERVICE_UUID.lower()), None)
+                                        if ftms_service:
+                                            bike_char = next((c for c in ftms_service["characteristics"]
+                                                            if c["uuid"].lower() == FTMS_INDOOR_BIKE_DATA_UUID.lower()), None)
+                                            if bike_char and "notify" in bike_char["properties"]:
+                                                await self.client.start_notify(bike_char["uuid"], self._handle_raw_notification)
+                                                logger.info(f"Started notifications for bike data: {bike_char['uuid']}")
+                                            else:
+                                                logger.warning("Bike data characteristic not found or doesn't support notifications")
+                                    else:
+                                        # Try the standard UUID if we don't have discovery info
+                                        await self.client.start_notify(FTMS_INDOOR_BIKE_DATA_UUID, self._handle_raw_notification)
+                                        logger.info("Fallback notification attempt initiated for Indoor Bike Data.")
+                                except Exception as fallback_exc:
+                                    logger.error(f"Fallback bike notification attempt failed: {fallback_exc}")
+                        
+                        # Try to find and enable the status characteristic
                         try:
-                            # Fallback specifically for indoor bike data
-                            await self.client.start_notify(FTMS_INDOOR_BIKE_DATA_UUID, self._handle_raw_notification)
-                            logger.info("Fallback notification attempt initiated for Indoor Bike Data.")
-                        except Exception as fallback_exc:
-                            logger.error(f"Fallback notification attempt failed: {fallback_exc}")
+                            # First try using the pycycling library
+                            await self.ftms.enable_fitness_machine_status_notify()
+                            logger.info("Fitness machine status notifications enabled through pycycling.")
+                        except AttributeError:
+                            logger.warning("AttributeError enabling status notifications. Trying generic approach.")
+                            try:
+                                # Check if we have discovered the status characteristic
+                                if device_info:
+                                    ftms_service = next((s for s in device_info["services"] 
+                                                        if s["uuid"].lower() == FTMS_SERVICE_UUID.lower()), None)
+                                    if ftms_service:
+                                        status_char = next((c for c in ftms_service["characteristics"]
+                                                        if c["uuid"].lower() == FTMS_FITNESS_MACHINE_STATUS_UUID.lower()), None)
+                                        if status_char and "notify" in status_char["properties"]:
+                                            await self.client.start_notify(status_char["uuid"], self._handle_raw_notification)
+                                            logger.info(f"Started notifications for machine status: {status_char['uuid']}")
+                                        else:
+                                            logger.warning("Machine status characteristic not found or doesn't support notifications")
+                                else:
+                                    # Try the standard UUID if we don't have discovery info
+                                    await self.client.start_notify(FTMS_FITNESS_MACHINE_STATUS_UUID, self._handle_raw_notification)
+                                    logger.info("Fallback notification attempt initiated for Machine Status.")
+                            except Exception as status_exc:
+                                logger.warning(f"Could not enable machine status notifications: {status_exc}")
+                        
+                        logger.info("FTMS notifications setup completed.")
                     except Exception as notify_exc:
                         logger.warning(f"Could not explicitly enable FTMS notifications: {notify_exc}. Data might still be received.")
-                    # --- End Notification Enabling ---
 
-                    # Set up data handlers for bike and status
+                    # Set up data handlers for bike, rower, and status
                     self.ftms.set_indoor_bike_data_handler(self._handle_indoor_bike_data)
+                    
+                    # Set up rower data handler if available
+                    try:
+                        self.ftms.set_rower_data_handler(self._handle_rower_data)
+                        logger.info("Rower data handler set successfully.")
+                    except AttributeError:
+                        logger.warning("Could not set rower data handler - may not be supported by pycycling library.")
+                    
                     self.ftms.set_fitness_machine_status_handler(self._handle_fitness_machine_status)
                     
-                    # --- Add Logging ---
                     logger.info("FTMS data handlers set.")
-                    # --- End Add Logging ---
 
                     # Add disconnect handler to detect unexpected disconnections
                     self.client.set_disconnected_callback(self._handle_disconnection)
@@ -364,6 +475,88 @@ class FTMSConnector:
             self._notify_status("reset_failed", {"address": device_address, "name": device_name, "error": str(e)})
             return False
     
+    async def discover_services(self):
+        """
+        Discover all GATT services and characteristics available on the connected device.
+        This is an exploratory function to help identify what features the device actually supports.
+        
+        Returns:
+            A dictionary of services and characteristics
+        """
+        if not self.client or not self.client.is_connected:
+            logger.error("Cannot discover services: No active connection")
+            return None
+            
+        try:
+            logger.info(f"Discovering services for {self.connected_device.name if self.connected_device else 'device'}...")
+            services = await self.client.get_services()
+            
+            # Build a report of all services and characteristics
+            device_info = {
+                "device_name": self.connected_device.name if self.connected_device else "Unknown",
+                "device_address": self.connected_device.address if self.connected_device else "Unknown",
+                "services": []
+            }
+            
+            for service in services:
+                service_info = {
+                    "uuid": str(service.uuid),
+                    "description": "",
+                    "characteristics": []
+                }
+                
+                # Add a description for known services
+                if str(service.uuid).lower() == FTMS_SERVICE_UUID.lower():
+                    service_info["description"] = "Fitness Machine Service (FTMS)"
+                
+                # Gather characteristic information
+                for char in service.characteristics:
+                    char_info = {
+                        "uuid": str(char.uuid),
+                        "description": "",
+                        "properties": []
+                    }
+                    
+                    # Populate properties
+                    if char.properties:
+                        for prop_name, prop_value in char.properties.items():
+                            if prop_value:
+                                char_info["properties"].append(prop_name)
+                    
+                    # Add descriptions for known characteristics
+                    if str(char.uuid).lower() == FTMS_INDOOR_BIKE_DATA_UUID.lower():
+                        char_info["description"] = "Indoor Bike Data"
+                    elif str(char.uuid).lower() == FTMS_ROWER_DATA_UUID.lower():
+                        char_info["description"] = "Rower Data"
+                    elif str(char.uuid).lower() == FTMS_FITNESS_MACHINE_STATUS_UUID.lower():
+                        char_info["description"] = "Fitness Machine Status"
+                    elif str(char.uuid).lower() == FTMS_CONTROL_POINT_UUID.lower():
+                        char_info["description"] = "Fitness Machine Control Point"
+                    
+                    service_info["characteristics"].append(char_info)
+                
+                device_info["services"].append(service_info)
+            
+            # Log and return the discovered information
+            logger.info(f"Discovered {len(device_info['services'])} services with "
+                       f"{sum(len(s['characteristics']) for s in device_info['services'])} characteristics")
+            
+            # Specific check for FTMS service
+            ftms_service = next((s for s in device_info["services"] 
+                                 if s["uuid"].lower() == FTMS_SERVICE_UUID.lower()), None)
+            if ftms_service:
+                logger.info(f"Found FTMS service with {len(ftms_service['characteristics'])} characteristics")
+                for char in ftms_service["characteristics"]:
+                    logger.info(f"FTMS characteristic: {char['uuid']} - {char['description']} - {', '.join(char['properties'])}")
+            else:
+                logger.warning("FTMS service not found!")
+            
+            return device_info
+            
+        except Exception as e:
+            logger.error(f"Error discovering services: {str(e)}")
+            return None
+    
     def register_data_callback(self, callback: Callable[[Dict[str, Any]], None]) -> None:
         """
         Register a callback function to receive FTMS data.
@@ -426,6 +619,52 @@ class FTMSConnector:
             logger.error(f"AttributeError processing indoor bike data: {ae}. Data object: {data}", exc_info=True)
         except Exception as e:
             logger.error(f"Error processing indoor bike data: {e}. Data object: {data}", exc_info=True)
+    
+    def _handle_rower_data(self, data):
+        """Handle rower data notifications."""
+        try:
+            # Log the raw data object for inspection
+            logger.info(f"[FTMSConnector] Received raw rower data: {data}")
+
+            # Check if data is None
+            if data is None:
+                logger.warning("Received None for rower data.")
+                return
+
+            # Access data using attributes, provide defaults for optional fields
+            processed_data = {
+                'type': 'rower',
+                'instant_stroke_rate': getattr(data, 'stroke_rate', None),
+                'average_stroke_rate': getattr(data, 'average_stroke_rate', None),
+                'total_distance': getattr(data, 'total_distance', None),
+                'instant_pace': getattr(data, 'instantaneous_pace', None),
+                'average_pace': getattr(data, 'average_pace', None),
+                'instant_power': getattr(data, 'instantaneous_power', None),
+                'average_power': getattr(data, 'average_power', None),
+                'resistance_level': getattr(data, 'resistance_level', None),
+                'total_energy': getattr(data, 'total_energy', None),
+                'energy_per_hour': getattr(data, 'energy_per_hour', None),
+                'energy_per_minute': getattr(data, 'energy_per_minute', None),
+                'heart_rate': getattr(data, 'heart_rate', None),
+                'metabolic_equivalent': getattr(data, 'metabolic_equivalent', None),
+                'elapsed_time': getattr(data, 'elapsed_time', None),
+                'remaining_time': getattr(data, 'remaining_time', None),
+                'total_strokes': getattr(data, 'stroke_count', None),
+                # Add a timestamp using the current time
+                'timestamp': time.time()
+            }
+
+            # Log the processed data
+            logger.debug(f"Processed rower data: {processed_data}")
+
+            # Pass data to registered callbacks
+            for callback in self.data_callbacks:
+                callback(processed_data)
+
+        except AttributeError as ae:
+            logger.error(f"AttributeError processing rower data: {ae}. Data object: {data}", exc_info=True)
+        except Exception as e:
+            logger.error(f"Error processing rower data: {e}. Data object: {data}", exc_info=True)
     
     def _handle_fitness_machine_status(self, data: Dict[str, Any]) -> None:
         """
@@ -693,11 +932,398 @@ class FTMSConnector:
             health_info['error'] = str(e)
             return health_info
 
+    def _track_connection_error(self, context: str, error_msg: str) -> None:
+        """
+        Track connection errors to help identify recurring issues.
+        
+        Args:
+            context: The context in which the error occurred
+            error_msg: The error message
+        """
+        now = datetime.datetime.now()
+        self.connection_errors.append({
+            'time': now,
+            'context': context,
+            'error': error_msg
+        })
+        self.last_error_time = now
+        self.consecutive_errors += 1
+        
+        # Log when we hit consecutive error thresholds
+        if self.consecutive_errors == self.max_consecutive_errors:
+            logger.error(f"Hit {self.consecutive_errors} consecutive connection errors - connection may be unstable")
+            self._notify_status("connection_unstable", {
+                "consecutive_errors": self.consecutive_errors,
+                "last_error": error_msg
+            })
+
     def _handle_raw_notification(self, sender, data):
-        """Placeholder handler for raw notifications (used in fallback)."""
-        logger.warning(f"Received raw notification from {sender}: {data.hex()}")
-        # Basic parsing attempt or logging needed here if fallback is used
-        pass
+        """Handle raw notifications from FTMS characteristics."""
+        try:
+            logger.info(f"Received raw notification from {sender}: {data.hex()}")
+            
+            # Identify which characteristic sent this data
+            if FTMS_ROWER_DATA_UUID.lower() == sender.lower():
+                # This is rower data - parse according to FTMS specification
+                self._parse_rower_data(data)
+            elif FTMS_INDOOR_BIKE_DATA_UUID.lower() == sender.lower():
+                # This is bike data - parse according to FTMS specification
+                self._parse_bike_data(data)
+            elif FTMS_FITNESS_MACHINE_STATUS_UUID.lower() == sender.lower():
+                # This is machine status data - parse according to FTMS specification
+                self._parse_status_data(data)
+            else:
+                logger.warning(f"Received notification from unknown characteristic: {sender}")
+        except Exception as e:
+            logger.error(f"Error processing raw notification: {e}", exc_info=True)
+    
+    def _parse_rower_data(self, data_bytes):
+        """
+        Parse raw rower data according to FTMS specification.
+        
+        The FTMS Rower Data characteristic is defined in the Bluetooth FTMS specification.
+        This method parses the binary data sent by the rower.
+        """
+        try:
+            logger.info(f"Parsing raw rower data: {data_bytes.hex()}")
+            
+            if len(data_bytes) < 2:
+                logger.warning(f"Rower data too short: {len(data_bytes)} bytes")
+                return
+            
+            # First 2 bytes are flags indicating which fields are present
+            flags = int.from_bytes(data_bytes[0:2], byteorder='little')
+            
+            # Initialize data dictionary with default values
+            rower_data = {
+                'type': 'rower',
+                'timestamp': time.time()
+            }
+            
+            # Parse data fields based on flags
+            index = 2  # Start after flags
+            
+            # Check if stroke rate is present (bit 0)
+            if flags & 0x01:
+                if index + 1 <= len(data_bytes):
+                    # Stroke rate is uint8 in 0.5 strokes/minute
+                    stroke_rate = data_bytes[index] * 0.5
+                    rower_data['instant_stroke_rate'] = stroke_rate
+                    index += 1
+            
+            # Check if stroke count is present (bit 1)
+            if flags & 0x02:
+                if index + 2 <= len(data_bytes):
+                    # Stroke count is uint16
+                    stroke_count = int.from_bytes(data_bytes[index:index+2], byteorder='little')
+                    rower_data['total_strokes'] = stroke_count
+                    index += 2
+            
+            # Check if average stroke rate is present (bit 2)
+            if flags & 0x04:
+                if index + 1 <= len(data_bytes):
+                    # Average stroke rate is uint8 in 0.5 strokes/minute
+                    avg_stroke_rate = data_bytes[index] * 0.5
+                    rower_data['average_stroke_rate'] = avg_stroke_rate
+                    index += 1
+            
+            # Check if total distance is present (bit 3)
+            if flags & 0x08:
+                if index + 3 <= len(data_bytes):
+                    # Total distance is uint24 in meters
+                    total_distance = int.from_bytes(data_bytes[index:index+3], byteorder='little')
+                    rower_data['total_distance'] = total_distance
+                    index += 3
+            
+            # Check if instantaneous pace is present (bit 4)
+            if flags & 0x10:
+                if index + 2 <= len(data_bytes):
+                    # Instantaneous pace is uint16 in seconds per 500m
+                    instant_pace = int.from_bytes(data_bytes[index:index+2], byteorder='little')
+                    rower_data['instant_pace'] = instant_pace
+                    index += 2
+            
+            # Check if average pace is present (bit 5)
+            if flags & 0x20:
+                if index + 2 <= len(data_bytes):
+                    # Average pace is uint16 in seconds per 500m
+                    avg_pace = int.from_bytes(data_bytes[index:index+2], byteorder='little')
+                    rower_data['average_pace'] = avg_pace
+                    index += 2
+            
+            # Check if instantaneous power is present (bit 6)
+            if flags & 0x40:
+                if index + 2 <= len(data_bytes):
+                    # Instantaneous power is int16 in watts
+                    instant_power = int.from_bytes(data_bytes[index:index+2], byteorder='little')
+                    rower_data['instant_power'] = instant_power
+                    index += 2
+            
+            # Check if average power is present (bit 7)
+            if flags & 0x80:
+                if index + 2 <= len(data_bytes):
+                    # Average power is uint16 in watts
+                    avg_power = int.from_bytes(data_bytes[index:index+2], byteorder='little')
+                    rower_data['average_power'] = avg_power
+                    index += 2
+            
+            # Check if resistance level is present (bit 8)
+            if flags & 0x100:
+                if index + 1 <= len(data_bytes):
+                    # Resistance level is int8
+                    resistance = int.from_bytes(data_bytes[index:index+1], byteorder='little', signed=True)
+                    rower_data['resistance_level'] = resistance
+                    index += 1
+            
+            # Check if energy/calories is present (bit 9)
+            if flags & 0x200:
+                if index + 2 <= len(data_bytes):
+                    # Energy is uint16 in calories
+                    energy = int.from_bytes(data_bytes[index:index+2], byteorder='little')
+                    rower_data['total_energy'] = energy
+                    index += 2
+            
+            # Check if heart rate is present (bit 10)
+            if flags & 0x400:
+                if index + 1 <= len(data_bytes):
+                    # Heart rate is uint8 in BPM
+                    heart_rate = data_bytes[index]
+                    rower_data['heart_rate'] = heart_rate
+                    index += 1
+            
+            # Check if elapsed time is present (bit 11)
+            if flags & 0x800:
+                if index + 2 <= len(data_bytes):
+                    # Elapsed time is uint16 in seconds
+                    elapsed_time = int.from_bytes(data_bytes[index:index+2], byteorder='little')
+                    rower_data['elapsed_time'] = elapsed_time
+                    index += 2
+            
+            # Check if remaining time is present (bit 12)
+            if flags & 0x1000:
+                if index + 2 <= len(data_bytes):
+                    # Remaining time is uint16 in seconds
+                    remaining_time = int.from_bytes(data_bytes[index:index+2], byteorder='little')
+                    rower_data['remaining_time'] = remaining_time
+                    index += 2
+            
+            logger.info(f"Parsed rower data: {rower_data}")
+            
+            # Pass the parsed data to registered callbacks
+            for callback in self.data_callbacks:
+                callback(rower_data)
+                
+        except Exception as e:
+            logger.error(f"Error parsing rower data: {e}", exc_info=True)
+    
+    def _parse_bike_data(self, data_bytes):
+        """
+        Parse raw bike data according to FTMS specification.
+        
+        The FTMS Indoor Bike Data characteristic is defined in the Bluetooth FTMS specification.
+        This method parses the binary data sent by the bike.
+        """
+        try:
+            logger.info(f"Parsing raw bike data: {data_bytes.hex()}")
+            
+            if len(data_bytes) < 2:
+                logger.warning(f"Bike data too short: {len(data_bytes)} bytes")
+                return
+            
+            # First 2 bytes are flags indicating which fields are present
+            flags = int.from_bytes(data_bytes[0:2], byteorder='little')
+            
+            # Initialize data dictionary with default values
+            bike_data = {
+                'type': 'bike',
+                'timestamp': time.time()
+            }
+            
+            # Parse data fields based on flags
+            index = 2  # Start after flags
+            
+            # Check if instantaneous speed is present (bit 0)
+            if flags & 0x01:
+                if index + 2 <= len(data_bytes):
+                    # Speed is uint16 in units of 0.01 km/h
+                    speed = int.from_bytes(data_bytes[index:index+2], byteorder='little') * 0.01
+                    bike_data['instant_speed'] = speed
+                    index += 2
+            
+            # Check if average speed is present (bit 1)
+            if flags & 0x02:
+                if index + 2 <= len(data_bytes):
+                    # Avg speed is uint16 in units of 0.01 km/h
+                    avg_speed = int.from_bytes(data_bytes[index:index+2], byteorder='little') * 0.01
+                    bike_data['average_speed'] = avg_speed
+                    index += 2
+            
+            # Check if instantaneous cadence is present (bit 2)
+            if flags & 0x04:
+                if index + 2 <= len(data_bytes):
+                    # Cadence is uint16 in units of 0.5 RPM
+                    cadence = int.from_bytes(data_bytes[index:index+2], byteorder='little') * 0.5
+                    bike_data['instant_cadence'] = cadence
+                    index += 2
+            
+            # Check if average cadence is present (bit 3)
+            if flags & 0x08:
+                if index + 2 <= len(data_bytes):
+                    # Avg cadence is uint16 in units of 0.5 RPM
+                    avg_cadence = int.from_bytes(data_bytes[index:index+2], byteorder='little') * 0.5
+                    bike_data['average_cadence'] = avg_cadence
+                    index += 2
+            
+            # Check if total distance is present (bit 4)
+            if flags & 0x10:
+                if index + 3 <= len(data_bytes):
+                    # Total distance is uint24 in meters
+                    total_distance = int.from_bytes(data_bytes[index:index+3], byteorder='little')
+                    bike_data['total_distance'] = total_distance
+                    index += 3
+            
+            # Check if resistance level is present (bit 5)
+            if flags & 0x20:
+                if index + 1 <= len(data_bytes):
+                    # Resistance level is int8
+                    resistance = int.from_bytes(data_bytes[index:index+1], byteorder='little', signed=True)
+                    bike_data['resistance_level'] = resistance
+                    index += 1
+            
+            # Check if instantaneous power is present (bit 6)
+            if flags & 0x40:
+                if index + 2 <= len(data_bytes):
+                    # Instantaneous power is int16 in watts
+                    power = int.from_bytes(data_bytes[index:index+2], byteorder='little', signed=True)
+                    bike_data['instant_power'] = power
+                    index += 2
+            
+            # Check if average power is present (bit 7)
+            if flags & 0x80:
+                if index + 2 <= len(data_bytes):
+                    # Average power is int16 in watts
+                    avg_power = int.from_bytes(data_bytes[index:index+2], byteorder='little', signed=True)
+                    bike_data['average_power'] = avg_power
+                    index += 2
+            
+            # Check if energy expenditure is present (bit 8)
+            if flags & 0x100:
+                if index + 2 <= len(data_bytes):
+                    # Total energy is uint16 in calories
+                    energy = int.from_bytes(data_bytes[index:index+2], byteorder='little')
+                    bike_data['total_energy'] = energy
+                    index += 2
+                    
+                # Check if energy per hour is present (included with total energy)
+                if index + 2 <= len(data_bytes):
+                    # Energy per hour is uint16 in calories per hour
+                    energy_per_hour = int.from_bytes(data_bytes[index:index+2], byteorder='little')
+                    bike_data['energy_per_hour'] = energy_per_hour
+                    index += 2
+                    
+                # Check if energy per minute is present (included with total energy)
+                if index + 1 <= len(data_bytes):
+                    # Energy per minute is uint8 in calories per minute
+                    energy_per_minute = data_bytes[index]
+                    bike_data['energy_per_minute'] = energy_per_minute
+                    index += 1
+            
+            # Check if heart rate is present (bit 9)
+            if flags & 0x200:
+                if index + 1 <= len(data_bytes):
+                    # Heart rate is uint8 in BPM
+                    heart_rate = data_bytes[index]
+                    bike_data['heart_rate'] = heart_rate
+                    index += 1
+            
+            # Check if metabolic equivalent is present (bit 10)
+            if flags & 0x400:
+                if index + 1 <= len(data_bytes):
+                    # Metabolic equivalent is uint8 in 0.1 MET units
+                    met = data_bytes[index] * 0.1
+                    bike_data['metabolic_equivalent'] = met
+                    index += 1
+            
+            # Check if elapsed time is present (bit 11)
+            if flags & 0x800:
+                if index + 2 <= len(data_bytes):
+                    # Elapsed time is uint16 in seconds
+                    elapsed_time = int.from_bytes(data_bytes[index:index+2], byteorder='little')
+                    bike_data['elapsed_time'] = elapsed_time
+                    index += 2
+            
+            # Check if remaining time is present (bit 12)
+            if flags & 0x1000:
+                if index + 2 <= len(data_bytes):
+                    # Remaining time is uint16 in seconds
+                    remaining_time = int.from_bytes(data_bytes[index:index+2], byteorder='little')
+                    bike_data['remaining_time'] = remaining_time
+                    index += 2
+            
+            logger.info(f"Parsed bike data: {bike_data}")
+            
+            # Pass the parsed data to registered callbacks
+            for callback in self.data_callbacks:
+                callback(bike_data)
+                
+        except Exception as e:
+            logger.error(f"Error parsing bike data: {e}", exc_info=True)
+    
+    def _parse_status_data(self, data_bytes):
+        """
+        Parse raw fitness machine status data according to FTMS specification.
+        """
+        try:
+            logger.info(f"Parsing raw status data: {data_bytes.hex()}")
+            
+            if len(data_bytes) < 1:
+                logger.warning(f"Status data too short: {len(data_bytes)} bytes")
+                return
+            
+            # First byte is the op code
+            op_code = data_bytes[0]
+            
+            # Create status data dictionary
+            status_data = {
+                'op_code': op_code,
+                'parameters': data_bytes[1:].hex() if len(data_bytes) > 1 else None
+            }
+            
+            # Map op code to status name for readability
+            op_code_map = {
+                1: "Reset",
+                2: "Stopped by User",
+                3: "Stopped by Safety Key",
+                4: "Started/Resumed by User",
+                5: "Target Speed Changed",
+                6: "Target Incline Changed",
+                7: "Target Resistance Level Changed",
+                8: "Target Power Changed",
+                9: "Target Heart Rate Changed",
+                10: "Targeted Expended Energy Changed",
+                11: "Targeted Number of Steps Changed",
+                12: "Targeted Number of Strides Changed",
+                13: "Targeted Distance Changed",
+                14: "Targeted Training Time Changed",
+                15: "Targeted Time in Two Heart Rate Zones Changed",
+                16: "Targeted Time in Three Heart Rate Zones Changed",
+                17: "Targeted Time in Five Heart Rate Zones Changed",
+                18: "Indoor Bike Simulation Parameters Changed",
+                19: "Wheel Circumference Changed"
+            }
+            
+            if op_code in op_code_map:
+                status_data['name'] = op_code_map[op_code]
+            else:
+                status_data['name'] = f"Unknown ({op_code})"
+            
+            logger.info(f"Parsed status data: {status_data}")
+            
+            # Pass to the fitness machine status handler
+            self._handle_fitness_machine_status(status_data)
+            
+        except Exception as e:
+            logger.error(f"Error parsing status data: {e}", exc_info=True)
         
 async def main():
     """Example usage of the FTMSConnector class."""

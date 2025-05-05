@@ -8209,3 +8209,12 @@
 2025-05-04 09:58:14,948 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
 2025-05-04 09:58:15,878 - ftms - INFO - [FTMSManager] Received data from connector: {'type': 'bike', 'instant_speed': 0.0, 'average_speed': 1.21, 'instant_cadence': 0.0, 'average_cadence': 32.0, 'total_distance': 2703, 'resistance_level': None, 'instant_power': 0, 'average_power': 49, 'total_energy': 47, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 137, 'metabolic_equivalent': None, 'elapsed_time': 500, 'remaining_time': None, 'timestamp': 1746367095.8771868}
 2025-05-04 09:58:15,878 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-04 10:20:50,301 - ftms - INFO - Using FTMSConnector for real device.
+2025-05-04 10:20:51,283 - ftms - INFO - Using FTMSConnector for real device.
+2025-05-04 10:21:12,782 - ftms - INFO - Connected to device: ROGUE CONSOLE 001342
+2025-05-04 10:40:57,982 - ftms - INFO - Using FTMSConnector for real device.
+2025-05-04 10:40:58,924 - ftms - INFO - Using FTMSConnector for real device.
+2025-05-04 10:41:51,293 - ftms - INFO - Connected to device: ROGUE CONSOLE 001342
+2025-05-04 10:56:25,237 - ftms - INFO - Using FTMSConnector for real device.
+2025-05-04 10:56:25,790 - ftms - INFO - Using FTMSConnector for real device.
+2025-05-04 10:57:36,820 - ftms - INFO - Connected to device: ROGUE CONSOLE 001342
