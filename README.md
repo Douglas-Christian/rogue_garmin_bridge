@@ -4,7 +4,7 @@ A Python application that bridges Rogue fitness equipment (Echo Bike and Rower) 
 
 ## Overview
 
-Rogue Garmin Bridge connects to Rogue Echo Bike and Rower equipment via Bluetooth Low Energy (BLE) using the Fitness Machine Service (FTMS) standard. It collects workout metrics, processes the data, and converts it to the Garmin FIT file format for upload to Garmin Connect. The application includes a web-based user interface for configuration, monitoring, and managing workout data.
+Rogue Garmin Bridge connects to Rogue Echo Bike and Rower equipment(in development) via Bluetooth Low Energy (BLE) using the Fitness Machine Service (FTMS) standard. It collects workout metrics, processes the data, and converts it to the Garmin FIT file format for upload to Garmin Connect. The application includes a web-based user interface for configuration, monitoring, and managing workout data.
 
 ![Rogue Garmin Bridge UI](docs/images/ui_screenshot.png)
 
@@ -16,7 +16,6 @@ Rogue Garmin Bridge connects to Rogue Echo Bike and Rower equipment via Bluetoot
 - **FIT File Generation**: Convert workout data to Garmin FIT format with proper device identification
 - **Training Load Calculation**: Generated FIT files correctly report training load in Garmin Connect
 - **Speed Data Analysis**: Improved speed calculations and display in workout history
-- **Garmin Connect Integration**: Upload workouts directly to Garmin Connect
 - **Web Interface**: User-friendly interface for monitoring, configuring, and managing workouts
 - **FTMS Device Simulator**: Test functionality without physical hardware (development mode)
 
@@ -78,10 +77,14 @@ Rogue Garmin Bridge connects to Rogue Echo Bike and Rower equipment via Bluetoot
 
 ### Connecting to Rogue Equipment
 
-1. Navigate to the "Devices" page in the web interface
-2. Click "Scan for Devices" to discover available Rogue equipment
-3. Select your device from the list and click "Connect"
-4. Once connected, the device status will show as "Connected"
+1. Put your Rogue device in connection mode:
+   - **For Echo Bike**: Press and hold the "Connect" button for 2 seconds until you hear two beeps. The Bluetooth and ANT+ icons should flash on the console to indicate it's ready to pair.
+   - **For Echo Rower**: From the home screen, select the "Connect" option, then choose "Connect to App". The console will search for an application to pair with over BLE.
+
+2. Navigate to the "Devices" page in the web interface
+3. Click "Scan for Devices" to discover available Rogue equipment
+4. Select your device from the list and click "Connect"
+5. Once connected, the device status will show as "Connected" and the Bluetooth icon on your device's console should stop flashing and remain solid
 
 ### Starting a Workout
 
