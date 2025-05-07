@@ -399,7 +399,56 @@ class FITConverter:
                 session_msg.num_laps = 1
                 session_msg.trigger = SessionTrigger.ACTIVITY_END
                 session_msg.sport = Sport.CYCLING
-                session_msg.sub_sport = SubSport.INDOOR_CYCLING
+                
+                # Add VO2max if available or calculate it if we have the necessary data
+                vo2max = processed_data.get('estimated_vo2max', 0)
+                
+                # If VO2max is not already available in the data, calculate it
+                if vo2max <= 0 and avg_heart_rate > 0 and avg_power > 0:
+                    # Extract user weight if available
+                    user_weight = None
+                    if user_profile:
+                        if 'weight_kg' in user_profile:
+                            user_weight = user_profile['weight_kg']
+                        elif 'weight' in user_profile:
+                            user_weight = user_profile['weight']
+                    
+                    # Calculate VO2max using heart rate and power data
+                    vo2max = calculate_vo2_max_estimation(avg_heart_rate, avg_power, user_weight)
+                    logger.info(f"Calculated VO2 max for this workout: {vo2max/100:.2f} ml/kg/min")
+                
+                if vo2max > 0:
+                    session_msg.vo2_max = vo2max  # Already properly scaled by the calculation function
+                
+                # Add training effect fields which help trigger VO2 max calculation in Garmin Connect
+                # Calculate a simple training effect based on workout duration and intensity
+                total_intensity = 0
+                if total_duration >= 600:  # Only set training effect for workouts over 10 minutes
+                    # Estimate workout intensity (1-5 scale)
+                    intensity_factor = 0
+                    if avg_heart_rate > 0 and user_profile and 'max_heart_rate' in user_profile and user_profile['max_heart_rate'] > 0:
+                        # Calculate intensity based on % of max heart rate
+                        intensity_factor = avg_heart_rate / user_profile['max_heart_rate']
+                    elif avg_power > 0 and user_profile and 'ftp' in user_profile and user_profile['ftp'] > 0:
+                        # Calculate intensity based on % of FTP
+                        intensity_factor = avg_power / user_profile['ftp']
+                    else:
+                        # Default moderate intensity if we can't calculate
+                        intensity_factor = 0.7
+                    
+                    # Scale duration factor (1-5) based on workout length
+                    duration_factor = min(5, max(1, total_duration / 1800))  # 30 min = 1, 150 min = 5
+                    
+                    # Calculate total training effect (1-5 scale)
+                    total_intensity = min(5, (intensity_factor * 5) * 0.6 + duration_factor * 0.4)
+                    
+                    # Set training effect fields (scaled by 10 for FIT file format)
+                    session_msg.total_training_effect = int(total_intensity * 10)
+                    session_msg.total_anaerobic_training_effect = int(total_intensity * 0.8 * 10)  # Slightly lower anaerobic effect
+                    logger.info(f"Added training effect: {total_intensity:.2f} (aerobic) and {total_intensity * 0.8:.2f} (anaerobic)")
+                
+                # Add the sub_sport for virtual activity which helps Garmin Connect properly process indoor workouts
+                session_msg.sub_sport = SubSport.VIRTUAL_ACTIVITY
                 
                 # Add normalized power if available
                 if normalized_power > 0:
@@ -725,25 +774,52 @@ class FITConverter:
                 if normalized_power > 0:
                     session_msg.normalized_power = int(normalized_power)
                 
-                # Add user profile data if available
-                if user_profile:
-                    if 'weight_kg' in user_profile:
-                        # Convert kg to g
-                        session_msg.total_weight = int(user_profile['weight_kg'] * 1000)
-                    elif 'weight' in user_profile:
-                        # Convert kg to g
-                        session_msg.total_weight = int(user_profile['weight'] * 1000)
-                    
-                    if 'gender' in user_profile:
-                        session_msg.gender = 0 if user_profile['gender'].lower() == 'female' else 1
-                    
-                    if 'age' in user_profile:
-                        session_msg.age = user_profile['age']
-                
-                # Add VO2max if available
+                # Add VO2max if available or calculate it if we have the necessary data
                 vo2max = processed_data.get('estimated_vo2max', 0)
+                
+                # If VO2max is not already available in the data, calculate it
+                if vo2max <= 0 and avg_heart_rate > 0 and avg_power > 0:
+                    # Extract user weight if available
+                    user_weight = None
+                    if user_profile:
+                        if 'weight_kg' in user_profile:
+                            user_weight = user_profile['weight_kg']
+                        elif 'weight' in user_profile:
+                            user_weight = user_profile['weight']
+                    
+                    # Calculate VO2max using heart rate and power data
+                    vo2max = calculate_vo2_max_estimation(avg_heart_rate, avg_power, user_weight)
+                    logger.info(f"Calculated VO2 max for this rowing workout: {vo2max/100:.2f} ml/kg/min")
+                
                 if vo2max > 0:
-                    session_msg.vo2_max = int(vo2max * 10)  # FIT files store VO2max multiplied by 10
+                    session_msg.vo2_max = vo2max  # Already properly scaled by the calculation function
+                
+                # Add training effect fields which help trigger VO2 max calculation in Garmin Connect
+                # Calculate a simple training effect based on workout duration and intensity
+                total_intensity = 0
+                if total_duration >= 600:  # Only set training effect for workouts over 10 minutes
+                    # Estimate workout intensity (1-5 scale)
+                    intensity_factor = 0
+                    if avg_heart_rate > 0 and user_profile and 'max_heart_rate' in user_profile and user_profile['max_heart_rate'] > 0:
+                        # Calculate intensity based on % of max heart rate
+                        intensity_factor = avg_heart_rate / user_profile['max_heart_rate']
+                    elif avg_power > 0 and user_profile and 'ftp' in user_profile and user_profile['ftp'] > 0:
+                        # Calculate intensity based on % of FTP
+                        intensity_factor = avg_power / user_profile['ftp']
+                    else:
+                        # Default moderate intensity if we can't calculate
+                        intensity_factor = 0.7
+                    
+                    # Scale duration factor (1-5) based on workout length
+                    duration_factor = min(5, max(1, total_duration / 1800))  # 30 min = 1, 150 min = 5
+                    
+                    # Calculate total training effect (1-5 scale)
+                    total_intensity = min(5, (intensity_factor * 5) * 0.6 + duration_factor * 0.4)
+                    
+                    # Set training effect fields (scaled by 10 for FIT file format)
+                    session_msg.total_training_effect = int(total_intensity * 10)
+                    session_msg.total_anaerobic_training_effect = int(total_intensity * 0.8 * 10)  # Slightly lower anaerobic effect
+                    logger.info(f"Added training effect: {total_intensity:.2f} (aerobic) and {total_intensity * 0.8:.2f} (anaerobic)")
                 
                 builder.add(session_msg)
                 logger.debug("Added Session message")
@@ -791,6 +867,38 @@ class FITConverter:
             logger.error(traceback.format_exc())
             return None
 
+def calculate_vo2_max_estimation(avg_heart_rate, avg_power, weight_kg):
+    """
+    Calculate estimated VO2 max based on heart rate and power.
+    Uses a simplified formula based on common exercise physiology principles.
+    
+    Args:
+        avg_heart_rate: Average heart rate during workout (bpm)
+        avg_power: Average power during workout (watts)
+        weight_kg: User's weight in kg
+        
+    Returns:
+        Estimated VO2 max value (int, scaled for FIT file format)
+    """
+    if not weight_kg or weight_kg <= 0:
+        weight_kg = 75  # Default weight if not provided
+        
+    if avg_heart_rate <= 0 or avg_power <= 0:
+        return 0  # Can't calculate without both heart rate and power
+        
+    # Calculate power per kg
+    power_per_kg = avg_power / weight_kg
+    
+    # Simple estimation formula
+    # This is a basic approximation, Garmin uses more complex algorithms
+    vo2_max = int((power_per_kg * 10.8 + 7) * 100)
+    
+    # Ensure value is within reasonable range (20-90 ml/kg/min * 100)
+    vo2_max = max(2000, min(9000, vo2_max))
+    
+    logger.debug(f"Calculated VO2 max estimation: {vo2_max/100} ml/kg/min from HR={avg_heart_rate}, Power={avg_power}, Weight={weight_kg}")
+    
+    return vo2_max
 
 # Example usage
 if __name__ == "__main__":
