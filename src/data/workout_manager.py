@@ -232,6 +232,9 @@ class WorkoutManager:
         # Get absolute timestamp
         absolute_timestamp = datetime.now()
         
+        # Log the raw data being received for diagnostics
+        logger.info(f"ADDING DATA POINT: {data}")
+        
         # Store data point locally (optional, consider if needed for summary)
         # Add absolute timestamp to local data point if keeping it
         data_with_ts = data.copy()
@@ -242,17 +245,25 @@ class WorkoutManager:
         self._update_summary_metrics(data)
         
         # Store in database using absolute timestamp
-        success = self.database.add_workout_data(
-            self.active_workout_id,
-            absolute_timestamp, # Pass the datetime object
-            data # Pass the original data without the timestamp field
-        ) 
-        if success:
-            # Notify data callbacks
-            self._notify_data(data)
-            return True
-        else:
-            logger.error(f"Failed to add data point to workout {self.active_workout_id}")
+        try:
+            success = self.database.add_workout_data(
+                self.active_workout_id,
+                absolute_timestamp, # Pass the datetime object
+                data # Pass the original data without the timestamp field
+            )
+            
+            if success:
+                # Log successful data point storage
+                logger.info(f"Successfully saved data point to workout {self.active_workout_id}")
+                
+                # Notify data callbacks
+                self._notify_data(data)
+                return True
+            else:
+                logger.error(f"Failed to add data point to workout {self.active_workout_id}")
+                return False
+        except Exception as e:
+            logger.error(f"Exception adding data point to workout {self.active_workout_id}: {str(e)}")
             return False
     
     def get_workout(self, workout_id: int) -> Optional[Dict[str, Any]]:

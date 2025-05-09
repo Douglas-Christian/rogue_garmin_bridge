@@ -1297,3 +1297,168 @@ Traceback (most recent call last):
               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 AttributeError: 'WorkoutManager' object has no attribute 'delete_workout'. Did you mean: 'get_workout'?
 2025-05-04 10:25:13,549 - fit_processor - ERROR - No data points found for workout 15
+2025-05-09 17:28:42,244 - ftms_connector - ERROR - Unexpected error during connection (Attempt 1/3): get_client() missing 1 required positional argument: 'adv_or_type'
+2025-05-09 17:42:17,205 - ftms_connector - ERROR - Device C9:02:CB:68:17:C1 not found after rediscovery
+2025-05-09 17:42:17,206 - ftms - ERROR - Connector failed to connect to device C9:02:CB:68:17:C1
+2025-05-09 17:43:00,303 - ftms_connector - ERROR - Unexpected error during connection (Attempt 1/3): 'IndoorBike' object has no attribute 'set_rower_data_handler'
+2025-05-09 17:43:16,667 - web - ERROR - Error connecting to device C9:02:CB:68:17:C1: 
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\web\app.py", line 262, in connect_device
+    success = future.result(timeout=40) # Wait for the connection attempt to complete with timeout
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 454, in result
+    raise CancelledError()
+concurrent.futures._base.CancelledError
+2025-05-09 17:47:26,744 - ftms_connector - ERROR - Unexpected error during connection (Attempt 1/3): module 'pyftms.client' has no attribute 'indoor_bike'
+2025-05-09 17:47:36,700 - ftms_connector - ERROR - Unexpected error during connection (Attempt 2/3): module 'pyftms.client' has no attribute 'indoor_bike'
+2025-05-09 17:47:45,691 - ftms_connector - ERROR - Unexpected error during connection (Attempt 3/3): module 'pyftms.client' has no attribute 'indoor_bike'
+2025-05-09 17:47:49,079 - ftms - ERROR - Connector failed to connect to device C9:02:CB:68:17:C1
+2025-05-09 17:53:03,783 - fit_processor - ERROR - No data points found for workout 18
+2025-05-09 18:06:10,388 - fit_processor - ERROR - No data points found for workout 19
+2025-05-09 18:17:36,868 - fit_processor - ERROR - No data points found for workout 20
+2025-05-09 18:27:15,593 - fit_processor - ERROR - No data points found for workout 21
+2025-05-09 18:32:56,024 - fit_processor - ERROR - No data points found for workout 22
+2025-05-09 18:39:23,117 - fit_processor - ERROR - No data points found for workout 23
+2025-05-09 18:47:09,301 - fit_processor - ERROR - No data points found for workout 24
+2025-05-09 19:27:44,553 - ftms - ERROR - Connector FTMSConnector does not have an async discover_devices method.
+2025-05-09 19:28:14,793 - ftms - ERROR - Connector FTMSConnector does not have an async discover_devices method.
+2025-05-09 19:28:20,147 - ftms - ERROR - Connector FTMSConnector does not have an async discover_devices method.
+2025-05-09 19:28:25,845 - ftms - ERROR - Connector FTMSConnector does not have an async discover_devices method.
+2025-05-09 19:28:27,243 - ftms - ERROR - Connector FTMSConnector does not have an async discover_devices method.
+2025-05-09 19:28:28,047 - ftms - ERROR - Connector FTMSConnector does not have an async discover_devices method.
+2025-05-09 19:34:59,710 - ftms_connector - ERROR - Unexpected error during connection (Attempt 1/3): 
+2025-05-09 19:35:09,190 - ftms_connector - ERROR - Unexpected error during connection (Attempt 2/3): 
+2025-05-09 19:35:18,489 - ftms_connector - ERROR - Unexpected error during connection (Attempt 3/3): 
+2025-05-09 19:35:21,699 - ftms - ERROR - Connector failed to connect to device C9:02:CB:68:17:C1
+2025-05-09 19:35:50,350 - ftms_connector - ERROR - Unexpected error during connection (Attempt 1/3): 
+2025-05-09 19:35:59,438 - ftms_connector - ERROR - Unexpected error during connection (Attempt 2/3): 
+2025-05-09 19:36:05,120 - ftms_connector - ERROR - Unexpected error during connection (Attempt 3/3): 'NoneType' object has no attribute 'bluetooth_address'
+2025-05-09 19:36:05,122 - ftms - ERROR - Connector failed to connect to device C9:02:CB:68:17:C1
+2025-05-09 19:40:00,005 - ftms_connector - ERROR - Failed to create FTMS client: 
+2025-05-09 19:40:00,018 - ftms_connector - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 444, in connect
+    self.ftms_client = pyftms.get_client(device_addr, machine_type)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\pyftms\client\__init__.py", line 72, in get_client
+    cls = get_machine(adv_or_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\pyftms\client\machines\__init__.py", line 14, in get_machine
+    assert len(mt) == 1
+           ^^^^^^^^^^^^
+AssertionError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 450, in connect
+    self.ftms_client = pyftms.get_client(self.ble_client, machine_type)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\pyftms\client\__init__.py", line 72, in get_client
+    cls = get_machine(adv_or_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\pyftms\client\machines\__init__.py", line 14, in get_machine
+    assert len(mt) == 1
+           ^^^^^^^^^^^^
+AssertionError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 455, in connect
+    self.ftms_client = pyftms.get_client(device_addr, machine_type, client=self.ble_client)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\pyftms\client\__init__.py", line 72, in get_client
+    cls = get_machine(adv_or_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\pyftms\client\machines\__init__.py", line 14, in get_machine
+    assert len(mt) == 1
+           ^^^^^^^^^^^^
+AssertionError
+
+2025-05-09 19:40:00,022 - ftms_connector - ERROR - Unexpected error during connection (Attempt 1/3): Failed to initialize FTMS client: 
+2025-05-09 19:46:18,612 - ftms_connector - ERROR - Unexpected error during connection (Attempt 1/3): 'NoneType' object has no attribute 'bluetooth_address'
+2025-05-09 19:46:24,791 - ftms_connector - ERROR - Failed to create FTMS client: 'FitnessMachine' object has no attribute '_data_model'
+2025-05-09 19:46:24,858 - ftms_connector - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 457, in connect
+    self.ftms_client = pyftms.get_client(device_addr, machine_type_str)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\pyftms\client\__init__.py", line 72, in get_client
+    cls = get_machine(adv_or_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\pyftms\client\machines\__init__.py", line 14, in get_machine
+    assert len(mt) == 1
+           ^^^^^^^^^^^^
+AssertionError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 463, in connect
+    self.ftms_client = pyftms.get_client(device_addr)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: get_client() missing 1 required positional argument: 'adv_or_type'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 469, in connect
+    self.ftms_client = pyftms.get_client(client=self.ble_client)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: get_client() missing 2 required positional arguments: 'ble_device' and 'adv_or_type'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 479, in connect
+    self.ftms_client = pyftms.FitnessMachine(self.ble_client)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\pyftms\client\client.py", line 95, in __init__
+    self._updater = DataUpdater(self._data_model, self._on_event)
+                                ^^^^^^^^^^^^^^^^
+AttributeError: 'FitnessMachine' object has no attribute '_data_model'
+
+2025-05-09 19:46:24,862 - ftms_connector - ERROR - Unexpected error during connection (Attempt 2/3): Failed to initialize FTMS client: 'FitnessMachine' object has no attribute '_data_model'
+2025-05-09 19:46:33,985 - ftms_connector - ERROR - Failed to create FTMS client: 'FitnessMachine' object has no attribute '_data_model'
+2025-05-09 19:46:33,996 - ftms_connector - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 457, in connect
+    self.ftms_client = pyftms.get_client(device_addr, machine_type_str)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\pyftms\client\__init__.py", line 72, in get_client
+    cls = get_machine(adv_or_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\pyftms\client\machines\__init__.py", line 14, in get_machine
+    assert len(mt) == 1
+           ^^^^^^^^^^^^
+AssertionError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 463, in connect
+    self.ftms_client = pyftms.get_client(device_addr)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: get_client() missing 1 required positional argument: 'adv_or_type'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 469, in connect
+    self.ftms_client = pyftms.get_client(client=self.ble_client)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: get_client() missing 2 required positional arguments: 'ble_device' and 'adv_or_type'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\ftms\ftms_connector.py", line 479, in connect
+    self.ftms_client = pyftms.FitnessMachine(self.ble_client)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\pyftms\client\client.py", line 95, in __init__
+    self._updater = DataUpdater(self._data_model, self._on_event)
+                                ^^^^^^^^^^^^^^^^
+AttributeError: 'FitnessMachine' object has no attribute '_data_model'
+
+2025-05-09 19:46:33,998 - ftms_connector - ERROR - Unexpected error during connection (Attempt 3/3): Failed to initialize FTMS client: 'FitnessMachine' object has no attribute '_data_model'
+2025-05-09 19:46:37,331 - ftms - ERROR - Connector failed to connect to device C9:02:CB:68:17:C1
+2025-05-09 19:51:35,672 - ftms_connector - ERROR - Unexpected error during connection (Attempt 1/3): 'FTMSConnector' object has no attribute '_connected_device_name'
+2025-05-09 19:54:48,374 - fit_processor - ERROR - No data points found for workout 25

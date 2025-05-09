@@ -2500,3 +2500,103 @@ Exception: avg_speed encoded value 580000 is not in valid range [0, 65535]
 2025-05-09 06:14:30,119 - database - INFO - Database tables created
 2025-05-09 06:14:30,120 - database - INFO - Database tables created
 2025-05-09 06:14:52,452 - database - INFO - Retrieved 10 workouts from database
+2025-05-09 17:25:12,955 - database - INFO - Database tables created
+2025-05-09 17:25:12,956 - database - INFO - Database tables created
+2025-05-09 17:25:13,864 - database - INFO - Database tables created
+2025-05-09 17:25:13,865 - database - INFO - Database tables created
+2025-05-09 17:25:22,335 - database - INFO - Database tables created
+2025-05-09 17:25:22,338 - database - INFO - Database tables created
+2025-05-09 17:25:23,094 - database - INFO - Database tables created
+2025-05-09 17:25:23,096 - database - INFO - Database tables created
+2025-05-09 17:25:30,474 - database - INFO - Database tables created
+2025-05-09 17:25:30,476 - database - INFO - Database tables created
+2025-05-09 17:26:40,736 - database - INFO - Database tables created
+2025-05-09 17:26:40,737 - database - INFO - Database tables created
+2025-05-09 17:26:41,472 - database - INFO - Database tables created
+2025-05-09 17:26:41,473 - database - INFO - Database tables created
+2025-05-09 17:42:00,556 - database - INFO - Database tables created
+2025-05-09 17:42:00,558 - database - INFO - Database tables created
+2025-05-09 17:42:01,794 - database - INFO - Database tables created
+2025-05-09 17:42:01,796 - database - INFO - Database tables created
+2025-05-09 17:47:05,842 - database - INFO - Database tables created
+2025-05-09 17:47:05,843 - database - INFO - Database tables created
+2025-05-09 17:47:07,123 - database - INFO - Database tables created
+2025-05-09 17:47:07,126 - database - INFO - Database tables created
+2025-05-09 17:52:17,134 - database - INFO - Database tables created
+2025-05-09 17:52:17,136 - database - INFO - Database tables created
+2025-05-09 17:52:18,335 - database - INFO - Database tables created
+2025-05-09 17:52:18,337 - database - INFO - Database tables created
+2025-05-09 17:52:48,082 - database - INFO - Started workout 18 with device C9:02:CB:68:17:C1
+2025-05-09 17:53:03,746 - database - INFO - Ended workout 18, duration: 15s
+2025-05-09 17:53:03,779 - database - INFO - Database tables created
+2025-05-09 18:04:57,002 - database - INFO - Database tables created
+2025-05-09 18:04:57,005 - database - INFO - Database tables created
+2025-05-09 18:04:58,280 - database - INFO - Database tables created
+2025-05-09 18:04:58,282 - database - INFO - Database tables created
+2025-05-09 18:05:37,843 - database - INFO - Started workout 19 with device C9:02:CB:68:17:C1
+2025-05-09 18:06:10,378 - database - INFO - Ended workout 19, duration: 32s
+2025-05-09 18:06:10,384 - database - INFO - Database tables created
+2025-05-09 18:16:34,029 - database - INFO - Database tables created
+2025-05-09 18:16:34,031 - database - INFO - Database tables created
+2025-05-09 18:16:35,007 - database - INFO - Database tables created
+2025-05-09 18:16:35,011 - database - INFO - Database tables created
+2025-05-09 18:17:15,276 - database - INFO - Started workout 20 with device C9:02:CB:68:17:C1
+2025-05-09 18:17:36,824 - database - INFO - Ended workout 20, duration: 21s
+2025-05-09 18:17:36,831 - database - INFO - Database tables created
+2025-05-09 18:26:11,759 - database - INFO - Database tables created
+2025-05-09 18:26:11,762 - database - INFO - Database tables created
+2025-05-09 18:26:13,048 - database - INFO - Database tables created
+2025-05-09 18:26:13,050 - database - INFO - Database tables created
+2025-05-09 18:26:45,882 - database - INFO - Started workout 21 with device C9:02:CB:68:17:C1
+2025-05-09 18:27:15,582 - database - INFO - Ended workout 21, duration: 29s
+2025-05-09 18:27:15,588 - database - INFO - Database tables created
+2025-05-09 18:31:52,621 - database - INFO - Database tables created
+2025-05-09 18:31:52,623 - database - INFO - Database tables created
+2025-05-09 18:31:53,615 - database - INFO - Database tables created
+2025-05-09 18:31:53,617 - database - INFO - Database tables created
+2025-05-09 18:32:41,879 - database - INFO - Started workout 22 with device C9:02:CB:68:17:C1
+2025-05-09 18:32:56,018 - database - INFO - Ended workout 22, duration: 14s
+2025-05-09 18:32:56,022 - database - INFO - Database tables created
+2025-05-09 18:38:31,765 - database - INFO - Database tables created
+2025-05-09 18:38:31,767 - database - INFO - Database tables created
+2025-05-09 18:38:32,922 - database - INFO - Database tables created
+2025-05-09 18:38:32,923 - database - INFO - Database tables created
+2025-05-09 18:39:09,261 - database - INFO - Started workout 23 with device C9:02:CB:68:17:C1
+2025-05-09 18:39:23,107 - database - INFO - Ended workout 23, duration: 13s
+2025-05-09 18:39:23,111 - database - INFO - Database tables created
+2025-05-09 18:45:50,861 - database - INFO - Database tables created
+2025-05-09 18:45:50,864 - database - INFO - Database tables created
+2025-05-09 18:45:52,083 - database - INFO - Database tables created
+2025-05-09 18:45:52,085 - database - INFO - Database tables created
+2025-05-09 18:46:26,825 - database - INFO - Started workout 24 with device C9:02:CB:68:17:C1
+2025-05-09 18:47:09,289 - database - INFO - Ended workout 24, duration: 42s
+2025-05-09 18:47:09,296 - database - INFO - Database tables created
+2025-05-09 19:24:09,927 - database - INFO - Database tables created
+2025-05-09 19:24:09,929 - database - INFO - Database tables created
+2025-05-09 19:27:33,443 - database - INFO - Database tables created
+2025-05-09 19:27:33,445 - database - INFO - Database tables created
+2025-05-09 19:27:34,621 - database - INFO - Database tables created
+2025-05-09 19:27:34,623 - database - INFO - Database tables created
+2025-05-09 19:34:37,915 - database - INFO - Database tables created
+2025-05-09 19:34:37,917 - database - INFO - Database tables created
+2025-05-09 19:34:38,843 - database - INFO - Database tables created
+2025-05-09 19:34:38,844 - database - INFO - Database tables created
+2025-05-09 19:39:48,351 - database - INFO - Database tables created
+2025-05-09 19:39:48,355 - database - INFO - Database tables created
+2025-05-09 19:39:49,697 - database - INFO - Database tables created
+2025-05-09 19:39:49,699 - database - INFO - Database tables created
+2025-05-09 19:46:06,505 - database - INFO - Database tables created
+2025-05-09 19:46:06,507 - database - INFO - Database tables created
+2025-05-09 19:46:07,751 - database - INFO - Database tables created
+2025-05-09 19:46:07,754 - database - INFO - Database tables created
+2025-05-09 19:51:14,921 - database - INFO - Database tables created
+2025-05-09 19:51:14,924 - database - INFO - Database tables created
+2025-05-09 19:51:16,273 - database - INFO - Database tables created
+2025-05-09 19:51:16,276 - database - INFO - Database tables created
+2025-05-09 19:53:13,280 - database - INFO - Database tables created
+2025-05-09 19:53:13,281 - database - INFO - Database tables created
+2025-05-09 19:53:14,330 - database - INFO - Database tables created
+2025-05-09 19:53:14,331 - database - INFO - Database tables created
+2025-05-09 19:53:40,876 - database - INFO - Started workout 25 with device C9:02:CB:68:17:C1
+2025-05-09 19:54:48,364 - database - INFO - Ended workout 25, duration: 67s
+2025-05-09 19:54:48,370 - database - INFO - Database tables created

@@ -246,7 +246,8 @@ def api_user_profile():
 def connect_device():
     """Connect to an FTMS device."""
     device_address = request.json.get('address')
-    logger.debug(f"/api/connect called for {device_address}. background_loop is {'set' if background_loop else 'None'}. Loop running: {background_loop.is_running() if background_loop else 'N/A'}")
+    device_type = request.json.get('device_type', 'auto')  # Get device type with default 'auto'
+    logger.debug(f"/api/connect called for {device_address} with device_type {device_type}. background_loop is {'set' if background_loop else 'None'}. Loop running: {background_loop.is_running() if background_loop else 'N/A'}")
     try:
         if not device_address:
             return jsonify({'success': False, 'error': 'Device address is required'})
@@ -255,12 +256,12 @@ def connect_device():
              logger.error("Asyncio background loop is not running.")
              return jsonify({'success': False, 'error': 'Asyncio loop not running'})
 
-        # Schedule the async connect method on the background loop
-        logger.info(f"Scheduling connect task for {device_address} on background loop.")
-        future = asyncio.run_coroutine_threadsafe(ftms_manager.connect(device_address), background_loop)
+        # Schedule the async connect method on the background loop, passing the device type
+        logger.info(f"Scheduling connect task for {device_address} with device_type {device_type} on background loop.")
+        future = asyncio.run_coroutine_threadsafe(ftms_manager.connect(device_address, device_type), background_loop)
         success = future.result(timeout=40) # Wait for the connection attempt to complete with timeout
 
-        logger.info(f"Connect task for {device_address} completed with result: {success}")
+        logger.info(f"Connect task for {device_address} (device_type: {device_type}) completed with result: {success}")
         return jsonify({'success': success})
     except asyncio.TimeoutError:
         logger.error(f"Connection to {device_address} timed out.")

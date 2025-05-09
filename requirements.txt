@@ -3,8 +3,8 @@ bleak==0.21.1
 fit-tool==0.9.13
 requests==2.31.0
 gunicorn==21.2.0
-pycycling==0.4.1
- pandas #optional for jupyter notebook database testing       
- matplotlib #optional for jupyter notebook database testing
- seaborn #optional for jupyter notebook database testing
- pyftms
+# pandas #optional for jupyter notebook database testing       
+# matplotlib #optional for jupyter notebook database testing
+# seaborn #optional for jupyter notebook database testing
+# pyftms # Replaced with direct GitHub install
+git+https://github.com/dudanov/python-pyftms.git

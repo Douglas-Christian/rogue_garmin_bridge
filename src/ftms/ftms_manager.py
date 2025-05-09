@@ -56,8 +56,8 @@ class FTMSDeviceManager:
             self.connector = FTMSDeviceSimulator(device_type=device_type)
             logger.info("Using FTMSDeviceSimulator for testing.")
         else:
-            self.connector = FTMSConnector()
-            logger.info("Using FTMSConnector for real device.")
+            self.connector = FTMSConnector(device_type=device_type)
+            logger.info(f"Using FTMSConnector for real device with device type: {device_type}.")
             
         # Register callbacks
         self.connector.register_data_callback(self._handle_data)
@@ -212,18 +212,19 @@ class FTMSDeviceManager:
             logger.error(f"Error discovering devices: {str(e)}", exc_info=True)
             return {}
     
-    async def connect(self, device_address: str) -> bool:
+    async def connect(self, device_address: str, device_type: str = "auto") -> bool:
         """
         Connect to a specific FTMS device (asynchronous).
         
         Args:
             device_address: BLE address of the device to connect to
+            device_type: Type of the device to connect to ('auto', 'indoor_bike', 'rower', 'cross_trainer')
             
         Returns:
             True if connection successful, False otherwise
         """
         try:
-            logger.debug(f"Attempting to connect to {device_address} using connector: {type(self.connector).__name__}")
+            logger.debug(f"Attempting to connect to {device_address} (device_type: {device_type}) using connector: {type(self.connector).__name__}")
             if not hasattr(self.connector, 'connect') or not asyncio.iscoroutinefunction(self.connector.connect):
                  logger.error(f"Connector {type(self.connector).__name__} does not have an async connect method.")
                  return False
@@ -231,6 +232,14 @@ class FTMSDeviceManager:
             # Attempt connection with timeout
             connect_timeout = 30  # seconds
             try:
+                # If the connector accepts a device_type parameter, use it
+                if hasattr(self.connector, 'set_device_type'):
+                    try:
+                        self.connector.set_device_type(device_type)
+                        logger.info(f"Set device type to {device_type} before connecting")
+                    except Exception as e:
+                        logger.error(f"Error setting device type: {str(e)}")
+                
                 # Directly await the connector's async method
                 result = await asyncio.wait_for(self.connector.connect(device_address), timeout=connect_timeout)
                 if not result:
@@ -361,8 +370,8 @@ class FTMSDeviceManager:
         # Update latest data regardless of workout state
         self.latest_data = data
         
-        # Pass data to workout manager if a workout is active
-        if self.workout_manager and self.workout_manager.active_workout_id:
+        # Auto-start a workout if data is being received but no workout is active
+        if self.workout_manager and not self.workout_manager.active_workout_id and self.connected_device:
             # --- Added Logging ---
             logger.info(f"[FTMSManager] Passing data to WorkoutManager (Active Workout ID: {self.workout_manager.active_workout_id})")
             # --- End Added Logging ---

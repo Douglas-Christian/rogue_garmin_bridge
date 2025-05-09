@@ -153,6 +153,15 @@
                         <small>RSSI: ${device.rssi || 'N/A'}</small>
                     </div>
                     <p class="mb-1">Address: ${device.address}</p>
+                    <div class="mb-2">
+                        <label for="device-type-${device.address}" class="form-label">Device Type:</label>
+                        <select id="device-type-${device.address}" class="form-select form-select-sm device-type-select">
+                            <option value="auto">Auto-detect</option>
+                            <option value="indoor_bike">Indoor Bike</option>
+                            <option value="rower">Rower</option>
+                            <option value="cross_trainer">Cross Trainer</option>
+                        </select>
+                    </div>
                     <button class="btn btn-sm btn-primary connect-btn" data-address="${device.address}" data-name="${device.name || 'Unknown Device'}">
                         Connect
                     </button>
@@ -176,6 +185,10 @@
         // Show status
         discoverStatus.innerHTML = `<div class="alert alert-info">Connecting to ${name}...</div>`;
         
+        // Get the selected device type
+        const deviceTypeSelect = document.getElementById(`device-type-${address}`);
+        const deviceType = deviceTypeSelect ? deviceTypeSelect.value : 'auto';
+        
         // Call API to connect
         fetch('/api/connect', {
             method: 'POST',
@@ -183,7 +196,8 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                address: address
+                address: address,
+                device_type: deviceType
             })
         })
         .then(response => response.json())

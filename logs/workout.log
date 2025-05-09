@@ -1619,3 +1619,86 @@ AttributeError: 'Database' object has no attribute '_connect'
 2025-05-04 10:25:13,550 - workout_manager - WARNING - Failed to create FIT file for workout 15
 2025-05-04 10:42:31,634 - workout_manager - INFO - Started workout 16 with device FC:5A:4D:64:E7:EE
 2025-05-04 10:57:40,538 - workout_manager - INFO - Started workout 17 with device FC:5A:4D:64:E7:EE
+2025-05-09 17:52:48,083 - workout_manager - INFO - Started workout 18 with device C9:02:CB:68:17:C1
+2025-05-09 17:53:03,783 - workout_manager - WARNING - Failed to create FIT file for workout 18
+2025-05-09 18:05:37,844 - workout_manager - INFO - Started workout 19 with device C9:02:CB:68:17:C1
+2025-05-09 18:06:10,388 - workout_manager - WARNING - Failed to create FIT file for workout 19
+2025-05-09 18:17:07,165 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:07,671 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:08,176 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:08,680 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:09,184 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:09,687 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:10,192 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:10,697 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:11,200 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:11,706 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:12,210 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:12,716 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:13,224 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:13,729 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:14,233 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:14,740 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:15,244 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:15,277 - workout_manager - INFO - Started workout 20 with device C9:02:CB:68:17:C1
+2025-05-09 18:17:36,869 - workout_manager - WARNING - Failed to create FIT file for workout 20
+2025-05-09 18:17:37,067 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:37,574 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:38,080 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:38,587 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:39,093 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:39,598 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:40,105 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:40,610 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:41,117 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:41,623 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:42,129 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:42,634 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:43,140 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:43,645 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:44,150 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:44,654 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:17:45,162 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:26:45,883 - workout_manager - INFO - Started workout 21 with device C9:02:CB:68:17:C1
+2025-05-09 18:27:15,594 - workout_manager - WARNING - Failed to create FIT file for workout 21
+2025-05-09 18:32:41,880 - workout_manager - INFO - Started workout 22 with device C9:02:CB:68:17:C1
+2025-05-09 18:32:56,025 - workout_manager - WARNING - Failed to create FIT file for workout 22
+2025-05-09 18:39:09,262 - workout_manager - INFO - Started workout 23 with device C9:02:CB:68:17:C1
+2025-05-09 18:39:23,117 - workout_manager - WARNING - Failed to create FIT file for workout 23
+2025-05-09 18:46:26,109 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:46:26,825 - workout_manager - INFO - Started workout 24 with device C9:02:CB:68:17:C1
+2025-05-09 18:47:09,301 - workout_manager - WARNING - Failed to create FIT file for workout 24
+2025-05-09 18:47:10,118 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:47:11,139 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:47:12,098 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:47:13,118 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:47:14,169 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:47:15,099 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:47:16,255 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 18:47:17,109 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:53:30,026 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:53:31,004 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:53:31,961 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:53:32,984 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:53:33,946 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:53:34,996 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:53:35,952 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:53:37,002 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:53:37,991 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:53:39,011 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:53:39,942 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:53:40,876 - workout_manager - INFO - Started workout 25 with device C9:02:CB:68:17:C1
+2025-05-09 19:54:48,375 - workout_manager - WARNING - Failed to create FIT file for workout 25
+2025-05-09 19:54:48,946 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:54:49,937 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:54:50,956 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:54:52,038 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:54:52,996 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:54:53,956 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:54:54,978 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:54:55,938 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:54:56,978 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:54:57,945 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:54:59,102 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:54:59,969 - workout_manager - WARNING - No active workout to add data to
+2025-05-09 19:55:00,974 - workout_manager - WARNING - No active workout to add data to

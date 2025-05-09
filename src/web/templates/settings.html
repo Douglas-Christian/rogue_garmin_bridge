@@ -89,6 +89,17 @@
                                 <label class="form-check-label" for="use_simulator">Use Simulator</label>
                                 <div class="form-text">Enable this option to use a simulator instead of real devices for testing.</div>
                             </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Device Type</label>
+                                <select class="form-select" id="device_type" name="device_type">
+                                    <option value="auto">Auto-detect (default)</option>
+                                    <option value="indoor_bike">Indoor Bike</option>
+                                    <option value="rower">Rower</option>
+                                    <option value="cross_trainer">Cross Trainer</option>
+                                </select>
+                                <div class="form-text">Select your device type for more accurate connections.</div>
+                            </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Unit System Preference</label>
@@ -260,6 +271,9 @@
                     if (settings.use_simulator !== undefined) {
                         document.getElementById('use_simulator').checked = settings.use_simulator;
                     }
+                    if (settings.device_type) {
+                        document.getElementById('device_type').value = settings.device_type;
+                    }
                     // The unit_system from settings.json is no longer used to drive display conversions here.
                     // User profile's unit_preference is the master for display.
                 }
@@ -373,6 +387,13 @@
         const formData = new FormData(appSettingsForm);
         const settingsToSave = {};
         settingsToSave.use_simulator = formData.has('use_simulator');
+        
+        // Save the device type setting
+        const deviceType = document.getElementById('device_type').value;
+        if (deviceType) {
+            settingsToSave.device_type = deviceType;
+        }
+        
         // The unit_system_preference radio buttons are for user profile, not app settings file.
         // So, we don't save unit_system to settings.json from here anymore to avoid confusion.
         // If it was intended to be an app-level default, that logic would be different.
