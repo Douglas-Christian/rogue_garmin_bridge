@@ -366,15 +366,20 @@ class FTMSDeviceManager:
                 data['user_weight_unit'] = 'kg'
                 logger.info(f"[FTMSManager] Using metric weight for display: {weight_kg} kg")
         # --- End Added Logging ---
-        
-        # Update latest data regardless of workout state
+          # Update latest data regardless of workout state
         self.latest_data = data
+          # Only pass data to workout manager if we have an active workout
+        # Add diagnostic logging for the condition components
+        logger.info(f"[FTMSManager] Debug - workout_manager exists: {self.workout_manager is not None}")
+        if self.workout_manager:
+            logger.info(f"[FTMSManager] Debug - active_workout_id: {self.workout_manager.active_workout_id}")
+        logger.info(f"[FTMSManager] Debug - connected_device exists: {self.connected_device is not None}")
         
-        # Auto-start a workout if data is being received but no workout is active
-        if self.workout_manager and not self.workout_manager.active_workout_id and self.connected_device:
+        if self.workout_manager and self.workout_manager.active_workout_id and self.connected_device:
             # --- Added Logging ---
             logger.info(f"[FTMSManager] Passing data to WorkoutManager (Active Workout ID: {self.workout_manager.active_workout_id})")
             # --- End Added Logging ---
+            # Forward the data to be stored in the active workout
             self.workout_manager.add_data_point(data)
         else:
             # --- Added Logging ---

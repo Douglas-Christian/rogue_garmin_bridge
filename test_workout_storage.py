@@ -40,11 +40,9 @@ def test_add_workout_data():
     # Generate and add multiple data points
     print("Adding test data points...")
     start_time = datetime.now()
-    
-    # Add 10 data points with careful timing to ensure unique timestamps
-    for i in range(10):
-        # Generate timestamp with microsecond precision
-        rel_timestamp = i + (random.randint(0, 999999) / 1000000.0)
+      # Add 10 data points with careful timing to ensure unique timestamps
+    for i in range(10):        # Generate timestamp with appropriate spacing
+        timestamp = start_time + timedelta(seconds=i)
         
         # Create test data
         data = {
@@ -57,12 +55,11 @@ def test_add_workout_data():
             "resistance_level": random.randint(1, 10),
             "test_index": i
         }
-        
-        # Print attempt details
-        print(f"  Adding data point {i+1}/10: timestamp={rel_timestamp:.6f}, power={data['instant_power']}")
+          # Print attempt details
+        print(f"  Adding data point {i+1}/10: timestamp={timestamp.isoformat()}, power={data['instant_power']}")
         
         # Try adding the data point and check success
-        success = db.add_workout_data(workout_id, rel_timestamp, data)
+        success = db.add_workout_data(workout_id, timestamp, data)
         print(f"  -> {'SUCCESS' if success else 'FAILED'}")
         
         # Add a small delay to ensure timestamp uniqueness

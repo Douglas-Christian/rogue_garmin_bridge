@@ -205,8 +205,7 @@ class WorkoutManager:
         except Exception as e:
             logger.error(f"Error processing workout for FIT file: {str(e)}")
             
-            # Clear current workout state
-            self.active_workout_id = None
+            # Clear current workout state            self.active_workout_id = None
             self.active_device_id = None
             self.workout_start_time = None
             self.workout_type = None
@@ -227,21 +226,19 @@ class WorkoutManager:
         """
         if not self.active_workout_id:
             logger.warning("No active workout to add data to")
-            return False
-        
-        # Get absolute timestamp
+            return False        # Get absolute timestamp for data point
         absolute_timestamp = datetime.now()
         
-        # Log the raw data being received for diagnostics
-        logger.info(f"ADDING DATA POINT: {data}")
+        # Log the incoming data with timestamp for diagnostics
+        logger.info(f"ADDING DATA POINT at {absolute_timestamp.isoformat()}")
+        logger.info(f"Data: {data}")
         
         # Store data point locally (optional, consider if needed for summary)
         # Add absolute timestamp to local data point if keeping it
         data_with_ts = data.copy()
         data_with_ts["timestamp"] = absolute_timestamp 
         self.data_points.append(data_with_ts)
-        
-        # Update summary metrics
+          # Update summary metrics
         self._update_summary_metrics(data)
         
         # Store in database using absolute timestamp
@@ -444,29 +441,43 @@ class WorkoutManager:
             hr_values = [d.get('heart_rate', 0) for d in self.data_points if 'heart_rate' in d]
             if hr_values:
                 self.summary_metrics['avg_heart_rate'] = sum(hr_values) / len(hr_values)
+          # Update cadence metrics - check for multiple possible field names
+        cadence_keys = ['instant_cadence', 'instantaneous_cadence', 'cadence']
+        cadence_value = None
         
-        # Update cadence metrics - check both instant and average values
-        if 'instant_cadence' in data or 'instantaneous_cadence' in data or 'cadence' in data:
-            # Get the instantaneous cadence value from various possible keys
-            cadence = data.get('instant_cadence', data.get('instantaneous_cadence', data.get('cadence', 0)))
+        # Try to get the cadence value from the data
+        for key in cadence_keys:
+            if key in data and data[key] is not None and data[key] > 0:
+                cadence_value = data[key]
+                break
+                
+        if cadence_value is not None:
+            # Log the received cadence value for debugging
+            logger.debug(f"Received cadence value: {cadence_value}")
             
             # Update max cadence if higher
-            if cadence > self.summary_metrics.get('max_cadence', 0):
-                self.summary_metrics['max_cadence'] = cadence
+            if cadence_value > self.summary_metrics.get('max_cadence', 0):
+                self.summary_metrics['max_cadence'] = cadence_value
+                logger.debug(f"Updated max cadence to: {cadence_value}")
         
-        # Use average cadence directly from device if available
-        if 'average_cadence' in data and data['average_cadence'] is not None:
+        # Use average cadence directly from device if available and looks reasonable
+        if 'average_cadence' in data and data['average_cadence'] is not None and data['average_cadence'] > 0:
             self.summary_metrics['avg_cadence'] = data['average_cadence']
+            logger.debug(f"Using device-reported average cadence: {data['average_cadence']}")
         # Otherwise calculate from instantaneous values
-        elif any(key in data for key in ['instant_cadence', 'instantaneous_cadence', 'cadence']):
+        elif cadence_value is not None:
+            # Collect all non-zero cadence values
             cadence_values = []
             for d in self.data_points:
-                for key in ['instant_cadence', 'instantaneous_cadence', 'cadence']:
-                    if key in d and d[key] is not None:
+                for key in cadence_keys:
+                    if key in d and d[key] is not None and d[key] > 0:
                         cadence_values.append(d[key])
                         break
+                        
             if cadence_values:
-                self.summary_metrics['avg_cadence'] = sum(cadence_values) / len(cadence_values)
+                avg_cadence = sum(cadence_values) / len(cadence_values)
+                self.summary_metrics['avg_cadence'] = avg_cadence
+                logger.debug(f"Calculated average cadence from {len(cadence_values)} data points: {avg_cadence}")
         
         # Update speed metrics - check instantaneous values only
         if 'instant_speed' in data or 'instantaneous_speed' in data or 'speed' in data:
@@ -479,23 +490,43 @@ class WorkoutManager:
             # Update max speed if higher
             if speed > self.summary_metrics.get('max_speed', 0):
                 self.summary_metrics['max_speed'] = speed
-        
-        # MODIFIED: Always calculate average speed from instantaneous values
-        # Ignore device-reported average_speed completely
+          # IMPROVED: Calculate average speed from instantaneous values with outlier filtering
+        # Ignore device-reported average_speed completely as it's often inaccurate
         speed_values = []
         for d in self.data_points:
             for key in ['instant_speed', 'instantaneous_speed', 'speed']:
-                if key in d and d[key] is not None:
+                if key in d and d[key] is not None and d[key] > 0:  # Only include positive values
                     speed_values.append(d[key])
                     break
+        
         if speed_values:
-            avg_calculated_speed = sum(speed_values) / len(speed_values)
-            self.summary_metrics['avg_speed'] = avg_calculated_speed
-            logger.info(f"Calculated average speed from {len(speed_values)} data points: {avg_calculated_speed} km/h")
+            # Basic outlier removal - filter out values more than 2 standard deviations from mean
+            if len(speed_values) > 4:  # Only apply filtering if we have enough data points
+                mean_speed = sum(speed_values) / len(speed_values)
+                std_dev = (sum((x - mean_speed) ** 2 for x in speed_values) / len(speed_values)) ** 0.5
+                
+                # Filter out outliers
+                filtered_speeds = [s for s in speed_values if abs(s - mean_speed) <= 2 * std_dev]
+                
+                if filtered_speeds:  # Ensure we still have values after filtering
+                    avg_calculated_speed = sum(filtered_speeds) / len(filtered_speeds)
+                    logger.info(f"Calculated average speed from {len(filtered_speeds)} filtered data points " +
+                              f"(removed {len(speed_values) - len(filtered_speeds)} outliers): {avg_calculated_speed} km/h")
+                else:
+                    # Fall back to simple average if filtering removed all points
+                    avg_calculated_speed = sum(speed_values) / len(speed_values)
+                    logger.info(f"Falling back to unfiltered average speed from {len(speed_values)} data points: " +
+                              f"{avg_calculated_speed} km/h")
+            else:
+                # Simple average for small number of data points
+                avg_calculated_speed = sum(speed_values) / len(speed_values)
+                logger.info(f"Calculated average speed from {len(speed_values)} data points: {avg_calculated_speed} km/h")
             
-            # If data contains an incorrect device-reported average_speed, log for debugging
+            self.summary_metrics['avg_speed'] = avg_calculated_speed
+            
+            # If data contains a device-reported average_speed, log for debugging
             if 'average_speed' in data and data['average_speed'] is not None:
-                logger.info(f"Ignoring device-reported average speed: {data['average_speed']} km/h")
+                logger.info(f"Device-reported average speed: {data['average_speed']} km/h (not used)")
     
     def _update_rower_metrics(self, data: Dict[str, Any]) -> None:
         """

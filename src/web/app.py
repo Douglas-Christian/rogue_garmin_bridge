@@ -465,7 +465,7 @@ def workout_operations(workout_id):
                     except Exception as e:
                         logger.error(f"Error parsing workout summary JSON for workout {workout_id}: {str(e)}")
                         # Keep the summary as is if it cannot be parsed
-                
+            
             # Add data series to workout
             workout['data_series'] = {
                 'timestamps': timestamps,
@@ -478,6 +478,32 @@ def workout_operations(workout_id):
             
             # Add data point count for UI reference
             workout['data_point_count'] = len(workout_data)
+            
+            # Add a debug log to check workout data structure
+            logger.debug(f"Workout data series for {workout_id} - points: {len(workout_data)}")
+            logger.debug(f"Sample data (powers): {powers[:5] if powers else []}")
+            logger.debug(f"Sample data (cadences): {cadences[:5] if cadences else []}")
+            
+            # Check summary for missing values and ensure it's properly formatted
+            if 'summary' in workout and workout['summary']:
+                # Log the summary for debugging
+                logger.debug(f"Workout summary: {workout['summary']}")
+                
+                # Make sure all expected summary metrics exist
+                if 'avg_cadence' not in workout['summary'] and cadences:
+                    # Calculate if missing
+                    workout['summary']['avg_cadence'] = sum(filter(None, cadences)) / len(list(filter(None, cadences))) if any(cadences) else 0
+                    logger.info(f"Added missing avg_cadence to summary: {workout['summary']['avg_cadence']}")
+                    
+                if 'avg_power' not in workout['summary'] and powers:
+                    # Calculate if missing
+                    workout['summary']['avg_power'] = sum(filter(None, powers)) / len(list(filter(None, powers))) if any(powers) else 0
+                    logger.info(f"Added missing avg_power to summary: {workout['summary']['avg_power']}")
+                    
+                if 'avg_speed' not in workout['summary'] and speeds:
+                    # Calculate if missing
+                    workout['summary']['avg_speed'] = sum(filter(None, speeds)) / len(list(filter(None, speeds))) if any(speeds) else 0
+                    logger.info(f"Added missing avg_speed to summary: {workout['summary']['avg_speed']}")
             
             return jsonify({'success': True, 'workout': workout})
     except Exception as e:
