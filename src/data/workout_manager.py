@@ -9,6 +9,8 @@ It serves as an intermediary between the FTMS module and the database.
 import logging
 import time
 import os  # Added for path joining
+import json
+from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional, Callable
 from datetime import datetime
 
@@ -384,8 +386,7 @@ class WorkoutManager:
         
         Args:
             data: New data point
-        """
-        # Extract metrics based on workout type
+        """        # Extract metrics based on workout type
         if self.workout_type == 'bike':
             self._update_bike_metrics(data)
         elif self.workout_type == 'rower':
@@ -398,9 +399,43 @@ class WorkoutManager:
         Args:
             data: New data point
         """
-        # Update distance
+        # Update distance - check for different possible field names
         if 'total_distance' in data:
             self.summary_metrics['total_distance'] = data['total_distance']
+        elif 'distance' in data:
+            self.summary_metrics['total_distance'] = data['distance']
+        # If still no distance but we have speed, try to estimate distance from speed and time
+        elif any(key in data for key in ['instantaneous_speed', 'speed', 'instant_speed']):
+            # Get speed in km/h
+            for speed_key in ['instantaneous_speed', 'speed', 'instant_speed']:
+                if speed_key in data:
+                    speed_kmh = data[speed_key]
+                    break
+            else:
+                speed_kmh = 0
+                
+            # Convert to meters per second and calculate distance increment
+            if speed_kmh > 0 and 'timestamp' in data:
+                # If we have previous timestamp, calculate time delta
+                if hasattr(self, '_last_timestamp'):
+                    try:
+                        current_ts = datetime.fromisoformat(data['timestamp'])
+                        time_delta_sec = (current_ts - self._last_timestamp).total_seconds()
+                        
+                        # Speed is km/h, convert to m/s and calculate distance increment
+                        speed_mps = speed_kmh / 3.6  # Convert km/h to m/s
+                        distance_increment = speed_mps * time_delta_sec
+                        
+                        # Update the total distance
+                        self.summary_metrics['total_distance'] = self.summary_metrics.get('total_distance', 0) + distance_increment
+                    except (ValueError, TypeError):
+                        pass  # Skip if timestamp parsing fails
+                        
+                # Update timestamp for next calculation
+                try:
+                    self._last_timestamp = datetime.fromisoformat(data['timestamp'])
+                except (ValueError, TypeError):
+                    pass  # Skip if timestamp parsing fails
         
         # Update calories
         if 'total_energy' in data:
