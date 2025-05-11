@@ -1107,3 +1107,20 @@
 2025-05-11 17:54:47,995 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
 2025-05-11 17:54:47,996 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
 2025-05-11 17:54:47,996 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 18:02:06,388 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 18:02:07,556 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 18:11:52,351 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 18:11:53,659 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 18:16:59,304 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 18:17:00,570 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 18:18:29,939 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 18:18:31,153 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 18:22:01,783 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 18:22:02,538 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 18:26:24,060 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 18:26:24,859 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 18:26:38,247 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 18:28:49,676 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 18:28:50,419 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 18:31:06,173 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 18:31:06,965 - ftms - INFO - Using FTMSConnector for real device with device type: bike.

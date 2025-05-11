@@ -339,3 +339,66 @@
 2025-05-11 17:54:20,830 - database - INFO - Updated FIT file path for workout 3: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250511_175339.fit
 2025-05-11 17:54:25,083 - database - INFO - Retrieved 3 workouts from database
 2025-05-11 17:54:26,035 - database - INFO - Retrieved 41 data points for workout 3
+2025-05-11 18:02:06,384 - database - INFO - Database tables created
+2025-05-11 18:02:06,386 - database - INFO - Database tables created
+2025-05-11 18:02:07,551 - database - INFO - Database tables created
+2025-05-11 18:02:07,556 - database - INFO - Database tables created
+2025-05-11 18:02:09,527 - database - INFO - Retrieved 41 data points for workout 3
+2025-05-11 18:02:12,269 - database - INFO - Retrieved 46 data points for workout 2
+2025-05-11 18:02:15,467 - database - INFO - Retrieved 66 data points for workout 1
+2025-05-11 18:11:52,342 - database - INFO - Database tables created
+2025-05-11 18:11:52,349 - database - INFO - Database tables created
+2025-05-11 18:11:53,653 - database - INFO - Database tables created
+2025-05-11 18:11:53,655 - database - INFO - Database tables created
+2025-05-11 18:11:55,141 - database - INFO - Retrieved 41 data points for workout 3
+2025-05-11 18:16:59,299 - database - INFO - Database tables created
+2025-05-11 18:16:59,301 - database - INFO - Database tables created
+2025-05-11 18:17:00,568 - database - INFO - Database tables created
+2025-05-11 18:17:00,569 - database - INFO - Database tables created
+2025-05-11 18:17:02,097 - database - INFO - Retrieved 41 data points for workout 3
+2025-05-11 18:17:05,481 - database - INFO - Retrieved 66 data points for workout 1
+2025-05-11 18:17:10,672 - database - INFO - Retrieved 3 workouts from database
+2025-05-11 18:17:13,217 - database - INFO - Retrieved 41 data points for workout 3
+2025-05-11 18:17:17,610 - database - INFO - Retrieved 46 data points for workout 2
+2025-05-11 18:17:28,720 - database - INFO - Retrieved 66 data points for workout 1
+2025-05-11 18:18:29,934 - database - INFO - Database tables created
+2025-05-11 18:18:29,936 - database - INFO - Database tables created
+2025-05-11 18:18:31,125 - database - INFO - Database tables created
+2025-05-11 18:18:31,151 - database - INFO - Database tables created
+2025-05-11 18:18:33,265 - database - INFO - Retrieved 41 data points for workout 3
+2025-05-11 18:18:34,825 - database - INFO - Retrieved 46 data points for workout 2
+2025-05-11 18:18:36,118 - database - INFO - Retrieved 66 data points for workout 1
+2025-05-11 18:18:38,206 - database - INFO - Retrieved 3 workouts from database
+2025-05-11 18:18:39,250 - database - INFO - Retrieved 66 data points for workout 1
+2025-05-11 18:22:01,779 - database - INFO - Database tables created
+2025-05-11 18:22:01,781 - database - INFO - Database tables created
+2025-05-11 18:22:02,534 - database - INFO - Database tables created
+2025-05-11 18:22:02,536 - database - INFO - Database tables created
+2025-05-11 18:22:06,369 - database - INFO - Retrieved 3 workouts from database
+2025-05-11 18:22:07,805 - database - INFO - Retrieved 41 data points for workout 3
+2025-05-11 18:26:24,057 - database - INFO - Database tables created
+2025-05-11 18:26:24,058 - database - INFO - Database tables created
+2025-05-11 18:26:24,855 - database - INFO - Database tables created
+2025-05-11 18:26:24,857 - database - INFO - Database tables created
+2025-05-11 18:26:28,527 - database - INFO - Retrieved 41 data points for workout 3
+2025-05-11 18:26:36,277 - database - INFO - Retrieved 3 workouts from database
+2025-05-11 18:26:38,244 - database - INFO - Database tables created
+2025-05-11 18:26:38,246 - database - INFO - Database tables created
+2025-05-11 18:26:38,391 - database - INFO - Retrieved 66 data points for workout 1
+2025-05-11 18:26:43,322 - database - INFO - Retrieved 46 data points for workout 2
+2025-05-11 18:28:49,673 - database - INFO - Database tables created
+2025-05-11 18:28:49,674 - database - INFO - Database tables created
+2025-05-11 18:28:50,416 - database - INFO - Database tables created
+2025-05-11 18:28:50,417 - database - INFO - Database tables created
+2025-05-11 18:28:53,237 - database - INFO - Retrieved 41 data points for workout 3
+2025-05-11 18:28:53,858 - database - INFO - Retrieved 41 data points for workout 3
+2025-05-11 18:28:54,886 - database - INFO - Retrieved 41 data points for workout 3
+2025-05-11 18:28:56,208 - database - INFO - Retrieved 46 data points for workout 2
+2025-05-11 18:28:57,644 - database - INFO - Retrieved 66 data points for workout 1
+2025-05-11 18:31:06,170 - database - INFO - Database tables created
+2025-05-11 18:31:06,172 - database - INFO - Database tables created
+2025-05-11 18:31:06,962 - database - INFO - Database tables created
+2025-05-11 18:31:06,964 - database - INFO - Database tables created
+2025-05-11 18:31:11,359 - database - INFO - Retrieved 41 data points for workout 3
+2025-05-11 18:31:22,445 - database - INFO - Retrieved 46 data points for workout 2
+2025-05-11 18:31:26,922 - database - INFO - Retrieved 66 data points for workout 1

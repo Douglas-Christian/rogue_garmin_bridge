@@ -464,9 +464,7 @@ def workout_operations(workout_id):
                         logger.info(f"Successfully parsed workout summary from JSON string for workout {workout_id}")
                     except Exception as e:
                         logger.error(f"Error parsing workout summary JSON for workout {workout_id}: {str(e)}")
-                        # Keep the summary as is if it cannot be parsed
-            
-            # Add data series to workout
+                        # Keep the summary as is if it cannot be parsed            # Add data series to workout
             workout['data_series'] = {
                 'timestamps': timestamps,
                 'powers': powers,
@@ -476,8 +474,20 @@ def workout_operations(workout_id):
                 'distances': distances
             }
             
+            # Convert values in data series to ensure they're numeric, except timestamps
+            for key, values in workout['data_series'].items():
+                if key != 'timestamps':  # Skip converting timestamps to float
+                    try:
+                        workout['data_series'][key] = [float(v) if v is not None else 0 for v in values]
+                    except (ValueError, TypeError) as e:
+                        logger.error(f"Error converting {key} to float: {str(e)}")
+                        # Keep the original values if conversion fails
+            
             # Add data point count for UI reference
             workout['data_point_count'] = len(workout_data)
+            
+            # Add a log statement to see what's being sent
+            logger.info(f"Sending workout {workout_id} with {len(workout_data)} data points")
             
             # Add a debug log to check workout data structure
             logger.debug(f"Workout data series for {workout_id} - points: {len(workout_data)}")

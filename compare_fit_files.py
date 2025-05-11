@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 Script to compare two FIT files with focus on device identification and training load-related fields.
+Also compares speed, power, and cadence data points to help debug Garmin Connect import issues.
 """
 
 import os
@@ -9,7 +10,10 @@ from fit_tool.fit_file import FitFile
 from fit_tool.profile.messages.file_id_message import FileIdMessage
 from fit_tool.profile.messages.device_info_message import DeviceInfoMessage
 from fit_tool.profile.messages.session_message import SessionMessage
+from fit_tool.profile.messages.record_message import RecordMessage
 from fit_tool.profile.profile_type import Manufacturer
+import argparse
+from collections import Counter
 
 
 def print_message_field(message, field_name, indent=0):
@@ -39,10 +43,6 @@ def print_device_info(fit_file, file_path):
         message = record.message
         messages.append(message)
     
-    # Look for FileIdMessage
-    file_id_messages = [msg for msg in messages if isinstance(msg, FileIdMessage)]
-    if file_id_messages:
-        print("\nFile ID Message:")
         for msg in file_id_messages:
             print_message_field(msg, 'type', 4)
             print_message_field(msg, 'manufacturer', 4)

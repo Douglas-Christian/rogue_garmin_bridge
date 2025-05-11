@@ -13,7 +13,18 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <h5>Recent Workouts</h5>
                             <div class="sorting-controls">
-                                <label for="sort-by" class="me-2">Sort by:</label>
+                                <label for="sor        // Heart Rate data
+        if (dataSeries.heart_rates && dataSeries.heart_rates.length > 0) {
+            datasets.push({
+                label: "Heart Rate (bpm)",
+                data: dataSeries.heart_rates,
+                borderColor: "rgba(255, 159, 64, 1)",
+                backgroundColor: "rgba(255, 159, 64, 0.2)",
+                yAxisID: "yHeartRate",
+                fill: false,
+                tension: 0.1
+            });
+        }"me-2">Sort by:</label>
                                 <select id="sort-by" class="form-select form-select-sm" style="width: auto; display: inline-block;">
                                     <option value="date-desc">Date (newest first)</option>
                                     <option value="date-asc">Date (oldest first)</option>
@@ -61,6 +72,15 @@
 
 {% block scripts %}
 <script>
+    // Check if Chart.js is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof Chart === 'undefined') {
+            console.error('Chart.js is not loaded! Charts will not work.');
+        } else {
+            console.log('Chart.js loaded successfully, version:', Chart.version);
+        }
+    });
+    
     // DOM elements
     const workoutsList = document.getElementById("workouts-list");
     const workoutDetails = document.getElementById("workout-details");
@@ -119,6 +139,22 @@
         const secs = seconds % 60;
         
         return `${minutes}:${secs.toString().padStart(2, "0")}`;
+    }
+    
+    // Helper function to verify if Chart.js is properly loaded
+    function checkChartJsLoaded() {
+        try {
+            if (typeof Chart !== 'undefined') {
+                console.log("Chart.js is properly loaded, version:", Chart.version);
+                return true;
+            } else {
+                console.error("Chart.js is not loaded or not defined");
+                return false;
+            }
+        } catch (e) {
+            console.error("Error checking Chart.js:", e);
+            return false;
+        }
     }
     
     // Sort workouts based on the selected sort option
@@ -388,12 +424,26 @@
     function loadWorkoutDetails(workoutId) {
         workoutDetails.innerHTML = 	"<p><i class=\"fas fa-spinner fa-spin\"></i> Loading details...</p>";
         
+        console.log(`Loading details for workout ${workoutId}...`);
+        
         fetch(`/api/workout/${workoutId}`)
-            .then(response => response.json())
+            .then(response => {
+                console.log(`Got response for workout ${workoutId}, status: ${response.status}`);
+                return response.json();
+            })
             .then(data => {
+                console.log(`Parsed JSON data for workout ${workoutId}:`, data);
                 if (data.success && data.workout) {
                     const workout = data.workout;
-                    const workoutData = data.workout_data || []; // Ensure workout_data is an array
+                    console.log("Workout data received:", workout);
+                    
+                    // Debug information about the workout data structure
+                    console.log("Workout summary:", workout.summary);
+                    console.log("Data series exists:", !!workout.data_series);
+                    if (workout.data_series) {
+                        console.log("Data series powers length:", workout.data_series.powers ? workout.data_series.powers.length : 0);
+                        console.log("Data series timestamps length:", workout.data_series.timestamps ? workout.data_series.timestamps.length : 0);
+                    }
                     
                     let detailsHtml = `<h5>Workout on ${new Date(workout.start_time).toLocaleString()}</h5>`;
                     detailsHtml += `<p><strong>Type:</strong> ${workout.workout_type ? workout.workout_type.charAt(0).toUpperCase() + workout.workout_type.slice(1) : "Unknown"}</p>`;
@@ -414,8 +464,10 @@
                         
                         // Format average speed with unit conversion
                         let avgSpeedText = "-";
-                        if (workout.summary.average_speed) {
-                            const avgSpeedMs = workout.summary.average_speed;
+                        // Check for both naming patterns (average_speed and avg_speed)
+                        const avgSpeed = workout.summary.average_speed || workout.summary.avg_speed;
+                        if (avgSpeed) {
+                            const avgSpeedMs = avgSpeed;
                             if (userUnitSystem === "imperial") {
                                 avgSpeedText = unitConversions.msToMph(avgSpeedMs).toFixed(1) + " mph";
                             } else {
@@ -425,56 +477,129 @@
                         detailsHtml += `<p><strong>Average Speed:</strong> ${avgSpeedText}</p>`;
                         
                         detailsHtml += `<p><strong>Total Calories:</strong> ${workout.summary.total_calories ? Math.round(workout.summary.total_calories) + " kcal" : "-"}</p>`;
-                        detailsHtml += `<p><strong>Average Power:</strong> ${workout.summary.average_power ? Math.round(workout.summary.average_power) + " W" : "-"}</p>`;
+                        
+                        // Check for both naming patterns (average_power and avg_power)
+                        const avgPower = workout.summary.average_power || workout.summary.avg_power || 0;
+                        detailsHtml += `<p><strong>Average Power:</strong> ${avgPower ? Math.round(avgPower) + " W" : "-"}</p>`;
                         
                         if (workout.workout_type === "bike" || workout.workout_type === "cycling") {
-                            detailsHtml += `<p><strong>Average Cadence:</strong> ${workout.summary.average_cadence ? Math.round(workout.summary.average_cadence) + " RPM" : "-"}</p>`;
+                            // Check for both naming patterns (average_cadence and avg_cadence)
+                            const avgCadence = workout.summary.average_cadence || workout.summary.avg_cadence || 0;
+                            detailsHtml += `<p><strong>Average Cadence:</strong> ${avgCadence ? Math.round(avgCadence) + " RPM" : "-"}</p>`;
                         } else if (workout.workout_type === "rower" || workout.workout_type === "rowing") {
-                            detailsHtml += `<p><strong>Average Stroke Rate:</strong> ${workout.summary.average_stroke_rate ? Math.round(workout.summary.average_stroke_rate) + " spm" : "-"}</p>`;
+                            // Check for both naming patterns (average_stroke_rate and avg_stroke_rate)
+                            const avgStrokeRate = workout.summary.average_stroke_rate || workout.summary.avg_stroke_rate || 0;
+                            detailsHtml += `<p><strong>Average Stroke Rate:</strong> ${avgStrokeRate ? Math.round(avgStrokeRate) + " spm" : "-"}</p>`;
+                        }
+                    }
+                    // Add additional metrics if available in summary
+                    if (workout.summary) {
+                        // Heart rate data (if available)
+                        const avgHeartRate = workout.summary.average_heart_rate || workout.summary.avg_heart_rate;
+                        if (avgHeartRate) {
+                            detailsHtml += `<p><strong>Average Heart Rate:</strong> ${Math.round(avgHeartRate)} bpm</p>`;
                         }
                     }
                     
-                    // Add chart if data is available
-                    if (workoutData.length > 0) {
-                        detailsHtml += 	"<div style=\"height: 300px;\"><canvas id=\"workoutChart\"></canvas></div>";
+                    // Check if data_series exists for chart
+                    const hasDataSeries = workout.data_series && (
+                        (workout.data_series.powers && workout.data_series.powers.length > 0) ||
+                        (workout.data_series.speeds && workout.data_series.speeds.length > 0) ||
+                        (workout.data_series.heart_rates && workout.data_series.heart_rates.length > 0) ||
+                        (workout.data_series.cadences && workout.data_series.cadences.length > 0)
+                    );
+                    
+                    // Add chart container if data is available
+                    if (hasDataSeries) {
+                        detailsHtml += `<div style="height: 300px;"><canvas id="workoutChart"></canvas></div>`;
+                    } else {
+                        detailsHtml += `<div class="alert alert-info mt-3">No detailed data available for this workout.</div>`;
                     }
                     
                     workoutDetails.innerHTML = detailsHtml;
                     
                     // Render chart if data is available
-                    if (workoutData.length > 0) {
-                        renderWorkoutChart(workoutData, workout.workout_type);
+                    if (hasDataSeries) {
+                        // Create a properly formatted data series object if any arrays are missing
+                        const dataSeries = {
+                            powers: workout.data_series.powers || [],
+                            cadences: workout.data_series.cadences || [],
+                            heart_rates: workout.data_series.heart_rates || [],
+                            speeds: workout.data_series.speeds || [],
+                            distances: workout.data_series.distances || []
+                        };
+                        
+                        renderWorkoutChart(dataSeries, workout.workout_type);
                     }
                     
                 } else {
+                    console.error("Error in workout details response:", data);
                     workoutDetails.innerHTML = `<div class="alert alert-danger">Error loading workout details: ${data.error || "Unknown error"}</div>`;
                 }
             })
             .catch(error => {
-                workoutDetails.innerHTML = `<div class="alert alert-danger">Error loading workout details: ${error.message}</div>`;
-                console.error("Error loading workout details:", error);
+                console.error("Exception loading workout details:", error);
+                let errorDetails = "";
+                if (error.stack) {
+                    errorDetails = `<details><summary>Error details</summary><pre>${error.stack}</pre></details>`;
+                }
+                workoutDetails.innerHTML = `<div class="alert alert-danger">Error loading workout details: ${error.message}${errorDetails}</div>`;
             });
     }
     
     // Render workout chart
     let currentChart = null;
-    function renderWorkoutChart(workoutData, workoutType) {
-        const ctx = document.getElementById("workoutChart").getContext("2d");
+    function renderWorkoutChart(dataSeries, workoutType) {
+        // Check if Chart.js is properly loaded
+        if (!checkChartJsLoaded()) {
+            const chartContainer = document.getElementById("workoutChart").parentNode;
+            chartContainer.innerHTML = `<div class="alert alert-danger">Error: Chart.js is not loaded properly.</div>`;
+            return;
+        }
+        
+        const chartElement = document.getElementById("workoutChart");
+        if (!chartElement) {
+            console.error("Chart canvas element not found");
+            return;
+        }
+        
+        const ctx = chartElement.getContext("2d");
+        if (!ctx) {
+            console.error("Could not get 2d context from canvas");
+            return;
+        }
         
         // Destroy previous chart instance if it exists
         if (currentChart) {
             currentChart.destroy();
         }
         
-        // Prepare chart data
-        const labels = workoutData.map(d => formatTimestamp(d.timestamp_offset)); // Use offset for x-axis
+        console.log("Rendering chart with data series:", dataSeries);
+        
+        // Calculate the data length from the longest available array
+        const dataLengths = [
+            dataSeries.powers ? dataSeries.powers.length : 0,
+            dataSeries.cadences ? dataSeries.cadences.length : 0,
+            dataSeries.heart_rates ? dataSeries.heart_rates.length : 0,
+            dataSeries.speeds ? dataSeries.speeds.length : 0
+        ];
+        const dataLength = Math.max(...dataLengths);
+        
+        console.log("Chart data length:", dataLength);
+        
+        // Create sequential time labels based on the length of data
+        const labels = [];
+        for (let i = 0; i < dataLength; i++) {
+            labels.push(formatTimestamp(i));
+        }
+        
         const datasets = [];
         
         // Power data (always include if available)
-        if (workoutData.some(d => d.power !== null && d.power !== undefined)) {
+        if (dataSeries.powers && dataSeries.powers.length > 0) {
             datasets.push({
                 label: "Power (W)",
-                data: workoutData.map(d => d.power),
+                data: dataSeries.powers,
                 borderColor: "rgba(255, 99, 132, 1)",
                 backgroundColor: "rgba(255, 99, 132, 0.2)",
                 yAxisID: "yPower",
@@ -484,14 +609,14 @@
         }
         
         // Speed data (convert based on preference)
-        if (workoutData.some(d => d.speed !== null && d.speed !== undefined)) {
+        if (dataSeries.speeds && dataSeries.speeds.length > 0) {
             let speedData;
             let speedLabel = "Speed";
             if (userUnitSystem === "imperial") {
-                speedData = workoutData.map(d => d.speed ? unitConversions.msToMph(d.speed) : null);
+                speedData = dataSeries.speeds.map(speed => speed ? unitConversions.msToMph(speed) : null);
                 speedLabel = "Speed (mph)";
             } else {
-                speedData = workoutData.map(d => d.speed ? unitConversions.msToKph(d.speed) : null);
+                speedData = dataSeries.speeds.map(speed => speed ? unitConversions.msToKph(speed) : null);
                 speedLabel = "Speed (km/h)";
             }
             datasets.push({
@@ -507,10 +632,10 @@
         
         // Cadence or Stroke Rate data
         if (workoutType === "bike" || workoutType === "cycling") {
-            if (workoutData.some(d => d.cadence !== null && d.cadence !== undefined)) {
+            if (dataSeries.cadences && dataSeries.cadences.length > 0) {
                 datasets.push({
                     label: "Cadence (RPM)",
-                    data: workoutData.map(d => d.cadence),
+                    data: dataSeries.cadences,
                     borderColor: "rgba(75, 192, 192, 1)",
                     backgroundColor: "rgba(75, 192, 192, 0.2)",
                     yAxisID: "yCadence",
@@ -519,10 +644,12 @@
                 });
             }
         } else if (workoutType === "rower" || workoutType === "rowing") {
-            if (workoutData.some(d => d.stroke_rate !== null && d.stroke_rate !== undefined)) {
+            // For rowers, check if stroke_rates array exists, otherwise fallback to cadences
+            const strokeRateData = dataSeries.stroke_rates || dataSeries.cadences;
+            if (strokeRateData && strokeRateData.length > 0) {
                 datasets.push({
                     label: "Stroke Rate (spm)",
-                    data: workoutData.map(d => d.stroke_rate),
+                    data: strokeRateData,
                     borderColor: "rgba(153, 102, 255, 1)",
                     backgroundColor: "rgba(153, 102, 255, 0.2)",
                     yAxisID: "yCadence", // Reuse cadence axis for stroke rate
@@ -533,10 +660,10 @@
         }
         
         // Heart Rate data
-        if (workoutData.some(d => d.heart_rate !== null && d.heart_rate !== undefined)) {
+        if (dataSeries.heart_rates && dataSeries.heart_rates.length > 0) {
             datasets.push({
                 label: "Heart Rate (bpm)",
-                data: workoutData.map(d => d.heart_rate),
+                data: dataSeries.heart_rates,
                 borderColor: "rgba(255, 159, 64, 1)",
                 backgroundColor: "rgba(255, 159, 64, 0.2)",
                 yAxisID: "yHeartRate",
@@ -544,6 +671,8 @@
                 tension: 0.1
             });
         }
+        
+        console.log("Creating chart with datasets:", datasets);
         
         // Configure chart options
         const chartOptions = {
@@ -614,14 +743,21 @@
         };
         
         // Create the chart
-        currentChart = new Chart(ctx, {
-            type: "line",
-            data: {
-                labels: labels,
-                datasets: datasets
-            },
-            options: chartOptions
-        });
+        try {
+            currentChart = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: labels,
+                    datasets: datasets
+                },
+                options: chartOptions
+            });
+            console.log("Chart created successfully");
+        } catch (error) {
+            console.error("Error creating chart:", error);
+            const chartContainer = document.getElementById("workoutChart").parentNode;
+            chartContainer.innerHTML = `<div class="alert alert-danger">Error creating chart: ${error.message}</div>`;
+        }
     }
     
     // Convert workout to FIT file

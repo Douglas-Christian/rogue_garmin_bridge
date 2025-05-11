@@ -1,0 +1,36 @@
+2025-05-11 18:22:07,805 - web - ERROR - Error in workout operations: float() argument must be a string or a real number, not 'datetime.datetime'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\web\app.py", line 480, in workout_operations
+    workout['data_series'][key] = [float(v) if v is not None else 0 for v in values]
+                                   ^^^^^^^^
+TypeError: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-05-11 18:28:53,237 - web - ERROR - Error in workout operations: float() argument must be a string or a real number, not 'datetime.datetime'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\web\app.py", line 480, in workout_operations
+    workout['data_series'][key] = [float(v) if v is not None else 0 for v in values]
+                                   ^^^^^^^^
+TypeError: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-05-11 18:28:53,858 - web - ERROR - Error in workout operations: float() argument must be a string or a real number, not 'datetime.datetime'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\web\app.py", line 480, in workout_operations
+    workout['data_series'][key] = [float(v) if v is not None else 0 for v in values]
+                                   ^^^^^^^^
+TypeError: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-05-11 18:28:54,887 - web - ERROR - Error in workout operations: float() argument must be a string or a real number, not 'datetime.datetime'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\web\app.py", line 480, in workout_operations
+    workout['data_series'][key] = [float(v) if v is not None else 0 for v in values]
+                                   ^^^^^^^^
+TypeError: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-05-11 18:28:56,209 - web - ERROR - Error in workout operations: float() argument must be a string or a real number, not 'datetime.datetime'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\web\app.py", line 480, in workout_operations
+    workout['data_series'][key] = [float(v) if v is not None else 0 for v in values]
+                                   ^^^^^^^^
+TypeError: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-05-11 18:28:57,645 - web - ERROR - Error in workout operations: float() argument must be a string or a real number, not 'datetime.datetime'
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\web\app.py", line 480, in workout_operations
+    workout['data_series'][key] = [float(v) if v is not None else 0 for v in values]
+                                   ^^^^^^^^
+TypeError: float() argument must be a string or a real number, not 'datetime.datetime'
