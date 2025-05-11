@@ -211,13 +211,18 @@ class FTMSConnector:
                                f"Cadence: {getattr(data, 'instantaneous_cadence', 'N/A')}, " +
                                f"Power: {getattr(data, 'instantaneous_power', 'N/A')}")
                 
-                # Standardize field names
+                # Standardize field names and ensure values are not None
                 if "instantaneous_speed" in processed_data:
                     processed_data["speed"] = processed_data.pop("instantaneous_speed")
                 if "instantaneous_cadence" in processed_data:
                     processed_data["cadence"] = processed_data.pop("instantaneous_cadence")
                 if "instantaneous_power" in processed_data:
                     processed_data["power"] = processed_data.pop("instantaneous_power")
+                
+                # Ensure critical values are present and not None
+                processed_data["speed"] = processed_data.get("speed", 0) or 0
+                processed_data["cadence"] = processed_data.get("cadence", 0) or 0
+                processed_data["power"] = processed_data.get("power", 0) or 0
                 
                 logger.info(f"Forwarding processed bike data to _notify_data")
                 self._notify_data(processed_data)

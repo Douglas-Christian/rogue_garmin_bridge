@@ -118,7 +118,7 @@ class FITProcessor:
         workout_type = workout.get('workout_type', 'bike')
         
         # Extract data series
-        data_series = self._extract_data_series(data_points, workout_type)
+        data_series = self._extract_data_series(workout_type, data_points)
         
         # If summary exists in workout as string, parse it
         summary = {}
@@ -199,93 +199,81 @@ class FITProcessor:
         
         return structured_data
     
-    def _extract_data_series(self, data_points: List[Dict[str, Any]], workout_type: str) -> Dict[str, List]:
+    def _extract_data_series(self, workout_type: str, data_points: List[Dict[str, Any]]) -> Dict[str, List[Any]]:
         """
-        Extract data series from data points in an optimized way.
-        
-        This method efficiently extracts all needed data series in a single pass through
-        the data points, avoiding multiple iterations.
+        Extract data series from data points for use in FIT file.
         
         Args:
-            data_points: Workout data points
-            workout_type: Type of workout (bike, rower)
+            workout_type: Type of workout ('bike' or 'rower')
+            data_points: List of data points
             
         Returns:
             Dictionary of data series
         """
-        # Initialize all series
+        # Initialize data series with empty lists
         series = {
             'timestamps': [],
             'absolute_timestamps': [],
             'powers': [],
+            'cadences': [],
+            'speeds': [],
             'heart_rates': [],
-            'distances': []
+            'distances': [],
+            'stroke_rates': [],
+            'average_powers': [],
+            'average_cadences': [],
+            'average_speeds': []
         }
         
-        # Add workout type specific series
-        if workout_type == 'bike':
-            series.update({
-                'cadences': [],
-                'speeds': [],
-                'average_powers': [],    # Added for tracking average power
-                'average_cadences': [],  # Added for tracking average cadence
-                'average_speeds': []     # Added for tracking average speed
-            })
-        elif workout_type == 'rower':
-            series.update({
-                'stroke_rates': []
-            })
-        
-        # Process all data points in a single pass
-        start_time = data_points[0]['timestamp'] if data_points else None
-        
+        # Extract data for each timestamp
         for point in data_points:
-            # Handle timestamps
-            abs_ts = point['timestamp']
-            series['absolute_timestamps'].append(abs_ts)
-            
-            # Relative timestamp in seconds from start
-            if start_time:
-                rel_ts = (abs_ts - start_time).total_seconds()
-                series['timestamps'].append(rel_ts)
+            # Extract timestamp
+            if 'timestamp' in point:
+                # Store the relative timestamp (seconds from start)
+                series['timestamps'].append(point['timestamp'])
+                
+                # If we have an absolute timestamp, store it too
+                if 'absolute_timestamp' in point:
+                    series['absolute_timestamps'].append(point['absolute_timestamp'])
             
             # Add common metrics - check multiple possible field names
             # For power, check various field names with fallback
             power = point.get('instant_power', 
                       point.get('instantaneous_power', 
                       point.get('power', 0)))
-            series['powers'].append(power)
+            # Ensure power is always included - very important!
+            series['powers'].append(power if power is not None else 0)
+            
+            # For cadence, check various field names with fallback (moved outside workout_type check)
+            cadence = point.get('instant_cadence', 
+                       point.get('instantaneous_cadence', 
+                       point.get('cadence', 0)))
+            # Ensure cadence is always included
+            series['cadences'].append(cadence if cadence is not None else 0)
+            
+            # For speed, check various field names with fallback (moved outside workout_type check)
+            speed = point.get('instant_speed', 
+                     point.get('instantaneous_speed', 
+                     point.get('speed', 0)))
+            # Ensure speed is always included
+            series['speeds'].append(speed if speed is not None else 0)
             
             # Heart rate
-            series['heart_rates'].append(point.get('heart_rate', 0))
+            series['heart_rates'].append(point.get('heart_rate', 0) or 0)  # Convert None to 0
             
             # Distance
-            series['distances'].append(point.get('total_distance', 0))
+            series['distances'].append(point.get('total_distance', 0) or 0)  # Convert None to 0
             
-            # Add workout type specific metrics
-            if workout_type == 'bike':
-                # For cadence, check various field names with fallback
-                cadence = point.get('instant_cadence', 
-                           point.get('instantaneous_cadence', 
-                           point.get('cadence', 0)))
-                series['cadences'].append(cadence)
-                
-                # For speed, check various field names with fallback
-                speed = point.get('instant_speed', 
-                         point.get('instantaneous_speed', 
-                         point.get('speed', 0)))
-                series['speeds'].append(speed)
-                
-                # Add average values when available - but ignore average_speed from Echo bike
-                series['average_powers'].append(point.get('average_power', power))
-                series['average_cadences'].append(point.get('average_cadence', cadence))
-                
-                # Skip device-reported average_speed and leave it for recalculation later
-                # This ensures we don't use the incorrect values from the Echo bike
-                series['average_speeds'].append(0)  # Use 0 as a placeholder
-                
-            elif workout_type == 'rower':
-                series['stroke_rates'].append(point.get('stroke_rate', 0))
+            # Add average values for all workout types
+            series['average_powers'].append(point.get('average_power', power) or 0)
+            series['average_cadences'].append(point.get('average_cadence', cadence) or 0)
+            
+            # Skip device-reported average_speed and leave it for recalculation later
+            # This ensures we don't use the incorrect values from the Echo bike
+            series['average_speeds'].append(point.get('average_speed', 0) or 0)
+            
+            # Always add stroke rate (will be 0 for non-rowers)
+            series['stroke_rates'].append(point.get('stroke_rate', 0) or 0)
         
         # Calculate the average speed ourselves if this is a bike workout
         if workout_type == 'bike' and series['speeds']:
@@ -299,6 +287,12 @@ class FITProcessor:
                 # We'll add it to the return value of _structure_data_for_fit in the next step
             else:
                 logger.warning("No valid speed values found to calculate average speed")
+        
+        # Log some debug info about the data series
+        logger.info(f"Extracted data series - points: {len(series['timestamps'])}, powers: {len(series['powers'])}, speeds: {len(series['speeds'])}, cadences: {len(series['cadences'])}")
+        logger.debug(f"First 3 power values: {series['powers'][:3]}")
+        logger.debug(f"First 3 speed values: {series['speeds'][:3]}")
+        logger.debug(f"First 3 cadence values: {series['cadences'][:3]}")
         
         return series
 
