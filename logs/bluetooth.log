@@ -1,0 +1,1109 @@
+2025-05-11 17:18:21,311 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 17:18:22,234 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 17:19:24,595 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-05-11 17:19:26,932 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:26.923518', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 98, 'elapsed_time': 0}
+2025-05-11 17:19:26,980 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:26,981 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:19:26,981 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:26,982 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:19:27,918 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:27.911850', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 97, 'elapsed_time': 1}
+2025-05-11 17:19:27,919 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:27,919 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:19:27,921 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:27,922 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:19:28,967 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:28.961855', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 97, 'elapsed_time': 2}
+2025-05-11 17:19:28,968 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:28,968 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:19:28,969 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:28,970 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:19:29,928 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:29.921921', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 97, 'elapsed_time': 3}
+2025-05-11 17:19:29,928 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:29,929 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:29,930 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:29,931 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:30,949 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:30.942212', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 97, 'elapsed_time': 4}
+2025-05-11 17:19:30,950 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:30,950 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:30,952 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:30,953 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:31,938 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:31.931334', 'speed': 1.12, 'average_speed': 0.13, 'cadence': 2.0, 'average_cadence': 3.0, 'distance': 0, 'power': 2, 'average_power': 2, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 97, 'elapsed_time': 5}
+2025-05-11 17:19:31,939 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:31,940 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:31,941 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:31,941 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:32,960 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:32.953141', 'speed': 5.3, 'average_speed': 0.26, 'cadence': 9.0, 'average_cadence': 7.0, 'distance': 0, 'power': 7, 'average_power': 5, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 97, 'elapsed_time': 6}
+2025-05-11 17:19:32,961 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:32,961 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:32,962 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:32,963 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:33,916 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:33.911293', 'speed': 9.49, 'average_speed': 0.41, 'cadence': 16.0, 'average_cadence': 11.0, 'distance': 0, 'power': 12, 'average_power': 8, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 97, 'elapsed_time': 7}
+2025-05-11 17:19:33,918 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:33,918 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:33,919 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:33,919 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:34,996 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:34.992397', 'speed': 12.55, 'average_speed': 0.5, 'cadence': 21.0, 'average_cadence': 13.0, 'distance': 16, 'power': 18, 'average_power': 10, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 97, 'elapsed_time': 8}
+2025-05-11 17:19:34,997 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:34,997 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:34,997 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:34,999 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:35,950 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:35.927155', 'speed': 14.32, 'average_speed': 0.59, 'cadence': 24.0, 'average_cadence': 16.0, 'distance': 16, 'power': 25, 'average_power': 12, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 97, 'elapsed_time': 9}
+2025-05-11 17:19:35,952 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:35,957 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:35,961 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:35,965 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:36,946 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:36.941548', 'speed': 14.32, 'average_speed': 0.6, 'cadence': 24.0, 'average_cadence': 16.0, 'distance': 16, 'power': 25, 'average_power': 12, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 96, 'elapsed_time': 10}
+2025-05-11 17:19:36,947 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:36,948 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:36,948 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:36,949 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:37,937 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:37.931790', 'speed': 14.96, 'average_speed': 0.65, 'cadence': 25.0, 'average_cadence': 17.0, 'distance': 32, 'power': 28, 'average_power': 13, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 94, 'elapsed_time': 11}
+2025-05-11 17:19:37,938 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:37,939 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:37,939 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:37,940 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:38,989 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:38.981493', 'speed': 14.96, 'average_speed': 0.7, 'cadence': 25.0, 'average_cadence': 19.0, 'distance': 32, 'power': 28, 'average_power': 14, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 12}
+2025-05-11 17:19:38,989 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:38,990 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:38,991 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:38,991 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:39,919 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:39.911868', 'speed': 16.73, 'average_speed': 0.75, 'cadence': 28.0, 'average_cadence': 20.0, 'distance': 32, 'power': 36, 'average_power': 15, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 89, 'elapsed_time': 13}
+2025-05-11 17:19:39,920 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:39,921 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:39,922 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:39,922 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:40,937 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:40.930493', 'speed': 17.37, 'average_speed': 0.78, 'cadence': 29.0, 'average_cadence': 21.0, 'distance': 48, 'power': 38, 'average_power': 18, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 89, 'elapsed_time': 14}
+2025-05-11 17:19:40,939 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:40,939 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:40,939 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:40,939 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:41,993 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:41.980683', 'speed': 18.5, 'average_speed': 0.81, 'cadence': 31.0, 'average_cadence': 22.0, 'distance': 48, 'power': 45, 'average_power': 20, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 89, 'elapsed_time': 15}
+2025-05-11 17:19:41,993 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:41,995 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:41,997 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:41,997 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:42,978 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:42.972605', 'speed': 19.14, 'average_speed': 0.85, 'cadence': 32.0, 'average_cadence': 22.0, 'distance': 48, 'power': 49, 'average_power': 20, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 16}
+2025-05-11 17:19:42,979 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:42,979 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:42,979 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:42,980 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:43,967 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:43.962103', 'speed': 19.62, 'average_speed': 0.86, 'cadence': 33.0, 'average_cadence': 23.0, 'distance': 64, 'power': 53, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 17}
+2025-05-11 17:19:43,968 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:43,968 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:43,968 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:43,970 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:44,927 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:44.922455', 'speed': 19.62, 'average_speed': 0.89, 'cadence': 33.0, 'average_cadence': 24.0, 'distance': 64, 'power': 53, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 18}
+2025-05-11 17:19:44,928 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:44,929 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:44,929 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:44,931 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:45,921 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:45.912202', 'speed': 20.27, 'average_speed': 0.92, 'cadence': 34.0, 'average_cadence': 24.0, 'distance': 80, 'power': 57, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 94, 'elapsed_time': 19}
+2025-05-11 17:19:45,922 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:45,923 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:45,923 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:45,924 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:46,967 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:46.961382', 'speed': 20.27, 'average_speed': 0.95, 'cadence': 34.0, 'average_cadence': 25.0, 'distance': 80, 'power': 57, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 98, 'elapsed_time': 20}
+2025-05-11 17:19:46,968 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:46,968 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:46,968 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:46,968 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:47,987 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:47.982442', 'speed': 20.91, 'average_speed': 0.95, 'cadence': 35.0, 'average_cadence': 25.0, 'distance': 80, 'power': 62, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 98, 'elapsed_time': 21}
+2025-05-11 17:19:47,988 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:47,989 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:47,989 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:47,990 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:48,917 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:48.911582', 'speed': 20.27, 'average_speed': 0.97, 'cadence': 34.0, 'average_cadence': 26.0, 'distance': 96, 'power': 57, 'average_power': 31, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 22}
+2025-05-11 17:19:48,917 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:48,917 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:48,917 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:48,917 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:49,994 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:49.988843', 'speed': 20.27, 'average_speed': 0.98, 'cadence': 34.0, 'average_cadence': 26.0, 'distance': 96, 'power': 57, 'average_power': 31, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 23}
+2025-05-11 17:19:49,994 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:49,996 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:49,996 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:49,996 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:50,965 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:50.952714', 'speed': 20.27, 'average_speed': 0.99, 'cadence': 34.0, 'average_cadence': 26.0, 'distance': 96, 'power': 57, 'average_power': 31, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 24}
+2025-05-11 17:19:50,966 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:50,968 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:50,969 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:50,971 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:52,008 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:52.002222', 'speed': 19.62, 'average_speed': 1.01, 'cadence': 33.0, 'average_cadence': 27.0, 'distance': 112, 'power': 53, 'average_power': 33, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 25}
+2025-05-11 17:19:52,009 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:52,009 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:52,010 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:52,011 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:52,938 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:52.931728', 'speed': 20.27, 'average_speed': 1.01, 'cadence': 34.0, 'average_cadence': 27.0, 'distance': 112, 'power': 57, 'average_power': 33, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 26}
+2025-05-11 17:19:52,939 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:52,939 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:52,940 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:52,940 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:53,928 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:53.923108', 'speed': 19.62, 'average_speed': 1.01, 'cadence': 33.0, 'average_cadence': 27.0, 'distance': 112, 'power': 53, 'average_power': 33, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 27}
+2025-05-11 17:19:53,928 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:53,929 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:53,929 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:53,929 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:54,946 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:54.942393', 'speed': 16.73, 'average_speed': 0.99, 'cadence': 28.0, 'average_cadence': 26.0, 'distance': 112, 'power': 36, 'average_power': 31, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 101, 'elapsed_time': 28}
+2025-05-11 17:19:54,946 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:54,947 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:54,947 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:54,948 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:55,941 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:55.932472', 'speed': 14.96, 'average_speed': 0.97, 'cadence': 25.0, 'average_cadence': 26.0, 'distance': 112, 'power': 28, 'average_power': 31, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 100, 'elapsed_time': 29}
+2025-05-11 17:19:55,942 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:55,943 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:55,944 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:55,945 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:56,958 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:56.951087', 'speed': 13.67, 'average_speed': 0.96, 'cadence': 23.0, 'average_cadence': 26.0, 'distance': 128, 'power': 23, 'average_power': 31, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 100, 'elapsed_time': 30}
+2025-05-11 17:19:56,958 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:56,958 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:56,958 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:56,958 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:57,915 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:57.912373', 'speed': 13.67, 'average_speed': 0.96, 'cadence': 23.0, 'average_cadence': 25.0, 'distance': 128, 'power': 23, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 100, 'elapsed_time': 31}
+2025-05-11 17:19:57,915 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:57,915 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:57,915 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:57,918 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:58,966 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:58.961770', 'speed': 16.09, 'average_speed': 0.98, 'cadence': 27.0, 'average_cadence': 26.0, 'distance': 128, 'power': 33, 'average_power': 31, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 100, 'elapsed_time': 32}
+2025-05-11 17:19:58,967 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:58,968 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:58,969 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:58,969 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:19:59,929 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:59.923796', 'speed': 17.37, 'average_speed': 1.0, 'cadence': 29.0, 'average_cadence': 26.0, 'distance': 144, 'power': 38, 'average_power': 31, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 99, 'elapsed_time': 33}
+2025-05-11 17:19:59,930 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:19:59,931 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:19:59,931 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:19:59,932 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:00,950 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:00.941174', 'speed': 19.62, 'average_speed': 1.01, 'cadence': 33.0, 'average_cadence': 27.0, 'distance': 144, 'power': 53, 'average_power': 33, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 99, 'elapsed_time': 34}
+2025-05-11 17:20:00,950 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:00,950 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:00,950 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:00,950 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:01,937 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:01.931765', 'speed': 20.27, 'average_speed': 1.02, 'cadence': 34.0, 'average_cadence': 27.0, 'distance': 160, 'power': 57, 'average_power': 33, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 99, 'elapsed_time': 35}
+2025-05-11 17:20:01,937 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:01,939 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:01,939 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:01,941 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:02,926 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:02.922300', 'speed': 21.56, 'average_speed': 1.04, 'cadence': 36.0, 'average_cadence': 28.0, 'distance': 160, 'power': 66, 'average_power': 36, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 99, 'elapsed_time': 36}
+2025-05-11 17:20:02,927 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:02,927 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:02,929 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:02,929 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:03,938 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:03.912899', 'speed': 22.04, 'average_speed': 1.04, 'cadence': 37.0, 'average_cadence': 28.0, 'distance': 160, 'power': 70, 'average_power': 36, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 99, 'elapsed_time': 37}
+2025-05-11 17:20:03,940 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:03,941 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:03,943 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:03,945 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:04,967 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:04.962186', 'speed': 22.68, 'average_speed': 1.05, 'cadence': 38.0, 'average_cadence': 28.0, 'distance': 176, 'power': 74, 'average_power': 36, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 98, 'elapsed_time': 38}
+2025-05-11 17:20:04,967 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:04,968 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:04,968 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:04,970 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:05,927 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:05.922663', 'speed': 22.68, 'average_speed': 1.07, 'cadence': 38.0, 'average_cadence': 28.0, 'distance': 176, 'power': 74, 'average_power': 36, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 98, 'elapsed_time': 39}
+2025-05-11 17:20:05,927 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:05,929 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:05,929 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:05,929 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:06,947 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:06.942526', 'speed': 22.04, 'average_speed': 1.07, 'cadence': 37.0, 'average_cadence': 28.0, 'distance': 193, 'power': 70, 'average_power': 36, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 98, 'elapsed_time': 40}
+2025-05-11 17:20:06,947 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:06,948 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:06,949 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:06,949 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:07,937 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:07.932515', 'speed': 22.68, 'average_speed': 1.09, 'cadence': 38.0, 'average_cadence': 29.0, 'distance': 193, 'power': 74, 'average_power': 38, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 99, 'elapsed_time': 41}
+2025-05-11 17:20:07,939 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:07,940 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:07,940 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:07,941 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:09,078 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:09.073276', 'speed': 22.68, 'average_speed': 1.09, 'cadence': 38.0, 'average_cadence': 29.0, 'distance': 193, 'power': 74, 'average_power': 38, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 99, 'elapsed_time': 42}
+2025-05-11 17:20:09,078 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:09,078 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:09,080 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:09,081 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:09,951 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:09.915051', 'speed': 22.68, 'average_speed': 1.1, 'cadence': 38.0, 'average_cadence': 29.0, 'distance': 209, 'power': 74, 'average_power': 38, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 99, 'elapsed_time': 43}
+2025-05-11 17:20:09,952 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:09,953 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:09,953 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:09,955 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:10,967 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:10.962712', 'speed': 22.68, 'average_speed': 1.1, 'cadence': 38.0, 'average_cadence': 29.0, 'distance': 209, 'power': 74, 'average_power': 38, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 100, 'elapsed_time': 44}
+2025-05-11 17:20:10,967 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:10,968 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:10,968 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:10,969 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:11,959 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:11.952520', 'speed': 22.68, 'average_speed': 1.11, 'cadence': 38.0, 'average_cadence': 30.0, 'distance': 225, 'power': 74, 'average_power': 41, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 100, 'elapsed_time': 45}
+2025-05-11 17:20:11,959 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:11,959 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:11,960 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:11,960 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:12,918 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:12.911756', 'speed': 22.68, 'average_speed': 1.12, 'cadence': 38.0, 'average_cadence': 30.0, 'distance': 225, 'power': 74, 'average_power': 41, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 100, 'elapsed_time': 46}
+2025-05-11 17:20:12,918 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:12,919 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:12,919 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:12,919 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:13,938 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:13.933059', 'speed': 22.68, 'average_speed': 1.13, 'cadence': 38.0, 'average_cadence': 30.0, 'distance': 225, 'power': 74, 'average_power': 41, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 100, 'elapsed_time': 47}
+2025-05-11 17:20:13,939 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:13,940 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:13,940 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:13,941 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:14,926 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:14.922377', 'speed': 22.04, 'average_speed': 1.13, 'cadence': 37.0, 'average_cadence': 30.0, 'distance': 241, 'power': 70, 'average_power': 41, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 100, 'elapsed_time': 48}
+2025-05-11 17:20:14,927 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:14,929 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:14,929 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:14,929 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:15,917 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:15.912105', 'speed': 22.04, 'average_speed': 1.13, 'cadence': 37.0, 'average_cadence': 30.0, 'distance': 241, 'power': 70, 'average_power': 41, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 101, 'elapsed_time': 49}
+2025-05-11 17:20:15,917 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:15,918 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:15,918 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:15,919 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:16,940 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:16.933299', 'speed': 22.04, 'average_speed': 1.14, 'cadence': 37.0, 'average_cadence': 30.0, 'distance': 241, 'power': 70, 'average_power': 41, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 50}
+2025-05-11 17:20:16,940 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:16,941 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:16,941 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:16,942 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:17,928 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:17.923070', 'speed': 22.04, 'average_speed': 1.14, 'cadence': 37.0, 'average_cadence': 30.0, 'distance': 257, 'power': 70, 'average_power': 41, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 51}
+2025-05-11 17:20:17,929 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:17,930 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:17,930 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:17,931 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:18,948 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:18.942880', 'speed': 21.56, 'average_speed': 1.15, 'cadence': 36.0, 'average_cadence': 30.0, 'distance': 257, 'power': 66, 'average_power': 41, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 103, 'elapsed_time': 52}
+2025-05-11 17:20:18,949 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:18,949 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:18,950 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:18,950 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:19,940 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:19.931827', 'speed': 21.56, 'average_speed': 1.15, 'cadence': 36.0, 'average_cadence': 30.0, 'distance': 273, 'power': 66, 'average_power': 41, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 103, 'elapsed_time': 53}
+2025-05-11 17:20:19,942 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:19,943 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:19,943 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:19,944 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:20,959 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:20.952608', 'speed': 22.04, 'average_speed': 1.15, 'cadence': 37.0, 'average_cadence': 31.0, 'distance': 273, 'power': 70, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 104, 'elapsed_time': 54}
+2025-05-11 17:20:20,959 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:20,959 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:20,960 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:20,960 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:21,918 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:21.913066', 'speed': 22.68, 'average_speed': 1.16, 'cadence': 38.0, 'average_cadence': 31.0, 'distance': 273, 'power': 74, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 105, 'elapsed_time': 55}
+2025-05-11 17:20:21,918 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:21,919 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:21,920 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:21,921 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:22,969 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:22.963058', 'speed': 22.04, 'average_speed': 1.16, 'cadence': 37.0, 'average_cadence': 31.0, 'distance': 289, 'power': 70, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 106, 'elapsed_time': 56}
+2025-05-11 17:20:22,969 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:22,970 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:22,971 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:22,972 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:23,928 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:23.924244', 'speed': 22.04, 'average_speed': 1.17, 'cadence': 37.0, 'average_cadence': 31.0, 'distance': 289, 'power': 70, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 106, 'elapsed_time': 57}
+2025-05-11 17:20:23,930 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:23,931 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:23,931 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:23,932 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:25,008 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:25.002434', 'speed': 22.04, 'average_speed': 1.17, 'cadence': 37.0, 'average_cadence': 31.0, 'distance': 305, 'power': 70, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 107, 'elapsed_time': 58}
+2025-05-11 17:20:25,009 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:25,009 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:25,010 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:25,010 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:25,937 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:25.932742', 'speed': 22.04, 'average_speed': 1.17, 'cadence': 37.0, 'average_cadence': 31.0, 'distance': 305, 'power': 70, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 107, 'elapsed_time': 59}
+2025-05-11 17:20:25,938 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:25,938 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:25,939 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:25,939 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:26,957 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:26.954123', 'speed': 22.04, 'average_speed': 1.18, 'cadence': 37.0, 'average_cadence': 31.0, 'distance': 305, 'power': 70, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 107, 'elapsed_time': 60}
+2025-05-11 17:20:26,957 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:26,959 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:26,959 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:26,959 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:27,938 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:27.914396', 'speed': 21.56, 'average_speed': 1.18, 'cadence': 36.0, 'average_cadence': 31.0, 'distance': 321, 'power': 66, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 105, 'elapsed_time': 61}
+2025-05-11 17:20:27,940 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:27,942 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:27,946 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:27,950 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:28,968 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:28.963245', 'speed': 21.56, 'average_speed': 1.18, 'cadence': 36.0, 'average_cadence': 31.0, 'distance': 321, 'power': 66, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 104, 'elapsed_time': 62}
+2025-05-11 17:20:28,969 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:28,969 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:28,969 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:28,970 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:29,929 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:29.923786', 'speed': 22.04, 'average_speed': 1.18, 'cadence': 37.0, 'average_cadence': 31.0, 'distance': 321, 'power': 70, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 103, 'elapsed_time': 63}
+2025-05-11 17:20:29,929 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:29,931 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:29,932 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:29,932 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:30,977 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:30.972797', 'speed': 22.04, 'average_speed': 1.19, 'cadence': 37.0, 'average_cadence': 31.0, 'distance': 337, 'power': 70, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 64}
+2025-05-11 17:20:30,977 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:30,978 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:30,979 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:30,979 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:31,970 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:31.963308', 'speed': 21.56, 'average_speed': 1.19, 'cadence': 36.0, 'average_cadence': 31.0, 'distance': 337, 'power': 66, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 65}
+2025-05-11 17:20:31,970 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:31,971 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:31,971 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:31,972 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:32,959 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:32.953251', 'speed': 20.91, 'average_speed': 1.19, 'cadence': 35.0, 'average_cadence': 32.0, 'distance': 353, 'power': 62, 'average_power': 49, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 66}
+2025-05-11 17:20:32,959 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:32,960 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:32,960 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:32,960 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:33,918 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:33.912956', 'speed': 20.91, 'average_speed': 1.19, 'cadence': 35.0, 'average_cadence': 32.0, 'distance': 353, 'power': 62, 'average_power': 49, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 67}
+2025-05-11 17:20:33,918 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:33,920 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:33,920 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:33,921 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:34,998 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:34.993148', 'speed': 20.27, 'average_speed': 1.19, 'cadence': 34.0, 'average_cadence': 31.0, 'distance': 353, 'power': 57, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 68}
+2025-05-11 17:20:34,998 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:35,000 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 1
+2025-05-11 17:20:35,000 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:35,000 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 1)
+2025-05-11 17:20:35,929 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:35.923627', 'speed': 17.37, 'average_speed': 1.18, 'cadence': 29.0, 'average_cadence': 31.0, 'distance': 353, 'power': 38, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 69}
+2025-05-11 17:20:35,930 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:35,931 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:20:35,931 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:35,932 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:20:36,979 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:36.974083', 'speed': 14.96, 'average_speed': 1.17, 'cadence': 25.0, 'average_cadence': 31.0, 'distance': 353, 'power': 28, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 101, 'elapsed_time': 70}
+2025-05-11 17:20:36,980 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:36,980 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:20:36,981 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:36,982 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:20:37,942 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:37.933330', 'speed': 14.96, 'average_speed': 1.15, 'cadence': 25.0, 'average_cadence': 31.0, 'distance': 353, 'power': 28, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 71}
+2025-05-11 17:20:37,943 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:37,943 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:20:37,943 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:37,944 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:20:38,930 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:38.924488', 'speed': 13.03, 'average_speed': 1.14, 'cadence': 22.0, 'average_cadence': 30.0, 'distance': 353, 'power': 20, 'average_power': 41, 'total_energy': 3, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 72}
+2025-05-11 17:20:38,931 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:38,931 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:20:38,932 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:38,933 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:20:39,919 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:39.913043', 'speed': 13.03, 'average_speed': 1.13, 'cadence': 22.0, 'average_cadence': 30.0, 'distance': 353, 'power': 20, 'average_power': 41, 'total_energy': 3, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 73}
+2025-05-11 17:20:39,919 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:39,919 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:20:39,920 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:39,921 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:20:40,937 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:40.933026', 'speed': 11.26, 'average_speed': 1.11, 'cadence': 19.0, 'average_cadence': 29.0, 'distance': 353, 'power': 14, 'average_power': 38, 'total_energy': 3, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 74}
+2025-05-11 17:20:40,939 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:40,940 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:20:40,940 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:40,941 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:20:41,928 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:41.923310', 'speed': 9.49, 'average_speed': 1.09, 'cadence': 16.0, 'average_cadence': 29.0, 'distance': 353, 'power': 12, 'average_power': 38, 'total_energy': 3, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 75}
+2025-05-11 17:20:41,929 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:41,929 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:20:41,929 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:41,930 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:20:42,949 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:42.943138', 'speed': 0.0, 'average_speed': 1.08, 'cadence': 0.0, 'average_cadence': 29.0, 'distance': 353, 'power': 0, 'average_power': 38, 'total_energy': 3, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 101, 'elapsed_time': 76}
+2025-05-11 17:20:42,949 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:42,950 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:20:42,950 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:42,950 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:20:43,938 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:43.932685', 'speed': 0.0, 'average_speed': 1.07, 'cadence': 0.0, 'average_cadence': 28.0, 'distance': 353, 'power': 0, 'average_power': 36, 'total_energy': 3, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 101, 'elapsed_time': 77}
+2025-05-11 17:20:43,938 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:43,940 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:20:43,940 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:43,941 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:20:44,954 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:44.948411', 'speed': 0.0, 'average_speed': 1.05, 'cadence': 0.0, 'average_cadence': 28.0, 'distance': 353, 'power': 0, 'average_power': 36, 'total_energy': 3, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 100, 'elapsed_time': 78}
+2025-05-11 17:20:44,954 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:44,954 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:20:44,954 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:44,961 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:20:45,918 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:45.913690', 'speed': 0.0, 'average_speed': 1.04, 'cadence': 0.0, 'average_cadence': 28.0, 'distance': 353, 'power': 0, 'average_power': 36, 'total_energy': 3, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 99, 'elapsed_time': 79}
+2025-05-11 17:20:45,919 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:20:45,919 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:20:45,920 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:20:45,920 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:47:50,611 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 17:47:51,809 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 17:48:36,295 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-05-11 17:48:39,038 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:39.026730', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 94, 'elapsed_time': 0}
+2025-05-11 17:48:39,040 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:39,044 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:48:39,048 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:39,050 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:48:39,985 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:39.976625', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 92, 'elapsed_time': 1}
+2025-05-11 17:48:39,987 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:39,991 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:48:39,994 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:39,995 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:48:40,976 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:40.966654', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 92, 'elapsed_time': 2}
+2025-05-11 17:48:40,979 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:40,982 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:48:40,982 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:40,983 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:48:41,993 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:41.986938', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 91, 'elapsed_time': 3}
+2025-05-11 17:48:41,994 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:41,994 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:48:41,995 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:41,997 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:48:42,950 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:42.944540', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 88, 'elapsed_time': 4}
+2025-05-11 17:48:42,952 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:42,952 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:48:42,953 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:42,953 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:48:44,000 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:43.994646', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 85, 'elapsed_time': 5}
+2025-05-11 17:48:44,002 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:44,003 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:48:44,003 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:44,005 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:48:44,954 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:44.954694', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 85, 'elapsed_time': 6}
+2025-05-11 17:48:44,963 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:44,964 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:48:44,964 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:44,966 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:48:46,007 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:46.006656', 'speed': 1.12, 'average_speed': 0.03, 'cadence': 2.0, 'average_cadence': 0.0, 'distance': 0, 'power': 2, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 84, 'elapsed_time': 7}
+2025-05-11 17:48:46,013 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:46,013 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:48:46,028 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:46,032 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:48:47,002 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:46.997953', 'speed': 2.89, 'average_speed': 0.16, 'cadence': 5.0, 'average_cadence': 4.0, 'distance': 0, 'power': 4, 'average_power': 3, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 83, 'elapsed_time': 8}
+2025-05-11 17:48:47,003 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:47,003 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:48:47,004 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:47,005 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:48:47,993 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:47.985988', 'speed': 8.84, 'average_speed': 0.27, 'cadence': 15.0, 'average_cadence': 7.0, 'distance': 0, 'power': 11, 'average_power': 5, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 83, 'elapsed_time': 9}
+2025-05-11 17:48:47,994 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:47,995 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:48:47,996 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:47,998 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:48:48,983 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:48.976095', 'speed': 12.55, 'average_speed': 0.38, 'cadence': 21.0, 'average_cadence': 10.0, 'distance': 16, 'power': 18, 'average_power': 8, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 82, 'elapsed_time': 10}
+2025-05-11 17:48:48,984 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:48,986 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:48:48,987 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:48,988 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:48:50,034 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:50.026747', 'speed': 13.03, 'average_speed': 0.46, 'cadence': 22.0, 'average_cadence': 12.0, 'distance': 16, 'power': 20, 'average_power': 9, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 83, 'elapsed_time': 11}
+2025-05-11 17:48:50,034 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:50,035 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:48:50,037 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:50,038 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:48:50,965 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:50.956984', 'speed': 15.44, 'average_speed': 0.52, 'cadence': 26.0, 'average_cadence': 14.0, 'distance': 16, 'power': 31, 'average_power': 11, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 83, 'elapsed_time': 12}
+2025-05-11 17:48:50,967 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:50,967 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:48:50,968 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:50,969 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:48:52,014 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:52.006720', 'speed': 16.73, 'average_speed': 0.58, 'cadence': 28.0, 'average_cadence': 15.0, 'distance': 32, 'power': 36, 'average_power': 11, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 84, 'elapsed_time': 13}
+2025-05-11 17:48:52,015 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:52,019 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:48:52,020 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:52,020 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:48:53,002 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:52.994685', 'speed': 17.37, 'average_speed': 0.62, 'cadence': 29.0, 'average_cadence': 16.0, 'distance': 32, 'power': 38, 'average_power': 12, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 84, 'elapsed_time': 14}
+2025-05-11 17:48:53,002 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:53,002 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:48:53,005 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:53,005 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:48:53,992 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:53.986726', 'speed': 18.5, 'average_speed': 0.67, 'cadence': 31.0, 'average_cadence': 18.0, 'distance': 48, 'power': 45, 'average_power': 14, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 85, 'elapsed_time': 15}
+2025-05-11 17:48:53,992 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:53,995 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:48:53,995 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:53,997 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:48:54,983 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:54.976653', 'speed': 18.5, 'average_speed': 0.71, 'cadence': 31.0, 'average_cadence': 19.0, 'distance': 48, 'power': 45, 'average_power': 14, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 86, 'elapsed_time': 16}
+2025-05-11 17:48:54,984 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:54,984 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:48:54,986 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:54,986 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:48:56,005 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:55.998048', 'speed': 19.14, 'average_speed': 0.73, 'cadence': 32.0, 'average_cadence': 19.0, 'distance': 48, 'power': 49, 'average_power': 14, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 89, 'elapsed_time': 17}
+2025-05-11 17:48:56,006 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:56,007 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:48:56,011 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:56,013 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:48:56,964 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:56.956638', 'speed': 17.85, 'average_speed': 0.75, 'cadence': 30.0, 'average_cadence': 20.0, 'distance': 48, 'power': 41, 'average_power': 15, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 91, 'elapsed_time': 18}
+2025-05-11 17:48:56,965 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:56,967 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:48:56,968 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:56,969 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:48:58,012 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:58.005641', 'speed': 16.09, 'average_speed': 0.74, 'cadence': 27.0, 'average_cadence': 19.0, 'distance': 64, 'power': 33, 'average_power': 14, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 92, 'elapsed_time': 19}
+2025-05-11 17:48:58,013 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:58,014 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:48:58,014 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:58,015 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:48:59,017 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:59.010951', 'speed': 13.67, 'average_speed': 0.73, 'cadence': 23.0, 'average_cadence': 19.0, 'distance': 64, 'power': 23, 'average_power': 14, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 92, 'elapsed_time': 20}
+2025-05-11 17:48:59,020 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:59,024 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:48:59,026 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:59,028 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:48:59,991 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:59.985832', 'speed': 13.67, 'average_speed': 0.73, 'cadence': 23.0, 'average_cadence': 19.0, 'distance': 64, 'power': 23, 'average_power': 14, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 92, 'elapsed_time': 21}
+2025-05-11 17:48:59,991 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:48:59,992 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:48:59,993 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:48:59,993 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:00,952 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:00.947081', 'speed': 16.09, 'average_speed': 0.76, 'cadence': 27.0, 'average_cadence': 20.0, 'distance': 64, 'power': 33, 'average_power': 15, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 22}
+2025-05-11 17:49:00,953 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:00,954 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:00,954 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:00,955 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:02,004 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:01.996843', 'speed': 16.73, 'average_speed': 0.77, 'cadence': 28.0, 'average_cadence': 20.0, 'distance': 80, 'power': 36, 'average_power': 15, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 23}
+2025-05-11 17:49:02,004 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:02,005 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:02,006 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:02,009 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:02,964 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:02.956474', 'speed': 17.85, 'average_speed': 0.8, 'cadence': 30.0, 'average_cadence': 21.0, 'distance': 80, 'power': 41, 'average_power': 18, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 88, 'elapsed_time': 24}
+2025-05-11 17:49:02,965 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:02,966 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:02,968 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:02,969 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:03,952 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:03.946408', 'speed': 18.5, 'average_speed': 0.82, 'cadence': 31.0, 'average_cadence': 22.0, 'distance': 96, 'power': 45, 'average_power': 20, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 86, 'elapsed_time': 25}
+2025-05-11 17:49:03,952 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:03,954 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:03,955 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:03,956 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:04,974 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:04.966774', 'speed': 19.14, 'average_speed': 0.85, 'cadence': 32.0, 'average_cadence': 22.0, 'distance': 96, 'power': 49, 'average_power': 20, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 84, 'elapsed_time': 26}
+2025-05-11 17:49:04,979 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:04,982 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:04,984 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:04,984 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:05,994 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:05.986582', 'speed': 19.62, 'average_speed': 0.86, 'cadence': 33.0, 'average_cadence': 23.0, 'distance': 96, 'power': 53, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 83, 'elapsed_time': 27}
+2025-05-11 17:49:05,996 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:05,996 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:05,998 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:05,998 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:06,954 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:06.947215', 'speed': 19.62, 'average_speed': 0.87, 'cadence': 33.0, 'average_cadence': 23.0, 'distance': 112, 'power': 53, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 82, 'elapsed_time': 28}
+2025-05-11 17:49:06,955 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:06,955 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:06,958 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:06,959 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:08,068 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:08.056829', 'speed': 19.62, 'average_speed': 0.88, 'cadence': 33.0, 'average_cadence': 23.0, 'distance': 112, 'power': 53, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 82, 'elapsed_time': 29}
+2025-05-11 17:49:08,071 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:08,072 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:08,073 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:08,073 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:08,964 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:08.956774', 'speed': 19.62, 'average_speed': 0.89, 'cadence': 33.0, 'average_cadence': 24.0, 'distance': 112, 'power': 53, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 83, 'elapsed_time': 30}
+2025-05-11 17:49:08,965 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:08,966 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:08,969 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:08,970 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:09,956 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:09.946982', 'speed': 19.14, 'average_speed': 0.9, 'cadence': 32.0, 'average_cadence': 24.0, 'distance': 128, 'power': 49, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 85, 'elapsed_time': 31}
+2025-05-11 17:49:09,956 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:09,958 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:09,961 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:09,962 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:10,971 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:10.967278', 'speed': 19.14, 'average_speed': 0.91, 'cadence': 32.0, 'average_cadence': 24.0, 'distance': 128, 'power': 49, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 86, 'elapsed_time': 32}
+2025-05-11 17:49:10,972 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:10,973 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:10,974 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:10,975 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:12,053 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:12.046905', 'speed': 18.5, 'average_speed': 0.92, 'cadence': 31.0, 'average_cadence': 24.0, 'distance': 128, 'power': 45, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 88, 'elapsed_time': 33}
+2025-05-11 17:49:12,053 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:12,054 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:12,056 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:12,058 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:12,951 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:12.945438', 'speed': 19.14, 'average_speed': 0.92, 'cadence': 32.0, 'average_cadence': 24.0, 'distance': 144, 'power': 49, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 88, 'elapsed_time': 34}
+2025-05-11 17:49:12,953 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:12,954 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:12,955 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:12,956 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:13,975 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:13.967626', 'speed': 19.14, 'average_speed': 0.93, 'cadence': 32.0, 'average_cadence': 25.0, 'distance': 144, 'power': 49, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 88, 'elapsed_time': 35}
+2025-05-11 17:49:13,976 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:13,978 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:13,979 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:13,981 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:14,963 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:14.957098', 'speed': 19.14, 'average_speed': 0.94, 'cadence': 32.0, 'average_cadence': 25.0, 'distance': 144, 'power': 49, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 88, 'elapsed_time': 36}
+2025-05-11 17:49:14,964 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:14,965 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:14,965 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:14,968 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:15,958 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:15.947148', 'speed': 18.5, 'average_speed': 0.95, 'cadence': 31.0, 'average_cadence': 25.0, 'distance': 160, 'power': 45, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 88, 'elapsed_time': 37}
+2025-05-11 17:49:15,962 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:15,962 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:15,964 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:15,966 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:16,983 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:16.966978', 'speed': 19.14, 'average_speed': 0.95, 'cadence': 32.0, 'average_cadence': 25.0, 'distance': 160, 'power': 49, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 89, 'elapsed_time': 38}
+2025-05-11 17:49:16,985 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:16,985 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:16,986 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:16,987 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:18,023 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:18.017473', 'speed': 19.14, 'average_speed': 0.96, 'cadence': 32.0, 'average_cadence': 25.0, 'distance': 160, 'power': 49, 'average_power': 28, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 89, 'elapsed_time': 39}
+2025-05-11 17:49:18,024 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:18,027 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:18,028 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:18,030 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:18,952 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:18.946721', 'speed': 19.14, 'average_speed': 0.96, 'cadence': 32.0, 'average_cadence': 25.0, 'distance': 176, 'power': 49, 'average_power': 28, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 89, 'elapsed_time': 40}
+2025-05-11 17:49:18,952 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:18,953 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:18,953 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:18,954 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:19,975 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:19.967780', 'speed': 19.14, 'average_speed': 0.97, 'cadence': 32.0, 'average_cadence': 26.0, 'distance': 176, 'power': 49, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 41}
+2025-05-11 17:49:19,975 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:19,976 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:19,978 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:19,980 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:20,993 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:20.986560', 'speed': 19.14, 'average_speed': 0.98, 'cadence': 32.0, 'average_cadence': 26.0, 'distance': 176, 'power': 49, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 89, 'elapsed_time': 42}
+2025-05-11 17:49:20,994 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:20,994 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:20,996 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:20,996 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:21,953 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:21.947161', 'speed': 19.14, 'average_speed': 0.98, 'cadence': 32.0, 'average_cadence': 26.0, 'distance': 193, 'power': 49, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 89, 'elapsed_time': 43}
+2025-05-11 17:49:21,954 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:21,955 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:21,956 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:21,957 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:22,974 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:22.966525', 'speed': 19.14, 'average_speed': 0.98, 'cadence': 32.0, 'average_cadence': 26.0, 'distance': 193, 'power': 49, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 44}
+2025-05-11 17:49:22,974 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:22,976 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:22,980 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:22,980 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:24,053 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:24.046503', 'speed': 19.14, 'average_speed': 0.99, 'cadence': 32.0, 'average_cadence': 26.0, 'distance': 193, 'power': 49, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 45}
+2025-05-11 17:49:24,055 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:24,058 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:24,061 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:24,062 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:24,982 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:24.977611', 'speed': 18.5, 'average_speed': 0.99, 'cadence': 31.0, 'average_cadence': 26.0, 'distance': 193, 'power': 45, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 46}
+2025-05-11 17:49:24,983 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:24,983 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:24,985 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:24,985 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:25,975 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:25.967096', 'speed': 17.85, 'average_speed': 0.99, 'cadence': 30.0, 'average_cadence': 26.0, 'distance': 209, 'power': 41, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 91, 'elapsed_time': 47}
+2025-05-11 17:49:25,982 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:25,984 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:25,984 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:25,985 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:27,030 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:27.017646', 'speed': 16.09, 'average_speed': 0.99, 'cadence': 27.0, 'average_cadence': 26.0, 'distance': 209, 'power': 33, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 91, 'elapsed_time': 48}
+2025-05-11 17:49:27,033 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:27,033 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 2
+2025-05-11 17:49:27,034 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:27,035 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 2)
+2025-05-11 17:49:27,952 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:27.946605', 'speed': 14.32, 'average_speed': 0.97, 'cadence': 24.0, 'average_cadence': 26.0, 'distance': 209, 'power': 25, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 91, 'elapsed_time': 49}
+2025-05-11 17:49:27,953 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:27,953 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:49:27,954 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:27,954 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:49:28,972 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:28.966300', 'speed': 14.32, 'average_speed': 0.96, 'cadence': 24.0, 'average_cadence': 25.0, 'distance': 209, 'power': 25, 'average_power': 28, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 91, 'elapsed_time': 50}
+2025-05-11 17:49:28,973 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:28,974 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:49:28,975 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:28,976 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:49:29,968 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:29.956602', 'speed': 12.55, 'average_speed': 0.94, 'cadence': 21.0, 'average_cadence': 25.0, 'distance': 209, 'power': 18, 'average_power': 28, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 51}
+2025-05-11 17:49:29,969 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:29,969 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:49:29,970 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:29,971 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:49:31,016 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:31.007196', 'speed': 10.78, 'average_speed': 0.92, 'cadence': 18.0, 'average_cadence': 24.0, 'distance': 209, 'power': 14, 'average_power': 25, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 52}
+2025-05-11 17:49:31,018 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:31,018 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:49:31,019 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:31,019 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:49:32,092 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:32.086604', 'speed': 0.0, 'average_speed': 0.9, 'cadence': 0.0, 'average_cadence': 24.0, 'distance': 209, 'power': 0, 'average_power': 25, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 89, 'elapsed_time': 53}
+2025-05-11 17:49:32,093 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:32,093 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:49:32,095 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:32,095 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:49:32,995 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:32.986853', 'speed': 0.0, 'average_speed': 0.89, 'cadence': 0.0, 'average_cadence': 23.0, 'distance': 209, 'power': 0, 'average_power': 23, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 88, 'elapsed_time': 54}
+2025-05-11 17:49:32,996 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:32,999 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:49:32,999 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:32,999 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:49:33,946 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:33.946974', 'speed': 0.0, 'average_speed': 0.87, 'cadence': 0.0, 'average_cadence': 23.0, 'distance': 209, 'power': 0, 'average_power': 23, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 86, 'elapsed_time': 55}
+2025-05-11 17:49:33,946 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:33,955 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:49:33,955 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:33,955 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:49:35,005 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:34.997739', 'speed': 0.0, 'average_speed': 0.85, 'cadence': 0.0, 'average_cadence': 23.0, 'distance': 209, 'power': 0, 'average_power': 23, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 85, 'elapsed_time': 56}
+2025-05-11 17:49:35,006 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:35,006 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:49:35,012 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:35,014 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:49:35,995 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:35.987843', 'speed': 0.0, 'average_speed': 0.84, 'cadence': 0.0, 'average_cadence': 22.0, 'distance': 209, 'power': 0, 'average_power': 20, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 85, 'elapsed_time': 57}
+2025-05-11 17:49:35,996 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:35,997 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:49:35,999 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:36,000 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:49:37,045 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:37.037865', 'speed': 0.0, 'average_speed': 0.82, 'cadence': 0.0, 'average_cadence': 22.0, 'distance': 209, 'power': 0, 'average_power': 20, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 84, 'elapsed_time': 58}
+2025-05-11 17:49:37,046 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:37,047 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:49:37,048 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:37,050 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:49:37,972 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:37.966949', 'speed': 0.0, 'average_speed': 0.81, 'cadence': 0.0, 'average_cadence': 21.0, 'distance': 209, 'power': 0, 'average_power': 18, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 84, 'elapsed_time': 59}
+2025-05-11 17:49:37,974 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:37,974 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:49:37,975 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:37,975 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:49:38,995 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:38.987009', 'speed': 0.0, 'average_speed': 0.8, 'cadence': 0.0, 'average_cadence': 21.0, 'distance': 209, 'power': 0, 'average_power': 18, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 84, 'elapsed_time': 60}
+2025-05-11 17:49:38,996 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:38,997 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:49:38,998 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:38,999 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:49:39,986 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:39.976832', 'speed': 0.0, 'average_speed': 0.78, 'cadence': 0.0, 'average_cadence': 21.0, 'distance': 209, 'power': 0, 'average_power': 18, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 82, 'elapsed_time': 61}
+2025-05-11 17:49:39,987 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:39,989 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:49:39,989 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:39,990 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:49:40,943 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:40.937499', 'speed': 0.0, 'average_speed': 0.77, 'cadence': 0.0, 'average_cadence': 20.0, 'distance': 209, 'power': 0, 'average_power': 15, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 80, 'elapsed_time': 62}
+2025-05-11 17:49:40,945 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:40,946 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:49:40,946 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:40,948 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:49:41,965 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:41.957732', 'speed': 0.0, 'average_speed': 0.76, 'cadence': 0.0, 'average_cadence': 20.0, 'distance': 209, 'power': 0, 'average_power': 15, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 80, 'elapsed_time': 63}
+2025-05-11 17:49:41,965 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:41,968 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:49:41,969 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:41,970 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:49:43,014 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:43.007643', 'speed': 0.0, 'average_speed': 0.75, 'cadence': 0.0, 'average_cadence': 20.0, 'distance': 209, 'power': 0, 'average_power': 15, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 79, 'elapsed_time': 64}
+2025-05-11 17:49:43,015 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:43,016 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:49:43,017 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:43,019 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:49:44,006 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:43.999102', 'speed': 0.0, 'average_speed': 0.73, 'cadence': 0.0, 'average_cadence': 19.0, 'distance': 209, 'power': 0, 'average_power': 14, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 79, 'elapsed_time': 65}
+2025-05-11 17:49:44,006 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:44,007 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:49:44,007 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:44,008 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:49:45,038 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:45.017642', 'speed': 0.0, 'average_speed': 0.72, 'cadence': 0.0, 'average_cadence': 19.0, 'distance': 209, 'power': 0, 'average_power': 14, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 78, 'elapsed_time': 66}
+2025-05-11 17:49:45,038 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:45,040 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:49:45,040 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:45,041 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:49:45,984 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:45.977768', 'speed': 0.0, 'average_speed': 0.71, 'cadence': 0.0, 'average_cadence': 19.0, 'distance': 209, 'power': 0, 'average_power': 14, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 78, 'elapsed_time': 67}
+2025-05-11 17:49:45,985 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:45,986 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:49:45,986 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:45,987 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:49:47,035 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:47.028235', 'speed': 0.0, 'average_speed': 0.7, 'cadence': 0.0, 'average_cadence': 18.0, 'distance': 209, 'power': 0, 'average_power': 14, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 78, 'elapsed_time': 68}
+2025-05-11 17:49:47,036 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:49:47,036 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:49:47,037 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:49:47,038 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:53:11,613 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 17:53:12,877 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-11 17:53:35,612 - ftms - INFO - Connected to device: ECHO_BIKE_077937
+2025-05-11 17:53:38,078 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:38.067576', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 63, 'elapsed_time': 0}
+2025-05-11 17:53:38,079 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:38,080 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:53:38,081 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:38,081 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:53:38,965 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:38.956406', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 64, 'elapsed_time': 1}
+2025-05-11 17:53:38,966 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:38,967 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:53:38,969 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:38,971 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:53:40,076 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:40.068416', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 64, 'elapsed_time': 2}
+2025-05-11 17:53:40,077 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:40,078 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:53:40,078 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:40,080 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:53:40,973 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:40.967084', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 3}
+2025-05-11 17:53:40,974 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:40,975 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:53:40,977 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:40,978 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:53:41,995 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:41.986921', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 4}
+2025-05-11 17:53:41,995 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:41,996 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:53:41,997 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:41,998 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:53:43,073 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:43.066929', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 5}
+2025-05-11 17:53:43,074 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:43,074 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:53:43,075 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:43,076 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:53:43,978 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:43.966997', 'speed': 9.49, 'average_speed': 0.03, 'cadence': 16.0, 'average_cadence': 1.0, 'distance': 0, 'power': 12, 'average_power': 1, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 66, 'elapsed_time': 6}
+2025-05-11 17:53:43,981 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:43,982 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:53:43,983 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:43,986 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:53:45,082 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:45.076988', 'speed': 8.84, 'average_speed': 0.22, 'cadence': 15.0, 'average_cadence': 6.0, 'distance': 0, 'power': 11, 'average_power': 5, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 7}
+2025-05-11 17:53:45,082 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:45,084 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:53:45,086 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:45,087 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:53:45,985 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:45.976875', 'speed': 12.55, 'average_speed': 0.36, 'cadence': 21.0, 'average_cadence': 9.0, 'distance': 0, 'power': 18, 'average_power': 7, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 8}
+2025-05-11 17:53:45,986 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:45,989 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:53:45,989 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:45,990 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:53:47,062 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:47.056032', 'speed': 14.32, 'average_speed': 0.44, 'cadence': 24.0, 'average_cadence': 12.0, 'distance': 16, 'power': 25, 'average_power': 9, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 9}
+2025-05-11 17:53:47,063 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:47,064 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:53:47,065 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:47,067 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:53:48,020 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:48.006002', 'speed': 16.09, 'average_speed': 0.53, 'cadence': 27.0, 'average_cadence': 14.0, 'distance': 16, 'power': 33, 'average_power': 11, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 66, 'elapsed_time': 10}
+2025-05-11 17:53:48,022 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:48,024 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:53:48,025 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:48,026 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:53:48,982 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:48.976002', 'speed': 17.37, 'average_speed': 0.63, 'cadence': 29.0, 'average_cadence': 16.0, 'distance': 32, 'power': 38, 'average_power': 12, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 11}
+2025-05-11 17:53:48,983 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:48,984 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:53:48,985 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:48,986 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:53:49,974 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:49.966367', 'speed': 18.5, 'average_speed': 0.68, 'cadence': 31.0, 'average_cadence': 18.0, 'distance': 32, 'power': 45, 'average_power': 14, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 12}
+2025-05-11 17:53:49,975 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:49,976 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:53:49,978 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:49,980 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:53:51,083 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:51.076725', 'speed': 19.14, 'average_speed': 0.72, 'cadence': 32.0, 'average_cadence': 19.0, 'distance': 32, 'power': 49, 'average_power': 14, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 66, 'elapsed_time': 13}
+2025-05-11 17:53:51,085 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:51,087 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:53:51,088 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:51,090 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:53:51,992 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:51.977395', 'speed': 17.85, 'average_speed': 0.73, 'cadence': 30.0, 'average_cadence': 19.0, 'distance': 48, 'power': 41, 'average_power': 14, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 14}
+2025-05-11 17:53:51,993 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:51,993 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:53:51,994 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:51,995 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:53:53,093 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:53.086584', 'speed': 17.85, 'average_speed': 0.77, 'cadence': 30.0, 'average_cadence': 20.0, 'distance': 48, 'power': 41, 'average_power': 15, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 15}
+2025-05-11 17:53:53,094 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:53,095 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:53:53,096 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:53,096 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:53:53,992 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:53.987687', 'speed': 19.14, 'average_speed': 0.81, 'cadence': 32.0, 'average_cadence': 21.0, 'distance': 48, 'power': 49, 'average_power': 18, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 66, 'elapsed_time': 16}
+2025-05-11 17:53:53,993 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:53,993 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:53:53,995 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:53,996 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:53:54,981 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:54.976744', 'speed': 19.62, 'average_speed': 0.82, 'cadence': 33.0, 'average_cadence': 22.0, 'distance': 64, 'power': 53, 'average_power': 20, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 67, 'elapsed_time': 17}
+2025-05-11 17:53:54,981 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:54,981 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:53:54,986 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:54,986 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:53:56,002 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:55.997239', 'speed': 20.27, 'average_speed': 0.86, 'cadence': 34.0, 'average_cadence': 23.0, 'distance': 64, 'power': 57, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 67, 'elapsed_time': 18}
+2025-05-11 17:53:56,002 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:56,002 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:53:56,015 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:56,017 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:53:56,962 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:56.957497', 'speed': 20.27, 'average_speed': 0.89, 'cadence': 34.0, 'average_cadence': 24.0, 'distance': 64, 'power': 57, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 66, 'elapsed_time': 19}
+2025-05-11 17:53:56,965 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:56,970 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:53:56,973 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:56,974 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:53:58,194 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:58.187345', 'speed': 20.27, 'average_speed': 0.91, 'cadence': 34.0, 'average_cadence': 24.0, 'distance': 80, 'power': 57, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 66, 'elapsed_time': 20}
+2025-05-11 17:53:58,195 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:58,196 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:53:58,196 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:58,198 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:53:58,976 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:58.968758', 'speed': 20.27, 'average_speed': 0.92, 'cadence': 34.0, 'average_cadence': 24.0, 'distance': 80, 'power': 57, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 21}
+2025-05-11 17:53:58,977 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:58,977 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:53:58,978 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:53:58,978 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:53:59,997 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:59.989174', 'speed': 19.62, 'average_speed': 0.93, 'cadence': 33.0, 'average_cadence': 25.0, 'distance': 80, 'power': 53, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 22}
+2025-05-11 17:53:59,998 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:53:59,999 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:53:59,999 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:00,000 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:54:00,983 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:00.976913', 'speed': 17.85, 'average_speed': 0.9, 'cadence': 30.0, 'average_cadence': 24.0, 'distance': 80, 'power': 41, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 23}
+2025-05-11 17:54:00,984 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:00,985 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:54:00,987 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:00,987 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:54:02,006 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:01.997135', 'speed': 16.09, 'average_speed': 0.87, 'cadence': 27.0, 'average_cadence': 23.0, 'distance': 80, 'power': 33, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 66, 'elapsed_time': 24}
+2025-05-11 17:54:02,007 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:02,007 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:54:02,008 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:02,009 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:54:03,006 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:02.993666', 'speed': 13.03, 'average_speed': 0.85, 'cadence': 22.0, 'average_cadence': 23.0, 'distance': 96, 'power': 20, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 66, 'elapsed_time': 25}
+2025-05-11 17:54:03,007 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:03,009 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:54:03,009 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:03,010 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:54:04,075 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:04.068145', 'speed': 11.9, 'average_speed': 0.85, 'cadence': 20.0, 'average_cadence': 23.0, 'distance': 96, 'power': 15, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 67, 'elapsed_time': 26}
+2025-05-11 17:54:04,076 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:04,076 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:54:04,079 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:04,080 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:54:04,979 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:04.966915', 'speed': 13.67, 'average_speed': 0.87, 'cadence': 23.0, 'average_cadence': 23.0, 'distance': 96, 'power': 23, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 67, 'elapsed_time': 27}
+2025-05-11 17:54:04,980 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:04,981 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:54:04,982 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:04,982 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:54:05,993 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:05.988067', 'speed': 14.96, 'average_speed': 0.87, 'cadence': 25.0, 'average_cadence': 23.0, 'distance': 112, 'power': 28, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 67, 'elapsed_time': 28}
+2025-05-11 17:54:05,993 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:05,994 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:54:05,994 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:05,995 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:54:06,983 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:06.976401', 'speed': 16.09, 'average_speed': 0.88, 'cadence': 27.0, 'average_cadence': 23.0, 'distance': 112, 'power': 33, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 67, 'elapsed_time': 29}
+2025-05-11 17:54:06,987 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:06,988 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:54:06,989 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:06,990 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:54:08,109 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:08.087887', 'speed': 17.37, 'average_speed': 0.9, 'cadence': 29.0, 'average_cadence': 24.0, 'distance': 112, 'power': 38, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 67, 'elapsed_time': 30}
+2025-05-11 17:54:08,110 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:08,112 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:54:08,114 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:08,115 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:54:08,963 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:08.956039', 'speed': 17.85, 'average_speed': 0.91, 'cadence': 30.0, 'average_cadence': 24.0, 'distance': 128, 'power': 41, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 66, 'elapsed_time': 31}
+2025-05-11 17:54:08,965 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:08,967 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:54:08,969 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:08,971 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:54:09,986 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:09.977720', 'speed': 18.5, 'average_speed': 0.92, 'cadence': 31.0, 'average_cadence': 24.0, 'distance': 128, 'power': 45, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 66, 'elapsed_time': 32}
+2025-05-11 17:54:09,988 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:09,990 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:54:09,991 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:09,992 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:54:10,976 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:10.967456', 'speed': 18.5, 'average_speed': 0.93, 'cadence': 31.0, 'average_cadence': 25.0, 'distance': 128, 'power': 45, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 67, 'elapsed_time': 33}
+2025-05-11 17:54:10,978 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:10,982 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:54:10,982 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:10,983 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:54:11,994 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:11.987955', 'speed': 19.14, 'average_speed': 0.94, 'cadence': 32.0, 'average_cadence': 25.0, 'distance': 144, 'power': 49, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 67, 'elapsed_time': 34}
+2025-05-11 17:54:11,995 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:11,996 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:54:11,999 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:12,002 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:54:13,121 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:13.087802', 'speed': 19.14, 'average_speed': 0.95, 'cadence': 32.0, 'average_cadence': 25.0, 'distance': 144, 'power': 49, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 67, 'elapsed_time': 35}
+2025-05-11 17:54:13,124 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:13,126 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:54:13,127 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:13,128 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:54:13,973 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:13.967741', 'speed': 19.62, 'average_speed': 0.96, 'cadence': 33.0, 'average_cadence': 25.0, 'distance': 144, 'power': 53, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 68, 'elapsed_time': 36}
+2025-05-11 17:54:13,974 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:13,976 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:54:13,977 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:13,979 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:54:14,963 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:14.957947', 'speed': 20.27, 'average_speed': 0.97, 'cadence': 34.0, 'average_cadence': 26.0, 'distance': 160, 'power': 57, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 69, 'elapsed_time': 37}
+2025-05-11 17:54:14,964 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:14,965 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:54:14,966 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:14,966 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:54:15,984 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:15.977357', 'speed': 20.27, 'average_speed': 0.98, 'cadence': 34.0, 'average_cadence': 26.0, 'distance': 160, 'power': 57, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 70, 'elapsed_time': 38}
+2025-05-11 17:54:15,984 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:15,988 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:54:15,991 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:15,992 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:54:17,035 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:17.028255', 'speed': 20.27, 'average_speed': 0.99, 'cadence': 34.0, 'average_cadence': 26.0, 'distance': 160, 'power': 57, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 70, 'elapsed_time': 39}
+2025-05-11 17:54:17,037 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:17,041 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:54:17,041 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:17,042 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:54:17,998 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:17.987111', 'speed': 20.91, 'average_speed': 1.0, 'cadence': 35.0, 'average_cadence': 26.0, 'distance': 176, 'power': 62, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 71, 'elapsed_time': 40}
+2025-05-11 17:54:17,999 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:18,001 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:54:18,002 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:18,004 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:54:19,107 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:19.097509', 'speed': 20.27, 'average_speed': 1.0, 'cadence': 34.0, 'average_cadence': 27.0, 'distance': 176, 'power': 57, 'average_power': 33, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 71, 'elapsed_time': 41}
+2025-05-11 17:54:19,108 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:19,109 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:54:19,110 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:19,111 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:54:20,003 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:19.997386', 'speed': 19.62, 'average_speed': 1.0, 'cadence': 33.0, 'average_cadence': 27.0, 'distance': 176, 'power': 53, 'average_power': 33, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 71, 'elapsed_time': 42}
+2025-05-11 17:54:20,005 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:20,006 - ftms - INFO - [FTMSManager] Debug - active_workout_id: 3
+2025-05-11 17:54:20,007 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:20,008 - ftms - INFO - [FTMSManager] Passing data to WorkoutManager (Active Workout ID: 3)
+2025-05-11 17:54:20,962 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:20.957175', 'speed': 17.85, 'average_speed': 0.99, 'cadence': 30.0, 'average_cadence': 26.0, 'distance': 176, 'power': 41, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 72, 'elapsed_time': 43}
+2025-05-11 17:54:20,963 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:20,964 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:20,964 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:20,965 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:21,983 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:21.977350', 'speed': 16.09, 'average_speed': 0.98, 'cadence': 27.0, 'average_cadence': 26.0, 'distance': 193, 'power': 33, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 73, 'elapsed_time': 44}
+2025-05-11 17:54:21,984 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:21,985 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:21,985 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:21,986 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:22,975 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:22.967533', 'speed': 13.67, 'average_speed': 0.96, 'cadence': 23.0, 'average_cadence': 25.0, 'distance': 193, 'power': 23, 'average_power': 28, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 73, 'elapsed_time': 45}
+2025-05-11 17:54:22,976 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:22,977 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:22,978 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:22,979 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:23,993 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:23.988696', 'speed': 13.67, 'average_speed': 0.94, 'cadence': 23.0, 'average_cadence': 25.0, 'distance': 193, 'power': 23, 'average_power': 28, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 73, 'elapsed_time': 46}
+2025-05-11 17:54:23,994 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:23,994 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:23,995 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:23,996 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:24,986 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:24.978782', 'speed': 11.9, 'average_speed': 0.92, 'cadence': 20.0, 'average_cadence': 24.0, 'distance': 193, 'power': 15, 'average_power': 25, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 73, 'elapsed_time': 47}
+2025-05-11 17:54:24,987 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:24,989 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:24,990 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:24,990 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:26,004 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:25.996960', 'speed': 10.13, 'average_speed': 0.9, 'cadence': 17.0, 'average_cadence': 24.0, 'distance': 193, 'power': 13, 'average_power': 25, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 74, 'elapsed_time': 48}
+2025-05-11 17:54:26,006 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:26,007 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:26,008 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:26,008 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:26,965 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:26.958511', 'speed': 0.0, 'average_speed': 0.88, 'cadence': 0.0, 'average_cadence': 23.0, 'distance': 193, 'power': 0, 'average_power': 23, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 75, 'elapsed_time': 49}
+2025-05-11 17:54:26,966 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:26,967 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:26,970 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:26,971 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:27,984 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:27.977536', 'speed': 0.0, 'average_speed': 0.86, 'cadence': 0.0, 'average_cadence': 23.0, 'distance': 193, 'power': 0, 'average_power': 23, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 76, 'elapsed_time': 50}
+2025-05-11 17:54:27,985 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:27,986 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:27,987 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:27,988 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:28,974 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:28.967453', 'speed': 0.0, 'average_speed': 0.85, 'cadence': 0.0, 'average_cadence': 22.0, 'distance': 193, 'power': 0, 'average_power': 20, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 76, 'elapsed_time': 51}
+2025-05-11 17:54:28,976 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:28,976 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:28,977 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:28,978 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:29,995 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:29.987390', 'speed': 0.0, 'average_speed': 0.83, 'cadence': 0.0, 'average_cadence': 22.0, 'distance': 193, 'power': 0, 'average_power': 20, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 76, 'elapsed_time': 52}
+2025-05-11 17:54:29,996 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:29,996 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:29,998 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:29,998 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:30,986 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:30.977400', 'speed': 0.0, 'average_speed': 0.81, 'cadence': 0.0, 'average_cadence': 21.0, 'distance': 193, 'power': 0, 'average_power': 18, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 77, 'elapsed_time': 53}
+2025-05-11 17:54:30,991 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:30,992 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:30,992 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:30,993 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:32,005 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:31.999058', 'speed': 0.0, 'average_speed': 0.8, 'cadence': 0.0, 'average_cadence': 21.0, 'distance': 193, 'power': 0, 'average_power': 18, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 78, 'elapsed_time': 54}
+2025-05-11 17:54:32,006 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:32,007 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:32,008 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:32,009 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:32,991 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:32.985707', 'speed': 0.0, 'average_speed': 0.78, 'cadence': 0.0, 'average_cadence': 21.0, 'distance': 193, 'power': 0, 'average_power': 18, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 79, 'elapsed_time': 55}
+2025-05-11 17:54:32,991 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:32,995 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:32,995 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:32,995 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:33,986 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:33.979406', 'speed': 0.0, 'average_speed': 0.77, 'cadence': 0.0, 'average_cadence': 20.0, 'distance': 193, 'power': 0, 'average_power': 15, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 80, 'elapsed_time': 56}
+2025-05-11 17:54:33,987 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:33,988 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:33,988 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:33,991 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:34,975 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:34.967650', 'speed': 0.0, 'average_speed': 0.76, 'cadence': 0.0, 'average_cadence': 20.0, 'distance': 193, 'power': 0, 'average_power': 15, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 80, 'elapsed_time': 57}
+2025-05-11 17:54:34,976 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:34,978 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:34,979 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:34,979 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:36,265 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:36.259134', 'speed': 0.0, 'average_speed': 0.74, 'cadence': 0.0, 'average_cadence': 20.0, 'distance': 193, 'power': 0, 'average_power': 15, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 81, 'elapsed_time': 58}
+2025-05-11 17:54:36,266 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:36,267 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:36,267 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:36,270 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:36,985 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:36.978091', 'speed': 0.0, 'average_speed': 0.73, 'cadence': 0.0, 'average_cadence': 19.0, 'distance': 193, 'power': 0, 'average_power': 14, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 81, 'elapsed_time': 59}
+2025-05-11 17:54:36,987 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:36,990 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:36,990 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:36,991 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:38,005 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:37.998558', 'speed': 0.0, 'average_speed': 0.72, 'cadence': 0.0, 'average_cadence': 19.0, 'distance': 193, 'power': 0, 'average_power': 14, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 80, 'elapsed_time': 60}
+2025-05-11 17:54:38,008 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:38,009 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:38,011 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:38,012 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:38,965 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:38.958898', 'speed': 0.0, 'average_speed': 0.71, 'cadence': 0.0, 'average_cadence': 19.0, 'distance': 193, 'power': 0, 'average_power': 14, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 79, 'elapsed_time': 61}
+2025-05-11 17:54:38,967 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:38,968 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:38,970 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:38,971 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:39,985 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:39.978219', 'speed': 0.0, 'average_speed': 0.69, 'cadence': 0.0, 'average_cadence': 18.0, 'distance': 193, 'power': 0, 'average_power': 14, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 79, 'elapsed_time': 62}
+2025-05-11 17:54:39,987 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:39,989 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:39,991 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:39,992 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:40,976 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:40.968703', 'speed': 0.0, 'average_speed': 0.68, 'cadence': 0.0, 'average_cadence': 18.0, 'distance': 193, 'power': 0, 'average_power': 14, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 79, 'elapsed_time': 63}
+2025-05-11 17:54:40,977 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:40,978 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:40,979 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:40,980 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:41,967 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:41.957617', 'speed': 0.0, 'average_speed': 0.67, 'cadence': 0.0, 'average_cadence': 18.0, 'distance': 193, 'power': 0, 'average_power': 14, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 79, 'elapsed_time': 64}
+2025-05-11 17:54:41,971 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:41,972 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:41,973 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:41,975 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:42,984 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:42.977855', 'speed': 0.0, 'average_speed': 0.66, 'cadence': 0.0, 'average_cadence': 17.0, 'distance': 193, 'power': 0, 'average_power': 13, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 79, 'elapsed_time': 65}
+2025-05-11 17:54:42,985 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:42,988 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:42,991 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:42,993 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:43,974 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:43.968206', 'speed': 0.0, 'average_speed': 0.65, 'cadence': 0.0, 'average_cadence': 17.0, 'distance': 193, 'power': 0, 'average_power': 13, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 78, 'elapsed_time': 66}
+2025-05-11 17:54:43,975 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:43,976 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:43,976 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:43,977 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:45,016 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:44.988600', 'speed': 0.0, 'average_speed': 0.64, 'cadence': 0.0, 'average_cadence': 17.0, 'distance': 193, 'power': 0, 'average_power': 13, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 79, 'elapsed_time': 67}
+2025-05-11 17:54:45,017 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:45,018 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:45,020 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:45,021 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:46,167 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:46.159100', 'speed': 0.0, 'average_speed': 0.63, 'cadence': 0.0, 'average_cadence': 17.0, 'distance': 193, 'power': 0, 'average_power': 13, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 80, 'elapsed_time': 68}
+2025-05-11 17:54:46,168 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:46,168 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:46,171 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:46,174 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:47,031 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:46.980328', 'speed': 0.0, 'average_speed': 0.62, 'cadence': 0.0, 'average_cadence': 16.0, 'distance': 193, 'power': 0, 'average_power': 12, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 80, 'elapsed_time': 69}
+2025-05-11 17:54:47,032 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:47,033 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:47,034 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:47,036 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.
+2025-05-11 17:54:47,993 - ftms - INFO - [FTMSManager] Received data from connector: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:47.988088', 'speed': 0.0, 'average_speed': 0.61, 'cadence': 0.0, 'average_cadence': 16.0, 'distance': 193, 'power': 0, 'average_power': 12, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 80, 'elapsed_time': 70}
+2025-05-11 17:54:47,995 - ftms - INFO - [FTMSManager] Debug - workout_manager exists: True
+2025-05-11 17:54:47,995 - ftms - INFO - [FTMSManager] Debug - active_workout_id: None
+2025-05-11 17:54:47,996 - ftms - INFO - [FTMSManager] Debug - connected_device exists: True
+2025-05-11 17:54:47,996 - ftms - INFO - [FTMSManager] No active workout, not passing data to WorkoutManager.

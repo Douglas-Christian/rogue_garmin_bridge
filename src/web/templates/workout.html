@@ -319,25 +319,32 @@
             heartRateData.datasets[0].data.push(data.heart_rate);
             heartRateData.datasets[0].data.shift();
             heartRateChart.update();
-        }
-        
-        // Update cadence chart
-        if (data.instant_cadence !== undefined || data.cadence !== undefined || data.stroke_rate !== undefined) {
-            const cadence = data.instant_cadence || data.cadence || data.stroke_rate || 0;
+        }        // Update cadence chart
+        if (data.instant_cadence !== undefined || data.cadence !== undefined || data.instantaneous_cadence !== undefined || data.stroke_rate !== undefined) {
+            const cadence = data.instant_cadence || data.instantaneous_cadence || data.cadence || data.stroke_rate || 0;
+            console.log("Chart cadence data:", {
+                instant_cadence: data.instant_cadence,
+                instantaneous_cadence: data.instantaneous_cadence,
+                cadence: data.cadence,
+                stroke_rate: data.stroke_rate,
+                used_value: cadence
+            });
             cadenceData.datasets[0].data.push(cadence);
             cadenceData.datasets[0].data.shift();
             cadenceChart.update();
+        } else {
+            console.log("No cadence data for chart in:", data);
         }
-    }
-    
-    // Update metrics with new data
+    }    // Update metrics with new data
     function updateMetrics(data) {
         if (!data) return;
         
         console.log("Updating metrics with data:", data);
+        console.log("Data keys available:", Object.keys(data));
         
         // Update workout type specific metrics
-        const workoutType = data.type || 'unknown';
+        const workoutType = data.type || data.device_type || 'unknown';
+        console.log("Detected workout type:", workoutType);
         
         // Update power
         if (data.instant_power !== undefined || data.power !== undefined) {
@@ -348,16 +355,28 @@
         // Update heart rate
         if (data.heart_rate !== undefined) {
             heartRateValue.textContent = Math.round(data.heart_rate);
-        }
-        
-        // Update cadence or stroke rate based on workout type
+        }          // Update cadence or stroke rate based on workout type
         if (workoutType === 'bike') {
             cadenceLabel.textContent = 'Cadence';
             cadenceUnit.textContent = 'rpm';
             
-            if (data.instant_cadence !== undefined || data.cadence !== undefined) {
-                const cadence = data.instant_cadence || data.cadence || 0;
+            console.log("Cadence data available:", {
+                instant_cadence: data.instant_cadence,
+                instantaneous_cadence: data.instantaneous_cadence,
+                cadence: data.cadence,
+                device_type: data.device_type,
+                type: data.type
+            });
+              if (data.instant_cadence !== undefined || data.cadence !== undefined || data.instantaneous_cadence !== undefined) {
+                const cadence = data.instant_cadence || data.instantaneous_cadence || data.cadence || 0;
                 cadenceValue.textContent = Math.round(cadence);
+                console.log("Set cadence display value to:", Math.round(cadence), "Element:", cadenceValue);
+                // Force an explicit DOM update to ensure the value is displayed
+                cadenceValue.style.display = 'none';
+                cadenceValue.offsetHeight; // Trigger reflow
+                cadenceValue.style.display = '';
+            } else {
+                console.log("No cadence data found in:", data);
             }
         } else if (workoutType === 'rower') {
             cadenceLabel.textContent = 'Stroke Rate';
@@ -715,14 +734,18 @@
                     startWorkoutBtn.disabled = (data.device_status !== 'connected'); 
                     endWorkoutBtn.disabled = true; // Disable end if inactive
                 }
-                
-                // Update metrics
+                  // Update metrics
                 if (data.latest_data) {
-                    updateMetrics(data.latest_data);
-                    updateCharts(data.latest_data);
-                    updateWorkoutSummary(data.latest_data); // Uncommented this line
+                    console.log("Latest data for metrics and charts:", data.latest_data);
+                    
+                    // Small delay to ensure DOM is ready
+                    setTimeout(() => {
+                        updateMetrics(data.latest_data);
+                        updateCharts(data.latest_data);
+                        updateWorkoutSummary(data.latest_data);
+                    }, 50);
                 } else {
-                    updateMetrics({}); 
+                    updateMetrics({});
                 }
             })
             .catch(error => {

@@ -1,0 +1,751 @@
+2025-05-11 17:19:29,338 - workout_manager - INFO - Started workout 1 with device C9:02:CB:68:17:C1
+2025-05-11 17:19:29,931 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:29.931004
+2025-05-11 17:19:29,932 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:29.921921', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 97, 'elapsed_time': 3}
+2025-05-11 17:19:29,945 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:30,954 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:30.954710
+2025-05-11 17:19:30,955 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:30.942212', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 97, 'elapsed_time': 4}
+2025-05-11 17:19:30,963 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:31,943 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:31.943822
+2025-05-11 17:19:31,944 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:31.931334', 'speed': 1.12, 'average_speed': 0.13, 'cadence': 2.0, 'average_cadence': 3.0, 'distance': 0, 'power': 2, 'average_power': 2, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 97, 'elapsed_time': 5}
+2025-05-11 17:19:31,945 - workout_manager - INFO - Calculated average speed from 1 data points: 1.12 km/h
+2025-05-11 17:19:31,946 - workout_manager - INFO - Device-reported average speed: 0.13 km/h (not used)
+2025-05-11 17:19:31,956 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:32,963 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:32.963139
+2025-05-11 17:19:32,964 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:32.953141', 'speed': 5.3, 'average_speed': 0.26, 'cadence': 9.0, 'average_cadence': 7.0, 'distance': 0, 'power': 7, 'average_power': 5, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 97, 'elapsed_time': 6}
+2025-05-11 17:19:32,965 - workout_manager - INFO - Calculated average speed from 2 data points: 3.21 km/h
+2025-05-11 17:19:32,966 - workout_manager - INFO - Device-reported average speed: 0.26 km/h (not used)
+2025-05-11 17:19:32,974 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:33,920 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:33.920307
+2025-05-11 17:19:33,920 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:33.911293', 'speed': 9.49, 'average_speed': 0.41, 'cadence': 16.0, 'average_cadence': 11.0, 'distance': 0, 'power': 12, 'average_power': 8, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 97, 'elapsed_time': 7}
+2025-05-11 17:19:33,921 - workout_manager - INFO - Calculated average speed from 3 data points: 5.303333333333334 km/h
+2025-05-11 17:19:33,921 - workout_manager - INFO - Device-reported average speed: 0.41 km/h (not used)
+2025-05-11 17:19:33,977 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:34,999 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:34.999414
+2025-05-11 17:19:35,000 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:34.992397', 'speed': 12.55, 'average_speed': 0.5, 'cadence': 21.0, 'average_cadence': 13.0, 'distance': 16, 'power': 18, 'average_power': 10, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 97, 'elapsed_time': 8}
+2025-05-11 17:19:35,000 - workout_manager - INFO - Calculated average speed from 4 data points: 7.115 km/h
+2025-05-11 17:19:35,001 - workout_manager - INFO - Device-reported average speed: 0.5 km/h (not used)
+2025-05-11 17:19:35,010 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:35,965 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:35.965152
+2025-05-11 17:19:35,967 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:35.927155', 'speed': 14.32, 'average_speed': 0.59, 'cadence': 24.0, 'average_cadence': 16.0, 'distance': 16, 'power': 25, 'average_power': 12, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 97, 'elapsed_time': 9}
+2025-05-11 17:19:35,968 - workout_manager - INFO - Calculated average speed from 5 filtered data points (removed 0 outliers): 8.556000000000001 km/h
+2025-05-11 17:19:35,968 - workout_manager - INFO - Device-reported average speed: 0.59 km/h (not used)
+2025-05-11 17:19:35,977 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:36,950 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:36.949857
+2025-05-11 17:19:36,950 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:36.941548', 'speed': 14.32, 'average_speed': 0.6, 'cadence': 24.0, 'average_cadence': 16.0, 'distance': 16, 'power': 25, 'average_power': 12, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 96, 'elapsed_time': 10}
+2025-05-11 17:19:36,950 - workout_manager - INFO - Calculated average speed from 6 filtered data points (removed 0 outliers): 9.516666666666667 km/h
+2025-05-11 17:19:36,952 - workout_manager - INFO - Device-reported average speed: 0.6 km/h (not used)
+2025-05-11 17:19:36,960 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:37,941 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:37.941789
+2025-05-11 17:19:37,941 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:37.931790', 'speed': 14.96, 'average_speed': 0.65, 'cadence': 25.0, 'average_cadence': 17.0, 'distance': 32, 'power': 28, 'average_power': 13, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 94, 'elapsed_time': 11}
+2025-05-11 17:19:37,943 - workout_manager - INFO - Calculated average speed from 7 filtered data points (removed 0 outliers): 10.294285714285715 km/h
+2025-05-11 17:19:37,944 - workout_manager - INFO - Device-reported average speed: 0.65 km/h (not used)
+2025-05-11 17:19:37,953 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:38,992 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:38.992757
+2025-05-11 17:19:38,994 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:38.981493', 'speed': 14.96, 'average_speed': 0.7, 'cadence': 25.0, 'average_cadence': 19.0, 'distance': 32, 'power': 28, 'average_power': 14, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 12}
+2025-05-11 17:19:38,994 - workout_manager - INFO - Calculated average speed from 7 filtered data points (removed 1 outliers): 12.271428571428572 km/h
+2025-05-11 17:19:38,995 - workout_manager - INFO - Device-reported average speed: 0.7 km/h (not used)
+2025-05-11 17:19:39,004 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:39,923 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:39.923597
+2025-05-11 17:19:39,924 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:39.911868', 'speed': 16.73, 'average_speed': 0.75, 'cadence': 28.0, 'average_cadence': 20.0, 'distance': 32, 'power': 36, 'average_power': 15, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 89, 'elapsed_time': 13}
+2025-05-11 17:19:39,924 - workout_manager - INFO - Calculated average speed from 8 filtered data points (removed 1 outliers): 12.828750000000001 km/h
+2025-05-11 17:19:39,926 - workout_manager - INFO - Device-reported average speed: 0.75 km/h (not used)
+2025-05-11 17:19:39,933 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:40,942 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:40.942920
+2025-05-11 17:19:40,942 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:40.930493', 'speed': 17.37, 'average_speed': 0.78, 'cadence': 29.0, 'average_cadence': 21.0, 'distance': 48, 'power': 38, 'average_power': 18, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 89, 'elapsed_time': 14}
+2025-05-11 17:19:40,942 - workout_manager - INFO - Calculated average speed from 9 filtered data points (removed 1 outliers): 13.333333333333334 km/h
+2025-05-11 17:19:40,942 - workout_manager - INFO - Device-reported average speed: 0.78 km/h (not used)
+2025-05-11 17:19:40,953 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:41,997 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:41.997298
+2025-05-11 17:19:41,997 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:41.980683', 'speed': 18.5, 'average_speed': 0.81, 'cadence': 31.0, 'average_cadence': 22.0, 'distance': 48, 'power': 45, 'average_power': 20, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 89, 'elapsed_time': 15}
+2025-05-11 17:19:42,001 - workout_manager - INFO - Calculated average speed from 10 filtered data points (removed 1 outliers): 13.85 km/h
+2025-05-11 17:19:42,001 - workout_manager - INFO - Device-reported average speed: 0.81 km/h (not used)
+2025-05-11 17:19:42,011 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:42,980 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:42.980492
+2025-05-11 17:19:42,981 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:42.972605', 'speed': 19.14, 'average_speed': 0.85, 'cadence': 32.0, 'average_cadence': 22.0, 'distance': 48, 'power': 49, 'average_power': 20, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 16}
+2025-05-11 17:19:42,982 - workout_manager - INFO - Calculated average speed from 11 filtered data points (removed 1 outliers): 14.330909090909092 km/h
+2025-05-11 17:19:42,983 - workout_manager - INFO - Device-reported average speed: 0.85 km/h (not used)
+2025-05-11 17:19:42,991 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:43,971 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:43.971124
+2025-05-11 17:19:43,972 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:43.962103', 'speed': 19.62, 'average_speed': 0.86, 'cadence': 33.0, 'average_cadence': 23.0, 'distance': 64, 'power': 53, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 17}
+2025-05-11 17:19:43,973 - workout_manager - INFO - Calculated average speed from 12 filtered data points (removed 1 outliers): 14.771666666666668 km/h
+2025-05-11 17:19:43,974 - workout_manager - INFO - Device-reported average speed: 0.86 km/h (not used)
+2025-05-11 17:19:43,980 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:44,931 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:44.931445
+2025-05-11 17:19:44,932 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:44.922455', 'speed': 19.62, 'average_speed': 0.89, 'cadence': 33.0, 'average_cadence': 24.0, 'distance': 64, 'power': 53, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 18}
+2025-05-11 17:19:44,933 - workout_manager - INFO - Calculated average speed from 13 filtered data points (removed 1 outliers): 15.144615384615385 km/h
+2025-05-11 17:19:44,933 - workout_manager - INFO - Device-reported average speed: 0.89 km/h (not used)
+2025-05-11 17:19:44,941 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:45,925 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:45.925901
+2025-05-11 17:19:45,925 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:45.912202', 'speed': 20.27, 'average_speed': 0.92, 'cadence': 34.0, 'average_cadence': 24.0, 'distance': 80, 'power': 57, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 94, 'elapsed_time': 19}
+2025-05-11 17:19:45,927 - workout_manager - INFO - Calculated average speed from 14 filtered data points (removed 1 outliers): 15.510714285714286 km/h
+2025-05-11 17:19:45,927 - workout_manager - INFO - Device-reported average speed: 0.92 km/h (not used)
+2025-05-11 17:19:45,934 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:46,969 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:46.969972
+2025-05-11 17:19:46,971 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:46.961382', 'speed': 20.27, 'average_speed': 0.95, 'cadence': 34.0, 'average_cadence': 25.0, 'distance': 80, 'power': 57, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 98, 'elapsed_time': 20}
+2025-05-11 17:19:46,971 - workout_manager - INFO - Calculated average speed from 15 filtered data points (removed 1 outliers): 15.828000000000001 km/h
+2025-05-11 17:19:46,971 - workout_manager - INFO - Device-reported average speed: 0.95 km/h (not used)
+2025-05-11 17:19:46,979 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:47,991 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:47.991670
+2025-05-11 17:19:47,991 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:47.982442', 'speed': 20.91, 'average_speed': 0.95, 'cadence': 35.0, 'average_cadence': 25.0, 'distance': 80, 'power': 62, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 98, 'elapsed_time': 21}
+2025-05-11 17:19:47,991 - workout_manager - INFO - Calculated average speed from 16 filtered data points (removed 1 outliers): 16.145625 km/h
+2025-05-11 17:19:47,993 - workout_manager - INFO - Device-reported average speed: 0.95 km/h (not used)
+2025-05-11 17:19:48,000 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:48,919 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:48.919900
+2025-05-11 17:19:48,919 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:48.911582', 'speed': 20.27, 'average_speed': 0.97, 'cadence': 34.0, 'average_cadence': 26.0, 'distance': 96, 'power': 57, 'average_power': 31, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 22}
+2025-05-11 17:19:48,919 - workout_manager - INFO - Calculated average speed from 17 filtered data points (removed 1 outliers): 16.38823529411765 km/h
+2025-05-11 17:19:48,919 - workout_manager - INFO - Device-reported average speed: 0.97 km/h (not used)
+2025-05-11 17:19:48,929 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:49,998 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:49.998511
+2025-05-11 17:19:49,998 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:49.988843', 'speed': 20.27, 'average_speed': 0.98, 'cadence': 34.0, 'average_cadence': 26.0, 'distance': 96, 'power': 57, 'average_power': 31, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 23}
+2025-05-11 17:19:49,998 - workout_manager - INFO - Calculated average speed from 18 filtered data points (removed 1 outliers): 16.60388888888889 km/h
+2025-05-11 17:19:50,000 - workout_manager - INFO - Device-reported average speed: 0.98 km/h (not used)
+2025-05-11 17:19:50,007 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:50,972 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:50.972718
+2025-05-11 17:19:50,973 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:50.952714', 'speed': 20.27, 'average_speed': 0.99, 'cadence': 34.0, 'average_cadence': 26.0, 'distance': 96, 'power': 57, 'average_power': 31, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 24}
+2025-05-11 17:19:50,975 - workout_manager - INFO - Calculated average speed from 18 filtered data points (removed 2 outliers): 17.435555555555556 km/h
+2025-05-11 17:19:50,976 - workout_manager - INFO - Device-reported average speed: 0.99 km/h (not used)
+2025-05-11 17:19:50,987 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:52,011 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:52.011222
+2025-05-11 17:19:52,012 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:52.002222', 'speed': 19.62, 'average_speed': 1.01, 'cadence': 33.0, 'average_cadence': 27.0, 'distance': 112, 'power': 53, 'average_power': 33, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 25}
+2025-05-11 17:19:52,012 - workout_manager - INFO - Calculated average speed from 19 filtered data points (removed 2 outliers): 17.550526315789472 km/h
+2025-05-11 17:19:52,013 - workout_manager - INFO - Device-reported average speed: 1.01 km/h (not used)
+2025-05-11 17:19:52,022 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:52,941 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:52.941413
+2025-05-11 17:19:52,941 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:52.931728', 'speed': 20.27, 'average_speed': 1.01, 'cadence': 34.0, 'average_cadence': 27.0, 'distance': 112, 'power': 57, 'average_power': 33, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 26}
+2025-05-11 17:19:52,942 - workout_manager - INFO - Calculated average speed from 20 filtered data points (removed 2 outliers): 17.686500000000002 km/h
+2025-05-11 17:19:52,942 - workout_manager - INFO - Device-reported average speed: 1.01 km/h (not used)
+2025-05-11 17:19:52,952 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:53,930 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:53.930357
+2025-05-11 17:19:53,930 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:53.923108', 'speed': 19.62, 'average_speed': 1.01, 'cadence': 33.0, 'average_cadence': 27.0, 'distance': 112, 'power': 53, 'average_power': 33, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 27}
+2025-05-11 17:19:53,931 - workout_manager - INFO - Calculated average speed from 21 filtered data points (removed 2 outliers): 17.77857142857143 km/h
+2025-05-11 17:19:53,931 - workout_manager - INFO - Device-reported average speed: 1.01 km/h (not used)
+2025-05-11 17:19:53,940 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:54,949 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:54.949433
+2025-05-11 17:19:54,950 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:54.942393', 'speed': 16.73, 'average_speed': 0.99, 'cadence': 28.0, 'average_cadence': 26.0, 'distance': 112, 'power': 36, 'average_power': 31, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 101, 'elapsed_time': 28}
+2025-05-11 17:19:54,950 - workout_manager - INFO - Calculated average speed from 22 filtered data points (removed 2 outliers): 17.73090909090909 km/h
+2025-05-11 17:19:54,951 - workout_manager - INFO - Device-reported average speed: 0.99 km/h (not used)
+2025-05-11 17:19:54,958 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:55,945 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:55.945986
+2025-05-11 17:19:55,946 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:55.932472', 'speed': 14.96, 'average_speed': 0.97, 'cadence': 25.0, 'average_cadence': 26.0, 'distance': 112, 'power': 28, 'average_power': 31, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 100, 'elapsed_time': 29}
+2025-05-11 17:19:55,947 - workout_manager - INFO - Calculated average speed from 23 filtered data points (removed 2 outliers): 17.610434782608696 km/h
+2025-05-11 17:19:55,948 - workout_manager - INFO - Device-reported average speed: 0.97 km/h (not used)
+2025-05-11 17:19:55,959 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:56,961 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:56.961517
+2025-05-11 17:19:56,961 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:56.951087', 'speed': 13.67, 'average_speed': 0.96, 'cadence': 23.0, 'average_cadence': 26.0, 'distance': 128, 'power': 23, 'average_power': 31, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 100, 'elapsed_time': 30}
+2025-05-11 17:19:56,961 - workout_manager - INFO - Calculated average speed from 24 filtered data points (removed 2 outliers): 17.446250000000003 km/h
+2025-05-11 17:19:56,961 - workout_manager - INFO - Device-reported average speed: 0.96 km/h (not used)
+2025-05-11 17:19:56,969 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:57,918 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:57.918196
+2025-05-11 17:19:57,918 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:57.912373', 'speed': 13.67, 'average_speed': 0.96, 'cadence': 23.0, 'average_cadence': 25.0, 'distance': 128, 'power': 23, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 100, 'elapsed_time': 31}
+2025-05-11 17:19:57,918 - workout_manager - INFO - Calculated average speed from 25 filtered data points (removed 2 outliers): 17.2952 km/h
+2025-05-11 17:19:57,920 - workout_manager - INFO - Device-reported average speed: 0.96 km/h (not used)
+2025-05-11 17:19:57,927 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:58,969 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:58.969823
+2025-05-11 17:19:58,971 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:58.961770', 'speed': 16.09, 'average_speed': 0.98, 'cadence': 27.0, 'average_cadence': 26.0, 'distance': 128, 'power': 33, 'average_power': 31, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 100, 'elapsed_time': 32}
+2025-05-11 17:19:58,972 - workout_manager - INFO - Calculated average speed from 26 filtered data points (removed 2 outliers): 17.248846153846156 km/h
+2025-05-11 17:19:58,972 - workout_manager - INFO - Device-reported average speed: 0.98 km/h (not used)
+2025-05-11 17:19:58,979 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:19:59,932 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:19:59.932794
+2025-05-11 17:19:59,934 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:19:59.923796', 'speed': 17.37, 'average_speed': 1.0, 'cadence': 29.0, 'average_cadence': 26.0, 'distance': 144, 'power': 38, 'average_power': 31, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 99, 'elapsed_time': 33}
+2025-05-11 17:19:59,935 - workout_manager - INFO - Calculated average speed from 27 filtered data points (removed 2 outliers): 17.253333333333334 km/h
+2025-05-11 17:19:59,935 - workout_manager - INFO - Device-reported average speed: 1.0 km/h (not used)
+2025-05-11 17:19:59,944 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:00,950 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:00.950666
+2025-05-11 17:20:00,953 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:00.941174', 'speed': 19.62, 'average_speed': 1.01, 'cadence': 33.0, 'average_cadence': 27.0, 'distance': 144, 'power': 53, 'average_power': 33, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 99, 'elapsed_time': 34}
+2025-05-11 17:20:00,953 - workout_manager - INFO - Calculated average speed from 28 filtered data points (removed 2 outliers): 17.337857142857143 km/h
+2025-05-11 17:20:00,953 - workout_manager - INFO - Device-reported average speed: 1.01 km/h (not used)
+2025-05-11 17:20:00,962 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:01,941 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:01.941770
+2025-05-11 17:20:01,941 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:01.931765', 'speed': 20.27, 'average_speed': 1.02, 'cadence': 34.0, 'average_cadence': 27.0, 'distance': 160, 'power': 57, 'average_power': 33, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 99, 'elapsed_time': 35}
+2025-05-11 17:20:01,943 - workout_manager - INFO - Calculated average speed from 29 filtered data points (removed 2 outliers): 17.438965517241378 km/h
+2025-05-11 17:20:01,943 - workout_manager - INFO - Device-reported average speed: 1.02 km/h (not used)
+2025-05-11 17:20:01,946 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:02,930 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:02.930779
+2025-05-11 17:20:02,930 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:02.922300', 'speed': 21.56, 'average_speed': 1.04, 'cadence': 36.0, 'average_cadence': 28.0, 'distance': 160, 'power': 66, 'average_power': 36, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 99, 'elapsed_time': 36}
+2025-05-11 17:20:02,931 - workout_manager - INFO - Calculated average speed from 30 filtered data points (removed 2 outliers): 17.57633333333333 km/h
+2025-05-11 17:20:02,932 - workout_manager - INFO - Device-reported average speed: 1.04 km/h (not used)
+2025-05-11 17:20:02,941 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:03,948 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:03.948189
+2025-05-11 17:20:03,951 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:03.912899', 'speed': 22.04, 'average_speed': 1.04, 'cadence': 37.0, 'average_cadence': 28.0, 'distance': 160, 'power': 70, 'average_power': 36, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 99, 'elapsed_time': 37}
+2025-05-11 17:20:03,954 - workout_manager - INFO - Calculated average speed from 31 filtered data points (removed 2 outliers): 17.720322580645163 km/h
+2025-05-11 17:20:03,957 - workout_manager - INFO - Device-reported average speed: 1.04 km/h (not used)
+2025-05-11 17:20:04,018 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:04,970 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:04.970352
+2025-05-11 17:20:04,970 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:04.962186', 'speed': 22.68, 'average_speed': 1.05, 'cadence': 38.0, 'average_cadence': 28.0, 'distance': 176, 'power': 74, 'average_power': 36, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 98, 'elapsed_time': 38}
+2025-05-11 17:20:04,970 - workout_manager - INFO - Calculated average speed from 32 filtered data points (removed 2 outliers): 17.8753125 km/h
+2025-05-11 17:20:04,970 - workout_manager - INFO - Device-reported average speed: 1.05 km/h (not used)
+2025-05-11 17:20:04,977 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:05,929 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:05.929308
+2025-05-11 17:20:05,929 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:05.922663', 'speed': 22.68, 'average_speed': 1.07, 'cadence': 38.0, 'average_cadence': 28.0, 'distance': 176, 'power': 74, 'average_power': 36, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 98, 'elapsed_time': 39}
+2025-05-11 17:20:05,929 - workout_manager - INFO - Calculated average speed from 33 filtered data points (removed 2 outliers): 18.020909090909093 km/h
+2025-05-11 17:20:05,933 - workout_manager - INFO - Device-reported average speed: 1.07 km/h (not used)
+2025-05-11 17:20:05,941 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:06,950 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:06.950800
+2025-05-11 17:20:06,951 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:06.942526', 'speed': 22.04, 'average_speed': 1.07, 'cadence': 37.0, 'average_cadence': 28.0, 'distance': 193, 'power': 70, 'average_power': 36, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 98, 'elapsed_time': 40}
+2025-05-11 17:20:06,951 - workout_manager - INFO - Calculated average speed from 34 filtered data points (removed 2 outliers): 18.139117647058825 km/h
+2025-05-11 17:20:06,953 - workout_manager - INFO - Device-reported average speed: 1.07 km/h (not used)
+2025-05-11 17:20:06,961 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:07,942 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:07.942406
+2025-05-11 17:20:07,942 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:07.932515', 'speed': 22.68, 'average_speed': 1.09, 'cadence': 38.0, 'average_cadence': 29.0, 'distance': 193, 'power': 74, 'average_power': 38, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 99, 'elapsed_time': 41}
+2025-05-11 17:20:07,943 - workout_manager - INFO - Calculated average speed from 35 filtered data points (removed 2 outliers): 18.268857142857144 km/h
+2025-05-11 17:20:07,944 - workout_manager - INFO - Device-reported average speed: 1.09 km/h (not used)
+2025-05-11 17:20:07,951 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:09,081 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:09.081404
+2025-05-11 17:20:09,082 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:09.073276', 'speed': 22.68, 'average_speed': 1.09, 'cadence': 38.0, 'average_cadence': 29.0, 'distance': 193, 'power': 74, 'average_power': 38, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 99, 'elapsed_time': 42}
+2025-05-11 17:20:09,082 - workout_manager - INFO - Calculated average speed from 36 filtered data points (removed 2 outliers): 18.39138888888889 km/h
+2025-05-11 17:20:09,084 - workout_manager - INFO - Device-reported average speed: 1.09 km/h (not used)
+2025-05-11 17:20:09,093 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:09,956 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:09.956053
+2025-05-11 17:20:09,956 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:09.915051', 'speed': 22.68, 'average_speed': 1.1, 'cadence': 38.0, 'average_cadence': 29.0, 'distance': 209, 'power': 74, 'average_power': 38, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 99, 'elapsed_time': 43}
+2025-05-11 17:20:09,957 - workout_manager - INFO - Calculated average speed from 37 filtered data points (removed 2 outliers): 18.507297297297296 km/h
+2025-05-11 17:20:09,958 - workout_manager - INFO - Device-reported average speed: 1.1 km/h (not used)
+2025-05-11 17:20:09,968 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:10,969 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:10.969697
+2025-05-11 17:20:10,970 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:10.962712', 'speed': 22.68, 'average_speed': 1.1, 'cadence': 38.0, 'average_cadence': 29.0, 'distance': 209, 'power': 74, 'average_power': 38, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 100, 'elapsed_time': 44}
+2025-05-11 17:20:10,971 - workout_manager - INFO - Calculated average speed from 38 filtered data points (removed 2 outliers): 18.617105263157896 km/h
+2025-05-11 17:20:10,971 - workout_manager - INFO - Device-reported average speed: 1.1 km/h (not used)
+2025-05-11 17:20:10,980 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:11,962 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:11.962286
+2025-05-11 17:20:11,963 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:11.952520', 'speed': 22.68, 'average_speed': 1.11, 'cadence': 38.0, 'average_cadence': 30.0, 'distance': 225, 'power': 74, 'average_power': 41, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 100, 'elapsed_time': 45}
+2025-05-11 17:20:11,963 - workout_manager - INFO - Calculated average speed from 39 filtered data points (removed 2 outliers): 18.721282051282053 km/h
+2025-05-11 17:20:11,964 - workout_manager - INFO - Device-reported average speed: 1.11 km/h (not used)
+2025-05-11 17:20:11,977 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:12,920 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:12.920991
+2025-05-11 17:20:12,922 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:12.911756', 'speed': 22.68, 'average_speed': 1.12, 'cadence': 38.0, 'average_cadence': 30.0, 'distance': 225, 'power': 74, 'average_power': 41, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 100, 'elapsed_time': 46}
+2025-05-11 17:20:12,924 - workout_manager - INFO - Calculated average speed from 40 filtered data points (removed 2 outliers): 18.82025 km/h
+2025-05-11 17:20:12,924 - workout_manager - INFO - Device-reported average speed: 1.12 km/h (not used)
+2025-05-11 17:20:12,930 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:13,941 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:13.941071
+2025-05-11 17:20:13,942 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:13.933059', 'speed': 22.68, 'average_speed': 1.13, 'cadence': 38.0, 'average_cadence': 30.0, 'distance': 225, 'power': 74, 'average_power': 41, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 100, 'elapsed_time': 47}
+2025-05-11 17:20:13,943 - workout_manager - INFO - Calculated average speed from 41 filtered data points (removed 2 outliers): 18.91439024390244 km/h
+2025-05-11 17:20:13,944 - workout_manager - INFO - Device-reported average speed: 1.13 km/h (not used)
+2025-05-11 17:20:13,953 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:14,930 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:14.930275
+2025-05-11 17:20:14,930 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:14.922377', 'speed': 22.04, 'average_speed': 1.13, 'cadence': 37.0, 'average_cadence': 30.0, 'distance': 241, 'power': 70, 'average_power': 41, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 100, 'elapsed_time': 48}
+2025-05-11 17:20:14,931 - workout_manager - INFO - Calculated average speed from 42 filtered data points (removed 2 outliers): 18.988809523809522 km/h
+2025-05-11 17:20:14,931 - workout_manager - INFO - Device-reported average speed: 1.13 km/h (not used)
+2025-05-11 17:20:14,939 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:15,920 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:15.920880
+2025-05-11 17:20:15,921 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:15.912105', 'speed': 22.04, 'average_speed': 1.13, 'cadence': 37.0, 'average_cadence': 30.0, 'distance': 241, 'power': 70, 'average_power': 41, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 101, 'elapsed_time': 49}
+2025-05-11 17:20:15,922 - workout_manager - INFO - Calculated average speed from 43 filtered data points (removed 2 outliers): 19.059767441860465 km/h
+2025-05-11 17:20:15,923 - workout_manager - INFO - Device-reported average speed: 1.13 km/h (not used)
+2025-05-11 17:20:15,932 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:16,942 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:16.942770
+2025-05-11 17:20:16,943 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:16.933299', 'speed': 22.04, 'average_speed': 1.14, 'cadence': 37.0, 'average_cadence': 30.0, 'distance': 241, 'power': 70, 'average_power': 41, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 50}
+2025-05-11 17:20:16,944 - workout_manager - INFO - Calculated average speed from 44 filtered data points (removed 2 outliers): 19.1275 km/h
+2025-05-11 17:20:16,944 - workout_manager - INFO - Device-reported average speed: 1.14 km/h (not used)
+2025-05-11 17:20:16,953 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:17,931 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:17.931066
+2025-05-11 17:20:17,932 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:17.923070', 'speed': 22.04, 'average_speed': 1.14, 'cadence': 37.0, 'average_cadence': 30.0, 'distance': 257, 'power': 70, 'average_power': 41, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 51}
+2025-05-11 17:20:17,932 - workout_manager - INFO - Calculated average speed from 45 filtered data points (removed 2 outliers): 19.19222222222222 km/h
+2025-05-11 17:20:17,933 - workout_manager - INFO - Device-reported average speed: 1.14 km/h (not used)
+2025-05-11 17:20:17,941 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:18,951 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:18.951777
+2025-05-11 17:20:18,952 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:18.942880', 'speed': 21.56, 'average_speed': 1.15, 'cadence': 36.0, 'average_cadence': 30.0, 'distance': 257, 'power': 66, 'average_power': 41, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 103, 'elapsed_time': 52}
+2025-05-11 17:20:18,952 - workout_manager - INFO - Calculated average speed from 46 filtered data points (removed 2 outliers): 19.243695652173916 km/h
+2025-05-11 17:20:18,953 - workout_manager - INFO - Device-reported average speed: 1.15 km/h (not used)
+2025-05-11 17:20:18,960 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:19,944 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:19.944670
+2025-05-11 17:20:19,945 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:19.931827', 'speed': 21.56, 'average_speed': 1.15, 'cadence': 36.0, 'average_cadence': 30.0, 'distance': 273, 'power': 66, 'average_power': 41, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 103, 'elapsed_time': 53}
+2025-05-11 17:20:19,945 - workout_manager - INFO - Calculated average speed from 46 filtered data points (removed 3 outliers): 19.506086956521738 km/h
+2025-05-11 17:20:19,946 - workout_manager - INFO - Device-reported average speed: 1.15 km/h (not used)
+2025-05-11 17:20:19,954 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:20,960 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:20.960156
+2025-05-11 17:20:20,961 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:20.952608', 'speed': 22.04, 'average_speed': 1.15, 'cadence': 37.0, 'average_cadence': 31.0, 'distance': 273, 'power': 70, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 104, 'elapsed_time': 54}
+2025-05-11 17:20:20,962 - workout_manager - INFO - Calculated average speed from 47 filtered data points (removed 3 outliers): 19.560000000000002 km/h
+2025-05-11 17:20:20,963 - workout_manager - INFO - Device-reported average speed: 1.15 km/h (not used)
+2025-05-11 17:20:20,970 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:21,921 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:21.921065
+2025-05-11 17:20:21,922 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:21.913066', 'speed': 22.68, 'average_speed': 1.16, 'cadence': 38.0, 'average_cadence': 31.0, 'distance': 273, 'power': 74, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 105, 'elapsed_time': 55}
+2025-05-11 17:20:21,923 - workout_manager - INFO - Calculated average speed from 48 filtered data points (removed 3 outliers): 19.625 km/h
+2025-05-11 17:20:21,924 - workout_manager - INFO - Device-reported average speed: 1.16 km/h (not used)
+2025-05-11 17:20:21,929 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:22,972 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:22.972254
+2025-05-11 17:20:22,973 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:22.963058', 'speed': 22.04, 'average_speed': 1.16, 'cadence': 37.0, 'average_cadence': 31.0, 'distance': 289, 'power': 70, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 106, 'elapsed_time': 56}
+2025-05-11 17:20:22,974 - workout_manager - INFO - Calculated average speed from 49 filtered data points (removed 3 outliers): 19.674285714285713 km/h
+2025-05-11 17:20:22,975 - workout_manager - INFO - Device-reported average speed: 1.16 km/h (not used)
+2025-05-11 17:20:22,982 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:23,933 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:23.933206
+2025-05-11 17:20:23,933 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:23.924244', 'speed': 22.04, 'average_speed': 1.17, 'cadence': 37.0, 'average_cadence': 31.0, 'distance': 289, 'power': 70, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 106, 'elapsed_time': 57}
+2025-05-11 17:20:23,934 - workout_manager - INFO - Calculated average speed from 50 filtered data points (removed 3 outliers): 19.721600000000002 km/h
+2025-05-11 17:20:23,934 - workout_manager - INFO - Device-reported average speed: 1.17 km/h (not used)
+2025-05-11 17:20:23,987 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:25,011 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:25.011954
+2025-05-11 17:20:25,011 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:25.002434', 'speed': 22.04, 'average_speed': 1.17, 'cadence': 37.0, 'average_cadence': 31.0, 'distance': 305, 'power': 70, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 107, 'elapsed_time': 58}
+2025-05-11 17:20:25,012 - workout_manager - INFO - Calculated average speed from 51 filtered data points (removed 3 outliers): 19.76705882352941 km/h
+2025-05-11 17:20:25,012 - workout_manager - INFO - Device-reported average speed: 1.17 km/h (not used)
+2025-05-11 17:20:25,068 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:25,939 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:25.939876
+2025-05-11 17:20:25,941 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:25.932742', 'speed': 22.04, 'average_speed': 1.17, 'cadence': 37.0, 'average_cadence': 31.0, 'distance': 305, 'power': 70, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 107, 'elapsed_time': 59}
+2025-05-11 17:20:25,942 - workout_manager - INFO - Calculated average speed from 52 filtered data points (removed 3 outliers): 19.810769230769232 km/h
+2025-05-11 17:20:25,942 - workout_manager - INFO - Device-reported average speed: 1.17 km/h (not used)
+2025-05-11 17:20:25,949 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:26,959 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:26.959938
+2025-05-11 17:20:26,962 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:26.954123', 'speed': 22.04, 'average_speed': 1.18, 'cadence': 37.0, 'average_cadence': 31.0, 'distance': 305, 'power': 70, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 107, 'elapsed_time': 60}
+2025-05-11 17:20:26,962 - workout_manager - INFO - Calculated average speed from 53 filtered data points (removed 3 outliers): 19.852830188679246 km/h
+2025-05-11 17:20:26,963 - workout_manager - INFO - Device-reported average speed: 1.18 km/h (not used)
+2025-05-11 17:20:26,970 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:27,950 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:27.950587
+2025-05-11 17:20:27,954 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:27.914396', 'speed': 21.56, 'average_speed': 1.18, 'cadence': 36.0, 'average_cadence': 31.0, 'distance': 321, 'power': 66, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 105, 'elapsed_time': 61}
+2025-05-11 17:20:27,960 - workout_manager - INFO - Calculated average speed from 54 filtered data points (removed 3 outliers): 19.884444444444444 km/h
+2025-05-11 17:20:27,966 - workout_manager - INFO - Device-reported average speed: 1.18 km/h (not used)
+2025-05-11 17:20:27,984 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:28,972 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:28.972138
+2025-05-11 17:20:28,973 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:28.963245', 'speed': 21.56, 'average_speed': 1.18, 'cadence': 36.0, 'average_cadence': 31.0, 'distance': 321, 'power': 66, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 104, 'elapsed_time': 62}
+2025-05-11 17:20:28,973 - workout_manager - INFO - Calculated average speed from 55 filtered data points (removed 3 outliers): 19.914909090909088 km/h
+2025-05-11 17:20:28,974 - workout_manager - INFO - Device-reported average speed: 1.18 km/h (not used)
+2025-05-11 17:20:28,981 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:29,933 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:29.933393
+2025-05-11 17:20:29,933 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:29.923786', 'speed': 22.04, 'average_speed': 1.18, 'cadence': 37.0, 'average_cadence': 31.0, 'distance': 321, 'power': 70, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 103, 'elapsed_time': 63}
+2025-05-11 17:20:29,934 - workout_manager - INFO - Calculated average speed from 56 filtered data points (removed 3 outliers): 19.95285714285714 km/h
+2025-05-11 17:20:29,935 - workout_manager - INFO - Device-reported average speed: 1.18 km/h (not used)
+2025-05-11 17:20:29,942 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:30,979 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:30.979970
+2025-05-11 17:20:30,981 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:30.972797', 'speed': 22.04, 'average_speed': 1.19, 'cadence': 37.0, 'average_cadence': 31.0, 'distance': 337, 'power': 70, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 64}
+2025-05-11 17:20:30,981 - workout_manager - INFO - Calculated average speed from 57 filtered data points (removed 3 outliers): 19.989473684210527 km/h
+2025-05-11 17:20:30,982 - workout_manager - INFO - Device-reported average speed: 1.19 km/h (not used)
+2025-05-11 17:20:30,990 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:31,972 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:31.972069
+2025-05-11 17:20:31,973 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:31.963308', 'speed': 21.56, 'average_speed': 1.19, 'cadence': 36.0, 'average_cadence': 31.0, 'distance': 337, 'power': 66, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 65}
+2025-05-11 17:20:31,973 - workout_manager - INFO - Calculated average speed from 58 filtered data points (removed 3 outliers): 20.016551724137933 km/h
+2025-05-11 17:20:31,974 - workout_manager - INFO - Device-reported average speed: 1.19 km/h (not used)
+2025-05-11 17:20:31,981 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:32,961 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:32.961586
+2025-05-11 17:20:32,961 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:32.953251', 'speed': 20.91, 'average_speed': 1.19, 'cadence': 35.0, 'average_cadence': 32.0, 'distance': 353, 'power': 62, 'average_power': 49, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 66}
+2025-05-11 17:20:32,961 - workout_manager - INFO - Calculated average speed from 59 filtered data points (removed 3 outliers): 20.031694915254235 km/h
+2025-05-11 17:20:32,962 - workout_manager - INFO - Device-reported average speed: 1.19 km/h (not used)
+2025-05-11 17:20:32,971 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:33,921 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:33.921636
+2025-05-11 17:20:33,923 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:33.912956', 'speed': 20.91, 'average_speed': 1.19, 'cadence': 35.0, 'average_cadence': 32.0, 'distance': 353, 'power': 62, 'average_power': 49, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 67}
+2025-05-11 17:20:33,923 - workout_manager - INFO - Calculated average speed from 60 filtered data points (removed 3 outliers): 20.046333333333333 km/h
+2025-05-11 17:20:33,925 - workout_manager - INFO - Device-reported average speed: 1.19 km/h (not used)
+2025-05-11 17:20:33,934 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:35,001 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:20:35.001867
+2025-05-11 17:20:35,002 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:20:34.993148', 'speed': 20.27, 'average_speed': 1.19, 'cadence': 34.0, 'average_cadence': 31.0, 'distance': 353, 'power': 57, 'average_power': 45, 'total_energy': 2, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 102, 'elapsed_time': 68}
+2025-05-11 17:20:35,002 - workout_manager - INFO - Calculated average speed from 61 filtered data points (removed 3 outliers): 20.05 km/h
+2025-05-11 17:20:35,004 - workout_manager - INFO - Device-reported average speed: 1.19 km/h (not used)
+2025-05-11 17:20:35,011 - workout_manager - INFO - Successfully saved data point to workout 1
+2025-05-11 17:20:35,862 - workout_manager - INFO - Successfully created FIT file for workout 1: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250511_171929.fit
+2025-05-11 17:48:41,832 - workout_manager - INFO - Started workout 2 with device C9:02:CB:68:17:C1
+2025-05-11 17:48:41,997 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:48:41.997332
+2025-05-11 17:48:41,998 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:41.986938', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 91, 'elapsed_time': 3}
+2025-05-11 17:48:42,009 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:48:42,955 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:48:42.955169
+2025-05-11 17:48:42,955 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:42.944540', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 88, 'elapsed_time': 4}
+2025-05-11 17:48:42,968 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:48:44,007 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:48:44.007100
+2025-05-11 17:48:44,007 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:43.994646', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 85, 'elapsed_time': 5}
+2025-05-11 17:48:44,026 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:48:44,966 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:48:44.966644
+2025-05-11 17:48:44,966 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:44.954694', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 85, 'elapsed_time': 6}
+2025-05-11 17:48:45,018 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:48:46,046 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:48:46.046231
+2025-05-11 17:48:46,050 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:46.006656', 'speed': 1.12, 'average_speed': 0.03, 'cadence': 2.0, 'average_cadence': 0.0, 'distance': 0, 'power': 2, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 84, 'elapsed_time': 7}
+2025-05-11 17:48:46,054 - workout_manager - INFO - Calculated average speed from 1 data points: 1.12 km/h
+2025-05-11 17:48:46,058 - workout_manager - INFO - Device-reported average speed: 0.03 km/h (not used)
+2025-05-11 17:48:46,132 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:48:47,005 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:48:47.005667
+2025-05-11 17:48:47,021 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:46.997953', 'speed': 2.89, 'average_speed': 0.16, 'cadence': 5.0, 'average_cadence': 4.0, 'distance': 0, 'power': 4, 'average_power': 3, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 83, 'elapsed_time': 8}
+2025-05-11 17:48:47,030 - workout_manager - INFO - Calculated average speed from 2 data points: 2.005 km/h
+2025-05-11 17:48:47,035 - workout_manager - INFO - Device-reported average speed: 0.16 km/h (not used)
+2025-05-11 17:48:47,103 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:48:47,999 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:48:47.999771
+2025-05-11 17:48:48,000 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:47.985988', 'speed': 8.84, 'average_speed': 0.27, 'cadence': 15.0, 'average_cadence': 7.0, 'distance': 0, 'power': 11, 'average_power': 5, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 83, 'elapsed_time': 9}
+2025-05-11 17:48:48,000 - workout_manager - INFO - Calculated average speed from 3 data points: 4.283333333333333 km/h
+2025-05-11 17:48:48,002 - workout_manager - INFO - Device-reported average speed: 0.27 km/h (not used)
+2025-05-11 17:48:48,059 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:48:48,990 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:48:48.990612
+2025-05-11 17:48:48,991 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:48.976095', 'speed': 12.55, 'average_speed': 0.38, 'cadence': 21.0, 'average_cadence': 10.0, 'distance': 16, 'power': 18, 'average_power': 8, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 82, 'elapsed_time': 10}
+2025-05-11 17:48:48,992 - workout_manager - INFO - Calculated average speed from 4 data points: 6.3500000000000005 km/h
+2025-05-11 17:48:48,993 - workout_manager - INFO - Device-reported average speed: 0.38 km/h (not used)
+2025-05-11 17:48:49,048 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:48:50,039 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:48:50.039609
+2025-05-11 17:48:50,039 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:50.026747', 'speed': 13.03, 'average_speed': 0.46, 'cadence': 22.0, 'average_cadence': 12.0, 'distance': 16, 'power': 20, 'average_power': 9, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 83, 'elapsed_time': 11}
+2025-05-11 17:48:50,043 - workout_manager - INFO - Calculated average speed from 5 filtered data points (removed 0 outliers): 7.686 km/h
+2025-05-11 17:48:50,044 - workout_manager - INFO - Device-reported average speed: 0.46 km/h (not used)
+2025-05-11 17:48:50,103 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:48:50,969 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:48:50.969362
+2025-05-11 17:48:50,970 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:50.956984', 'speed': 15.44, 'average_speed': 0.52, 'cadence': 26.0, 'average_cadence': 14.0, 'distance': 16, 'power': 31, 'average_power': 11, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 83, 'elapsed_time': 12}
+2025-05-11 17:48:50,971 - workout_manager - INFO - Calculated average speed from 6 filtered data points (removed 0 outliers): 8.978333333333333 km/h
+2025-05-11 17:48:50,971 - workout_manager - INFO - Device-reported average speed: 0.52 km/h (not used)
+2025-05-11 17:48:51,029 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:48:52,022 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:48:52.022132
+2025-05-11 17:48:52,023 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:52.006720', 'speed': 16.73, 'average_speed': 0.58, 'cadence': 28.0, 'average_cadence': 15.0, 'distance': 32, 'power': 36, 'average_power': 11, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 84, 'elapsed_time': 13}
+2025-05-11 17:48:52,024 - workout_manager - INFO - Calculated average speed from 7 filtered data points (removed 0 outliers): 10.085714285714285 km/h
+2025-05-11 17:48:52,026 - workout_manager - INFO - Device-reported average speed: 0.58 km/h (not used)
+2025-05-11 17:48:52,037 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:48:53,005 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:48:53.005501
+2025-05-11 17:48:53,009 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:52.994685', 'speed': 17.37, 'average_speed': 0.62, 'cadence': 29.0, 'average_cadence': 16.0, 'distance': 32, 'power': 38, 'average_power': 12, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 84, 'elapsed_time': 14}
+2025-05-11 17:48:53,011 - workout_manager - INFO - Calculated average speed from 8 filtered data points (removed 0 outliers): 10.99625 km/h
+2025-05-11 17:48:53,011 - workout_manager - INFO - Device-reported average speed: 0.62 km/h (not used)
+2025-05-11 17:48:53,066 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:48:53,997 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:48:53.997603
+2025-05-11 17:48:53,997 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:53.986726', 'speed': 18.5, 'average_speed': 0.67, 'cadence': 31.0, 'average_cadence': 18.0, 'distance': 48, 'power': 45, 'average_power': 14, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 85, 'elapsed_time': 15}
+2025-05-11 17:48:54,002 - workout_manager - INFO - Calculated average speed from 9 filtered data points (removed 0 outliers): 11.83 km/h
+2025-05-11 17:48:54,002 - workout_manager - INFO - Device-reported average speed: 0.67 km/h (not used)
+2025-05-11 17:48:54,060 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:48:54,988 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:48:54.988595
+2025-05-11 17:48:54,989 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:54.976653', 'speed': 18.5, 'average_speed': 0.71, 'cadence': 31.0, 'average_cadence': 19.0, 'distance': 48, 'power': 45, 'average_power': 14, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 86, 'elapsed_time': 16}
+2025-05-11 17:48:54,989 - workout_manager - INFO - Calculated average speed from 10 filtered data points (removed 0 outliers): 12.497 km/h
+2025-05-11 17:48:54,990 - workout_manager - INFO - Device-reported average speed: 0.71 km/h (not used)
+2025-05-11 17:48:55,003 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:48:56,014 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:48:56.014525
+2025-05-11 17:48:56,016 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:55.998048', 'speed': 19.14, 'average_speed': 0.73, 'cadence': 32.0, 'average_cadence': 19.0, 'distance': 48, 'power': 49, 'average_power': 14, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 89, 'elapsed_time': 17}
+2025-05-11 17:48:56,018 - workout_manager - INFO - Calculated average speed from 11 filtered data points (removed 0 outliers): 13.100909090909092 km/h
+2025-05-11 17:48:56,019 - workout_manager - INFO - Device-reported average speed: 0.73 km/h (not used)
+2025-05-11 17:48:56,031 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:48:56,970 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:48:56.970640
+2025-05-11 17:48:56,971 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:56.956638', 'speed': 17.85, 'average_speed': 0.75, 'cadence': 30.0, 'average_cadence': 20.0, 'distance': 48, 'power': 41, 'average_power': 15, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 91, 'elapsed_time': 18}
+2025-05-11 17:48:56,972 - workout_manager - INFO - Calculated average speed from 11 filtered data points (removed 1 outliers): 14.621818181818183 km/h
+2025-05-11 17:48:56,973 - workout_manager - INFO - Device-reported average speed: 0.75 km/h (not used)
+2025-05-11 17:48:57,033 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:48:58,016 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:48:58.016641
+2025-05-11 17:48:58,017 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:58.005641', 'speed': 16.09, 'average_speed': 0.74, 'cadence': 27.0, 'average_cadence': 19.0, 'distance': 64, 'power': 33, 'average_power': 14, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 92, 'elapsed_time': 19}
+2025-05-11 17:48:58,018 - workout_manager - INFO - Calculated average speed from 12 filtered data points (removed 1 outliers): 14.744166666666667 km/h
+2025-05-11 17:48:58,018 - workout_manager - INFO - Device-reported average speed: 0.74 km/h (not used)
+2025-05-11 17:48:58,073 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:48:59,030 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:48:59.030686
+2025-05-11 17:48:59,032 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:59.010951', 'speed': 13.67, 'average_speed': 0.73, 'cadence': 23.0, 'average_cadence': 19.0, 'distance': 64, 'power': 23, 'average_power': 14, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 92, 'elapsed_time': 20}
+2025-05-11 17:48:59,033 - workout_manager - INFO - Calculated average speed from 13 filtered data points (removed 1 outliers): 14.661538461538461 km/h
+2025-05-11 17:48:59,034 - workout_manager - INFO - Device-reported average speed: 0.73 km/h (not used)
+2025-05-11 17:48:59,043 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:48:59,995 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:48:59.995113
+2025-05-11 17:48:59,995 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:48:59.985832', 'speed': 13.67, 'average_speed': 0.73, 'cadence': 23.0, 'average_cadence': 19.0, 'distance': 64, 'power': 23, 'average_power': 14, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 92, 'elapsed_time': 21}
+2025-05-11 17:48:59,996 - workout_manager - INFO - Calculated average speed from 13 filtered data points (removed 2 outliers): 15.49076923076923 km/h
+2025-05-11 17:48:59,996 - workout_manager - INFO - Device-reported average speed: 0.73 km/h (not used)
+2025-05-11 17:49:00,004 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:00,956 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:00.956741
+2025-05-11 17:49:00,957 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:00.947081', 'speed': 16.09, 'average_speed': 0.76, 'cadence': 27.0, 'average_cadence': 20.0, 'distance': 64, 'power': 33, 'average_power': 15, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 22}
+2025-05-11 17:49:00,958 - workout_manager - INFO - Calculated average speed from 14 filtered data points (removed 2 outliers): 15.53357142857143 km/h
+2025-05-11 17:49:00,959 - workout_manager - INFO - Device-reported average speed: 0.76 km/h (not used)
+2025-05-11 17:49:01,016 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:02,009 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:02.009135
+2025-05-11 17:49:02,010 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:01.996843', 'speed': 16.73, 'average_speed': 0.77, 'cadence': 28.0, 'average_cadence': 20.0, 'distance': 80, 'power': 36, 'average_power': 15, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 23}
+2025-05-11 17:49:02,012 - workout_manager - INFO - Calculated average speed from 15 filtered data points (removed 2 outliers): 15.613333333333333 km/h
+2025-05-11 17:49:02,014 - workout_manager - INFO - Device-reported average speed: 0.77 km/h (not used)
+2025-05-11 17:49:02,071 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:02,969 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:02.969018
+2025-05-11 17:49:02,970 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:02.956474', 'speed': 17.85, 'average_speed': 0.8, 'cadence': 30.0, 'average_cadence': 21.0, 'distance': 80, 'power': 41, 'average_power': 18, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 88, 'elapsed_time': 24}
+2025-05-11 17:49:02,971 - workout_manager - INFO - Calculated average speed from 16 filtered data points (removed 2 outliers): 15.753125 km/h
+2025-05-11 17:49:02,972 - workout_manager - INFO - Device-reported average speed: 0.8 km/h (not used)
+2025-05-11 17:49:03,029 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:03,957 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:03.957340
+2025-05-11 17:49:03,960 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:03.946408', 'speed': 18.5, 'average_speed': 0.82, 'cadence': 31.0, 'average_cadence': 22.0, 'distance': 96, 'power': 45, 'average_power': 20, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 86, 'elapsed_time': 25}
+2025-05-11 17:49:03,961 - workout_manager - INFO - Calculated average speed from 17 filtered data points (removed 2 outliers): 15.914705882352942 km/h
+2025-05-11 17:49:03,962 - workout_manager - INFO - Device-reported average speed: 0.82 km/h (not used)
+2025-05-11 17:49:04,018 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:04,984 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:04.984008
+2025-05-11 17:49:04,985 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:04.966774', 'speed': 19.14, 'average_speed': 0.85, 'cadence': 32.0, 'average_cadence': 22.0, 'distance': 96, 'power': 49, 'average_power': 20, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 84, 'elapsed_time': 26}
+2025-05-11 17:49:04,985 - workout_manager - INFO - Calculated average speed from 18 filtered data points (removed 2 outliers): 16.093888888888888 km/h
+2025-05-11 17:49:04,987 - workout_manager - INFO - Device-reported average speed: 0.85 km/h (not used)
+2025-05-11 17:49:05,004 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:06,000 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:06.000092
+2025-05-11 17:49:06,001 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:05.986582', 'speed': 19.62, 'average_speed': 0.86, 'cadence': 33.0, 'average_cadence': 23.0, 'distance': 96, 'power': 53, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 83, 'elapsed_time': 27}
+2025-05-11 17:49:06,002 - workout_manager - INFO - Calculated average speed from 19 filtered data points (removed 2 outliers): 16.279473684210526 km/h
+2025-05-11 17:49:06,003 - workout_manager - INFO - Device-reported average speed: 0.86 km/h (not used)
+2025-05-11 17:49:06,059 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:06,960 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:06.960407
+2025-05-11 17:49:06,962 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:06.947215', 'speed': 19.62, 'average_speed': 0.87, 'cadence': 33.0, 'average_cadence': 23.0, 'distance': 112, 'power': 53, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 82, 'elapsed_time': 28}
+2025-05-11 17:49:06,964 - workout_manager - INFO - Calculated average speed from 20 filtered data points (removed 2 outliers): 16.4465 km/h
+2025-05-11 17:49:06,965 - workout_manager - INFO - Device-reported average speed: 0.87 km/h (not used)
+2025-05-11 17:49:07,022 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:08,075 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:08.075899
+2025-05-11 17:49:08,076 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:08.056829', 'speed': 19.62, 'average_speed': 0.88, 'cadence': 33.0, 'average_cadence': 23.0, 'distance': 112, 'power': 53, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 82, 'elapsed_time': 29}
+2025-05-11 17:49:08,077 - workout_manager - INFO - Calculated average speed from 21 filtered data points (removed 2 outliers): 16.597619047619048 km/h
+2025-05-11 17:49:08,079 - workout_manager - INFO - Device-reported average speed: 0.88 km/h (not used)
+2025-05-11 17:49:08,138 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:08,970 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:08.970559
+2025-05-11 17:49:08,971 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:08.956774', 'speed': 19.62, 'average_speed': 0.89, 'cadence': 33.0, 'average_cadence': 24.0, 'distance': 112, 'power': 53, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 83, 'elapsed_time': 30}
+2025-05-11 17:49:08,972 - workout_manager - INFO - Calculated average speed from 22 filtered data points (removed 2 outliers): 16.735 km/h
+2025-05-11 17:49:08,972 - workout_manager - INFO - Device-reported average speed: 0.89 km/h (not used)
+2025-05-11 17:49:09,031 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:09,963 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:09.963877
+2025-05-11 17:49:09,964 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:09.946982', 'speed': 19.14, 'average_speed': 0.9, 'cadence': 32.0, 'average_cadence': 24.0, 'distance': 128, 'power': 49, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 85, 'elapsed_time': 31}
+2025-05-11 17:49:09,965 - workout_manager - INFO - Calculated average speed from 23 filtered data points (removed 2 outliers): 16.839565217391304 km/h
+2025-05-11 17:49:09,966 - workout_manager - INFO - Device-reported average speed: 0.9 km/h (not used)
+2025-05-11 17:49:09,975 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:10,975 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:10.975279
+2025-05-11 17:49:10,977 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:10.967278', 'speed': 19.14, 'average_speed': 0.91, 'cadence': 32.0, 'average_cadence': 24.0, 'distance': 128, 'power': 49, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 86, 'elapsed_time': 32}
+2025-05-11 17:49:10,980 - workout_manager - INFO - Calculated average speed from 24 filtered data points (removed 2 outliers): 16.935416666666665 km/h
+2025-05-11 17:49:10,982 - workout_manager - INFO - Device-reported average speed: 0.91 km/h (not used)
+2025-05-11 17:49:11,039 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:12,059 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:12.059070
+2025-05-11 17:49:12,060 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:12.046905', 'speed': 18.5, 'average_speed': 0.92, 'cadence': 31.0, 'average_cadence': 24.0, 'distance': 128, 'power': 45, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 88, 'elapsed_time': 33}
+2025-05-11 17:49:12,062 - workout_manager - INFO - Calculated average speed from 25 filtered data points (removed 2 outliers): 16.998 km/h
+2025-05-11 17:49:12,063 - workout_manager - INFO - Device-reported average speed: 0.92 km/h (not used)
+2025-05-11 17:49:12,123 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:12,956 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:12.956064
+2025-05-11 17:49:12,957 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:12.945438', 'speed': 19.14, 'average_speed': 0.92, 'cadence': 32.0, 'average_cadence': 24.0, 'distance': 144, 'power': 49, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 88, 'elapsed_time': 34}
+2025-05-11 17:49:12,958 - workout_manager - INFO - Calculated average speed from 26 filtered data points (removed 2 outliers): 17.080384615384617 km/h
+2025-05-11 17:49:12,959 - workout_manager - INFO - Device-reported average speed: 0.92 km/h (not used)
+2025-05-11 17:49:13,014 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:13,982 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:13.982851
+2025-05-11 17:49:13,982 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:13.967626', 'speed': 19.14, 'average_speed': 0.93, 'cadence': 32.0, 'average_cadence': 25.0, 'distance': 144, 'power': 49, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 88, 'elapsed_time': 35}
+2025-05-11 17:49:13,984 - workout_manager - INFO - Calculated average speed from 27 filtered data points (removed 2 outliers): 17.156666666666666 km/h
+2025-05-11 17:49:13,986 - workout_manager - INFO - Device-reported average speed: 0.93 km/h (not used)
+2025-05-11 17:49:14,008 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:14,969 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:14.969085
+2025-05-11 17:49:14,970 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:14.957098', 'speed': 19.14, 'average_speed': 0.94, 'cadence': 32.0, 'average_cadence': 25.0, 'distance': 144, 'power': 49, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 88, 'elapsed_time': 36}
+2025-05-11 17:49:14,971 - workout_manager - INFO - Calculated average speed from 28 filtered data points (removed 2 outliers): 17.2275 km/h
+2025-05-11 17:49:14,972 - workout_manager - INFO - Device-reported average speed: 0.94 km/h (not used)
+2025-05-11 17:49:15,030 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:15,967 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:15.967741
+2025-05-11 17:49:15,968 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:15.947148', 'speed': 18.5, 'average_speed': 0.95, 'cadence': 31.0, 'average_cadence': 25.0, 'distance': 160, 'power': 45, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 88, 'elapsed_time': 37}
+2025-05-11 17:49:15,968 - workout_manager - INFO - Calculated average speed from 29 filtered data points (removed 2 outliers): 17.271379310344827 km/h
+2025-05-11 17:49:15,971 - workout_manager - INFO - Device-reported average speed: 0.95 km/h (not used)
+2025-05-11 17:49:16,028 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:16,988 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:16.988384
+2025-05-11 17:49:16,989 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:16.966978', 'speed': 19.14, 'average_speed': 0.95, 'cadence': 32.0, 'average_cadence': 25.0, 'distance': 160, 'power': 49, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 89, 'elapsed_time': 38}
+2025-05-11 17:49:16,990 - workout_manager - INFO - Calculated average speed from 30 filtered data points (removed 2 outliers): 17.333666666666666 km/h
+2025-05-11 17:49:16,994 - workout_manager - INFO - Device-reported average speed: 0.95 km/h (not used)
+2025-05-11 17:49:17,054 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:18,031 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:18.031281
+2025-05-11 17:49:18,033 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:18.017473', 'speed': 19.14, 'average_speed': 0.96, 'cadence': 32.0, 'average_cadence': 25.0, 'distance': 160, 'power': 49, 'average_power': 28, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 89, 'elapsed_time': 39}
+2025-05-11 17:49:18,033 - workout_manager - INFO - Calculated average speed from 31 filtered data points (removed 2 outliers): 17.391935483870967 km/h
+2025-05-11 17:49:18,036 - workout_manager - INFO - Device-reported average speed: 0.96 km/h (not used)
+2025-05-11 17:49:18,094 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:18,956 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:18.956199
+2025-05-11 17:49:18,957 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:18.946721', 'speed': 19.14, 'average_speed': 0.96, 'cadence': 32.0, 'average_cadence': 25.0, 'distance': 176, 'power': 49, 'average_power': 28, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 89, 'elapsed_time': 40}
+2025-05-11 17:49:18,958 - workout_manager - INFO - Calculated average speed from 32 filtered data points (removed 2 outliers): 17.4465625 km/h
+2025-05-11 17:49:18,959 - workout_manager - INFO - Device-reported average speed: 0.96 km/h (not used)
+2025-05-11 17:49:19,017 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:19,980 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:19.980640
+2025-05-11 17:49:19,981 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:19.967780', 'speed': 19.14, 'average_speed': 0.97, 'cadence': 32.0, 'average_cadence': 26.0, 'distance': 176, 'power': 49, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 41}
+2025-05-11 17:49:19,982 - workout_manager - INFO - Calculated average speed from 33 filtered data points (removed 2 outliers): 17.49787878787879 km/h
+2025-05-11 17:49:19,983 - workout_manager - INFO - Device-reported average speed: 0.97 km/h (not used)
+2025-05-11 17:49:20,040 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:20,997 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:20.997473
+2025-05-11 17:49:20,998 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:20.986560', 'speed': 19.14, 'average_speed': 0.98, 'cadence': 32.0, 'average_cadence': 26.0, 'distance': 176, 'power': 49, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 89, 'elapsed_time': 42}
+2025-05-11 17:49:20,998 - workout_manager - INFO - Calculated average speed from 34 filtered data points (removed 2 outliers): 17.546176470588236 km/h
+2025-05-11 17:49:20,999 - workout_manager - INFO - Device-reported average speed: 0.98 km/h (not used)
+2025-05-11 17:49:21,055 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:21,960 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:21.959398
+2025-05-11 17:49:21,962 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:21.947161', 'speed': 19.14, 'average_speed': 0.98, 'cadence': 32.0, 'average_cadence': 26.0, 'distance': 193, 'power': 49, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 89, 'elapsed_time': 43}
+2025-05-11 17:49:21,963 - workout_manager - INFO - Calculated average speed from 35 filtered data points (removed 2 outliers): 17.591714285714286 km/h
+2025-05-11 17:49:21,965 - workout_manager - INFO - Device-reported average speed: 0.98 km/h (not used)
+2025-05-11 17:49:22,021 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:22,981 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:22.981161
+2025-05-11 17:49:22,982 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:22.966525', 'speed': 19.14, 'average_speed': 0.98, 'cadence': 32.0, 'average_cadence': 26.0, 'distance': 193, 'power': 49, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 44}
+2025-05-11 17:49:22,982 - workout_manager - INFO - Calculated average speed from 36 filtered data points (removed 2 outliers): 17.634722222222223 km/h
+2025-05-11 17:49:22,983 - workout_manager - INFO - Device-reported average speed: 0.98 km/h (not used)
+2025-05-11 17:49:22,990 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:24,064 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:24.064311
+2025-05-11 17:49:24,067 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:24.046503', 'speed': 19.14, 'average_speed': 0.99, 'cadence': 32.0, 'average_cadence': 26.0, 'distance': 193, 'power': 49, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 45}
+2025-05-11 17:49:24,068 - workout_manager - INFO - Calculated average speed from 37 filtered data points (removed 2 outliers): 17.675405405405407 km/h
+2025-05-11 17:49:24,068 - workout_manager - INFO - Device-reported average speed: 0.99 km/h (not used)
+2025-05-11 17:49:24,124 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:24,986 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:24.986461
+2025-05-11 17:49:24,987 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:24.977611', 'speed': 18.5, 'average_speed': 0.99, 'cadence': 31.0, 'average_cadence': 26.0, 'distance': 193, 'power': 45, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 90, 'elapsed_time': 46}
+2025-05-11 17:49:24,987 - workout_manager - INFO - Calculated average speed from 38 filtered data points (removed 2 outliers): 17.697105263157894 km/h
+2025-05-11 17:49:24,988 - workout_manager - INFO - Device-reported average speed: 0.99 km/h (not used)
+2025-05-11 17:49:24,995 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:25,985 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:25.985892
+2025-05-11 17:49:25,987 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:25.967096', 'speed': 17.85, 'average_speed': 0.99, 'cadence': 30.0, 'average_cadence': 26.0, 'distance': 209, 'power': 41, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 91, 'elapsed_time': 47}
+2025-05-11 17:49:25,987 - workout_manager - INFO - Calculated average speed from 39 filtered data points (removed 2 outliers): 17.70102564102564 km/h
+2025-05-11 17:49:25,988 - workout_manager - INFO - Device-reported average speed: 0.99 km/h (not used)
+2025-05-11 17:49:26,048 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:27,035 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:49:27.035646
+2025-05-11 17:49:27,036 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:49:27.017646', 'speed': 16.09, 'average_speed': 0.99, 'cadence': 27.0, 'average_cadence': 26.0, 'distance': 209, 'power': 33, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 91, 'elapsed_time': 48}
+2025-05-11 17:49:27,037 - workout_manager - INFO - Calculated average speed from 40 filtered data points (removed 2 outliers): 17.66075 km/h
+2025-05-11 17:49:27,037 - workout_manager - INFO - Device-reported average speed: 0.99 km/h (not used)
+2025-05-11 17:49:27,095 - workout_manager - INFO - Successfully saved data point to workout 2
+2025-05-11 17:49:27,749 - workout_manager - INFO - Successfully created FIT file for workout 2: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250511_174841.fit
+2025-05-11 17:53:40,029 - workout_manager - INFO - Started workout 3 with device C9:02:CB:68:17:C1
+2025-05-11 17:53:40,080 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:53:40.080621
+2025-05-11 17:53:40,081 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:40.068416', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 64, 'elapsed_time': 2}
+2025-05-11 17:53:40,094 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:53:40,979 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:53:40.979701
+2025-05-11 17:53:40,979 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:40.967084', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 3}
+2025-05-11 17:53:41,038 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:53:41,998 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:53:41.998514
+2025-05-11 17:53:41,999 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:41.986921', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 4}
+2025-05-11 17:53:42,058 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:53:43,076 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:53:43.076334
+2025-05-11 17:53:43,077 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:43.066929', 'speed': 0.0, 'average_speed': 0.0, 'cadence': 0.0, 'average_cadence': 0.0, 'distance': 0, 'power': 0, 'average_power': 0, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 5}
+2025-05-11 17:53:43,087 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:53:43,990 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:53:43.989871
+2025-05-11 17:53:43,990 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:43.966997', 'speed': 9.49, 'average_speed': 0.03, 'cadence': 16.0, 'average_cadence': 1.0, 'distance': 0, 'power': 12, 'average_power': 1, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 66, 'elapsed_time': 6}
+2025-05-11 17:53:43,992 - workout_manager - INFO - Calculated average speed from 1 data points: 9.49 km/h
+2025-05-11 17:53:43,992 - workout_manager - INFO - Device-reported average speed: 0.03 km/h (not used)
+2025-05-11 17:53:44,003 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:53:45,087 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:53:45.087164
+2025-05-11 17:53:45,089 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:45.076988', 'speed': 8.84, 'average_speed': 0.22, 'cadence': 15.0, 'average_cadence': 6.0, 'distance': 0, 'power': 11, 'average_power': 5, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 7}
+2025-05-11 17:53:45,089 - workout_manager - INFO - Calculated average speed from 2 data points: 9.165 km/h
+2025-05-11 17:53:45,089 - workout_manager - INFO - Device-reported average speed: 0.22 km/h (not used)
+2025-05-11 17:53:45,144 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:53:45,991 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:53:45.991454
+2025-05-11 17:53:45,992 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:45.976875', 'speed': 12.55, 'average_speed': 0.36, 'cadence': 21.0, 'average_cadence': 9.0, 'distance': 0, 'power': 18, 'average_power': 7, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 8}
+2025-05-11 17:53:45,993 - workout_manager - INFO - Calculated average speed from 3 data points: 10.293333333333335 km/h
+2025-05-11 17:53:45,995 - workout_manager - INFO - Device-reported average speed: 0.36 km/h (not used)
+2025-05-11 17:53:46,053 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:53:47,068 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:53:47.068327
+2025-05-11 17:53:47,069 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:47.056032', 'speed': 14.32, 'average_speed': 0.44, 'cadence': 24.0, 'average_cadence': 12.0, 'distance': 16, 'power': 25, 'average_power': 9, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 9}
+2025-05-11 17:53:47,082 - workout_manager - INFO - Calculated average speed from 4 data points: 11.3 km/h
+2025-05-11 17:53:47,089 - workout_manager - INFO - Device-reported average speed: 0.44 km/h (not used)
+2025-05-11 17:53:47,151 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:53:48,026 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:53:48.026499
+2025-05-11 17:53:48,027 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:48.006002', 'speed': 16.09, 'average_speed': 0.53, 'cadence': 27.0, 'average_cadence': 14.0, 'distance': 16, 'power': 33, 'average_power': 11, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 66, 'elapsed_time': 10}
+2025-05-11 17:53:48,030 - workout_manager - INFO - Calculated average speed from 5 filtered data points (removed 0 outliers): 12.258 km/h
+2025-05-11 17:53:48,031 - workout_manager - INFO - Device-reported average speed: 0.53 km/h (not used)
+2025-05-11 17:53:48,041 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:53:48,987 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:53:48.987535
+2025-05-11 17:53:48,987 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:48.976002', 'speed': 17.37, 'average_speed': 0.63, 'cadence': 29.0, 'average_cadence': 16.0, 'distance': 32, 'power': 38, 'average_power': 12, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 11}
+2025-05-11 17:53:48,988 - workout_manager - INFO - Calculated average speed from 6 filtered data points (removed 0 outliers): 13.11 km/h
+2025-05-11 17:53:48,989 - workout_manager - INFO - Device-reported average speed: 0.63 km/h (not used)
+2025-05-11 17:53:49,048 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:53:49,980 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:53:49.980045
+2025-05-11 17:53:49,981 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:49.966367', 'speed': 18.5, 'average_speed': 0.68, 'cadence': 31.0, 'average_cadence': 18.0, 'distance': 32, 'power': 45, 'average_power': 14, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 12}
+2025-05-11 17:53:49,982 - workout_manager - INFO - Calculated average speed from 7 filtered data points (removed 0 outliers): 13.879999999999999 km/h
+2025-05-11 17:53:49,982 - workout_manager - INFO - Device-reported average speed: 0.68 km/h (not used)
+2025-05-11 17:53:50,040 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:53:51,090 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:53:51.090588
+2025-05-11 17:53:51,091 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:51.076725', 'speed': 19.14, 'average_speed': 0.72, 'cadence': 32.0, 'average_cadence': 19.0, 'distance': 32, 'power': 49, 'average_power': 14, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 66, 'elapsed_time': 13}
+2025-05-11 17:53:51,092 - workout_manager - INFO - Calculated average speed from 8 filtered data points (removed 0 outliers): 14.5375 km/h
+2025-05-11 17:53:51,092 - workout_manager - INFO - Device-reported average speed: 0.72 km/h (not used)
+2025-05-11 17:53:51,149 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:53:51,996 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:53:51.995394
+2025-05-11 17:53:51,997 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:51.977395', 'speed': 17.85, 'average_speed': 0.73, 'cadence': 30.0, 'average_cadence': 19.0, 'distance': 48, 'power': 41, 'average_power': 14, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 14}
+2025-05-11 17:53:51,998 - workout_manager - INFO - Calculated average speed from 9 filtered data points (removed 0 outliers): 14.905555555555557 km/h
+2025-05-11 17:53:51,999 - workout_manager - INFO - Device-reported average speed: 0.73 km/h (not used)
+2025-05-11 17:53:52,057 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:53:53,097 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:53:53.097090
+2025-05-11 17:53:53,098 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:53.086584', 'speed': 17.85, 'average_speed': 0.77, 'cadence': 30.0, 'average_cadence': 20.0, 'distance': 48, 'power': 41, 'average_power': 15, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 15}
+2025-05-11 17:53:53,099 - workout_manager - INFO - Calculated average speed from 10 filtered data points (removed 0 outliers): 15.2 km/h
+2025-05-11 17:53:53,099 - workout_manager - INFO - Device-reported average speed: 0.77 km/h (not used)
+2025-05-11 17:53:53,154 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:53:53,999 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:53:53.999287
+2025-05-11 17:53:54,000 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:53.987687', 'speed': 19.14, 'average_speed': 0.81, 'cadence': 32.0, 'average_cadence': 21.0, 'distance': 48, 'power': 49, 'average_power': 18, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 66, 'elapsed_time': 16}
+2025-05-11 17:53:54,001 - workout_manager - INFO - Calculated average speed from 11 filtered data points (removed 0 outliers): 15.55818181818182 km/h
+2025-05-11 17:53:54,002 - workout_manager - INFO - Device-reported average speed: 0.81 km/h (not used)
+2025-05-11 17:53:54,059 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:53:54,988 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:53:54.988265
+2025-05-11 17:53:54,988 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:54.976744', 'speed': 19.62, 'average_speed': 0.82, 'cadence': 33.0, 'average_cadence': 22.0, 'distance': 64, 'power': 53, 'average_power': 20, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 67, 'elapsed_time': 17}
+2025-05-11 17:53:54,988 - workout_manager - INFO - Calculated average speed from 12 filtered data points (removed 0 outliers): 15.896666666666668 km/h
+2025-05-11 17:53:54,988 - workout_manager - INFO - Device-reported average speed: 0.82 km/h (not used)
+2025-05-11 17:53:54,999 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:53:56,025 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:53:56.025194
+2025-05-11 17:53:56,027 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:55.997239', 'speed': 20.27, 'average_speed': 0.86, 'cadence': 34.0, 'average_cadence': 23.0, 'distance': 64, 'power': 57, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 67, 'elapsed_time': 18}
+2025-05-11 17:53:56,027 - workout_manager - INFO - Calculated average speed from 12 filtered data points (removed 1 outliers): 16.849166666666665 km/h
+2025-05-11 17:53:56,029 - workout_manager - INFO - Device-reported average speed: 0.86 km/h (not used)
+2025-05-11 17:53:56,086 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:53:56,974 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:53:56.974506
+2025-05-11 17:53:56,975 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:56.957497', 'speed': 20.27, 'average_speed': 0.89, 'cadence': 34.0, 'average_cadence': 24.0, 'distance': 64, 'power': 57, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 66, 'elapsed_time': 19}
+2025-05-11 17:53:56,975 - workout_manager - INFO - Calculated average speed from 13 filtered data points (removed 1 outliers): 17.11230769230769 km/h
+2025-05-11 17:53:56,976 - workout_manager - INFO - Device-reported average speed: 0.89 km/h (not used)
+2025-05-11 17:53:57,032 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:53:58,198 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:53:58.198504
+2025-05-11 17:53:58,199 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:58.187345', 'speed': 20.27, 'average_speed': 0.91, 'cadence': 34.0, 'average_cadence': 24.0, 'distance': 80, 'power': 57, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 66, 'elapsed_time': 20}
+2025-05-11 17:53:58,200 - workout_manager - INFO - Calculated average speed from 14 filtered data points (removed 1 outliers): 17.337857142857143 km/h
+2025-05-11 17:53:58,200 - workout_manager - INFO - Device-reported average speed: 0.91 km/h (not used)
+2025-05-11 17:53:58,261 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:53:58,980 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:53:58.980075
+2025-05-11 17:53:58,981 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:58.968758', 'speed': 20.27, 'average_speed': 0.92, 'cadence': 34.0, 'average_cadence': 24.0, 'distance': 80, 'power': 57, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 21}
+2025-05-11 17:53:58,982 - workout_manager - INFO - Calculated average speed from 14 filtered data points (removed 2 outliers): 18.107857142857142 km/h
+2025-05-11 17:53:58,982 - workout_manager - INFO - Device-reported average speed: 0.92 km/h (not used)
+2025-05-11 17:53:58,991 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:00,001 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:54:00.001534
+2025-05-11 17:54:00,002 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:53:59.989174', 'speed': 19.62, 'average_speed': 0.93, 'cadence': 33.0, 'average_cadence': 25.0, 'distance': 80, 'power': 53, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 22}
+2025-05-11 17:54:00,008 - workout_manager - INFO - Calculated average speed from 15 filtered data points (removed 2 outliers): 18.208666666666666 km/h
+2025-05-11 17:54:00,011 - workout_manager - INFO - Device-reported average speed: 0.93 km/h (not used)
+2025-05-11 17:54:00,071 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:00,988 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:54:00.988360
+2025-05-11 17:54:00,988 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:00.976913', 'speed': 17.85, 'average_speed': 0.9, 'cadence': 30.0, 'average_cadence': 24.0, 'distance': 80, 'power': 41, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 65, 'elapsed_time': 23}
+2025-05-11 17:54:00,989 - workout_manager - INFO - Calculated average speed from 16 filtered data points (removed 2 outliers): 18.18625 km/h
+2025-05-11 17:54:00,990 - workout_manager - INFO - Device-reported average speed: 0.9 km/h (not used)
+2025-05-11 17:54:00,998 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:02,009 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:54:02.009431
+2025-05-11 17:54:02,010 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:01.997135', 'speed': 16.09, 'average_speed': 0.87, 'cadence': 27.0, 'average_cadence': 23.0, 'distance': 80, 'power': 33, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 66, 'elapsed_time': 24}
+2025-05-11 17:54:02,012 - workout_manager - INFO - Calculated average speed from 17 filtered data points (removed 2 outliers): 18.062941176470588 km/h
+2025-05-11 17:54:02,012 - workout_manager - INFO - Device-reported average speed: 0.87 km/h (not used)
+2025-05-11 17:54:02,021 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:03,011 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:54:03.011935
+2025-05-11 17:54:03,013 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:02.993666', 'speed': 13.03, 'average_speed': 0.85, 'cadence': 22.0, 'average_cadence': 23.0, 'distance': 96, 'power': 20, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 66, 'elapsed_time': 25}
+2025-05-11 17:54:03,014 - workout_manager - INFO - Calculated average speed from 18 filtered data points (removed 2 outliers): 17.783333333333335 km/h
+2025-05-11 17:54:03,015 - workout_manager - INFO - Device-reported average speed: 0.85 km/h (not used)
+2025-05-11 17:54:03,025 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:04,081 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:54:04.081281
+2025-05-11 17:54:04,081 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:04.068145', 'speed': 11.9, 'average_speed': 0.85, 'cadence': 20.0, 'average_cadence': 23.0, 'distance': 96, 'power': 15, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 67, 'elapsed_time': 26}
+2025-05-11 17:54:04,082 - workout_manager - INFO - Calculated average speed from 19 filtered data points (removed 2 outliers): 17.473684210526315 km/h
+2025-05-11 17:54:04,083 - workout_manager - INFO - Device-reported average speed: 0.85 km/h (not used)
+2025-05-11 17:54:04,142 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:04,984 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:54:04.984345
+2025-05-11 17:54:04,986 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:04.966915', 'speed': 13.67, 'average_speed': 0.87, 'cadence': 23.0, 'average_cadence': 23.0, 'distance': 96, 'power': 23, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 67, 'elapsed_time': 27}
+2025-05-11 17:54:04,986 - workout_manager - INFO - Calculated average speed from 20 filtered data points (removed 2 outliers): 17.2835 km/h
+2025-05-11 17:54:04,987 - workout_manager - INFO - Device-reported average speed: 0.87 km/h (not used)
+2025-05-11 17:54:05,044 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:05,996 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:54:05.996065
+2025-05-11 17:54:05,996 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:05.988067', 'speed': 14.96, 'average_speed': 0.87, 'cadence': 25.0, 'average_cadence': 23.0, 'distance': 112, 'power': 28, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 67, 'elapsed_time': 28}
+2025-05-11 17:54:05,998 - workout_manager - INFO - Calculated average speed from 21 filtered data points (removed 2 outliers): 17.172857142857143 km/h
+2025-05-11 17:54:05,999 - workout_manager - INFO - Device-reported average speed: 0.87 km/h (not used)
+2025-05-11 17:54:06,057 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:06,991 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:54:06.991403
+2025-05-11 17:54:06,992 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:06.976401', 'speed': 16.09, 'average_speed': 0.88, 'cadence': 27.0, 'average_cadence': 23.0, 'distance': 112, 'power': 33, 'average_power': 23, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 67, 'elapsed_time': 29}
+2025-05-11 17:54:06,992 - workout_manager - INFO - Calculated average speed from 22 filtered data points (removed 2 outliers): 17.123636363636365 km/h
+2025-05-11 17:54:06,993 - workout_manager - INFO - Device-reported average speed: 0.88 km/h (not used)
+2025-05-11 17:54:07,048 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:08,115 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:54:08.115887
+2025-05-11 17:54:08,116 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:08.087887', 'speed': 17.37, 'average_speed': 0.9, 'cadence': 29.0, 'average_cadence': 24.0, 'distance': 112, 'power': 38, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 67, 'elapsed_time': 30}
+2025-05-11 17:54:08,117 - workout_manager - INFO - Calculated average speed from 23 filtered data points (removed 2 outliers): 17.13434782608696 km/h
+2025-05-11 17:54:08,119 - workout_manager - INFO - Device-reported average speed: 0.9 km/h (not used)
+2025-05-11 17:54:08,180 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:08,972 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:54:08.972263
+2025-05-11 17:54:08,973 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:08.956039', 'speed': 17.85, 'average_speed': 0.91, 'cadence': 30.0, 'average_cadence': 24.0, 'distance': 128, 'power': 41, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 66, 'elapsed_time': 31}
+2025-05-11 17:54:08,975 - workout_manager - INFO - Calculated average speed from 24 filtered data points (removed 2 outliers): 17.164166666666667 km/h
+2025-05-11 17:54:08,975 - workout_manager - INFO - Device-reported average speed: 0.91 km/h (not used)
+2025-05-11 17:54:09,029 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:09,993 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:54:09.993419
+2025-05-11 17:54:09,994 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:09.977720', 'speed': 18.5, 'average_speed': 0.92, 'cadence': 31.0, 'average_cadence': 24.0, 'distance': 128, 'power': 45, 'average_power': 25, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 66, 'elapsed_time': 32}
+2025-05-11 17:54:09,995 - workout_manager - INFO - Calculated average speed from 25 filtered data points (removed 2 outliers): 17.2176 km/h
+2025-05-11 17:54:09,996 - workout_manager - INFO - Device-reported average speed: 0.92 km/h (not used)
+2025-05-11 17:54:10,052 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:10,983 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:54:10.983505
+2025-05-11 17:54:10,984 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:10.967456', 'speed': 18.5, 'average_speed': 0.93, 'cadence': 31.0, 'average_cadence': 25.0, 'distance': 128, 'power': 45, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 67, 'elapsed_time': 33}
+2025-05-11 17:54:10,984 - workout_manager - INFO - Calculated average speed from 26 filtered data points (removed 2 outliers): 17.266923076923078 km/h
+2025-05-11 17:54:10,985 - workout_manager - INFO - Device-reported average speed: 0.93 km/h (not used)
+2025-05-11 17:54:11,042 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:12,003 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:54:12.003450
+2025-05-11 17:54:12,004 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:11.987955', 'speed': 19.14, 'average_speed': 0.94, 'cadence': 32.0, 'average_cadence': 25.0, 'distance': 144, 'power': 49, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 67, 'elapsed_time': 34}
+2025-05-11 17:54:12,005 - workout_manager - INFO - Calculated average speed from 27 filtered data points (removed 2 outliers): 17.336296296296297 km/h
+2025-05-11 17:54:12,006 - workout_manager - INFO - Device-reported average speed: 0.94 km/h (not used)
+2025-05-11 17:54:12,064 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:13,129 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:54:13.129387
+2025-05-11 17:54:13,130 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:13.087802', 'speed': 19.14, 'average_speed': 0.95, 'cadence': 32.0, 'average_cadence': 25.0, 'distance': 144, 'power': 49, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 67, 'elapsed_time': 35}
+2025-05-11 17:54:13,131 - workout_manager - INFO - Calculated average speed from 28 filtered data points (removed 2 outliers): 17.400714285714287 km/h
+2025-05-11 17:54:13,132 - workout_manager - INFO - Device-reported average speed: 0.95 km/h (not used)
+2025-05-11 17:54:13,140 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:13,980 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:54:13.980435
+2025-05-11 17:54:13,981 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:13.967741', 'speed': 19.62, 'average_speed': 0.96, 'cadence': 33.0, 'average_cadence': 25.0, 'distance': 144, 'power': 53, 'average_power': 28, 'total_energy': 0, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 68, 'elapsed_time': 36}
+2025-05-11 17:54:13,982 - workout_manager - INFO - Calculated average speed from 29 filtered data points (removed 2 outliers): 17.477241379310346 km/h
+2025-05-11 17:54:13,984 - workout_manager - INFO - Device-reported average speed: 0.96 km/h (not used)
+2025-05-11 17:54:13,994 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:14,967 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:54:14.967271
+2025-05-11 17:54:14,967 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:14.957947', 'speed': 20.27, 'average_speed': 0.97, 'cadence': 34.0, 'average_cadence': 26.0, 'distance': 160, 'power': 57, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 69, 'elapsed_time': 37}
+2025-05-11 17:54:14,968 - workout_manager - INFO - Calculated average speed from 30 filtered data points (removed 2 outliers): 17.570333333333334 km/h
+2025-05-11 17:54:14,969 - workout_manager - INFO - Device-reported average speed: 0.97 km/h (not used)
+2025-05-11 17:54:15,025 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:15,993 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:54:15.993018
+2025-05-11 17:54:15,994 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:15.977357', 'speed': 20.27, 'average_speed': 0.98, 'cadence': 34.0, 'average_cadence': 26.0, 'distance': 160, 'power': 57, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 70, 'elapsed_time': 38}
+2025-05-11 17:54:15,994 - workout_manager - INFO - Calculated average speed from 31 filtered data points (removed 2 outliers): 17.65741935483871 km/h
+2025-05-11 17:54:15,995 - workout_manager - INFO - Device-reported average speed: 0.98 km/h (not used)
+2025-05-11 17:54:16,052 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:17,042 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:54:17.042574
+2025-05-11 17:54:17,043 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:17.028255', 'speed': 20.27, 'average_speed': 0.99, 'cadence': 34.0, 'average_cadence': 26.0, 'distance': 160, 'power': 57, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 70, 'elapsed_time': 39}
+2025-05-11 17:54:17,044 - workout_manager - INFO - Calculated average speed from 32 filtered data points (removed 2 outliers): 17.7390625 km/h
+2025-05-11 17:54:17,046 - workout_manager - INFO - Device-reported average speed: 0.99 km/h (not used)
+2025-05-11 17:54:17,100 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:18,005 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:54:18.005054
+2025-05-11 17:54:18,006 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:17.987111', 'speed': 20.91, 'average_speed': 1.0, 'cadence': 35.0, 'average_cadence': 26.0, 'distance': 176, 'power': 62, 'average_power': 31, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 71, 'elapsed_time': 40}
+2025-05-11 17:54:18,007 - workout_manager - INFO - Calculated average speed from 33 filtered data points (removed 2 outliers): 17.835151515151516 km/h
+2025-05-11 17:54:18,008 - workout_manager - INFO - Device-reported average speed: 1.0 km/h (not used)
+2025-05-11 17:54:18,017 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:19,112 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:54:19.112840
+2025-05-11 17:54:19,113 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:19.097509', 'speed': 20.27, 'average_speed': 1.0, 'cadence': 34.0, 'average_cadence': 27.0, 'distance': 176, 'power': 57, 'average_power': 33, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 71, 'elapsed_time': 41}
+2025-05-11 17:54:19,113 - workout_manager - INFO - Calculated average speed from 34 filtered data points (removed 2 outliers): 17.906764705882352 km/h
+2025-05-11 17:54:19,114 - workout_manager - INFO - Device-reported average speed: 1.0 km/h (not used)
+2025-05-11 17:54:19,172 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:20,008 - workout_manager - INFO - ADDING DATA POINT at 2025-05-11T17:54:20.008771
+2025-05-11 17:54:20,010 - workout_manager - INFO - Data: {'device_type': 'bike', 'timestamp': '2025-05-11T17:54:19.997386', 'speed': 19.62, 'average_speed': 1.0, 'cadence': 33.0, 'average_cadence': 27.0, 'distance': 176, 'power': 53, 'average_power': 33, 'total_energy': 1, 'energy_per_hour': 0, 'energy_per_minute': 0, 'heart_rate': 71, 'elapsed_time': 42}
+2025-05-11 17:54:20,010 - workout_manager - INFO - Calculated average speed from 35 filtered data points (removed 2 outliers): 17.955714285714286 km/h
+2025-05-11 17:54:20,010 - workout_manager - INFO - Device-reported average speed: 1.0 km/h (not used)
+2025-05-11 17:54:20,065 - workout_manager - INFO - Successfully saved data point to workout 3
+2025-05-11 17:54:20,832 - workout_manager - INFO - Successfully created FIT file for workout 3: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250511_175339.fit
