@@ -726,6 +726,71 @@ def serve_fit_file(filename):
     logger.info(f"Serving FIT file: {filename} from directory: {fit_files_dir}")
     return send_from_directory(fit_files_dir, filename, as_attachment=True)
 
+@app.route('/workout/<int:workout_id>/fit', methods=['GET'])
+def generate_fit_file(workout_id):
+    """Generate and serve a FIT file for a specific workout."""
+    try:
+        logger.info(f"Generating FIT file for workout {workout_id}")
+        
+        # Import the FITProcessor to handle the conversion
+        from src.fit.fit_processor import FITProcessor
+        
+        # Get path to fit_files directory
+        fit_output_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'fit_files')
+        
+        # Create the directory if it doesn't exist
+        os.makedirs(fit_output_dir, exist_ok=True)
+        
+        # Initialize the processor
+        fit_processor = FITProcessor(db_path, fit_output_dir)
+        
+        # Check if the workout exists
+        workout = workout_manager.get_workout(workout_id)
+        if not workout:
+            logger.error(f"Workout {workout_id} not found")
+            return jsonify({'success': False, 'error': 'Workout not found'}), 404
+        
+        # Load user profile if it exists
+        profile_file = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'user_profile.json')
+        user_profile = None
+        if os.path.exists(profile_file):
+            try:
+                with open(profile_file, 'r') as f:
+                    import json
+                    user_profile = json.load(f)
+                logger.info(f"Loaded user profile for FIT file generation")
+            except Exception as e:
+                logger.error(f"Error loading user profile: {str(e)}")
+        
+        # Process the workout - this generates a FIT file
+        fit_file_path = fit_processor.process_workout(workout_id, user_profile)
+        
+        if not fit_file_path or not os.path.exists(fit_file_path):
+            logger.error(f"Failed to generate FIT file for workout {workout_id}")
+            return jsonify({'success': False, 'error': 'Failed to generate FIT file'}), 500
+        
+        # Generate a user-friendly filename
+        if hasattr(workout, 'keys'):
+            workout = dict(workout)
+            
+        workout_type = workout.get('type', 'workout')
+        workout_date = workout.get('start_time', '').split('T')[0] if workout.get('start_time') else time.strftime('%Y%m%d')
+        filename = f"{workout_type}_{workout_date}_{workout_id}.fit"
+        
+        logger.info(f"Serving FIT file: {fit_file_path} as {filename}")
+        
+        # Send the file to the user
+        return send_from_directory(
+            os.path.dirname(fit_file_path),
+            os.path.basename(fit_file_path),
+            as_attachment=True,
+            download_name=filename
+        )
+        
+    except Exception as e:
+        logger.error(f"Error generating FIT file: {str(e)}", exc_info=True)
+        return jsonify({'success': False, 'error': str(e)}), 500
+
 # Run the app
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

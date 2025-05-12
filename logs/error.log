@@ -34,3 +34,21 @@ Traceback (most recent call last):
     workout['data_series'][key] = [float(v) if v is not None else 0 for v in values]
                                    ^^^^^^^^
 TypeError: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-05-11 19:53:21,335 - fit_converter - ERROR - Error converting workout to FIT: 'FITConverter' object has no attribute '_unix_to_fit_timestamp_ms'
+2025-05-11 19:53:21,336 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 126, in convert_workout
+    unix_start_timestamp_ms = self._unix_to_fit_timestamp_ms(unix_start_timestamp_sec)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'FITConverter' object has no attribute '_unix_to_fit_timestamp_ms'
+
+2025-05-11 19:53:21,337 - fit_processor - ERROR - Failed to create FIT file for workout 4
+2025-05-11 20:25:18,062 - fit_converter - ERROR - Error converting workout to FIT: 'FITConverter' object has no attribute '_unix_to_fit_timestamp_ms'
+2025-05-11 20:25:18,065 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 126, in convert_workout
+    unix_start_timestamp_ms = self._unix_to_fit_timestamp_ms(unix_start_timestamp_sec)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'FITConverter' object has no attribute '_unix_to_fit_timestamp_ms'
+
+2025-05-11 20:25:18,066 - fit_processor - ERROR - Failed to create FIT file for workout 5
+2025-05-12 06:39:31,102 - fit_converter - ERROR - Absolute timestamps are missing or do not match number of data points. Cannot create record messages.
+2025-05-12 06:39:55,384 - fit_converter - ERROR - Absolute timestamps are missing or do not match number of data points. Cannot create record messages.

@@ -402,3 +402,1224 @@
 2025-05-11 18:31:11,359 - database - INFO - Retrieved 41 data points for workout 3
 2025-05-11 18:31:22,445 - database - INFO - Retrieved 46 data points for workout 2
 2025-05-11 18:31:26,922 - database - INFO - Retrieved 66 data points for workout 1
+2025-05-11 19:47:16,085 - database - INFO - Database tables created
+2025-05-11 19:47:16,088 - database - INFO - Database tables created
+2025-05-11 19:47:17,487 - database - INFO - Database tables created
+2025-05-11 19:47:17,489 - database - INFO - Database tables created
+2025-05-11 19:48:04,778 - database - INFO - Started workout 4 with device C9:02:CB:68:17:C1
+2025-05-11 19:48:04,827 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:04.823739
+2025-05-11 19:48:04,834 - database - INFO - Successfully added data point with ID 154
+2025-05-11 19:48:05,819 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:05.817049
+2025-05-11 19:48:05,827 - database - INFO - Successfully added data point with ID 155
+2025-05-11 19:48:06,900 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:06.898481
+2025-05-11 19:48:06,955 - database - INFO - Successfully added data point with ID 156
+2025-05-11 19:48:07,829 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:07.827502
+2025-05-11 19:48:07,854 - database - INFO - Successfully added data point with ID 157
+2025-05-11 19:48:08,819 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:08.815858
+2025-05-11 19:48:08,872 - database - INFO - Successfully added data point with ID 158
+2025-05-11 19:48:09,874 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:09.872947
+2025-05-11 19:48:09,928 - database - INFO - Successfully added data point with ID 159
+2025-05-11 19:48:10,832 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:10.830349
+2025-05-11 19:48:10,892 - database - INFO - Successfully added data point with ID 160
+2025-05-11 19:48:11,846 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:11.844639
+2025-05-11 19:48:11,902 - database - INFO - Successfully added data point with ID 161
+2025-05-11 19:48:12,904 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:12.898891
+2025-05-11 19:48:12,908 - database - INFO - Successfully added data point with ID 162
+2025-05-11 19:48:13,829 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:13.826786
+2025-05-11 19:48:13,833 - database - INFO - Successfully added data point with ID 163
+2025-05-11 19:48:14,850 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:14.847456
+2025-05-11 19:48:14,858 - database - INFO - Successfully added data point with ID 164
+2025-05-11 19:48:15,838 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:15.832694
+2025-05-11 19:48:15,849 - database - INFO - Successfully added data point with ID 165
+2025-05-11 19:48:16,894 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:16.890221
+2025-05-11 19:48:16,947 - database - INFO - Successfully added data point with ID 166
+2025-05-11 19:48:17,816 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:17.814372
+2025-05-11 19:48:17,870 - database - INFO - Successfully added data point with ID 167
+2025-05-11 19:48:18,867 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:18.863700
+2025-05-11 19:48:18,922 - database - INFO - Successfully added data point with ID 168
+2025-05-11 19:48:19,827 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:19.823963
+2025-05-11 19:48:19,833 - database - INFO - Successfully added data point with ID 169
+2025-05-11 19:48:20,829 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:20.822723
+2025-05-11 19:48:20,885 - database - INFO - Successfully added data point with ID 170
+2025-05-11 19:48:21,874 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:21.868660
+2025-05-11 19:48:21,930 - database - INFO - Successfully added data point with ID 171
+2025-05-11 19:48:22,835 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:22.829810
+2025-05-11 19:48:22,886 - database - INFO - Successfully added data point with ID 172
+2025-05-11 19:48:23,900 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:23.849346
+2025-05-11 19:48:23,908 - database - INFO - Successfully added data point with ID 173
+2025-05-11 19:48:24,843 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:24.840126
+2025-05-11 19:48:24,896 - database - INFO - Successfully added data point with ID 174
+2025-05-11 19:48:25,885 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:25.881701
+2025-05-11 19:48:25,941 - database - INFO - Successfully added data point with ID 175
+2025-05-11 19:48:26,821 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:26.816258
+2025-05-11 19:48:26,878 - database - INFO - Successfully added data point with ID 176
+2025-05-11 19:48:27,840 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:27.833557
+2025-05-11 19:48:27,888 - database - INFO - Successfully added data point with ID 177
+2025-05-11 19:48:28,896 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:28.893380
+2025-05-11 19:48:28,951 - database - INFO - Successfully added data point with ID 178
+2025-05-11 19:48:29,847 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:29.845347
+2025-05-11 19:48:29,901 - database - INFO - Successfully added data point with ID 179
+2025-05-11 19:48:30,875 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:30.871296
+2025-05-11 19:48:30,930 - database - INFO - Successfully added data point with ID 180
+2025-05-11 19:48:31,830 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:31.826242
+2025-05-11 19:48:31,885 - database - INFO - Successfully added data point with ID 181
+2025-05-11 19:48:32,882 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:32.878171
+2025-05-11 19:48:32,899 - database - INFO - Successfully added data point with ID 182
+2025-05-11 19:48:33,842 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:33.837339
+2025-05-11 19:48:33,895 - database - INFO - Successfully added data point with ID 183
+2025-05-11 19:48:34,894 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:34.891379
+2025-05-11 19:48:34,900 - database - INFO - Successfully added data point with ID 184
+2025-05-11 19:48:35,818 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:35.815404
+2025-05-11 19:48:35,829 - database - INFO - Successfully added data point with ID 185
+2025-05-11 19:48:36,843 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:36.839555
+2025-05-11 19:48:36,898 - database - INFO - Successfully added data point with ID 186
+2025-05-11 19:48:37,856 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:37.853379
+2025-05-11 19:48:37,911 - database - INFO - Successfully added data point with ID 187
+2025-05-11 19:48:38,858 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:38.849338
+2025-05-11 19:48:38,903 - database - INFO - Successfully added data point with ID 188
+2025-05-11 19:48:39,840 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:39.834708
+2025-05-11 19:48:39,895 - database - INFO - Successfully added data point with ID 189
+2025-05-11 19:48:40,833 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:40.830120
+2025-05-11 19:48:40,889 - database - INFO - Successfully added data point with ID 190
+2025-05-11 19:48:41,879 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:41.875784
+2025-05-11 19:48:41,932 - database - INFO - Successfully added data point with ID 191
+2025-05-11 19:48:42,841 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:42.839300
+2025-05-11 19:48:42,899 - database - INFO - Successfully added data point with ID 192
+2025-05-11 19:48:43,828 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:43.824082
+2025-05-11 19:48:43,834 - database - INFO - Successfully added data point with ID 193
+2025-05-11 19:48:44,825 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:44.818227
+2025-05-11 19:48:44,880 - database - INFO - Successfully added data point with ID 194
+2025-05-11 19:48:45,868 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:45.863914
+2025-05-11 19:48:45,922 - database - INFO - Successfully added data point with ID 195
+2025-05-11 19:48:46,832 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:46.829066
+2025-05-11 19:48:46,887 - database - INFO - Successfully added data point with ID 196
+2025-05-11 19:48:47,848 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:47.846376
+2025-05-11 19:48:47,904 - database - INFO - Successfully added data point with ID 197
+2025-05-11 19:48:48,874 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:48.868690
+2025-05-11 19:48:48,930 - database - INFO - Successfully added data point with ID 198
+2025-05-11 19:48:49,825 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:49.822823
+2025-05-11 19:48:49,831 - database - INFO - Successfully added data point with ID 199
+2025-05-11 19:48:50,854 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:50.850241
+2025-05-11 19:48:50,911 - database - INFO - Successfully added data point with ID 200
+2025-05-11 19:48:51,841 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:51.837307
+2025-05-11 19:48:51,896 - database - INFO - Successfully added data point with ID 201
+2025-05-11 19:48:52,838 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:52.833556
+2025-05-11 19:48:52,847 - database - INFO - Successfully added data point with ID 202
+2025-05-11 19:48:53,824 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:53.817999
+2025-05-11 19:48:53,874 - database - INFO - Successfully added data point with ID 203
+2025-05-11 19:48:54,846 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:54.842334
+2025-05-11 19:48:54,900 - database - INFO - Successfully added data point with ID 204
+2025-05-11 19:48:55,826 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:55.824692
+2025-05-11 19:48:55,880 - database - INFO - Successfully added data point with ID 205
+2025-05-11 19:48:56,819 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:56.815769
+2025-05-11 19:48:56,877 - database - INFO - Successfully added data point with ID 206
+2025-05-11 19:48:57,838 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:57.833372
+2025-05-11 19:48:57,843 - database - INFO - Successfully added data point with ID 207
+2025-05-11 19:48:58,860 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:58.857916
+2025-05-11 19:48:58,916 - database - INFO - Successfully added data point with ID 208
+2025-05-11 19:48:59,817 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:48:59.814518
+2025-05-11 19:48:59,872 - database - INFO - Successfully added data point with ID 209
+2025-05-11 19:49:00,845 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:00.841143
+2025-05-11 19:49:00,900 - database - INFO - Successfully added data point with ID 210
+2025-05-11 19:49:01,864 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:01.860913
+2025-05-11 19:49:01,919 - database - INFO - Successfully added data point with ID 211
+2025-05-11 19:49:02,824 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:02.821263
+2025-05-11 19:49:02,878 - database - INFO - Successfully added data point with ID 212
+2025-05-11 19:49:03,836 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:03.833343
+2025-05-11 19:49:03,891 - database - INFO - Successfully added data point with ID 213
+2025-05-11 19:49:04,826 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:04.822826
+2025-05-11 19:49:04,831 - database - INFO - Successfully added data point with ID 214
+2025-05-11 19:49:05,847 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:05.843925
+2025-05-11 19:49:05,900 - database - INFO - Successfully added data point with ID 215
+2025-05-11 19:49:06,843 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:06.840001
+2025-05-11 19:49:06,898 - database - INFO - Successfully added data point with ID 216
+2025-05-11 19:49:07,825 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:07.823727
+2025-05-11 19:49:07,879 - database - INFO - Successfully added data point with ID 217
+2025-05-11 19:49:08,897 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:08.893886
+2025-05-11 19:49:08,902 - database - INFO - Successfully added data point with ID 218
+2025-05-11 19:49:09,842 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:09.836467
+2025-05-11 19:49:09,897 - database - INFO - Successfully added data point with ID 219
+2025-05-11 19:49:10,835 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:10.831367
+2025-05-11 19:49:10,891 - database - INFO - Successfully added data point with ID 220
+2025-05-11 19:49:11,817 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:11.814467
+2025-05-11 19:49:11,871 - database - INFO - Successfully added data point with ID 221
+2025-05-11 19:49:12,846 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:12.841220
+2025-05-11 19:49:12,895 - database - INFO - Successfully added data point with ID 222
+2025-05-11 19:49:13,857 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:13.855687
+2025-05-11 19:49:13,907 - database - INFO - Successfully added data point with ID 223
+2025-05-11 19:49:14,825 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:14.819551
+2025-05-11 19:49:14,880 - database - INFO - Successfully added data point with ID 224
+2025-05-11 19:49:15,871 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:15.867441
+2025-05-11 19:49:15,927 - database - INFO - Successfully added data point with ID 225
+2025-05-11 19:49:16,896 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:16.890895
+2025-05-11 19:49:16,951 - database - INFO - Successfully added data point with ID 226
+2025-05-11 19:49:17,818 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:17.814849
+2025-05-11 19:49:17,871 - database - INFO - Successfully added data point with ID 227
+2025-05-11 19:49:18,871 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:18.868705
+2025-05-11 19:49:18,928 - database - INFO - Successfully added data point with ID 228
+2025-05-11 19:49:19,829 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:19.825199
+2025-05-11 19:49:19,835 - database - INFO - Successfully added data point with ID 229
+2025-05-11 19:49:20,883 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:20.881026
+2025-05-11 19:49:20,940 - database - INFO - Successfully added data point with ID 230
+2025-05-11 19:49:21,847 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:21.842026
+2025-05-11 19:49:21,901 - database - INFO - Successfully added data point with ID 231
+2025-05-11 19:49:22,833 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:22.829866
+2025-05-11 19:49:22,889 - database - INFO - Successfully added data point with ID 232
+2025-05-11 19:49:23,829 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:23.825107
+2025-05-11 19:49:23,885 - database - INFO - Successfully added data point with ID 233
+2025-05-11 19:49:24,904 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:24.900599
+2025-05-11 19:49:24,960 - database - INFO - Successfully added data point with ID 234
+2025-05-11 19:49:25,835 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:25.831602
+2025-05-11 19:49:25,891 - database - INFO - Successfully added data point with ID 235
+2025-05-11 19:49:26,853 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:26.849429
+2025-05-11 19:49:26,910 - database - INFO - Successfully added data point with ID 236
+2025-05-11 19:49:27,978 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:27.974803
+2025-05-11 19:49:27,984 - database - INFO - Successfully added data point with ID 237
+2025-05-11 19:49:28,836 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:28.832186
+2025-05-11 19:49:28,892 - database - INFO - Successfully added data point with ID 238
+2025-05-11 19:49:29,855 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:29.851085
+2025-05-11 19:49:29,911 - database - INFO - Successfully added data point with ID 239
+2025-05-11 19:49:30,843 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:30.841205
+2025-05-11 19:49:30,901 - database - INFO - Successfully added data point with ID 240
+2025-05-11 19:49:31,899 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:31.890378
+2025-05-11 19:49:31,955 - database - INFO - Successfully added data point with ID 241
+2025-05-11 19:49:32,856 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:32.850704
+2025-05-11 19:49:32,913 - database - INFO - Successfully added data point with ID 242
+2025-05-11 19:49:33,838 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:33.835401
+2025-05-11 19:49:33,894 - database - INFO - Successfully added data point with ID 243
+2025-05-11 19:49:34,897 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:34.894114
+2025-05-11 19:49:34,953 - database - INFO - Successfully added data point with ID 244
+2025-05-11 19:49:35,823 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:35.819868
+2025-05-11 19:49:35,880 - database - INFO - Successfully added data point with ID 245
+2025-05-11 19:49:36,872 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:36.868691
+2025-05-11 19:49:36,928 - database - INFO - Successfully added data point with ID 246
+2025-05-11 19:49:37,830 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:37.826146
+2025-05-11 19:49:37,883 - database - INFO - Successfully added data point with ID 247
+2025-05-11 19:49:38,827 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:38.820872
+2025-05-11 19:49:38,883 - database - INFO - Successfully added data point with ID 248
+2025-05-11 19:49:39,846 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:39.842090
+2025-05-11 19:49:39,901 - database - INFO - Successfully added data point with ID 249
+2025-05-11 19:49:40,864 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:40.861926
+2025-05-11 19:49:40,920 - database - INFO - Successfully added data point with ID 250
+2025-05-11 19:49:41,853 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:41.848802
+2025-05-11 19:49:41,907 - database - INFO - Successfully added data point with ID 251
+2025-05-11 19:49:42,847 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:42.844298
+2025-05-11 19:49:42,902 - database - INFO - Successfully added data point with ID 252
+2025-05-11 19:49:43,895 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:43.890715
+2025-05-11 19:49:43,948 - database - INFO - Successfully added data point with ID 253
+2025-05-11 19:49:44,828 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:44.822389
+2025-05-11 19:49:44,882 - database - INFO - Successfully added data point with ID 254
+2025-05-11 19:49:45,847 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:45.841987
+2025-05-11 19:49:45,897 - database - INFO - Successfully added data point with ID 255
+2025-05-11 19:49:46,834 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:46.832667
+2025-05-11 19:49:46,891 - database - INFO - Successfully added data point with ID 256
+2025-05-11 19:49:47,848 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:47.846072
+2025-05-11 19:49:47,903 - database - INFO - Successfully added data point with ID 257
+2025-05-11 19:49:48,880 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:48.874543
+2025-05-11 19:49:48,935 - database - INFO - Successfully added data point with ID 258
+2025-05-11 19:49:49,922 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:49.916643
+2025-05-11 19:49:49,937 - database - INFO - Successfully added data point with ID 259
+2025-05-11 19:49:50,854 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:50.852182
+2025-05-11 19:49:50,910 - database - INFO - Successfully added data point with ID 260
+2025-05-11 19:49:51,848 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:51.843476
+2025-05-11 19:49:51,902 - database - INFO - Successfully added data point with ID 261
+2025-05-11 19:49:52,865 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:52.862105
+2025-05-11 19:49:52,920 - database - INFO - Successfully added data point with ID 262
+2025-05-11 19:49:53,872 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:53.869303
+2025-05-11 19:49:53,878 - database - INFO - Successfully added data point with ID 263
+2025-05-11 19:49:54,848 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:54.845197
+2025-05-11 19:49:54,857 - database - INFO - Successfully added data point with ID 264
+2025-05-11 19:49:55,889 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:55.886422
+2025-05-11 19:49:55,944 - database - INFO - Successfully added data point with ID 265
+2025-05-11 19:49:56,832 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:56.826177
+2025-05-11 19:49:56,888 - database - INFO - Successfully added data point with ID 266
+2025-05-11 19:49:57,869 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:57.866690
+2025-05-11 19:49:57,925 - database - INFO - Successfully added data point with ID 267
+2025-05-11 19:49:58,831 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:58.828442
+2025-05-11 19:49:58,886 - database - INFO - Successfully added data point with ID 268
+2025-05-11 19:49:59,878 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:49:59.875889
+2025-05-11 19:49:59,932 - database - INFO - Successfully added data point with ID 269
+2025-05-11 19:50:00,848 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:00.844474
+2025-05-11 19:50:00,902 - database - INFO - Successfully added data point with ID 270
+2025-05-11 19:50:01,878 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:01.871323
+2025-05-11 19:50:01,933 - database - INFO - Successfully added data point with ID 271
+2025-05-11 19:50:02,826 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:02.819286
+2025-05-11 19:50:02,882 - database - INFO - Successfully added data point with ID 272
+2025-05-11 19:50:03,847 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:03.837571
+2025-05-11 19:50:03,902 - database - INFO - Successfully added data point with ID 273
+2025-05-11 19:50:04,866 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:04.860817
+2025-05-11 19:50:04,876 - database - INFO - Successfully added data point with ID 274
+2025-05-11 19:50:05,822 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:05.819692
+2025-05-11 19:50:05,877 - database - INFO - Successfully added data point with ID 275
+2025-05-11 19:50:06,905 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:06.902579
+2025-05-11 19:50:06,962 - database - INFO - Successfully added data point with ID 276
+2025-05-11 19:50:07,833 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:07.829158
+2025-05-11 19:50:07,889 - database - INFO - Successfully added data point with ID 277
+2025-05-11 19:50:08,880 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:08.875198
+2025-05-11 19:50:08,887 - database - INFO - Successfully added data point with ID 278
+2025-05-11 19:50:09,812 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:09.810167
+2025-05-11 19:50:09,866 - database - INFO - Successfully added data point with ID 279
+2025-05-11 19:50:10,846 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:10.840088
+2025-05-11 19:50:10,906 - database - INFO - Successfully added data point with ID 280
+2025-05-11 19:50:11,854 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:11.850307
+2025-05-11 19:50:11,910 - database - INFO - Successfully added data point with ID 281
+2025-05-11 19:50:12,814 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:12.809896
+2025-05-11 19:50:12,869 - database - INFO - Successfully added data point with ID 282
+2025-05-11 19:50:13,893 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:13.888160
+2025-05-11 19:50:13,946 - database - INFO - Successfully added data point with ID 283
+2025-05-11 19:50:14,825 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:14.822071
+2025-05-11 19:50:14,880 - database - INFO - Successfully added data point with ID 284
+2025-05-11 19:50:15,818 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:15.815423
+2025-05-11 19:50:15,874 - database - INFO - Successfully added data point with ID 285
+2025-05-11 19:50:16,868 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:16.862977
+2025-05-11 19:50:16,924 - database - INFO - Successfully added data point with ID 286
+2025-05-11 19:50:17,823 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:17.820048
+2025-05-11 19:50:17,879 - database - INFO - Successfully added data point with ID 287
+2025-05-11 19:50:18,876 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:18.870608
+2025-05-11 19:50:18,931 - database - INFO - Successfully added data point with ID 288
+2025-05-11 19:50:19,834 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:19.830651
+2025-05-11 19:50:19,840 - database - INFO - Successfully added data point with ID 289
+2025-05-11 19:50:20,828 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:20.821189
+2025-05-11 19:50:20,884 - database - INFO - Successfully added data point with ID 290
+2025-05-11 19:50:21,843 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:21.842655
+2025-05-11 19:50:21,901 - database - INFO - Successfully added data point with ID 291
+2025-05-11 19:50:22,836 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:22.833403
+2025-05-11 19:50:22,893 - database - INFO - Successfully added data point with ID 292
+2025-05-11 19:50:23,872 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:23.868661
+2025-05-11 19:50:23,880 - database - INFO - Successfully added data point with ID 293
+2025-05-11 19:50:24,878 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:24.871744
+2025-05-11 19:50:24,934 - database - INFO - Successfully added data point with ID 294
+2025-05-11 19:50:25,831 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:25.826033
+2025-05-11 19:50:25,836 - database - INFO - Successfully added data point with ID 295
+2025-05-11 19:50:26,854 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:26.851556
+2025-05-11 19:50:26,911 - database - INFO - Successfully added data point with ID 296
+2025-05-11 19:50:27,848 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:27.843983
+2025-05-11 19:50:27,903 - database - INFO - Successfully added data point with ID 297
+2025-05-11 19:50:28,898 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:28.892239
+2025-05-11 19:50:28,953 - database - INFO - Successfully added data point with ID 298
+2025-05-11 19:50:29,821 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:29.818991
+2025-05-11 19:50:29,877 - database - INFO - Successfully added data point with ID 299
+2025-05-11 19:50:30,848 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:30.841224
+2025-05-11 19:50:30,903 - database - INFO - Successfully added data point with ID 300
+2025-05-11 19:50:31,922 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:31.918205
+2025-05-11 19:50:31,976 - database - INFO - Successfully added data point with ID 301
+2025-05-11 19:50:32,827 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:32.821631
+2025-05-11 19:50:32,883 - database - INFO - Successfully added data point with ID 302
+2025-05-11 19:50:33,816 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:33.813436
+2025-05-11 19:50:33,871 - database - INFO - Successfully added data point with ID 303
+2025-05-11 19:50:34,918 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:34.899994
+2025-05-11 19:50:34,979 - database - INFO - Successfully added data point with ID 304
+2025-05-11 19:50:35,882 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:35.880872
+2025-05-11 19:50:35,938 - database - INFO - Successfully added data point with ID 305
+2025-05-11 19:50:36,813 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:36.808309
+2025-05-11 19:50:36,869 - database - INFO - Successfully added data point with ID 306
+2025-05-11 19:50:37,839 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:37.835067
+2025-05-11 19:50:37,897 - database - INFO - Successfully added data point with ID 307
+2025-05-11 19:50:38,887 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:38.883634
+2025-05-11 19:50:38,895 - database - INFO - Successfully added data point with ID 308
+2025-05-11 19:50:39,814 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:39.810613
+2025-05-11 19:50:39,868 - database - INFO - Successfully added data point with ID 309
+2025-05-11 19:50:40,834 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:40.831555
+2025-05-11 19:50:40,888 - database - INFO - Successfully added data point with ID 310
+2025-05-11 19:50:41,824 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:41.819521
+2025-05-11 19:50:41,879 - database - INFO - Successfully added data point with ID 311
+2025-05-11 19:50:42,953 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:42.949543
+2025-05-11 19:50:42,959 - database - INFO - Successfully added data point with ID 312
+2025-05-11 19:50:43,833 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:43.829792
+2025-05-11 19:50:43,887 - database - INFO - Successfully added data point with ID 313
+2025-05-11 19:50:44,881 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:44.878106
+2025-05-11 19:50:44,934 - database - INFO - Successfully added data point with ID 314
+2025-05-11 19:50:45,818 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:45.813564
+2025-05-11 19:50:45,873 - database - INFO - Successfully added data point with ID 315
+2025-05-11 19:50:46,837 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:46.833189
+2025-05-11 19:50:46,893 - database - INFO - Successfully added data point with ID 316
+2025-05-11 19:50:47,856 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:47.853232
+2025-05-11 19:50:47,911 - database - INFO - Successfully added data point with ID 317
+2025-05-11 19:50:48,819 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:48.814340
+2025-05-11 19:50:48,873 - database - INFO - Successfully added data point with ID 318
+2025-05-11 19:50:49,832 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:49.828587
+2025-05-11 19:50:49,841 - database - INFO - Successfully added data point with ID 319
+2025-05-11 19:50:50,855 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:50.852592
+2025-05-11 19:50:50,912 - database - INFO - Successfully added data point with ID 320
+2025-05-11 19:50:51,815 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:51.812684
+2025-05-11 19:50:51,870 - database - INFO - Successfully added data point with ID 321
+2025-05-11 19:50:52,835 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:52.832082
+2025-05-11 19:50:52,891 - database - INFO - Successfully added data point with ID 322
+2025-05-11 19:50:53,866 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:53.860079
+2025-05-11 19:50:53,873 - database - INFO - Successfully added data point with ID 323
+2025-05-11 19:50:54,816 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:54.811621
+2025-05-11 19:50:54,868 - database - INFO - Successfully added data point with ID 324
+2025-05-11 19:50:55,837 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:55.833940
+2025-05-11 19:50:55,892 - database - INFO - Successfully added data point with ID 325
+2025-05-11 19:50:56,856 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:56.852431
+2025-05-11 19:50:56,913 - database - INFO - Successfully added data point with ID 326
+2025-05-11 19:50:57,871 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:57.868524
+2025-05-11 19:50:57,879 - database - INFO - Successfully added data point with ID 327
+2025-05-11 19:50:58,830 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:58.827366
+2025-05-11 19:50:58,884 - database - INFO - Successfully added data point with ID 328
+2025-05-11 19:50:59,831 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:50:59.823260
+2025-05-11 19:50:59,884 - database - INFO - Successfully added data point with ID 329
+2025-05-11 19:51:00,816 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:00.813916
+2025-05-11 19:51:00,873 - database - INFO - Successfully added data point with ID 330
+2025-05-11 19:51:01,893 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:01.889080
+2025-05-11 19:51:01,947 - database - INFO - Successfully added data point with ID 331
+2025-05-11 19:51:02,830 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:02.824724
+2025-05-11 19:51:02,883 - database - INFO - Successfully added data point with ID 332
+2025-05-11 19:51:03,874 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:03.871086
+2025-05-11 19:51:03,925 - database - INFO - Successfully added data point with ID 333
+2025-05-11 19:51:04,829 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:04.827059
+2025-05-11 19:51:04,877 - database - INFO - Successfully added data point with ID 334
+2025-05-11 19:51:05,851 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:05.847079
+2025-05-11 19:51:05,903 - database - INFO - Successfully added data point with ID 335
+2025-05-11 19:51:06,844 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:06.838040
+2025-05-11 19:51:06,899 - database - INFO - Successfully added data point with ID 336
+2025-05-11 19:51:07,834 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:07.831108
+2025-05-11 19:51:07,889 - database - INFO - Successfully added data point with ID 337
+2025-05-11 19:51:08,865 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:08.858892
+2025-05-11 19:51:08,872 - database - INFO - Successfully added data point with ID 338
+2025-05-11 19:51:09,846 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:09.842045
+2025-05-11 19:51:09,901 - database - INFO - Successfully added data point with ID 339
+2025-05-11 19:51:10,838 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:10.835427
+2025-05-11 19:51:10,895 - database - INFO - Successfully added data point with ID 340
+2025-05-11 19:51:11,888 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:11.884210
+2025-05-11 19:51:11,943 - database - INFO - Successfully added data point with ID 341
+2025-05-11 19:51:12,817 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:12.813642
+2025-05-11 19:51:12,873 - database - INFO - Successfully added data point with ID 342
+2025-05-11 19:51:13,861 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:13.858140
+2025-05-11 19:51:13,915 - database - INFO - Successfully added data point with ID 343
+2025-05-11 19:51:14,856 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:14.853761
+2025-05-11 19:51:14,912 - database - INFO - Successfully added data point with ID 344
+2025-05-11 19:51:15,820 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:15.815980
+2025-05-11 19:51:15,847 - database - INFO - Successfully added data point with ID 345
+2025-05-11 19:51:16,836 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:16.833392
+2025-05-11 19:51:16,843 - database - INFO - Successfully added data point with ID 346
+2025-05-11 19:51:17,833 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:17.830620
+2025-05-11 19:51:17,886 - database - INFO - Successfully added data point with ID 347
+2025-05-11 19:51:18,880 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:18.871520
+2025-05-11 19:51:18,935 - database - INFO - Successfully added data point with ID 348
+2025-05-11 19:51:19,832 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:19.828647
+2025-05-11 19:51:19,838 - database - INFO - Successfully added data point with ID 349
+2025-05-11 19:51:20,881 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:20.878961
+2025-05-11 19:51:20,936 - database - INFO - Successfully added data point with ID 350
+2025-05-11 19:51:21,931 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:21.928130
+2025-05-11 19:51:21,984 - database - INFO - Successfully added data point with ID 351
+2025-05-11 19:51:22,867 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:22.864137
+2025-05-11 19:51:22,923 - database - INFO - Successfully added data point with ID 352
+2025-05-11 19:51:23,845 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:23.841843
+2025-05-11 19:51:23,852 - database - INFO - Successfully added data point with ID 353
+2025-05-11 19:51:24,850 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:24.845424
+2025-05-11 19:51:24,904 - database - INFO - Successfully added data point with ID 354
+2025-05-11 19:51:25,835 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:25.827842
+2025-05-11 19:51:25,891 - database - INFO - Successfully added data point with ID 355
+2025-05-11 19:51:26,853 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:26.849724
+2025-05-11 19:51:26,859 - database - INFO - Successfully added data point with ID 356
+2025-05-11 19:51:27,846 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:27.839393
+2025-05-11 19:51:27,900 - database - INFO - Successfully added data point with ID 357
+2025-05-11 19:51:28,841 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:28.837388
+2025-05-11 19:51:28,876 - database - INFO - Successfully added data point with ID 358
+2025-05-11 19:51:29,823 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:29.818232
+2025-05-11 19:51:29,872 - database - INFO - Successfully added data point with ID 359
+2025-05-11 19:51:30,820 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:30.816627
+2025-05-11 19:51:30,876 - database - INFO - Successfully added data point with ID 360
+2025-05-11 19:51:31,834 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:31.830309
+2025-05-11 19:51:31,887 - database - INFO - Successfully added data point with ID 361
+2025-05-11 19:51:32,836 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:32.831438
+2025-05-11 19:51:32,892 - database - INFO - Successfully added data point with ID 362
+2025-05-11 19:51:33,877 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:33.871713
+2025-05-11 19:51:33,933 - database - INFO - Successfully added data point with ID 363
+2025-05-11 19:51:34,837 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:34.833022
+2025-05-11 19:51:34,847 - database - INFO - Successfully added data point with ID 364
+2025-05-11 19:51:35,822 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:35.820591
+2025-05-11 19:51:35,876 - database - INFO - Successfully added data point with ID 365
+2025-05-11 19:51:36,816 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:36.813496
+2025-05-11 19:51:36,862 - database - INFO - Successfully added data point with ID 366
+2025-05-11 19:51:37,892 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:37.889149
+2025-05-11 19:51:37,947 - database - INFO - Successfully added data point with ID 367
+2025-05-11 19:51:38,852 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:38.846389
+2025-05-11 19:51:38,860 - database - INFO - Successfully added data point with ID 368
+2025-05-11 19:51:39,817 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:39.814135
+2025-05-11 19:51:39,872 - database - INFO - Successfully added data point with ID 369
+2025-05-11 19:51:40,901 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:40.898748
+2025-05-11 19:51:40,956 - database - INFO - Successfully added data point with ID 370
+2025-05-11 19:51:41,824 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:41.821217
+2025-05-11 19:51:41,880 - database - INFO - Successfully added data point with ID 371
+2025-05-11 19:51:42,922 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:42.918633
+2025-05-11 19:51:42,930 - database - INFO - Successfully added data point with ID 372
+2025-05-11 19:51:43,836 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:43.831430
+2025-05-11 19:51:43,892 - database - INFO - Successfully added data point with ID 373
+2025-05-11 19:51:44,888 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:44.885949
+2025-05-11 19:51:44,944 - database - INFO - Successfully added data point with ID 374
+2025-05-11 19:51:45,849 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:45.840635
+2025-05-11 19:51:45,905 - database - INFO - Successfully added data point with ID 375
+2025-05-11 19:51:46,837 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:46.834492
+2025-05-11 19:51:46,892 - database - INFO - Successfully added data point with ID 376
+2025-05-11 19:51:47,822 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:47.818607
+2025-05-11 19:51:47,877 - database - INFO - Successfully added data point with ID 377
+2025-05-11 19:51:48,851 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:48.846996
+2025-05-11 19:51:48,906 - database - INFO - Successfully added data point with ID 378
+2025-05-11 19:51:49,831 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:49.828562
+2025-05-11 19:51:49,837 - database - INFO - Successfully added data point with ID 379
+2025-05-11 19:51:50,829 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:50.823802
+2025-05-11 19:51:50,885 - database - INFO - Successfully added data point with ID 380
+2025-05-11 19:51:51,846 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:51.840356
+2025-05-11 19:51:51,902 - database - INFO - Successfully added data point with ID 381
+2025-05-11 19:51:52,865 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:52.860391
+2025-05-11 19:51:52,921 - database - INFO - Successfully added data point with ID 382
+2025-05-11 19:51:53,849 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:53.841429
+2025-05-11 19:51:53,855 - database - INFO - Successfully added data point with ID 383
+2025-05-11 19:51:54,819 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:54.816300
+2025-05-11 19:51:54,874 - database - INFO - Successfully added data point with ID 384
+2025-05-11 19:51:55,840 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:55.835412
+2025-05-11 19:51:55,891 - database - INFO - Successfully added data point with ID 385
+2025-05-11 19:51:56,828 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:56.823178
+2025-05-11 19:51:56,884 - database - INFO - Successfully added data point with ID 386
+2025-05-11 19:51:57,819 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:57.814514
+2025-05-11 19:51:57,826 - database - INFO - Successfully added data point with ID 387
+2025-05-11 19:51:58,837 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:58.832440
+2025-05-11 19:51:58,891 - database - INFO - Successfully added data point with ID 388
+2025-05-11 19:51:59,883 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:51:59.875639
+2025-05-11 19:51:59,939 - database - INFO - Successfully added data point with ID 389
+2025-05-11 19:52:00,819 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:00.815179
+2025-05-11 19:52:00,874 - database - INFO - Successfully added data point with ID 390
+2025-05-11 19:52:01,833 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:01.830468
+2025-05-11 19:52:01,887 - database - INFO - Successfully added data point with ID 391
+2025-05-11 19:52:02,830 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:02.825192
+2025-05-11 19:52:02,886 - database - INFO - Successfully added data point with ID 392
+2025-05-11 19:52:03,847 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:03.836232
+2025-05-11 19:52:03,901 - database - INFO - Successfully added data point with ID 393
+2025-05-11 19:52:04,906 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:04.902898
+2025-05-11 19:52:04,916 - database - INFO - Successfully added data point with ID 394
+2025-05-11 19:52:05,854 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:05.851330
+2025-05-11 19:52:05,910 - database - INFO - Successfully added data point with ID 395
+2025-05-11 19:52:06,813 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:06.809758
+2025-05-11 19:52:06,868 - database - INFO - Successfully added data point with ID 396
+2025-05-11 19:52:07,834 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:07.832937
+2025-05-11 19:52:07,890 - database - INFO - Successfully added data point with ID 397
+2025-05-11 19:52:08,857 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:08.853456
+2025-05-11 19:52:08,865 - database - INFO - Successfully added data point with ID 398
+2025-05-11 19:52:09,820 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:09.816362
+2025-05-11 19:52:09,875 - database - INFO - Successfully added data point with ID 399
+2025-05-11 19:52:10,864 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:10.860881
+2025-05-11 19:52:10,919 - database - INFO - Successfully added data point with ID 400
+2025-05-11 19:52:11,825 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:11.821473
+2025-05-11 19:52:11,879 - database - INFO - Successfully added data point with ID 401
+2025-05-11 19:52:12,994 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:12.990166
+2025-05-11 19:52:13,001 - database - INFO - Successfully added data point with ID 402
+2025-05-11 19:52:13,831 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:13.828413
+2025-05-11 19:52:13,883 - database - INFO - Successfully added data point with ID 403
+2025-05-11 19:52:14,819 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:14.817608
+2025-05-11 19:52:14,873 - database - INFO - Successfully added data point with ID 404
+2025-05-11 19:52:15,840 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:15.836629
+2025-05-11 19:52:15,894 - database - INFO - Successfully added data point with ID 405
+2025-05-11 19:52:16,830 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:16.826616
+2025-05-11 19:52:16,884 - database - INFO - Successfully added data point with ID 406
+2025-05-11 19:52:17,920 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:17.889306
+2025-05-11 19:52:17,982 - database - INFO - Successfully added data point with ID 407
+2025-05-11 19:52:18,846 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:18.840878
+2025-05-11 19:52:18,853 - database - INFO - Successfully added data point with ID 408
+2025-05-11 19:52:19,838 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:19.835465
+2025-05-11 19:52:19,894 - database - INFO - Successfully added data point with ID 409
+2025-05-11 19:52:20,825 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:20.822831
+2025-05-11 19:52:20,884 - database - INFO - Successfully added data point with ID 410
+2025-05-11 19:52:21,852 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:21.848660
+2025-05-11 19:52:21,908 - database - INFO - Successfully added data point with ID 411
+2025-05-11 19:52:22,838 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:22.836211
+2025-05-11 19:52:22,894 - database - INFO - Successfully added data point with ID 412
+2025-05-11 19:52:23,858 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:23.853583
+2025-05-11 19:52:23,868 - database - INFO - Successfully added data point with ID 413
+2025-05-11 19:52:24,818 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:24.813012
+2025-05-11 19:52:24,873 - database - INFO - Successfully added data point with ID 414
+2025-05-11 19:52:25,837 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:25.833618
+2025-05-11 19:52:25,892 - database - INFO - Successfully added data point with ID 415
+2025-05-11 19:52:26,834 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:26.825578
+2025-05-11 19:52:26,888 - database - INFO - Successfully added data point with ID 416
+2025-05-11 19:52:27,918 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:27.914054
+2025-05-11 19:52:27,924 - database - INFO - Successfully added data point with ID 417
+2025-05-11 19:52:28,837 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:28.834428
+2025-05-11 19:52:28,892 - database - INFO - Successfully added data point with ID 418
+2025-05-11 19:52:29,862 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:29.857219
+2025-05-11 19:52:29,916 - database - INFO - Successfully added data point with ID 419
+2025-05-11 19:52:30,821 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:30.817931
+2025-05-11 19:52:30,876 - database - INFO - Successfully added data point with ID 420
+2025-05-11 19:52:31,865 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:31.858969
+2025-05-11 19:52:31,920 - database - INFO - Successfully added data point with ID 421
+2025-05-11 19:52:32,828 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:32.821102
+2025-05-11 19:52:32,885 - database - INFO - Successfully added data point with ID 422
+2025-05-11 19:52:33,880 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:33.874450
+2025-05-11 19:52:33,936 - database - INFO - Successfully added data point with ID 423
+2025-05-11 19:52:34,835 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:34.830690
+2025-05-11 19:52:34,892 - database - INFO - Successfully added data point with ID 424
+2025-05-11 19:52:35,826 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:35.823451
+2025-05-11 19:52:35,882 - database - INFO - Successfully added data point with ID 425
+2025-05-11 19:52:36,880 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:36.875365
+2025-05-11 19:52:36,936 - database - INFO - Successfully added data point with ID 426
+2025-05-11 19:52:37,835 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:37.832612
+2025-05-11 19:52:37,890 - database - INFO - Successfully added data point with ID 427
+2025-05-11 19:52:38,891 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:38.888046
+2025-05-11 19:52:38,900 - database - INFO - Successfully added data point with ID 428
+2025-05-11 19:52:39,821 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:39.817245
+2025-05-11 19:52:39,877 - database - INFO - Successfully added data point with ID 429
+2025-05-11 19:52:40,901 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:40.896910
+2025-05-11 19:52:40,956 - database - INFO - Successfully added data point with ID 430
+2025-05-11 19:52:41,826 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:41.822356
+2025-05-11 19:52:41,882 - database - INFO - Successfully added data point with ID 431
+2025-05-11 19:52:42,900 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:42.846442
+2025-05-11 19:52:42,906 - database - INFO - Successfully added data point with ID 432
+2025-05-11 19:52:43,897 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:43.890157
+2025-05-11 19:52:43,952 - database - INFO - Successfully added data point with ID 433
+2025-05-11 19:52:44,920 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:44.917981
+2025-05-11 19:52:44,975 - database - INFO - Successfully added data point with ID 434
+2025-05-11 19:52:45,846 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:45.841484
+2025-05-11 19:52:45,901 - database - INFO - Successfully added data point with ID 435
+2025-05-11 19:52:46,838 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:46.834499
+2025-05-11 19:52:46,894 - database - INFO - Successfully added data point with ID 436
+2025-05-11 19:52:47,920 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:47.917163
+2025-05-11 19:52:47,975 - database - INFO - Successfully added data point with ID 437
+2025-05-11 19:52:48,820 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:48.817564
+2025-05-11 19:52:48,875 - database - INFO - Successfully added data point with ID 438
+2025-05-11 19:52:49,834 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:49.831615
+2025-05-11 19:52:49,840 - database - INFO - Successfully added data point with ID 439
+2025-05-11 19:52:50,858 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:50.855560
+2025-05-11 19:52:50,871 - database - INFO - Successfully added data point with ID 440
+2025-05-11 19:52:51,906 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:51.903233
+2025-05-11 19:52:51,959 - database - INFO - Successfully added data point with ID 441
+2025-05-11 19:52:52,869 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:52.865263
+2025-05-11 19:52:52,924 - database - INFO - Successfully added data point with ID 442
+2025-05-11 19:52:53,920 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:53.916667
+2025-05-11 19:52:53,937 - database - INFO - Successfully added data point with ID 443
+2025-05-11 19:52:54,876 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:54.871832
+2025-05-11 19:52:54,933 - database - INFO - Successfully added data point with ID 444
+2025-05-11 19:52:55,865 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:55.862180
+2025-05-11 19:52:55,919 - database - INFO - Successfully added data point with ID 445
+2025-05-11 19:52:56,828 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:56.824380
+2025-05-11 19:52:56,884 - database - INFO - Successfully added data point with ID 446
+2025-05-11 19:52:57,899 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:57.846353
+2025-05-11 19:52:57,905 - database - INFO - Successfully added data point with ID 447
+2025-05-11 19:52:58,837 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:58.833207
+2025-05-11 19:52:58,891 - database - INFO - Successfully added data point with ID 448
+2025-05-11 19:52:59,825 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:52:59.822590
+2025-05-11 19:52:59,880 - database - INFO - Successfully added data point with ID 449
+2025-05-11 19:53:00,820 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:53:00.817507
+2025-05-11 19:53:00,879 - database - INFO - Successfully added data point with ID 450
+2025-05-11 19:53:01,855 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:53:01.842020
+2025-05-11 19:53:01,909 - database - INFO - Successfully added data point with ID 451
+2025-05-11 19:53:02,828 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:53:02.825590
+2025-05-11 19:53:02,884 - database - INFO - Successfully added data point with ID 452
+2025-05-11 19:53:03,816 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:53:03.811783
+2025-05-11 19:53:03,871 - database - INFO - Successfully added data point with ID 453
+2025-05-11 19:53:04,834 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:53:04.830489
+2025-05-11 19:53:04,888 - database - INFO - Successfully added data point with ID 454
+2025-05-11 19:53:05,914 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:53:05.910170
+2025-05-11 19:53:05,968 - database - INFO - Successfully added data point with ID 455
+2025-05-11 19:53:06,823 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:53:06.818311
+2025-05-11 19:53:06,879 - database - INFO - Successfully added data point with ID 456
+2025-05-11 19:53:07,834 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:53:07.831737
+2025-05-11 19:53:07,888 - database - INFO - Successfully added data point with ID 457
+2025-05-11 19:53:08,826 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:53:08.822734
+2025-05-11 19:53:08,835 - database - INFO - Successfully added data point with ID 458
+2025-05-11 19:53:09,820 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:53:09.817289
+2025-05-11 19:53:09,876 - database - INFO - Successfully added data point with ID 459
+2025-05-11 19:53:10,872 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:53:10.866688
+2025-05-11 19:53:10,927 - database - INFO - Successfully added data point with ID 460
+2025-05-11 19:53:11,826 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:53:11.822971
+2025-05-11 19:53:11,882 - database - INFO - Successfully added data point with ID 461
+2025-05-11 19:53:12,896 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:53:12.893235
+2025-05-11 19:53:12,905 - database - INFO - Successfully added data point with ID 462
+2025-05-11 19:53:13,839 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:53:13.835269
+2025-05-11 19:53:13,894 - database - INFO - Successfully added data point with ID 463
+2025-05-11 19:53:14,860 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:53:14.856375
+2025-05-11 19:53:14,917 - database - INFO - Successfully added data point with ID 464
+2025-05-11 19:53:15,883 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:53:15.876200
+2025-05-11 19:53:15,938 - database - INFO - Successfully added data point with ID 465
+2025-05-11 19:53:17,017 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:53:17.001765
+2025-05-11 19:53:17,024 - database - INFO - Successfully added data point with ID 466
+2025-05-11 19:53:17,829 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:53:17.825511
+2025-05-11 19:53:17,886 - database - INFO - Successfully added data point with ID 467
+2025-05-11 19:53:18,852 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:53:18.846198
+2025-05-11 19:53:18,907 - database - INFO - Successfully added data point with ID 468
+2025-05-11 19:53:19,872 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:53:19.868538
+2025-05-11 19:53:19,926 - database - INFO - Successfully added data point with ID 469
+2025-05-11 19:53:20,827 - database - INFO - Adding data point to workout 4 at timestamp 2025-05-11T19:53:20.822583
+2025-05-11 19:53:20,835 - database - INFO - Successfully added data point with ID 470
+2025-05-11 19:53:21,311 - database - INFO - Ended workout 4, duration: 316s
+2025-05-11 19:53:21,322 - database - INFO - Database tables created
+2025-05-11 19:53:21,334 - fit_converter - INFO - Processing bike workout with 317 data points
+2025-05-11 19:53:21,334 - fit_converter - INFO - Data arrays - Powers: 317, Cadences: 317, Speeds: 317
+2025-05-11 19:53:21,335 - fit_converter - ERROR - Error converting workout to FIT: 'FITConverter' object has no attribute '_unix_to_fit_timestamp_ms'
+2025-05-11 19:53:21,336 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 126, in convert_workout
+    unix_start_timestamp_ms = self._unix_to_fit_timestamp_ms(unix_start_timestamp_sec)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'FITConverter' object has no attribute '_unix_to_fit_timestamp_ms'
+
+2025-05-11 19:54:51,098 - database - INFO - Database tables created
+2025-05-11 19:54:51,100 - database - INFO - Database tables created
+2025-05-11 19:54:52,046 - database - INFO - Database tables created
+2025-05-11 19:54:52,048 - database - INFO - Database tables created
+2025-05-11 19:54:55,134 - database - INFO - Retrieved 4 workouts from database
+2025-05-11 19:54:56,351 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-11 19:54:58,252 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-11 20:20:03,390 - database - INFO - Database tables created
+2025-05-11 20:20:03,392 - database - INFO - Database tables created
+2025-05-11 20:20:04,575 - database - INFO - Database tables created
+2025-05-11 20:20:04,577 - database - INFO - Database tables created
+2025-05-11 20:21:09,892 - database - INFO - Started workout 5 with device C9:02:CB:68:17:C1
+2025-05-11 20:21:10,599 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:10.594936
+2025-05-11 20:21:10,655 - database - INFO - Successfully added data point with ID 471
+2025-05-11 20:21:11,632 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:11.626255
+2025-05-11 20:21:11,685 - database - INFO - Successfully added data point with ID 472
+2025-05-11 20:21:12,562 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:12.559564
+2025-05-11 20:21:12,617 - database - INFO - Successfully added data point with ID 473
+2025-05-11 20:21:13,658 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:13.656322
+2025-05-11 20:21:13,666 - database - INFO - Successfully added data point with ID 474
+2025-05-11 20:21:14,614 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:14.612423
+2025-05-11 20:21:14,669 - database - INFO - Successfully added data point with ID 475
+2025-05-11 20:21:15,693 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:15.691106
+2025-05-11 20:21:15,748 - database - INFO - Successfully added data point with ID 476
+2025-05-11 20:21:16,595 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:16.591837
+2025-05-11 20:21:16,604 - database - INFO - Successfully added data point with ID 477
+2025-05-11 20:21:17,526 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:17.521699
+2025-05-11 20:21:17,582 - database - INFO - Successfully added data point with ID 478
+2025-05-11 20:21:18,606 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:18.602511
+2025-05-11 20:21:18,660 - database - INFO - Successfully added data point with ID 479
+2025-05-11 20:21:19,635 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:19.630099
+2025-05-11 20:21:19,690 - database - INFO - Successfully added data point with ID 480
+2025-05-11 20:21:20,526 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:20.523515
+2025-05-11 20:21:20,533 - database - INFO - Successfully added data point with ID 481
+2025-05-11 20:21:21,722 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:21.719541
+2025-05-11 20:21:21,775 - database - INFO - Successfully added data point with ID 482
+2025-05-11 20:21:22,715 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:22.711078
+2025-05-11 20:21:22,730 - database - INFO - Successfully added data point with ID 483
+2025-05-11 20:21:23,525 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:23.521093
+2025-05-11 20:21:23,578 - database - INFO - Successfully added data point with ID 484
+2025-05-11 20:21:24,601 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:24.599306
+2025-05-11 20:21:24,608 - database - INFO - Successfully added data point with ID 485
+2025-05-11 20:21:25,914 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:25.910890
+2025-05-11 20:21:25,921 - database - INFO - Successfully added data point with ID 486
+2025-05-11 20:21:26,791 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:26.788134
+2025-05-11 20:21:26,845 - database - INFO - Successfully added data point with ID 487
+2025-05-11 20:21:27,604 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:27.599212
+2025-05-11 20:21:27,658 - database - INFO - Successfully added data point with ID 488
+2025-05-11 20:21:28,636 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:28.630154
+2025-05-11 20:21:28,641 - database - INFO - Successfully added data point with ID 489
+2025-05-11 20:21:29,707 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:29.704880
+2025-05-11 20:21:29,737 - database - INFO - Successfully added data point with ID 490
+2025-05-11 20:21:30,605 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:30.603429
+2025-05-11 20:21:30,658 - database - INFO - Successfully added data point with ID 491
+2025-05-11 20:21:31,593 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:31.590405
+2025-05-11 20:21:31,647 - database - INFO - Successfully added data point with ID 492
+2025-05-11 20:21:32,526 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:32.521958
+2025-05-11 20:21:32,582 - database - INFO - Successfully added data point with ID 493
+2025-05-11 20:21:33,609 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:33.606854
+2025-05-11 20:21:33,662 - database - INFO - Successfully added data point with ID 494
+2025-05-11 20:21:34,596 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:34.592126
+2025-05-11 20:21:34,650 - database - INFO - Successfully added data point with ID 495
+2025-05-11 20:21:35,524 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:35.521434
+2025-05-11 20:21:35,529 - database - INFO - Successfully added data point with ID 496
+2025-05-11 20:21:36,606 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:36.604312
+2025-05-11 20:21:36,658 - database - INFO - Successfully added data point with ID 497
+2025-05-11 20:21:37,599 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:37.596110
+2025-05-11 20:21:37,655 - database - INFO - Successfully added data point with ID 498
+2025-05-11 20:21:38,587 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:38.581449
+2025-05-11 20:21:38,641 - database - INFO - Successfully added data point with ID 499
+2025-05-11 20:21:39,817 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:39.810310
+2025-05-11 20:21:39,825 - database - INFO - Successfully added data point with ID 500
+2025-05-11 20:21:40,597 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:40.592046
+2025-05-11 20:21:40,646 - database - INFO - Successfully added data point with ID 501
+2025-05-11 20:21:41,638 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:41.629755
+2025-05-11 20:21:41,693 - database - INFO - Successfully added data point with ID 502
+2025-05-11 20:21:42,694 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:42.691433
+2025-05-11 20:21:42,747 - database - INFO - Successfully added data point with ID 503
+2025-05-11 20:21:43,641 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:43.639476
+2025-05-11 20:21:43,649 - database - INFO - Successfully added data point with ID 504
+2025-05-11 20:21:44,527 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:44.523832
+2025-05-11 20:21:44,583 - database - INFO - Successfully added data point with ID 505
+2025-05-11 20:21:45,702 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:45.692540
+2025-05-11 20:21:45,755 - database - INFO - Successfully added data point with ID 506
+2025-05-11 20:21:46,688 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:46.684302
+2025-05-11 20:21:46,744 - database - INFO - Successfully added data point with ID 507
+2025-05-11 20:21:47,529 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:47.527386
+2025-05-11 20:21:47,592 - database - INFO - Successfully added data point with ID 508
+2025-05-11 20:21:48,610 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:48.605387
+2025-05-11 20:21:48,665 - database - INFO - Successfully added data point with ID 509
+2025-05-11 20:21:49,629 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:49.627307
+2025-05-11 20:21:49,679 - database - INFO - Successfully added data point with ID 510
+2025-05-11 20:21:50,521 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:50.519825
+2025-05-11 20:21:50,527 - database - INFO - Successfully added data point with ID 511
+2025-05-11 20:21:51,611 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:51.607870
+2025-05-11 20:21:51,666 - database - INFO - Successfully added data point with ID 512
+2025-05-11 20:21:52,591 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:52.590942
+2025-05-11 20:21:52,645 - database - INFO - Successfully added data point with ID 513
+2025-05-11 20:21:53,615 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:53.613803
+2025-05-11 20:21:53,670 - database - INFO - Successfully added data point with ID 514
+2025-05-11 20:21:54,723 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:54.720803
+2025-05-11 20:21:54,777 - database - INFO - Successfully added data point with ID 515
+2025-05-11 20:21:55,643 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:55.639145
+2025-05-11 20:21:55,696 - database - INFO - Successfully added data point with ID 516
+2025-05-11 20:21:56,560 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:56.551063
+2025-05-11 20:21:56,614 - database - INFO - Successfully added data point with ID 517
+2025-05-11 20:21:57,610 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:57.607153
+2025-05-11 20:21:57,665 - database - INFO - Successfully added data point with ID 518
+2025-05-11 20:21:58,696 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:58.694193
+2025-05-11 20:21:58,704 - database - INFO - Successfully added data point with ID 519
+2025-05-11 20:21:59,524 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:21:59.521582
+2025-05-11 20:21:59,586 - database - INFO - Successfully added data point with ID 520
+2025-05-11 20:22:00,695 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:00.691338
+2025-05-11 20:22:00,748 - database - INFO - Successfully added data point with ID 521
+2025-05-11 20:22:01,629 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:01.626186
+2025-05-11 20:22:01,635 - database - INFO - Successfully added data point with ID 522
+2025-05-11 20:22:02,521 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:02.519526
+2025-05-11 20:22:02,574 - database - INFO - Successfully added data point with ID 523
+2025-05-11 20:22:03,759 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:03.754952
+2025-05-11 20:22:03,815 - database - INFO - Successfully added data point with ID 524
+2025-05-11 20:22:04,544 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:04.539867
+2025-05-11 20:22:04,599 - database - INFO - Successfully added data point with ID 525
+2025-05-11 20:22:05,629 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:05.627047
+2025-05-11 20:22:05,684 - database - INFO - Successfully added data point with ID 526
+2025-05-11 20:22:06,647 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:06.642968
+2025-05-11 20:22:06,656 - database - INFO - Successfully added data point with ID 527
+2025-05-11 20:22:07,599 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:07.596232
+2025-05-11 20:22:07,657 - database - INFO - Successfully added data point with ID 528
+2025-05-11 20:22:08,616 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:08.613498
+2025-05-11 20:22:08,677 - database - INFO - Successfully added data point with ID 529
+2025-05-11 20:22:09,562 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:09.560444
+2025-05-11 20:22:09,569 - database - INFO - Successfully added data point with ID 530
+2025-05-11 20:22:10,565 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:10.562780
+2025-05-11 20:22:10,618 - database - INFO - Successfully added data point with ID 531
+2025-05-11 20:22:11,563 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:11.560810
+2025-05-11 20:22:11,619 - database - INFO - Successfully added data point with ID 532
+2025-05-11 20:22:12,544 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:12.540726
+2025-05-11 20:22:12,597 - database - INFO - Successfully added data point with ID 533
+2025-05-11 20:22:13,536 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:13.532387
+2025-05-11 20:22:13,594 - database - INFO - Successfully added data point with ID 534
+2025-05-11 20:22:14,580 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:14.576317
+2025-05-11 20:22:14,632 - database - INFO - Successfully added data point with ID 535
+2025-05-11 20:22:15,642 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:15.638751
+2025-05-11 20:22:15,695 - database - INFO - Successfully added data point with ID 536
+2025-05-11 20:22:16,599 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:16.596483
+2025-05-11 20:22:16,653 - database - INFO - Successfully added data point with ID 537
+2025-05-11 20:22:17,527 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:17.524473
+2025-05-11 20:22:17,585 - database - INFO - Successfully added data point with ID 538
+2025-05-11 20:22:18,547 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:18.543983
+2025-05-11 20:22:18,603 - database - INFO - Successfully added data point with ID 539
+2025-05-11 20:22:19,626 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:19.604152
+2025-05-11 20:22:19,717 - database - INFO - Successfully added data point with ID 540
+2025-05-11 20:22:20,526 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:20.522653
+2025-05-11 20:22:20,531 - database - INFO - Successfully added data point with ID 541
+2025-05-11 20:22:21,562 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:21.559445
+2025-05-11 20:22:21,617 - database - INFO - Successfully added data point with ID 542
+2025-05-11 20:22:22,536 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:22.532239
+2025-05-11 20:22:22,589 - database - INFO - Successfully added data point with ID 543
+2025-05-11 20:22:23,560 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:23.557124
+2025-05-11 20:22:23,612 - database - INFO - Successfully added data point with ID 544
+2025-05-11 20:22:24,543 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:24.541054
+2025-05-11 20:22:24,548 - database - INFO - Successfully added data point with ID 545
+2025-05-11 20:22:25,535 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:25.531243
+2025-05-11 20:22:25,604 - database - INFO - Successfully added data point with ID 546
+2025-05-11 20:22:26,527 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:26.521794
+2025-05-11 20:22:26,581 - database - INFO - Successfully added data point with ID 547
+2025-05-11 20:22:27,582 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:27.581242
+2025-05-11 20:22:27,648 - database - INFO - Successfully added data point with ID 548
+2025-05-11 20:22:28,537 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:28.533159
+2025-05-11 20:22:28,593 - database - INFO - Successfully added data point with ID 549
+2025-05-11 20:22:29,531 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:29.525736
+2025-05-11 20:22:29,595 - database - INFO - Successfully added data point with ID 550
+2025-05-11 20:22:30,608 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:30.605726
+2025-05-11 20:22:30,660 - database - INFO - Successfully added data point with ID 551
+2025-05-11 20:22:31,553 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:31.543412
+2025-05-11 20:22:31,611 - database - INFO - Successfully added data point with ID 552
+2025-05-11 20:22:32,591 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:32.588011
+2025-05-11 20:22:32,645 - database - INFO - Successfully added data point with ID 553
+2025-05-11 20:22:33,555 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:33.549377
+2025-05-11 20:22:33,608 - database - INFO - Successfully added data point with ID 554
+2025-05-11 20:22:34,626 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:34.622744
+2025-05-11 20:22:34,679 - database - INFO - Successfully added data point with ID 555
+2025-05-11 20:22:35,556 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:35.552223
+2025-05-11 20:22:35,605 - database - INFO - Successfully added data point with ID 556
+2025-05-11 20:22:36,543 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:36.540882
+2025-05-11 20:22:36,597 - database - INFO - Successfully added data point with ID 557
+2025-05-11 20:22:37,599 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:37.595554
+2025-05-11 20:22:37,655 - database - INFO - Successfully added data point with ID 558
+2025-05-11 20:22:38,583 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:38.581119
+2025-05-11 20:22:38,639 - database - INFO - Successfully added data point with ID 559
+2025-05-11 20:22:39,553 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:39.549766
+2025-05-11 20:22:39,559 - database - INFO - Successfully added data point with ID 560
+2025-05-11 20:22:40,533 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:40.531023
+2025-05-11 20:22:40,587 - database - INFO - Successfully added data point with ID 561
+2025-05-11 20:22:41,525 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:41.523423
+2025-05-11 20:22:41,592 - database - INFO - Successfully added data point with ID 562
+2025-05-11 20:22:42,543 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:42.541262
+2025-05-11 20:22:42,598 - database - INFO - Successfully added data point with ID 563
+2025-05-11 20:22:43,621 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:43.614696
+2025-05-11 20:22:43,633 - database - INFO - Successfully added data point with ID 564
+2025-05-11 20:22:44,660 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:44.656840
+2025-05-11 20:22:44,713 - database - INFO - Successfully added data point with ID 565
+2025-05-11 20:22:45,611 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:45.607883
+2025-05-11 20:22:45,621 - database - INFO - Successfully added data point with ID 566
+2025-05-11 20:22:46,568 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:46.565215
+2025-05-11 20:22:46,623 - database - INFO - Successfully added data point with ID 567
+2025-05-11 20:22:47,592 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:47.589221
+2025-05-11 20:22:47,647 - database - INFO - Successfully added data point with ID 568
+2025-05-11 20:22:48,552 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:48.548443
+2025-05-11 20:22:48,607 - database - INFO - Successfully added data point with ID 569
+2025-05-11 20:22:49,597 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:49.594876
+2025-05-11 20:22:49,652 - database - INFO - Successfully added data point with ID 570
+2025-05-11 20:22:50,522 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:50.520162
+2025-05-11 20:22:50,527 - database - INFO - Successfully added data point with ID 571
+2025-05-11 20:22:51,545 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:51.542746
+2025-05-11 20:22:51,598 - database - INFO - Successfully added data point with ID 572
+2025-05-11 20:22:52,534 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:52.531008
+2025-05-11 20:22:52,588 - database - INFO - Successfully added data point with ID 573
+2025-05-11 20:22:53,563 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:53.560933
+2025-05-11 20:22:53,616 - database - INFO - Successfully added data point with ID 574
+2025-05-11 20:22:54,609 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:54.605957
+2025-05-11 20:22:54,616 - database - INFO - Successfully added data point with ID 575
+2025-05-11 20:22:55,537 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:55.532305
+2025-05-11 20:22:55,591 - database - INFO - Successfully added data point with ID 576
+2025-05-11 20:22:56,526 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:56.521801
+2025-05-11 20:22:56,580 - database - INFO - Successfully added data point with ID 577
+2025-05-11 20:22:57,607 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:57.605184
+2025-05-11 20:22:57,664 - database - INFO - Successfully added data point with ID 578
+2025-05-11 20:22:58,623 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:58.568479
+2025-05-11 20:22:58,629 - database - INFO - Successfully added data point with ID 579
+2025-05-11 20:22:59,527 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:22:59.525269
+2025-05-11 20:22:59,597 - database - INFO - Successfully added data point with ID 580
+2025-05-11 20:23:00,549 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:00.546231
+2025-05-11 20:23:00,603 - database - INFO - Successfully added data point with ID 581
+2025-05-11 20:23:01,554 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:01.544479
+2025-05-11 20:23:01,612 - database - INFO - Successfully added data point with ID 582
+2025-05-11 20:23:02,556 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:02.556055
+2025-05-11 20:23:02,610 - database - INFO - Successfully added data point with ID 583
+2025-05-11 20:23:03,617 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:03.613459
+2025-05-11 20:23:03,672 - database - INFO - Successfully added data point with ID 584
+2025-05-11 20:23:04,535 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:04.531940
+2025-05-11 20:23:04,589 - database - INFO - Successfully added data point with ID 585
+2025-05-11 20:23:05,559 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:05.557322
+2025-05-11 20:23:05,612 - database - INFO - Successfully added data point with ID 586
+2025-05-11 20:23:06,548 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:06.544396
+2025-05-11 20:23:06,600 - database - INFO - Successfully added data point with ID 587
+2025-05-11 20:23:07,569 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:07.565166
+2025-05-11 20:23:07,622 - database - INFO - Successfully added data point with ID 588
+2025-05-11 20:23:08,525 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:08.521146
+2025-05-11 20:23:08,575 - database - INFO - Successfully added data point with ID 589
+2025-05-11 20:23:09,577 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:09.573632
+2025-05-11 20:23:09,582 - database - INFO - Successfully added data point with ID 590
+2025-05-11 20:23:10,539 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:10.533696
+2025-05-11 20:23:10,593 - database - INFO - Successfully added data point with ID 591
+2025-05-11 20:23:11,526 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:11.522744
+2025-05-11 20:23:11,595 - database - INFO - Successfully added data point with ID 592
+2025-05-11 20:23:12,549 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:12.544857
+2025-05-11 20:23:12,604 - database - INFO - Successfully added data point with ID 593
+2025-05-11 20:23:13,617 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:13.612742
+2025-05-11 20:23:13,625 - database - INFO - Successfully added data point with ID 594
+2025-05-11 20:23:14,655 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:14.650469
+2025-05-11 20:23:14,710 - database - INFO - Successfully added data point with ID 595
+2025-05-11 20:23:15,549 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:15.546363
+2025-05-11 20:23:15,604 - database - INFO - Successfully added data point with ID 596
+2025-05-11 20:23:16,599 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:16.595831
+2025-05-11 20:23:16,652 - database - INFO - Successfully added data point with ID 597
+2025-05-11 20:23:17,653 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:17.648454
+2025-05-11 20:23:17,660 - database - INFO - Successfully added data point with ID 598
+2025-05-11 20:23:18,553 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:18.549747
+2025-05-11 20:23:18,610 - database - INFO - Successfully added data point with ID 599
+2025-05-11 20:23:19,577 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:19.572538
+2025-05-11 20:23:19,632 - database - INFO - Successfully added data point with ID 600
+2025-05-11 20:23:20,556 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:20.554242
+2025-05-11 20:23:20,611 - database - INFO - Successfully added data point with ID 601
+2025-05-11 20:23:21,566 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:21.563108
+2025-05-11 20:23:21,626 - database - INFO - Successfully added data point with ID 602
+2025-05-11 20:23:22,544 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:22.541388
+2025-05-11 20:23:22,599 - database - INFO - Successfully added data point with ID 603
+2025-05-11 20:23:23,625 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:23.621752
+2025-05-11 20:23:23,679 - database - INFO - Successfully added data point with ID 604
+2025-05-11 20:23:24,553 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:24.548423
+2025-05-11 20:23:24,560 - database - INFO - Successfully added data point with ID 605
+2025-05-11 20:23:25,562 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:25.557203
+2025-05-11 20:23:25,620 - database - INFO - Successfully added data point with ID 606
+2025-05-11 20:23:26,593 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:26.590027
+2025-05-11 20:23:26,600 - database - INFO - Successfully added data point with ID 607
+2025-05-11 20:23:27,611 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:27.608091
+2025-05-11 20:23:27,663 - database - INFO - Successfully added data point with ID 608
+2025-05-11 20:23:28,614 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:28.611531
+2025-05-11 20:23:28,622 - database - INFO - Successfully added data point with ID 609
+2025-05-11 20:23:29,528 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:29.524788
+2025-05-11 20:23:29,587 - database - INFO - Successfully added data point with ID 610
+2025-05-11 20:23:30,546 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:30.542859
+2025-05-11 20:23:30,599 - database - INFO - Successfully added data point with ID 611
+2025-05-11 20:23:31,542 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:31.534890
+2025-05-11 20:23:31,557 - database - INFO - Successfully added data point with ID 612
+2025-05-11 20:23:32,556 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:32.554754
+2025-05-11 20:23:32,610 - database - INFO - Successfully added data point with ID 613
+2025-05-11 20:23:33,609 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:33.606445
+2025-05-11 20:23:33,662 - database - INFO - Successfully added data point with ID 614
+2025-05-11 20:23:34,538 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:34.534193
+2025-05-11 20:23:34,590 - database - INFO - Successfully added data point with ID 615
+2025-05-11 20:23:35,583 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:35.580798
+2025-05-11 20:23:35,637 - database - INFO - Successfully added data point with ID 616
+2025-05-11 20:23:36,544 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:36.541436
+2025-05-11 20:23:36,597 - database - INFO - Successfully added data point with ID 617
+2025-05-11 20:23:37,568 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:37.565495
+2025-05-11 20:23:37,625 - database - INFO - Successfully added data point with ID 618
+2025-05-11 20:23:38,529 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:38.524620
+2025-05-11 20:23:38,584 - database - INFO - Successfully added data point with ID 619
+2025-05-11 20:23:39,685 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:39.682307
+2025-05-11 20:23:39,742 - database - INFO - Successfully added data point with ID 620
+2025-05-11 20:23:40,632 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:40.629752
+2025-05-11 20:23:40,688 - database - INFO - Successfully added data point with ID 621
+2025-05-11 20:23:41,565 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:41.563618
+2025-05-11 20:23:41,621 - database - INFO - Successfully added data point with ID 622
+2025-05-11 20:23:42,551 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:42.548116
+2025-05-11 20:23:42,605 - database - INFO - Successfully added data point with ID 623
+2025-05-11 20:23:43,630 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:43.627525
+2025-05-11 20:23:43,635 - database - INFO - Successfully added data point with ID 624
+2025-05-11 20:23:44,559 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:44.555622
+2025-05-11 20:23:44,611 - database - INFO - Successfully added data point with ID 625
+2025-05-11 20:23:45,558 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:45.550979
+2025-05-11 20:23:45,617 - database - INFO - Successfully added data point with ID 626
+2025-05-11 20:23:46,545 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:46.542224
+2025-05-11 20:23:46,600 - database - INFO - Successfully added data point with ID 627
+2025-05-11 20:23:47,592 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:47.589174
+2025-05-11 20:23:47,654 - database - INFO - Successfully added data point with ID 628
+2025-05-11 20:23:48,578 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:48.575263
+2025-05-11 20:23:48,608 - database - INFO - Successfully added data point with ID 629
+2025-05-11 20:23:49,546 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:49.543926
+2025-05-11 20:23:49,581 - database - INFO - Successfully added data point with ID 630
+2025-05-11 20:23:50,527 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:50.524885
+2025-05-11 20:23:50,531 - database - INFO - Successfully added data point with ID 631
+2025-05-11 20:23:51,564 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:51.560780
+2025-05-11 20:23:51,622 - database - INFO - Successfully added data point with ID 632
+2025-05-11 20:23:52,594 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:52.592307
+2025-05-11 20:23:52,648 - database - INFO - Successfully added data point with ID 633
+2025-05-11 20:23:53,530 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:53.527082
+2025-05-11 20:23:53,592 - database - INFO - Successfully added data point with ID 634
+2025-05-11 20:23:54,587 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:54.582775
+2025-05-11 20:23:54,598 - database - INFO - Successfully added data point with ID 635
+2025-05-11 20:23:55,555 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:55.543447
+2025-05-11 20:23:55,613 - database - INFO - Successfully added data point with ID 636
+2025-05-11 20:23:56,533 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:56.528758
+2025-05-11 20:23:56,589 - database - INFO - Successfully added data point with ID 637
+2025-05-11 20:23:57,581 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:57.577617
+2025-05-11 20:23:57,634 - database - INFO - Successfully added data point with ID 638
+2025-05-11 20:23:58,544 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:58.541222
+2025-05-11 20:23:58,598 - database - INFO - Successfully added data point with ID 639
+2025-05-11 20:23:59,525 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:23:59.523362
+2025-05-11 20:23:59,587 - database - INFO - Successfully added data point with ID 640
+2025-05-11 20:24:00,547 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:00.544522
+2025-05-11 20:24:00,598 - database - INFO - Successfully added data point with ID 641
+2025-05-11 20:24:01,612 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:01.602946
+2025-05-11 20:24:01,666 - database - INFO - Successfully added data point with ID 642
+2025-05-11 20:24:02,530 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:02.527920
+2025-05-11 20:24:02,585 - database - INFO - Successfully added data point with ID 643
+2025-05-11 20:24:03,552 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:03.548849
+2025-05-11 20:24:03,558 - database - INFO - Successfully added data point with ID 644
+2025-05-11 20:24:04,628 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:04.623622
+2025-05-11 20:24:04,680 - database - INFO - Successfully added data point with ID 645
+2025-05-11 20:24:05,531 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:05.526393
+2025-05-11 20:24:05,590 - database - INFO - Successfully added data point with ID 646
+2025-05-11 20:24:06,558 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:06.552882
+2025-05-11 20:24:06,612 - database - INFO - Successfully added data point with ID 647
+2025-05-11 20:24:07,551 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:07.549565
+2025-05-11 20:24:07,608 - database - INFO - Successfully added data point with ID 648
+2025-05-11 20:24:08,534 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:08.530714
+2025-05-11 20:24:08,605 - database - INFO - Successfully added data point with ID 649
+2025-05-11 20:24:09,559 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:09.552828
+2025-05-11 20:24:09,565 - database - INFO - Successfully added data point with ID 650
+2025-05-11 20:24:10,629 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:10.614841
+2025-05-11 20:24:10,685 - database - INFO - Successfully added data point with ID 651
+2025-05-11 20:24:11,527 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:11.524184
+2025-05-11 20:24:11,581 - database - INFO - Successfully added data point with ID 652
+2025-05-11 20:24:12,568 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:12.563549
+2025-05-11 20:24:12,627 - database - INFO - Successfully added data point with ID 653
+2025-05-11 20:24:13,602 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:13.598805
+2025-05-11 20:24:13,610 - database - INFO - Successfully added data point with ID 654
+2025-05-11 20:24:14,531 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:14.529117
+2025-05-11 20:24:14,602 - database - INFO - Successfully added data point with ID 655
+2025-05-11 20:24:15,520 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:15.515825
+2025-05-11 20:24:15,575 - database - INFO - Successfully added data point with ID 656
+2025-05-11 20:24:16,545 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:16.536212
+2025-05-11 20:24:16,599 - database - INFO - Successfully added data point with ID 657
+2025-05-11 20:24:17,531 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:17.526822
+2025-05-11 20:24:17,586 - database - INFO - Successfully added data point with ID 658
+2025-05-11 20:24:18,528 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:18.523697
+2025-05-11 20:24:18,598 - database - INFO - Successfully added data point with ID 659
+2025-05-11 20:24:19,570 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:19.566816
+2025-05-11 20:24:19,624 - database - INFO - Successfully added data point with ID 660
+2025-05-11 20:24:20,616 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:20.613343
+2025-05-11 20:24:20,674 - database - INFO - Successfully added data point with ID 661
+2025-05-11 20:24:21,552 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:21.549394
+2025-05-11 20:24:21,607 - database - INFO - Successfully added data point with ID 662
+2025-05-11 20:24:22,552 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:22.549785
+2025-05-11 20:24:22,615 - database - INFO - Successfully added data point with ID 663
+2025-05-11 20:24:23,561 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:23.558091
+2025-05-11 20:24:23,615 - database - INFO - Successfully added data point with ID 664
+2025-05-11 20:24:24,524 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:24.515870
+2025-05-11 20:24:24,524 - database - INFO - Successfully added data point with ID 665
+2025-05-11 20:24:25,541 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:25.535824
+2025-05-11 20:24:25,595 - database - INFO - Successfully added data point with ID 666
+2025-05-11 20:24:26,565 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:26.563496
+2025-05-11 20:24:26,619 - database - INFO - Successfully added data point with ID 667
+2025-05-11 20:24:27,579 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:27.576470
+2025-05-11 20:24:27,632 - database - INFO - Successfully added data point with ID 668
+2025-05-11 20:24:28,596 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:28.536460
+2025-05-11 20:24:28,609 - database - INFO - Successfully added data point with ID 669
+2025-05-11 20:24:29,532 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:29.529685
+2025-05-11 20:24:29,589 - database - INFO - Successfully added data point with ID 670
+2025-05-11 20:24:30,528 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:30.522425
+2025-05-11 20:24:30,599 - database - INFO - Successfully added data point with ID 671
+2025-05-11 20:24:31,547 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:31.543945
+2025-05-11 20:24:31,602 - database - INFO - Successfully added data point with ID 672
+2025-05-11 20:24:32,596 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:32.592476
+2025-05-11 20:24:32,651 - database - INFO - Successfully added data point with ID 673
+2025-05-11 20:24:33,520 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:33.516125
+2025-05-11 20:24:33,576 - database - INFO - Successfully added data point with ID 674
+2025-05-11 20:24:34,632 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:34.623775
+2025-05-11 20:24:34,689 - database - INFO - Successfully added data point with ID 675
+2025-05-11 20:24:35,530 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:35.529672
+2025-05-11 20:24:35,587 - database - INFO - Successfully added data point with ID 676
+2025-05-11 20:24:36,612 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:36.596391
+2025-05-11 20:24:36,668 - database - INFO - Successfully added data point with ID 677
+2025-05-11 20:24:37,600 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:37.595983
+2025-05-11 20:24:37,656 - database - INFO - Successfully added data point with ID 678
+2025-05-11 20:24:38,542 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:38.533383
+2025-05-11 20:24:38,604 - database - INFO - Successfully added data point with ID 679
+2025-05-11 20:24:39,553 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:39.549562
+2025-05-11 20:24:39,562 - database - INFO - Successfully added data point with ID 680
+2025-05-11 20:24:40,560 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:40.552822
+2025-05-11 20:24:40,613 - database - INFO - Successfully added data point with ID 681
+2025-05-11 20:24:41,530 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:41.526729
+2025-05-11 20:24:41,582 - database - INFO - Successfully added data point with ID 682
+2025-05-11 20:24:42,520 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:42.516903
+2025-05-11 20:24:42,579 - database - INFO - Successfully added data point with ID 683
+2025-05-11 20:24:43,586 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:43.582704
+2025-05-11 20:24:43,592 - database - INFO - Successfully added data point with ID 684
+2025-05-11 20:24:44,533 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:44.530170
+2025-05-11 20:24:44,605 - database - INFO - Successfully added data point with ID 685
+2025-05-11 20:24:45,523 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:45.517859
+2025-05-11 20:24:45,578 - database - INFO - Successfully added data point with ID 686
+2025-05-11 20:24:46,642 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:46.634669
+2025-05-11 20:24:46,697 - database - INFO - Successfully added data point with ID 687
+2025-05-11 20:24:47,596 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:47.591365
+2025-05-11 20:24:47,649 - database - INFO - Successfully added data point with ID 688
+2025-05-11 20:24:48,528 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:48.520297
+2025-05-11 20:24:48,596 - database - INFO - Successfully added data point with ID 689
+2025-05-11 20:24:49,577 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:49.572353
+2025-05-11 20:24:49,632 - database - INFO - Successfully added data point with ID 690
+2025-05-11 20:24:50,544 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:50.541594
+2025-05-11 20:24:50,552 - database - INFO - Successfully added data point with ID 691
+2025-05-11 20:24:51,557 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:51.551446
+2025-05-11 20:24:51,610 - database - INFO - Successfully added data point with ID 692
+2025-05-11 20:24:52,554 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:52.550838
+2025-05-11 20:24:52,615 - database - INFO - Successfully added data point with ID 693
+2025-05-11 20:24:53,562 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:53.557008
+2025-05-11 20:24:53,616 - database - INFO - Successfully added data point with ID 694
+2025-05-11 20:24:54,568 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:54.564278
+2025-05-11 20:24:54,576 - database - INFO - Successfully added data point with ID 695
+2025-05-11 20:24:55,547 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:55.544302
+2025-05-11 20:24:55,602 - database - INFO - Successfully added data point with ID 696
+2025-05-11 20:24:56,594 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:56.591756
+2025-05-11 20:24:56,648 - database - INFO - Successfully added data point with ID 697
+2025-05-11 20:24:57,525 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:57.518619
+2025-05-11 20:24:57,579 - database - INFO - Successfully added data point with ID 698
+2025-05-11 20:24:58,584 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:58.583028
+2025-05-11 20:24:58,592 - database - INFO - Successfully added data point with ID 699
+2025-05-11 20:24:59,621 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:24:59.618894
+2025-05-11 20:24:59,675 - database - INFO - Successfully added data point with ID 700
+2025-05-11 20:25:00,529 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:25:00.524731
+2025-05-11 20:25:00,586 - database - INFO - Successfully added data point with ID 701
+2025-05-11 20:25:01,573 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:25:01.568271
+2025-05-11 20:25:01,627 - database - INFO - Successfully added data point with ID 702
+2025-05-11 20:25:02,541 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:25:02.531772
+2025-05-11 20:25:02,597 - database - INFO - Successfully added data point with ID 703
+2025-05-11 20:25:03,612 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:25:03.608468
+2025-05-11 20:25:03,665 - database - INFO - Successfully added data point with ID 704
+2025-05-11 20:25:04,550 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:25:04.546430
+2025-05-11 20:25:04,604 - database - INFO - Successfully added data point with ID 705
+2025-05-11 20:25:05,528 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:25:05.524565
+2025-05-11 20:25:05,580 - database - INFO - Successfully added data point with ID 706
+2025-05-11 20:25:06,617 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:25:06.612411
+2025-05-11 20:25:06,672 - database - INFO - Successfully added data point with ID 707
+2025-05-11 20:25:07,546 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:25:07.539624
+2025-05-11 20:25:07,600 - database - INFO - Successfully added data point with ID 708
+2025-05-11 20:25:08,532 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:25:08.527712
+2025-05-11 20:25:08,592 - database - INFO - Successfully added data point with ID 709
+2025-05-11 20:25:09,581 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:25:09.576028
+2025-05-11 20:25:09,588 - database - INFO - Successfully added data point with ID 710
+2025-05-11 20:25:10,609 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:25:10.603992
+2025-05-11 20:25:10,665 - database - INFO - Successfully added data point with ID 711
+2025-05-11 20:25:11,562 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:25:11.558169
+2025-05-11 20:25:11,617 - database - INFO - Successfully added data point with ID 712
+2025-05-11 20:25:12,524 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:25:12.519975
+2025-05-11 20:25:12,585 - database - INFO - Successfully added data point with ID 713
+2025-05-11 20:25:13,572 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:25:13.569999
+2025-05-11 20:25:13,578 - database - INFO - Successfully added data point with ID 714
+2025-05-11 20:25:14,591 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:25:14.587215
+2025-05-11 20:25:14,598 - database - INFO - Successfully added data point with ID 715
+2025-05-11 20:25:15,530 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:25:15.523501
+2025-05-11 20:25:15,583 - database - INFO - Successfully added data point with ID 716
+2025-05-11 20:25:16,577 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:25:16.571648
+2025-05-11 20:25:16,631 - database - INFO - Successfully added data point with ID 717
+2025-05-11 20:25:17,536 - database - INFO - Adding data point to workout 5 at timestamp 2025-05-11T20:25:17.533328
+2025-05-11 20:25:17,570 - database - INFO - Successfully added data point with ID 718
+2025-05-11 20:25:18,038 - database - INFO - Ended workout 5, duration: 248s
+2025-05-11 20:25:18,046 - database - INFO - Database tables created
+2025-05-11 20:25:18,060 - fit_converter - INFO - Processing bike workout with 248 data points
+2025-05-11 20:25:18,061 - fit_converter - INFO - Data arrays - Powers: 248, Cadences: 248, Speeds: 248
+2025-05-11 20:25:18,062 - fit_converter - ERROR - Error converting workout to FIT: 'FITConverter' object has no attribute '_unix_to_fit_timestamp_ms'
+2025-05-11 20:25:18,065 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 126, in convert_workout
+    unix_start_timestamp_ms = self._unix_to_fit_timestamp_ms(unix_start_timestamp_sec)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'FITConverter' object has no attribute '_unix_to_fit_timestamp_ms'
+
+2025-05-11 20:25:23,479 - database - INFO - Retrieved 5 workouts from database
+2025-05-11 20:25:25,483 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-11 20:25:32,198 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-11 20:41:40,745 - database - INFO - Database tables created
+2025-05-11 20:41:40,747 - database - INFO - Database tables created
+2025-05-11 20:41:41,515 - database - INFO - Database tables created
+2025-05-11 20:41:41,516 - database - INFO - Database tables created
+2025-05-11 20:41:46,432 - database - INFO - Deleted all data points for workout 3
+2025-05-11 20:41:46,432 - database - INFO - Deleted workout 3
+2025-05-11 20:41:50,846 - database - INFO - Deleted all data points for workout 2
+2025-05-11 20:41:50,847 - database - INFO - Deleted workout 2
+2025-05-11 20:41:54,868 - database - INFO - Deleted all data points for workout 1
+2025-05-11 20:41:54,868 - database - INFO - Deleted workout 1
+2025-05-11 20:42:15,125 - database - INFO - Retrieved 2 workouts from database
+2025-05-11 20:42:16,792 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-11 20:42:18,784 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-11 20:42:23,332 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-11 20:42:55,293 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 06:28:40,001 - database - INFO - Database tables created
+2025-05-12 06:28:40,002 - database - INFO - Database tables created
+2025-05-12 06:28:40,845 - database - INFO - Database tables created
+2025-05-12 06:28:40,848 - database - INFO - Database tables created
+2025-05-12 06:28:48,408 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 06:29:49,857 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 06:34:56,365 - database - INFO - Database tables created
+2025-05-12 06:34:56,366 - database - INFO - Database tables created
+2025-05-12 06:38:56,639 - database - INFO - Database tables created
+2025-05-12 06:38:56,641 - database - INFO - Database tables created
+2025-05-12 06:38:57,424 - database - INFO - Database tables created
+2025-05-12 06:38:57,426 - database - INFO - Database tables created
+2025-05-12 06:39:25,791 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 06:39:28,280 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 06:39:31,094 - database - INFO - Database tables created
+2025-05-12 06:39:31,099 - fit_converter - INFO - Processing bike workout with 248 data points
+2025-05-12 06:39:31,100 - fit_converter - INFO - Data arrays - Powers: 248, Cadences: 248, Speeds: 248
+2025-05-12 06:39:31,102 - fit_converter - INFO - Starting to add 248 record messages.
+2025-05-12 06:39:31,102 - fit_converter - ERROR - Absolute timestamps are missing or do not match number of data points. Cannot create record messages.
+2025-05-12 06:39:31,103 - fit_converter - INFO - Finished adding record messages.
+2025-05-12 06:39:31,109 - fit_converter - INFO - FIT file successfully created: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_162109.fit
+2025-05-12 06:39:31,117 - database - INFO - Updated FIT file path for workout 5: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_162109.fit
+2025-05-12 06:39:35,979 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 06:39:38,220 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 06:39:52,115 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 06:39:52,956 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 06:39:55,372 - database - INFO - Database tables created
+2025-05-12 06:39:55,381 - fit_converter - INFO - Processing bike workout with 317 data points
+2025-05-12 06:39:55,383 - fit_converter - INFO - Data arrays - Powers: 317, Cadences: 317, Speeds: 317
+2025-05-12 06:39:55,383 - fit_converter - INFO - Starting to add 317 record messages.
+2025-05-12 06:39:55,384 - fit_converter - ERROR - Absolute timestamps are missing or do not match number of data points. Cannot create record messages.
+2025-05-12 06:39:55,385 - fit_converter - INFO - Finished adding record messages.
+2025-05-12 06:39:55,412 - fit_converter - INFO - FIT file successfully created: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit
+2025-05-12 06:39:55,422 - database - INFO - Updated FIT file path for workout 4: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit

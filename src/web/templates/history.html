@@ -760,71 +760,90 @@
         }
     }
     
-    // Convert workout to FIT file
-    function convertToFIT(workoutId) {
-        // Show a loading indicator or disable the button
-        const fitButton = document.querySelector(`.fit-btn[data-workout-id="${workoutId}"]`);
-        const originalButtonText = fitButton.innerHTML;
-        fitButton.innerHTML = 	"<i class=\"fas fa-spinner fa-spin\"></i> Generating...";
-        fitButton.disabled = true;
+    // Show a toast notification
+    function showToast(message, type = "info") {
+        // Create toast container if it doesn't exist
+        let toastContainer = document.getElementById("toast-container");
+        if (!toastContainer) {
+            toastContainer = document.createElement("div");
+            toastContainer.id = "toast-container";
+            toastContainer.className = "position-fixed bottom-0 end-0 p-3";
+            document.body.appendChild(toastContainer);
+        }
         
-        fetch(`/api/workout/${workoutId}/fit`)
-            .then(response => {
-                if (!response.ok) {
-                    return response.json().then(err => { throw new Error(err.error || "FIT generation failed") });
-                }
-                // Get filename from Content-Disposition header
-                const disposition = response.headers.get("Content-Disposition");
-                let filename = "workout.fit"; // Default filename
-                if (disposition && disposition.indexOf("attachment") !== -1) {
-                    const filenameRegex = /filename[^;=\n]*=(([""])([^\"\n]*)\2|[^;\n]*)/;
-                    const matches = filenameRegex.exec(disposition);
-                    if (matches != null && matches[3]) {
-                        filename = matches[3];
-                    }
-                }
-                return response.blob().then(blob => ({ blob, filename }));
-            })
-            .then(({ blob, filename }) => {
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement("a");
-                a.style.display = "none";
-                a.href = url;
-                a.download = filename;
-                document.body.appendChild(a);
-                a.click();
-                window.URL.revokeObjectURL(url);
-                document.body.removeChild(a);
-                
-                // Restore button
-                fitButton.innerHTML = originalButtonText;
-                fitButton.disabled = false;
-                
-                // Show success message (optional)
-                showToast("FIT file generated and download started.", "success");
-            })
-            .catch(error => {
-                console.error("Error converting to FIT:", error);
-                // Restore button
-                fitButton.innerHTML = originalButtonText;
-                fitButton.disabled = false;
-                // Show error message
-                showToast(`Error generating FIT: ${error.message}`, "error");
-            });
+        // Create toast element
+        const toastId = `toast-${Date.now()}`;
+        const toastHtml = `
+            <div id="${toastId}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header bg-${type === 'error' ? 'danger' : type === 'success' ? 'success' : 'primary'} text-white">
+                    <strong class="me-auto">${type.charAt(0).toUpperCase() + type.slice(1)}</strong>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    ${message}
+                </div>
+            </div>
+        `;
+        
+        // Add toast to container
+        toastContainer.insertAdjacentHTML('beforeend', toastHtml);
+        
+        // Initialize and show toast
+        const toastElement = document.getElementById(toastId);
+        const bsToast = new bootstrap.Toast(toastElement, { autohide: true, delay: 3000 });
+        bsToast.show();
+        
+        // Remove toast after it's hidden
+        toastElement.addEventListener('hidden.bs.toast', function () {
+            toastElement.remove();
+        });
     }
     
-    // Delete workout
+    // Convert workout to FIT file
+    function convertToFIT(workoutId) {
+        if (!workoutId) {
+            showToast("Error: No workout ID provided", "error");
+            return;
+        }
+        
+        // Show a loading toast
+        showToast("Generating FIT file...", "info");
+        
+        // Create a temporary link to download the file
+        const link = document.createElement('a');
+        link.href = `/workout/${workoutId}/fit`;
+        
+        // Set a timeout to give the server time to generate the file
+        setTimeout(() => {
+            link.click();
+        }, 100);
+    }
+    
+    // Delete a workout
     function deleteWorkout(workoutId) {
-        fetch(`/api/workout/${workoutId}`, { method: "DELETE" })
+        if (!workoutId) {
+            showToast("Error: No workout ID provided", "error");
+            return;
+        }
+        
+        fetch(`/api/workout/${workoutId}`, {
+            method: 'DELETE'
+        })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    showToast("Workout deleted successfully.", "success");
-                    // Reload workouts to reflect deletion
-                    loadAllWorkouts(); 
-                    // Clear details if the deleted workout was shown
-                    if (document.querySelector(".workout-row.table-active[data-workout-id=\"" + workoutId + "\"]")) {
-                        workoutDetails.innerHTML = "<p>Select a workout to view details.</p>";
+                    showToast("Workout deleted successfully", "success");
+                    
+                    // Reload workouts
+                    loadAllWorkouts();
+                    
+                    // Clear workout details
+                    workoutDetails.innerHTML = "<p>Select a workout to view details.</p>";
+                    
+                    // Destroy chart if exists
+                    if (currentChart) {
+                        currentChart.destroy();
+                        currentChart = null;
                     }
                 } else {
                     showToast(`Error deleting workout: ${data.error || "Unknown error"}`, "error");
