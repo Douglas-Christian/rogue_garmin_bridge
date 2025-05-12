@@ -5379,3 +5379,8 @@
 2025-05-12 06:34:56,367 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
 2025-05-12 06:38:56,642 - ftms - INFO - Using FTMSDeviceSimulator for testing.
 2025-05-12 06:38:57,427 - ftms - INFO - Using FTMSDeviceSimulator for testing.
+2025-05-12 06:49:59,444 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 06:50:00,268 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 18:44:50,078 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 18:50:21,801 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 18:52:04,213 - ftms - INFO - Using FTMSConnector for real device with device type: bike.

@@ -345,3 +345,73 @@ TypeError: float() argument must be a string or a real number, not 'datetime.dat
 2025-05-12 06:39:55,370 - web - INFO - Generating FIT file for workout 4
 2025-05-12 06:39:55,374 - web - INFO - Loaded user profile for FIT file generation
 2025-05-12 06:39:55,423 - web - INFO - Serving FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit as workout_2025-05-11_4.fit
+2025-05-12 06:49:59,443 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 06:49:59,448 - web - INFO - Using real FTMS devices
+2025-05-12 06:49:59,449 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 06:49:59,451 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 06:49:59,452 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 06:49:59,452 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 06:49:59,455 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 06:50:00,267 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 06:50:00,269 - web - INFO - Using real FTMS devices
+2025-05-12 06:50:00,269 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 06:50:00,269 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 06:50:00,270 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 06:50:00,270 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 06:50:00,278 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 06:50:10,541 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 06:50:10,543 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 06:50:12,242 - web - INFO - Sending workout 5 with 248 data points
+2025-05-12 06:50:14,461 - web - INFO - Generating FIT file for workout 5
+2025-05-12 06:50:14,465 - web - INFO - Loaded user profile for FIT file generation
+2025-05-12 06:50:14,474 - web - ERROR - Failed to generate FIT file for workout 5
+2025-05-12 06:50:21,152 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 06:50:21,154 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 06:50:23,249 - web - INFO - Sending workout 5 with 248 data points
+2025-05-12 06:50:26,755 - web - INFO - Generating FIT file for workout 5
+2025-05-12 06:50:26,758 - web - INFO - Loaded user profile for FIT file generation
+2025-05-12 06:50:26,768 - web - ERROR - Failed to generate FIT file for workout 5
+2025-05-12 18:44:50,077 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 18:44:50,079 - web - INFO - Using real FTMS devices
+2025-05-12 18:44:50,080 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 18:44:50,080 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 18:44:50,081 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 18:44:50,081 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 18:44:50,088 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 18:45:04,831 - web - INFO - Sending workout 4 with 317 data points
+2025-05-12 18:45:09,033 - web - INFO - Generating FIT file for workout 4
+2025-05-12 18:45:09,049 - web - INFO - Loaded user profile for FIT file generation
+2025-05-12 18:45:09,062 - web - ERROR - Failed to generate FIT file for workout 4
+2025-05-12 18:45:45,988 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 18:45:45,991 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 18:45:50,952 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 18:45:50,953 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 18:45:56,142 - web - INFO - Generating FIT file for workout 5
+2025-05-12 18:45:56,147 - web - INFO - Loaded user profile for FIT file generation
+2025-05-12 18:45:56,155 - web - ERROR - Failed to generate FIT file for workout 5
+2025-05-12 18:50:21,800 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 18:50:21,802 - web - INFO - Using real FTMS devices
+2025-05-12 18:50:21,802 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 18:50:21,803 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 18:50:21,803 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 18:50:21,805 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 18:50:21,811 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 18:50:27,728 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 18:50:27,730 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 18:50:29,212 - web - INFO - Sending workout 5 with 248 data points
+2025-05-12 18:50:30,686 - web - INFO - Generating FIT file for workout 5
+2025-05-12 18:50:30,691 - web - INFO - Loaded user profile for FIT file generation
+2025-05-12 18:50:30,703 - web - ERROR - Failed to generate FIT file for workout 5
+2025-05-12 18:52:04,213 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 18:52:04,214 - web - INFO - Using real FTMS devices
+2025-05-12 18:52:04,215 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 18:52:04,215 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 18:52:04,215 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 18:52:04,215 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 18:52:04,223 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 18:52:09,472 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 18:52:09,474 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 18:52:11,354 - web - INFO - Sending workout 4 with 317 data points
+2025-05-12 18:52:12,596 - web - INFO - Generating FIT file for workout 4
+2025-05-12 18:52:12,600 - web - INFO - Loaded user profile for FIT file generation
+2025-05-12 18:52:12,801 - web - INFO - Serving FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit as workout_2025-05-11_4.fit

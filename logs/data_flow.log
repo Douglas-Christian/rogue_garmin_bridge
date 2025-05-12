@@ -1623,3 +1623,88 @@ AttributeError: 'FITConverter' object has no attribute '_unix_to_fit_timestamp_m
 2025-05-12 06:39:55,385 - fit_converter - INFO - Finished adding record messages.
 2025-05-12 06:39:55,412 - fit_converter - INFO - FIT file successfully created: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit
 2025-05-12 06:39:55,422 - database - INFO - Updated FIT file path for workout 4: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit
+2025-05-12 06:49:59,440 - database - INFO - Database tables created
+2025-05-12 06:49:59,442 - database - INFO - Database tables created
+2025-05-12 06:50:00,265 - database - INFO - Database tables created
+2025-05-12 06:50:00,266 - database - INFO - Database tables created
+2025-05-12 06:50:10,542 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 06:50:12,240 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 06:50:14,463 - database - INFO - Database tables created
+2025-05-12 06:50:14,470 - fit_converter - INFO - Processing bike workout with 248 data points.
+2025-05-12 06:50:14,471 - fit_converter - WARNING - Absolute timestamps are missing or length inconsistent. Record messages might be incomplete or use relative timing.
+2025-05-12 06:50:14,472 - fit_converter - INFO - Generating absolute timestamps from relative timestamps and start_time_dt_utc.
+2025-05-12 06:50:14,472 - fit_converter - ERROR - Error converting workout to FIT: unsupported type for timedelta seconds component: datetime.datetime
+2025-05-12 06:50:14,473 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 174, in convert_workout
+    current_abs_ts_input = [start_time_dt_utc + timedelta(seconds=ts_rel) for ts_rel in timestamps_rel_sec]
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unsupported type for timedelta seconds component: datetime.datetime
+
+2025-05-12 06:50:21,153 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 06:50:23,247 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 06:50:26,757 - database - INFO - Database tables created
+2025-05-12 06:50:26,764 - fit_converter - INFO - Processing bike workout with 248 data points.
+2025-05-12 06:50:26,765 - fit_converter - WARNING - Absolute timestamps are missing or length inconsistent. Record messages might be incomplete or use relative timing.
+2025-05-12 06:50:26,765 - fit_converter - INFO - Generating absolute timestamps from relative timestamps and start_time_dt_utc.
+2025-05-12 06:50:26,765 - fit_converter - ERROR - Error converting workout to FIT: unsupported type for timedelta seconds component: datetime.datetime
+2025-05-12 06:50:26,766 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 174, in convert_workout
+    current_abs_ts_input = [start_time_dt_utc + timedelta(seconds=ts_rel) for ts_rel in timestamps_rel_sec]
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unsupported type for timedelta seconds component: datetime.datetime
+
+2025-05-12 18:44:50,075 - database - INFO - Database tables created
+2025-05-12 18:44:50,077 - database - INFO - Database tables created
+2025-05-12 18:45:04,830 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 18:45:09,036 - database - INFO - Database tables created
+2025-05-12 18:45:09,058 - fit_converter - INFO - Processing bike workout with 317 data points.
+2025-05-12 18:45:09,060 - fit_converter - WARNING - Absolute timestamps are missing or length inconsistent. Record messages might be incomplete or use relative timing.
+2025-05-12 18:45:09,060 - fit_converter - INFO - Generating absolute timestamps from relative timestamps and start_time_dt_utc.
+2025-05-12 18:45:09,060 - fit_converter - ERROR - Error converting workout to FIT: unsupported type for timedelta seconds component: datetime.datetime
+2025-05-12 18:45:09,061 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 174, in convert_workout
+    current_abs_ts_input = [start_time_dt_utc + timedelta(seconds=ts_rel) for ts_rel in timestamps_rel_sec]
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unsupported type for timedelta seconds component: datetime.datetime
+
+2025-05-12 18:45:45,990 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 18:45:50,953 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 18:45:56,145 - database - INFO - Database tables created
+2025-05-12 18:45:56,151 - fit_converter - INFO - Processing bike workout with 248 data points.
+2025-05-12 18:45:56,152 - fit_converter - WARNING - Absolute timestamps are missing or length inconsistent. Record messages might be incomplete or use relative timing.
+2025-05-12 18:45:56,153 - fit_converter - INFO - Generating absolute timestamps from relative timestamps and start_time_dt_utc.
+2025-05-12 18:45:56,153 - fit_converter - ERROR - Error converting workout to FIT: unsupported type for timedelta seconds component: datetime.datetime
+2025-05-12 18:45:56,154 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 174, in convert_workout
+    current_abs_ts_input = [start_time_dt_utc + timedelta(seconds=ts_rel) for ts_rel in timestamps_rel_sec]
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unsupported type for timedelta seconds component: datetime.datetime
+
+2025-05-12 18:50:21,798 - database - INFO - Database tables created
+2025-05-12 18:50:21,799 - database - INFO - Database tables created
+2025-05-12 18:50:27,729 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 18:50:29,210 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 18:50:30,689 - database - INFO - Database tables created
+2025-05-12 18:50:30,696 - fit_converter - INFO - Processing bike workout with 248 data points.
+2025-05-12 18:50:30,699 - fit_converter - WARNING - Absolute timestamps are missing or length inconsistent. Record messages might be incomplete or use relative timing.
+2025-05-12 18:50:30,699 - fit_converter - INFO - Generating absolute timestamps from relative timestamps and start_time_dt_utc.
+2025-05-12 18:50:30,700 - fit_converter - ERROR - Error converting workout to FIT: unsupported type for timedelta seconds component: datetime.datetime
+2025-05-12 18:50:30,702 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 184, in convert_workout
+    current_abs_ts_input = [start_time_dt_utc + timedelta(seconds=ts_rel) for ts_rel in timestamps_rel_sec]
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unsupported type for timedelta seconds component: datetime.datetime
+
+2025-05-12 18:52:04,211 - database - INFO - Database tables created
+2025-05-12 18:52:04,212 - database - INFO - Database tables created
+2025-05-12 18:52:09,474 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 18:52:11,353 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 18:52:12,599 - database - INFO - Database tables created
+2025-05-12 18:52:12,606 - fit_converter - INFO - Processing bike workout with 317 data points.
+2025-05-12 18:52:12,607 - fit_converter - WARNING - Absolute timestamps are missing or length inconsistent. Record messages might be incomplete or use relative timing.
+2025-05-12 18:52:12,608 - fit_converter - INFO - Attempting to derive absolute timestamps from 'timestamps_rel_sec' as 'absolute_timestamps_input' is missing.
+2025-05-12 18:52:12,608 - fit_converter - INFO - All 'timestamps_rel_sec' are datetime objects. Using them directly as absolute timestamps.
+2025-05-12 18:52:12,610 - fit_converter - INFO - Starting to add 317 record messages.
+2025-05-12 18:52:12,753 - fit_converter - INFO - Finished adding record messages.
+2025-05-12 18:52:12,789 - fit_converter - INFO - FIT file successfully created: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit
+2025-05-12 18:52:12,799 - database - INFO - Updated FIT file path for workout 4: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit

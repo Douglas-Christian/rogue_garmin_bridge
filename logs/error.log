@@ -52,3 +52,48 @@ AttributeError: 'FITConverter' object has no attribute '_unix_to_fit_timestamp_m
 2025-05-11 20:25:18,066 - fit_processor - ERROR - Failed to create FIT file for workout 5
 2025-05-12 06:39:31,102 - fit_converter - ERROR - Absolute timestamps are missing or do not match number of data points. Cannot create record messages.
 2025-05-12 06:39:55,384 - fit_converter - ERROR - Absolute timestamps are missing or do not match number of data points. Cannot create record messages.
+2025-05-12 06:50:14,472 - fit_converter - ERROR - Error converting workout to FIT: unsupported type for timedelta seconds component: datetime.datetime
+2025-05-12 06:50:14,473 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 174, in convert_workout
+    current_abs_ts_input = [start_time_dt_utc + timedelta(seconds=ts_rel) for ts_rel in timestamps_rel_sec]
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unsupported type for timedelta seconds component: datetime.datetime
+
+2025-05-12 06:50:14,474 - fit_processor - ERROR - Failed to create FIT file for workout 5
+2025-05-12 06:50:14,474 - web - ERROR - Failed to generate FIT file for workout 5
+2025-05-12 06:50:26,765 - fit_converter - ERROR - Error converting workout to FIT: unsupported type for timedelta seconds component: datetime.datetime
+2025-05-12 06:50:26,766 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 174, in convert_workout
+    current_abs_ts_input = [start_time_dt_utc + timedelta(seconds=ts_rel) for ts_rel in timestamps_rel_sec]
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unsupported type for timedelta seconds component: datetime.datetime
+
+2025-05-12 06:50:26,767 - fit_processor - ERROR - Failed to create FIT file for workout 5
+2025-05-12 06:50:26,768 - web - ERROR - Failed to generate FIT file for workout 5
+2025-05-12 18:45:09,060 - fit_converter - ERROR - Error converting workout to FIT: unsupported type for timedelta seconds component: datetime.datetime
+2025-05-12 18:45:09,061 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 174, in convert_workout
+    current_abs_ts_input = [start_time_dt_utc + timedelta(seconds=ts_rel) for ts_rel in timestamps_rel_sec]
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unsupported type for timedelta seconds component: datetime.datetime
+
+2025-05-12 18:45:09,062 - fit_processor - ERROR - Failed to create FIT file for workout 4
+2025-05-12 18:45:09,062 - web - ERROR - Failed to generate FIT file for workout 4
+2025-05-12 18:45:56,153 - fit_converter - ERROR - Error converting workout to FIT: unsupported type for timedelta seconds component: datetime.datetime
+2025-05-12 18:45:56,154 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 174, in convert_workout
+    current_abs_ts_input = [start_time_dt_utc + timedelta(seconds=ts_rel) for ts_rel in timestamps_rel_sec]
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unsupported type for timedelta seconds component: datetime.datetime
+
+2025-05-12 18:45:56,155 - fit_processor - ERROR - Failed to create FIT file for workout 5
+2025-05-12 18:45:56,155 - web - ERROR - Failed to generate FIT file for workout 5
+2025-05-12 18:50:30,700 - fit_converter - ERROR - Error converting workout to FIT: unsupported type for timedelta seconds component: datetime.datetime
+2025-05-12 18:50:30,702 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 184, in convert_workout
+    current_abs_ts_input = [start_time_dt_utc + timedelta(seconds=ts_rel) for ts_rel in timestamps_rel_sec]
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unsupported type for timedelta seconds component: datetime.datetime
+
+2025-05-12 18:50:30,702 - fit_processor - ERROR - Failed to create FIT file for workout 5
+2025-05-12 18:50:30,703 - web - ERROR - Failed to generate FIT file for workout 5
