@@ -1760,3 +1760,9 @@ TypeError: unsupported type for timedelta seconds component: datetime.datetime
 2025-05-12 19:41:29,862 - database - INFO - Database tables created
 2025-05-12 19:41:49,355 - database - INFO - Retrieved 2 workouts from database
 2025-05-12 19:41:50,667 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 19:42:08,991 - database - INFO - Database tables created
+2025-05-12 19:42:08,993 - database - INFO - Database tables created
+2025-05-12 19:42:09,816 - database - INFO - Database tables created
+2025-05-12 19:42:09,817 - database - INFO - Database tables created
+2025-05-12 19:42:13,072 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 19:42:15,093 - database - INFO - Retrieved 317 data points for workout 4
