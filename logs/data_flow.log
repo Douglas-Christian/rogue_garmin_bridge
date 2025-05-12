@@ -1708,3 +1708,55 @@ TypeError: unsupported type for timedelta seconds component: datetime.datetime
 2025-05-12 18:52:12,753 - fit_converter - INFO - Finished adding record messages.
 2025-05-12 18:52:12,789 - fit_converter - INFO - FIT file successfully created: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit
 2025-05-12 18:52:12,799 - database - INFO - Updated FIT file path for workout 4: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit
+2025-05-12 19:06:31,903 - database - INFO - Database tables created
+2025-05-12 19:06:31,905 - database - INFO - Database tables created
+2025-05-12 19:06:32,686 - database - INFO - Database tables created
+2025-05-12 19:06:32,687 - database - INFO - Database tables created
+2025-05-12 19:06:38,683 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 19:06:39,829 - database - INFO - Database tables created
+2025-05-12 19:06:39,837 - fit_converter - INFO - Processing bike workout with 317 data points.
+2025-05-12 19:06:39,839 - fit_converter - WARNING - Absolute timestamps are missing or length inconsistent. Record messages might be incomplete or use relative timing.
+2025-05-12 19:06:39,839 - fit_converter - INFO - Attempting to derive absolute timestamps from 'timestamps_rel_sec' as 'absolute_timestamps_input' is missing.
+2025-05-12 19:06:39,840 - fit_converter - INFO - All 'timestamps_rel_sec' are datetime objects. Using them directly as absolute timestamps.
+2025-05-12 19:06:39,840 - fit_converter - INFO - Starting to add 317 record messages.
+2025-05-12 19:06:39,970 - fit_converter - INFO - Finished adding record messages.
+2025-05-12 19:06:40,005 - fit_converter - INFO - FIT file successfully created: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit
+2025-05-12 19:06:40,009 - database - INFO - Updated FIT file path for workout 4: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit
+2025-05-12 19:08:18,829 - database - INFO - Database tables created
+2025-05-12 19:08:18,832 - database - INFO - Database tables created
+2025-05-12 19:08:19,662 - database - INFO - Database tables created
+2025-05-12 19:08:19,663 - database - INFO - Database tables created
+2025-05-12 19:08:25,394 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 19:08:27,884 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 19:08:30,039 - database - INFO - Database tables created
+2025-05-12 19:08:30,049 - fit_converter - INFO - Processing bike workout with 317 data points.
+2025-05-12 19:08:30,051 - fit_converter - WARNING - Absolute timestamps are missing or length inconsistent. Record messages might be incomplete or use relative timing.
+2025-05-12 19:08:30,053 - fit_converter - INFO - Attempting to derive absolute timestamps from 'timestamps_rel_sec' as 'absolute_timestamps_input' is missing.
+2025-05-12 19:08:30,054 - fit_converter - INFO - All 'timestamps_rel_sec' are datetime objects. Using them directly as absolute timestamps.
+2025-05-12 19:08:30,054 - fit_converter - INFO - Starting to add 317 record messages.
+2025-05-12 19:08:30,176 - fit_converter - INFO - Finished adding record messages.
+2025-05-12 19:08:30,207 - fit_converter - INFO - FIT file successfully created: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit
+2025-05-12 19:08:30,213 - database - INFO - Updated FIT file path for workout 4: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit
+2025-05-12 19:23:18,710 - database - INFO - Database tables created
+2025-05-12 19:23:18,711 - database - INFO - Database tables created
+2025-05-12 19:23:19,548 - database - INFO - Database tables created
+2025-05-12 19:23:19,550 - database - INFO - Database tables created
+2025-05-12 19:23:29,647 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 19:23:30,816 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 19:23:37,967 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 19:23:40,141 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 19:25:55,356 - database - INFO - Database tables created
+2025-05-12 19:25:55,357 - database - INFO - Database tables created
+2025-05-12 19:25:56,152 - database - INFO - Database tables created
+2025-05-12 19:25:56,154 - database - INFO - Database tables created
+2025-05-12 19:26:05,644 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 19:29:36,240 - database - INFO - Database tables created
+2025-05-12 19:29:36,241 - database - INFO - Database tables created
+2025-05-12 19:29:37,080 - database - INFO - Database tables created
+2025-05-12 19:29:37,081 - database - INFO - Database tables created
+2025-05-12 19:41:29,009 - database - INFO - Database tables created
+2025-05-12 19:41:29,011 - database - INFO - Database tables created
+2025-05-12 19:41:29,860 - database - INFO - Database tables created
+2025-05-12 19:41:29,862 - database - INFO - Database tables created
+2025-05-12 19:41:49,355 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 19:41:50,667 - database - INFO - Retrieved 2 workouts from database

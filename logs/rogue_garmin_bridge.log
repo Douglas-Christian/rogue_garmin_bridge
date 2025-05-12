@@ -27677,3 +27677,344 @@ TypeError: unsupported type for timedelta seconds component: datetime.datetime
 2025-05-12 18:52:12,800 - fit_processor - INFO - Successfully created FIT file for workout 4: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit
 2025-05-12 18:52:12,801 - web - INFO - Serving FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit as workout_2025-05-11_4.fit
 2025-05-12 18:52:12,846 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 18:52:12] "GET /workout/4/fit HTTP/1.1" 200 -
+2025-05-12 19:03:52,259 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\web\\app.py', reloading
+2025-05-12 19:03:52,423 - werkzeug - INFO -  * Restarting with stat
+2025-05-12 19:06:31,731 - root - INFO - Logging initialized at 2025-05-12T19:06:31.731482
+2025-05-12 19:06:31,732 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 19:06:31,903 - database - INFO - Database tables created
+2025-05-12 19:06:31,905 - database - INFO - Database tables created
+2025-05-12 19:06:31,905 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 19:06:31,905 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 19:06:31,906 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 19:06:31,906 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 19:06:31,906 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 19:06:31,907 - web - INFO - Using real FTMS devices
+2025-05-12 19:06:31,907 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 19:06:31,907 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 19:06:31,908 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 19:06:31,908 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 19:06:31,914 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 19:06:31,952 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-05-12 19:06:31,953 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-12 19:06:31,956 - werkzeug - INFO -  * Restarting with stat
+2025-05-12 19:06:32,523 - root - INFO - Logging initialized at 2025-05-12T19:06:32.523739
+2025-05-12 19:06:32,524 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 19:06:32,686 - database - INFO - Database tables created
+2025-05-12 19:06:32,687 - database - INFO - Database tables created
+2025-05-12 19:06:32,688 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 19:06:32,688 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 19:06:32,689 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 19:06:32,689 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 19:06:32,689 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 19:06:32,690 - web - INFO - Using real FTMS devices
+2025-05-12 19:06:32,690 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 19:06:32,690 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 19:06:32,691 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 19:06:32,691 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 19:06:32,698 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 19:06:32,717 - werkzeug - WARNING -  * Debugger is active!
+2025-05-12 19:06:32,719 - werkzeug - INFO -  * Debugger PIN: 114-811-535
+2025-05-12 19:06:38,683 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 19:06:38,684 - web - INFO - Sending workout 4 with 317 data points
+2025-05-12 19:06:38,688 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:06:38] "GET /api/workout/4 HTTP/1.1" 200 -
+2025-05-12 19:06:39,826 - web - INFO - Generating FIT file for workout 4
+2025-05-12 19:06:39,829 - database - INFO - Database tables created
+2025-05-12 19:06:39,833 - web - INFO - Loaded user profile for FIT file generation
+2025-05-12 19:06:39,836 - fit_processor - WARNING - No valid speed values found to calculate average speed
+2025-05-12 19:06:39,837 - fit_processor - INFO - Extracted data series - points: 317, powers: 317, speeds: 317, cadences: 317
+2025-05-12 19:06:39,837 - fit_converter - INFO - Processing bike workout with 317 data points.
+2025-05-12 19:06:39,839 - fit_converter - WARNING - Absolute timestamps are missing or length inconsistent. Record messages might be incomplete or use relative timing.
+2025-05-12 19:06:39,839 - fit_converter - INFO - Attempting to derive absolute timestamps from 'timestamps_rel_sec' as 'absolute_timestamps_input' is missing.
+2025-05-12 19:06:39,840 - fit_converter - INFO - All 'timestamps_rel_sec' are datetime objects. Using them directly as absolute timestamps.
+2025-05-12 19:06:39,840 - fit_converter - INFO - Starting to add 317 record messages.
+2025-05-12 19:06:39,970 - fit_converter - INFO - Finished adding record messages.
+2025-05-12 19:06:40,005 - fit_converter - INFO - FIT file successfully created: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit
+2025-05-12 19:06:40,009 - database - INFO - Updated FIT file path for workout 4: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit
+2025-05-12 19:06:40,010 - fit_processor - INFO - Successfully created FIT file for workout 4: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit
+2025-05-12 19:06:40,010 - web - INFO - Serving FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit as workout_2025-05-11_4.fit
+2025-05-12 19:06:40,051 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:06:40] "GET /workout/4/fit HTTP/1.1" 200 -
+2025-05-12 19:08:18,670 - root - INFO - Logging initialized at 2025-05-12T19:08:18.670694
+2025-05-12 19:08:18,670 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 19:08:18,829 - database - INFO - Database tables created
+2025-05-12 19:08:18,832 - database - INFO - Database tables created
+2025-05-12 19:08:18,833 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 19:08:18,833 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 19:08:18,833 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 19:08:18,834 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 19:08:18,834 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 19:08:18,834 - web - INFO - Using real FTMS devices
+2025-05-12 19:08:18,834 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 19:08:18,835 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 19:08:18,835 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 19:08:18,835 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 19:08:18,843 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 19:08:18,879 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-05-12 19:08:18,879 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-12 19:08:18,881 - werkzeug - INFO -  * Restarting with stat
+2025-05-12 19:08:19,488 - root - INFO - Logging initialized at 2025-05-12T19:08:19.488582
+2025-05-12 19:08:19,489 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 19:08:19,662 - database - INFO - Database tables created
+2025-05-12 19:08:19,663 - database - INFO - Database tables created
+2025-05-12 19:08:19,664 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 19:08:19,664 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 19:08:19,664 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 19:08:19,665 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 19:08:19,665 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 19:08:19,665 - web - INFO - Using real FTMS devices
+2025-05-12 19:08:19,665 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 19:08:19,666 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 19:08:19,666 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 19:08:19,667 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 19:08:19,675 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 19:08:19,698 - werkzeug - WARNING -  * Debugger is active!
+2025-05-12 19:08:19,701 - werkzeug - INFO -  * Debugger PIN: 114-811-535
+2025-05-12 19:08:24,627 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:08:24] "GET /history HTTP/1.1" 200 -
+2025-05-12 19:08:24,684 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:08:24] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-05-12 19:08:24,822 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:08:24] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-12 19:08:25,130 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:08:25] "[33mGET /api/user/profile HTTP/1.1[0m" 404 -
+2025-05-12 19:08:25,270 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:08:25] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-12 19:08:25,392 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 19:08:25,394 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 19:08:25,394 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 19:08:25,395 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:08:25] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-12 19:08:27,884 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 19:08:27,885 - web - INFO - Sending workout 4 with 317 data points
+2025-05-12 19:08:27,890 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:08:27] "GET /api/workout/4 HTTP/1.1" 200 -
+2025-05-12 19:08:30,035 - web - INFO - Generating FIT file for workout 4
+2025-05-12 19:08:30,039 - database - INFO - Database tables created
+2025-05-12 19:08:30,041 - web - INFO - Loaded user profile for FIT file generation
+2025-05-12 19:08:30,048 - fit_processor - WARNING - No valid speed values found to calculate average speed
+2025-05-12 19:08:30,048 - fit_processor - INFO - Extracted data series - points: 317, powers: 317, speeds: 317, cadences: 317
+2025-05-12 19:08:30,049 - fit_converter - INFO - Processing bike workout with 317 data points.
+2025-05-12 19:08:30,051 - fit_converter - WARNING - Absolute timestamps are missing or length inconsistent. Record messages might be incomplete or use relative timing.
+2025-05-12 19:08:30,053 - fit_converter - INFO - Attempting to derive absolute timestamps from 'timestamps_rel_sec' as 'absolute_timestamps_input' is missing.
+2025-05-12 19:08:30,054 - fit_converter - INFO - All 'timestamps_rel_sec' are datetime objects. Using them directly as absolute timestamps.
+2025-05-12 19:08:30,054 - fit_converter - INFO - Starting to add 317 record messages.
+2025-05-12 19:08:30,176 - fit_converter - INFO - Finished adding record messages.
+2025-05-12 19:08:30,207 - fit_converter - INFO - FIT file successfully created: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit
+2025-05-12 19:08:30,213 - database - INFO - Updated FIT file path for workout 4: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit
+2025-05-12 19:08:30,213 - fit_processor - INFO - Successfully created FIT file for workout 4: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit
+2025-05-12 19:08:30,213 - web - INFO - Serving FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit as workout_2025-05-11_4.fit
+2025-05-12 19:08:30,216 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:08:30] "GET /workout/4/fit HTTP/1.1" 200 -
+2025-05-12 19:17:53,317 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\web\\app.py', reloading
+2025-05-12 19:17:53,492 - werkzeug - INFO -  * Restarting with stat
+2025-05-12 19:23:18,526 - root - INFO - Logging initialized at 2025-05-12T19:23:18.526165
+2025-05-12 19:23:18,527 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 19:23:18,710 - database - INFO - Database tables created
+2025-05-12 19:23:18,711 - database - INFO - Database tables created
+2025-05-12 19:23:18,712 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 19:23:18,712 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 19:23:18,712 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 19:23:18,713 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 19:23:18,713 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 19:23:18,713 - web - INFO - Using real FTMS devices
+2025-05-12 19:23:18,715 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 19:23:18,715 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 19:23:18,716 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 19:23:18,716 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 19:23:18,722 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 19:23:18,760 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-05-12 19:23:18,761 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-12 19:23:18,764 - werkzeug - INFO -  * Restarting with stat
+2025-05-12 19:23:19,375 - root - INFO - Logging initialized at 2025-05-12T19:23:19.375639
+2025-05-12 19:23:19,376 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 19:23:19,548 - database - INFO - Database tables created
+2025-05-12 19:23:19,550 - database - INFO - Database tables created
+2025-05-12 19:23:19,551 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 19:23:19,552 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 19:23:19,552 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 19:23:19,552 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 19:23:19,552 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 19:23:19,552 - web - INFO - Using real FTMS devices
+2025-05-12 19:23:19,553 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 19:23:19,553 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 19:23:19,553 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 19:23:19,553 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 19:23:19,561 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 19:23:19,585 - werkzeug - WARNING -  * Debugger is active!
+2025-05-12 19:23:19,587 - werkzeug - INFO -  * Debugger PIN: 114-811-535
+2025-05-12 19:23:28,826 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:23:28] "GET /history HTTP/1.1" 200 -
+2025-05-12 19:23:28,896 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:23:28] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-05-12 19:23:29,076 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:23:29] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-12 19:23:29,383 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:23:29] "[33mGET /api/user/profile HTTP/1.1[0m" 404 -
+2025-05-12 19:23:29,523 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:23:29] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-12 19:23:29,646 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 19:23:29,647 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 19:23:29,648 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 19:23:29,649 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:23:29] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-12 19:23:30,816 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 19:23:30,818 - web - INFO - Sending workout 4 with 317 data points
+2025-05-12 19:23:30,822 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:23:30] "GET /api/workout/4 HTTP/1.1" 200 -
+2025-05-12 19:23:33,209 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:23:33] "[33mGET /workout/4/fit HTTP/1.1[0m" 404 -
+2025-05-12 19:23:37,966 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 19:23:37,967 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 19:23:37,967 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 19:23:37,968 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:23:37] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-12 19:23:40,141 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 19:23:40,142 - web - INFO - Sending workout 5 with 248 data points
+2025-05-12 19:23:40,147 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:23:40] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-12 19:23:41,849 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:23:41] "[33mGET /workout/5/fit HTTP/1.1[0m" 404 -
+2025-05-12 19:25:55,191 - root - INFO - Logging initialized at 2025-05-12T19:25:55.191533
+2025-05-12 19:25:55,192 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 19:25:55,356 - database - INFO - Database tables created
+2025-05-12 19:25:55,357 - database - INFO - Database tables created
+2025-05-12 19:25:55,358 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 19:25:55,358 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 19:25:55,358 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 19:25:55,360 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 19:25:55,360 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 19:25:55,360 - web - INFO - Using real FTMS devices
+2025-05-12 19:25:55,360 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 19:25:55,361 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 19:25:55,361 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 19:25:55,361 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 19:25:55,368 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 19:25:55,403 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-05-12 19:25:55,403 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-12 19:25:55,406 - werkzeug - INFO -  * Restarting with stat
+2025-05-12 19:25:55,984 - root - INFO - Logging initialized at 2025-05-12T19:25:55.984293
+2025-05-12 19:25:55,985 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 19:25:56,152 - database - INFO - Database tables created
+2025-05-12 19:25:56,154 - database - INFO - Database tables created
+2025-05-12 19:25:56,154 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 19:25:56,155 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 19:25:56,155 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 19:25:56,155 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 19:25:56,155 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 19:25:56,156 - web - INFO - Using real FTMS devices
+2025-05-12 19:25:56,156 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 19:25:56,156 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 19:25:56,157 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 19:25:56,157 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 19:25:56,164 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 19:25:56,184 - werkzeug - WARNING -  * Debugger is active!
+2025-05-12 19:25:56,186 - werkzeug - INFO -  * Debugger PIN: 114-811-535
+2025-05-12 19:26:02,041 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:26:02] "[33mGET /workout/5/fit HTTP/1.1[0m" 404 -
+2025-05-12 19:26:05,642 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 19:26:05,644 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 19:26:05,644 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 19:26:05,645 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:26:05] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-12 19:29:36,072 - root - INFO - Logging initialized at 2025-05-12T19:29:36.072722
+2025-05-12 19:29:36,073 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 19:29:36,240 - database - INFO - Database tables created
+2025-05-12 19:29:36,241 - database - INFO - Database tables created
+2025-05-12 19:29:36,242 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 19:29:36,242 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 19:29:36,242 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 19:29:36,242 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 19:29:36,244 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 19:29:36,244 - web - INFO - Using real FTMS devices
+2025-05-12 19:29:36,244 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 19:29:36,244 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 19:29:36,245 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 19:29:36,245 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 19:29:36,252 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 19:29:36,318 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-05-12 19:29:36,319 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-12 19:29:36,322 - werkzeug - INFO -  * Restarting with stat
+2025-05-12 19:29:36,909 - root - INFO - Logging initialized at 2025-05-12T19:29:36.909813
+2025-05-12 19:29:36,910 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 19:29:37,080 - database - INFO - Database tables created
+2025-05-12 19:29:37,081 - database - INFO - Database tables created
+2025-05-12 19:29:37,082 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 19:29:37,082 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 19:29:37,082 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 19:29:37,082 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 19:29:37,083 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 19:29:37,083 - web - INFO - Using real FTMS devices
+2025-05-12 19:29:37,083 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 19:29:37,083 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 19:29:37,084 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 19:29:37,084 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 19:29:37,090 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 19:29:37,110 - werkzeug - WARNING -  * Debugger is active!
+2025-05-12 19:29:37,113 - werkzeug - INFO -  * Debugger PIN: 114-811-535
+2025-05-12 19:29:53,301 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:29:53] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-12 19:29:53,302 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:29:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-12 19:30:06,026 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:30:06] "[33mGET /workout/5/fit HTTP/1.1[0m" 404 -
+2025-05-12 19:30:06,078 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:30:06] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-12 19:41:28,828 - root - INFO - Logging initialized at 2025-05-12T19:41:28.828108
+2025-05-12 19:41:28,829 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 19:41:29,009 - database - INFO - Database tables created
+2025-05-12 19:41:29,011 - database - INFO - Database tables created
+2025-05-12 19:41:29,012 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 19:41:29,012 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 19:41:29,012 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 19:41:29,013 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 19:41:29,013 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 19:41:29,013 - web - INFO - Using real FTMS devices
+2025-05-12 19:41:29,014 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 19:41:29,014 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 19:41:29,014 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 19:41:29,015 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 19:41:29,021 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 19:41:29,056 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-05-12 19:41:29,056 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-12 19:41:29,058 - werkzeug - INFO -  * Restarting with stat
+2025-05-12 19:41:29,683 - root - INFO - Logging initialized at 2025-05-12T19:41:29.683136
+2025-05-12 19:41:29,683 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 19:41:29,860 - database - INFO - Database tables created
+2025-05-12 19:41:29,862 - database - INFO - Database tables created
+2025-05-12 19:41:29,862 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 19:41:29,863 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 19:41:29,863 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 19:41:29,864 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 19:41:29,864 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 19:41:29,865 - web - INFO - Using real FTMS devices
+2025-05-12 19:41:29,865 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 19:41:29,865 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 19:41:29,866 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 19:41:29,866 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 19:41:29,872 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 19:41:29,897 - werkzeug - WARNING -  * Debugger is active!
+2025-05-12 19:41:29,900 - werkzeug - INFO -  * Debugger PIN: 114-811-535
+2025-05-12 19:41:34,459 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:34] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-12 19:41:36,457 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:36] "[33mGET /workout/5/fit HTTP/1.1[0m" 404 -
+2025-05-12 19:41:36,495 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:36] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-12 19:41:43,995 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:43] "[33mGET /workout/5/fit HTTP/1.1[0m" 404 -
+2025-05-12 19:41:44,312 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:44] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-12 19:41:44,499 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:44] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-12 19:41:45,285 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:45] "[33mGET /workout/5/fit HTTP/1.1[0m" 404 -
+2025-05-12 19:41:45,309 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:45] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-12 19:41:45,531 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:45] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-12 19:41:47,422 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:47] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-12 19:41:48,444 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:48] "GET /history HTTP/1.1" 200 -
+2025-05-12 19:41:48,529 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:48] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-05-12 19:41:48,782 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:48] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-12 19:41:48,782 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:48] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-12 19:41:49,107 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:49] "[33mGET /api/user/profile HTTP/1.1[0m" 404 -
+2025-05-12 19:41:49,261 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-12 19:41:49,353 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 19:41:49,355 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 19:41:49,355 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 19:41:49,356 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:49] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-12 19:41:49,738 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:49] "GET /history HTTP/1.1" 200 -
+2025-05-12 19:41:50,049 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:50] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-05-12 19:41:50,081 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:50] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-12 19:41:50,082 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:50] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-12 19:41:50,405 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:50] "[33mGET /api/user/profile HTTP/1.1[0m" 404 -
+2025-05-12 19:41:50,560 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:50] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-12 19:41:50,665 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 19:41:50,667 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 19:41:50,668 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 19:41:50,668 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:50] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-12 19:41:52,858 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:52] "[33mGET /workout/5/fit HTTP/1.1[0m" 404 -
+2025-05-12 19:41:53,172 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:41:53] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
