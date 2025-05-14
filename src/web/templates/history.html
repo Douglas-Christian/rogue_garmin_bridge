@@ -1,3 +1,4 @@
+
 {% extends "layout.html" %}
 
 {% block content %}
@@ -13,18 +14,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <h5>Recent Workouts</h5>
                             <div class="sorting-controls">
-                                <label for="sor        // Heart Rate data
-        if (dataSeries.heart_rates && dataSeries.heart_rates.length > 0) {
-            datasets.push({
-                label: "Heart Rate (bpm)",
-                data: dataSeries.heart_rates,
-                borderColor: "rgba(255, 159, 64, 1)",
-                backgroundColor: "rgba(255, 159, 64, 0.2)",
-                yAxisID: "yHeartRate",
-                fill: false,
-                tension: 0.1
-            });
-        }"me-2">Sort by:</label>
+                                <label for="sort-by" class="me-2">Sort by:</label>
                                 <select id="sort-by" class="form-select form-select-sm" style="width: auto; display: inline-block;">
                                     <option value="date-desc">Date (newest first)</option>
                                     <option value="date-asc">Date (oldest first)</option>
@@ -96,18 +86,15 @@
     let currentSort = "date-desc"; // Default sort
     let allWorkouts = []; // Store all loaded workouts for client-side sorting
     
-    // User"s unit preference (will be loaded from settings)
-    let userUnitSystem = "metric";
+    // User's unit preference (will be loaded from settings)
+    let userUnitSystem = "metric"; // Default to metric, can be loaded from user settings
     
     // Unit conversion utilities
     const unitConversions = {
-        // Distance conversions
         mToMi: (m) => m / 1609.34,
         miToM: (mi) => mi * 1609.34,
         mToKm: (m) => m / 1000,
         kmToM: (km) => km * 1000,
-        
-        // Speed conversions
         msToKph: (ms) => ms * 3.6,
         msToMph: (ms) => ms * 2.23694,
         kphToMph: (kph) => kph * 0.621371,
@@ -116,180 +103,86 @@
     
     // Format duration function
     function formatDuration(seconds) {
-        if (!seconds || isNaN(seconds)) return "-";
-        
+        if (seconds === null || seconds === undefined || isNaN(seconds)) return "-";
         seconds = Math.round(seconds);
         const hours = Math.floor(seconds / 3600);
         const minutes = Math.floor((seconds % 3600) / 60);
         const secs = seconds % 60;
-        
-        return [
-            hours.toString().padStart(2, "0"),
-            minutes.toString().padStart(2, "0"),
-            secs.toString().padStart(2, "0")
-        ].join(":");
+        return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
     }
     
     // Format timestamp for chart labels
     function formatTimestamp(seconds) {
-        if (!seconds || isNaN(seconds)) return "";
-        
+        if (seconds === null || seconds === undefined || isNaN(seconds)) return "";
         seconds = Math.round(seconds);
         const minutes = Math.floor(seconds / 60);
         const secs = seconds % 60;
-        
         return `${minutes}:${secs.toString().padStart(2, "0")}`;
     }
-    
-    // Helper function to verify if Chart.js is properly loaded
+
     function checkChartJsLoaded() {
         try {
             if (typeof Chart !== 'undefined') {
-                console.log("Chart.js is properly loaded, version:", Chart.version);
+                console.log("HISTORY_DEBUG: Chart.js is properly loaded, version:", Chart.version);
                 return true;
             } else {
-                console.error("Chart.js is not loaded or not defined");
+                console.error("HISTORY_DEBUG: Chart.js is not loaded or not defined");
                 return false;
             }
         } catch (e) {
-            console.error("Error checking Chart.js:", e);
+            console.error("HISTORY_DEBUG: Error checking Chart.js:", e);
             return false;
         }
     }
     
-    // Sort workouts based on the selected sort option
     function sortWorkouts(workouts, sortOption) {
         const [field, direction] = sortOption.split("-");
         const directionMultiplier = direction === "asc" ? 1 : -1;
-        
         return [...workouts].sort((a, b) => {
             let valueA, valueB;
-            
             switch (field) {
                 case "date":
-                    // Convert dates to timestamps for comparison
                     valueA = a.start_time ? new Date(a.start_time).getTime() : 0;
                     valueB = b.start_time ? new Date(b.start_time).getTime() : 0;
                     break;
-                    
                 case "duration":
-                    valueA = a.duration || 0;
-                    valueB = b.duration || 0;
+                    valueA = a.duration_seconds || 0; // Ensure using duration_seconds from workout_info
+                    valueB = b.duration_seconds || 0;
                     break;
-                    
                 case "distance":
-                    // Extract distance from summary or default to 0
-                    valueA = (a.summary && a.summary.total_distance) ? a.summary.total_distance : 0;
-                    valueB = (b.summary && b.summary.total_distance) ? b.summary.total_distance : 0;
+                    valueA = (a.summary && a.summary.total_distance) ? parseFloat(a.summary.total_distance) : 0;
+                    valueB = (b.summary && b.summary.total_distance) ? parseFloat(b.summary.total_distance) : 0;
                     break;
-                    
                 case "calories":
-                    // Extract calories from summary or default to 0
-                    valueA = (a.summary && a.summary.total_calories) ? a.summary.total_calories : 0;
-                    valueB = (b.summary && b.summary.total_calories) ? b.summary.total_calories : 0;
+                    valueA = (a.summary && a.summary.total_calories) ? parseInt(a.summary.total_calories) : 0;
+                    valueB = (b.summary && b.summary.total_calories) ? parseInt(b.summary.total_calories) : 0;
                     break;
-                    
-                default:
-                    return 0;
+                default: return 0;
             }
-            
             return directionMultiplier * (valueA - valueB);
         });
     }
-    
-    // Load and display all workouts
+
     function loadAllWorkouts() {
-        workoutsList.innerHTML = 	"<p><i class=\"fas fa-spinner fa-spin\"></i> Loading workouts...</p>";
-        
-        console.log("Fetching workouts from /api/workouts...");
-        
-        fetch("/api/workouts")
-            .then(response => {
-                console.log("Response status:", response.status);
-                return response.json();
-            })
-            .then(data => {
-                console.log("Workouts API full response:", data); // Enhanced debug output
-                
-                if (data.success && data.workouts && data.workouts.length > 0) {
-                    console.log(`Successfully loaded ${data.workouts.length} workouts`);
-                    // Store all workouts
-                    allWorkouts = data.workouts;
-                    
-                    // Apply sorting and display the first page
-                    applySort();
-                } else if (data.success && (!data.workouts || data.workouts.length === 0)) {
-                    console.log("No workouts found in the response");
-                    workoutsList.innerHTML = 	"<div class=\"alert alert-info\">No workouts found. Start tracking your workouts on the <a href=\"/workout\">Workout</a> page.</div>";
-                    prevPageBtn.disabled = true;
-                    nextPageBtn.disabled = true;
-                } else {
-                    console.error("Error in API response:", data);
-                    workoutsList.innerHTML = `<div class=\"alert alert-danger\">Error loading workouts: ${data.error || "Unknown error"}</div>`;
-                }
-            })
-            .catch(error => {
-                console.error("Error fetching workouts:", error);
-                workoutsList.innerHTML = `<div class=\"alert alert-danger\">Error loading workouts: ${error.message}</div>`;
-            });
-    }
-    
-    // Apply current sort option and show the appropriate page
-    function applySort() {
-        if (allWorkouts.length === 0) return;
-        
-        // Get sort option from the select element
-        currentSort = sortBySelect.value;
-        
-        // Sort the workouts
-        const sortedWorkouts = sortWorkouts(allWorkouts, currentSort);
-        
-        // Calculate pagination details
-        totalWorkouts = sortedWorkouts.length;
-        const totalPages = Math.ceil(totalWorkouts / pageSize);
-        
-        // Ensure currentPage is within valid range
-        if (currentPage > totalPages) {
-            currentPage = totalPages;
-        }
-        
-        // Get the workouts for the current page
-        const startIndex = (currentPage - 1) * pageSize;
-        const endIndex = Math.min(startIndex + pageSize, sortedWorkouts.length);
-        const pagedWorkouts = sortedWorkouts.slice(startIndex, endIndex);
-        
-        // Display the workouts
-        displayWorkouts(pagedWorkouts);
-        
-        // Update pagination controls
-        pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-        prevPageBtn.disabled = currentPage === 1;
-        nextPageBtn.disabled = currentPage >= totalPages;
-    }
-    
-    // Load workouts
-    function loadWorkouts(page = 1) {
-        const offset = (page - 1) * pageSize;
-        
-        workoutsList.innerHTML = 	"<p><i class=\"fas fa-spinner fa-spin\"></i> Loading workouts...</p>";
-        
-        fetch(`/api/workouts?limit=${pageSize}&offset=${offset}`)
+        workoutsList.innerHTML = "<p><i class=\"fas fa-spinner fa-spin\"></i> Loading workouts...</p>";
+        console.log("HISTORY_DEBUG: Fetching all workouts from /api/workouts...");
+        fetch("/api/workouts") // Fetch all workouts
             .then(response => response.json())
             .then(data => {
-                console.log("Workouts API response:", data); // Debug output
-                
-                if (data.success) {
-                    if (data.workouts && data.workouts.length > 0) {
-                        displayWorkouts(data.workouts);
-                        totalWorkouts = data.workouts.length;
-                        
-                        // Update pagination
-                        currentPage = page;
-                        pageInfo.textContent = `Page ${currentPage}`;
-                        prevPageBtn.disabled = currentPage === 1;
-                        nextPageBtn.disabled = data.workouts.length < pageSize;
+                console.log("HISTORY_DEBUG: All Workouts API response:", data);
+                if (data.success && data.workouts) {
+                    allWorkouts = data.workouts.map(w => {
+                        // Ensure summary is parsed if it's a string
+                        if (w.summary && typeof w.summary === 'string') {
+                            try { w.summary = JSON.parse(w.summary); } catch (e) { console.error('Error parsing summary for workout', w.id, e); w.summary = {}; }
+                        }
+                        return w;
+                    });
+                    totalWorkouts = allWorkouts.length;
+                    if (totalWorkouts > 0) {
+                        applySort(); 
                     } else {
-                        workoutsList.innerHTML = 	"<div class=\"alert alert-info\">No workouts found. Start tracking your workouts on the <a href=\"/workout\">Workout</a> page.</div>";
+                        workoutsList.innerHTML = "<div class=\"alert alert-info\">No workouts found.</div>";
                         prevPageBtn.disabled = true;
                         nextPageBtn.disabled = true;
                     }
@@ -298,609 +191,324 @@
                 }
             })
             .catch(error => {
+                console.error("HISTORY_DEBUG: Error fetching all workouts:", error);
                 workoutsList.innerHTML = `<div class=\"alert alert-danger\">Error loading workouts: ${error.message}</div>`;
-                console.error("Error loading workouts:", error);
             });
     }
+
+    function applySort() {
+        if (allWorkouts.length === 0) return;
+        currentSort = sortBySelect.value;
+        console.log(`HISTORY_DEBUG: Applying sort: ${currentSort}`);
+        const sortedWorkouts = sortWorkouts(allWorkouts, currentSort);
+        const totalPages = Math.ceil(totalWorkouts / pageSize);
+        currentPage = Math.max(1, Math.min(currentPage, totalPages)); // Ensure current page is valid
+        const startIndex = (currentPage - 1) * pageSize;
+        const pagedWorkouts = sortedWorkouts.slice(startIndex, startIndex + pageSize);
+        displayWorkouts(pagedWorkouts);
+        pageInfo.textContent = `Page ${currentPage} of ${totalPages || 1}`;
+        prevPageBtn.disabled = currentPage === 1;
+        nextPageBtn.disabled = currentPage >= totalPages;
+    }
     
-    // Display workouts
     function displayWorkouts(workouts) {
-        let html = 	"<div class=\"table-responsive\"><table class=\"table table-hover\">";
-        html += `
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Type</th>
-                    <th>Duration</th>
-                    <th>Distance</th>
-                    <th>Calories</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-        `;
-        
-        workouts.forEach(workout => {
-            // Parse the start time with fallback handling
-            let startTimeStr = "-";
-            try {
-                const startTime = workout.start_time ? new Date(workout.start_time) : new Date();
-                startTimeStr = startTime.toLocaleString();
-            } catch (e) {
-                console.error("Error parsing start time:", e, workout.start_time);
-            }
-            
-            // Safely extract summary values with fallbacks
-            const duration = formatDuration(workout.duration);
-            
-            // Format distance with unit conversion based on user preference
-            let distanceText = "-";
-            if (workout.summary && workout.summary.total_distance) {
-                const distanceM = workout.summary.total_distance;
-                
-                if (userUnitSystem === "imperial") {
-                    // Convert meters to miles
-                    const distanceMi = unitConversions.mToMi(distanceM);
-                    distanceText = distanceMi.toFixed(2) + " mi";
-                } else {
-                    // Convert meters to kilometers
-                    const distanceKm = unitConversions.mToKm(distanceM);
-                    distanceText = distanceKm.toFixed(2) + " km";
+        console.log("HISTORY_DEBUG: Displaying workouts:", workouts);
+        let html = "<div class=\"table-responsive\"><table class=\"table table-hover\"><thead><tr><th>Date</th><th>Type</th><th>Duration</th><th>Distance</th><th>Calories</th><th>Actions</th></tr></thead><tbody>";
+        if (!workouts || workouts.length === 0) {
+            html += "<tr><td colspan=\"6\">No workouts to display for this page.</td></tr>";
+        } else {
+            workouts.forEach(workout => {
+                let startTimeStr = "-";
+                try { startTimeStr = workout.start_time ? new Date(workout.start_time).toLocaleString() : "-"; } catch (e) { console.error("Error parsing start time:", e, workout.start_time); }
+                const duration = formatDuration(workout.duration_seconds);
+                let distanceText = "-";
+                if (workout.summary && workout.summary.total_distance !== undefined) {
+                    const distanceM = parseFloat(workout.summary.total_distance);
+                    distanceText = userUnitSystem === "imperial" ? `${unitConversions.mToMi(distanceM).toFixed(2)} mi` : `${unitConversions.mToKm(distanceM).toFixed(2)} km`;
                 }
-            }
-            
-            const calories = (workout.summary && workout.summary.total_calories) ? 
-                Math.round(workout.summary.total_calories) + " kcal" : "-";
-                
-            const workoutType = workout.workout_type ? 
-                workout.workout_type.charAt(0).toUpperCase() + workout.workout_type.slice(1) : "Unknown";
-            
-            html += `
-                <tr data-workout-id="${workout.id}" class="workout-row">
-                    <td>${startTimeStr}</td>
-                    <td>${workoutType}</td>
-                    <td>${duration}</td>
-                    <td>${distanceText}</td>
-                    <td>${calories}</td>
-                    <td>
-                        <button class="btn btn-sm btn-primary view-btn" data-workout-id="${workout.id}">View</button>
-                        <button class="btn btn-sm btn-success fit-btn" data-workout-id="${workout.id}">FIT</button>
-                        <!-- Upload to Garmin button removed due to 2FA requirements -->
-                        <button class="btn btn-sm btn-danger delete-btn" data-workout-id="${workout.id}">Delete</button>
-                    </td>
-                </tr>
-            `;
-        });
-        
+                const calories = (workout.summary && workout.summary.total_calories !== undefined) ? `${Math.round(parseFloat(workout.summary.total_calories))} kcal` : "-";
+                const workoutType = workout.type ? workout.type.charAt(0).toUpperCase() + workout.type.slice(1) : "Unknown";
+                html += `<tr data-workout-id="${workout.id}" class="workout-row"><td>${startTimeStr}</td><td>${workoutType}</td><td>${duration}</td><td>${distanceText}</td><td>${calories}</td><td><button class=\"btn btn-sm btn-primary view-btn\" data-workout-id="${workout.id}">View</button> <button class=\"btn btn-sm btn-success fit-btn\" data-workout-id="${workout.id}">FIT</button> <button class=\"btn btn-sm btn-danger delete-btn\" data-workout-id="${workout.id}">Delete</button></td></tr>`;
+            });
+        }
         html += "</tbody></table></div>";
         workoutsList.innerHTML = html;
-        
-        // Add event listeners to buttons
-        document.querySelectorAll(".view-btn").forEach(button => {
-            button.addEventListener("click", function(e) {
-                e.stopPropagation(); // Prevent triggering row click
-                const workoutId = this.dataset.workoutId;
-                loadWorkoutDetails(workoutId);
-                
-                // Highlight selected row
-                document.querySelectorAll(".workout-row").forEach(r => r.classList.remove("table-active"));
-                this.closest("tr").classList.add("table-active");
-            });
-        });
-        
-        document.querySelectorAll(".fit-btn").forEach(button => {
-            button.addEventListener("click", function(e) {
-                e.stopPropagation(); // Prevent triggering row click
-                const workoutId = this.dataset.workoutId;
-                convertToFIT(workoutId);
-            });
-        });
-        
-        document.querySelectorAll(".delete-btn").forEach(button => {
-            button.addEventListener("click", function(e) {
-                e.stopPropagation(); // Prevent triggering row click
-                const workoutId = this.dataset.workoutId;
-                const confirmDelete = confirm("Are you sure you want to delete this workout? This action cannot be undone.");
-                if (confirmDelete) {
-                    deleteWorkout(workoutId);
-                }
-            });
-        });
-        
-        // Add event listener for row clicks (to view details)
-        document.querySelectorAll(".workout-row").forEach(row => {
-            row.addEventListener("click", function() {
-                const workoutId = this.dataset.workoutId;
-                loadWorkoutDetails(workoutId);
-                
-                // Highlight selected row
-                document.querySelectorAll(".workout-row").forEach(r => r.classList.remove("table-active"));
-                this.classList.add("table-active");
-            });
-        });
     }
-    
-    // Load and display details for a specific workout
+
     function loadWorkoutDetails(workoutId) {
-        workoutDetails.innerHTML = 	"<p><i class=\"fas fa-spinner fa-spin\"></i> Loading details...</p>";
-        
-        console.log(`Loading details for workout ${workoutId}...`);
-        
+        console.log(`HISTORY_DEBUG: loadWorkoutDetails called for workout ID: ${workoutId}`);
+        if (!checkChartJsLoaded()) {
+            workoutDetails.innerHTML = "<div class=\"alert alert-warning\">Chart.js is not loaded. Cannot display workout charts.</div>";
+            return;
+        }
+        workoutDetails.innerHTML = "<p><i class=\"fas fa-spinner fa-spin\"></i> Loading workout details...</p>";
         fetch(`/api/workout/${workoutId}`)
-            .then(response => {
-                console.log(`Got response for workout ${workoutId}, status: ${response.status}`);
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
-                console.log(`Parsed JSON data for workout ${workoutId}:`, data);
+                console.log(`HISTORY_DEBUG: API response for /api/workout/${workoutId}:`, data);
                 if (data.success && data.workout) {
-                    const workout = data.workout;
-                    console.log("Workout data received:", workout);
+                    // Extract workout data and info from the API response
+                    const workoutData = [];
                     
-                    // Debug information about the workout data structure
-                    console.log("Workout summary:", workout.summary);
-                    console.log("Data series exists:", !!workout.data_series);
-                    if (workout.data_series) {
-                        console.log("Data series powers length:", workout.data_series.powers ? workout.data_series.powers.length : 0);
-                        console.log("Data series timestamps length:", workout.data_series.timestamps ? workout.data_series.timestamps.length : 0);
-                    }
-                    
-                    let detailsHtml = `<h5>Workout on ${new Date(workout.start_time).toLocaleString()}</h5>`;
-                    detailsHtml += `<p><strong>Type:</strong> ${workout.workout_type ? workout.workout_type.charAt(0).toUpperCase() + workout.workout_type.slice(1) : "Unknown"}</p>`;
-                    detailsHtml += `<p><strong>Duration:</strong> ${formatDuration(workout.duration)}</p>`;
-                    
-                    if (workout.summary) {
-                        // Format distance with unit conversion
-                        let distanceText = "-";
-                        if (workout.summary.total_distance) {
-                            const distanceM = workout.summary.total_distance;
-                            if (userUnitSystem === "imperial") {
-                                distanceText = unitConversions.mToMi(distanceM).toFixed(2) + " mi";
-                            } else {
-                                distanceText = unitConversions.mToKm(distanceM).toFixed(2) + " km";
-                            }
-                        }
-                        detailsHtml += `<p><strong>Total Distance:</strong> ${distanceText}</p>`;
+                    // Process data from data_series if available
+                    if (data.workout.data_series) {
+                        const series = data.workout.data_series;
+                        const timestamps = series.timestamps || [];
                         
-                        // Format average speed with unit conversion
-                        let avgSpeedText = "-";
-                        // Check for both naming patterns (average_speed and avg_speed)
-                        const avgSpeed = workout.summary.average_speed || workout.summary.avg_speed;
-                        if (avgSpeed) {
-                            const avgSpeedMs = avgSpeed;
-                            if (userUnitSystem === "imperial") {
-                                avgSpeedText = unitConversions.msToMph(avgSpeedMs).toFixed(1) + " mph";
-                            } else {
-                                avgSpeedText = unitConversions.msToKph(avgSpeedMs).toFixed(1) + " km/h";
-                            }
-                        }
-                        detailsHtml += `<p><strong>Average Speed:</strong> ${avgSpeedText}</p>`;
-                        
-                        detailsHtml += `<p><strong>Total Calories:</strong> ${workout.summary.total_calories ? Math.round(workout.summary.total_calories) + " kcal" : "-"}</p>`;
-                        
-                        // Check for both naming patterns (average_power and avg_power)
-                        const avgPower = workout.summary.average_power || workout.summary.avg_power || 0;
-                        detailsHtml += `<p><strong>Average Power:</strong> ${avgPower ? Math.round(avgPower) + " W" : "-"}</p>`;
-                        
-                        if (workout.workout_type === "bike" || workout.workout_type === "cycling") {
-                            // Check for both naming patterns (average_cadence and avg_cadence)
-                            const avgCadence = workout.summary.average_cadence || workout.summary.avg_cadence || 0;
-                            detailsHtml += `<p><strong>Average Cadence:</strong> ${avgCadence ? Math.round(avgCadence) + " RPM" : "-"}</p>`;
-                        } else if (workout.workout_type === "rower" || workout.workout_type === "rowing") {
-                            // Check for both naming patterns (average_stroke_rate and avg_stroke_rate)
-                            const avgStrokeRate = workout.summary.average_stroke_rate || workout.summary.avg_stroke_rate || 0;
-                            detailsHtml += `<p><strong>Average Stroke Rate:</strong> ${avgStrokeRate ? Math.round(avgStrokeRate) + " spm" : "-"}</p>`;
-                        }
-                    }
-                    // Add additional metrics if available in summary
-                    if (workout.summary) {
-                        // Heart rate data (if available)
-                        const avgHeartRate = workout.summary.average_heart_rate || workout.summary.avg_heart_rate;
-                        if (avgHeartRate) {
-                            detailsHtml += `<p><strong>Average Heart Rate:</strong> ${Math.round(avgHeartRate)} bpm</p>`;
+                        // Create a data point for each timestamp with the corresponding metrics
+                        for (let i = 0; i < timestamps.length; i++) {
+                            workoutData.push({
+                                timestamp: timestamps[i],
+                                data: {
+                                    power: series.powers ? series.powers[i] : null,
+                                    cadence: series.cadences ? series.cadences[i] : null,
+                                    heart_rate: series.heart_rates ? series.heart_rates[i] : null,
+                                    speed: series.speeds ? series.speeds[i] : null,
+                                    distance: series.distances ? series.distances[i] : null
+                                }
+                            });
                         }
                     }
                     
-                    // Check if data_series exists for chart
-                    const hasDataSeries = workout.data_series && (
-                        (workout.data_series.powers && workout.data_series.powers.length > 0) ||
-                        (workout.data_series.speeds && workout.data_series.speeds.length > 0) ||
-                        (workout.data_series.heart_rates && workout.data_series.heart_rates.length > 0) ||
-                        (workout.data_series.cadences && workout.data_series.cadences.length > 0)
-                    );
-                    
-                    // Add chart container if data is available
-                    if (hasDataSeries) {
-                        detailsHtml += `<div style="height: 300px;"><canvas id="workoutChart"></canvas></div>`;
-                    } else {
-                        detailsHtml += `<div class="alert alert-info mt-3">No detailed data available for this workout.</div>`;
-                    }
-                    
-                    workoutDetails.innerHTML = detailsHtml;
-                    
-                    // Render chart if data is available
-                    if (hasDataSeries) {
-                        // Create a properly formatted data series object if any arrays are missing
-                        const dataSeries = {
-                            powers: workout.data_series.powers || [],
-                            cadences: workout.data_series.cadences || [],
-                            heart_rates: workout.data_series.heart_rates || [],
-                            speeds: workout.data_series.speeds || [],
-                            distances: workout.data_series.distances || []
-                        };
-                        
-                        renderWorkoutChart(dataSeries, workout.workout_type);
-                    }
-                    
+                    // The workout info is the workout object itself
+                    displayWorkoutDetails(workoutData, data.workout);
                 } else {
-                    console.error("Error in workout details response:", data);
-                    workoutDetails.innerHTML = `<div class="alert alert-danger">Error loading workout details: ${data.error || "Unknown error"}</div>`;
+                    console.error("HISTORY_DEBUG: Error in API response or missing data for workout details:", data.error);
+                    workoutDetails.innerHTML = `<div class=\"alert alert-danger\">Error loading workout details: ${data.error || "Unknown error or missing data"}</div>`;
                 }
             })
             .catch(error => {
-                console.error("Exception loading workout details:", error);
-                let errorDetails = "";
-                if (error.stack) {
-                    errorDetails = `<details><summary>Error details</summary><pre>${error.stack}</pre></details>`;
-                }
-                workoutDetails.innerHTML = `<div class="alert alert-danger">Error loading workout details: ${error.message}${errorDetails}</div>`;
+                console.error(`HISTORY_DEBUG: Fetch error for /api/workout/${workoutId}:`, error);
+                workoutDetails.innerHTML = `<div class=\"alert alert-danger\">Error loading workout details: ${error.message}</div>`;
             });
     }
-    
-    // Render workout chart
-    let currentChart = null;
-    function renderWorkoutChart(dataSeries, workoutType) {
-        // Check if Chart.js is properly loaded
-        if (!checkChartJsLoaded()) {
-            const chartContainer = document.getElementById("workoutChart").parentNode;
-            chartContainer.innerHTML = `<div class="alert alert-danger">Error: Chart.js is not loaded properly.</div>`;
+
+    function displayWorkoutDetails(workoutData, workoutInfo) {
+        console.log("HISTORY_DEBUG: displayWorkoutDetails called with workoutData:", workoutData, "workoutInfo:", workoutInfo);
+        let summaryHtml = `<h5>Workout Summary (ID: ${workoutInfo.id})</h5>`;
+        let summary = {};
+        if (workoutInfo.summary && typeof workoutInfo.summary === 'string') {
+            try { summary = JSON.parse(workoutInfo.summary); } catch (e) { console.error("HISTORY_DEBUG: Error parsing workoutInfo.summary JSON:", e, workoutInfo.summary); }
+        } else if (workoutInfo.summary && typeof workoutInfo.summary === 'object') {
+            summary = workoutInfo.summary; // Already an object
+        }
+        console.log("HISTORY_DEBUG: Parsed summary for display:", summary);
+
+        const displayDistanceM = summary.total_distance !== undefined ? parseFloat(summary.total_distance) : (workoutInfo.total_distance !== undefined ? parseFloat(workoutInfo.total_distance) : 0);
+        const displayDistance = userUnitSystem === "imperial" ? `${unitConversions.mToMi(displayDistanceM).toFixed(2)} mi` : `${unitConversions.mToKm(displayDistanceM).toFixed(2)} km`;
+        const displayAvgSpeedMs = summary.avg_speed !== undefined ? parseFloat(summary.avg_speed) : 0;
+        const displayAvgSpeed = userUnitSystem === "imperial" ? `${unitConversions.msToMph(displayAvgSpeedMs).toFixed(1)} mph` : `${unitConversions.msToKph(displayAvgSpeedMs).toFixed(1)} kph`;
+        const displayMaxSpeedMs = summary.max_speed !== undefined ? parseFloat(summary.max_speed) : 0;
+        const displayMaxSpeed = userUnitSystem === "imperial" ? `${unitConversions.msToMph(displayMaxSpeedMs).toFixed(1)} mph` : `${unitConversions.msToKph(displayMaxSpeedMs).toFixed(1)} kph`;
+
+        summaryHtml += `<p><strong>Type:</strong> ${workoutInfo.type || '-'}<br>
+                          <strong>Start Time:</strong> ${workoutInfo.start_time ? new Date(workoutInfo.start_time).toLocaleString() : '-'}<br>
+                          <strong>Duration:</strong> ${formatDuration(workoutInfo.duration_seconds)}<br>
+                          <strong>Total Distance:</strong> ${displayDistance}<br>
+                          <strong>Avg Speed:</strong> ${displayAvgSpeed}<br>
+                          <strong>Max Speed:</strong> ${displayMaxSpeed}<br>
+                          <strong>Avg Power:</strong> ${summary.avg_power !== undefined ? Math.round(summary.avg_power) : '-'} W<br>
+                          <strong>Max Power:</strong> ${summary.max_power !== undefined ? Math.round(summary.max_power) : '-'} W<br>
+                          <strong>Avg Cadence:</strong> ${summary.avg_cadence !== undefined ? Math.round(summary.avg_cadence) : '-'} RPM<br>
+                          <strong>Max Cadence:</strong> ${summary.max_cadence !== undefined ? Math.round(summary.max_cadence) : '-'} RPM<br>
+                          <strong>Avg Heart Rate:</strong> ${summary.avg_heart_rate !== undefined ? Math.round(summary.avg_heart_rate) : '-'} bpm<br>
+                          <strong>Max Heart Rate:</strong> ${summary.max_heart_rate !== undefined ? Math.round(summary.max_heart_rate) : '-'} bpm<br>
+                          <strong>Calories:</strong> ${summary.total_calories !== undefined ? Math.round(summary.total_calories) : '-'} kcal</p>`;
+        
+        workoutDetails.innerHTML = summaryHtml;
+        const chartContainer = document.createElement('div');
+        chartContainer.id = "workout-chart-container";
+        const canvas = document.createElement('canvas');
+        canvas.id = "workoutChart";
+        chartContainer.appendChild(canvas);
+        workoutDetails.appendChild(chartContainer);
+
+        console.log("HISTORY_DEBUG: Preparing chart data. Number of data points:", workoutData.length);
+        if (workoutData.length === 0) {
+            console.warn("HISTORY_DEBUG: No data points available for chart.");
+            chartContainer.innerHTML = "<p class='text-muted'>No detailed data points to chart.</p>";
             return;
         }
-        
-        const chartElement = document.getElementById("workoutChart");
-        if (!chartElement) {
-            console.error("Chart canvas element not found");
-            return;
-        }
-        
-        const ctx = chartElement.getContext("2d");
-        if (!ctx) {
-            console.error("Could not get 2d context from canvas");
-            return;
-        }
-        
-        // Destroy previous chart instance if it exists
-        if (currentChart) {
-            currentChart.destroy();
-        }
-        
-        console.log("Rendering chart with data series:", dataSeries);
-        
-        // Calculate the data length from the longest available array
-        const dataLengths = [
-            dataSeries.powers ? dataSeries.powers.length : 0,
-            dataSeries.cadences ? dataSeries.cadences.length : 0,
-            dataSeries.heart_rates ? dataSeries.heart_rates.length : 0,
-            dataSeries.speeds ? dataSeries.speeds.length : 0
-        ];
-        const dataLength = Math.max(...dataLengths);
-        
-        console.log("Chart data length:", dataLength);
-        
-        // Create sequential time labels based on the length of data
-        const labels = [];
-        for (let i = 0; i < dataLength; i++) {
-            labels.push(formatTimestamp(i));
-        }
-        
+
+        const dataSeries = { timestamps: [], speeds: [], powers: [], cadences: [], heart_rates: [] };
+        let firstTimestampMs = null;
+        try { firstTimestampMs = workoutData[0] && workoutData[0].timestamp ? new Date(workoutData[0].timestamp).getTime() : null; } catch (e) { console.error("HISTORY_DEBUG: Error parsing first data point timestamp:", e); }
+
+        workoutData.forEach(dp => {
+            let currentTimestampMs = null;
+            try { currentTimestampMs = dp.timestamp ? new Date(dp.timestamp).getTime() : null; } catch (e) { console.error("HISTORY_DEBUG: Error parsing data point timestamp:", e); }
+            dataSeries.timestamps.push(firstTimestampMs && currentTimestampMs ? (currentTimestampMs - firstTimestampMs) / 1000 : 0);
+            const pointData = dp.data || {};
+            dataSeries.speeds.push(pointData.speed !== undefined ? parseFloat(pointData.speed) : null);
+            dataSeries.powers.push(pointData.power !== undefined ? parseInt(pointData.power) : null);
+            dataSeries.cadences.push(pointData.cadence !== undefined ? parseInt(pointData.cadence) : null);
+            dataSeries.heart_rates.push(pointData.heart_rate !== undefined ? parseInt(pointData.heart_rate) : null);
+        });
+        console.log("HISTORY_DEBUG: Chart dataSeries prepared:", dataSeries);
+
         const datasets = [];
-        
-        // Power data (always include if available)
-        if (dataSeries.powers && dataSeries.powers.length > 0) {
-            datasets.push({
-                label: "Power (W)",
-                data: dataSeries.powers,
-                borderColor: "rgba(255, 99, 132, 1)",
-                backgroundColor: "rgba(255, 99, 132, 0.2)",
-                yAxisID: "yPower",
-                fill: false,
-                tension: 0.1
-            });
+        if (dataSeries.speeds.some(s => s !== null)) datasets.push({ label: "Speed (m/s)", data: dataSeries.speeds, borderColor: "rgba(75, 192, 192, 1)", backgroundColor: "rgba(75, 192, 192, 0.2)", yAxisID: "ySpeed", fill: false, tension: 0.1 });
+        if (dataSeries.powers.some(p => p !== null)) datasets.push({ label: "Power (W)", data: dataSeries.powers, borderColor: "rgba(255, 99, 132, 1)", backgroundColor: "rgba(255, 99, 132, 0.2)", yAxisID: "yPower", fill: false, tension: 0.1 });
+        if (dataSeries.cadences.some(c => c !== null)) datasets.push({ label: "Cadence (RPM)", data: dataSeries.cadences, borderColor: "rgba(54, 162, 235, 1)", backgroundColor: "rgba(54, 162, 235, 0.2)", yAxisID: "yCadence", fill: false, tension: 0.1 });
+        if (dataSeries.heart_rates.some(h => h !== null)) datasets.push({ label: "Heart Rate (bpm)", data: dataSeries.heart_rates, borderColor: "rgba(255, 159, 64, 1)", backgroundColor: "rgba(255, 159, 64, 0.2)", yAxisID: "yHeartRate", fill: false, tension: 0.1 });
+
+        if (datasets.length === 0) {
+            console.warn("HISTORY_DEBUG: No valid data series for chart.");
+            chartContainer.innerHTML = "<p class='text-muted'>No chartable data found for this workout.</p>";
+            return;
         }
-        
-        // Speed data (convert based on preference)
-        if (dataSeries.speeds && dataSeries.speeds.length > 0) {
-            let speedData;
-            let speedLabel = "Speed";
-            if (userUnitSystem === "imperial") {
-                speedData = dataSeries.speeds.map(speed => speed ? unitConversions.msToMph(speed) : null);
-                speedLabel = "Speed (mph)";
-            } else {
-                speedData = dataSeries.speeds.map(speed => speed ? unitConversions.msToKph(speed) : null);
-                speedLabel = "Speed (km/h)";
-            }
-            datasets.push({
-                label: speedLabel,
-                data: speedData,
-                borderColor: "rgba(54, 162, 235, 1)",
-                backgroundColor: "rgba(54, 162, 235, 0.2)",
-                yAxisID: "ySpeed",
-                fill: false,
-                tension: 0.1
-            });
-        }
-        
-        // Cadence or Stroke Rate data
-        if (workoutType === "bike" || workoutType === "cycling") {
-            if (dataSeries.cadences && dataSeries.cadences.length > 0) {
-                datasets.push({
-                    label: "Cadence (RPM)",
-                    data: dataSeries.cadences,
-                    borderColor: "rgba(75, 192, 192, 1)",
-                    backgroundColor: "rgba(75, 192, 192, 0.2)",
-                    yAxisID: "yCadence",
-                    fill: false,
-                    tension: 0.1
-                });
-            }
-        } else if (workoutType === "rower" || workoutType === "rowing") {
-            // For rowers, check if stroke_rates array exists, otherwise fallback to cadences
-            const strokeRateData = dataSeries.stroke_rates || dataSeries.cadences;
-            if (strokeRateData && strokeRateData.length > 0) {
-                datasets.push({
-                    label: "Stroke Rate (spm)",
-                    data: strokeRateData,
-                    borderColor: "rgba(153, 102, 255, 1)",
-                    backgroundColor: "rgba(153, 102, 255, 0.2)",
-                    yAxisID: "yCadence", // Reuse cadence axis for stroke rate
-                    fill: false,
-                    tension: 0.1
-                });
-            }
-        }
-        
-        // Heart Rate data
-        if (dataSeries.heart_rates && dataSeries.heart_rates.length > 0) {
-            datasets.push({
-                label: "Heart Rate (bpm)",
-                data: dataSeries.heart_rates,
-                borderColor: "rgba(255, 159, 64, 1)",
-                backgroundColor: "rgba(255, 159, 64, 0.2)",
-                yAxisID: "yHeartRate",
-                fill: false,
-                tension: 0.1
-            });
-        }
-        
-        console.log("Creating chart with datasets:", datasets);
-        
-        // Configure chart options
-        const chartOptions = {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: "Time (min:sec)"
-                    }
+
+        const config = {
+            type: 'line',
+            data: { labels: dataSeries.timestamps.map(formatTimestamp), datasets: datasets },
+            options: {
+                responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, stacked: false,
+                scales: {
+                    x: { title: { display: true, text: 'Time (MM:SS)' } },
+                    ySpeed: { type: 'linear', display: true, position: 'left', title: { display: true, text: 'Speed (m/s)' } },
+                    yPower: { type: 'linear', display: true, position: 'right', title: { display: true, text: 'Power (W)' }, grid: { drawOnChartArea: false } },
+                    yCadence: { type: 'linear', display: true, position: 'right', title: { display: true, text: 'Cadence (RPM)' }, grid: { drawOnChartArea: false }, suggestedMin: 0 },
+                    yHeartRate: { type: 'linear', display: true, position: 'left', title: { display: true, text: 'Heart Rate (bpm)' }, grid: { drawOnChartArea: false }, suggestedMin: 40 }
                 },
-                yPower: {
-                    type: "linear",
-                    display: true,
-                    position: "left",
-                    title: {
-                        display: true,
-                        text: "Power (W)"
-                    },
-                    grid: {
-                        drawOnChartArea: false // Only display grid for the first Y axis
-                    }
-                },
-                ySpeed: {
-                    type: "linear",
-                    display: true,
-                    position: "right",
-                    title: {
-                        display: true,
-                        text: userUnitSystem === "imperial" ? "Speed (mph)" : "Speed (km/h)"
-                    },
-                    grid: {
-                        drawOnChartArea: false
-                    }
-                },
-                yCadence: {
-                    type: "linear",
-                    display: true,
-                    position: "right",
-                    title: {
-                        display: true,
-                        text: (workoutType === "bike" || workoutType === "cycling") ? "Cadence (RPM)" : "Stroke Rate (spm)"
-                    },
-                    grid: {
-                        drawOnChartArea: false
-                    }
-                },
-                yHeartRate: {
-                    type: "linear",
-                    display: true,
-                    position: "right",
-                    title: {
-                        display: true,
-                        text: "Heart Rate (bpm)"
-                    },
-                    grid: {
-                        drawOnChartArea: false
-                    }
-                }
-            },
-            plugins: {
-                tooltip: {
-                    mode: "index",
-                    intersect: false
-                }
+                plugins: { legend: { position: 'top' }, tooltip: { mode: 'index', intersect: false } }
             }
         };
-        
-        // Create the chart
+        console.log("HISTORY_DEBUG: Chart.js config:", config);
+
         try {
-            currentChart = new Chart(ctx, {
-                type: "line",
-                data: {
-                    labels: labels,
-                    datasets: datasets
-                },
-                options: chartOptions
-            });
-            console.log("Chart created successfully");
-        } catch (error) {
-            console.error("Error creating chart:", error);
-            const chartContainer = document.getElementById("workoutChart").parentNode;
-            chartContainer.innerHTML = `<div class="alert alert-danger">Error creating chart: ${error.message}</div>`;
+            if (window.workoutDetailChart instanceof Chart) window.workoutDetailChart.destroy();
+            window.workoutDetailChart = new Chart(document.getElementById('workoutChart').getContext('2d'), config);
+            console.log("HISTORY_DEBUG: Chart created successfully.");
+        } catch (e) {
+            console.error("HISTORY_DEBUG: Error creating chart:", e);
+            chartContainer.innerHTML = "<p class='text-danger'>Error displaying chart.</p>";
         }
     }
+
+    function downloadFitFile(workoutId) {
+        console.log(`HISTORY_DEBUG: downloadFitFile called for workout ID: ${workoutId}`);
+        // First, call API to ensure FIT file is generated/exists and get its path
+        fetch(`/api/convert_fit/${workoutId}`, { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                console.log(`HISTORY_DEBUG: /api/convert_fit/${workoutId} response:`, data);
+                if (data.success && data.fit_file_path) {
+                    // The actual filename is the last part of the path
+                    const filename = data.fit_file_path.split(/[\\/]/).pop();
+                    // Trigger download by navigating to the file serving endpoint
+                    window.location.href = `/fit_files/${filename}`;
+                    showNotification(`Downloading FIT file: ${filename}`, 'success');
+                } else {
+                    showNotification(`Error preparing FIT file: ${data.error || 'Unknown error'}`, 'danger');
+                }
+            })
+            .catch(error => {
+                console.error(`HISTORY_DEBUG: Error in /api/convert_fit/${workoutId}:`, error);
+                showNotification(`Error preparing FIT file: ${error.message}`, 'danger');
+            });
+    }
+
+    function deleteWorkout(workoutId) {
+        console.log(`HISTORY_DEBUG: deleteWorkout called for workout ID: ${workoutId}`);
+        if (!confirm(`Are you sure you want to delete workout ID ${workoutId}? This action cannot be undone.`)) return;
+        fetch(`/api/workout/${workoutId}`, { method: 'DELETE' })
+            .then(response => response.json())
+            .then(data => {
+                console.log(`HISTORY_DEBUG: /api/workout/${workoutId} DELETE response:`, data);
+                if (data.success) {
+                    showNotification(`Workout ${workoutId} deleted successfully.`, 'success');
+                    loadAllWorkouts(); // Refresh the list
+                    workoutDetails.innerHTML = "<p>Select a workout to view details.</p>"; // Clear details view
+                } else {
+                    showNotification(`Error deleting workout: ${data.error || 'Unknown error'}`, 'danger');
+                }
+            })
+            .catch(error => {
+                console.error(`HISTORY_DEBUG: Error deleting workout ${workoutId}:`, error);
+                showNotification(`Error deleting workout: ${error.message}`, 'danger');
+            });
+    }
+
+    // Initial load and event listeners setup
+    sortBySelect.addEventListener("change", applySort);
+    prevPageBtn.addEventListener("click", () => { if (!prevPageBtn.disabled) { currentPage--; applySort(); } });
+    nextPageBtn.addEventListener("click", () => { if (!nextPageBtn.disabled) { currentPage++; applySort(); } });
     
-    // Show a toast notification
-    function showToast(message, type = "info") {
-        // Create toast container if it doesn't exist
-        let toastContainer = document.getElementById("toast-container");
-        if (!toastContainer) {
-            toastContainer = document.createElement("div");
-            toastContainer.id = "toast-container";
-            toastContainer.className = "position-fixed bottom-0 end-0 p-3";
-            document.body.appendChild(toastContainer);
+    workoutsList.addEventListener("click", function(event) {
+        const target = event.target;
+        // Traverse up if the click was on an icon inside a button
+        const button = target.closest('button'); 
+        if (!button) return;
+
+        const workoutId = button.dataset.workoutId;
+        if (!workoutId) return;
+
+        console.log(`HISTORY_DEBUG: Button clicked inside workoutsList. Workout ID: ${workoutId}, Classes: ${button.className}`);
+
+        if (button.classList.contains("view-btn")) {
+            loadWorkoutDetails(workoutId);
+        } else if (button.classList.contains("fit-btn")) {
+            downloadFitFile(workoutId);
+        } else if (button.classList.contains("delete-btn")) {
+            deleteWorkout(workoutId);
+        }
+    });
+
+    // Load user settings (e.g., unit preference) - Placeholder
+    // fetch('/api/settings').then(res => res.json()).then(data => {
+    //     if (data.success && data.settings && data.settings.unit_system) {
+    //         userUnitSystem = data.settings.unit_system;
+    //     }
+    //     loadAllWorkouts(); // Initial load after settings
+    // }).catch(() => loadAllWorkouts()); 
+    loadAllWorkouts(); // Initial load
+
+    // Helper function for notifications if main.js is not properly loaded
+    function showNotification(message, type = 'info') {
+        console.log(`HISTORY_DEBUG: Notification - ${type}: ${message}`);
+        
+        // Check if the global showNotification exists first
+        if (typeof window.showNotification === 'function') {
+            window.showNotification(message, type);
+            return;
         }
         
-        // Create toast element
-        const toastId = `toast-${Date.now()}`;
-        const toastHtml = `
-            <div id="${toastId}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header bg-${type === 'error' ? 'danger' : type === 'success' ? 'success' : 'primary'} text-white">
-                    <strong class="me-auto">${type.charAt(0).toUpperCase() + type.slice(1)}</strong>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                    ${message}
-                </div>
-            </div>
+        // Create our own notification if the global one isn't available
+        // Check if notification container exists
+        let container = document.getElementById('notification-container');
+        
+        // Create container if it doesn't exist
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'notification-container';
+            container.style.position = 'fixed';
+            container.style.top = '20px';
+            container.style.right = '20px';
+            container.style.zIndex = '9999';
+            document.body.appendChild(container);
+        }
+        
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `alert alert-${type} alert-dismissible fade show`;
+        notification.role = 'alert';
+        notification.innerHTML = `
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         `;
         
-        // Add toast to container
-        toastContainer.insertAdjacentHTML('beforeend', toastHtml);
+        // Add to container
+        container.appendChild(notification);
         
-        // Initialize and show toast
-        const toastElement = document.getElementById(toastId);
-        const bsToast = new bootstrap.Toast(toastElement, { autohide: true, delay: 3000 });
-        bsToast.show();
-        
-        // Remove toast after it's hidden
-        toastElement.addEventListener('hidden.bs.toast', function () {
-            toastElement.remove();
-        });
-    }
-    
-    // Convert workout to FIT file
-    function convertToFIT(workoutId) {
-        if (!workoutId) {
-            showToast("Error: No workout ID provided", "error");
-            return;
-        }
-        
-        // Show a loading toast
-        showToast("Generating FIT file...", "info");
-        
-        // Create a temporary link to download the file
-        const link = document.createElement('a');
-        link.href = `/workout/${workoutId}/fit`;
-        
-        // Set a timeout to give the server time to generate the file
+        // Auto-dismiss after 5 seconds
         setTimeout(() => {
-            link.click();
-        }, 100);
+            notification.classList.remove('show');
+            setTimeout(() => {
+                notification.remove();
+            }, 150);
+        }, 5000);
     }
-    
-    // Delete a workout
-    function deleteWorkout(workoutId) {
-        if (!workoutId) {
-            showToast("Error: No workout ID provided", "error");
-            return;
-        }
-        
-        fetch(`/api/workout/${workoutId}`, {
-            method: 'DELETE'
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    showToast("Workout deleted successfully", "success");
-                    
-                    // Reload workouts
-                    loadAllWorkouts();
-                    
-                    // Clear workout details
-                    workoutDetails.innerHTML = "<p>Select a workout to view details.</p>";
-                    
-                    // Destroy chart if exists
-                    if (currentChart) {
-                        currentChart.destroy();
-                        currentChart = null;
-                    }
-                } else {
-                    showToast(`Error deleting workout: ${data.error || "Unknown error"}`, "error");
-                }
-            })
-            .catch(error => {
-                showToast(`Error deleting workout: ${error.message}`, "error");
-                console.error("Error deleting workout:", error);
-            });
-    }
-    
-    // Load user settings to get unit preference
-    function loadUserSettings() {
-        fetch("/api/user/profile")
-            .then(response => response.json())
-            .then(data => {
-                if (data.success && data.profile && data.profile.unit_system) {
-                    userUnitSystem = data.profile.unit_system;
-                    console.log("User unit system loaded:", userUnitSystem);
-                } else {
-                    console.warn("Could not load user unit preference, defaulting to metric.");
-                    userUnitSystem = "metric"; // Default if not found
-                }
-                // After loading settings, load workouts
-                loadAllWorkouts();
-            })
-            .catch(error => {
-                console.error("Error fetching user profile for unit system:", error);
-                userUnitSystem = "metric"; // Default on error
-                loadAllWorkouts();
-            });
-    }
-    
-    // Event listeners for pagination and sorting
-    prevPageBtn.addEventListener("click", () => {
-        if (currentPage > 1) {
-            currentPage--;
-            applySort();
-        }
-    });
-    
-    nextPageBtn.addEventListener("click", () => {
-        const totalPages = Math.ceil(totalWorkouts / pageSize);
-        if (currentPage < totalPages) {
-            currentPage++;
-            applySort();
-        }
-    });
-    
-    sortBySelect.addEventListener("change", () => {
-        currentPage = 1; // Reset to first page on sort change
-        applySort();
-    });
-    
-    // Initial load
-    loadUserSettings(); // Load settings first, then workouts
-
+;
 </script>
 {% endblock %}
 

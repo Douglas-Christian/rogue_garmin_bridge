@@ -28066,3 +28066,1163 @@ TypeError: unsupported type for timedelta seconds component: datetime.datetime
 2025-05-12 19:42:15,105 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:42:15] "GET /api/workout/4 HTTP/1.1" 200 -
 2025-05-12 19:42:16,860 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:42:16] "[33mGET /workout/4/fit HTTP/1.1[0m" 404 -
 2025-05-12 19:42:16,901 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:42:16] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-12 19:51:30,701 - root - INFO - Logging initialized at 2025-05-12T19:51:30.700296
+2025-05-12 19:51:30,701 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 19:51:30,890 - database - INFO - Database tables created
+2025-05-12 19:51:30,892 - database - INFO - Database tables created
+2025-05-12 19:51:30,892 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 19:51:30,893 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 19:51:30,893 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 19:51:30,894 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 19:51:30,894 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 19:51:30,894 - web - INFO - Using real FTMS devices
+2025-05-12 19:51:30,895 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 19:51:30,895 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 19:51:30,896 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 19:51:30,896 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 19:51:30,904 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 19:51:30,940 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-05-12 19:51:30,940 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-12 19:51:30,942 - werkzeug - INFO -  * Restarting with stat
+2025-05-12 19:51:31,546 - root - INFO - Logging initialized at 2025-05-12T19:51:31.546690
+2025-05-12 19:51:31,547 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 19:51:31,710 - database - INFO - Database tables created
+2025-05-12 19:51:31,711 - database - INFO - Database tables created
+2025-05-12 19:51:31,712 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 19:51:31,712 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 19:51:31,713 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 19:51:31,713 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 19:51:31,713 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 19:51:31,714 - web - INFO - Using real FTMS devices
+2025-05-12 19:51:31,714 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 19:51:31,714 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 19:51:31,715 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 19:51:31,715 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 19:51:31,722 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 19:51:31,746 - werkzeug - WARNING -  * Debugger is active!
+2025-05-12 19:51:31,748 - werkzeug - INFO -  * Debugger PIN: 114-811-535
+2025-05-12 19:51:42,790 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:51:42] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-12 19:51:47,730 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 19:51:47,731 - web - INFO - Sending workout 5 with 248 data points
+2025-05-12 19:51:47,735 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:51:47] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-12 19:51:49,330 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:51:49] "[33mGET /workout/5/fit HTTP/1.1[0m" 404 -
+2025-05-12 19:51:52,150 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:51:52] "[33mGET /workout/5/fit HTTP/1.1[0m" 404 -
+2025-05-12 19:51:53,266 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 19:51:53,268 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 19:51:53,268 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 19:51:53,270 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:51:53] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-12 19:51:56,103 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:51:56] "GET /history HTTP/1.1" 200 -
+2025-05-12 19:51:56,402 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:51:56] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-05-12 19:51:56,442 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:51:56] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-12 19:51:56,750 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 19:51:56,752 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 19:51:56,752 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 19:51:56,753 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:51:56] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-12 19:51:56,796 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:51:56] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-12 19:51:59,763 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 19:51:59,767 - web - INFO - Converting workout 4 to FIT file
+2025-05-12 19:51:59,767 - web - INFO - Workout type: bike
+2025-05-12 19:51:59,768 - web - INFO - Duration: 316
+2025-05-12 19:51:59,768 - web - INFO - Data points: 317
+2025-05-12 19:51:59,769 - fit_converter - INFO - Processing bike workout with 317 data points.
+2025-05-12 19:51:59,770 - fit_converter - INFO - Starting to add 317 record messages.
+2025-05-12 19:51:59,891 - fit_converter - INFO - Finished adding record messages.
+2025-05-12 19:51:59,921 - fit_converter - INFO - FIT file successfully created: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit
+2025-05-12 19:51:59,925 - workout_manager - INFO - Updating workout 4 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit
+2025-05-12 19:51:59,932 - database - INFO - Updated FIT file path for workout 4: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit
+2025-05-12 19:51:59,934 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:51:59] "POST /api/convert_fit/4 HTTP/1.1" 200 -
+2025-05-12 19:52:00,244 - web - INFO - Serving FIT file: bike_20250511_154804.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files
+2025-05-12 19:52:00,256 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:52:00] "GET /fit_files/bike_20250511_154804.fit HTTP/1.1" 200 -
+2025-05-12 19:52:05,480 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 19:52:05,483 - web - INFO - Converting workout 5 to FIT file
+2025-05-12 19:52:05,485 - web - INFO - Workout type: bike
+2025-05-12 19:52:05,486 - web - INFO - Duration: 248
+2025-05-12 19:52:05,486 - web - INFO - Data points: 248
+2025-05-12 19:52:05,487 - fit_converter - INFO - Processing bike workout with 248 data points.
+2025-05-12 19:52:05,488 - fit_converter - INFO - Starting to add 248 record messages.
+2025-05-12 19:52:05,585 - fit_converter - INFO - Finished adding record messages.
+2025-05-12 19:52:05,612 - fit_converter - INFO - FIT file successfully created: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_162109.fit
+2025-05-12 19:52:05,616 - workout_manager - INFO - Updating workout 5 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_162109.fit
+2025-05-12 19:52:05,618 - database - INFO - Updated FIT file path for workout 5: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_162109.fit
+2025-05-12 19:52:05,620 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:52:05] "POST /api/convert_fit/5 HTTP/1.1" 200 -
+2025-05-12 19:52:05,938 - web - INFO - Serving FIT file: bike_20250511_162109.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files
+2025-05-12 19:52:05,949 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 19:52:05] "GET /fit_files/bike_20250511_162109.fit HTTP/1.1" 200 -
+2025-05-12 20:03:36,478 - root - INFO - Logging initialized at 2025-05-12T20:03:36.478652
+2025-05-12 20:03:36,479 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 20:03:36,667 - database - INFO - Database tables created
+2025-05-12 20:03:36,669 - database - INFO - Database tables created
+2025-05-12 20:03:36,670 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 20:03:36,670 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 20:03:36,670 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 20:03:36,671 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 20:03:36,671 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 20:03:36,671 - web - INFO - Using real FTMS devices
+2025-05-12 20:03:36,672 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 20:03:36,672 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 20:03:36,673 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 20:03:36,673 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 20:03:36,680 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 20:03:36,714 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-05-12 20:03:36,714 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-12 20:03:36,716 - werkzeug - INFO -  * Restarting with stat
+2025-05-12 20:03:37,331 - root - INFO - Logging initialized at 2025-05-12T20:03:37.331944
+2025-05-12 20:03:37,332 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 20:03:37,516 - database - INFO - Database tables created
+2025-05-12 20:03:37,519 - database - INFO - Database tables created
+2025-05-12 20:03:37,520 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 20:03:37,520 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 20:03:37,521 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 20:03:37,521 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 20:03:37,521 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 20:03:37,523 - web - INFO - Using real FTMS devices
+2025-05-12 20:03:37,523 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 20:03:37,524 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 20:03:37,524 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 20:03:37,524 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 20:03:37,531 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 20:03:37,555 - werkzeug - WARNING -  * Debugger is active!
+2025-05-12 20:03:37,557 - werkzeug - INFO -  * Debugger PIN: 114-811-535
+2025-05-12 20:03:44,646 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:03:44] "GET /history HTTP/1.1" 200 -
+2025-05-12 20:03:44,713 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:03:44] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-05-12 20:03:44,897 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:03:44] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-12 20:03:45,205 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 20:03:45,207 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 20:03:45,207 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 20:03:45,208 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:03:45] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-12 20:03:45,284 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:03:45] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-12 20:03:45,758 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:03:45] "GET /history HTTP/1.1" 200 -
+2025-05-12 20:03:46,068 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:03:46] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-05-12 20:03:46,099 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:03:46] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-12 20:03:46,409 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 20:03:46,410 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 20:03:46,411 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 20:03:46,411 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:03:46] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-12 20:03:46,470 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:03:46] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-12 20:03:47,688 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:03:47,689 - web - INFO - Sending workout 5 with 248 data points
+2025-05-12 20:03:47,693 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:03:47] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-12 20:03:50,189 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 20:03:50,190 - web - INFO - Sending workout 4 with 317 data points
+2025-05-12 20:03:50,195 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:03:50] "GET /api/workout/4 HTTP/1.1" 200 -
+2025-05-12 20:03:56,094 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:03:56] "GET /history HTTP/1.1" 200 -
+2025-05-12 20:03:56,402 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:03:56] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-05-12 20:03:56,433 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:03:56] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-12 20:03:56,741 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 20:03:56,742 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 20:03:56,743 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 20:03:56,743 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:03:56] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-12 20:03:56,788 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:03:56] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-12 20:03:58,555 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 20:03:58,557 - web - INFO - Sending workout 4 with 317 data points
+2025-05-12 20:03:58,561 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:03:58] "GET /api/workout/4 HTTP/1.1" 200 -
+2025-05-12 20:04:00,353 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 20:04:00,357 - web - INFO - Converting workout 4 to FIT file
+2025-05-12 20:04:00,357 - web - INFO - Workout type: bike
+2025-05-12 20:04:00,358 - web - INFO - Duration: 316
+2025-05-12 20:04:00,358 - web - INFO - Data points: 317
+2025-05-12 20:04:00,359 - fit_converter - INFO - Processing bike workout with 317 data points.
+2025-05-12 20:04:00,359 - fit_converter - ERROR - Error during FIT file conversion: unsupported operand type(s) for +: 'datetime.datetime' and 'int'
+2025-05-12 20:04:00,382 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 195, in convert_workout
+    file_id_mesg.time_created = start_time_dt_utc # Use datetime object
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 228, in set_value
+    encoded_value = self.encode_value(value, sub_field)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 271, in encode_value
+    encoded_value = self.scale_offset_value(value, scale, offset)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 212, in scale_offset_value
+    encoded_value = round((value + offset) * scale)
+                           ~~~~~~^~~~~~~~
+TypeError: unsupported operand type(s) for +: 'datetime.datetime' and 'int'
+
+2025-05-12 20:04:00,383 - web - ERROR - FIT conversion returned None for workout 4
+2025-05-12 20:04:00,385 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:04:00] "POST /api/convert_fit/4 HTTP/1.1" 200 -
+2025-05-12 20:04:19,564 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:04:19] "GET / HTTP/1.1" 200 -
+2025-05-12 20:04:19,825 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:04:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-12 20:04:19,915 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:04:19] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-12 20:04:20,239 - web - INFO - Getting workouts with limit=10, offset=0
+2025-05-12 20:04:20,241 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:04:20] "GET /api/status HTTP/1.1" 200 -
+2025-05-12 20:04:20,242 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 20:04:20,243 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 20:04:20,244 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:04:20] "GET /api/workouts?limit=10 HTTP/1.1" 200 -
+2025-05-12 20:04:21,923 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:04:21] "GET /api/status HTTP/1.1" 200 -
+2025-05-12 20:04:22,264 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:04:22] "GET /history HTTP/1.1" 200 -
+2025-05-12 20:04:22,388 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:04:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-12 20:04:22,526 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:04:22] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-12 20:04:22,600 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 20:04:22,602 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 20:04:22,602 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 20:04:22,603 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:04:22] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-12 20:04:23,756 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:04:23,758 - web - INFO - Sending workout 5 with 248 data points
+2025-05-12 20:04:23,761 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:04:23] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-12 20:04:25,343 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 20:04:25,344 - web - INFO - Sending workout 4 with 317 data points
+2025-05-12 20:04:25,350 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:04:25] "GET /api/workout/4 HTTP/1.1" 200 -
+2025-05-12 20:04:25,955 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:04:25,960 - web - INFO - Converting workout 5 to FIT file
+2025-05-12 20:04:25,961 - web - INFO - Workout type: bike
+2025-05-12 20:04:25,962 - web - INFO - Duration: 248
+2025-05-12 20:04:25,962 - web - INFO - Data points: 248
+2025-05-12 20:04:25,963 - fit_converter - INFO - Processing bike workout with 248 data points.
+2025-05-12 20:04:25,964 - fit_converter - ERROR - Error during FIT file conversion: unsupported operand type(s) for +: 'datetime.datetime' and 'int'
+2025-05-12 20:04:25,966 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 195, in convert_workout
+    file_id_mesg.time_created = start_time_dt_utc # Use datetime object
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 228, in set_value
+    encoded_value = self.encode_value(value, sub_field)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 271, in encode_value
+    encoded_value = self.scale_offset_value(value, scale, offset)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 212, in scale_offset_value
+    encoded_value = round((value + offset) * scale)
+                           ~~~~~~^~~~~~~~
+TypeError: unsupported operand type(s) for +: 'datetime.datetime' and 'int'
+
+2025-05-12 20:04:25,967 - web - ERROR - FIT conversion returned None for workout 5
+2025-05-12 20:04:25,968 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:04:25] "POST /api/convert_fit/5 HTTP/1.1" 200 -
+2025-05-12 20:04:28,054 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 20:04:28,057 - web - INFO - Converting workout 4 to FIT file
+2025-05-12 20:04:28,058 - web - INFO - Workout type: bike
+2025-05-12 20:04:28,058 - web - INFO - Duration: 316
+2025-05-12 20:04:28,059 - web - INFO - Data points: 317
+2025-05-12 20:04:28,059 - fit_converter - INFO - Processing bike workout with 317 data points.
+2025-05-12 20:04:28,061 - fit_converter - ERROR - Error during FIT file conversion: unsupported operand type(s) for +: 'datetime.datetime' and 'int'
+2025-05-12 20:04:28,061 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 195, in convert_workout
+    file_id_mesg.time_created = start_time_dt_utc # Use datetime object
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 228, in set_value
+    encoded_value = self.encode_value(value, sub_field)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 271, in encode_value
+    encoded_value = self.scale_offset_value(value, scale, offset)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 212, in scale_offset_value
+    encoded_value = round((value + offset) * scale)
+                           ~~~~~~^~~~~~~~
+TypeError: unsupported operand type(s) for +: 'datetime.datetime' and 'int'
+
+2025-05-12 20:04:28,063 - web - ERROR - FIT conversion returned None for workout 4
+2025-05-12 20:04:28,064 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:04:28] "POST /api/convert_fit/4 HTTP/1.1" 200 -
+2025-05-12 20:08:28,557 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-05-12 20:08:28,685 - werkzeug - INFO -  * Restarting with stat
+2025-05-12 20:08:29,379 - root - INFO - Logging initialized at 2025-05-12T20:08:29.379054
+2025-05-12 20:08:29,380 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 20:08:29,573 - database - INFO - Database tables created
+2025-05-12 20:08:29,575 - database - INFO - Database tables created
+2025-05-12 20:08:29,575 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 20:08:29,575 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 20:08:29,577 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 20:08:29,577 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 20:08:29,578 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 20:08:29,578 - web - INFO - Using real FTMS devices
+2025-05-12 20:08:29,579 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 20:08:29,579 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 20:08:29,579 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 20:08:29,580 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 20:08:29,586 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 20:08:29,609 - werkzeug - WARNING -  * Debugger is active!
+2025-05-12 20:08:29,611 - werkzeug - INFO -  * Debugger PIN: 114-811-535
+2025-05-12 20:08:38,026 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:08:38,027 - web - INFO - Sending workout 5 with 248 data points
+2025-05-12 20:08:38,031 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:08:38] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-12 20:08:38,794 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 20:08:38,796 - web - INFO - Sending workout 4 with 317 data points
+2025-05-12 20:08:38,800 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:08:38] "GET /api/workout/4 HTTP/1.1" 200 -
+2025-05-12 20:08:41,224 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:08:41] "GET /history HTTP/1.1" 200 -
+2025-05-12 20:08:41,279 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:08:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-12 20:08:41,478 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:08:41] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-12 20:08:41,786 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 20:08:41,788 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 20:08:41,788 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 20:08:41,789 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:08:41] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-12 20:08:43,048 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:08:43,048 - web - INFO - Sending workout 5 with 248 data points
+2025-05-12 20:08:43,053 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:08:43] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-12 20:08:53,756 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:08:53] "GET / HTTP/1.1" 200 -
+2025-05-12 20:08:53,782 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:08:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-12 20:08:54,018 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:08:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-12 20:08:54,343 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:08:54] "GET /api/status HTTP/1.1" 200 -
+2025-05-12 20:08:54,343 - web - INFO - Getting workouts with limit=10, offset=0
+2025-05-12 20:08:54,345 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 20:08:54,346 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 20:08:54,347 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:08:54] "GET /api/workouts?limit=10 HTTP/1.1" 200 -
+2025-05-12 20:08:56,031 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:08:56] "GET /history HTTP/1.1" 200 -
+2025-05-12 20:08:56,350 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:08:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-12 20:08:56,350 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:08:56] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-12 20:08:56,363 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 20:08:56,364 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 20:08:56,365 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 20:08:56,366 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:08:56] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-12 20:08:59,419 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:08:59,420 - web - INFO - Sending workout 5 with 248 data points
+2025-05-12 20:08:59,424 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:08:59] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-12 20:09:00,840 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:09:00,844 - web - INFO - Converting workout 5 to FIT file
+2025-05-12 20:09:00,845 - web - INFO - Workout type: bike
+2025-05-12 20:09:00,845 - web - INFO - Duration: 248
+2025-05-12 20:09:00,845 - web - INFO - Data points: 248
+2025-05-12 20:09:00,846 - fit_converter - INFO - Processing bike workout with 248 data points.
+2025-05-12 20:09:00,847 - fit_converter - ERROR - Error during FIT file conversion: time_created encoded value -629949671 is not in valid range [0, 4294967295]
+2025-05-12 20:09:00,850 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 206, in convert_workout
+    file_id_mesg.time_created = fit_start_time
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: time_created encoded value -629949671 is not in valid range [0, 4294967295]
+
+2025-05-12 20:09:00,850 - web - ERROR - FIT conversion returned None for workout 5
+2025-05-12 20:09:00,851 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:09:00] "POST /api/convert_fit/5 HTTP/1.1" 200 -
+2025-05-12 20:09:11,741 - root - INFO - Logging initialized at 2025-05-12T20:09:11.741227
+2025-05-12 20:09:11,741 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 20:09:11,900 - database - INFO - Database tables created
+2025-05-12 20:09:11,902 - database - INFO - Database tables created
+2025-05-12 20:09:11,902 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 20:09:11,903 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 20:09:11,903 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 20:09:11,903 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 20:09:11,903 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 20:09:11,903 - web - INFO - Using real FTMS devices
+2025-05-12 20:09:11,904 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 20:09:11,904 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 20:09:11,904 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 20:09:11,904 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 20:09:11,913 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 20:09:11,949 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-05-12 20:09:11,949 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-12 20:09:11,951 - werkzeug - INFO -  * Restarting with stat
+2025-05-12 20:09:12,520 - root - INFO - Logging initialized at 2025-05-12T20:09:12.520129
+2025-05-12 20:09:12,521 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 20:09:12,683 - database - INFO - Database tables created
+2025-05-12 20:09:12,684 - database - INFO - Database tables created
+2025-05-12 20:09:12,685 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 20:09:12,685 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 20:09:12,685 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 20:09:12,685 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 20:09:12,686 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 20:09:12,686 - web - INFO - Using real FTMS devices
+2025-05-12 20:09:12,686 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 20:09:12,687 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 20:09:12,687 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 20:09:12,687 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 20:09:12,695 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 20:09:12,716 - werkzeug - WARNING -  * Debugger is active!
+2025-05-12 20:09:12,719 - werkzeug - INFO -  * Debugger PIN: 114-811-535
+2025-05-12 20:09:16,861 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:09:16] "GET /history HTTP/1.1" 200 -
+2025-05-12 20:09:16,912 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:09:16] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-05-12 20:09:17,111 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:09:17] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-12 20:09:17,423 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 20:09:17,424 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 20:09:17,425 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 20:09:17,426 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:09:17] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-12 20:09:17,471 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:09:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-12 20:09:19,115 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:09:19,116 - web - INFO - Sending workout 5 with 248 data points
+2025-05-12 20:09:19,121 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:09:19] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-12 20:09:20,882 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:09:20,885 - web - INFO - Converting workout 5 to FIT file
+2025-05-12 20:09:20,886 - web - INFO - Workout type: bike
+2025-05-12 20:09:20,886 - web - INFO - Duration: 248
+2025-05-12 20:09:20,886 - web - INFO - Data points: 248
+2025-05-12 20:09:20,886 - fit_converter - INFO - Processing bike workout with 248 data points.
+2025-05-12 20:09:20,889 - fit_converter - ERROR - Error during FIT file conversion: time_created encoded value -629949671 is not in valid range [0, 4294967295]
+2025-05-12 20:09:20,891 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 206, in convert_workout
+    file_id_mesg.time_created = fit_start_time
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: time_created encoded value -629949671 is not in valid range [0, 4294967295]
+
+2025-05-12 20:09:20,892 - web - ERROR - FIT conversion returned None for workout 5
+2025-05-12 20:09:20,893 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:09:20] "POST /api/convert_fit/5 HTTP/1.1" 200 -
+2025-05-12 20:09:21,754 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 20:09:21,755 - web - INFO - Sending workout 4 with 317 data points
+2025-05-12 20:09:21,760 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:09:21] "GET /api/workout/4 HTTP/1.1" 200 -
+2025-05-12 20:09:23,073 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 20:09:23,077 - web - INFO - Converting workout 4 to FIT file
+2025-05-12 20:09:23,078 - web - INFO - Workout type: bike
+2025-05-12 20:09:23,078 - web - INFO - Duration: 316
+2025-05-12 20:09:23,080 - web - INFO - Data points: 317
+2025-05-12 20:09:23,080 - fit_converter - INFO - Processing bike workout with 317 data points.
+2025-05-12 20:09:23,081 - fit_converter - ERROR - Error during FIT file conversion: time_created encoded value -629949673 is not in valid range [0, 4294967295]
+2025-05-12 20:09:23,082 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 206, in convert_workout
+    file_id_mesg.time_created = fit_start_time
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: time_created encoded value -629949673 is not in valid range [0, 4294967295]
+
+2025-05-12 20:09:23,083 - web - ERROR - FIT conversion returned None for workout 4
+2025-05-12 20:09:23,084 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:09:23] "POST /api/convert_fit/4 HTTP/1.1" 200 -
+2025-05-12 20:18:06,546 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dougl\\rogue_garmin_bridge\\src\\fit\\fit_converter.py', reloading
+2025-05-12 20:18:06,650 - werkzeug - INFO -  * Restarting with stat
+2025-05-12 20:18:07,345 - root - INFO - Logging initialized at 2025-05-12T20:18:07.345277
+2025-05-12 20:18:07,346 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 20:25:13,989 - root - INFO - Logging initialized at 2025-05-12T20:25:13.989735
+2025-05-12 20:25:13,989 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 20:25:14,192 - database - INFO - Database tables created
+2025-05-12 20:25:14,193 - database - INFO - Database tables created
+2025-05-12 20:25:14,194 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 20:25:14,194 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 20:25:14,195 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 20:25:14,195 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 20:25:14,196 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 20:25:14,196 - web - INFO - Using real FTMS devices
+2025-05-12 20:25:14,197 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 20:25:14,197 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 20:25:14,198 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 20:25:14,198 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 20:25:14,205 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 20:25:14,246 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-05-12 20:25:14,247 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-12 20:25:14,249 - werkzeug - INFO -  * Restarting with stat
+2025-05-12 20:25:14,858 - root - INFO - Logging initialized at 2025-05-12T20:25:14.858144
+2025-05-12 20:25:14,858 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 20:25:15,025 - database - INFO - Database tables created
+2025-05-12 20:25:15,027 - database - INFO - Database tables created
+2025-05-12 20:25:15,027 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 20:25:15,028 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 20:25:15,028 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 20:25:15,029 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 20:25:15,029 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 20:25:15,029 - web - INFO - Using real FTMS devices
+2025-05-12 20:25:15,030 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 20:25:15,030 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 20:25:15,031 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 20:25:15,031 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 20:25:15,037 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 20:25:15,060 - werkzeug - WARNING -  * Debugger is active!
+2025-05-12 20:25:15,062 - werkzeug - INFO -  * Debugger PIN: 114-811-535
+2025-05-12 20:25:20,528 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:20] "GET /history HTTP/1.1" 200 -
+2025-05-12 20:25:20,585 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:20] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-05-12 20:25:20,761 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:20] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-12 20:25:21,077 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 20:25:21,078 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 20:25:21,078 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 20:25:21,079 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:21] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-12 20:25:21,136 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:21] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-12 20:25:22,440 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:25:22,441 - web - INFO - Sending workout 5 with 248 data points
+2025-05-12 20:25:22,445 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:22] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-12 20:25:24,462 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:25:24,466 - web - INFO - Converting workout 5 to FIT file
+2025-05-12 20:25:24,466 - web - INFO - Workout type: bike
+2025-05-12 20:25:24,467 - web - INFO - Duration: 248
+2025-05-12 20:25:24,467 - web - INFO - Data points: 248
+2025-05-12 20:25:24,467 - fit_converter - INFO - Processing bike workout with 248 data points.
+2025-05-12 20:25:24,469 - fit_converter - INFO - Using first absolute data point timestamp as activity start: 2025-05-11 20:21:10.594936+00:00
+2025-05-12 20:25:24,469 - fit_converter - ERROR - FIT Conversion Exception: time_created encoded value -629949671 is not in valid range [0, 4294967295]
+2025-05-12 20:25:24,470 - fit_converter - ERROR - Full Traceback Below:
+2025-05-12 20:25:24,472 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 217, in convert_workout
+    file_id_mesg.time_created = fit_start_time
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: time_created encoded value -629949671 is not in valid range [0, 4294967295]
+
+2025-05-12 20:25:24,473 - web - ERROR - FIT conversion returned None for workout 5
+2025-05-12 20:25:24,475 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:24] "POST /api/convert_fit/5 HTTP/1.1" 200 -
+2025-05-12 20:25:25,904 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 20:25:25,905 - web - INFO - Sending workout 4 with 317 data points
+2025-05-12 20:25:25,910 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:25] "GET /api/workout/4 HTTP/1.1" 200 -
+2025-05-12 20:25:27,201 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 20:25:27,206 - web - INFO - Converting workout 4 to FIT file
+2025-05-12 20:25:27,206 - web - INFO - Workout type: bike
+2025-05-12 20:25:27,207 - web - INFO - Duration: 316
+2025-05-12 20:25:27,208 - web - INFO - Data points: 317
+2025-05-12 20:25:27,209 - fit_converter - INFO - Processing bike workout with 317 data points.
+2025-05-12 20:25:27,210 - fit_converter - INFO - Using first absolute data point timestamp as activity start: 2025-05-11 19:48:04.823739+00:00
+2025-05-12 20:25:27,211 - fit_converter - ERROR - FIT Conversion Exception: time_created encoded value -629949673 is not in valid range [0, 4294967295]
+2025-05-12 20:25:27,212 - fit_converter - ERROR - Full Traceback Below:
+2025-05-12 20:25:27,212 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 217, in convert_workout
+    file_id_mesg.time_created = fit_start_time
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: time_created encoded value -629949673 is not in valid range [0, 4294967295]
+
+2025-05-12 20:25:27,213 - web - ERROR - FIT conversion returned None for workout 4
+2025-05-12 20:25:27,214 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:27] "POST /api/convert_fit/4 HTTP/1.1" 200 -
+2025-05-12 20:25:33,079 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:33] "GET / HTTP/1.1" 200 -
+2025-05-12 20:25:33,389 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-12 20:25:33,435 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:33] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-12 20:25:33,758 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:33] "GET /api/status HTTP/1.1" 200 -
+2025-05-12 20:25:33,759 - web - INFO - Getting workouts with limit=10, offset=0
+2025-05-12 20:25:33,760 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 20:25:33,761 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 20:25:33,762 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:33] "GET /api/workouts?limit=10 HTTP/1.1" 200 -
+2025-05-12 20:25:35,355 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:35] "GET /history HTTP/1.1" 200 -
+2025-05-12 20:25:35,672 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-12 20:25:35,702 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-12 20:25:36,014 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 20:25:36,015 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 20:25:36,017 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 20:25:36,018 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:36] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-12 20:25:38,163 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:25:38,164 - web - INFO - Sending workout 5 with 248 data points
+2025-05-12 20:25:38,169 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:38] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-12 20:25:40,042 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:25:40,047 - web - INFO - Converting workout 5 to FIT file
+2025-05-12 20:25:40,048 - web - INFO - Workout type: bike
+2025-05-12 20:25:40,048 - web - INFO - Duration: 248
+2025-05-12 20:25:40,049 - web - INFO - Data points: 248
+2025-05-12 20:25:40,049 - fit_converter - INFO - Processing bike workout with 248 data points.
+2025-05-12 20:25:40,050 - fit_converter - INFO - Using first absolute data point timestamp as activity start: 2025-05-11 20:21:10.594936+00:00
+2025-05-12 20:25:40,051 - fit_converter - ERROR - FIT Conversion Exception: time_created encoded value -629949671 is not in valid range [0, 4294967295]
+2025-05-12 20:25:40,052 - fit_converter - ERROR - Full Traceback Below:
+2025-05-12 20:25:40,053 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 217, in convert_workout
+    file_id_mesg.time_created = fit_start_time
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: time_created encoded value -629949671 is not in valid range [0, 4294967295]
+
+2025-05-12 20:25:40,054 - web - ERROR - FIT conversion returned None for workout 5
+2025-05-12 20:25:40,055 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:40] "POST /api/convert_fit/5 HTTP/1.1" 200 -
+2025-05-12 20:25:41,016 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 20:25:41,017 - web - INFO - Sending workout 4 with 317 data points
+2025-05-12 20:25:41,023 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:41] "GET /api/workout/4 HTTP/1.1" 200 -
+2025-05-12 20:25:42,636 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 20:25:42,640 - web - INFO - Converting workout 4 to FIT file
+2025-05-12 20:25:42,641 - web - INFO - Workout type: bike
+2025-05-12 20:25:42,642 - web - INFO - Duration: 316
+2025-05-12 20:25:42,642 - web - INFO - Data points: 317
+2025-05-12 20:25:42,643 - fit_converter - INFO - Processing bike workout with 317 data points.
+2025-05-12 20:25:42,643 - fit_converter - INFO - Using first absolute data point timestamp as activity start: 2025-05-11 19:48:04.823739+00:00
+2025-05-12 20:25:42,644 - fit_converter - ERROR - FIT Conversion Exception: time_created encoded value -629949673 is not in valid range [0, 4294967295]
+2025-05-12 20:25:42,645 - fit_converter - ERROR - Full Traceback Below:
+2025-05-12 20:25:42,646 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 217, in convert_workout
+    file_id_mesg.time_created = fit_start_time
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: time_created encoded value -629949673 is not in valid range [0, 4294967295]
+
+2025-05-12 20:25:42,646 - web - ERROR - FIT conversion returned None for workout 4
+2025-05-12 20:25:42,647 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:25:42] "POST /api/convert_fit/4 HTTP/1.1" 200 -
+2025-05-12 20:32:14,401 - root - INFO - Logging initialized at 2025-05-12T20:32:14.401274
+2025-05-12 20:32:14,402 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 20:32:14,592 - database - INFO - Database tables created
+2025-05-12 20:32:14,594 - database - INFO - Database tables created
+2025-05-12 20:32:14,595 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 20:32:14,595 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 20:32:14,597 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 20:32:14,597 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 20:32:14,598 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 20:32:14,598 - web - INFO - Using real FTMS devices
+2025-05-12 20:32:14,598 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 20:32:14,599 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 20:32:14,599 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 20:32:14,601 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 20:32:14,607 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 20:32:14,647 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-05-12 20:32:14,647 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-12 20:32:14,649 - werkzeug - INFO -  * Restarting with stat
+2025-05-12 20:32:15,305 - root - INFO - Logging initialized at 2025-05-12T20:32:15.304339
+2025-05-12 20:32:15,305 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 20:32:15,484 - database - INFO - Database tables created
+2025-05-12 20:32:15,485 - database - INFO - Database tables created
+2025-05-12 20:32:15,486 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 20:32:15,487 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 20:32:15,487 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 20:32:15,487 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 20:32:15,488 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 20:32:15,488 - web - INFO - Using real FTMS devices
+2025-05-12 20:32:15,488 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 20:32:15,489 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 20:32:15,489 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 20:32:15,489 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 20:32:15,498 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 20:32:15,522 - werkzeug - WARNING -  * Debugger is active!
+2025-05-12 20:32:15,525 - werkzeug - INFO -  * Debugger PIN: 114-811-535
+2025-05-12 20:32:18,464 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:32:18] "GET /history HTTP/1.1" 200 -
+2025-05-12 20:32:18,517 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:32:18] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-05-12 20:32:18,718 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:32:18] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-12 20:32:19,030 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 20:32:19,031 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 20:32:19,032 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 20:32:19,032 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:32:19] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-12 20:32:19,093 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:32:19] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-12 20:32:20,539 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:32:20,540 - web - INFO - Sending workout 5 with 248 data points
+2025-05-12 20:32:20,544 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:32:20] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-12 20:32:21,815 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:32:21,823 - web - INFO - Converting workout 5 to FIT file
+2025-05-12 20:32:21,823 - web - INFO - Workout type: bike
+2025-05-12 20:32:21,824 - web - INFO - Duration: 248
+2025-05-12 20:32:21,824 - web - INFO - Data points: 248
+2025-05-12 20:32:21,825 - fit_converter - INFO - Processing bike workout with 248 data points.
+2025-05-12 20:32:21,825 - fit_converter - INFO - Using first absolute data point timestamp as activity start: 2025-05-11 20:21:10.594936+00:00
+2025-05-12 20:32:21,827 - fit_converter - ERROR - FIT Conversion Exception: time_created encoded value -629949671 is not in valid range [0, 4294967295]
+2025-05-12 20:32:21,829 - fit_converter - ERROR - Full Traceback Below:
+2025-05-12 20:32:21,831 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 236, in convert_workout
+    file_id_mesg.time_created = fit_start_time
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: time_created encoded value -629949671 is not in valid range [0, 4294967295]
+
+2025-05-12 20:32:21,832 - web - ERROR - FIT conversion returned None for workout 5
+2025-05-12 20:32:21,833 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:32:21] "POST /api/convert_fit/5 HTTP/1.1" 200 -
+2025-05-12 20:32:22,721 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 20:32:22,722 - web - INFO - Sending workout 4 with 317 data points
+2025-05-12 20:32:22,725 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:32:22] "GET /api/workout/4 HTTP/1.1" 200 -
+2025-05-12 20:32:23,726 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 20:32:23,730 - web - INFO - Converting workout 4 to FIT file
+2025-05-12 20:32:23,730 - web - INFO - Workout type: bike
+2025-05-12 20:32:23,731 - web - INFO - Duration: 316
+2025-05-12 20:32:23,731 - web - INFO - Data points: 317
+2025-05-12 20:32:23,733 - fit_converter - INFO - Processing bike workout with 317 data points.
+2025-05-12 20:32:23,734 - fit_converter - INFO - Using first absolute data point timestamp as activity start: 2025-05-11 19:48:04.823739+00:00
+2025-05-12 20:32:23,735 - fit_converter - ERROR - FIT Conversion Exception: time_created encoded value -629949673 is not in valid range [0, 4294967295]
+2025-05-12 20:32:23,735 - fit_converter - ERROR - Full Traceback Below:
+2025-05-12 20:32:23,737 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 236, in convert_workout
+    file_id_mesg.time_created = fit_start_time
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: time_created encoded value -629949673 is not in valid range [0, 4294967295]
+
+2025-05-12 20:32:23,737 - web - ERROR - FIT conversion returned None for workout 4
+2025-05-12 20:32:23,740 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:32:23] "POST /api/convert_fit/4 HTTP/1.1" 200 -
+2025-05-12 20:42:02,301 - root - INFO - Logging initialized at 2025-05-12T20:42:02.301030
+2025-05-12 20:42:02,301 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 20:42:02,487 - database - INFO - Database tables created
+2025-05-12 20:42:02,488 - database - INFO - Database tables created
+2025-05-12 20:42:02,489 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 20:42:02,490 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 20:42:02,490 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 20:42:02,491 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 20:42:02,491 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 20:42:02,491 - web - INFO - Using real FTMS devices
+2025-05-12 20:42:02,492 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 20:42:02,492 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 20:42:02,493 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 20:42:02,493 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 20:42:02,500 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 20:42:02,538 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-05-12 20:42:02,539 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-12 20:42:02,542 - werkzeug - INFO -  * Restarting with stat
+2025-05-12 20:42:03,127 - root - INFO - Logging initialized at 2025-05-12T20:42:03.127035
+2025-05-12 20:42:03,127 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 20:42:03,295 - database - INFO - Database tables created
+2025-05-12 20:42:03,296 - database - INFO - Database tables created
+2025-05-12 20:42:03,297 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 20:42:03,298 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 20:42:03,298 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 20:42:03,299 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 20:42:03,299 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 20:42:03,299 - web - INFO - Using real FTMS devices
+2025-05-12 20:42:03,299 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 20:42:03,300 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 20:42:03,300 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 20:42:03,300 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 20:42:03,306 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 20:42:03,329 - werkzeug - WARNING -  * Debugger is active!
+2025-05-12 20:42:03,332 - werkzeug - INFO -  * Debugger PIN: 114-811-535
+2025-05-12 20:42:08,420 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:42:08] "GET /history HTTP/1.1" 200 -
+2025-05-12 20:42:08,485 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:42:08] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-05-12 20:42:08,670 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:42:08] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-12 20:42:08,978 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 20:42:08,979 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 20:42:08,981 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 20:42:08,982 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:42:08] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-12 20:42:09,042 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:42:09] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-12 20:42:10,742 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:42:10,743 - web - INFO - Sending workout 5 with 248 data points
+2025-05-12 20:42:10,748 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:42:10] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-12 20:42:12,940 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:42:12,945 - web - INFO - Converting workout 5 to FIT file
+2025-05-12 20:42:12,946 - web - INFO - Workout type: bike
+2025-05-12 20:42:12,946 - web - INFO - Duration: 248
+2025-05-12 20:42:12,946 - web - INFO - Data points: 248
+2025-05-12 20:42:12,947 - fit_converter - INFO - Processing bike workout with 248 data points.
+2025-05-12 20:42:12,947 - fit_converter - INFO - Activity start time (UTC): 2025-05-11 20:21:10.594936+00:00
+2025-05-12 20:42:13,045 - fit_converter - ERROR - FIT Conversion Exception: type object 'ActivityType' has no attribute 'MANUAL'
+2025-05-12 20:42:13,047 - fit_converter - ERROR - Full Traceback Below:
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 326, in convert_workout
+    activity_mesg.type = ActivityType.MANUAL
+                         ^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'ActivityType' has no attribute 'MANUAL'
+
+2025-05-12 20:42:13,052 - web - ERROR - FIT conversion returned None for workout 5
+2025-05-12 20:42:13,053 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:42:13] "POST /api/convert_fit/5 HTTP/1.1" 200 -
+2025-05-12 20:42:22,370 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:42:22] "GET / HTTP/1.1" 200 -
+2025-05-12 20:42:22,677 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:42:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-12 20:42:22,724 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:42:22] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-12 20:42:23,048 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:42:23] "GET /api/status HTTP/1.1" 200 -
+2025-05-12 20:42:23,048 - web - INFO - Getting workouts with limit=10, offset=0
+2025-05-12 20:42:23,050 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 20:42:23,050 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 20:42:23,052 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:42:23] "GET /api/workouts?limit=10 HTTP/1.1" 200 -
+2025-05-12 20:42:24,733 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:42:24] "GET /api/status HTTP/1.1" 200 -
+2025-05-12 20:42:25,252 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:42:25] "GET /history HTTP/1.1" 200 -
+2025-05-12 20:42:25,484 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:42:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-12 20:42:25,515 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:42:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-12 20:42:25,591 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 20:42:25,592 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 20:42:25,592 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 20:42:25,593 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:42:25] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-12 20:42:26,589 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:42:26,590 - web - INFO - Sending workout 5 with 248 data points
+2025-05-12 20:42:26,596 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:42:26] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-12 20:42:28,026 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:42:28,030 - web - INFO - Converting workout 5 to FIT file
+2025-05-12 20:42:28,032 - web - INFO - Workout type: bike
+2025-05-12 20:42:28,032 - web - INFO - Duration: 248
+2025-05-12 20:42:28,033 - web - INFO - Data points: 248
+2025-05-12 20:42:28,033 - fit_converter - INFO - Processing bike workout with 248 data points.
+2025-05-12 20:42:28,033 - fit_converter - INFO - Activity start time (UTC): 2025-05-11 20:21:10.594936+00:00
+2025-05-12 20:42:28,146 - fit_converter - ERROR - FIT Conversion Exception: type object 'ActivityType' has no attribute 'MANUAL'
+2025-05-12 20:42:28,147 - fit_converter - ERROR - Full Traceback Below:
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 326, in convert_workout
+    activity_mesg.type = ActivityType.MANUAL
+                         ^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'ActivityType' has no attribute 'MANUAL'
+
+2025-05-12 20:42:28,153 - web - ERROR - FIT conversion returned None for workout 5
+2025-05-12 20:42:28,154 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:42:28] "POST /api/convert_fit/5 HTTP/1.1" 200 -
+2025-05-12 20:42:28,965 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 20:42:28,966 - web - INFO - Sending workout 4 with 317 data points
+2025-05-12 20:42:28,970 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:42:28] "GET /api/workout/4 HTTP/1.1" 200 -
+2025-05-12 20:42:30,081 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 20:42:30,086 - web - INFO - Converting workout 4 to FIT file
+2025-05-12 20:42:30,087 - web - INFO - Workout type: bike
+2025-05-12 20:42:30,087 - web - INFO - Duration: 316
+2025-05-12 20:42:30,088 - web - INFO - Data points: 317
+2025-05-12 20:42:30,088 - fit_converter - INFO - Processing bike workout with 317 data points.
+2025-05-12 20:42:30,089 - fit_converter - INFO - Activity start time (UTC): 2025-05-11 19:48:04.823739+00:00
+2025-05-12 20:42:30,213 - fit_converter - ERROR - FIT Conversion Exception: type object 'ActivityType' has no attribute 'MANUAL'
+2025-05-12 20:42:30,215 - fit_converter - ERROR - Full Traceback Below:
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 326, in convert_workout
+    activity_mesg.type = ActivityType.MANUAL
+                         ^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'ActivityType' has no attribute 'MANUAL'
+
+2025-05-12 20:42:30,219 - web - ERROR - FIT conversion returned None for workout 4
+2025-05-12 20:42:30,221 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:42:30] "POST /api/convert_fit/4 HTTP/1.1" 200 -
+2025-05-12 20:45:44,548 - root - INFO - Logging initialized at 2025-05-12T20:45:44.548726
+2025-05-12 20:45:44,549 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 20:45:44,737 - database - INFO - Database tables created
+2025-05-12 20:45:44,739 - database - INFO - Database tables created
+2025-05-12 20:45:44,743 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 20:45:44,745 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 20:45:44,745 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 20:45:44,745 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 20:45:44,746 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 20:45:44,746 - web - INFO - Using real FTMS devices
+2025-05-12 20:45:44,746 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 20:45:44,746 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 20:45:44,747 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 20:45:44,747 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 20:45:44,754 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 20:45:44,787 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-05-12 20:45:44,789 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-12 20:45:44,791 - werkzeug - INFO -  * Restarting with stat
+2025-05-12 20:45:45,341 - root - INFO - Logging initialized at 2025-05-12T20:45:45.341987
+2025-05-12 20:45:45,342 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-12 20:45:45,517 - database - INFO - Database tables created
+2025-05-12 20:45:45,520 - database - INFO - Database tables created
+2025-05-12 20:45:45,521 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-12 20:45:45,521 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-12 20:45:45,521 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-12 20:45:45,522 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-12 20:45:45,522 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-12 20:45:45,522 - web - INFO - Using real FTMS devices
+2025-05-12 20:45:45,523 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-12 20:45:45,523 - web - INFO - Starting background asyncio loop thread...
+2025-05-12 20:45:45,524 - web - INFO - Background thread started. Creating new event loop.
+2025-05-12 20:45:45,524 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-12 20:45:45,530 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-12 20:45:45,554 - werkzeug - WARNING -  * Debugger is active!
+2025-05-12 20:45:45,557 - werkzeug - INFO -  * Debugger PIN: 114-811-535
+2025-05-12 20:45:49,618 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:45:49,619 - web - INFO - Sending workout 5 with 248 data points
+2025-05-12 20:45:49,623 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:45:49] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-12 20:45:52,904 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:45:52] "GET /history HTTP/1.1" 200 -
+2025-05-12 20:45:53,233 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:45:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-12 20:45:53,260 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:45:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-12 20:45:53,571 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-12 20:45:53,573 - database - INFO - Retrieved 2 workouts from database
+2025-05-12 20:45:53,573 - web - INFO - Retrieved 2 workouts from database
+2025-05-12 20:45:53,574 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:45:53] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-12 20:45:54,802 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:45:54,803 - web - INFO - Sending workout 5 with 248 data points
+2025-05-12 20:45:54,807 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:45:54] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-12 20:45:56,151 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-12 20:45:56,154 - web - INFO - Converting workout 5 to FIT file
+2025-05-12 20:45:56,155 - web - INFO - Workout type: bike
+2025-05-12 20:45:56,156 - web - INFO - Duration: 248
+2025-05-12 20:45:56,156 - web - INFO - Data points: 248
+2025-05-12 20:45:56,157 - fit_converter - INFO - Processing bike workout with 248 data points.
+2025-05-12 20:45:56,157 - fit_converter - INFO - Activity start time (UTC): 2025-05-11 20:21:10.594936+00:00
+2025-05-12 20:45:56,260 - fit_converter - WARNING - ActivityType.GENERAL not found, using integer value 0 for generic activity type.
+2025-05-12 20:45:56,284 - fit_converter - INFO - FIT file successfully created: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_202110.fit
+2025-05-12 20:45:56,290 - workout_manager - INFO - Updating workout 5 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_202110.fit
+2025-05-12 20:45:56,301 - database - INFO - Updated FIT file path for workout 5: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_202110.fit
+2025-05-12 20:45:56,303 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:45:56] "POST /api/convert_fit/5 HTTP/1.1" 200 -
+2025-05-12 20:45:56,411 - web - INFO - Serving FIT file: bike_20250511_202110.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files
+2025-05-12 20:45:56,421 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:45:56] "GET /fit_files/bike_20250511_202110.fit HTTP/1.1" 200 -
+2025-05-12 20:45:57,981 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 20:45:57,982 - web - INFO - Sending workout 4 with 317 data points
+2025-05-12 20:45:57,985 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:45:57] "GET /api/workout/4 HTTP/1.1" 200 -
+2025-05-12 20:45:59,657 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-12 20:45:59,660 - web - INFO - Converting workout 4 to FIT file
+2025-05-12 20:45:59,661 - web - INFO - Workout type: bike
+2025-05-12 20:45:59,661 - web - INFO - Duration: 316
+2025-05-12 20:45:59,662 - web - INFO - Data points: 317
+2025-05-12 20:45:59,662 - fit_converter - INFO - Processing bike workout with 317 data points.
+2025-05-12 20:45:59,662 - fit_converter - INFO - Activity start time (UTC): 2025-05-11 19:48:04.823739+00:00
+2025-05-12 20:45:59,785 - fit_converter - WARNING - ActivityType.GENERAL not found, using integer value 0 for generic activity type.
+2025-05-12 20:45:59,814 - fit_converter - INFO - FIT file successfully created: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_194804.fit
+2025-05-12 20:45:59,818 - workout_manager - INFO - Updating workout 4 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_194804.fit
+2025-05-12 20:45:59,823 - database - INFO - Updated FIT file path for workout 4: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_194804.fit
+2025-05-12 20:45:59,825 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:45:59] "POST /api/convert_fit/4 HTTP/1.1" 200 -
+2025-05-12 20:45:59,901 - web - INFO - Serving FIT file: bike_20250511_194804.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files
+2025-05-12 20:45:59,911 - werkzeug - INFO - 127.0.0.1 - - [12/May/2025 20:45:59] "GET /fit_files/bike_20250511_194804.fit HTTP/1.1" 200 -
+2025-05-13 06:15:24,399 - root - INFO - Logging initialized at 2025-05-13T06:15:24.399694
+2025-05-13 06:15:24,400 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-13 06:15:24,586 - database - INFO - Database tables created
+2025-05-13 06:15:24,588 - database - INFO - Database tables created
+2025-05-13 06:15:24,590 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-13 06:15:24,590 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-13 06:15:24,591 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-13 06:15:24,591 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-13 06:15:24,592 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-13 06:15:24,592 - web - INFO - Using real FTMS devices
+2025-05-13 06:15:24,593 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-13 06:15:24,593 - web - INFO - Starting background asyncio loop thread...
+2025-05-13 06:15:24,594 - web - INFO - Background thread started. Creating new event loop.
+2025-05-13 06:15:24,594 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-13 06:15:24,601 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-13 06:15:24,638 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-05-13 06:15:24,638 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-13 06:15:24,640 - werkzeug - INFO -  * Restarting with stat
+2025-05-13 06:15:25,282 - root - INFO - Logging initialized at 2025-05-13T06:15:25.282448
+2025-05-13 06:15:25,282 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-13 06:15:25,448 - database - INFO - Database tables created
+2025-05-13 06:15:25,450 - database - INFO - Database tables created
+2025-05-13 06:15:25,450 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-13 06:15:25,451 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-13 06:15:25,451 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-13 06:15:25,451 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-13 06:15:25,451 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-13 06:15:25,451 - web - INFO - Using real FTMS devices
+2025-05-13 06:15:25,452 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-13 06:15:25,452 - web - INFO - Starting background asyncio loop thread...
+2025-05-13 06:15:25,452 - web - INFO - Background thread started. Creating new event loop.
+2025-05-13 06:15:25,452 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-13 06:15:25,459 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-13 06:15:25,483 - werkzeug - WARNING -  * Debugger is active!
+2025-05-13 06:15:25,485 - werkzeug - INFO -  * Debugger PIN: 114-811-535
+2025-05-13 06:15:33,382 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:15:33] "GET /history HTTP/1.1" 200 -
+2025-05-13 06:15:33,443 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:15:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-13 06:15:33,593 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:15:33] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-13 06:16:21,633 - root - INFO - Logging initialized at 2025-05-13T06:16:21.633839
+2025-05-13 06:16:21,634 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-13 06:16:21,811 - database - INFO - Database tables created
+2025-05-13 06:16:21,812 - database - INFO - Database tables created
+2025-05-13 06:16:21,813 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-13 06:16:21,813 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-13 06:16:21,813 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-13 06:16:21,813 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-13 06:16:21,814 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-13 06:16:21,814 - web - INFO - Using real FTMS devices
+2025-05-13 06:16:21,814 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-13 06:16:21,815 - web - INFO - Starting background asyncio loop thread...
+2025-05-13 06:16:21,815 - web - INFO - Background thread started. Creating new event loop.
+2025-05-13 06:16:21,815 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-13 06:16:21,821 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-13 06:16:21,856 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-05-13 06:16:21,857 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-13 06:16:21,858 - werkzeug - INFO -  * Restarting with stat
+2025-05-13 06:16:22,484 - root - INFO - Logging initialized at 2025-05-13T06:16:22.484746
+2025-05-13 06:16:22,484 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-13 06:16:22,658 - database - INFO - Database tables created
+2025-05-13 06:16:22,659 - database - INFO - Database tables created
+2025-05-13 06:16:22,660 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-13 06:16:22,661 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-13 06:16:22,661 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-13 06:16:22,661 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-13 06:16:22,661 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-13 06:16:22,662 - web - INFO - Using real FTMS devices
+2025-05-13 06:16:22,662 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-13 06:16:22,662 - web - INFO - Starting background asyncio loop thread...
+2025-05-13 06:16:22,663 - web - INFO - Background thread started. Creating new event loop.
+2025-05-13 06:16:22,663 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-13 06:16:22,670 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-13 06:16:22,694 - werkzeug - WARNING -  * Debugger is active!
+2025-05-13 06:16:22,696 - werkzeug - INFO -  * Debugger PIN: 114-811-535
+2025-05-13 06:16:25,629 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:16:25] "GET /history HTTP/1.1" 200 -
+2025-05-13 06:16:25,677 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:16:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-13 06:16:25,839 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:16:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-13 06:16:26,160 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-13 06:16:26,162 - database - INFO - Retrieved 2 workouts from database
+2025-05-13 06:16:26,162 - web - INFO - Retrieved 2 workouts from database
+2025-05-13 06:16:26,163 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:16:26] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-13 06:16:28,848 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-13 06:16:28,850 - web - INFO - Sending workout 5 with 248 data points
+2025-05-13 06:16:28,854 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:16:28] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-13 06:16:31,364 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-13 06:16:31,365 - web - INFO - Sending workout 4 with 317 data points
+2025-05-13 06:16:31,369 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:16:31] "GET /api/workout/4 HTTP/1.1" 200 -
+2025-05-13 06:16:33,715 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:16:33] "GET /history HTTP/1.1" 200 -
+2025-05-13 06:16:34,028 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:16:34] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-05-13 06:16:34,059 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:16:34] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-13 06:16:34,367 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-13 06:16:34,370 - database - INFO - Retrieved 2 workouts from database
+2025-05-13 06:16:34,370 - web - INFO - Retrieved 2 workouts from database
+2025-05-13 06:16:34,371 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:16:34] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-13 06:16:34,428 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:16:34] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-13 06:16:34,767 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:16:34] "GET /history HTTP/1.1" 200 -
+2025-05-13 06:16:35,078 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:16:35] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-05-13 06:16:35,093 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:16:35] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-13 06:16:35,403 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-13 06:16:35,403 - database - INFO - Retrieved 2 workouts from database
+2025-05-13 06:16:35,405 - web - INFO - Retrieved 2 workouts from database
+2025-05-13 06:16:35,406 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:16:35] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-13 06:16:35,449 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:16:35] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-13 06:16:36,895 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-13 06:16:36,896 - web - INFO - Sending workout 5 with 248 data points
+2025-05-13 06:16:36,899 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:16:36] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-13 06:18:29,890 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:18:29] "GET / HTTP/1.1" 200 -
+2025-05-13 06:18:29,928 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:18:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-13 06:18:30,144 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:18:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-13 06:18:30,456 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:18:30] "GET /api/status HTTP/1.1" 200 -
+2025-05-13 06:18:30,457 - web - INFO - Getting workouts with limit=10, offset=0
+2025-05-13 06:18:30,459 - database - INFO - Retrieved 2 workouts from database
+2025-05-13 06:18:30,459 - web - INFO - Retrieved 2 workouts from database
+2025-05-13 06:18:30,460 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:18:30] "GET /api/workouts?limit=10 HTTP/1.1" 200 -
+2025-05-13 06:18:32,151 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:18:32] "GET /api/status HTTP/1.1" 200 -
+2025-05-13 06:18:32,539 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:18:32] "GET /history HTTP/1.1" 200 -
+2025-05-13 06:18:32,564 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:18:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-13 06:18:32,787 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:18:32] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-13 06:18:33,108 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-13 06:18:33,109 - database - INFO - Retrieved 2 workouts from database
+2025-05-13 06:18:33,110 - web - INFO - Retrieved 2 workouts from database
+2025-05-13 06:18:33,111 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:18:33] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-13 06:18:34,943 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-13 06:18:34,944 - web - INFO - Sending workout 5 with 248 data points
+2025-05-13 06:18:34,947 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:18:34] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-13 06:18:36,680 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-13 06:18:36,681 - web - INFO - Sending workout 4 with 317 data points
+2025-05-13 06:18:36,686 - werkzeug - INFO - 127.0.0.1 - - [13/May/2025 06:18:36] "GET /api/workout/4 HTTP/1.1" 200 -
+2025-05-14 19:34:20,197 - root - INFO - Logging initialized at 2025-05-14T19:34:20.197208
+2025-05-14 19:34:20,197 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-14 19:34:20,425 - database - INFO - Database tables created
+2025-05-14 19:34:20,427 - database - INFO - Database tables created
+2025-05-14 19:34:20,428 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-14 19:34:20,428 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-14 19:34:20,428 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-14 19:34:20,430 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-14 19:34:20,430 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-14 19:34:20,430 - web - INFO - Using real FTMS devices
+2025-05-14 19:34:20,431 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-14 19:34:20,431 - web - INFO - Starting background asyncio loop thread...
+2025-05-14 19:34:20,432 - web - INFO - Background thread started. Creating new event loop.
+2025-05-14 19:34:20,432 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-14 19:34:20,439 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-14 19:34:20,485 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-05-14 19:34:20,486 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-14 19:34:20,488 - werkzeug - INFO -  * Restarting with stat
+2025-05-14 19:34:21,051 - root - INFO - Logging initialized at 2025-05-14T19:34:21.051958
+2025-05-14 19:34:21,051 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-14 19:34:21,210 - database - INFO - Database tables created
+2025-05-14 19:34:21,211 - database - INFO - Database tables created
+2025-05-14 19:34:21,211 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-14 19:34:21,211 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-14 19:34:21,211 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-14 19:34:21,213 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-14 19:34:21,213 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-14 19:34:21,213 - web - INFO - Using real FTMS devices
+2025-05-14 19:34:21,213 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-14 19:34:21,214 - web - INFO - Starting background asyncio loop thread...
+2025-05-14 19:34:21,214 - web - INFO - Background thread started. Creating new event loop.
+2025-05-14 19:34:21,214 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-14 19:34:21,220 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-14 19:34:21,241 - werkzeug - WARNING -  * Debugger is active!
+2025-05-14 19:34:21,245 - werkzeug - INFO -  * Debugger PIN: 114-811-535
+2025-05-14 19:34:27,430 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:34:27] "GET / HTTP/1.1" 200 -
+2025-05-14 19:34:27,512 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:34:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-14 19:34:27,641 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:34:27] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-14 19:34:27,961 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:34:27] "GET /api/status HTTP/1.1" 200 -
+2025-05-14 19:34:27,962 - web - INFO - Getting workouts with limit=10, offset=0
+2025-05-14 19:34:27,966 - database - INFO - Retrieved 2 workouts from database
+2025-05-14 19:34:27,967 - web - INFO - Retrieved 2 workouts from database
+2025-05-14 19:34:27,968 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:34:27] "GET /api/workouts?limit=10 HTTP/1.1" 200 -
+2025-05-14 19:34:28,117 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:34:28] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-14 19:34:29,650 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:34:29] "GET /api/status HTTP/1.1" 200 -
+2025-05-14 19:34:30,352 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:34:30] "GET /history HTTP/1.1" 200 -
+2025-05-14 19:34:30,428 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:34:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-14 19:34:30,553 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:34:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-14 19:34:30,693 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-14 19:34:30,694 - database - INFO - Retrieved 2 workouts from database
+2025-05-14 19:34:30,694 - web - INFO - Retrieved 2 workouts from database
+2025-05-14 19:34:30,695 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:34:30] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-14 19:34:32,303 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-14 19:34:32,304 - web - INFO - Sending workout 5 with 248 data points
+2025-05-14 19:34:32,308 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:34:32] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-14 19:34:35,950 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-14 19:34:35,952 - web - INFO - Sending workout 4 with 317 data points
+2025-05-14 19:34:35,957 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:34:35] "GET /api/workout/4 HTTP/1.1" 200 -
+2025-05-14 19:34:47,140 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:34:47] "GET /history HTTP/1.1" 200 -
+2025-05-14 19:34:47,448 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:34:47] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-05-14 19:34:47,479 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:34:47] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-14 19:34:47,801 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-14 19:34:47,803 - database - INFO - Retrieved 2 workouts from database
+2025-05-14 19:34:47,803 - web - INFO - Retrieved 2 workouts from database
+2025-05-14 19:34:47,804 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:34:47] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-14 19:34:47,848 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:34:47] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-14 19:34:49,882 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-14 19:34:49,883 - web - INFO - Sending workout 5 with 248 data points
+2025-05-14 19:34:49,886 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:34:49] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-14 19:34:51,290 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-14 19:34:51,291 - web - INFO - Sending workout 4 with 317 data points
+2025-05-14 19:34:51,296 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:34:51] "GET /api/workout/4 HTTP/1.1" 200 -
+2025-05-14 19:43:28,598 - root - INFO - Logging initialized at 2025-05-14T19:43:28.598800
+2025-05-14 19:43:28,598 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-14 19:43:28,762 - database - INFO - Database tables created
+2025-05-14 19:43:28,763 - database - INFO - Database tables created
+2025-05-14 19:43:28,763 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-14 19:43:28,764 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-14 19:43:28,764 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-14 19:43:28,765 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-14 19:43:28,765 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-14 19:43:28,765 - web - INFO - Using real FTMS devices
+2025-05-14 19:43:28,765 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-14 19:43:28,766 - web - INFO - Starting background asyncio loop thread...
+2025-05-14 19:43:28,766 - web - INFO - Background thread started. Creating new event loop.
+2025-05-14 19:43:28,766 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-14 19:43:28,773 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-14 19:43:28,808 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.86.45:5000
+2025-05-14 19:43:28,809 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-14 19:43:28,811 - werkzeug - INFO -  * Restarting with stat
+2025-05-14 19:43:29,383 - root - INFO - Logging initialized at 2025-05-14T19:43:29.383397
+2025-05-14 19:43:29,383 - root - INFO - Log files located at: C:\Users\dougl\rogue_garmin_bridge\logs
+2025-05-14 19:43:29,546 - database - INFO - Database tables created
+2025-05-14 19:43:29,547 - database - INFO - Database tables created
+2025-05-14 19:43:29,548 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-14 19:43:29,548 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2025-05-14 19:43:29,549 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2025-05-14 19:43:29,549 - ftms_connector - INFO - Data callback _handle_data registered.
+2025-05-14 19:43:29,549 - ftms_connector - INFO - Status callback _handle_status registered.
+2025-05-14 19:43:29,549 - web - INFO - Using real FTMS devices
+2025-05-14 19:43:29,551 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-14 19:43:29,551 - web - INFO - Starting background asyncio loop thread...
+2025-05-14 19:43:29,552 - web - INFO - Background thread started. Creating new event loop.
+2025-05-14 19:43:29,552 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-14 19:43:29,558 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-14 19:43:29,580 - werkzeug - WARNING -  * Debugger is active!
+2025-05-14 19:43:29,582 - werkzeug - INFO -  * Debugger PIN: 114-811-535
+2025-05-14 19:43:31,654 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-14 19:43:31,655 - web - INFO - Sending workout 4 with 317 data points
+2025-05-14 19:43:31,659 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:43:31] "GET /api/workout/4 HTTP/1.1" 200 -
+2025-05-14 19:43:32,748 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-14 19:43:32,748 - web - INFO - Sending workout 5 with 248 data points
+2025-05-14 19:43:32,752 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:43:32] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-14 19:43:35,408 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:43:35] "GET /history HTTP/1.1" 200 -
+2025-05-14 19:43:35,467 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:43:35] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-05-14 19:43:35,609 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:43:35] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-14 19:43:35,922 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-14 19:43:35,923 - database - INFO - Retrieved 2 workouts from database
+2025-05-14 19:43:35,924 - web - INFO - Retrieved 2 workouts from database
+2025-05-14 19:43:35,925 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:43:35] "GET /api/workouts HTTP/1.1" 200 -
+2025-05-14 19:43:35,985 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:43:35] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-14 19:43:37,246 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-14 19:43:37,247 - web - INFO - Sending workout 5 with 248 data points
+2025-05-14 19:43:37,251 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:43:37] "GET /api/workout/5 HTTP/1.1" 200 -
+2025-05-14 19:43:43,668 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-14 19:43:43,669 - web - INFO - Sending workout 4 with 317 data points
+2025-05-14 19:43:43,674 - werkzeug - INFO - 127.0.0.1 - - [14/May/2025 19:43:43] "GET /api/workout/4 HTTP/1.1" 200 -

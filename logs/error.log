@@ -97,3 +97,219 @@ TypeError: unsupported type for timedelta seconds component: datetime.datetime
 
 2025-05-12 18:50:30,702 - fit_processor - ERROR - Failed to create FIT file for workout 5
 2025-05-12 18:50:30,703 - web - ERROR - Failed to generate FIT file for workout 5
+2025-05-12 20:04:00,359 - fit_converter - ERROR - Error during FIT file conversion: unsupported operand type(s) for +: 'datetime.datetime' and 'int'
+2025-05-12 20:04:00,382 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 195, in convert_workout
+    file_id_mesg.time_created = start_time_dt_utc # Use datetime object
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 228, in set_value
+    encoded_value = self.encode_value(value, sub_field)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 271, in encode_value
+    encoded_value = self.scale_offset_value(value, scale, offset)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 212, in scale_offset_value
+    encoded_value = round((value + offset) * scale)
+                           ~~~~~~^~~~~~~~
+TypeError: unsupported operand type(s) for +: 'datetime.datetime' and 'int'
+
+2025-05-12 20:04:00,383 - web - ERROR - FIT conversion returned None for workout 4
+2025-05-12 20:04:25,964 - fit_converter - ERROR - Error during FIT file conversion: unsupported operand type(s) for +: 'datetime.datetime' and 'int'
+2025-05-12 20:04:25,966 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 195, in convert_workout
+    file_id_mesg.time_created = start_time_dt_utc # Use datetime object
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 228, in set_value
+    encoded_value = self.encode_value(value, sub_field)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 271, in encode_value
+    encoded_value = self.scale_offset_value(value, scale, offset)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 212, in scale_offset_value
+    encoded_value = round((value + offset) * scale)
+                           ~~~~~~^~~~~~~~
+TypeError: unsupported operand type(s) for +: 'datetime.datetime' and 'int'
+
+2025-05-12 20:04:25,967 - web - ERROR - FIT conversion returned None for workout 5
+2025-05-12 20:04:28,061 - fit_converter - ERROR - Error during FIT file conversion: unsupported operand type(s) for +: 'datetime.datetime' and 'int'
+2025-05-12 20:04:28,061 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 195, in convert_workout
+    file_id_mesg.time_created = start_time_dt_utc # Use datetime object
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 228, in set_value
+    encoded_value = self.encode_value(value, sub_field)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 271, in encode_value
+    encoded_value = self.scale_offset_value(value, scale, offset)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 212, in scale_offset_value
+    encoded_value = round((value + offset) * scale)
+                           ~~~~~~^~~~~~~~
+TypeError: unsupported operand type(s) for +: 'datetime.datetime' and 'int'
+
+2025-05-12 20:04:28,063 - web - ERROR - FIT conversion returned None for workout 4
+2025-05-12 20:09:00,847 - fit_converter - ERROR - Error during FIT file conversion: time_created encoded value -629949671 is not in valid range [0, 4294967295]
+2025-05-12 20:09:00,850 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 206, in convert_workout
+    file_id_mesg.time_created = fit_start_time
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: time_created encoded value -629949671 is not in valid range [0, 4294967295]
+
+2025-05-12 20:09:00,850 - web - ERROR - FIT conversion returned None for workout 5
+2025-05-12 20:09:20,889 - fit_converter - ERROR - Error during FIT file conversion: time_created encoded value -629949671 is not in valid range [0, 4294967295]
+2025-05-12 20:09:20,891 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 206, in convert_workout
+    file_id_mesg.time_created = fit_start_time
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: time_created encoded value -629949671 is not in valid range [0, 4294967295]
+
+2025-05-12 20:09:20,892 - web - ERROR - FIT conversion returned None for workout 5
+2025-05-12 20:09:23,081 - fit_converter - ERROR - Error during FIT file conversion: time_created encoded value -629949673 is not in valid range [0, 4294967295]
+2025-05-12 20:09:23,082 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 206, in convert_workout
+    file_id_mesg.time_created = fit_start_time
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: time_created encoded value -629949673 is not in valid range [0, 4294967295]
+
+2025-05-12 20:09:23,083 - web - ERROR - FIT conversion returned None for workout 4
+2025-05-12 20:25:24,469 - fit_converter - ERROR - FIT Conversion Exception: time_created encoded value -629949671 is not in valid range [0, 4294967295]
+2025-05-12 20:25:24,470 - fit_converter - ERROR - Full Traceback Below:
+2025-05-12 20:25:24,472 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 217, in convert_workout
+    file_id_mesg.time_created = fit_start_time
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: time_created encoded value -629949671 is not in valid range [0, 4294967295]
+
+2025-05-12 20:25:24,473 - web - ERROR - FIT conversion returned None for workout 5
+2025-05-12 20:25:27,211 - fit_converter - ERROR - FIT Conversion Exception: time_created encoded value -629949673 is not in valid range [0, 4294967295]
+2025-05-12 20:25:27,212 - fit_converter - ERROR - Full Traceback Below:
+2025-05-12 20:25:27,212 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 217, in convert_workout
+    file_id_mesg.time_created = fit_start_time
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: time_created encoded value -629949673 is not in valid range [0, 4294967295]
+
+2025-05-12 20:25:27,213 - web - ERROR - FIT conversion returned None for workout 4
+2025-05-12 20:25:40,051 - fit_converter - ERROR - FIT Conversion Exception: time_created encoded value -629949671 is not in valid range [0, 4294967295]
+2025-05-12 20:25:40,052 - fit_converter - ERROR - Full Traceback Below:
+2025-05-12 20:25:40,053 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 217, in convert_workout
+    file_id_mesg.time_created = fit_start_time
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: time_created encoded value -629949671 is not in valid range [0, 4294967295]
+
+2025-05-12 20:25:40,054 - web - ERROR - FIT conversion returned None for workout 5
+2025-05-12 20:25:42,644 - fit_converter - ERROR - FIT Conversion Exception: time_created encoded value -629949673 is not in valid range [0, 4294967295]
+2025-05-12 20:25:42,645 - fit_converter - ERROR - Full Traceback Below:
+2025-05-12 20:25:42,646 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 217, in convert_workout
+    file_id_mesg.time_created = fit_start_time
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: time_created encoded value -629949673 is not in valid range [0, 4294967295]
+
+2025-05-12 20:25:42,646 - web - ERROR - FIT conversion returned None for workout 4
+2025-05-12 20:32:21,827 - fit_converter - ERROR - FIT Conversion Exception: time_created encoded value -629949671 is not in valid range [0, 4294967295]
+2025-05-12 20:32:21,829 - fit_converter - ERROR - Full Traceback Below:
+2025-05-12 20:32:21,831 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 236, in convert_workout
+    file_id_mesg.time_created = fit_start_time
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: time_created encoded value -629949671 is not in valid range [0, 4294967295]
+
+2025-05-12 20:32:21,832 - web - ERROR - FIT conversion returned None for workout 5
+2025-05-12 20:32:23,735 - fit_converter - ERROR - FIT Conversion Exception: time_created encoded value -629949673 is not in valid range [0, 4294967295]
+2025-05-12 20:32:23,735 - fit_converter - ERROR - Full Traceback Below:
+2025-05-12 20:32:23,737 - fit_converter - ERROR - Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 236, in convert_workout
+    file_id_mesg.time_created = fit_start_time
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\profile\messages\file_id_message.py", line 218, in time_created
+    field.set_value(0, value, sub_field)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 229, in set_value
+    self.set_encoded_value(index, encoded_value)
+  File "c:\Users\dougl\rogue_garmin_bridge\.venv\Lib\site-packages\fit_tool\field.py", line 237, in set_encoded_value
+    raise Exception(
+Exception: time_created encoded value -629949673 is not in valid range [0, 4294967295]
+
+2025-05-12 20:32:23,737 - web - ERROR - FIT conversion returned None for workout 4
+2025-05-12 20:42:13,045 - fit_converter - ERROR - FIT Conversion Exception: type object 'ActivityType' has no attribute 'MANUAL'
+2025-05-12 20:42:13,047 - fit_converter - ERROR - Full Traceback Below:
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 326, in convert_workout
+    activity_mesg.type = ActivityType.MANUAL
+                         ^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'ActivityType' has no attribute 'MANUAL'
+
+2025-05-12 20:42:13,052 - web - ERROR - FIT conversion returned None for workout 5
+2025-05-12 20:42:28,146 - fit_converter - ERROR - FIT Conversion Exception: type object 'ActivityType' has no attribute 'MANUAL'
+2025-05-12 20:42:28,147 - fit_converter - ERROR - Full Traceback Below:
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 326, in convert_workout
+    activity_mesg.type = ActivityType.MANUAL
+                         ^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'ActivityType' has no attribute 'MANUAL'
+
+2025-05-12 20:42:28,153 - web - ERROR - FIT conversion returned None for workout 5
+2025-05-12 20:42:30,213 - fit_converter - ERROR - FIT Conversion Exception: type object 'ActivityType' has no attribute 'MANUAL'
+2025-05-12 20:42:30,215 - fit_converter - ERROR - Full Traceback Below:
+Traceback (most recent call last):
+  File "C:\Users\dougl\rogue_garmin_bridge\src\fit\fit_converter.py", line 326, in convert_workout
+    activity_mesg.type = ActivityType.MANUAL
+                         ^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'ActivityType' has no attribute 'MANUAL'
+
+2025-05-12 20:42:30,219 - web - ERROR - FIT conversion returned None for workout 4

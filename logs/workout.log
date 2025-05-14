@@ -3558,3 +3558,7 @@
 2025-05-11 20:41:50,852 - workout_manager - INFO - Deleted FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250511_174841.fit
 2025-05-11 20:41:54,857 - workout_manager - INFO - Deleting workout 1
 2025-05-11 20:41:54,874 - workout_manager - INFO - Deleted FIT file: C:\Users\dougl\rogue_garmin_bridge\fit_files\indoor_cycling_20250511_171929.fit
+2025-05-12 19:51:59,925 - workout_manager - INFO - Updating workout 4 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_154804.fit
+2025-05-12 19:52:05,616 - workout_manager - INFO - Updating workout 5 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_162109.fit
+2025-05-12 20:45:56,290 - workout_manager - INFO - Updating workout 5 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_202110.fit
+2025-05-12 20:45:59,818 - workout_manager - INFO - Updating workout 4 with FIT file path: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_194804.fit
