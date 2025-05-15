@@ -91,14 +91,17 @@
     
     // Unit conversion utilities
     const unitConversions = {
-        mToMi: (m) => m / 1609.34,
-        miToM: (mi) => mi * 1609.34,
-        mToKm: (m) => m / 1000,
-        kmToM: (km) => km * 1000,
-        msToKph: (ms) => ms * 3.6,
-        msToMph: (ms) => ms * 2.23694,
-        kphToMph: (kph) => kph * 0.621371,
-        mphToKph: (mph) => mph / 0.621371
+        // Distance conversions
+        mToMi: (m) => m / 1609.34,     // meters to miles
+        miToM: (mi) => mi * 1609.34,   // miles to meters
+        mToKm: (m) => m / 1000,        // meters to kilometers
+        kmToM: (km) => km * 1000,      // kilometers to meters
+        
+        // Speed conversions
+        msToKph: (ms) => ms * 3.6,     // meters/second to kilometers/hour
+        msToMph: (ms) => ms * 2.23694, // meters/second to miles/hour
+        kphToMph: (kph) => kph * 0.621371, // kilometers/hour to miles/hour
+        mphToKph: (mph) => mph / 0.621371  // miles/hour to kilometers/hour
     };
     
     // Format duration function
@@ -296,10 +299,17 @@
 
         const displayDistanceM = summary.total_distance !== undefined ? parseFloat(summary.total_distance) : (workoutInfo.total_distance !== undefined ? parseFloat(workoutInfo.total_distance) : 0);
         const displayDistance = userUnitSystem === "imperial" ? `${unitConversions.mToMi(displayDistanceM).toFixed(2)} mi` : `${unitConversions.mToKm(displayDistanceM).toFixed(2)} km`;
-        const displayAvgSpeedMs = summary.avg_speed !== undefined ? parseFloat(summary.avg_speed) : 0;
-        const displayAvgSpeed = userUnitSystem === "imperial" ? `${unitConversions.msToMph(displayAvgSpeedMs).toFixed(1)} mph` : `${unitConversions.msToKph(displayAvgSpeedMs).toFixed(1)} kph`;
-        const displayMaxSpeedMs = summary.max_speed !== undefined ? parseFloat(summary.max_speed) : 0;
-        const displayMaxSpeed = userUnitSystem === "imperial" ? `${unitConversions.msToMph(displayMaxSpeedMs).toFixed(1)} mph` : `${unitConversions.msToKph(displayMaxSpeedMs).toFixed(1)} kph`;
+        
+        // The speed values from the summary are stored in km/h (not m/s), so use correct conversion
+        const displayAvgSpeedKph = summary.avg_speed !== undefined ? parseFloat(summary.avg_speed) : 0;
+        const displayAvgSpeed = userUnitSystem === "imperial" ? 
+            `${unitConversions.kphToMph(displayAvgSpeedKph).toFixed(1)} mph` : 
+            `${displayAvgSpeedKph.toFixed(1)} kph`;
+            
+        const displayMaxSpeedKph = summary.max_speed !== undefined ? parseFloat(summary.max_speed) : 0;
+        const displayMaxSpeed = userUnitSystem === "imperial" ? 
+            `${unitConversions.kphToMph(displayMaxSpeedKph).toFixed(1)} mph` : 
+            `${displayMaxSpeedKph.toFixed(1)} kph`;
 
         summaryHtml += `<p><strong>Type:</strong> ${workoutInfo.type || '-'}<br>
                           <strong>Start Time:</strong> ${workoutInfo.start_time ? new Date(workoutInfo.start_time).toLocaleString() : '-'}<br>

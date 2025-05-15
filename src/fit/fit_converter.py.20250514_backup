@@ -221,13 +221,11 @@ class FITConverter:
             try: device_info_mesg.manufacturer = Manufacturer.ZWIFT
             except AttributeError: device_info_mesg.manufacturer = 281
             device_info_mesg.product = 3907
-            device_info_mesg.serial_number = processed_data.get("serial_number", 123456789)
-            device_info_mesg.software_version = processed_data.get("software_version_scaled", 100.0)
+            device_info_mesg.serial_number = processed_data.get("serial_number", 123456789)            device_info_mesg.software_version = processed_data.get("software_version_scaled", 100.0)
             device_info_mesg.hardware_version = processed_data.get("hardware_version", 1)
             builder.add(device_info_mesg)
-
+            
             event_mesg_start = EventMessage()
-
             event_mesg_start.timestamp = unix_ms_start_time
             event_mesg_start.event = Event.TIMER
             event_mesg_start.event_type = EventType.START
@@ -271,8 +269,7 @@ class FITConverter:
             lap_mesg.total_elapsed_time = actual_total_duration_seconds
             lap_mesg.total_timer_time = actual_total_duration_seconds
             lap_mesg.event = Event.LAP
-            lap_mesg.event_type = EventType.STOP
-            lap_mesg.lap_trigger = LapTrigger.MANUAL
+            lap_mesg.event_type = EventType.STOP            lap_mesg.lap_trigger = LapTrigger.MANUAL
             if avg_speed is not None:
                 # Convert from km/h to m/s (FIT files require speed in m/s)
                 avg_speed_kmh = float(avg_speed)
@@ -301,8 +298,7 @@ class FITConverter:
             session_mesg.timestamp = unix_ms_event_stop_time
             session_mesg.start_time = unix_ms_start_time
             session_mesg.total_elapsed_time = actual_total_duration_seconds
-            session_mesg.total_timer_time = actual_total_duration_seconds
-            session_mesg.event = Event.SESSION
+            session_mesg.total_timer_time = actual_total_duration_seconds            session_mesg.event = Event.SESSION
             session_mesg.event_type = EventType.STOP
             session_mesg.trigger = SessionTrigger.ACTIVITY_END
             if avg_speed is not None:

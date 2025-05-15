@@ -224,10 +224,7 @@ class FITConverter:
             device_info_mesg.serial_number = processed_data.get("serial_number", 123456789)
             device_info_mesg.software_version = processed_data.get("software_version_scaled", 100.0)
             device_info_mesg.hardware_version = processed_data.get("hardware_version", 1)
-            builder.add(device_info_mesg)
-
-            event_mesg_start = EventMessage()
-
+            builder.add(device_info_mesg)            event_mesg_start = EventMessage()
             event_mesg_start.timestamp = unix_ms_start_time
             event_mesg_start.event = Event.TIMER
             event_mesg_start.event_type = EventType.START
@@ -271,18 +268,10 @@ class FITConverter:
             lap_mesg.total_elapsed_time = actual_total_duration_seconds
             lap_mesg.total_timer_time = actual_total_duration_seconds
             lap_mesg.event = Event.LAP
-            lap_mesg.event_type = EventType.STOP
+            lap_mesg.event_type = EventType.STOP 
             lap_mesg.lap_trigger = LapTrigger.MANUAL
-            if avg_speed is not None:
-                # Convert from km/h to m/s (FIT files require speed in m/s)
-                avg_speed_kmh = float(avg_speed)
-                avg_speed_mps = avg_speed_kmh / 3.6  # Convert km/h to m/s
-                lap_mesg.avg_speed = avg_speed_mps
-            if max_speed is not None:
-                # Convert from km/h to m/s (FIT files require speed in m/s)
-                max_speed_kmh = float(max_speed)
-                max_speed_mps = max_speed_kmh / 3.6  # Convert km/h to m/s
-                lap_mesg.max_speed = max_speed_mps
+            if avg_speed is not None: lap_mesg.avg_speed = float(avg_speed) 
+            if max_speed is not None: lap_mesg.max_speed = float(max_speed) 
             if total_distance is not None: lap_mesg.total_distance = float(total_distance)
             if total_calories is not None: lap_mesg.total_calories = int(total_calories)
             if avg_power is not None: lap_mesg.avg_power = int(avg_power)
@@ -305,16 +294,8 @@ class FITConverter:
             session_mesg.event = Event.SESSION
             session_mesg.event_type = EventType.STOP
             session_mesg.trigger = SessionTrigger.ACTIVITY_END
-            if avg_speed is not None:
-                # Convert from km/h to m/s (FIT files require speed in m/s)
-                avg_speed_kmh = float(avg_speed)
-                avg_speed_mps = avg_speed_kmh / 3.6  # Convert km/h to m/s
-                session_mesg.avg_speed = avg_speed_mps
-            if max_speed is not None:
-                # Convert from km/h to m/s (FIT files require speed in m/s)
-                max_speed_kmh = float(max_speed)
-                max_speed_mps = max_speed_kmh / 3.6  # Convert km/h to m/s
-                session_mesg.max_speed = max_speed_mps
+            if avg_speed is not None: session_mesg.avg_speed = float(avg_speed) 
+            if max_speed is not None: session_mesg.max_speed = float(max_speed) 
             if total_distance is not None: session_mesg.total_distance = float(total_distance)
             if total_calories is not None: session_mesg.total_calories = int(total_calories)
             if avg_power is not None: session_mesg.avg_power = int(avg_power)

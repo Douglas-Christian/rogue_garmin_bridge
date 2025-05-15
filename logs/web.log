@@ -887,3 +887,46 @@ TypeError: float() argument must be a string or a real number, not 'datetime.dat
 2025-05-14 19:43:35,924 - web - INFO - Retrieved 2 workouts from database
 2025-05-14 19:43:37,247 - web - INFO - Sending workout 5 with 248 data points
 2025-05-14 19:43:43,669 - web - INFO - Sending workout 4 with 317 data points
+2025-05-14 19:46:45,036 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-14 19:46:45,038 - web - INFO - Using real FTMS devices
+2025-05-14 19:46:45,038 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-14 19:46:45,039 - web - INFO - Starting background asyncio loop thread...
+2025-05-14 19:46:45,040 - web - INFO - Background thread started. Creating new event loop.
+2025-05-14 19:46:45,040 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-14 19:46:45,047 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-14 19:46:45,775 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-14 19:46:45,777 - web - INFO - Using real FTMS devices
+2025-05-14 19:46:45,777 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-14 19:46:45,778 - web - INFO - Starting background asyncio loop thread...
+2025-05-14 19:46:45,778 - web - INFO - Background thread started. Creating new event loop.
+2025-05-14 19:46:45,778 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-14 19:46:45,785 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-14 19:47:06,350 - web - INFO - Sending workout 4 with 317 data points
+2025-05-14 20:34:26,825 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-14 20:34:26,827 - web - INFO - Using real FTMS devices
+2025-05-14 20:34:26,829 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-14 20:34:26,830 - web - INFO - Starting background asyncio loop thread...
+2025-05-14 20:34:26,831 - web - INFO - Background thread started. Creating new event loop.
+2025-05-14 20:34:26,831 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-14 20:34:26,843 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-14 20:34:28,067 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2025-05-14 20:34:28,070 - web - INFO - Using real FTMS devices
+2025-05-14 20:34:28,070 - web - INFO - Flask application initialized. FTMS manager created.
+2025-05-14 20:34:28,071 - web - INFO - Starting background asyncio loop thread...
+2025-05-14 20:34:28,073 - web - INFO - Background thread started. Creating new event loop.
+2025-05-14 20:34:28,073 - web - INFO - Background asyncio loop thread start initiated.
+2025-05-14 20:34:28,085 - web - INFO - Starting background asyncio event loop run_forever.
+2025-05-14 20:34:41,064 - web - INFO - Sending workout 5 with 248 data points
+2025-05-14 20:34:51,517 - web - INFO - Getting workouts with limit=100, offset=0
+2025-05-14 20:34:51,521 - web - INFO - Retrieved 2 workouts from database
+2025-05-14 20:34:55,594 - web - INFO - Sending workout 5 with 248 data points
+2025-05-14 20:35:04,433 - web - INFO - Converting workout 5 to FIT file
+2025-05-14 20:35:04,435 - web - INFO - Workout type: bike
+2025-05-14 20:35:04,435 - web - INFO - Duration: 248
+2025-05-14 20:35:04,437 - web - INFO - Data points: 248
+2025-05-14 20:35:04,745 - web - INFO - Serving FIT file: bike_20250511_202110.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files
+2025-05-14 20:35:06,645 - web - INFO - Converting workout 4 to FIT file
+2025-05-14 20:35:06,646 - web - INFO - Workout type: bike
+2025-05-14 20:35:06,647 - web - INFO - Duration: 316
+2025-05-14 20:35:06,649 - web - INFO - Data points: 317
+2025-05-14 20:35:07,289 - web - INFO - Serving FIT file: bike_20250511_194804.fit from directory: C:\Users\dougl\rogue_garmin_bridge\fit_files

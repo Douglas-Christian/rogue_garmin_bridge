@@ -2141,3 +2141,27 @@ AttributeError: type object 'ActivityType' has no attribute 'MANUAL'
 2025-05-14 19:43:35,923 - database - INFO - Retrieved 2 workouts from database
 2025-05-14 19:43:37,246 - database - INFO - Retrieved 248 data points for workout 5
 2025-05-14 19:43:43,668 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-14 19:46:45,032 - database - INFO - Database tables created
+2025-05-14 19:46:45,035 - database - INFO - Database tables created
+2025-05-14 19:46:45,774 - database - INFO - Database tables created
+2025-05-14 19:46:45,775 - database - INFO - Database tables created
+2025-05-14 19:47:06,348 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-14 20:34:26,820 - database - INFO - Database tables created
+2025-05-14 20:34:26,824 - database - INFO - Database tables created
+2025-05-14 20:34:28,064 - database - INFO - Database tables created
+2025-05-14 20:34:28,067 - database - INFO - Database tables created
+2025-05-14 20:34:41,061 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-14 20:34:51,520 - database - INFO - Retrieved 2 workouts from database
+2025-05-14 20:34:55,593 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-14 20:35:04,428 - database - INFO - Retrieved 248 data points for workout 5
+2025-05-14 20:35:04,438 - fit_converter - INFO - Processing bike workout with 248 data points.
+2025-05-14 20:35:04,438 - fit_converter - INFO - Activity start time (UTC): 2025-05-11 20:21:10.594936+00:00
+2025-05-14 20:35:04,621 - fit_converter - WARNING - ActivityType.GENERAL not found, using integer value 0 for generic activity type.
+2025-05-14 20:35:04,664 - fit_converter - INFO - FIT file successfully created: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_202110.fit
+2025-05-14 20:35:04,721 - database - INFO - Updated FIT file path for workout 5: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_202110.fit
+2025-05-14 20:35:06,640 - database - INFO - Retrieved 317 data points for workout 4
+2025-05-14 20:35:06,649 - fit_converter - INFO - Processing bike workout with 317 data points.
+2025-05-14 20:35:06,650 - fit_converter - INFO - Activity start time (UTC): 2025-05-11 19:48:04.823739+00:00
+2025-05-14 20:35:06,891 - fit_converter - WARNING - ActivityType.GENERAL not found, using integer value 0 for generic activity type.
+2025-05-14 20:35:06,946 - fit_converter - INFO - FIT file successfully created: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_194804.fit
+2025-05-14 20:35:06,956 - database - INFO - Updated FIT file path for workout 4: C:\Users\dougl\rogue_garmin_bridge\fit_files\bike_20250511_194804.fit

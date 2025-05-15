@@ -35,12 +35,10 @@ class FITConverter:
     """
     Class for converting processed workout data to Garmin FIT format.
     """
-    
     def __init__(self, output_dir: str):
         self.output_dir = output_dir
         os.makedirs(output_dir, exist_ok=True)
-
-    def _ensure_datetime_utc(self, time_input: Any, base_datetime_utc: Optional[datetime] = None) -> Optional[datetime]:
+          def _ensure_datetime_utc(self, time_input: Any, base_datetime_utc: Optional[datetime] = None) -> Optional[datetime]:
         dt_obj = None
         if isinstance(time_input, datetime):
             dt_obj = time_input
@@ -54,16 +52,16 @@ class FITConverter:
                 logger.warning(f"Could not parse datetime string: {time_input}.")
                 return None
         elif isinstance(time_input, (int, float)):
-            if time_input > 946684800: # Approx. 2000-01-01 in seconds
+            if time_input > 946684800:  # Approx. 2000-01-01 in seconds
                 try:
-                    if time_input > 946684800000: # Approx. 2000-01-01 in milliseconds
-                         dt_obj = datetime.fromtimestamp(time_input / 1000.0, timezone.utc)
+                    if time_input > 946684800000:  # Approx. 2000-01-01 in milliseconds
+                        dt_obj = datetime.fromtimestamp(time_input / 1000.0, timezone.utc)
                     else:
-                         dt_obj = datetime.fromtimestamp(time_input, timezone.utc)
+                        dt_obj = datetime.fromtimestamp(time_input, timezone.utc)
                 except (OSError, OverflowError):
                     logger.warning(f"Could not convert Unix timestamp: {time_input}")
                     return None
-            elif base_datetime_utc: # Assume it's a relative offset in seconds
+            elif base_datetime_utc:  # Assume it's a relative offset in seconds
                 dt_obj = base_datetime_utc + timedelta(seconds=time_input)
             else:
                 logger.warning(f"Numeric time input {time_input} is ambiguous without a base datetime.")
@@ -100,8 +98,7 @@ class FITConverter:
             dt_obj_utc = dt_obj.astimezone(timezone.utc)
         else:
             dt_obj_utc = dt_obj
-        
-        if dt_obj_utc < FIT_EPOCH_DATETIME_UTC:
+            if dt_obj_utc < FIT_EPOCH_DATETIME_UTC:
             logger.error(f"Cannot convert datetime {dt_obj_utc} to FIT epoch seconds as it's before FIT epoch {FIT_EPOCH_DATETIME_UTC}")
             return 0
         return int((dt_obj_utc - FIT_EPOCH_DATETIME_UTC).total_seconds())
@@ -119,7 +116,6 @@ class FITConverter:
         try:
             workout_type = processed_data.get("workout_type", "bike")
             start_time_metadata_input = processed_data.get("start_time")
-            
             total_duration_from_data = float(processed_data.get("total_duration", 0))
             total_distance = float(processed_data.get("total_distance", 0))
             total_calories = int(processed_data.get("total_calories", 0))
@@ -129,84 +125,65 @@ class FITConverter:
             max_heart_rate = processed_data.get("max_heart_rate")
             avg_cadence = processed_data.get("avg_cadence")
             max_cadence = processed_data.get("max_cadence")
-            avg_speed = processed_data.get("avg_speed") 
-            max_speed = processed_data.get("max_speed") 
+            avg_speed = processed_data.get("avg_speed")
+            max_speed = processed_data.get("max_speed")
             normalized_power = processed_data.get("normalized_power")
-
             data_series = processed_data.get("data_series", {})
             timestamps_rel_sec = data_series.get("timestamps", [])
             absolute_timestamps_input = data_series.get("absolute_timestamps", [])
-
             if not absolute_timestamps_input and not timestamps_rel_sec:
-                logger.error("No timestamps found. Cannot create FIT file.")
-                return None
-            
+            logger.error("No timestamps found. Cannot create FIT file.")
+            return None
             num_data_points = len(absolute_timestamps_input) if absolute_timestamps_input else len(timestamps_rel_sec)
             if num_data_points == 0:
-                logger.error("Zero data points. Cannot create FIT file.")
-                return None
-
+            logger.error("Zero data points. Cannot create FIT file.")
+            return None
             logger.info(f"Processing {workout_type} workout with {num_data_points} data points.")
-
             powers = self._ensure_array_exists(data_series.get("powers"), num_data_points)
             heart_rates = self._ensure_array_exists(data_series.get("heart_rates"), num_data_points)
             cadences = self._ensure_array_exists(data_series.get("cadences"), num_data_points)
             speeds = self._ensure_array_exists(data_series.get("speeds"), num_data_points)
             distances = self._ensure_array_exists(data_series.get("distances"), num_data_points)
-
             start_time_dt_utc = None
             if absolute_timestamps_input and absolute_timestamps_input[0] is not None:
-                start_time_dt_utc = self._ensure_datetime_utc(absolute_timestamps_input[0])
-            
+            start_time_dt_utc = self._ensure_datetime_utc(absolute_timestamps_input[0])
             if not start_time_dt_utc:
-                start_time_dt_utc = self._ensure_datetime_utc(start_time_metadata_input)
-            
+            start_time_dt_utc = self._ensure_datetime_utc(start_time_metadata_input)
             if not start_time_dt_utc:
-                logger.warning("Could not determine a valid start time. Using current UTC time.")
-                start_time_dt_utc = datetime.now(timezone.utc)
+            logger.warning("Could not determine a valid start time. Using current UTC time.")
+            start_time_dt_utc = datetime.now(timezone.utc)
             logger.info(f"Activity start time (UTC): {start_time_dt_utc}")
-
             record_datetimes: List[Optional[datetime]] = [None] * num_data_points
             if absolute_timestamps_input:
-                for i in range(num_data_points):
-                    record_datetimes[i] = self._ensure_datetime_utc(absolute_timestamps_input[i], base_datetime_utc=start_time_dt_utc)
+            for i in range(num_data_points):
+            record_datetimes[i] = self._ensure_datetime_utc(absolute_timestamps_input[i], base_datetime_utc=start_time_dt_utc)
             elif timestamps_rel_sec:
-                for i in range(num_data_points):
-                    record_datetimes[i] = self._ensure_datetime_utc(timestamps_rel_sec[i], base_datetime_utc=start_time_dt_utc)
-            
+            for i in range(num_data_points):
+            record_datetimes[i] = self._ensure_datetime_utc(timestamps_rel_sec[i], base_datetime_utc=start_time_dt_utc)
             valid_records_indices = [i for i, dt in enumerate(record_datetimes) if dt is not None]
             if not valid_records_indices:
-                logger.error("No valid record timestamps. Cannot create FIT file.")
-                return None
-            
+            logger.error("No valid record timestamps. Cannot create FIT file.")
+            return None
             first_valid_record_dt = record_datetimes[valid_records_indices[0]]
             if first_valid_record_dt and first_valid_record_dt < start_time_dt_utc:
-                logger.info(f"Adjusting activity start time from {start_time_dt_utc} to {first_valid_record_dt}.")
-                start_time_dt_utc = first_valid_record_dt
-            
+            logger.info(f"Adjusting activity start time from {start_time_dt_utc} to {first_valid_record_dt}.")
+            start_time_dt_utc = first_valid_record_dt
             actual_total_duration_seconds = 0.0
             last_valid_record_dt = record_datetimes[valid_records_indices[-1]]
-
             if total_duration_from_data > 0:
-                actual_total_duration_seconds = total_duration_from_data
+            actual_total_duration_seconds = total_duration_from_data
             elif first_valid_record_dt and last_valid_record_dt:
-                actual_total_duration_seconds = (last_valid_record_dt - first_valid_record_dt).total_seconds()
-            
+            actual_total_duration_seconds = (last_valid_record_dt - first_valid_record_dt).total_seconds()
             if actual_total_duration_seconds <= 0:
-                actual_total_duration_seconds = float(len(valid_records_indices))
-                logger.warning(f"Total duration invalid, estimated to {actual_total_duration_seconds}s.")
-
+            actual_total_duration_seconds = float(len(valid_records_indices))
+            logger.warning(f"Total duration invalid, estimated to {actual_total_duration_seconds}s.")
             end_time_dt_utc = start_time_dt_utc + timedelta(seconds=actual_total_duration_seconds)
-
             unix_ms_start_time = self._datetime_to_unix_epoch_milliseconds(start_time_dt_utc)
             unix_ms_end_time = self._datetime_to_unix_epoch_milliseconds(end_time_dt_utc)
-
             if unix_ms_start_time is None:
-                logger.error("Could not convert start_time_dt_utc to Unix ms. Aborting.")
-                return None
-
+            logger.error("Could not convert start_time_dt_utc to Unix ms. Aborting.")
+            return None
             builder = FitFileBuilder(auto_define=True)
-
             file_id_mesg = FileIdMessage()
             file_id_mesg.type = FileType.ACTIVITY
             try: file_id_mesg.manufacturer = Manufacturer.ZWIFT
@@ -214,9 +191,7 @@ class FITConverter:
             file_id_mesg.product = 3907
             file_id_mesg.serial_number = processed_data.get("serial_number", 123456789)
             file_id_mesg.time_created = unix_ms_start_time
-            builder.add(file_id_mesg)
-
-            device_info_mesg = DeviceInfoMessage()
+            builder.add(file_id_mesg)            device_info_mesg = DeviceInfoMessage()
             device_info_mesg.timestamp = unix_ms_start_time
             try: device_info_mesg.manufacturer = Manufacturer.ZWIFT
             except AttributeError: device_info_mesg.manufacturer = 281
@@ -225,40 +200,38 @@ class FITConverter:
             device_info_mesg.software_version = processed_data.get("software_version_scaled", 100.0)
             device_info_mesg.hardware_version = processed_data.get("hardware_version", 1)
             builder.add(device_info_mesg)
-
+            
             event_mesg_start = EventMessage()
-
             event_mesg_start.timestamp = unix_ms_start_time
             event_mesg_start.event = Event.TIMER
             event_mesg_start.event_type = EventType.START
             builder.add(event_mesg_start)
             
             for i in valid_records_indices:
-                record_dt = record_datetimes[i]
-                unix_ms_record_time = self._datetime_to_unix_epoch_milliseconds(record_dt)
-                if unix_ms_record_time is None:
-                    continue
+            record_dt = record_datetimes[i]
+            unix_ms_record_time = self._datetime_to_unix_epoch_milliseconds(record_dt)
+            if unix_ms_record_time is None:
+            continue
 
                 record_mesg = RecordMessage()
-                record_mesg.timestamp = unix_ms_record_time
-                if powers[i] is not None: record_mesg.power = int(powers[i])
-                if heart_rates[i] is not None: record_mesg.heart_rate = int(heart_rates[i])
-                if cadences[i] is not None: record_mesg.cadence = int(cadences[i])
-                if speeds[i] is not None:
-                    # Convert from km/h to m/s (FIT files require speed in m/s)
-                    current_speed_kmh = float(speeds[i])
-                    current_speed_mps = current_speed_kmh / 3.6  # Convert km/h to m/s
-                    record_mesg.speed = current_speed_mps
-                    record_mesg.enhanced_speed = current_speed_mps
-                if distances[i] is not None: record_mesg.distance = float(distances[i])
-                builder.add(record_mesg)
+            record_mesg.timestamp = unix_ms_record_time
+            if powers[i] is not None: record_mesg.power = int(powers[i])
+            if heart_rates[i] is not None: record_mesg.heart_rate = int(heart_rates[i])
+            if cadences[i] is not None: record_mesg.cadence = int(cadences[i])
+            if speeds[i] is not None:
+            # Convert from km/h to m/s (FIT files require speed in m/s)
+            current_speed_kmh = float(speeds[i])
+            current_speed_mps = current_speed_kmh / 3.6  # Convert km/h to m/s
+            record_mesg.speed = current_speed_mps
+            record_mesg.enhanced_speed = current_speed_mps
+            if distances[i] is not None: record_mesg.distance = float(distances[i])
+            builder.add(record_mesg)
 
             unix_ms_event_stop_time = unix_ms_end_time
             if unix_ms_event_stop_time is None:
-                logger.warning("unix_ms_end_time is None, using last valid record time for stop event.")
-                last_valid_unix_ms_record_time = self._datetime_to_unix_epoch_milliseconds(record_datetimes[valid_records_indices[-1]])
-                unix_ms_event_stop_time = last_valid_unix_ms_record_time if last_valid_unix_ms_record_time is not None else unix_ms_start_time
-            
+            logger.warning("unix_ms_end_time is None, using last valid record time for stop event.")
+            last_valid_unix_ms_record_time = self._datetime_to_unix_epoch_milliseconds(record_datetimes[valid_records_indices[-1]])
+            unix_ms_event_stop_time = last_valid_unix_ms_record_time if last_valid_unix_ms_record_time is not None else unix_ms_start_time
             event_mesg_stop = EventMessage()
             event_mesg_stop.timestamp = unix_ms_event_stop_time
             event_mesg_stop.event = Event.TIMER
@@ -274,15 +247,15 @@ class FITConverter:
             lap_mesg.event_type = EventType.STOP
             lap_mesg.lap_trigger = LapTrigger.MANUAL
             if avg_speed is not None:
-                # Convert from km/h to m/s (FIT files require speed in m/s)
-                avg_speed_kmh = float(avg_speed)
-                avg_speed_mps = avg_speed_kmh / 3.6  # Convert km/h to m/s
-                lap_mesg.avg_speed = avg_speed_mps
+            # Convert from km/h to m/s (FIT files require speed in m/s)
+            avg_speed_kmh = float(avg_speed)
+            avg_speed_mps = avg_speed_kmh / 3.6  # Convert km/h to m/s
+            lap_mesg.avg_speed = avg_speed_mps
             if max_speed is not None:
-                # Convert from km/h to m/s (FIT files require speed in m/s)
-                max_speed_kmh = float(max_speed)
-                max_speed_mps = max_speed_kmh / 3.6  # Convert km/h to m/s
-                lap_mesg.max_speed = max_speed_mps
+            # Convert from km/h to m/s (FIT files require speed in m/s)
+            max_speed_kmh = float(max_speed)
+            max_speed_mps = max_speed_kmh / 3.6  # Convert km/h to m/s
+            lap_mesg.max_speed = max_speed_mps
             if total_distance is not None: lap_mesg.total_distance = float(total_distance)
             if total_calories is not None: lap_mesg.total_calories = int(total_calories)
             if avg_power is not None: lap_mesg.avg_power = int(avg_power)
@@ -293,8 +266,8 @@ class FITConverter:
             if avg_heart_rate is not None: lap_mesg.avg_heart_rate = int(avg_heart_rate)
             if max_heart_rate is not None: lap_mesg.max_heart_rate = int(max_heart_rate)
             if workout_type == "bike":
-                lap_mesg.sport = Sport.CYCLING
-                lap_mesg.sub_sport = SubSport.ROAD 
+            lap_mesg.sport = Sport.CYCLING
+            lap_mesg.sub_sport = SubSport.ROAD
             builder.add(lap_mesg)
 
             session_mesg = SessionMessage()
@@ -306,15 +279,15 @@ class FITConverter:
             session_mesg.event_type = EventType.STOP
             session_mesg.trigger = SessionTrigger.ACTIVITY_END
             if avg_speed is not None:
-                # Convert from km/h to m/s (FIT files require speed in m/s)
-                avg_speed_kmh = float(avg_speed)
-                avg_speed_mps = avg_speed_kmh / 3.6  # Convert km/h to m/s
-                session_mesg.avg_speed = avg_speed_mps
+            # Convert from km/h to m/s (FIT files require speed in m/s)
+            avg_speed_kmh = float(avg_speed)
+            avg_speed_mps = avg_speed_kmh / 3.6  # Convert km/h to m/s
+            session_mesg.avg_speed = avg_speed_mps
             if max_speed is not None:
-                # Convert from km/h to m/s (FIT files require speed in m/s)
-                max_speed_kmh = float(max_speed)
-                max_speed_mps = max_speed_kmh / 3.6  # Convert km/h to m/s
-                session_mesg.max_speed = max_speed_mps
+            # Convert from km/h to m/s (FIT files require speed in m/s)
+            max_speed_kmh = float(max_speed)
+            max_speed_mps = max_speed_kmh / 3.6  # Convert km/h to m/s
+            session_mesg.max_speed = max_speed_mps
             if total_distance is not None: session_mesg.total_distance = float(total_distance)
             if total_calories is not None: session_mesg.total_calories = int(total_calories)
             if avg_power is not None: session_mesg.avg_power = int(avg_power)
@@ -325,8 +298,8 @@ class FITConverter:
             if avg_heart_rate is not None: session_mesg.avg_heart_rate = int(avg_heart_rate)
             if max_heart_rate is not None: session_mesg.max_heart_rate = int(max_heart_rate)
             if workout_type == "bike":
-                session_mesg.sport = Sport.CYCLING
-                session_mesg.sub_sport = SubSport.ROAD
+            session_mesg.sport = Sport.CYCLING
+            session_mesg.sub_sport = SubSport.ROAD
             builder.add(session_mesg)
 
             activity_mesg = ActivityMessage()
@@ -335,27 +308,24 @@ class FITConverter:
             activity_mesg.num_sessions = 1
             # Changed ActivityType.MANUAL to ActivityType.GENERAL as MANUAL is not available
             try:
-                activity_mesg.type = ActivityType.GENERAL 
+                activity_mesg.type = ActivityType.GENERAL
             except AttributeError:
-                logger.warning("ActivityType.GENERAL not found, using integer value 0 for generic activity type.")
-                activity_mesg.type = 0 # Fallback to generic type if GENERAL is also missing
+            logger.warning("ActivityType.GENERAL not found, using integer value 0 for generic activity type.")
+            activity_mesg.type = 0 # Fallback to generic type if GENERAL is also missing
             activity_mesg.event = Event.ACTIVITY
             activity_mesg.event_type = EventType.STOP
-            
             local_midnight_dt = start_time_dt_utc.replace(hour=0, minute=0, second=0, microsecond=0)
             activity_mesg.local_timestamp = self._datetime_to_fit_epoch_seconds_for_local(local_midnight_dt)
             builder.add(activity_mesg)
 
             file_name_base = f"{workout_type}_{start_time_dt_utc.strftime("%Y%m%d_%H%M%S")}"
             output_path = os.path.join(self.output_dir, f"{file_name_base}.fit")
-            
             fit_file = builder.build()
             fit_file.to_file(output_path)
 
             logger.info(f"FIT file successfully created: {output_path}")
             return output_path
-        
-        except Exception as e:
+            except Exception as e:
             logger.error(f"FIT Conversion Exception: {e}")
             logger.error(f"Full Traceback Below:\n{traceback.format_exc()}")
             return None
