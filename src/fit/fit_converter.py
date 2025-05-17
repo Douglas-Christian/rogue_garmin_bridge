@@ -294,7 +294,23 @@ class FITConverter:
             if max_heart_rate is not None: lap_mesg.max_heart_rate = int(max_heart_rate)
             if workout_type == "bike":
                 lap_mesg.sport = Sport.CYCLING
-                lap_mesg.sub_sport = SubSport.ROAD 
+                try:
+                    lap_mesg.sub_sport = SubSport.INDOOR_CYCLING
+                    logger.info("Set LapMessage SubSport to INDOOR_CYCLING.")
+                except AttributeError:
+                    logger.warning("SubSport.INDOOR_CYCLING not found for LapMessage. Trying SubSport.VIRTUAL_ACTIVITY.")
+                    try:
+                        lap_mesg.sub_sport = SubSport.VIRTUAL_ACTIVITY
+                        logger.info("Set LapMessage SubSport to VIRTUAL_ACTIVITY.")
+                    except AttributeError:
+                        logger.warning("SubSport.VIRTUAL_ACTIVITY not found for LapMessage. Trying SubSport.ROAD.")
+                        try:
+                            lap_mesg.sub_sport = SubSport.ROAD # Original fallback
+                            logger.info("Set LapMessage SubSport to ROAD.")
+                        except AttributeError:
+                            logger.warning("SubSport.ROAD not found for LapMessage. Using integer value 11 (Indoor Cycling).")
+                            lap_mesg.sub_sport = 11 # Fallback to int for Indoor Cycling sub_sport
+            # else: handle other workout types if necessary
             builder.add(lap_mesg)
 
             session_mesg = SessionMessage()
@@ -326,19 +342,51 @@ class FITConverter:
             if max_heart_rate is not None: session_mesg.max_heart_rate = int(max_heart_rate)
             if workout_type == "bike":
                 session_mesg.sport = Sport.CYCLING
-                session_mesg.sub_sport = SubSport.ROAD
+                try:
+                    session_mesg.sub_sport = SubSport.INDOOR_CYCLING
+                    logger.info("Set SessionMessage SubSport to INDOOR_CYCLING.")
+                except AttributeError:
+                    logger.warning("SubSport.INDOOR_CYCLING not found for SessionMessage. Trying SubSport.VIRTUAL_ACTIVITY.")
+                    try:
+                        session_mesg.sub_sport = SubSport.VIRTUAL_ACTIVITY
+                        logger.info("Set SessionMessage SubSport to VIRTUAL_ACTIVITY.")
+                    except AttributeError:
+                        logger.warning("SubSport.VIRTUAL_ACTIVITY not found for SessionMessage. Trying SubSport.ROAD.")
+                        try:
+                            session_mesg.sub_sport = SubSport.ROAD # Original fallback
+                            logger.info("Set SessionMessage SubSport to ROAD.")
+                        except AttributeError:
+                            logger.warning("SubSport.ROAD not found for SessionMessage. Using integer value 11 (Indoor Cycling).")
+                            session_mesg.sub_sport = 11 # Fallback to int for Indoor Cycling sub_sport
+            # else: handle other workout types if necessary
             builder.add(session_mesg)
 
             activity_mesg = ActivityMessage()
             activity_mesg.timestamp = unix_ms_start_time
             activity_mesg.total_timer_time = actual_total_duration_seconds
             activity_mesg.num_sessions = 1
-            # Changed ActivityType.MANUAL to ActivityType.GENERAL as MANUAL is not available
-            try:
-                activity_mesg.type = ActivityType.GENERAL 
-            except AttributeError:
-                logger.warning("ActivityType.GENERAL not found, using integer value 0 for generic activity type.")
-                activity_mesg.type = 0 # Fallback to generic type if GENERAL is also missing
+            # Set ActivityType based on workout_type
+            if workout_type == "bike":
+                try:
+                    activity_mesg.type = ActivityType.INDOOR_CYCLING
+                    logger.info("Set ActivityType to INDOOR_CYCLING for bike workout.")
+                except AttributeError:
+                    logger.warning("ActivityType.INDOOR_CYCLING not found. Trying ActivityType.CYCLING.")
+                    try:
+                        activity_mesg.type = ActivityType.CYCLING
+                        logger.info("Set ActivityType to CYCLING for bike workout.")
+                    except AttributeError:
+                        logger.warning("ActivityType.CYCLING not found. Using integer value 11 (Indoor Cycling) for bike workout.")
+                        activity_mesg.type = 11 # Standard FIT value for Indoor Cycling
+            else:
+                # For other workout types, attempt to use a specific type or fallback to GENERAL
+                try:
+                    activity_mesg.type = ActivityType.GENERAL # Default for non-bike or if specific type is not handled
+                    logger.info(f"Set ActivityType to GENERAL for workout_type '{workout_type}'.")
+                except AttributeError:
+                    logger.warning(f"ActivityType.GENERAL not found for workout_type '{workout_type}', using integer value 0.")
+                    activity_mesg.type = 0 # Fallback to generic
+
             activity_mesg.event = Event.ACTIVITY
             activity_mesg.event_type = EventType.STOP
             

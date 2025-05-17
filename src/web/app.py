@@ -280,7 +280,7 @@ def disconnect_device():
              return jsonify({'success': False, 'error': 'Asyncio loop not running'})
 
         # Schedule the async disconnect method on the background loop
-        logger.info("Scheduling disconnect task on background loop.")
+        logger.info("Scheduling disconnect task on the background loop.")
         future = asyncio.run_coroutine_threadsafe(ftms_manager.disconnect(), background_loop)
         success = future.result(timeout=10) # Wait for the result with timeout
 
@@ -487,7 +487,7 @@ def workout_operations(workout_id):
             workout['data_point_count'] = len(workout_data)
             
             # Add a log statement to see what's being sent
-            logger.info(f"Sending workout {workout_id} with {len(workout_data)} data points")
+            logger.info(f"Sending workout {workout_id} with {len(workout_data)} data points, type: {workout.get('workout_type')}")
             
             # Add a debug log to check workout data structure
             logger.debug(f"Workout data series for {workout_id} - points: {len(workout_data)}")

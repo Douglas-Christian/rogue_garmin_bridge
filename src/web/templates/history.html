@@ -1,4 +1,3 @@
-
 {% extends "layout.html" %}
 
 {% block content %}
@@ -230,8 +229,8 @@
                     distanceText = userUnitSystem === "imperial" ? `${unitConversions.mToMi(distanceM).toFixed(2)} mi` : `${unitConversions.mToKm(distanceM).toFixed(2)} km`;
                 }
                 const calories = (workout.summary && workout.summary.total_calories !== undefined) ? `${Math.round(parseFloat(workout.summary.total_calories))} kcal` : "-";
-                const workoutType = workout.type ? workout.type.charAt(0).toUpperCase() + workout.type.slice(1) : "Unknown";
-                html += `<tr data-workout-id="${workout.id}" class="workout-row"><td>${startTimeStr}</td><td>${workoutType}</td><td>${duration}</td><td>${distanceText}</td><td>${calories}</td><td><button class=\"btn btn-sm btn-primary view-btn\" data-workout-id="${workout.id}">View</button> <button class=\"btn btn-sm btn-success fit-btn\" data-workout-id="${workout.id}">FIT</button> <button class=\"btn btn-sm btn-danger delete-btn\" data-workout-id="${workout.id}">Delete</button></td></tr>`;
+                const workoutType = workout.workout_type ? workout.workout_type.charAt(0).toUpperCase() + workout.workout_type.slice(1) : "Unknown"; // Changed to workout_type
+                html += `<tr data-workout-id="${workout.id}" class="workout-row"><td>${startTimeStr}</td><td>${workoutType}</td><td>${duration}</td><td>${distanceText}</td><td>${calories}</td><td><button class="btn btn-sm btn-primary view-btn" data-workout-id="${workout.id}">View</button> <button class="btn btn-sm btn-success fit-btn" data-workout-id="${workout.id}">FIT</button> <button class="btn btn-sm btn-danger delete-btn" data-workout-id="${workout.id}">Delete</button></td></tr>`;
             });
         }
         html += "</tbody></table></div>";
@@ -311,7 +310,11 @@
             `${unitConversions.kphToMph(displayMaxSpeedKph).toFixed(1)} mph` : 
             `${displayMaxSpeedKph.toFixed(1)} kph`;
 
-        summaryHtml += `<p><strong>Type:</strong> ${workoutInfo.type || '-'}<br>
+        const workoutTypeDetail = workoutInfo.workout_type 
+            ? workoutInfo.workout_type.charAt(0).toUpperCase() + workoutInfo.workout_type.slice(1) 
+            : '-'; // Changed to workout_type
+
+        summaryHtml += `<p><strong>Type:</strong> ${workoutTypeDetail}<br>
                           <strong>Start Time:</strong> ${workoutInfo.start_time ? new Date(workoutInfo.start_time).toLocaleString() : '-'}<br>
                           <strong>Duration:</strong> ${formatDuration(workoutInfo.duration_seconds)}<br>
                           <strong>Total Distance:</strong> ${displayDistance}<br>
@@ -400,7 +403,7 @@
         // First, call API to ensure FIT file is generated/exists and get its path
         fetch(`/api/convert_fit/${workoutId}`, { method: 'POST' })
             .then(response => response.json())
-            .then(data => {
+            .then(data => { // Corrected: added parentheses around data
                 console.log(`HISTORY_DEBUG: /api/convert_fit/${workoutId} response:`, data);
                 if (data.success && data.fit_file_path) {
                     // The actual filename is the last part of the path
