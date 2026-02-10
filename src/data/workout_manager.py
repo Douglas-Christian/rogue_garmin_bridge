@@ -589,16 +589,18 @@ class WorkoutManager:
         if 'total_energy' in data:
             self.summary_metrics['total_calories'] = data['total_energy']
         
-        # Update power metrics
-        if 'instantaneous_power' in data:
-            power = data['instantaneous_power']
-            
+        # Update power metrics (handle both standardized 'power' and legacy 'instantaneous_power')
+        power_key = 'power' if 'power' in data else ('instantaneous_power' if 'instantaneous_power' in data else None)
+        if power_key:
+            power = data[power_key]
+
             # Update max power
             if power > self.summary_metrics.get('max_power', 0):
                 self.summary_metrics['max_power'] = power
-            
+
             # Update average power
-            power_values = [d.get('instantaneous_power', 0) for d in self.data_points if 'instantaneous_power' in d]
+            power_values = [d.get('power', d.get('instantaneous_power', 0)) for d in self.data_points
+                           if 'power' in d or 'instantaneous_power' in d]
             if power_values:
                 self.summary_metrics['avg_power'] = sum(power_values) / len(power_values)
         
