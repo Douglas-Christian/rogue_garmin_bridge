@@ -377,7 +377,7 @@ class FITConverter:
             activity_mesg.local_timestamp = self._datetime_to_fit_epoch_seconds_for_local(local_midnight_dt)
             builder.add(activity_mesg)
 
-            file_name_base = f"{workout_type}_{start_time_dt_utc.strftime("%Y%m%d_%H%M%S")}"
+            file_name_base = f"{workout_type}_{start_time_dt_utc.strftime('%Y%m%d_%H%M%S')}"
             output_path = os.path.join(self.output_dir, f"{file_name_base}.fit")
             
             fit_file = builder.build()
