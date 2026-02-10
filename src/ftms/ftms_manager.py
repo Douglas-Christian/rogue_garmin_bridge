@@ -161,20 +161,6 @@ class FTMSDeviceManager:
 
         # Then, process data through the _handle_ftms_data method to ensure workout data is saved
         self._handle_ftms_data(data)
-
-        """Notify all registered data callbacks with new FTMS data."""
-        logger.debug(f"FTMS Manager notifying {len(self.data_callbacks)} data callbacks.") # Log callback notification attempt
-        
-        # First, process data through the _handle_ftms_data method to ensure workout data is saved
-        self._handle_ftms_data(data)
-        
-        # Then notify external callbacks
-        for callback in self.data_callbacks:
-            try:
-                logger.debug(f"Calling data callback: {callback.__name__ if hasattr(callback, '__name__') else str(callback)}") # Log specific callback call
-                callback(data)
-            except Exception as e:
-                logger.error(f"Error in FTMS data callback: {str(e)}", exc_info=True)
     
     def _handle_status(self, status, data):
         """Handle status updates from the device and forward to callbacks."""
