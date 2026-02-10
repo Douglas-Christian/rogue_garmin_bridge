@@ -236,27 +236,30 @@ class DataProcessor:
         for data_point in workout_data:
             timestamp = data_point.get('timestamp', 0)
             timestamps.append(timestamp)
-            
+
+            # Data may be nested under a 'data' key (from database) or flat (direct)
+            inner = data_point.get('data', data_point) if isinstance(data_point, dict) else data_point
+
             # Extract power data
-            power = data_point.get('instantaneous_power', data_point.get('power', 0))
+            power = inner.get('instantaneous_power', inner.get('power', 0))
             powers.append(power)
-            
+
             # Extract stroke rate data
-            stroke_rate = data_point.get('stroke_rate', 0)
+            stroke_rate = inner.get('stroke_rate', 0)
             stroke_rates.append(stroke_rate)
-            
+
             # Extract heart rate data
-            heart_rate = data_point.get('heart_rate', 0)
+            heart_rate = inner.get('heart_rate', 0)
             heart_rates.append(heart_rate)
-            
+
             # Extract distance data
-            distance = data_point.get('total_distance', data_point.get('distance', 0))
+            distance = inner.get('total_distance', inner.get('distance', 0))
             distances.append(distance)
-            
+
             # Extract stroke count data
-            stroke_count = data_point.get('stroke_count', 0)
+            stroke_count = inner.get('stroke_count', 0)
             stroke_counts.append(stroke_count)
-        
+
         # Calculate derived metrics
         total_duration = max(timestamps) if timestamps else 0
         avg_power = sum(powers) / len(powers) if powers else 0
@@ -267,10 +270,11 @@ class DataProcessor:
         max_heart_rate = max(heart_rates) if heart_rates else 0
         total_distance = max(distances) if distances else 0
         total_strokes = max(stroke_counts) if stroke_counts else 0
-        
+
         # Calculate calories if not provided
+        last_inner = workout_data[-1].get('data', workout_data[-1]) if workout_data else {}
         total_calories = self._calculate_calories_rower(
-            avg_power, total_duration, workout_data[-1].get('total_energy', 0)
+            avg_power, total_duration, last_inner.get('total_energy', 0)
         )
         
         # Calculate pace (time per 500m)

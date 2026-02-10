@@ -255,12 +255,12 @@ class FTMSConnector:
                                f"Pace: {getattr(data, 'instantaneous_pace', 'N/A')}")
                 
                 # Calculate speed from pace if available
-                if "instantaneous_pace" in processed_data and processed_data["instantaneous_pace"] > 0:
+                if "instantaneous_pace" in processed_data and processed_data["instantaneous_pace"] and processed_data["instantaneous_pace"] > 0:
                     processed_data["speed"] = 500.0 / processed_data["instantaneous_pace"]
-                elif "pace" in processed_data and processed_data["pace"] > 0:
+                elif "pace" in processed_data and processed_data["pace"] and processed_data["pace"] > 0:
                     processed_data["speed"] = 500.0 / processed_data["pace"]
                 else:
-                    processed_data["speed"] = None
+                    processed_data["speed"] = 0
                 
                 # Standardize field names
                 if "instantaneous_pace" in processed_data:
@@ -419,10 +419,16 @@ class FTMSConnector:
                     self.device_type = MachineType.ROWER
                     logger.info("Inferred device type from name: Rower")
                 elif device.name and "echo" in device.name.lower():
-                    # Rogue Echo Bike is likely an indoor bike
-                    machine_type = MachineType.INDOOR_BIKE
-                    self.device_type = MachineType.INDOOR_BIKE
-                    logger.info("Inferred device type from name (Echo): Indoor Bike")
+                    # Rogue Echo device — check if "rower" appears in name,
+                    # otherwise default to indoor bike.
+                    if "rower" in device.name.lower():
+                        machine_type = MachineType.ROWER
+                        self.device_type = MachineType.ROWER
+                        logger.info("Inferred device type from name (Echo Rower): Rower")
+                    else:
+                        machine_type = MachineType.INDOOR_BIKE
+                        self.device_type = MachineType.INDOOR_BIKE
+                        logger.info("Inferred device type from name (Echo): Indoor Bike")
                 else:
                     # Default to indoor bike if we can't determine
                     machine_type = MachineType.INDOOR_BIKE
@@ -557,13 +563,15 @@ class FTMSConnector:
                 
                 logger.info("FTMS client initialized and handlers set.")
                 
-                # Special handling for Echo Bike - set up notifications right away
+                # Special handling for Echo devices - set up notifications right away
                 if self.connected_device_ble and self.connected_device_ble.name and 'echo' in self.connected_device_ble.name.lower():
-                    logger.info("Echo Bike detected, setting up notifications immediately...")
-                    # Set a flag to avoid duplicate notification setup
                     self._notifications_set_up = False
-                    # Set up notifications in a background task to avoid blocking the connection
-                    asyncio.create_task(self._setup_echo_bike_notifications())
+                    if self.device_type == MachineType.ROWER:
+                        logger.info("Echo Rower detected, setting up rower notifications immediately...")
+                        asyncio.create_task(self._setup_echo_rower_notifications())
+                    else:
+                        logger.info("Echo Bike detected, setting up bike notifications immediately...")
+                        asyncio.create_task(self._setup_echo_bike_notifications())
                 
                 # Start data polling thread for reliable data collection
                 self._start_data_polling()
@@ -895,6 +903,202 @@ class FTMSConnector:
                 
         except Exception as e:
             logger.error(f"Error setting up Echo Bike notifications: {e}")
+            import traceback
+            logger.error(traceback.format_exc())
+
+    async def _setup_echo_rower_notifications(self):
+        """Set up notification handlers specifically for the Echo Rower."""
+        if not self.is_connected() or not self.ftms_client:
+            logger.error("Cannot set up Echo Rower notifications - not connected")
+            return
+
+        try:
+            logger.info("Setting up Echo Rower notification handlers...")
+
+            # Rower Data characteristic UUID (standard FTMS UUID 0x2AD1)
+            rower_data_uuid = "00002AD1-0000-1000-8000-00805f9b34fb"
+
+            def rower_data_notification_handler(sender, data):
+                try:
+                    logger.info(f"Received rower data notification: {data.hex()}")
+
+                    if len(data) >= 2:
+                        # First 2 bytes are flags (per FTMS Rower Data spec)
+                        flags_low = data[0]
+                        flags_high = data[1]
+                        flags = (flags_high << 8) | flags_low
+                        logger.info(f"Rower flags: {flags:016b} (binary), 0x{flags:04x} (hex)")
+
+                        parsed_data = {
+                            "device_type": "rower",
+                            "timestamp": datetime.datetime.now().isoformat()
+                        }
+
+                        # FTMS Rower Data field presence flags
+                        flag_more_data = bool(flags_low & 0x01)
+                        flag_average_stroke_rate = bool(flags_low & 0x02)
+                        flag_total_distance = bool(flags_low & 0x04)
+                        flag_instantaneous_pace = bool(flags_low & 0x08)
+                        flag_average_pace = bool(flags_low & 0x10)
+                        flag_instantaneous_power = bool(flags_low & 0x20)
+                        flag_average_power = bool(flags_low & 0x40)
+                        flag_resistance_level = bool(flags_low & 0x80)
+                        flag_expended_energy = bool(flags_high & 0x01)
+                        flag_heart_rate = bool(flags_high & 0x02)
+                        flag_metabolic_equivalent = bool(flags_high & 0x04)
+                        flag_elapsed_time = bool(flags_high & 0x08)
+                        flag_remaining_time = bool(flags_high & 0x10)
+
+                        offset = 2  # Start after flags
+
+                        # Stroke Rate + Stroke Count (present if bit 0 is CLEAR)
+                        if not flag_more_data:
+                            if offset + 3 <= len(data):
+                                # Stroke rate in 0.5 strokes/min, stroke count is UINT16
+                                stroke_rate = data[offset] / 2.0
+                                stroke_count = int.from_bytes(data[offset+1:offset+3], byteorder='little')
+                                parsed_data["stroke_rate"] = stroke_rate
+                                parsed_data["stroke_count"] = stroke_count
+                                logger.info(f"Stroke Rate: {stroke_rate} spm, Stroke Count: {stroke_count}")
+                                offset += 3
+
+                        # Average Stroke Rate (present if bit 1 is set)
+                        if flag_average_stroke_rate:
+                            if offset + 1 <= len(data):
+                                avg_stroke_rate = data[offset] / 2.0
+                                parsed_data["average_stroke_rate"] = avg_stroke_rate
+                                logger.info(f"Avg Stroke Rate: {avg_stroke_rate} spm")
+                                offset += 1
+
+                        # Total Distance (present if bit 2 is set) — UINT24
+                        if flag_total_distance:
+                            if offset + 3 <= len(data):
+                                distance = int.from_bytes(data[offset:offset+3], byteorder='little')
+                                parsed_data["distance"] = distance
+                                logger.info(f"Total Distance: {distance} m")
+                                offset += 3
+
+                        # Instantaneous Pace (present if bit 3 is set) — UINT16, 1/s resolution
+                        if flag_instantaneous_pace:
+                            if offset + 2 <= len(data):
+                                pace_raw = int.from_bytes(data[offset:offset+2], byteorder='little')
+                                parsed_data["pace"] = pace_raw
+                                if pace_raw > 0:
+                                    parsed_data["speed"] = 500.0 / pace_raw
+                                logger.info(f"Pace: {pace_raw} s/500m")
+                                offset += 2
+
+                        # Average Pace (present if bit 4 is set) — UINT16
+                        if flag_average_pace:
+                            if offset + 2 <= len(data):
+                                avg_pace = int.from_bytes(data[offset:offset+2], byteorder='little')
+                                parsed_data["average_pace"] = avg_pace
+                                logger.info(f"Avg Pace: {avg_pace} s/500m")
+                                offset += 2
+
+                        # Instantaneous Power (present if bit 5 is set) — SINT16
+                        if flag_instantaneous_power:
+                            if offset + 2 <= len(data):
+                                power = int.from_bytes(data[offset:offset+2], byteorder='little', signed=True)
+                                parsed_data["power"] = power
+                                logger.info(f"Power: {power} W")
+                                offset += 2
+
+                        # Average Power (present if bit 6 is set) — SINT16
+                        if flag_average_power:
+                            if offset + 2 <= len(data):
+                                avg_power = int.from_bytes(data[offset:offset+2], byteorder='little', signed=True)
+                                parsed_data["average_power"] = avg_power
+                                logger.info(f"Avg Power: {avg_power} W")
+                                offset += 2
+
+                        # Resistance Level (present if bit 7 is set) — SINT16
+                        if flag_resistance_level:
+                            if offset + 2 <= len(data):
+                                resistance = int.from_bytes(data[offset:offset+2], byteorder='little', signed=True)
+                                parsed_data["resistance_level"] = resistance
+                                logger.info(f"Resistance: {resistance}")
+                                offset += 2
+
+                        # Expended Energy (present if bit 8 is set) — 2+2+1 bytes
+                        if flag_expended_energy:
+                            if offset + 5 <= len(data):
+                                total_energy = int.from_bytes(data[offset:offset+2], byteorder='little')
+                                energy_per_hour = int.from_bytes(data[offset+2:offset+4], byteorder='little')
+                                energy_per_minute = data[offset+4]
+                                parsed_data["total_energy"] = total_energy
+                                parsed_data["energy_per_hour"] = energy_per_hour
+                                parsed_data["energy_per_minute"] = energy_per_minute
+                                logger.info(f"Energy: {total_energy} kcal, {energy_per_hour} kcal/h")
+                                offset += 5
+
+                        # Heart Rate (present if bit 9 is set) — UINT8
+                        if flag_heart_rate:
+                            if offset + 1 <= len(data):
+                                heart_rate = data[offset]
+                                parsed_data["heart_rate"] = heart_rate
+                                logger.info(f"Heart Rate: {heart_rate} BPM")
+                                offset += 1
+
+                        # Metabolic Equivalent (present if bit 10 is set) — UINT8
+                        if flag_metabolic_equivalent:
+                            if offset + 1 <= len(data):
+                                metabolic = data[offset] / 10.0
+                                parsed_data["metabolic_equivalent"] = metabolic
+                                offset += 1
+
+                        # Elapsed Time (present if bit 11 is set) — UINT16
+                        if flag_elapsed_time:
+                            if offset + 2 <= len(data):
+                                elapsed = int.from_bytes(data[offset:offset+2], byteorder='little')
+                                parsed_data["elapsed_time"] = elapsed
+                                logger.info(f"Elapsed Time: {elapsed} s")
+                                offset += 2
+
+                        # Remaining Time (present if bit 12 is set) — UINT16
+                        if flag_remaining_time:
+                            if offset + 2 <= len(data):
+                                remaining = int.from_bytes(data[offset:offset+2], byteorder='little')
+                                parsed_data["remaining_time"] = remaining
+                                offset += 2
+
+                        logger.info(f"Parsed rower data: {parsed_data}")
+
+                        has_real_data = any(v is not None and v != 0 for k, v in parsed_data.items()
+                                          if k not in ["device_type", "timestamp"])
+
+                        if has_real_data:
+                            self._notify_data(parsed_data)
+                        else:
+                            logger.debug("All rower data values are None or 0, skipping notification")
+                    else:
+                        logger.warning(f"Rower data packet too small: {len(data)} bytes")
+                except Exception as e:
+                    logger.error(f"Error parsing rower data notification: {e}")
+                    import traceback
+                    logger.error(traceback.format_exc())
+
+            # Get the BLE client
+            ble_client = None
+            if hasattr(self.ftms_client, 'client'):
+                ble_client = self.ftms_client.client
+            else:
+                ble_client = self.ble_client
+
+            if ble_client:
+                try:
+                    await ble_client.start_notify(rower_data_uuid, rower_data_notification_handler)
+                    logger.info("Successfully started notifications for Rower Data (0x2AD1)")
+                    self._notifications_set_up = True
+                except Exception as e_notify:
+                    logger.error(f"Error starting rower notifications: {e_notify}")
+                    import traceback
+                    logger.error(traceback.format_exc())
+            else:
+                logger.error("Cannot access BLE client for setting up rower notifications")
+
+        except Exception as e:
+            logger.error(f"Error setting up Echo Rower notifications: {e}")
             import traceback
             logger.error(traceback.format_exc())
 
