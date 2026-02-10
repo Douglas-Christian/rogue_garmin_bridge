@@ -14,6 +14,8 @@ import threading
 from datetime import datetime
 from typing import Dict, List, Any, Optional, Tuple, Union
 
+from src.utils.credential_encryption import encrypt_credential, decrypt_credential
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -776,11 +778,15 @@ class Database:
             cursor.execute("SELECT COUNT(*) as count FROM user_profile")
             count = cursor.fetchone()['count']
             
+            # Encrypt the Garmin password before storing
+            garmin_password_raw = profile.get('garmin_password', '')
+            garmin_password_enc = encrypt_credential(garmin_password_raw) if garmin_password_raw else ''
+
             if count > 0:
                 # Update existing profile
                 cursor.execute(
                     """
-                    UPDATE user_profile SET 
+                    UPDATE user_profile SET
                     name = ?, age = ?, weight = ?, height = ?, gender = ?,
                     max_heart_rate = ?, resting_heart_rate = ?,
                     garmin_username = ?, garmin_password = ?
@@ -795,14 +801,14 @@ class Database:
                         profile.get('max_heart_rate', 0),
                         profile.get('resting_heart_rate', 0),
                         profile.get('garmin_username', ''),
-                        profile.get('garmin_password', '')
+                        garmin_password_enc
                     )
                 )
             else:
                 # Insert new profile
                 cursor.execute(
                     """
-                    INSERT INTO user_profile 
+                    INSERT INTO user_profile
                     (name, age, weight, height, gender, max_heart_rate, resting_heart_rate, garmin_username, garmin_password)
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
                     """,
@@ -815,7 +821,7 @@ class Database:
                         profile.get('max_heart_rate', 0),
                         profile.get('resting_heart_rate', 0),
                         profile.get('garmin_username', ''),
-                        profile.get('garmin_password', '')
+                        garmin_password_enc
                     )
                 )
             
@@ -840,9 +846,13 @@ class Database:
             
             cursor.execute("SELECT * FROM user_profile LIMIT 1")
             profile = cursor.fetchone()
-            
+
             if profile:
-                return dict(profile)
+                profile_dict = dict(profile)
+                # Decrypt the Garmin password if it was encrypted
+                if profile_dict.get('garmin_password'):
+                    profile_dict['garmin_password'] = decrypt_credential(profile_dict['garmin_password'])
+                return profile_dict
             return None
         except sqlite3.Error as e:
             logger.error(f"Error getting user profile: {str(e)}")
