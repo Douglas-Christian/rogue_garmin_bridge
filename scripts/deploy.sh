@@ -320,6 +320,10 @@ deploy() {
     generate_dev_ssl
     create_backup
     
+    # Stop existing containers first (avoids docker-compose v1 recreate bug)
+    log_info "Stopping existing containers..."
+    $DOCKER_COMPOSE -f "$COMPOSE_FILE" --env-file "$ENV_FILE" down 2>/dev/null || true
+
     # Pull latest images
     log_info "Pulling latest images..."
     $DOCKER_COMPOSE -f "$COMPOSE_FILE" --env-file "$ENV_FILE" pull
