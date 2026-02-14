@@ -220,7 +220,7 @@ class ConfigValidator:
 def main():
     """Main function."""
     parser = argparse.ArgumentParser(description='Validate Rogue Garmin Bridge configuration')
-    parser.add_argument('environment', choices=['development', 'staging', 'production'],
+    parser.add_argument('environment', choices=['development', 'staging', 'production', 'raspberry-pi', 'rpi'],
                        help='Environment to validate')
     parser.add_argument('--env-file', help='Environment file to validate')
     parser.add_argument('--quiet', '-q', action='store_true',
@@ -231,6 +231,8 @@ def main():
     # Determine environment file
     if args.env_file:
         env_file = args.env_file
+    elif args.environment in ('raspberry-pi', 'rpi'):
+        env_file = '.env.rpi'
     elif args.environment == 'staging':
         env_file = '.env.staging'
     else:
