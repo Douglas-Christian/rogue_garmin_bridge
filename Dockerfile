@@ -1,6 +1,6 @@
 # Multi-stage build for production deployment
 # Stage 1: Build dependencies
-FROM python:3.12-slim as builder
+FROM python:3.12-slim AS builder
 
 # Install system dependencies for building
 RUN apt-get update && apt-get install -y \
@@ -19,7 +19,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
 # Stage 2: Production image
-FROM python:3.12-slim as production
+FROM python:3.12-slim AS production
 
 # Install runtime system dependencies
 RUN apt-get update && apt-get install -y \
