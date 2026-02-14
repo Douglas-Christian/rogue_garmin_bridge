@@ -70,4 +70,4 @@ ENV FLASK_APP=src.web.app \
     PYTHONUNBUFFERED=1
 
 # Run the application
-CMD ["python", "src/web/app.py", "--host", "0.0.0.0", "--port", "5000"]
+CMD ["python", "src/web/app.py"]
