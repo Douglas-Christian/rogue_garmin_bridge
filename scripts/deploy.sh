@@ -11,6 +11,15 @@ PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 DEFAULT_ENV="production"
 DEFAULT_COMPOSE_FILE="docker-compose.yml"
 
+# Detect docker compose command (v2 plugin preferred over v1 standalone)
+if docker compose version &> /dev/null; then
+    DOCKER_COMPOSE="docker compose"
+elif command -v docker-compose &> /dev/null; then
+    DOCKER_COMPOSE="docker-compose"
+else
+    DOCKER_COMPOSE=""
+fi
+
 # Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -203,10 +212,11 @@ check_requirements() {
     fi
     
     # Check Docker Compose
-    if ! command -v docker-compose &> /dev/null; then
-        log_error "Docker Compose is not installed"
+    if [[ -z "$DOCKER_COMPOSE" ]]; then
+        log_error "Docker Compose is not installed (tried 'docker compose' and 'docker-compose')"
         exit 1
     fi
+    log_info "Using compose command: $DOCKER_COMPOSE"
     
     # Check if Docker daemon is running
     if ! docker info &> /dev/null; then
@@ -312,15 +322,15 @@ deploy() {
     
     # Pull latest images
     log_info "Pulling latest images..."
-    docker-compose -f "$COMPOSE_FILE" --env-file "$ENV_FILE" pull
-    
+    $DOCKER_COMPOSE -f "$COMPOSE_FILE" --env-file "$ENV_FILE" pull
+
     # Build images
     log_info "Building images..."
-    docker-compose -f "$COMPOSE_FILE" --env-file "$ENV_FILE" build
-    
+    $DOCKER_COMPOSE -f "$COMPOSE_FILE" --env-file "$ENV_FILE" build
+
     # Start services
     log_info "Starting services..."
-    docker-compose -f "$COMPOSE_FILE" --env-file "$ENV_FILE" up -d
+    $DOCKER_COMPOSE -f "$COMPOSE_FILE" --env-file "$ENV_FILE" up -d
     
     # Wait for health check
     log_info "Waiting for application to be healthy..."
@@ -337,28 +347,28 @@ deploy() {
 # Start function
 start() {
     log_info "Starting application..."
-    docker-compose -f "$COMPOSE_FILE" --env-file "$ENV_FILE" up -d
+    $DOCKER_COMPOSE -f "$COMPOSE_FILE" --env-file "$ENV_FILE" up -d
     log_success "Application started"
 }
 
 # Stop function
 stop() {
     log_info "Stopping application..."
-    docker-compose -f "$COMPOSE_FILE" --env-file "$ENV_FILE" down
+    $DOCKER_COMPOSE -f "$COMPOSE_FILE" --env-file "$ENV_FILE" down
     log_success "Application stopped"
 }
 
 # Restart function
 restart() {
     log_info "Restarting application..."
-    docker-compose -f "$COMPOSE_FILE" --env-file "$ENV_FILE" restart
+    $DOCKER_COMPOSE -f "$COMPOSE_FILE" --env-file "$ENV_FILE" restart
     log_success "Application restarted"
 }
 
 # Status function
 status() {
     log_info "Application status:"
-    docker-compose -f "$COMPOSE_FILE" --env-file "$ENV_FILE" ps
+    $DOCKER_COMPOSE -f "$COMPOSE_FILE" --env-file "$ENV_FILE" ps
     
     # Get port from environment file
     PORT=$(grep "APP_PORT" "$ENV_FILE" 2>/dev/null | cut -d'=' -f2 | tr -d ' ' || echo "5000")
@@ -373,7 +383,7 @@ status() {
 
 # Logs function
 show_logs() {
-    docker-compose -f "$COMPOSE_FILE" --env-file "$ENV_FILE" logs -f
+    $DOCKER_COMPOSE -f "$COMPOSE_FILE" --env-file "$ENV_FILE" logs -f
 }
 
 # Update function
