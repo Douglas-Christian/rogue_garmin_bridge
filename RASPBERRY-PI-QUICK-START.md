@@ -17,11 +17,19 @@ git clone https://github.com/Douglas-Christian/rogue_garmin_bridge.git
 cd rogue_garmin_bridge
 ```
 
-### 2. Deploy
+### 2. Set Script Permissions
+
+After cloning, make the scripts executable:
+
+```bash
+chmod +x scripts/deploy.sh scripts/auto-update.sh
+```
+
+### 3. Deploy
 
 ```bash
 # Basic deployment (recommended for most users)
-./scripts/deploy.sh -e raspberry-pi deploy
+sudo ./scripts/deploy.sh -e raspberry-pi deploy
 
 # With monitoring dashboard
 ./scripts/deploy.sh -e raspberry-pi -p monitoring deploy
