@@ -658,20 +658,34 @@ class DeviceManager {
             bluetooth: await this.checkBluetoothStatus(),
             connection: await this.checkConnectionStatus(),
             dataFlow: await this.checkDataFlow(),
-            system: this.checkSystemInfo()
+            system: await this.checkSystemInfo()
         };
-        
+
         return results;
     }
     
     async checkBluetoothStatus() {
-        // Check if Web Bluetooth API is available
-        const webBluetoothAvailable = 'bluetooth' in navigator;
-        
-        return {
-            webBluetoothSupported: webBluetoothAvailable,
-            status: webBluetoothAvailable ? 'Available' : 'Not supported'
-        };
+        // Query the Raspberry Pi backend for Bluetooth adapter health
+        // (BLE runs on the Pi, not in the phone browser)
+        try {
+            const response = await fetch('/health/detailed');
+            const health = await response.json();
+            const bt = health.components && health.components.bluetooth;
+
+            if (bt) {
+                return {
+                    status: bt.status,
+                    mode: bt.mode || null,
+                    adapters: bt.adapters || [],
+                    adapterCount: bt.adapter_count || 0,
+                    note: bt.note || null,
+                    error: bt.error || null
+                };
+            }
+            return { status: 'unknown', error: 'No Bluetooth info from server' };
+        } catch (error) {
+            return { status: 'error', error: error.message };
+        }
     }
     
     async checkConnectionStatus() {
@@ -721,24 +735,44 @@ class DeviceManager {
         }
     }
     
-    checkSystemInfo() {
-        return {
-            userAgent: navigator.userAgent,
-            platform: navigator.platform,
-            language: navigator.language,
+    async checkSystemInfo() {
+        const info = {
+            browserPlatform: navigator.platform,
             onLine: navigator.onLine,
             cookieEnabled: navigator.cookieEnabled
         };
+
+        // Fetch server-side system info
+        try {
+            const response = await fetch('/health/detailed');
+            const health = await response.json();
+            info.serverStatus = health.status;
+            if (health.components && health.components.memory) {
+                info.serverMemory = health.components.memory;
+            }
+        } catch (e) {
+            info.serverStatus = 'unreachable';
+        }
+
+        return info;
     }
     
     formatDiagnosticResults(diagnostics) {
         let html = `<h6>Diagnostic Results - ${new Date(diagnostics.timestamp).toLocaleString()}</h6>`;
         
-        // Bluetooth Status
+        // Bluetooth Status (Raspberry Pi adapter)
         html += '<div class="mb-3">';
-        html += '<strong>Bluetooth Status:</strong><br>';
-        html += `Web Bluetooth Support: ${diagnostics.bluetooth.webBluetoothSupported ? '✅' : '❌'}<br>`;
-        html += `Status: ${diagnostics.bluetooth.status}<br>`;
+        html += '<strong>Raspberry Pi Bluetooth:</strong><br>';
+        if (diagnostics.bluetooth.error) {
+            html += `Adapter Status: ❌ ${diagnostics.bluetooth.error}<br>`;
+        } else if (diagnostics.bluetooth.mode === 'simulator') {
+            html += 'Adapter Status: ✅ Simulator Mode<br>';
+        } else if (diagnostics.bluetooth.status === 'healthy') {
+            html += `Adapter Status: ✅ Healthy<br>`;
+            html += `Adapters Found: ${diagnostics.bluetooth.adapterCount}<br>`;
+        } else {
+            html += `Adapter Status: ❌ ${diagnostics.bluetooth.status}<br>`;
+        }
         html += '</div>';
         
         // Connection Status
@@ -771,9 +805,13 @@ class DeviceManager {
         // System Info
         html += '<div class="mb-3">';
         html += '<strong>System Information:</strong><br>';
-        html += `Platform: ${diagnostics.system.platform}<br>`;
-        html += `Online: ${diagnostics.system.onLine ? '✅' : '❌'}<br>`;
-        html += `Cookies: ${diagnostics.system.cookieEnabled ? '✅' : '❌'}<br>`;
+        html += `Server Status: ${diagnostics.system.serverStatus === 'healthy' ? '✅ Healthy' : '❌ ' + (diagnostics.system.serverStatus || 'Unknown')}<br>`;
+        if (diagnostics.system.serverMemory && diagnostics.system.serverMemory.system) {
+            const mem = diagnostics.system.serverMemory.system;
+            html += `Server Memory: ${mem.available_gb} GB free of ${mem.total_gb} GB (${mem.used_percent}% used)<br>`;
+        }
+        html += `Network: ${diagnostics.system.onLine ? '✅ Connected' : '❌ Offline'}<br>`;
+        html += `Browser: ${diagnostics.system.browserPlatform}<br>`;
         html += '</div>';
         
         return html;
