@@ -282,19 +282,20 @@ class FTMSDeviceManager:
             logger.error(f"Error handling status update: {str(e)}", exc_info=True)
     
     async def discover_devices(self):
-        """Discover FTMS devices (asynchronous)."""
-        try:
-            logger.debug(f"Attempting to discover devices using connector: {type(self.connector).__name__}")
-            if not hasattr(self.connector, 'discover_devices') or not asyncio.iscoroutinefunction(self.connector.discover_devices):
-                logger.error(f"Connector {type(self.connector).__name__} does not have an async discover_devices method.")
-                return {}
+        """Discover FTMS devices (asynchronous).
 
-            # Directly await the connector's async method
-            devices = await self.connector.discover_devices()
-            return devices
-        except Exception as e:
-            logger.error(f"Error discovering devices: {str(e)}", exc_info=True)
-            return {}
+        Raises RuntimeError if the Bluetooth adapter is unavailable or
+        scanning fails, so the caller can surface the message to the user.
+        """
+        logger.debug(f"Attempting to discover devices using connector: {type(self.connector).__name__}")
+        if not hasattr(self.connector, 'discover_devices') or not asyncio.iscoroutinefunction(self.connector.discover_devices):
+            raise RuntimeError(
+                f"Connector {type(self.connector).__name__} does not support async device discovery."
+            )
+
+        # Let exceptions from the connector propagate to the caller
+        devices = await self.connector.discover_devices()
+        return devices
     
     async def connect(self, device_address: str, device_type: str = "auto") -> bool:
         """
