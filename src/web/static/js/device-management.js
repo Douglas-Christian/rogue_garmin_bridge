@@ -665,8 +665,8 @@ class DeviceManager {
     }
     
     async checkBluetoothStatus() {
-        // Query the Raspberry Pi backend for Bluetooth adapter health
-        // (BLE runs on the Pi, not in the phone browser)
+        // Query the server backend for Bluetooth adapter health
+        // (BLE runs on the server, not in the browser)
         try {
             const response = await fetch('/health/detailed');
             const health = await response.json();
@@ -760,9 +760,9 @@ class DeviceManager {
     formatDiagnosticResults(diagnostics) {
         let html = `<h6>Diagnostic Results - ${new Date(diagnostics.timestamp).toLocaleString()}</h6>`;
         
-        // Bluetooth Status (Raspberry Pi adapter)
+        // Bluetooth Status (server adapter)
         html += '<div class="mb-3">';
-        html += '<strong>Raspberry Pi Bluetooth:</strong><br>';
+        html += '<strong>Bluetooth Adapter:</strong><br>';
         if (diagnostics.bluetooth.error) {
             html += `Adapter Status: ❌ ${diagnostics.bluetooth.error}<br>`;
         } else if (diagnostics.bluetooth.mode === 'simulator') {
