@@ -348,7 +348,7 @@ class FTMSConnector:
         except Exception as e:
             logger.error(f"Error during device discovery: {str(e)}")
             self._notify_status("discovery_error", str(e))
-            return {}
+            raise RuntimeError(f"Bluetooth scan failed: {e}") from e
 
     async def connect(self, device_address: str, max_retries: int = 3) -> bool:
         """

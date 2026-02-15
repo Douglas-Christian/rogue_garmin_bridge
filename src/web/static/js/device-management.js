@@ -112,7 +112,13 @@ class DeviceManager {
                     this.showNoDevicesMessage();
                 }
             } else {
-                throw new Error(data.error || 'Discovery failed');
+                const errMsg = data.error || 'Discovery failed';
+                const hint = errMsg.toLowerCase().includes('bluetooth')
+                    ? '<br><small>Check that the Bluetooth adapter is present and the service is running.</small>'
+                    : '';
+                this.showDiscoveryStatus(`Error: ${errMsg}${hint}`, 'danger');
+                console.error('Discovery error:', errMsg);
+                return;
             }
         } catch (error) {
             this.showDiscoveryStatus(`Error: ${error.message}`, 'danger');
