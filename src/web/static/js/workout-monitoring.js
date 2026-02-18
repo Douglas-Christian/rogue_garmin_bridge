@@ -918,7 +918,7 @@ class WorkoutMonitor {
         } else {
             html += `
                 <div class="col-6">
-                    <p><strong>Est. VO2 Max:</strong> <span>-</span> <i class="fa fa-info-circle" title="Requires: weight in Settings, HR monitor, HR > 120bpm"></i></p>
+                    <p><strong>Est. VO2 Max:</strong> <span>-</span> <i class="fa fa-info-circle" title="Requires: age &amp; weight in Settings, HR monitor, avg HR above 70% of max HR"></i></p>
                 </div>
             `;
         }

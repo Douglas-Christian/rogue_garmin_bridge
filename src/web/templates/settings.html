@@ -19,11 +19,11 @@
                                 <input type="text" class="form-control" id="name" name="name">
                             </div>
                             <div class="mb-3">
-                                <label for="age" class="form-label">Age</label>
+                                <label for="age" class="form-label">Age <span class="text-muted small">(used for VO2 Max)</span></label>
                                 <input type="number" class="form-control" id="age" name="age" min="1" max="120">
                             </div>
                             <div class="mb-3">
-                                <label for="weight" class="form-label">Weight (kg)</label>
+                                <label for="weight" class="form-label">Weight (kg) <span class="text-muted small">(required for VO2 Max)</span></label>
                                 <input type="number" class="form-control" id="weight" name="weight" min="1" max="300" step="0.1">
                             </div>
                             <div class="mb-3">
@@ -40,7 +40,7 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="max_heart_rate" class="form-label">Max Heart Rate (bpm)</label>
+                                <label for="max_heart_rate" class="form-label">Max Heart Rate (bpm) <span class="text-muted small">(used for VO2 Max; defaults to 220 - age)</span></label>
                                 <input type="number" class="form-control" id="max_heart_rate" name="max_heart_rate" min="1" max="250">
                             </div>
                             <div class="mb-3">
