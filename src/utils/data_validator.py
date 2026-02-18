@@ -395,11 +395,10 @@ class DataValidator:
                         z_score = abs(current_value - mean_val) / std_val
                         
                         if z_score > self.thresholds.outlier_std_multiplier:
-                            # This is an outlier - replace with median of recent values
-                            median_val = statistics.median(historical_values[-10:])  # Use last 10 values
-                            data[field] = median_val
-                            corrections.append(f"Outlier detected in {field}: {current_value} -> {median_val} (z-score: {z_score:.2f})")
-                            warnings.append(f"Statistical outlier detected in {field}")
+                            # Log the outlier but do NOT replace the value —
+                            # real fitness equipment data is reliable and
+                            # replacing causes the display to "stick" on stale values.
+                            warnings.append(f"Statistical outlier in {field}: {current_value} (z-score: {z_score:.2f})")
                             self.validation_stats['outliers_detected'] += 1
         
         return corrections, warnings

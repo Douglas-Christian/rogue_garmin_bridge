@@ -44,7 +44,14 @@ class WorkoutMonitor {
             lastSuccessTime: Date.now(),
             quality: 'good' // good, fair, poor, disconnected
         };
-        
+
+        // Unit system preference
+        this.userUnitSystem = 'metric';
+        this.unitConversions = {
+            kphToMph: (kph) => kph * 0.621371,
+            mToMi: (m) => m / 1609.34
+        };
+
         this.init();
     }
     
@@ -164,21 +171,39 @@ class WorkoutMonitor {
         try {
             const response = await fetch('/api/settings');
             const data = await response.json();
-            
+
             if (data.success && data.settings) {
                 this.pollRate = data.settings.poll_rate || 1000;
                 this.adaptivePollRate = data.settings.adaptive_polling !== false;
-                
+
+                // Load unit system preference
+                if (data.settings.unit_system) {
+                    this.userUnitSystem = data.settings.unit_system;
+                }
+
                 // Update chart preferences
                 if (data.settings.chart_preferences) {
                     this.updateChartPreferences(data.settings.chart_preferences);
+                }
+            }
+
+            // Also check user profile for unit preference
+            if (this.userUnitSystem === 'metric') {
+                try {
+                    const profileResponse = await fetch('/api/user_profile');
+                    const profileData = await profileResponse.json();
+                    if (profileData && profileData.success && profileData.profile && profileData.profile.unit_preference) {
+                        this.userUnitSystem = profileData.profile.unit_preference;
+                    }
+                } catch (e) {
+                    // Ignore profile fetch errors
                 }
             }
         } catch (error) {
             console.warn('Could not load user preferences:', error);
         }
     }
-    
+
     start() {
         if (this.isActive) return;
         
@@ -407,18 +432,33 @@ class WorkoutMonitor {
             this.addMetricAnimation(elements.cadence, cadenceValue);
         }
         
-        // Update speed
+        // Update speed with unit conversion
         if (elements.speed && (metrics.instant_speed !== undefined || metrics.speed !== undefined)) {
-            const speed = metrics.instant_speed || metrics.speed || 0;
+            let speed = metrics.instant_speed || metrics.speed || 0;
+            const speedUnitEl = document.querySelector('.metric-card:has(#speed-value) .metric-unit');
+            if (this.userUnitSystem === 'imperial') {
+                speed = this.unitConversions.kphToMph(speed);
+                if (speedUnitEl) speedUnitEl.textContent = 'mph';
+            } else {
+                if (speedUnitEl) speedUnitEl.textContent = 'km/h';
+            }
             elements.speed.textContent = speed.toFixed(1);
             this.addMetricAnimation(elements.speed, speed);
         }
-        
-        // Update distance
+
+        // Update distance with unit conversion
         if (elements.distance && (metrics.total_distance !== undefined || metrics.distance !== undefined)) {
-            const distance = metrics.total_distance || metrics.distance || 0;
-            const distanceKm = distance / 1000;
-            elements.distance.textContent = distanceKm.toFixed(2);
+            const distanceM = metrics.total_distance || metrics.distance || 0;
+            const distanceUnitEl = document.querySelector('.metric-card:has(#distance-value) .metric-unit');
+            if (this.userUnitSystem === 'imperial') {
+                const distanceMi = this.unitConversions.mToMi(distanceM);
+                elements.distance.textContent = distanceMi.toFixed(2);
+                if (distanceUnitEl) distanceUnitEl.textContent = 'mi';
+            } else {
+                const distanceKm = distanceM / 1000;
+                elements.distance.textContent = distanceKm.toFixed(2);
+                if (distanceUnitEl) distanceUnitEl.textContent = 'km';
+            }
         }
         
         // Update calories
@@ -830,20 +870,32 @@ class WorkoutMonitor {
             `;
         }
         
-        // Average speed
-        const avgSpeed = summaryData.avg_speed || 0;
+        // Average speed with unit conversion
+        let avgSpeed = summaryData.avg_speed || 0;
+        let speedUnitText = 'km/h';
+        if (this.userUnitSystem === 'imperial') {
+            avgSpeed = this.unitConversions.kphToMph(avgSpeed);
+            speedUnitText = 'mph';
+        }
         html += `
             <div class="col-6">
-                <p><strong>Avg Speed:</strong> <span>${avgSpeed.toFixed(1)}</span> km/h</p>
+                <p><strong>Avg Speed:</strong> <span>${avgSpeed.toFixed(1)}</span> ${speedUnitText}</p>
             </div>
         `;
-        
-        // Total distance
+
+        // Total distance with unit conversion
         const totalDistance = summaryData.total_distance || 0;
-        const distanceKm = totalDistance / 1000;
+        let distanceDisplay, distanceUnitText;
+        if (this.userUnitSystem === 'imperial') {
+            distanceDisplay = this.unitConversions.mToMi(totalDistance).toFixed(2);
+            distanceUnitText = 'mi';
+        } else {
+            distanceDisplay = (totalDistance / 1000).toFixed(2);
+            distanceUnitText = 'km';
+        }
         html += `
             <div class="col-6">
-                <p><strong>Total Distance:</strong> <span>${distanceKm.toFixed(2)}</span> km</p>
+                <p><strong>Total Distance:</strong> <span>${distanceDisplay}</span> ${distanceUnitText}</p>
             </div>
         `;
         
@@ -873,25 +925,6 @@ class WorkoutMonitor {
 
         html += '</div>';
         summaryElement.innerHTML = html;
-    }
-    
-    async loadUserPreferences() {
-        try {
-            const response = await fetch('/api/settings');
-            const data = await response.json();
-            
-            if (data.success && data.settings) {
-                this.pollRate = data.settings.poll_rate || 1000;
-                this.adaptivePollRate = data.settings.adaptive_polling !== false;
-                
-                // Update chart preferences
-                if (data.settings.chart_preferences) {
-                    this.updateChartPreferences(data.settings.chart_preferences);
-                }
-            }
-        } catch (error) {
-            console.warn('Could not load user preferences:', error);
-        }
     }
     
     async fetchWorkoutData() {
