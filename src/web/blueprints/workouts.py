@@ -60,7 +60,19 @@ def start_workout():
             if device_id is None:
                 return jsonify({'success': False, 'error': f'Failed to add device {device_address} to database.'})
 
-        workout_type = request.json.get('workout_type', 'bike')
+        workout_type = request.json.get('workout_type')
+        if not workout_type:
+            # Auto-detect from connector's detected device type
+            if hasattr(ftms_manager, 'connector') and hasattr(ftms_manager.connector, 'device_type'):
+                from pyftms import MachineType
+                dt = ftms_manager.connector.device_type
+                if dt == MachineType.ROWER or dt == 'rower':
+                    workout_type = 'rower'
+                else:
+                    workout_type = 'bike'
+            else:
+                workout_type = 'bike'
+            logger.info("Auto-detected workout_type: %s", workout_type)
         workout_id = workout_manager.start_workout(device_id, workout_type)
         logger.info("Workout started with ID: %s", workout_id)
         return jsonify({'success': True, 'workout_id': workout_id})

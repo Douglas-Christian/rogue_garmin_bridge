@@ -1068,6 +1068,7 @@ class WorkoutHistoryManager {
     // Utility functions
     formatDuration(seconds) {
         if (!seconds) return '00:00:00';
+        seconds = Math.round(seconds);
         const hours = Math.floor(seconds / 3600);
         const minutes = Math.floor((seconds % 3600) / 60);
         const secs = seconds % 60;

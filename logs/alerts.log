@@ -20,3 +20,4 @@
 2025-08-17 11:07:35,469 - alerts - WARNING - ALERT [MEDIUM] ftms_connector: Connection failure detected
 2025-08-17 11:07:39,950 - alerts - WARNING - ALERT [MEDIUM] ftms_connector: Connection failure detected
 2025-08-17 11:25:19,468 - alerts - WARNING - ALERT [MEDIUM] ftms_connector: Connection failure detected
+2026-02-17 18:55:26,646 - alerts - WARNING - ALERT [HIGH] ftms_manager: Data handling error: '>' not supported between instances of 'NoneType' and 'int'

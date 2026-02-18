@@ -91,15 +91,25 @@ class FTMSConnector:
         logger.info(f"FTMS Connector initialized with device type: {device_type}")
         
         # Map the string device type to MachineType enum
-        if device_type == "indoor_bike":
-            self.requested_machine_type = MachineType.INDOOR_BIKE
+        self.requested_machine_type = self._map_device_type(device_type)
+
+    def _map_device_type(self, device_type):
+        """Map a device type string to a MachineType enum value."""
+        if device_type in ("indoor_bike", "bike"):
+            return MachineType.INDOOR_BIKE
         elif device_type == "rower":
-            self.requested_machine_type = MachineType.ROWER
+            return MachineType.ROWER
         elif device_type == "cross_trainer":
-            self.requested_machine_type = MachineType.CROSS_TRAINER
+            return MachineType.CROSS_TRAINER
         else:
             # For "auto" or any other value, we'll determine the type during connection
-            self.requested_machine_type = None
+            return None
+
+    def set_device_type(self, device_type):
+        """Update the requested device type for the next connection."""
+        self.requested_device_type = device_type
+        self.requested_machine_type = self._map_device_type(device_type)
+        logger.info(f"Device type updated to: {device_type} (machine_type: {self.requested_machine_type})")
 
     def register_data_callback(self, callback: Callable[[Dict[str, Any]], None]):
         """
@@ -405,9 +415,9 @@ class FTMSConnector:
                 machine_type = None
                 
                 # Use explicitly requested machine type if set
-                if self.requested_device_type:
-                    machine_type = self.requested_device_type
-                    self.device_type = self.requested_device_type
+                if self.requested_machine_type:
+                    machine_type = self.requested_machine_type
+                    self.device_type = self.requested_machine_type
                     logger.info(f"Using explicitly requested device type: {machine_type}")
                 # Otherwise try to determine machine type from device name
                 elif device.name and "bike" in device.name.lower():
@@ -433,7 +443,8 @@ class FTMSConnector:
                     # Default to indoor bike if we can't determine
                     machine_type = MachineType.INDOOR_BIKE
                     self.device_type = MachineType.INDOOR_BIKE
-                    logger.info("Using default device type: Indoor Bike")
+                    logger.warning(f"Cannot determine device type from name '{device.name}'. "
+                                   "Defaulting to Indoor Bike. Select 'Rower' in the UI if this is a rower.")
 
                 # Check the current pyftms version we're working with
                 try:

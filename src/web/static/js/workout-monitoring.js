@@ -854,7 +854,23 @@ class WorkoutMonitor {
                 <p><strong>Total Calories:</strong> <span>${Math.round(totalCalories)}</span> kcal</p>
             </div>
         `;
-        
+
+        // Estimated VO2 Max
+        const vo2max = summaryData.estimated_vo2max;
+        if (vo2max !== undefined && vo2max > 0) {
+            html += `
+                <div class="col-6">
+                    <p><strong>Est. VO2 Max:</strong> <span>${isNaN(vo2max) ? '-' : vo2max.toFixed(1)}</span> ml/kg/min</p>
+                </div>
+            `;
+        } else {
+            html += `
+                <div class="col-6">
+                    <p><strong>Est. VO2 Max:</strong> <span>-</span> <i class="fa fa-info-circle" title="Requires: weight in Settings, HR monitor, HR > 120bpm"></i></p>
+                </div>
+            `;
+        }
+
         html += '</div>';
         summaryElement.innerHTML = html;
     }
