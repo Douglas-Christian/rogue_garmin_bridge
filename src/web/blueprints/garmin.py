@@ -86,6 +86,11 @@ def garmin_connect():
     try:
         import garth
         client = garth.Client()
+        # Disable status-based retries (garth default: 3 retries on 500/502/503/504).
+        # When Garmin's SSO returns a transient error on the cookie-setup GET,
+        # retrying hits sso.garmin.com multiple times before the credential POST,
+        # exhausting the per-IP rate limit and causing a 429 on the first attempt.
+        client.configure(retries=0)
         oauth1, oauth2 = client.login(username, password, return_on_mfa=True)
 
         if oauth1 == 'needs_mfa':

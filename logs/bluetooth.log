@@ -108,3 +108,13 @@
 2026-03-31 07:15:21,912 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
 2026-03-31 07:15:21,912 - ftms_connector - INFO - Data callback _handle_data registered.
 2026-03-31 07:15:21,912 - ftms_connector - INFO - Status callback _handle_status registered.
+2026-03-31 11:16:54,391 - bluetooth_connection - INFO - Bluetooth Connection Manager initialized
+2026-03-31 11:16:54,392 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2026-03-31 11:16:54,392 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2026-03-31 11:16:54,392 - ftms_connector - INFO - Data callback _handle_data registered.
+2026-03-31 11:16:54,392 - ftms_connector - INFO - Status callback _handle_status registered.
+2026-03-31 11:16:55,220 - bluetooth_connection - INFO - Bluetooth Connection Manager initialized
+2026-03-31 11:16:55,220 - ftms_connector - INFO - FTMS Connector initialized with device type: bike
+2026-03-31 11:16:55,220 - ftms - INFO - Using FTMSConnector for real device with device type: bike.
+2026-03-31 11:16:55,220 - ftms_connector - INFO - Data callback _handle_data registered.
+2026-03-31 11:16:55,220 - ftms_connector - INFO - Status callback _handle_status registered.

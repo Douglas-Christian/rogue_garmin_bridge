@@ -676,3 +676,17 @@ concurrent.futures._base.CancelledError
 2026-03-31 07:15:21,914 - web - INFO - Background thread started. Creating new event loop.
 2026-03-31 07:15:21,914 - web - INFO - Background asyncio loop thread start initiated.
 2026-03-31 07:15:21,927 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 11:16:54,391 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 11:16:54,392 - web - INFO - Using real FTMS devices
+2026-03-31 11:16:54,393 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 11:16:54,393 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 11:16:54,393 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 11:16:54,393 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 11:16:54,395 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 11:16:55,219 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 11:16:55,220 - web - INFO - Using real FTMS devices
+2026-03-31 11:16:55,221 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 11:16:55,221 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 11:16:55,221 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 11:16:55,222 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 11:16:55,224 - web - INFO - Starting background asyncio event loop run_forever.
