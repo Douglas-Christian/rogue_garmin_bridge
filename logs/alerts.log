@@ -21,3 +21,40 @@
 2025-08-17 11:07:39,950 - alerts - WARNING - ALERT [MEDIUM] ftms_connector: Connection failure detected
 2025-08-17 11:25:19,468 - alerts - WARNING - ALERT [MEDIUM] ftms_connector: Connection failure detected
 2026-02-17 18:55:26,646 - alerts - WARNING - ALERT [HIGH] ftms_manager: Data handling error: '>' not supported between instances of 'NoneType' and 'int'
+2026-02-17 19:36:57,367 - alerts - WARNING - ALERT [MEDIUM] ftms_connector: Connection failure detected
+2026-02-17 19:37:02,335 - alerts - WARNING - ALERT [MEDIUM] bluetooth_connection: Connection failure detected
+2026-02-17 19:37:02,337 - alerts - WARNING - ALERT [MEDIUM] ftms: Connection failure detected
+2026-02-17 19:37:02,338 - alerts - WARNING - ALERT [MEDIUM] ftms_manager: Connection timed out - device may be out of range or busy
+2026-02-17 19:37:12,682 - alerts - WARNING - ALERT [MEDIUM] ftms_connector: Connection failure detected
+2026-02-17 19:37:18,254 - alerts - WARNING - ALERT [MEDIUM] bluetooth_connection: Connection failure detected
+2026-02-17 19:37:18,255 - alerts - WARNING - ALERT [MEDIUM] ftms: Connection failure detected
+2026-02-17 19:37:18,256 - alerts - WARNING - ALERT [MEDIUM] ftms_manager: Connection timed out - device may be out of range or busy
+2026-02-17 19:37:23,059 - alerts - WARNING - ALERT [MEDIUM] bluetooth_connection: Connection failure detected
+2026-02-17 19:37:23,060 - alerts - WARNING - ALERT [MEDIUM] ftms: Connection failure detected
+2026-02-17 19:37:23,061 - alerts - WARNING - ALERT [MEDIUM] ftms_manager: Connection error: Connection function returned False
+2026-02-17 19:37:23,322 - alerts - WARNING - ALERT [MEDIUM] bluetooth_connection: Connection failure detected
+2026-02-17 19:37:23,323 - alerts - WARNING - ALERT [MEDIUM] ftms: Connection failure detected
+2026-02-17 19:37:23,324 - alerts - WARNING - ALERT [MEDIUM] ftms_manager: Connection timed out - device may be out of range or busy
+2026-02-17 19:37:27,271 - alerts - WARNING - ALERT [MEDIUM] bluetooth_connection: Connection failure detected
+2026-02-17 19:37:27,272 - alerts - WARNING - ALERT [MEDIUM] ftms: Connection failure detected
+2026-02-17 19:37:27,272 - alerts - WARNING - ALERT [MEDIUM] ftms_manager: Connection error: Connection function returned False
+2026-02-17 19:37:27,330 - alerts - WARNING - ALERT [MEDIUM] web.devices: Connection failure detected
+2026-02-17 19:37:29,198 - alerts - WARNING - ALERT [MEDIUM] bluetooth_connection: Connection failure detected
+2026-02-17 19:37:29,199 - alerts - WARNING - ALERT [MEDIUM] ftms: Connection failure detected
+2026-02-17 19:37:29,200 - alerts - WARNING - ALERT [HIGH] ftms_manager: Connection error: Connection function returned False
+2026-02-17 19:37:32,062 - alerts - WARNING - ALERT [MEDIUM] bluetooth_connection: Connection failure detected
+2026-02-17 19:37:32,063 - alerts - WARNING - ALERT [MEDIUM] ftms: Connection failure detected
+2026-02-17 19:37:32,064 - alerts - WARNING - ALERT [MEDIUM] ftms_manager: Connection error: Connection function returned False
+2026-02-17 19:37:38,218 - alerts - WARNING - ALERT [MEDIUM] bluetooth_connection: Connection failure detected
+2026-02-17 19:37:38,219 - alerts - WARNING - ALERT [MEDIUM] ftms: Connection failure detected
+2026-02-17 19:37:38,220 - alerts - WARNING - ALERT [HIGH] ftms_manager: Connection error: Connection function returned False
+2026-02-17 19:37:39,030 - alerts - WARNING - ALERT [MEDIUM] bluetooth_connection: Connection failure detected
+2026-02-17 19:37:39,031 - alerts - WARNING - ALERT [MEDIUM] ftms: Connection failure detected
+2026-02-17 19:37:39,031 - alerts - WARNING - ALERT [HIGH] ftms_manager: Connection error: Connection function returned False
+2026-02-17 19:37:39,033 - alerts - WARNING - ALERT [HIGH] ftms_manager: Connection failed after 5 attempts
+2026-02-17 19:37:39,034 - alerts - WARNING - ALERT [MEDIUM] ftms_manager: Failed to connect to device C9:02:CB:68:17:C1
+2026-02-17 19:37:48,130 - alerts - WARNING - ALERT [MEDIUM] bluetooth_connection: Connection failure detected
+2026-02-17 19:37:48,131 - alerts - WARNING - ALERT [MEDIUM] ftms: Connection failure detected
+2026-02-17 19:37:48,131 - alerts - WARNING - ALERT [HIGH] ftms_manager: Connection error: Connection function returned False
+2026-02-17 19:37:48,132 - alerts - WARNING - ALERT [HIGH] ftms_manager: Connection failed after 5 attempts
+2026-02-17 19:37:48,133 - alerts - WARNING - ALERT [MEDIUM] ftms_manager: Failed to connect to device C9:02:CB:68:17:C1

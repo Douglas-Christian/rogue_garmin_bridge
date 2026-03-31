@@ -11247,3 +11247,47 @@ TypeError: '>' not supported between instances of 'NoneType' and 'int'
 2026-02-17 19:00:48,136 - fit_processor - ERROR - No data points found for workout 23
 2026-02-17 19:01:05,097 - fit_processor - ERROR - No data points found for workout 24
 2026-02-17 19:01:05,104 - fit_processor - ERROR - No data points found for workout 24
+2026-02-17 19:36:57,365 - ftms_connector - ERROR - BLEAK Error during connection (Attempt 1/3): Device with address C9:02:CB:68:17:C1 was not found.
+2026-02-17 19:37:02,334 - bluetooth_connection - ERROR - Connection error: Connection timed out after 15.0s
+2026-02-17 19:37:02,336 - ftms - ERROR - Connection error: Connection timed out - device may be out of range or busy
+2026-02-17 19:37:08,312 - web.devices - ERROR - Error connecting to device C9:02:CB:68:17:C1: 
+Traceback (most recent call last):
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\src\web\blueprints\devices.py", line 90, in connect_device
+    success = future.result(timeout=40)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 454, in result
+    raise CancelledError()
+concurrent.futures._base.CancelledError
+2026-02-17 19:37:12,680 - ftms_connector - ERROR - BLEAK Error during connection (Attempt 1/3): Failed to connect after connect() call.
+2026-02-17 19:37:18,253 - bluetooth_connection - ERROR - Connection error: Connection timed out after 15.0s
+2026-02-17 19:37:18,254 - ftms - ERROR - Connection error: Connection timed out - device may be out of range or busy
+2026-02-17 19:37:23,058 - ftms_connector - ERROR - Device C9:02:CB:68:17:C1 not found after rediscovery
+2026-02-17 19:37:23,058 - bluetooth_connection - ERROR - Connection error: Connection function returned False
+2026-02-17 19:37:23,059 - ftms - ERROR - Connection error: Connection error: Connection function returned False
+2026-02-17 19:37:23,322 - bluetooth_connection - ERROR - Connection error: Connection timed out after 15.0s
+2026-02-17 19:37:23,323 - ftms - ERROR - Connection error: Connection timed out - device may be out of range or busy
+2026-02-17 19:37:27,270 - ftms_connector - ERROR - Device C9:02:CB:68:17:C1 not found after rediscovery
+2026-02-17 19:37:27,271 - bluetooth_connection - ERROR - Connection error: Connection function returned False
+2026-02-17 19:37:27,271 - ftms - ERROR - Connection error: Connection error: Connection function returned False
+2026-02-17 19:37:27,329 - web.devices - ERROR - Connection to C9:02:CB:68:17:C1 timed out.
+2026-02-17 19:37:29,197 - ftms_connector - ERROR - Device C9:02:CB:68:17:C1 not found after rediscovery
+2026-02-17 19:37:29,198 - bluetooth_connection - ERROR - Connection error: Connection function returned False
+2026-02-17 19:37:29,198 - ftms - ERROR - Connection error: Connection error: Connection function returned False
+2026-02-17 19:37:32,061 - ftms_connector - ERROR - Device C9:02:CB:68:17:C1 not found after rediscovery
+2026-02-17 19:37:32,061 - bluetooth_connection - ERROR - Connection error: Connection function returned False
+2026-02-17 19:37:32,062 - ftms - ERROR - Connection error: Connection error: Connection function returned False
+2026-02-17 19:37:38,216 - ftms_connector - ERROR - Device C9:02:CB:68:17:C1 not found after rediscovery
+2026-02-17 19:37:38,217 - bluetooth_connection - ERROR - Connection error: Connection function returned False
+2026-02-17 19:37:38,218 - ftms - ERROR - Connection error: Connection error: Connection function returned False
+2026-02-17 19:37:39,029 - ftms_connector - ERROR - Device C9:02:CB:68:17:C1 not found after rediscovery
+2026-02-17 19:37:39,030 - bluetooth_connection - ERROR - Connection error: Connection function returned False
+2026-02-17 19:37:39,031 - ftms - ERROR - Connection error: Connection error: Connection function returned False
+2026-02-17 19:37:39,032 - bluetooth_connection - ERROR - Failed to connect to C9:02:CB:68:17:C1 after 5 attempts
+2026-02-17 19:37:39,033 - ftms - ERROR - Failed to connect to C9:02:CB:68:17:C1 after all retry attempts
+2026-02-17 19:37:48,129 - ftms_connector - ERROR - Device C9:02:CB:68:17:C1 not found after rediscovery
+2026-02-17 19:37:48,130 - bluetooth_connection - ERROR - Connection error: Connection function returned False
+2026-02-17 19:37:48,130 - ftms - ERROR - Connection error: Connection error: Connection function returned False
+2026-02-17 19:37:48,132 - bluetooth_connection - ERROR - Failed to connect to C9:02:CB:68:17:C1 after 5 attempts
+2026-02-17 19:37:48,132 - ftms - ERROR - Failed to connect to C9:02:CB:68:17:C1 after all retry attempts
+2026-02-17 19:38:43,911 - fit_processor - ERROR - No data points found for workout 25
+2026-02-17 19:49:36,704 - fit_processor - ERROR - No data points found for workout 27

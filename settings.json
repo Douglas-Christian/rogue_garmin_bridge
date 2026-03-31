@@ -1,1 +1,9 @@
-{"use_simulator": false, "unit_system": "imperial", "data_update_interval": 2.0, "device_type": "rower", "connection_timeout": 30, "log_level": "DEBUG", "max_log_size": 10}
+{
+  "use_simulator": false,
+  "unit_system": "imperial",
+  "data_update_interval": 2.0,
+  "device_type": "rower",
+  "connection_timeout": 30,
+  "log_level": "DEBUG",
+  "max_log_size": 10
+}
