@@ -487,74 +487,12 @@
         }
     }
 
-    function downloadFitFile(workoutId) {
-        console.log(`HISTORY_DEBUG: downloadFitFile called for workout ID: ${workoutId}`);
-        // First, call API to ensure FIT file is generated/exists and get its path
-        fetch(`/api/convert_fit/${workoutId}`, { method: 'POST' })
-            .then(response => response.json())
-            .then(data => { // Corrected: added parentheses around data
-                console.log(`HISTORY_DEBUG: /api/convert_fit/${workoutId} response:`, data);
-                if (data.success && data.fit_file_path) {
-                    // The actual filename is the last part of the path
-                    const filename = data.fit_file_path.split(/[\\/]/).pop();
-                    // Trigger download by navigating to the file serving endpoint
-                    window.location.href = `/fit_files/${filename}`;
-                    showNotification(`Downloading FIT file: ${filename}`, 'success');
-                } else {
-                    showNotification(`Error preparing FIT file: ${data.error || 'Unknown error'}`, 'danger');
-                }
-            })
-            .catch(error => {
-                console.error(`HISTORY_DEBUG: Error in /api/convert_fit/${workoutId}:`, error);
-                showNotification(`Error preparing FIT file: ${error.message}`, 'danger');
-            });
-    }
-
-    function deleteWorkout(workoutId) {
-        console.log(`HISTORY_DEBUG: deleteWorkout called for workout ID: ${workoutId}`);
-        if (!confirm(`Are you sure you want to delete workout ID ${workoutId}? This action cannot be undone.`)) return;
-        fetch(`/api/workout/${workoutId}`, { method: 'DELETE' })
-            .then(response => response.json())
-            .then(data => {
-                console.log(`HISTORY_DEBUG: /api/workout/${workoutId} DELETE response:`, data);
-                if (data.success) {
-                    showNotification(`Workout ${workoutId} deleted successfully.`, 'success');
-                    loadAllWorkouts(); // Refresh the list
-                    workoutDetails.innerHTML = "<p>Select a workout to view details.</p>"; // Clear details view
-                } else {
-                    showNotification(`Error deleting workout: ${data.error || 'Unknown error'}`, 'danger');
-                }
-            })
-            .catch(error => {
-                console.error(`HISTORY_DEBUG: Error deleting workout ${workoutId}:`, error);
-                showNotification(`Error deleting workout: ${error.message}`, 'danger');
-            });
-    }
-
     // Initial load and event listeners setup
     sortBySelect.addEventListener("change", applySort);
     prevPageBtn.addEventListener("click", () => { if (!prevPageBtn.disabled) { currentPage--; applySort(); } });
     nextPageBtn.addEventListener("click", () => { if (!nextPageBtn.disabled) { currentPage++; applySort(); } });
     
-    workoutsList.addEventListener("click", function(event) {
-        const target = event.target;
-        // Traverse up if the click was on an icon inside a button
-        const button = target.closest('button'); 
-        if (!button) return;
-
-        const workoutId = button.dataset.workoutId;
-        if (!workoutId) return;
-
-        console.log(`HISTORY_DEBUG: Button clicked inside workoutsList. Workout ID: ${workoutId}, Classes: ${button.className}`);
-
-        if (button.classList.contains("view-btn")) {
-            loadWorkoutDetails(workoutId);
-        } else if (button.classList.contains("fit-btn")) {
-            downloadFitFile(workoutId);
-        } else if (button.classList.contains("delete-btn")) {
-            deleteWorkout(workoutId);
-        }
-    });
+    // Note: view-btn, fit-btn, delete-btn click handling is done by workout-history.js
 
     // Load user settings (e.g., unit preference) - Placeholder
     // fetch('/api/settings').then(res => res.json()).then(data => {
