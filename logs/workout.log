@@ -5532,3 +5532,16 @@
 2026-02-17 19:52:54,154 - workout_manager - INFO - Successfully created FIT file for workout 28: C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\fit_files\bike_20260217_194936.fit
 2026-02-17 20:01:08,146 - workout_manager - INFO - Updating workout 28 with FIT file path: C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\fit_files\bike_20260217_194937.fit
 2026-02-17 20:01:08,452 - workout_manager - INFO - Updating workout 28 with FIT file path: C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\fit_files\bike_20260217_194937.fit
+2026-03-31 06:44:30,549 - workout_manager - INFO - Updating workout 28 with FIT file path: C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\fit_files\bike_20260217_194937.fit
+2026-03-31 06:44:30,554 - workout_manager - INFO - Updating workout 28 with FIT file path: C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\fit_files\bike_20260217_194937.fit
+2026-03-31 06:44:41,739 - workout_manager - INFO - Updating workout 28 with FIT file path: C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\fit_files\bike_20260217_194937.fit
+2026-03-31 06:44:42,407 - workout_manager - INFO - Updating workout 28 with FIT file path: C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\fit_files\bike_20260217_194937.fit
+2026-03-31 06:56:34,164 - workout_manager - INFO - Deleting workout 19
+2026-03-31 06:56:36,610 - workout_manager - INFO - Deleting workout 20
+2026-03-31 06:56:36,624 - workout_manager - INFO - Deleted FIT file: C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\fit_files\bike_20260217_185404.fit
+2026-03-31 06:56:39,171 - workout_manager - INFO - Deleting workout 21
+2026-03-31 06:56:42,575 - workout_manager - INFO - Deleting workout 22
+2026-03-31 06:56:45,714 - workout_manager - INFO - Deleting workout 23
+2026-03-31 06:56:48,955 - workout_manager - INFO - Deleting workout 24
+2026-03-31 06:56:52,092 - workout_manager - INFO - Deleting workout 25
+2026-03-31 06:56:55,395 - workout_manager - INFO - Deleting workout 27

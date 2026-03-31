@@ -98,12 +98,14 @@ from src.web.blueprints.workouts import workouts_bp     # noqa: E402
 from src.web.blueprints.fit import fit_bp               # noqa: E402
 from src.web.blueprints.settings_bp import settings_bp  # noqa: E402
 from src.web.blueprints.backup import backup_bp         # noqa: E402
+from src.web.blueprints.garmin import garmin_bp         # noqa: E402
 
 app.register_blueprint(devices_bp)
 app.register_blueprint(workouts_bp)
 app.register_blueprint(fit_bp)
 app.register_blueprint(settings_bp)
 app.register_blueprint(backup_bp)
+app.register_blueprint(garmin_bp)
 
 # ── Page routes (HTML templates) ───────────────────────────────────
 

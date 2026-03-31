@@ -78,3 +78,6 @@ user_profile.json
 # Credential encryption key files
 .credential_key
 .credential_key.salt
+
+# Garmin OAuth tokens (stored after authentication)
+src/data/garmin_tokens/

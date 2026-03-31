@@ -11291,3 +11291,128 @@ concurrent.futures._base.CancelledError
 2026-02-17 19:37:48,132 - ftms - ERROR - Failed to connect to C9:02:CB:68:17:C1 after all retry attempts
 2026-02-17 19:38:43,911 - fit_processor - ERROR - No data points found for workout 25
 2026-02-17 19:49:36,704 - fit_processor - ERROR - No data points found for workout 27
+2026-03-31 07:13:06,274 - garmin - ERROR - Garmin connect error: Error in request: 429 Client Error: Too Many Requests for url: https://sso.garmin.com/mobile/api/login?clientId=GCM_ANDROID_DARK&locale=en-US&service=https%3A%2F%2Fmobile.integration.garmin.com%2Fgcm%2Fandroid
+Traceback (most recent call last):
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\http.py", line 195, in request
+    self.last_resp.raise_for_status()
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\requests\models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://sso.garmin.com/mobile/api/login?clientId=GCM_ANDROID_DARK&locale=en-US&service=https%3A%2F%2Fmobile.integration.garmin.com%2Fgcm%2Fandroid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\src\web\blueprints\garmin.py", line 76, in garmin_connect
+    oauth1, oauth2 = client.login(username, password, return_on_mfa=True)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\http.py", line 216, in login
+    self.oauth1_token, self.oauth2_token = sso.login(
+                                           ^^^^^^^^^^
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\sso.py", line 117, in login
+    client.post(
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\http.py", line 207, in post
+    return self.request("POST", *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\http.py", line 197, in request
+    raise GarthHTTPError(
+garth.exc.GarthHTTPError: Error in request: 429 Client Error: Too Many Requests for url: https://sso.garmin.com/mobile/api/login?clientId=GCM_ANDROID_DARK&locale=en-US&service=https%3A%2F%2Fmobile.integration.garmin.com%2Fgcm%2Fandroid
+2026-03-31 07:14:32,685 - garmin - ERROR - Garmin connect error: Error in request: 429 Client Error: Too Many Requests for url: https://sso.garmin.com/mobile/api/login?clientId=GCM_ANDROID_DARK&locale=en-US&service=https%3A%2F%2Fmobile.integration.garmin.com%2Fgcm%2Fandroid
+Traceback (most recent call last):
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\http.py", line 195, in request
+    self.last_resp.raise_for_status()
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\requests\models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://sso.garmin.com/mobile/api/login?clientId=GCM_ANDROID_DARK&locale=en-US&service=https%3A%2F%2Fmobile.integration.garmin.com%2Fgcm%2Fandroid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\src\web\blueprints\garmin.py", line 89, in garmin_connect
+    oauth1, oauth2 = client.login(username, password, return_on_mfa=True)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\http.py", line 216, in login
+    self.oauth1_token, self.oauth2_token = sso.login(
+                                           ^^^^^^^^^^
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\sso.py", line 117, in login
+    client.post(
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\http.py", line 207, in post
+    return self.request("POST", *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\http.py", line 197, in request
+    raise GarthHTTPError(
+garth.exc.GarthHTTPError: Error in request: 429 Client Error: Too Many Requests for url: https://sso.garmin.com/mobile/api/login?clientId=GCM_ANDROID_DARK&locale=en-US&service=https%3A%2F%2Fmobile.integration.garmin.com%2Fgcm%2Fandroid
+2026-03-31 07:15:26,332 - garmin - ERROR - Garmin connect error: Error in request: 429 Client Error: Too Many Requests for url: https://sso.garmin.com/mobile/api/login?clientId=GCM_ANDROID_DARK&locale=en-US&service=https%3A%2F%2Fmobile.integration.garmin.com%2Fgcm%2Fandroid
+Traceback (most recent call last):
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\http.py", line 195, in request
+    self.last_resp.raise_for_status()
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\requests\models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://sso.garmin.com/mobile/api/login?clientId=GCM_ANDROID_DARK&locale=en-US&service=https%3A%2F%2Fmobile.integration.garmin.com%2Fgcm%2Fandroid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\src\web\blueprints\garmin.py", line 89, in garmin_connect
+    oauth1, oauth2 = client.login(username, password, return_on_mfa=True)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\http.py", line 216, in login
+    self.oauth1_token, self.oauth2_token = sso.login(
+                                           ^^^^^^^^^^
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\sso.py", line 117, in login
+    client.post(
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\http.py", line 207, in post
+    return self.request("POST", *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\http.py", line 197, in request
+    raise GarthHTTPError(
+garth.exc.GarthHTTPError: Error in request: 429 Client Error: Too Many Requests for url: https://sso.garmin.com/mobile/api/login?clientId=GCM_ANDROID_DARK&locale=en-US&service=https%3A%2F%2Fmobile.integration.garmin.com%2Fgcm%2Fandroid
+2026-03-31 07:16:08,334 - garmin - ERROR - Garmin connect error: Error in request: 429 Client Error: Too Many Requests for url: https://sso.garmin.com/mobile/api/login?clientId=GCM_ANDROID_DARK&locale=en-US&service=https%3A%2F%2Fmobile.integration.garmin.com%2Fgcm%2Fandroid
+Traceback (most recent call last):
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\http.py", line 195, in request
+    self.last_resp.raise_for_status()
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\requests\models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://sso.garmin.com/mobile/api/login?clientId=GCM_ANDROID_DARK&locale=en-US&service=https%3A%2F%2Fmobile.integration.garmin.com%2Fgcm%2Fandroid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\src\web\blueprints\garmin.py", line 89, in garmin_connect
+    oauth1, oauth2 = client.login(username, password, return_on_mfa=True)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\http.py", line 216, in login
+    self.oauth1_token, self.oauth2_token = sso.login(
+                                           ^^^^^^^^^^
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\sso.py", line 117, in login
+    client.post(
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\http.py", line 207, in post
+    return self.request("POST", *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\http.py", line 197, in request
+    raise GarthHTTPError(
+garth.exc.GarthHTTPError: Error in request: 429 Client Error: Too Many Requests for url: https://sso.garmin.com/mobile/api/login?clientId=GCM_ANDROID_DARK&locale=en-US&service=https%3A%2F%2Fmobile.integration.garmin.com%2Fgcm%2Fandroid
+2026-03-31 07:49:09,470 - garmin - ERROR - Garmin connect error: Error in request: 429 Client Error: Too Many Requests for url: https://sso.garmin.com/mobile/api/login?clientId=GCM_ANDROID_DARK&locale=en-US&service=https%3A%2F%2Fmobile.integration.garmin.com%2Fgcm%2Fandroid
+Traceback (most recent call last):
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\http.py", line 195, in request
+    self.last_resp.raise_for_status()
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\requests\models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://sso.garmin.com/mobile/api/login?clientId=GCM_ANDROID_DARK&locale=en-US&service=https%3A%2F%2Fmobile.integration.garmin.com%2Fgcm%2Fandroid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\src\web\blueprints\garmin.py", line 89, in garmin_connect
+    oauth1, oauth2 = client.login(username, password, return_on_mfa=True)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\http.py", line 216, in login
+    self.oauth1_token, self.oauth2_token = sso.login(
+                                           ^^^^^^^^^^
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\sso.py", line 117, in login
+    client.post(
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\http.py", line 207, in post
+    return self.request("POST", *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\venv\Lib\site-packages\garth\http.py", line 197, in request
+    raise GarthHTTPError(
+garth.exc.GarthHTTPError: Error in request: 429 Client Error: Too Many Requests for url: https://sso.garmin.com/mobile/api/login?clientId=GCM_ANDROID_DARK&locale=en-US&service=https%3A%2F%2Fmobile.integration.garmin.com%2Fgcm%2Fandroid

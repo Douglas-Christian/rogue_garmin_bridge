@@ -514,3 +514,165 @@ concurrent.futures._base.CancelledError
 2026-02-17 20:01:07,799 - web.fit - INFO - Converting workout 28 to FIT — type=bike, duration=196, points=197
 2026-02-17 20:01:08,153 - web.fit - INFO - Converting workout 28 to FIT — type=bike, duration=196, points=197
 2026-02-17 20:01:08,500 - web.fit - INFO - Serving FIT file: bike_20260217_194937.fit from C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\fit_files
+2026-03-31 06:39:20,260 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 06:39:20,265 - web - INFO - Using real FTMS devices
+2026-03-31 06:39:20,265 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 06:39:20,266 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 06:39:20,266 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 06:39:20,266 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 06:39:20,268 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 06:39:22,631 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 06:39:22,632 - web - INFO - Using real FTMS devices
+2026-03-31 06:39:22,632 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 06:39:22,632 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 06:39:22,632 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 06:39:22,632 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 06:39:22,635 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 06:39:32,335 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 06:39:32,337 - web - INFO - Using real FTMS devices
+2026-03-31 06:39:32,337 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 06:39:32,339 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 06:39:32,341 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 06:39:32,341 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 06:39:32,357 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 06:44:29,841 - web.fit - INFO - Converting workout 28 to FIT — type=bike, duration=196, points=197
+2026-03-31 06:44:29,842 - web.fit - INFO - Converting workout 28 to FIT — type=bike, duration=196, points=197
+2026-03-31 06:44:30,618 - web.fit - INFO - Serving FIT file: bike_20260217_194937.fit from C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\fit_files
+2026-03-31 06:44:31,015 - web.fit - INFO - Serving FIT file: bike_20260217_194937.fit from C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\fit_files
+2026-03-31 06:44:41,522 - web.fit - INFO - Converting workout 28 to FIT — type=bike, duration=196, points=197
+2026-03-31 06:44:41,823 - web.fit - INFO - Serving FIT file: bike_20260217_194937.fit from C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\fit_files
+2026-03-31 06:44:42,113 - web.fit - INFO - Converting workout 28 to FIT — type=bike, duration=196, points=197
+2026-03-31 06:44:42,784 - web.fit - INFO - Serving FIT file: bike_20260217_194937.fit from C:\Users\dougl\OneDrive\Vs Code\rogue_garmin_bridge\fit_files
+2026-03-31 07:03:25,413 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 07:03:25,414 - web - INFO - Using real FTMS devices
+2026-03-31 07:03:25,414 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 07:03:25,414 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 07:03:25,414 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 07:03:25,415 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 07:03:25,416 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 07:03:51,730 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 07:03:51,731 - web - INFO - Using real FTMS devices
+2026-03-31 07:03:51,731 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 07:03:51,731 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 07:03:51,732 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 07:03:51,732 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 07:03:51,733 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 07:04:09,914 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 07:04:09,916 - web - INFO - Using real FTMS devices
+2026-03-31 07:04:09,916 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 07:04:09,917 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 07:04:09,917 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 07:04:09,917 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 07:04:09,918 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 07:06:17,120 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 07:06:17,121 - web - INFO - Using real FTMS devices
+2026-03-31 07:06:17,121 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 07:06:17,121 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 07:06:17,122 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 07:06:17,122 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 07:06:17,123 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 07:06:31,611 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 07:06:31,612 - web - INFO - Using real FTMS devices
+2026-03-31 07:06:31,612 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 07:06:31,612 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 07:06:31,613 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 07:06:31,613 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 07:06:31,614 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 07:06:36,944 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 07:06:36,945 - web - INFO - Using real FTMS devices
+2026-03-31 07:06:36,945 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 07:06:36,945 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 07:06:36,946 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 07:06:36,946 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 07:06:36,947 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 07:06:41,525 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 07:06:41,526 - web - INFO - Using real FTMS devices
+2026-03-31 07:06:41,526 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 07:06:41,526 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 07:06:41,526 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 07:06:41,526 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 07:06:41,528 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 07:06:46,972 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 07:06:46,973 - web - INFO - Using real FTMS devices
+2026-03-31 07:06:46,973 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 07:06:46,973 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 07:06:46,974 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 07:06:46,974 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 07:06:46,975 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 07:06:51,767 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 07:06:51,767 - web - INFO - Using real FTMS devices
+2026-03-31 07:06:51,767 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 07:06:51,768 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 07:06:51,768 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 07:06:51,768 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 07:06:51,769 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 07:06:55,926 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 07:06:55,926 - web - INFO - Using real FTMS devices
+2026-03-31 07:06:55,926 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 07:06:55,926 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 07:06:55,926 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 07:06:55,926 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 07:06:55,928 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 07:07:00,233 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 07:07:00,235 - web - INFO - Using real FTMS devices
+2026-03-31 07:07:00,235 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 07:07:00,235 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 07:07:00,235 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 07:07:00,237 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 07:07:00,238 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 07:09:44,685 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 07:09:44,686 - web - INFO - Using real FTMS devices
+2026-03-31 07:09:44,686 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 07:09:44,686 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 07:09:44,687 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 07:09:44,687 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 07:09:44,699 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 07:10:42,864 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 07:10:42,865 - web - INFO - Using real FTMS devices
+2026-03-31 07:10:42,865 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 07:10:42,865 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 07:10:42,866 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 07:10:42,866 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 07:10:42,867 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 07:10:44,905 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 07:10:44,905 - web - INFO - Using real FTMS devices
+2026-03-31 07:10:44,906 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 07:10:44,906 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 07:10:44,906 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 07:10:44,906 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 07:10:44,907 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 07:13:37,635 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 07:13:37,636 - web - INFO - Using real FTMS devices
+2026-03-31 07:13:37,636 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 07:13:37,636 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 07:13:37,636 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 07:13:37,636 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 07:13:37,639 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 07:13:37,684 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 07:13:37,684 - web - INFO - Using real FTMS devices
+2026-03-31 07:13:37,685 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 07:13:37,685 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 07:13:37,686 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 07:13:37,686 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 07:13:37,686 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 07:13:44,301 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 07:13:44,301 - web - INFO - Using real FTMS devices
+2026-03-31 07:13:44,301 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 07:13:44,302 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 07:13:44,302 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 07:13:44,302 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 07:13:44,303 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 07:13:44,345 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 07:13:44,345 - web - INFO - Using real FTMS devices
+2026-03-31 07:13:44,346 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 07:13:44,346 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 07:13:44,346 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 07:13:44,346 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 07:13:44,347 - web - INFO - Starting background asyncio event loop run_forever.
+2026-03-31 07:15:21,912 - web - INFO - Initializing FTMSDeviceManager with use_simulator=False, device_type=bike
+2026-03-31 07:15:21,912 - web - INFO - Using real FTMS devices
+2026-03-31 07:15:21,912 - web - INFO - Flask application initialized. FTMS manager created.
+2026-03-31 07:15:21,914 - web - INFO - Starting background asyncio loop thread...
+2026-03-31 07:15:21,914 - web - INFO - Background thread started. Creating new event loop.
+2026-03-31 07:15:21,914 - web - INFO - Background asyncio loop thread start initiated.
+2026-03-31 07:15:21,927 - web - INFO - Starting background asyncio event loop run_forever.

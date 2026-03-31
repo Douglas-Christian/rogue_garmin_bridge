@@ -119,31 +119,59 @@
                 
                 <div class="card mb-4">
                     <div class="card-header">
-                        <h5>Garmin Connect Settings</h5>
+                        <h5>Garmin Connect</h5>
                     </div>
                     <div class="card-body">
-                        <form id="garmin-settings-form">
+                        <!-- Status line -->
+                        <div id="garmin-status-area" class="mb-3 d-flex align-items-center gap-2">
+                            <span class="spinner-border spinner-border-sm text-secondary" id="garmin-status-spinner"></span>
+                            <span id="garmin-status-text" class="text-muted">Checking status…</span>
+                        </div>
+
+                        <!-- Login form (shown when not connected) -->
+                        <div id="garmin-login-section" class="d-none">
                             <div class="mb-3">
-                                <label for="garmin_username" class="form-label">Garmin Connect Username</label>
-                                <input type="text" class="form-control" id="garmin_username" name="garmin_username">
+                                <label for="garmin_username" class="form-label">Username or Email</label>
+                                <input type="text" class="form-control" id="garmin_username" autocomplete="username">
                             </div>
                             <div class="mb-3">
-                                <label for="garmin_password" class="form-label">Garmin Connect Password</label>
-                                <input type="password" class="form-control" id="garmin_password" name="garmin_password">
-                                <div class="form-text">Your password is stored securely and only used for Garmin Connect uploads.</div>
+                                <label for="garmin_password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="garmin_password" autocomplete="current-password">
                             </div>
+                            <button type="button" class="btn btn-primary" id="garmin-connect-btn">Connect</button>
+                        </div>
+
+                        <!-- MFA form (shown only during 2FA challenge) -->
+                        <div id="garmin-mfa-section" class="d-none">
+                            <p class="text-warning mb-2">Two-factor authentication required.</p>
                             <div class="mb-3">
-                                <label for="auto_upload_fit" class="form-label">Auto-upload FIT Files</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="auto_upload_fit" name="auto_upload_fit">
-                                    <label class="form-check-label" for="auto_upload_fit">
-                                        Automatically upload FIT files to Garmin Connect after workouts
-                                    </label>
-                                </div>
-                                <div class="form-text">Requires valid Garmin Connect credentials.</div>
+                                <label for="garmin_mfa_code" class="form-label">Verification Code</label>
+                                <input type="text" class="form-control" id="garmin_mfa_code"
+                                       placeholder="Code from email or authenticator app"
+                                       maxlength="8" inputmode="numeric" autocomplete="one-time-code">
                             </div>
-                            <button type="submit" class="btn btn-primary">Save Garmin Settings</button>
-                        </form>
+                            <button type="button" class="btn btn-primary" id="garmin-mfa-btn">Verify</button>
+                            <button type="button" class="btn btn-secondary ms-2" id="garmin-mfa-cancel-btn">Cancel</button>
+                        </div>
+
+                        <!-- Connected state -->
+                        <div id="garmin-connected-section" class="d-none">
+                            <div class="alert alert-success d-flex align-items-center mb-3 py-2" role="alert">
+                                <span class="me-2">&#10003;</span> Connected to Garmin Connect
+                            </div>
+                            <button type="button" class="btn btn-outline-danger btn-sm" id="garmin-disconnect-btn">Disconnect</button>
+                        </div>
+
+                        <!-- Auto-upload toggle (always visible) -->
+                        <div class="mt-3 pt-3 border-top">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="auto_upload_garmin">
+                                <label class="form-check-label" for="auto_upload_garmin">
+                                    Automatically upload FIT file to Garmin Connect after each workout
+                                </label>
+                            </div>
+                            <div class="form-text">Connection required. Upload runs in the background after the workout ends.</div>
+                        </div>
                     </div>
                 </div>
                 
@@ -337,7 +365,6 @@
     // DOM elements
     const userProfileForm = document.getElementById('user-profile-form');
     const workoutPreferencesForm = document.getElementById('workout-preferences-form');
-    const garminSettingsForm = document.getElementById('garmin-settings-form');
     const systemConfigForm = document.getElementById('system-config-form');
     
     // Unit conversion utilities
@@ -438,9 +465,6 @@
                     if (profile.max_heart_rate) document.getElementById('max_heart_rate').value = profile.max_heart_rate;
                     if (profile.resting_heart_rate) document.getElementById('resting_heart_rate').value = profile.resting_heart_rate;
                     if (profile.ftp) document.getElementById('ftp').value = profile.ftp;
-                    if (profile.garmin_username) document.getElementById('garmin_username').value = profile.garmin_username;
-                    // Do NOT load garmin_password for security reasons.
-                    
                     let preferredUnitSystem = 'metric'; // Default
                     if (profile.unit_preference) {
                         preferredUnitSystem = profile.unit_preference;
@@ -504,6 +528,9 @@
                     }
                     if (settings.max_log_size) {
                         document.getElementById('max_log_size').value = settings.max_log_size;
+                    }
+                    if (settings.auto_upload_garmin !== undefined) {
+                        document.getElementById('auto_upload_garmin').checked = settings.auto_upload_garmin;
                     }
                 }
             })
@@ -605,47 +632,184 @@
         });
     });
     
-    // Save Garmin settings
-    garminSettingsForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const formData = new FormData(garminSettingsForm);
-        const garminSettings = {};
-        // Only include fields if they have a value
-        if (formData.get('garmin_username').trim()) {
-            garminSettings.garmin_username = formData.get('garmin_username').trim();
-        }
-        if (formData.get('garmin_password')) { // Password can be saved even if it appears empty to clear it
-            garminSettings.garmin_password = formData.get('garmin_password');
-        }
+    // ── Garmin Connect auth UI ──────────────────────────────────────────
 
-        // Garmin settings are typically saved as part of the user profile or a separate garmin_settings.json
-        // Assuming they are part of user_profile.json for this example, based on loadUserProfile logic
-        fetch('/api/user_profile') // Fetch current profile to merge
-            .then(response => response.json())
-            .then(profileData => {
-                let profileToSave = (profileData && profileData.success && profileData.profile) ? profileData.profile : {};
-                Object.assign(profileToSave, garminSettings); // Merge Garmin settings
-
-                fetch('/api/user_profile', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(profileToSave)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('Garmin settings saved successfully');
-                    } else {
-                        alert(`Error saving Garmin settings: ${data.error || 'Unknown error'}`);
-                    }
-                })
-                .catch(error => {
-                    alert(`Error saving Garmin settings: ${error.message}`);
-                    console.error('Error saving Garmin settings:', error);
-                });
+    function loadGarminStatus() {
+        const spinner = document.getElementById('garmin-status-spinner');
+        const statusText = document.getElementById('garmin-status-text');
+        const loginSection = document.getElementById('garmin-login-section');
+        const mfaSection = document.getElementById('garmin-mfa-section');
+        const connectedSection = document.getElementById('garmin-connected-section');
+        spinner.classList.remove('d-none');
+        statusText.textContent = 'Checking status…';
+        statusText.className = 'text-muted';
+        fetch('/api/garmin/status')
+            .then(r => r.json())
+            .then(data => {
+                spinner.classList.add('d-none');
+                if (data.connected) {
+                    statusText.textContent = 'Connected';
+                    statusText.className = 'text-success fw-semibold';
+                    loginSection.classList.add('d-none');
+                    mfaSection.classList.add('d-none');
+                    connectedSection.classList.remove('d-none');
+                } else {
+                    statusText.textContent = 'Not connected';
+                    statusText.className = 'text-muted';
+                    loginSection.classList.remove('d-none');
+                    mfaSection.classList.add('d-none');
+                    connectedSection.classList.add('d-none');
+                }
+            })
+            .catch(() => {
+                spinner.classList.add('d-none');
+                statusText.textContent = 'Status unknown';
+                loginSection.classList.remove('d-none');
+                mfaSection.classList.add('d-none');
+                connectedSection.classList.add('d-none');
             });
+    }
+
+    // Rate-limit cooldown: persist retry-after timestamp in localStorage so
+    // it survives page reloads. Garmin SSO returns 429 after a few rapid attempts.
+    const GARMIN_COOLDOWN_KEY = 'garmin_connect_retry_after';
+    const GARMIN_COOLDOWN_MS = 5 * 60 * 1000; // 5 minutes
+    let _cooldownTimer = null;
+
+    function startGarminCooldown(ms) {
+        const retryAfter = Date.now() + ms;
+        localStorage.setItem(GARMIN_COOLDOWN_KEY, retryAfter);
+        _runCooldownTick();
+    }
+
+    function _runCooldownTick() {
+        const btn = document.getElementById('garmin-connect-btn');
+        const retryAfter = parseInt(localStorage.getItem(GARMIN_COOLDOWN_KEY) || '0', 10);
+        const remaining = retryAfter - Date.now();
+        if (remaining <= 0) {
+            localStorage.removeItem(GARMIN_COOLDOWN_KEY);
+            btn.disabled = false;
+            btn.textContent = 'Connect';
+            if (_cooldownTimer) { clearInterval(_cooldownTimer); _cooldownTimer = null; }
+            return;
+        }
+        const mins = Math.floor(remaining / 60000);
+        const secs = Math.floor((remaining % 60000) / 1000);
+        btn.disabled = true;
+        btn.textContent = `Rate limited — retry in ${mins}:${String(secs).padStart(2, '0')}`;
+        if (!_cooldownTimer) {
+            _cooldownTimer = setInterval(_runCooldownTick, 1000);
+        }
+    }
+
+    // Resume any in-progress cooldown after a page load
+    if (localStorage.getItem(GARMIN_COOLDOWN_KEY)) { _runCooldownTick(); }
+
+    document.getElementById('garmin-connect-btn').addEventListener('click', function() {
+        const username = document.getElementById('garmin_username').value.trim();
+        const password = document.getElementById('garmin_password').value;
+        if (!username || !password) {
+            alert('Please enter your Garmin username and password.');
+            return;
+        }
+        const btn = this;
+        btn.disabled = true;
+        btn.textContent = 'Connecting…';
+        fetch('/api/garmin/connect', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({username, password})
+        })
+        .then(r => r.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById('garmin_password').value = '';
+                btn.disabled = false;
+                btn.textContent = 'Connect';
+                loadGarminStatus();
+            } else if (data.status === 'mfa_required') {
+                btn.disabled = false;
+                btn.textContent = 'Connect';
+                document.getElementById('garmin-login-section').classList.add('d-none');
+                document.getElementById('garmin-mfa-section').classList.remove('d-none');
+                document.getElementById('garmin-status-text').textContent = 'Verification required';
+                document.getElementById('garmin-status-text').className = 'text-warning fw-semibold';
+                document.getElementById('garmin-status-spinner').classList.add('d-none');
+            } else {
+                const is429 = data.error && data.error.includes('rate-limiting');
+                if (is429) {
+                    startGarminCooldown(GARMIN_COOLDOWN_MS);
+                } else {
+                    btn.disabled = false;
+                    btn.textContent = 'Connect';
+                }
+                alert('Connection failed: ' + (data.error || 'Unknown error'));
+            }
+        })
+        .catch(err => {
+            btn.disabled = false;
+            btn.textContent = 'Connect';
+            alert('Connection error: ' + err.message);
+        });
+    });
+
+    document.getElementById('garmin-mfa-btn').addEventListener('click', function() {
+        const code = document.getElementById('garmin_mfa_code').value.trim();
+        if (!code) { alert('Please enter your verification code.'); return; }
+        const btn = this;
+        btn.disabled = true;
+        btn.textContent = 'Verifying…';
+        fetch('/api/garmin/mfa', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({mfa_code: code})
+        })
+        .then(r => r.json())
+        .then(data => {
+            btn.disabled = false;
+            btn.textContent = 'Verify';
+            if (data.success) {
+                document.getElementById('garmin_mfa_code').value = '';
+                loadGarminStatus();
+            } else {
+                alert('Verification failed: ' + (data.error || 'Unknown error'));
+            }
+        })
+        .catch(err => {
+            btn.disabled = false;
+            btn.textContent = 'Verify';
+            alert('Verification error: ' + err.message);
+        });
+    });
+
+    document.getElementById('garmin-mfa-cancel-btn').addEventListener('click', function() {
+        document.getElementById('garmin_mfa_code').value = '';
+        loadGarminStatus();
+    });
+
+    document.getElementById('garmin-disconnect-btn').addEventListener('click', function() {
+        if (!confirm('Disconnect from Garmin Connect? You will need to re-authenticate to upload workouts.')) return;
+        const btn = this;
+        btn.disabled = true;
+        fetch('/api/garmin/disconnect', {method: 'POST'})
+        .then(r => r.json())
+        .then(data => {
+            btn.disabled = false;
+            if (data.success) {
+                loadGarminStatus();
+            } else {
+                alert('Disconnect failed: ' + (data.error || 'Unknown error'));
+            }
+        })
+        .catch(err => { btn.disabled = false; alert('Error: ' + err.message); });
+    });
+
+    document.getElementById('auto_upload_garmin').addEventListener('change', function() {
+        fetch('/api/settings', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({auto_upload_garmin: this.checked})
+        }).catch(err => console.error('Error saving auto-upload setting:', err));
     });
     
     // Save workout preferences
@@ -926,10 +1090,11 @@
     });
 
     // Initial load
-    loadUserProfile(); 
+    loadUserProfile();
     loadWorkoutPreferences();
     loadSystemConfig();
-    loadStorageInfo(); 
+    loadStorageInfo();
+    loadGarminStatus();
 
 </script>
 {% endblock %}

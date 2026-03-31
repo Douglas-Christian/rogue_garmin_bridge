@@ -7,3 +7,4 @@ psutil==5.9.6
 pyftms
 typing-extensions==4.7.1
 cryptography==42.0.5
+garth>=0.4.45

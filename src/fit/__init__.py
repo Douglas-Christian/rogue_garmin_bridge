@@ -7,6 +7,5 @@ and uploading FIT files to Garmin Connect.
 """
 
 from .fit_converter import FITConverter
-from .garmin_uploader import GarminUploader
 
-__all__ = ['FITConverter', 'GarminUploader']
+__all__ = ['FITConverter']

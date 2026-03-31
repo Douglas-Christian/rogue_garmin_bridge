@@ -2,8 +2,9 @@
   "use_simulator": false,
   "unit_system": "imperial",
   "data_update_interval": 2.0,
-  "device_type": "rower",
+  "device_type": "indoor_bike",
   "connection_timeout": 30,
   "log_level": "DEBUG",
-  "max_log_size": 10
+  "max_log_size": 10,
+  "auto_upload_garmin": false
 }

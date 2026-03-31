@@ -487,21 +487,10 @@
         }
     }
 
-    // Initial load and event listeners setup
-    sortBySelect.addEventListener("change", applySort);
-    prevPageBtn.addEventListener("click", () => { if (!prevPageBtn.disabled) { currentPage--; applySort(); } });
-    nextPageBtn.addEventListener("click", () => { if (!nextPageBtn.disabled) { currentPage++; applySort(); } });
-    
-    // Note: view-btn, fit-btn, delete-btn click handling is done by workout-history.js
-
-    // Load user settings (e.g., unit preference) - Placeholder
-    // fetch('/api/settings').then(res => res.json()).then(data => {
-    //     if (data.success && data.settings && data.settings.unit_system) {
-    //         userUnitSystem = data.settings.unit_system;
-    //     }
-    //     loadAllWorkouts(); // Initial load after settings
-    // }).catch(() => loadAllWorkouts()); 
-    loadAllWorkouts(); // Initial load
+    // NOTE: Sort, pagination, view/fit/delete, and workout list loading are all
+    // handled by WorkoutHistoryManager (workout-history.js). The inline functions
+    // above (loadAllWorkouts, displayWorkouts, loadWorkoutDetails, etc.) are kept
+    // as dead-code reference only — do NOT call them or add duplicate listeners.
 
     // Helper function for notifications if main.js is not properly loaded
     function showNotification(message, type = 'info') {

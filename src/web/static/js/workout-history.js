@@ -147,6 +147,25 @@ class WorkoutHistoryManager {
         if (clearFiltersBtn) {
             clearFiltersBtn.addEventListener('click', () => this.clearFilters());
         }
+
+        // Action buttons — delegated on the list container (registered ONCE here,
+        // not repeated in setupWorkoutListEventListeners on every render)
+        const workoutsList = document.getElementById('workouts-list');
+        if (workoutsList) {
+            workoutsList.addEventListener('click', (e) => {
+                const button = e.target.closest('button');
+                if (!button) return;
+                const workoutId = button.dataset.workoutId;
+                if (!workoutId) return;
+                if (button.classList.contains('view-btn')) {
+                    this.viewWorkoutDetails(workoutId);
+                } else if (button.classList.contains('fit-btn')) {
+                    this.downloadFitFile(workoutId);
+                } else if (button.classList.contains('delete-btn')) {
+                    this.deleteWorkout(workoutId);
+                }
+            });
+        }
     }
     
     async loadWorkouts() {
@@ -379,7 +398,7 @@ class WorkoutHistoryManager {
     }
     
     setupWorkoutListEventListeners() {
-        // Select all checkbox
+        // Select all checkbox (re-registered each render because the element is replaced)
         const selectAllCheckbox = document.getElementById('select-all-workouts');
         if (selectAllCheckbox) {
             selectAllCheckbox.addEventListener('change', (e) => {
@@ -390,34 +409,15 @@ class WorkoutHistoryManager {
                 this.updateSelectedWorkouts();
             });
         }
-        
-        // Individual workout checkboxes
+
+        // Individual workout checkboxes (re-registered each render)
         const workoutCheckboxes = document.querySelectorAll('.workout-checkbox');
         workoutCheckboxes.forEach(checkbox => {
             checkbox.addEventListener('change', () => {
                 this.updateSelectedWorkouts();
             });
         });
-        
-        // Action buttons
-        const workoutsList = document.getElementById('workouts-list');
-        if (workoutsList) {
-            workoutsList.addEventListener('click', (e) => {
-                const button = e.target.closest('button');
-                if (!button) return;
-                
-                const workoutId = button.dataset.workoutId;
-                if (!workoutId) return;
-                
-                if (button.classList.contains('view-btn')) {
-                    this.viewWorkoutDetails(workoutId);
-                } else if (button.classList.contains('fit-btn')) {
-                    this.downloadFitFile(workoutId);
-                } else if (button.classList.contains('delete-btn')) {
-                    this.deleteWorkout(workoutId);
-                }
-            });
-        }
+        // Note: view/fit/delete button delegation is registered once in setupEventListeners()
     }
     
     updateSelectedWorkouts() {
@@ -439,18 +439,27 @@ class WorkoutHistoryManager {
     }
     
     async viewWorkoutDetails(workoutId) {
+        const detailsContainer = document.getElementById('workout-details');
+        if (detailsContainer) {
+            detailsContainer.innerHTML = '<p class="text-muted"><i class="fas fa-spinner fa-spin"></i> Loading…</p>';
+        }
         try {
             const response = await fetch(`/api/workout/${workoutId}`);
             const data = await response.json();
-            
+
             if (data.success && data.workout) {
                 this.displayWorkoutAnalysis(data.workout);
             } else {
-                this.showError('Failed to load workout details');
+                const msg = data.error || 'Failed to load workout details';
+                if (detailsContainer) {
+                    detailsContainer.innerHTML = `<div class="alert alert-danger">${msg}</div>`;
+                }
             }
         } catch (error) {
             console.error('Error loading workout details:', error);
-            this.showError('Error loading workout details: ' + error.message);
+            if (detailsContainer) {
+                detailsContainer.innerHTML = `<div class="alert alert-danger">Error loading workout details: ${error.message}</div>`;
+            }
         }
     }
     
@@ -576,7 +585,92 @@ class WorkoutHistoryManager {
     
     createWorkoutAnalysisCharts(workout) {
         if (!workout.data_series) return;
-        
+
+        // ── workout-analysis-chart (right column: zone doughnut or metrics bar) ──
+        const analysisCtx = document.getElementById('workout-analysis-chart');
+        if (analysisCtx) {
+            if (this.analysisCharts.overview) {
+                this.analysisCharts.overview.destroy();
+                this.analysisCharts.overview = null;
+            }
+
+            const powers = (workout.data_series.powers || []).filter(p => p > 0);
+            if (powers.length > 0) {
+                // Power zone doughnut
+                const zones = [
+                    { name: 'Recovery',   min: 0,   max: 100, color: '#28a745' },
+                    { name: 'Endurance',  min: 100, max: 150, color: '#17a2b8' },
+                    { name: 'Tempo',      min: 150, max: 200, color: '#ffc107' },
+                    { name: 'Threshold',  min: 200, max: 250, color: '#fd7e14' },
+                    { name: 'VO2 Max',    min: 250, max: 999, color: '#dc3545' }
+                ];
+                const counts = zones.map(z => powers.filter(p => p >= z.min && p < z.max).length);
+                const activeZones = zones.filter((_, i) => counts[i] > 0);
+                const activeCounts = counts.filter(c => c > 0);
+
+                this.analysisCharts.overview = new Chart(analysisCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: activeZones.map(z => z.name),
+                        datasets: [{
+                            data: activeCounts,
+                            backgroundColor: activeZones.map(z => z.color),
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: { position: 'right', labels: { boxWidth: 12 } },
+                            tooltip: {
+                                callbacks: {
+                                    label: (ctx) => {
+                                        const pct = ((ctx.parsed / powers.length) * 100).toFixed(1);
+                                        return ` ${ctx.label}: ${pct}%`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            } else {
+                // Fallback: key metrics bar chart
+                const summary = workout.summary || {};
+                const labels = ['Avg Power', 'Max Power', 'Avg Cadence', 'Avg HR'];
+                const values = [
+                    Math.round(summary.avg_power || 0),
+                    Math.round(summary.max_power || 0),
+                    Math.round(summary.avg_cadence || 0),
+                    Math.round(summary.avg_heart_rate || 0)
+                ];
+
+                this.analysisCharts.overview = new Chart(analysisCtx, {
+                    type: 'bar',
+                    data: {
+                        labels,
+                        datasets: [{
+                            label: 'Value',
+                            data: values,
+                            backgroundColor: [
+                                'rgba(255,99,132,0.7)',
+                                'rgba(255,99,132,0.4)',
+                                'rgba(75,192,192,0.7)',
+                                'rgba(54,162,235,0.7)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: { legend: { display: false } },
+                        scales: { y: { beginAtZero: true } }
+                    }
+                });
+            }
+        }
+
         // Create detailed metrics chart
         const ctx = document.getElementById('detailed-metrics-chart');
         if (ctx && workout.data_series.timestamps) {
@@ -620,6 +714,10 @@ class WorkoutHistoryManager {
             }
             
             if (datasets.length > 0) {
+                if (this.analysisCharts.detailed) {
+                    this.analysisCharts.detailed.destroy();
+                    this.analysisCharts.detailed = null;
+                }
                 this.analysisCharts.detailed = new Chart(ctx, {
                     type: 'line',
                     data: {

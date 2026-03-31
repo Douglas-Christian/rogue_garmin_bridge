@@ -86,11 +86,41 @@ def end_workout():
     """End the current workout."""
     _, workout_manager, _ = _get_managers()
     try:
+        workout_id_before = workout_manager.active_workout_id
         success = workout_manager.end_workout()
+
+        if success and workout_id_before:
+            _maybe_auto_upload_to_garmin(workout_id_before)
+
         return jsonify({'success': success})
     except Exception as e:
         logger.error("Error ending workout: %s", e)
         return jsonify({'success': False, 'error': str(e)})
+
+
+def _maybe_auto_upload_to_garmin(workout_id):
+    """Trigger a background Garmin upload if auto_upload_garmin is enabled in settings."""
+    try:
+        from src.web.helpers import load_json_file, settings_path
+        if not load_json_file(settings_path()).get('auto_upload_garmin'):
+            return
+    except Exception:
+        return
+
+    import threading
+
+    def _bg():
+        try:
+            from src.web.blueprints.garmin import _upload_workout_to_garmin
+            ok, err = _upload_workout_to_garmin(workout_id)
+            if ok:
+                logger.info("Garmin auto-upload succeeded for workout %d", workout_id)
+            else:
+                logger.warning("Garmin auto-upload failed for workout %d: %s", workout_id, err)
+        except Exception as e:
+            logger.warning("Garmin auto-upload exception for workout %d: %s", workout_id, e)
+
+    threading.Thread(target=_bg, daemon=True).start()
 
 
 # ----- History & Details -----
