@@ -69,8 +69,11 @@ The application features a clean, intuitive interface with four main sections:
 2. **Pair via Web Interface**
    - Navigate to the "Devices" page
    - Click "Discover Devices"
-   - Select "Rogue Echo Rower" from the list
+   - The rower will appear as **"ROGUE CONSOLE XXXXXX"** (not "Rogue Echo Rower")
+   - **Important**: Change the **Device Type** dropdown to **"Rower"** before connecting
    - Click "Connect"
+
+   > The Rogue Echo Rower's BLE name does not contain the word "rower", so the app cannot auto-detect it. You must manually select Rower from the Device Type dropdown or rower-specific metrics (stroke rate, etc.) will not be recorded correctly.
 
 ### Device Status Indicators
 
@@ -274,10 +277,28 @@ The application automatically detects and displays workout phases:
 - **Medical Info**: Heart rate zones, maximum heart rate
 
 #### Unit Preferences
-- **Distance**: Kilometers or miles
+- **Distance**: Kilometers or miles (applies to speed and distance in workout and history views)
 - **Weight**: Kilograms or pounds
 - **Temperature**: Celsius or Fahrenheit
 - **Power**: Watts (standard for both systems)
+
+### VO2 Max Estimation
+
+The application estimates VO2 Max during workouts using heart rate and power data. To get a VO2 Max reading:
+
+#### Requirements
+1. **Age** — set in User Profile (used to calculate max HR as 220 − age if not set manually)
+2. **Weight** — set in User Profile (required for power-to-weight calculation)
+3. **Heart Rate Monitor** — a HR monitor must be connected and transmitting data
+4. **Sustained Effort** — your **average heart rate for the workout** must exceed **70% of your max HR**
+
+#### Improving Accuracy
+- Set your actual **Max Heart Rate** in Settings rather than relying on the 220 − age estimate
+- Set your **Resting Heart Rate** for a more accurate heart rate reserve calculation
+- Maintain a steady effort rather than short hard bursts; the threshold is based on your workout average HR, not a momentary peak
+
+#### Example
+If you are 40 years old: estimated max HR = 180 bpm, 70% threshold = 126 bpm. Your average HR across the full workout must stay above 126 bpm for a VO2 Max estimate to appear.
 
 ### Workout Preferences
 

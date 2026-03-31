@@ -82,19 +82,7 @@ ERROR: pyftms requires Python 3.12 or higher
 **Problem**: Application fails to start with "Port 5000 already in use"
 
 **Solution**:
-1. Use different port:
-   ```bash
-   python src/web/app.py --port 5001
-   ```
-
-2. Or set environment variable:
-   ```bash
-   export PORT=5001  # Linux/macOS
-   set PORT=5001     # Windows
-   python src/web/app.py
-   ```
-
-3. Find and stop process using port 5000:
+1. Find and stop process using port 5000:
    ```bash
    # Linux/macOS
    lsof -i :5000
@@ -106,6 +94,22 @@ ERROR: pyftms requires Python 3.12 or higher
    ```
 
 ### Bluetooth and Device Connection Issues
+
+#### Rogue Echo Rower Not Recognized
+
+**Problem**: The Rogue Echo Rower connects but is treated as a bike, or workout data is not recorded correctly.
+
+**Cause**: The Rogue Echo Rower advertises over BLE as **"ROGUE CONSOLE XXXXXX"** (not "Rogue Echo Rower"), so the application cannot auto-detect it as a rower.
+
+**Solution**:
+1. Navigate to the **Devices** page and click **Discover Devices**
+2. When the device appears (it will show as "ROGUE CONSOLE XXXXXX"), select it
+3. Before clicking **Connect**, change the **Device Type** dropdown to **"Rower"**
+4. Click **Connect** — the app will now correctly record rower metrics (stroke rate, etc.)
+
+> **Note**: The Rogue Echo Bike advertises as "ECHO\_BIKE\_XXXXXX" and is auto-detected correctly.
+
+---
 
 #### Device Not Found During Discovery
 
